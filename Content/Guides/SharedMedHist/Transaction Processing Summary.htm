@@ -1,0 +1,739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="770.3334" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: ">Transaction Processing Summary</h1>
+        <p class="BodyText1">This section explains the transaction processing that will take place for transactions exchanged between a transaction sender and a transaction receiver. These transactions are initiated in the form of a request and a response is returned. The sender stays connected until a response is given. Depending on connectivity, the actual transaction vehicle may vary.</p>
+        <p class="BodyText1">The system (Surescripts) will store round trip messages until the receiver responds to the message or until the specified time has elapsed. If the timeout elapses before the message is processed, an error message will be returned to the sender as the reply (explained below). If the sender has timed out, the message is discarded.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 133px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 258px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 315px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Event Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Event</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Process</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Type of message</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Status Type Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code List Qualifier</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Message Text</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">1.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Surescripts receives a transaction</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts fails to recognize the type of transaction.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A text message (NAK) that says “<span style="text-transform: uppercase;">Transaction cannot be identified nor processed</span>.”</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1.2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts recognizes that the transaction is an NCPDP transaction but does not have enough info to create an NCPDP error message.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A text message (NAK) that says “<span style="text-transform: uppercase;">Transaction cannot be identified nor processed.”</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1.3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Sender Participant ID or Password is Invalid.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A text message (NAK) that says “<span style="text-transform: uppercase;">Sending Participant ID unrecognized or the password is incorrect.”</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1.4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Any other system-related error which makes it impossible for Surescripts to accept the transaction.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A text message (NAK) that says “<span style="text-transform: uppercase;">System Error</span>”</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">2.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Surescripts processes the transaction</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">No Acknowledgment is sent to the sender.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Based on the transaction type, Surescripts determines that the non-appropriate qualifiers are utilized for this transaction. Refer to the Routing section to determine the appropriate routing.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Invalid Code Qualifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts determines that the sender does not have the appropriate product contract with Surescripts to send this type of contract.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction Rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SENDER NOT AUTHORIZED FOR THIS TRANSACTION</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts determines that the sender is not certified to send this type of transaction.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SENDER NOT AUTHORIZED FOR THIS TRANSACTION</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">The transaction was sent to the wrong environment. A Test sent to Production, or a Production was sent to Test.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">033 – UIB Test flag is invalid.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2.7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts has temporally disabled the receiving participant</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">RECEIVING PARTICIPANT DISABLED</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2.8 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts cannot identify the recipient or determines that the sender and recipient do not have a contract to exchange this transaction.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Contract does not exist.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2.9 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts determines that the recipient is not accepting this type of transaction, even though a contract exists.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Recipient does not accept this request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.10 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">There is a mismatch between the message function and the message version.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">MESSAGE FUNCTION DOES NOT MATCH MESSAGE VERSION.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.11</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts is unable to translate to receiver’s version of this message.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">UNABLE TO TRANSLATE TO RECEIVER’S VERSION OF THIS MESSAGE</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2.12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts experiences a system failure during processing.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">600 – Communication problem – try again</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">210 – Unable to process transaction. Please resubmit.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">3.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Surescripts passes the transaction on to the intended recipient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">The transaction times out before a response is given.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR (For Sender)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">600 – Communication problem – try again</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">008 – Request timed out before a response could be received.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3.2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Recipient fails to recognize the type of transaction. Recipient sends a text message (NAK) that says, “Transaction cannot be identified nor processed.”</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts sends an ERROR to the sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">602 – Receiver System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">007 – Internal processing Error has occurred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3.3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Recipient recognizes that the transaction is an NCPDP transaction but does not have enough info to create an NCPDP error message. Recipient sends a text message (NAK) that says, “Transaction cannot be identified nor processed.”</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts sends an ERROR to the sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">602 – Receiver System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">007 – Internal processing Error has occurred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3.4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Participant cannot identify sender ID. Recipient sends a text message (NAK) that says “Sending Participant ID unrecognized or the password is incorrect.”</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts sends an ERROR to the sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">602 – Receiver System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">007 – Internal processing Error has occurred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3.5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts gets any other textual error message back from the recipient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts sends an ERROR to the sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">602 – Receiver System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">007 – Internal processing Error has occurred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">4.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Recipient accepts the transaction</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">4.1a</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Recipient sends back a synchronous response</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts gets a bad transaction back from the recipient. Surescripts creates an ERROR message to send back to the requester in response to the original request. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR (to the Requester)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">For Sender:&#160; 602 – Receiver System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">For Sender – 007 – Internal processing Error has occurred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">4.1b</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts creates an ERROR message to send to the responder.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ERROR (to the Responder)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">For Receiver:</p>
+                        <p class="TableBody">900 – Transaction rejected</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Blank</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">An appropriate error message is sent back depending on the type of error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">4.1c </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Responder sends STATUS message for ERROR message received from Surescripts</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">STATUS (to Surescripts)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">STATUS - 010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">4.2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts gets an ERROR response.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Pass through</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts passes ERROR transaction through</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">NA</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">4.3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts gets a good response from the recipient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Response message</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"> &#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody"> &#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">5.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Surescripts passes the error or response to the original sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">6.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Process Complete</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;">Note that the response is sent as a synchronous message to the request.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

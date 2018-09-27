@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="6" MadCap:lastHeight="2505.333" MadCap:lastWidth="1172">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc435024001"></a>Integration &amp; Production</h1>
+        <h2 class="Heading2" style="page-break-before: avoid;">Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1"> For terminology usage throughout this guide, consider the following:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Term</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Term usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">must</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">	Requirements that are enforced as part of the production code.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">The requirements customers are required to meet in order to be certified on the Surescripts network. These requirements will be enforced as part of certification.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">should</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">		Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="Transiti"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Communic"></a>
+            <MadCap:annotation MadCap:createDate="2017-09-19T12:57:21.3453710-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="do we want connectivity?" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-09-19T12:57:29.4436842-05:00">Communication</MadCap:annotation> Rules</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CommunicationRules.flsnp" />
+        <h2 class="Heading2" MadCap:conditions="Default.Eligibillity"><a name="Timeouts"></a>Timeouts</h2>
+        <p class="BodyText1" MadCap:conditions="Default.Eligibillity">For timeouts, consider the following:</p>
+        <ul>
+            <li MadCap:conditions="Default.Eligibillity">When sending a message to Surescripts, the initiator should set the http timeout to no less than 30 seconds.</li>
+            <li MadCap:conditions="Default.Eligibillity">A receiving system must reply with a valid 271/999/TA1/NAK response within 10 seconds.</li>
+        </ul>
+        <h2 class="Heading2" MadCap:conditions="Default.Formulary"><a name="Data"></a>Data Load Connectivity</h2>
+        <p MadCap:conditions="Default.Formulary">Surescripts currently supports two data loads that require a customer to send large files to Surescripts. The Master Patient Index (MPI) Data Load and the Formulary and Benefit Data Load are created by the PBM/payer and sent to Surescripts for storage. The Formulary and Benefit File is then ready for subsequent distribution. For these data loads, Surescripts supports Secure FTP for file transfer between the PBM/payer and Surescripts.</p>
+        <h3 class="Heading3" MadCap:conditions="Default.Formulary"><a name="Secure"></a>Secure FTP</h3>
+        <p MadCap:conditions="Default.Formulary">Secure FTP is supported for the transfer of Master Patient Index (MPI) data loads and Formulary and Benefit data uploads using FTP over SSL, SSH with FTP and HTTP/S. Surescripts supports both Client-to-Server and Server-to-Server communications with compatible client software. A list of compatible software should be requested from Surescripts. Surescripts processes do not have file naming requirements. Security is enforced through data encryption during transfer and User ID/Password. Customer files are isolated from other customer’s files.</p>
+        <p MadCap:conditions="Default.Formulary">Connectivity to Secure FTP can be established through an Internet route or through a Private Virtual Circuit with Surescripts’ contracted MPLS service provider. If using the Private Virtual Circuit, the customer must allow Surescripts to install and manage two routers in their data center that connect to the customer’s extranet. The customer must have dual network connectivity for redundancy.</p>
+        <h2 class="Heading2"><a name="Security"></a>Security</h2>
+        <p>Each customer must ensure that appropriate security measures are in place within its scope of operations to the extent of its interface with Surescripts and Surescripts’ systems and data. These security measures must be designed to protect against fraud and abuse and to maintain patient confidentiality.</p>
+        <p MadCap:conditions="Default.Eligibillity">Each customer must provide a Surescripts Trading Partner ID (ISA06 for X12) and password (ISA04 for X12) in all messages and a static network path (IP address). Surescripts will only allow message connectivity from the customer specified network path. Provision of an otherwise-valid ID and password from a network path not assigned to the customer will result in rejection of the message, and will be logged as a potential security violation .</p>
+        <h2 class="Heading2"><a name="Complian"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

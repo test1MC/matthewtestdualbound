@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="569.3333" MadCap:lastWidth="978">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc443909578"></a>Eligibility Message Processing Summary</h1>
+        <p class="BodyText1">Depending on the connectivity between customers, the error processing may differ slightly. This section lays out the error processing for the supported connection types. It also contains the error processing that happens within the 270/271 message that will be consistent regardless of connectivity type. </p>
+        <p class="BodyText1">The system (Surescripts) will store the request until the receiver responds to the message or until the specified time has elapsed. If the timeout elapses before the message is processed, an error message will be returned to the sender as the reply (explained below). If the sender has timed out, the message is discarded.</p>
+        <p class="BodyText1">The Eligibility (270/271) message is a message where Surescripts is a defined customer in the process and adds processing value in the middle. For that reason, additional error processing needs to be handled. The following section outlines the life of the Eligibility message with the expected responses to different flows of events. It is broken down into the following stages:</p>
+        <ul>
+            <li>Surescripts receives the 270 from the requesting party.</li>
+            <li>Surescripts processes the 270, identifying the coverage(s).</li>
+            <li>Surescripts passes the 270 on to the defined source. (If multiple coverages are found, multiple 270’s are sent.)</li>
+            <li>The source processes the request(s) and returns a 271 response.</li>
+            <li>Surescripts combines the response(s) into one envelope.</li>
+            <li>Surescripts passes the response back to the original requester.</li>
+        </ul>
+    </body>
+</html>

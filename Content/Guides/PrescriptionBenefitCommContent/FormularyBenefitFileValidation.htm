@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3977" MadCap:lastWidth="885">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909646"></a>Formulary and Benefit File Validation (For PBM/payers)</h2>
+        <p class="BodyText1">A formulary and benefit file coming from a Formulary Publisher goes through a series of validations at Surescripts before it is loaded. These validations are described in the following sections. For more information on the possible error codes returned, refer to the <MadCap:xref href="#_Reject_Code_Summary">Reject Code Summary</MadCap:xref>.</p>
+        <h3 class="Heading3"><a name="_Toc443909647"></a>Formulary and Benefit File Header and Trailer Validation</h3>
+        <p class="BodyText1">The formulary and benefit file header and trailer is the wrapper for the entire file. Surescripts performs the following validations for the file header and trailer:</p>
+        <ol>
+            <li>Validate the proper physical format of the header (required fields are present and contain valid values as defined in Surescripts’ specification).</li>
+            <li>Validate the sender (source) Participant ID and password.</li>
+            <li>Validate that the File Type (Usage Indicator) is valid for the system the file is sent to (i.e. T for Test, P for Production).</li>
+            <li>Validate the version number.</li>
+            <li>Validate the record length and termination of the header and trailer.</li>
+        </ol>
+        <p class="BodyText1">Upon failure of the validations performed in steps 1-5, Surescripts submits a Response File to the Formulary Publisher with the appropriate error code. Processing stops when a header level error is encountered. </p>
+        <h3 class="Heading3"><a name="_Toc443909650"></a>Formulary and Benefit Response File</h3>
+        <p class="BodyText1">A Response File is posted for the formulary provider to retrieve after it has been loaded or attempted to load. It contains information related to any errors, encountered by recipient while attempting to load the file. </p>
+        <p class="BodyText1">For more detailed information on the error codes sent within the Response File, refer to the <MadCap:xref href="#_Reject_Code_Summary">Reject Code Summary</MadCap:xref>.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/Prescription Benefit/Formulary and Benefit Response File.PNG" MadCap:mediastyle="@media print { max-width: 75%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443909651"></a>Formulary and Benefit Response File Header</h3>
+        <p class="Style6" style="margin-left: 0pt;font-weight: bold;">Header Info</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Record Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Identifies record type. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 3/3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Value = SHD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Version/Release Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Version Number of this specification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Sender ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ID as assigned by Surescripts identifying Surescripts</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 3/30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">S00000000000001</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Recipient ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ID assigned by Surescripts for the recipient or Formulary Publisher (original sender of the Formulary and Benefit Data Load.)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 3/30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Sender Participant Password</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Password assigned by Surescripts for accessing the PBM/payer system.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 10/10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Control Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Unique identifier defined by the sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Date</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Date message was created </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DT 8/8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYYMMDD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Time message was created </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TM 8/8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">HHMMSSDD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction File Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Identifier telling receiver the type of file.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">FRE – Formulary Transaction Response</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Number - Originating</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Number of the original formulary message</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Date- Originating</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Date Original Incoming File was created (D8 -)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DT 8/8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYYMMDD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Transaction Time- Originating</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Time Original Incoming File was created</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TM 8/8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">HHMMSSDD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">File Type (Usage Indicator)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Test or Production (T/P)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">T=Test</p>
+                        <p class="TableBody">P=Production</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Load Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Code Explaining the status of the load.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">AN 2/2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">01 File loaded correctly.<br />The entire formulary and benefit data load file has loaded without any errors. No detail row errors exist.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">02 File loaded with errors<br />The file was partially loaded due to row level errors. For row error information, refer to the Reject Codes section. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">03 File contains errors - File Not loaded <br />The entire file was unable to load because of errors. This error code is only used for Full Replace processes or with Update processes where all lists contain an error and none of the lists are loaded.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">04 System Error – An error has occurred during processing not related to the structure of the file. Contact Surescripts and then resend the same file.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Style6" style="margin-left: 0pt;font-weight: bold;page-break-before: always;">Detail Info</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Record Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Identifies record type.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 3/3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Value = SDT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Absolute Row Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">The absolute row or line number in the file that contains the error. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N 1/10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If the row number is 1 then the error is for the file header.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Section Column in Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Column number that contains the error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N 1/2 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Column number of error in row. The first field - Record Type is considered column 0, the next field is considered column 1.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Reject Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Describes error for this column</p>
+                        <p class="TableBody">Note: If an error occurred, the entire list that the error was in did not load.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 4/4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">See Reject Code Summary below</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Additional Message Information</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Free text description of the error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN 1/100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Data in Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Copy of the bad data</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">AN 1/100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">If the data in error is longer than 100 characters it will be truncated. If a pipe character is in the data it will be represented as [PIPE]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Style6" style="margin-left: 0pt;font-weight: bold;">Trailer Info</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Field</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Notes</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Record Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Identifies record type.</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">AN 3/3</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Value = STR</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Total Rows in Error</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">N 1/10</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Total Errors</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">N 1/10</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <h3 class="Heading3"><a name="_Reject_Code_Summary"></a><a name="_Toc443909652"></a>Reject Code Summary</h3>
+        <p>For any validation error, an error message is sent including the reject code value and a detailed description.</p>
+        <p>When the Formulary and Benefit File Header Load Status contains “02 – File loaded with errors” or “03 – File contains errors – File not loaded”, the following reject code values may be reported:</p>
+        <ul>
+            <li>If a file header or a file trailer contains an error, the processing of the entire file is stopped and the entire file is rejected. Response file contains load status “03”.</li>
+            <li>If a list header or list trailer contains an error, that list will be rejected, but any other valid lists in the file will be processed. Response file has load status “02”.</li>
+            <li>If a detail row contains an error, the row containing the error is rejected, but the rest of the list and file will be processed. Response file has load status “02”.</li>
+        </ul>
+        <p>Example of an error message:</p>
+        <ul>
+            <p>SDT|22|5|1007|Required length: 1 - 35|1782^Acetaminophen-Propoxyphene Hydrochloride</p>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The process that Surescripts is using to process the formulary files is an enhancement to what is in the standard. This enhanced process is needed to provide clearer error details and less rejections of the entire file.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 44px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Code </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-size: 9pt;">Surescripts Detailed Error Message Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">No Valid Detail 1.0</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Required list missing</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unknown Segment - there is an extra
+ blank line in the file</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="7" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1004</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected Segment - header can only
+ be on first line</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected Segment - list detail with
+ no list header</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected Segment - wrong detail type
+ for header </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected Segment - non valid record
+ identifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected Segment – missing list trailer</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected segment - list header type
+ does not match list trailer type</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Unexpected segment - missing list header</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="9" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1006</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Required field missing</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">All fields or no fields must be
+ populated: drug-reference-number drug-reference-qualifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Field [field name 1] is greater than [field
+ name 2] and should be &lt;= [value of field name 2]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Field [field name] is required when [field
+ name] = [specific value]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Field [field name] must be empty when [field
+ name] = [specific value]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Fields [list of fields] require [field
+ name]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Field [field name] must be &lt;= [field
+ name]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">At least [number] fields must be
+ populated: [list of fields]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-size: 9pt;">Field [field name] is required when [field name 2] is populated, or [field name 3] is empty</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1007</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Required length: 1 - 35</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Not in range [1-99]</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="10" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1009</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Disallowed characters found</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Not one of allowed values</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">This value must be numeric</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Date Format expect: yyyyMMdd</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Not matching pattern: [A-Za-z0-9 .-]+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Date: yyyyMMdd </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Time Format expect: HHmmssdd</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Transmission Action</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Usage Indicator</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Extract Date Format: yyyyMMdd</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Extra Data Found After Segment - max
+ fields: 12</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">List Trailer count: 3 expected 2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Participant ID or Password</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Invalid Receiver Id</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">1014</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Duplicate detail record</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">9000</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Contract does not exist</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">9000</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-size: 9pt;">System Exception</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

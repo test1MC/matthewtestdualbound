@@ -1,0 +1,2368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/NoBorderGuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Formulary Data Load</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805473"></a>Formulary and Benefit Summary Information Model</h2>
+        <p class="p_Graphic_1">
+            <img src="../../Resources/Images/Formulary/Formulary Data Load.png" MadCap:mediastyle="@media print { max-height: 47%; }" /> </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The cross reference function that is part of the standard is not explained in this guide because is not supported in the Surescripts business model. The cross reference process is not needed since eligibility check is always performed prior to the formulary and benefit check and the Formulary ID and Copay ID are in the Eligibility Response (271).</p>
+        <h2 class="Heading2"><a name="_Toc499805474"></a>Roll Up for PBM/Payers </h2>
+        <p class="BodyText1">PBM/payers provide formulary files at the NDC-11 packaged medication level. All prescriber vendors prescribe at a dispensable medication level (medication name, strength, and form). In order to display formulary correctly, the data must be rolled up to a dispensable medication level. This process involves Surescripts performing this roll-up feature before the data is supplied to the provider vendor. Surescripts determines a representative NDC and rolls all formulary information to this level.</p>
+        <h3 class="Heading3"><a name="_Toc499805475"></a>Formulary Roll-up Process flow</h3>
+        <p class="BodyText1" style="color: #000000;">During the roll-up process, Surescripts identifies discrepancies in the files provided. Surescripts generates reports that indicate conflicts in formulary status, coverage factors, and copay details. The reports are made available to the PBM/payer in a .csv file for periodic download and review.</p>
+        <ol>
+            <li>The PBM/payer sends in Formulary files.</li>
+            <li>Surescripts processes the file and determines the representative NDCs using supported drug compendium.<ol style="list-style-type: lower-alpha;"><li>Surescripts rolls-up all NDCs to the appropriate representative NDC chosen in step 2.</li><li>Surescripts creates exception reports that show data that needs to be reviewed. Surescripts makes the exception reports available to the PBM/payers for retrieval in the same location where the formulary response file is located.</li><li>Surescripts makes the rolled up data available to the prescriber vendors.</li></ol></li>
+            <li>Prescriber vendors download a version of the formulary data that was rolled up using prescriber vendors' contracted drug compendia.</li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="Roll-up"></a>Roll-up Process Diagram</h3>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/Formulary/Formulary Data Load_1.png" MadCap:mediastyle="@media print { max-width: 75%; }" style="width: 689px;height: 575px;" />
+        </p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805477"></a>Formulary Roll-Up Exception Reports</h3>
+        <p class="BodyText1">Exception reports show the PBM/payer data that needs to be reviewed due to inconsistent or obsolete data. An initial set of reports is automatically created upon the initial load and the reports are made available in the same location as the formulary response file. Once the initial set of reports is created, the reports are generated starting at 3:00 AM CST on the 30th of the month in March, June, September, and December or upon request. Two sets of reports will always be available (current and the most recent prior to the current). The exception reports available are described below.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805478"></a>Missing or Obsolete NDCs</h3>
+        <p class="BodyText1">Surescripts will provide PBM/payers with a report that shows how many NDCs within the formulary files do not match or match to obsolete NDCs in the major drug databases. Those NDCs that cannot be found will not be included in the roll-up process since they cannot be identified. The NDCs that map to obsolete NDCs will be used for the roll-up, but will not be candidates for the Representative NDC being provided to the prescriber vendors. These NDCs should be investigated by the PBM/payers to verify their validity.</p>
+        <p class="StylebodytextBold" style="color: #000000;">Example: </p>
+        <p class="BodyText1">This report indicates the NDC in question (either missing or obsolete) and how many times it occurs across all the formulary, coverage, and copay files.</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001 </p>
+        <p class="BodyText1"><u>Source Name</u>: PBMA (PBM/payer name) </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Usage Count</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[00006383334]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">63</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[49884077486]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[49884077586]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[49884077686]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[00149075215]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[00023921805]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">61</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">[00406142301]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">61</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">[63481052270]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">61</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805479"></a>Conflicting Data</h3>
+        <p class="BodyText1">Surescripts will provide PBM/payers with reports of conflicting or questionable data for formulary files and coverage files. The reports include:</p>
+        <h4 class="Heading4" style="color: #000000;"><a name="Formular"></a>Formulary Status</h4>
+        <p class="BodyText1">These reports show differing formulary status within a prescribable medication grouping. If multiple NDCs have differing formulary status, but fall under the same Representative NDC, the Representative NDC will take the highest formulary status during the roll-up process.</p>
+        <p class="StylebodytextBold" style="color: #000000;">Example: Conflicting Status</p>
+        <p class="BodyText1">This report shows conflicting Formulary Status for the same Representative NDC:</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001 </p>
+        <p class="BodyText1"><u>Source Name</u>: PBMA (PBM/payer name) </p>
+        <p class="BodyText1"><u>Formulary Name</u>: ABC </p>
+        <p class="BodyText1"><u>Formulary ID</u>: 1223 </p>
+        <p class="BodyText1"><u>Extract Date</u>: 5/2/2017 (Date PBM/payer created the file) </p>
+        <p class="BodyText1"><u>Effective Date</u>: 5/2/2017 (Date this formulary takes effect) </p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete) </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Formulary Status</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_5">Rolled up Formulary Status</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00143318801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00904620560</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">31722054401</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054852625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">68462022001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00143319001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">31722054601</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">000542531252</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">000548531252</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">684620222014</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_2">4</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="Heading4" style="color: #000000;"><a name="Coverage"></a>Coverage File Discrepancies</h4>
+        <p class="BodyText1" style="color: #000000;">All conflicting coverage factors will be presented during the roll-up process.</p>
+        <p class="StylebodytextBold" style="color: #000000;">Example – Age Limits</p>
+        <p class="BodyText1">This report shows conflicting age limits for the same NDCs. </p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001</p>
+        <p class="BodyText1"><u>Source Name</u>: PBMB (PBM/payer name)</p>
+        <p class="BodyText1"><u>Coverage List ID</u>: 12234</p>
+        <p class="BodyText1"><u>List Type</u>: AL (Indicates this is age limit report)</p>
+        <p class="BodyText1"><u>Extract Date</u>: 2/6/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><u>Effective Date</u>:&#160;2/6/2017 (Date this formulary takes effect)</p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Coverage ID&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">NDC (Source NDC)</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Rep. NDC&#160;&#160;&#160; </p>
+                    </th>
+                    <th colspan="4" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016524</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017699</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019073</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019088</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020587</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age:30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062027654</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">00062047537</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyBColumn1Body1_1">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Min Age Qualifier: Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">Max Age: 30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyAColumn1Body1">Max Age Qualifier: Y</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="color: #000000;">Example – Gender Limits</p>
+        <p class="BodyText1">This report shows conflicting Gender Limits for the same NDCs:</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001</p>
+        <p class="BodyText1"><u>Source Name</u>: PBMB (PBM/payer name)</p>
+        <p class="BodyText1"><u>Coverage List ID</u>: 12234</p>
+        <p class="BodyText1"><u>List Type</u>: GL (Indicates gender limits)</p>
+        <p class="BodyText1"><u>Extract Date</u>: 2/6/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><u>Effective Date</u>: 2/6/2017 (Date this formulary takes effect)</p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Coverage ID&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">NDC (Source NDC)</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Rep. NDC&#160;&#160;&#160; </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Coverage List Value</p>
+                        <p class="TableHeading">&#160;</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Gender: M</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016895</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Gender: F</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Gender: F</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">00062017529</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Gender: M</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="color: #000000;">Example – Quantity Limits</p>
+        <p class="BodyText1" style="color: #000000;">This report shows conflicting Quantity Limits for the same Representative NDCs:</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">Participant ID:</span> P00000000000001</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">Source Name:</span> PBMD (PBM/payer name)</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">Coverage List ID:</span> COVABC</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">List Type:</span> QL (Indicates quantity limits)</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">Extract Date:</span> 5/2/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">Effective Date:</span> 5/2/2017 (Date this formulary takes effect)</p>
+        <p class="BodyText1"><span style="color: #000000;text-decoration: underline;">List Action:</span> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Rep. NDC</p>
+                    </th>
+                    <th colspan="6" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_5">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount: 3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Start Date: 11/01/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period End Date: 12/31/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00169406456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount: 25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Qualifier: DL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period: CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Start Date: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period End Date: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Start Date: 07/18/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Max Amount Time Period End Date: 09/13/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00173068264</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Max Amount: 3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Start Date: 11/01/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Max Amount Time Period End Date: 12/31/2017</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_6">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="color: #000000;">Example – Step Medication</p>
+        <p class="BodyText1" style="color: #000000;">This report shows conflicting Step Medications for the same Representative NDCs:</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001</p>
+        <p class="BodyText1"><u>Source Name</u>: PBMD (PBM/payer name)</p>
+        <p class="BodyText1"><u>Coverage List ID</u>: COVABC</p>
+        <p class="BodyText1"><u>List Type</u>:&#160;SM (Indicates step medication)</p>
+        <p class="BodyText1"><u>Extract Date</u>: 5/2/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><u>Effective Date</u>: 5/2/2017 (date this formulary takes effect)</p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Step NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Step Rep. NDC</p>
+                    </th>
+                    <th colspan="5" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_5">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">COV900</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">No. Of Drugs to Try: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Step Order: 1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Step Drug Qualifier: SM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">Diagnosis Code: J301.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Diagnosis Code Qualifier: 02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">COV900</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00054327888</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">93104810</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="td_TableStyleGuideTablesBodyBColumn1Body1">No. Of Drugs to Try: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Step Order: 1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Step Drug Qualifier: SM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Diagnosis Code: J301.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_6">Diagnosis Code Qualifier: 02</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="color: #000000;">Example – Text Messages</p>
+        <p class="BodyText1">The following report shows potentially conflicting text messages for the same NDC11 and Representative NDC. The PBM/payer will determine if a change needs to be made or if the messages are intentional: </p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001</p>
+        <p class="BodyText1"><u>Source Name</u>: PBMC (PBM/payer name)</p>
+        <p class="BodyText1"><u>Coverage List ID</u>: COVBNN</p>
+        <p class="BodyText1"><u>List Type</u>: TM (Indicates Text Messages)</p>
+        <p class="BodyText1"><u>Extract Date</u>: 1/30/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><u>Effective Date</u>: 1/30/2017 (Date this formulary takes effect)</p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Rep. NDC</p>
+                    </th>
+                    <th colspan="3" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_5">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">32550378</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">Text Message Type: GI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_2">Short Message: Different short msg</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_2">Long Message: This Drug is Covered-same long msg.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">32550378</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">00004008618</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">Text Message Type: FM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_2">Short Message: Designated Specialty Pharmacy Program, Call ABC Pharmacy at 1-800-555-2767</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_2">Long Message: Designated Specialty Pharmacy Program, Call ABC Pharmacy at 1-800-555-2767</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="Heading4" style="color: #000000;"><a name="Copay"></a>Copay File Discrepancies</h4>
+        <p class="BodyText1">These reports show conflicting copays for percent copay, flat copay, or both for the same Representative NDC:</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001</p>
+        <p class="BodyText1"><u>Source Name</u>: PBMD (PBM/payer name)</p>
+        <p class="BodyText1"><u>Coverage List ID</u>: COVDEF</p>
+        <p class="BodyText1"><u>List Type</u>: DS (Indicates drug specific copay)</p>
+        <p class="BodyText1"><u>Extract Date</u>: 5/2/2017 (Date PBM/payer created the file)</p>
+        <p class="BodyText1"><u>Effective Date</u>: 5/2/2017 (Date this formulary takes effect)</p>
+        <p class="BodyText1"><u>List Action</u>: F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Copay Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_5">Pharmacy Type</p>
+                    </th>
+                    <th colspan="7" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_5">Copay List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Flat Copay Amount: 10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Percent Copay Rate: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Minimum Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Copay Tier: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Copay Tier: 2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00338500242</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Flat Copay Amount: 10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Percent Copay Rate: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Minimum Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Copay Tier: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Copay Tier: 2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00338500348</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">00264315511</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Flat Copay Amount: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Percent Copay Rate: .50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Minimum Copay: 20.50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_6">Copay Tier: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_6">Max Copay Tier: 3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00264315553</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">00264315511</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Flat Copay Amount: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Percent Copay Rate: .75</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Minimum Copay: 28</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_6">Copay Tier: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_6">Max Copay Tier: 4</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805480"></a>High-Level Processing Examples (For Provider Vendors)</h2>
+        <p class="BodyText1" style="color: #000000;">The following examples show processing flows for:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Presenting Formulary and Coverage Information</li>
+            <li style="color: #000000;">Presenting Medication Copay</li>
+            <li style="color: #000000;">Presenting Formulary Alternatives</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For more information on display requirements, see the <a href="ApplicationCertification.htm">Application Certification Requirements</a> section. </p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805481"></a>Flow One: Presenting Formulary &amp; Coverage Information</h3>
+        <p class="BodyText1" style="color: #000000;">For each medication presented to the prescriber:</p>
+        <ol>
+            <li>Note the medication’s NDC(s) (“Drug ID(s)” hereafter).</li>
+            <li>Determine the patient’s Formulary ID and Copay ID using the data from the Eligibility Response (271).</li>
+            <li>Determine the medication’s formulary status:<ol style="list-style-type: lower-alpha;"><li>Search the Coverage Information Detail - Product Coverage Exclusion list for this Drug ID and Coverage ID. If an exclusion is found, present “Not Reimbursable” as the formulary status. </li><li>If no Product Coverage Exclusion is associated with this medication, search the Formulary Status List and present the highest Formulary Status reflected there.</li><li>If the payer has not included this Drug ID in the Formulary Status List, use the appropriate non-listed default status specified in the Formulary Status Header (if provided by the payer):<ul><li>Non-Listed Prescription Brand Formulary Status</li><li>Non-Listed Prescription Generic Formulary Status </li><li>Non-Listed Brand Over The Counter Formulary Status </li><li>Non-Listed Generic Over The Counter Formulary Status</li><li>Non-Listed Supplies Formulary Status </li></ul></li></ol></li>
+            <li>Present coverage information:<ul><li>Search the various coverage lists for this Drug ID and Coverage ID.</li><li style="color: #000000;">Display each overage rule found.</li></ul></li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805482"></a>Flow Two: Presenting Medication Copay</h3>
+        <p class="BodyText1" style="color: #000000;">For each medication presented to the prescriber:</p>
+        <ol>
+            <li style="margin-top: 8pt;">Note the medication’s NDC(s) (“Drug ID” hereafter).</li>
+            <li>Determine the patient’s Formulary ID and Copay ID using the data from the Eligibility Response (271).</li>
+            <li>Determine the medication’s formulary status.<ul><li>See step 3 in the previous example, “Flow One: Presenting Formulary And Coverage Information”.</li></ul></li>
+            <li>If the formulary status from the previous step is Not Reimbursable, finish (do not display copay terms), otherwise proceed to step 5.</li>
+            <li>Reference the Benefit Copay List/Copay Information Detail - Drug Specific to determine whether a drug-specific copay applies to this medication. If so, present the drug-specific copay.</li>
+            <li>If no drug-specific copay is found for this medication, look up the copay based on the medication’s characteristics.<ul><li>Search the Benefit Copay List/Copay Information Detail - Summary Level for the record that matches this medication’s characteristics (below) and present the copay terms for each type of pharmacy specified by the payer:<ul><li>Formulary Status </li><li>Product Type </li></ul></li></ul></li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805483"></a>Flow Three: Presenting Formulary Alternatives</h3>
+        <p class="BodyText1" style="color: #000000;">To present preferred alternatives for Not Reimbursable, Non Formulary, and On Formulary (Not Preferred) medications, use the following methods.</p>
+        <p class="BodyText1" style="color: #000000;">Method One: Use payer-specified formulary alternatives.</p>
+        <ol>
+            <li>Note the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s NDC(s) identifier (“Drug ID” hereafter).</li>
+            <li>Using the Eligibility Response (271), determine the patient’s Alternatives ID. </li>
+            <li>Search the corresponding Formulary Alternatives List’s “source drug” field as appropriate for the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s Drug ID.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This search may yield multiple record matches, indicating there are multiple preferred alternatives for the medication.</p>
+        </ol>
+        <p>Method Two: Use a third-party drug classification system to determine formulary alternatives </p>
+        <ol>
+            <li>Note the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s NDC(s) (“Drug ID”).</li>
+            <li>Reference a third-party medication classification scheme to locate medications within the same drug class. Within these medications, reference the patient’s Formulary Status List to identify preferred alternatives.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The third party classification system mentioned above is a Surescripts approved drug database. </p>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc499805484"></a>Formulary and Benefit Data Load Roles </h2>
+        <p class="BodyText1" style="color: #000000;">Surescripts, Formulary Publishers (pharmacy benefit payers, such as PBM/payers and health plans), and Formulary Retrievers (Provider Vendors) have the following roles within the Formulary and Benefit Data Load process. </p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Formulary Publishers</p>
+        <p class="BodyText1" style="color: #000000;">Within the Formulary and Benefit Data Load process, Formulary Publishers: </p>
+        <ul>
+            <li>Load and maintain updated formulary information (formulary status, copay, coverage factors, and alternatives) at Surescripts. </li>
+            <li>Maintain a formulary distribution list at Surescripts that indicates which provider vendors have access to which plan/group formulary and benefit lists. </li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Formulary Retrievers</p>
+        <p class="BodyText1" style="color: #000000;">Formulary Retrievers download the formulary information from the Surescripts WebDAV server and integrate it into their point-of-care application. With this information, prescribers can check a prescription drug against a patient’s formulary, view coverage/copay limitations, and consider alternative medications.&#160;&#160; </p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Surescripts</p>
+        <p class="BodyText1" style="color: #000000;">Surescripts’ role in the Formulary and Benefit Data Load process is to: </p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Facilitate the distribution of formulary and benefit lists between the Formulary Publishers and Retrievers.</li>
+            <li style="color: #000000;">Document and communicate the Formulary and Benefit Data Load specification, process, and usage guidelines.</li>
+            <li style="color: #000000;">Validate the formulary and benefit files against the current Surescripts specification.</li>
+            <li style="color: #000000;">Certify the provider vendor's retrieval of the formulary and benefit lists.</li>
+        </ul>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805485"></a>Formulary and Benefit Data Load Process (For PBM/payers)</h2>
+        <p class="BodyText1" style="color: #000000;">The Formulary and Benefit Data Load consists of two processes: Formulary Publishing (data setup and loading) and Formulary Retrieval (data integration and presentation to prescribers).</p>
+        <p class="StylebodytextBold">Formulary and Benefit Data Setup and Loading</p>
+        <p class="p_Graphic_1">
+            <img src="../../Resources/Images/Formulary/Formulary Data Load_2.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">The Formulary Publisher develops their formulary and benefit file layout according to Surescripts’ standard Formulary and Benefit Data Load specification. </li>
+            <li style="color: #000000;">The Formulary Publisher sends Surescripts a formulary and benefit file on a defined schedule that contains one or more of the formulary and benefit list types (e.g. formulary status and/or alternatives). The Formulary and Benefit Data is electronically transmitted to Surescripts via the selected file transfer method as a single physical file.</li>
+            <li style="color: #000000;">Surescripts performs a physical validation of the file. </li>
+            <li style="color: #000000;">Surescripts sends the Formulary Response File back to the Publisher indicating the Formulary and Benefit Data load status. The Response file indicates any errors encountered in the load process.</li>
+            <li style="color: #000000;">The Formulary Publisher provides Surescripts with a Formulary Distribution List. The Formulary Distribution List indicates which customers have access to which formulary and benefit lists.</li>
+            <li style="color: #000000;">Surescripts separates the file into individual formulary and benefit lists, processing each with its own list identifier. If there are no errors the lists are loaded into the database.</li>
+        </ol>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805486"></a>Formulary and Benefit Data Integration and Presentation to Prescribers (For Provider Vendors)</h2>
+        <p class="p_Graphic_2">
+            <img src="../../Resources/Images/Formulary/Formulary Data Load_3.png" />
+        </p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">Based on customer-to-customer contract relationships and the permissions granted by the Formulary Publisher on the Distribution List, Surescripts makes the appropriate subset of formulary and benefit lists available on the WebDAV server for Formulary Retrievers to download.</li>
+            <li>The Formulary Retriever checks the WebDAV server on a scheduled basis to determine if there are new or updated formulary and benefit lists available.</li>
+            <li>The Retriever downloads the formulary and benefit lists to their system and makes them available to prescribers via their point-of-care (POC) application.</li>
+            <li>During or before a patient’s office visit, a prescriber sends an Eligibility Request (270) to verify the patient’s health plan information, prescription benefit, and formulary information. The Request is routed through the system application to Surescripts’ Master Patient Index (MPI) for processing, and then on to respective PBM/payer(s) for processing. </li>
+            <li>The patient’s Formulary ID, Alternatives ID, Coverage ID, and Copay ID are contained within the Eligibility Response (271) sent back from the PBM/payer(s). The POC application links these IDs from the patient’s Eligibility Response (271) with the corresponding lists. </li>
+            <li>During the prescribing process, the physician views patient formulary and benefit information within the POC application to verify that a particular medication is on the patient’s formulary and covered under the patient’s plan. If not, the prescriber can view “preferred” alternative medications within that medication’s therapeutic class.</li>
+        </ol>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805487"></a>Formulary and Benefit Publishing (For PBM/payers)</h2>
+        <p class="BodyText1" style="color: #000000;">The following sections describe how Formulary Publishers develop, set up, and load their formulary and benefit files for processing at Surescripts.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805488"></a><a name="758638864"></a>File Processing Options</h3>
+        <p class="BodyText1" style="color: #000000;">Formulary Publishers specify within the formulary and benefit file header and each file list header how that data should be processed. The options for the formulary and benefit file are “U” (Updates) or “F” (Full formulary replace). The options for lists are “F” (Full list replace) or “D” (Delete the list). </p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Update Process:</p>
+        <p class="BodyText1">After receiving the formulary and benefit files from the Formulary Publisher, Surescripts checks each section of the file to validate that the data is formatted correctly. If any of the lists were previously loaded in the database, the new lists replace the existing ones, thereby updating the information. Any new information not previously loaded in the database is added. Updates will be processed even if the file contains validation errors. This process is outlined in the <a href="FormularyFileDetails.htm#_Toc499805531">Reject Code Summary</a>.</p>
+        <p class="BodyText1" style="color: #000000;">When a Formulary Publisher would like to notify its partners of the discontinuation of a list, they send an action code of “D” (Delete) within the list header and include no detail rows in the list. The Formulary Retriever responds by removing the previously loaded list with that ID. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the Formulary Publisher wants the Formulary Retriever to be notified of the delete, they cannot remove access to the deleted list within the distribution list. </p>
+        <p class="BodyText1" style="page-break-before: always;font-weight: bold;color: #000000;">Full Replace Process:</p>
+        <p class="BodyText1">With the Full Replace process, the new formulary and benefit file overwrites all the previously loaded lists from that formulary publisher. Full loads will be processed even if the file contains validation errors. This process is outlined in the Reject Code Summary below.</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Full replace option should only be used when all list types can be sent to Surescripts in one physical file.</li>
+            <li style="color: #000000;">Any formulary and benefit list previously loaded in the database that is not included in the new file is purged from the system. There will be a delay removing these lists as the lists will be removed when the next full load is successful. Removal of a list is always one full load behind.</li>
+        </ul>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805489"></a>Environment Setup</h3>
+        <p class="BodyText1">Before sending formulary and benefit files to Surescripts, Formulary Publishers need to set up a network connection to Surescripts and implement the selected file transfer method within their environment. The network connection is set up and configured as part of the regular integration process with Surescripts. For more information, refer to the <a href="SecureFileTransfer.htm">Secure File Transfer</a>.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805490"></a>Formulary and Benefit File Naming and Structure</h3>
+        <p class="BodyText1" style="color: #000000;">The Formulary Publisher’s data load can be made up of several list types. Surescripts stores these individually, as separate lists, to give the Formulary Retriever the ability to select the formulary status, alternative, coverage or copay list applicable to a specific patient. The structure of these lists as they appear to the Formulary Retriever is described below. The file naming and WebDAV directory structure for the formulary and benefit lists is described in the following sections.</p>
+        <p class="StylebodytextBold" style="color: #000000;">File Naming</p>
+        <p class="BodyText1" style="color: #000000;">The individual formulary and benefit lists are named according to the value specified within the formulary and benefit list file header (the “Formulary ID” field). The field is a text field; it can only contain the following characters (A-Z, a-z, Numeral 0-9, period “.”, and a dash “-“). This also applies to Alternative ID, Coverage ID, Copay ID, and Classification ID as these fields are also used to create file names. The Formulary ID can be up to 10 characters long. The list names are tied to each Participant’s ID; therefore, if two Formulary Publishers use the same file name, the Participant ID is what distinguishes them within the system.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Underscores are not allowed in the List ID&#160;portion of the file name.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">List Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Key Field (with Participant ID)</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Formulary Status List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Formulary ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Alternative List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Alternative ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Coverage List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Coverage ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Copay List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Copay ID</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">Each list is available to Formulary Retrievers on the WebDAV server in a directory respective to the list’s type. The file name contains the effective date (from the Formulary List Header) and the date the list was extracted (from Formulary File Header) from the Publisher’s system. The date the list was made available through Surescripts is displayed as date modified. For coverage and copay lists the first two characters of the file name are the type of coverage list.</p>
+        <table>
+            <col />
+            <col />
+            <col />
+            <tr>
+                <td colspan="2" style="font-weight: bold;">
+                    <p class="td_TableStyleOutsideBorderGuideTablesBodyEColumn1Body1">File Name Structure</p>
+                </td>
+                <td style="font-weight: bold;">
+                    <p class="td_TableStyleOutsideBorderGuideTablesBodyDColumn1Body1">Example</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Formulary Status List</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/FSL/Formulary id_effective date_extract date</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/FSL/123451_20170301_20170318</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Alternative File List</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/ALT/Alternative id_effective date_extract date</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/ALT/214312_20170301_2020318</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Coverage List</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/COV/List id_effective date_extract date</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/COV/ALFFT_20170301_20170318</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Copay List</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="td_TableStyleOutsideBorderGuideTablesBodyBColumn1Body1">&#160;</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleGuideTablesBodyDColumn1Body1">/COP/List id_effective date_extract date</p>
+                </td>
+                <td>
+                    <p class="td_TableStyleOutsideBorderGuideTablesBodyAColumn1Body1">/COP/SLCDE_20170301_20170318</p>
+                </td>
+            </tr>
+        </table>
+        <p style="margin-bottom: 12pt;">&#160;</p>
+        <p class="StylebodytextBold" style="color: #000000;">Directory Structure</p>
+        <p class="BodyText1" style="color: #000000;">The WebDAV environment contains a directory structure similar to the examples below. The actual appearance may vary slightly due to the different WebDAV client interfaces that Formulary Retrievers may use. The three examples in this section use the following customer names:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">ABC - ABC Corporation (Health Plan)</li>
+            <li style="color: #000000;">BMI - Benefit Management, Inc. (PBM/payer)</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This structure assumes that the Formulary Retriever has access to files from the following Formulary Publishers: “ABC Corporation”, and “Benefit Management, Inc.”.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/NoBorderGuideTables.css');" class="TableStyle-OutsideBorderGuideTables" cellspacing="0">
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p"> &#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="font-weight: bold;">
+                    <p class="p">Filename</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="font-weight: bold;">
+                    <p class="p">Size</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1" style="font-weight: bold;">
+                    <p class="p">Last Modified</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">ABC</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_Heading3Text">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">ALT</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHA_20170301_20170318</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1"> 30KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHB_20170301_20170318</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1"> 24KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHC_20170301_20170318</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">100KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHA_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">630KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHB_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">362KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHC_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">424KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">COP</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">DSABCD_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">2230KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">DSDFFG_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1"> 242KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">SLAAON_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 19KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">COV</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">ALABCD_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 877KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">PATTHI_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 188KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">QLFFVG_20170301_20170317</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">3900KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/12/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">BMI</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHD_20170301_20170316</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">630KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHE_20170301_20170316</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">362KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">HEALTHG_20170301_20170316</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">424KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">COV</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">QL1234_20170301_20170301</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 843KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">QL11DE_20170301_20170301</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 128KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">RL44DE_20170301_20170301</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_1">&#160; 500KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_1">4/11/2017</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="p_2">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805491"></a>Formulary Distribution List Creation</h3>
+        <p class="BodyText1" style="color: #000000;">Before distributing its formulary and benefit files, the Formulary Publisher creates or updates a formulary distribution list spreadsheet at Surescripts. The list indicates which Technology Providers (Formulary Retrievers) have access to which formulary and benefit lists. An example distribution list follows:</p>
+        <table style="border-collapse: collapse;">
+            <col style="width: 87pt;" />
+            <col style="width: 85pt;" />
+            <col style="width: 68pt;" />
+            <col style="width: 100pt;" />
+            <col style="width: 36pt;" />
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">Source Participant:</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">Participant ID:</p>
+                </td>
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;font-weight: bold;color: #000000;">List Date</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">File Type:</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">PBMB</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">T0000000000xxxx</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;"><b>10/13/2017</b>
+                    </p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">DIS</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">Receiving Customer</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">List Type</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">Coverage List Type</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">List ID</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">Name</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;color: #000000;">Participant ID</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;color: #000000;">&#160;</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;color: #000000;">&#160;</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;color: #000000;">&#160;</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">select from list</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">&#160;</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">select from list</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_3"><span style="color: #000000;">select from list </span>
+                        <br /><span style="color: #000000;">if </span><span style="font-style: italic;color: #000000;">List Type = COV</span>
+                    </p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="text-align: center;color: #000000;">enter</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">POC System, Inc.</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">P0000001</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">FSL</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">1111</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">POC System, Inc.</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">P0000001</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">FSL</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">2222</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">POC System, Inc.</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">P0000001</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">FSL</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">3333</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">POC_A Company</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">P0000002</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">ALT</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">&#160;</p>
+                </td>
+                <td style="padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;">
+                    <p class="p_2" style="color: #000000;">4444</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="color: #000000;">Access rights are tracked at the individual list level. For example, a particular Formulary Retriever may be given access to Formulary Status Lists 1111, 2222, and 3333, while another Formulary Retriever is given access for Alternative List 4444.</p>
+        <p class="BodyText1" style="color: #000000;">Publishers can use an “All customers” wildcard in the distribution list instead of a particular Technology Provider Participant ID to indicate that all Technology Providers that have a formulary contract relationship with the Formulary Publisher can access a particular list. In the same way, an “All lists” wildcard may also be used to indicate that the named customer has access to all lists for that Publisher. Wildcards take precedence over all other entries in the distribution list.</p>
+        <p class="BodyText1" style="color: #000000;">Surescripts updates its system according to the information provided by the Publisher in the distribution list and validates that all Technology Providers included in the list have Formulary Contract Relationships with the Publisher. The Surescripts system also determines what has changed since the last distribution and identifies the specific access changes (adds and deletes) that are reflected in the list. </p>
+        <p class="BodyText1">When an update has been made to the list, Surescripts re-runs the distribution process, treating the Publisher’s complete, current set of formulary information as a new load. If a particular Technology Provider has gained access to a file due to the Publisher’s new access rules, Surescripts distributes the most recent version of the list to them. If a Technology Provider loses access to a file in the new rules, Surescripts removes the files from the customer’s folder. Surescripts also records distribution lists that have references to lists that do not exist (for example, in cases where lists have been deleted). For more information, refer to <a href="#_Toc499805488">File Processing Options</a>.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805492"></a>Formulary Retrieval (For Provider Vendors)</h2>
+        <p class="BodyText1" style="color: #000000;">Formulary Retrievers download Formulary Publisher information from Surescripts via WebDAV (Web-based Distributed Authoring and Versioning). WebDAV is a series of extensions to HTTPS that allow users to manage files on remote servers. Within the WebDAV context, a Formulary Publisher is the customer providing the data files. The Formulary Retriever is the customer that is accessing for review and retrieval purposes.</p>
+        <p class="BodyText1">The Formulary Retriever downloads formulary and benefit data from WebDAV by an automated or manual process on a periodic basis. Retrieval of the formulary and benefit lists can be done by utilizing the WebDAV clients creating a script that periodically checks for updates to formulary and benefit data, or by using both a WebDAV client and a script. </p>
+        <p class="BodyText1" style="color: #000000;">The frequency of updates to the formulary and benefit data depends on the Formulary Publisher, but generally changes are made on a monthly or quarterly basis. After the Formulary Retriever downloads the updated formulary and benefit data, it is stored in the Retriever’s database and then displayed to physicians based on the Retriever’s system presentation rules.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805493"></a>WebDAV</h3>
+        <p class="BodyText1" style="color: #000000;">WebDAV can be used with the following specifications:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Username and password are communicated during implementation.</li>
+            <li style="color: #000000;">Each customer is configured with a unique secure directory. The customer will have access to all contracted formulary and benefit related files.</li>
+            <li style="color: #000000;">It is recommended to not have more than 100 concurrent connections per provider vendor.</li>
+        </ul>
+        <p class="StylebodytextBold">Supported Network Connections for WebDAV</p>
+        <ul>
+            <li>Internet:<ul><li>Address filtering will be done in the Surescripts firewall.</li><li>Surescripts will work with customers to review their current connection speed and bandwidth to ensure they are adequate for anticipated message volumes.</li></ul></li>
+            <li>Frame Relay:<ul><li>128 kbps minimum bandwidth over a frame relay circuit between Surescripts and the customer.</li><li>The line must be encrypted with 3DES.</li><li>The customer must allow Surescripts to install and manage two routers in their data center that connect to their extranet environment.</li><li>The customer must have dual network connections through two different telecommunication providers.</li></ul></li>
+        </ul>
+        <p class="StylebodytextBold">Selecting WebDAV Clients and Configuration</p>
+        <p class="BodyText1" style="color: #000000;">Implementation and support for WebDAV clients is the responsibility of the provider vendor. Some WebDAV clients and configurations are known to provide a faster, more consistent formulary retrieval experience. Surescripts expects that full formulary retrieval will take less than a day with the appropriate client and configuration.</p>
+        <p class="BodyText1" style="color: #000000;">The following principles should be followed when choosing or building a WebDAV Client:</p>
+        <ol>
+            <li style="margin-top: 8pt;">Concurrency is expected when downloading from WebDAV. Choose a client that can request multiple files concurrently. Surescripts recommends that the level of concurrency be between 10 and 50 threads. <ul><li>If more than 50 simultaneous connections are used, Surescripts reserves the right to block the vendor from downloading until they limit concurrency to an acceptable level.</li></ul></li>
+            <li>Only new or modified files should be downloaded. The last modified date field should be utilized to determine if a file has been modified.</li>
+            <li>Surescripts WebDAV servers can use GZip compression to speed up downloads if HTTP compression is accepted by the client software. <ul><li>Client software that allows compression will advertise that in the HTTP header information sent:&#160; Accept-Encoding: gzip </li><li>The WebDAV server’s response will indicate that it has compressed the payload in the response header: Content-Encoding: gzip</li></ul><ol><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Although supported, compression may not always occur as it is only beneficial for larger files.</p></ol></li>
+        </ol>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">CyberDuck</p>
+        <p class="BodyText1" style="color: #000000;">CyberDuck is a cross platform downloader that supports WebDAV as well as other protocols. It is available for Mac, Linux, and Windows. CyberDuck offers both a command line interface version as well as a graphical version. </p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Sample Configuration: </p>
+        <p class="BodyText1" style="color: #000000;">Once installed, a command similar to the following could be used. Items in red should be replaced with your credentials. Items in green should be the absolute path of the local folder files will be saved to.</p>
+        <p class="BodyText1">$ duck --parallel 20 --preserve -d davs://files.rxhub.net/webdav/Formulary/ <span style="color: #76923C;">/data02/Formulary/</span> -u <span style="color: #FF0000;">P000000000XXXXX </span>-p <span style="color: #FF0000;">PASSWORD </span>-e compare</p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">DAVIX</p>
+        <p class="BodyText1" style="color: #000000;">Davix is a set of command line tools to work with DAV file systems over the web. Davix is available on most Linux distributions and may also work on other platforms. </p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Sample Configuration:</p>
+        <p class="BodyText1" style="color: #000000;">Once installed, a command similar to the following could be used. Items in red should be replaced with your credentials. Items in green should be the absolute path of the local folder files will be saved to.</p>
+        <p class="BodyText1">$ davix-get -r 20 davs://files.rxhub.net/webdav/Formulary/ <span style="color: #4F6228;">/data02/Formulary/ </span>--userlogin <span style="color: #FF0000;">P000000000XXXXX </span>--userpass <span style="color: #FF0000;">PASSWORD</span></p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">WebDAV Client and Configuration to Avoid:</p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Rsync</p>
+        <p class="BodyText1" style="color: #000000;">Rsync over a remotely mounted davfs file system should not be used. This configuration has been known to take over 1 week to do a single sync. Rsync is not multi-threaded.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805494"></a>Formulary and Benefit File Distribution</h3>
+        <p class="BodyText1" style="color: #000000;">WebDAV is the Surescripts-supported technology for the distribution of formulary information. Retrievers utilize their same Surescripts Participant ID and password on the WebDAV server as they use for all of the other Surescripts supported messages. The secure WebDAV connection allows the Retriever access to their Surescripts established directory. Within the root directory, the Retriever sees individual directories of the Formulary Publishers with which they have a formulary contract relationship. Once connected, the Retriever has READ ONLY access to the files within their directory. </p>
+        <p class="BodyText1" style="color: #000000;">Surescripts presents each formulary and benefit list as a separate physical file, enabling the Formulary Retriever to download lists individually. Formulary Retrievers distinguish each formulary and benefit list by its unique list identifier and by the file’s header and trailer information, which is wrapped around each individual list. </p>
+        <p class="BodyText1" style="color: #000000;">The distribution of formulary information to customers is based on the following: </p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">The Formulary Publisher having a contract to share formulary and benefit data with the Formulary Retriever or otherwise having provided permission to the Formulary Retriever to download the formulary and benefit data.</li>
+            <li style="color: #000000;">The Formulary Publisher identifying which lists the Formulary Retriever has access to within the formulary distribution list.</li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805495"></a>Formulary and Benefit File Processing</h3>
+        <p class="BodyText1" style="color: #000000;">Formulary Retrievers follow the steps below to process formulary and benefit lists:</p>
+        <p style="margin-top: 8pt;color: #000000;">Log into WebDAV.</p>
+        <ol>
+            <li style="color: #000000;">View Formulary Publishers’ folders for which they have access (as defined in the Formulary Distribution List created by the Formulary Publisher).</li>
+            <li style="color: #000000;">Compare the WebDAV directories to look for changes in the formulary and benefit lists.<ol style="list-style-type: lower-alpha;"><li style="color: #000000;">Download the updated formulary and benefit lists to their database. At the list header level there is an action code of “F” or “D” (delete).</li><li style="color: #000000;">For list with an “F” in the list header, the Retriever should do a full replace of all the records in that list. Full Replaces occur at the list level, not at the individual record level. All previous records will be replaced in this list. </li><li style="color: #000000;">A delete action specifies the Retriever should remove that list from their formulary and benefit database.</li></ol></li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805496"></a>Retrieval Related Errors</h3>
+        <p class="BodyText1" style="color: #000000;">If Formulary Retrievers encounter any of the following types of errors during the data utilization and presentation process, they should contact the following groups:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">For problems related to the WebDAV client/user interface, contact that product’s manufacturer.</li>
+            <li>For problems related to WebDAV security, access, and/or no formulary and benefit lists being present on the WebDAV server, contact Surescripts’ Production Support team.</li>
+            <li>If a Formulary Retriever receives a Formulary ID within an Eligibility Response (271) message that they cannot access on WebDAV, they should contact the corresponding Formulary Publisher. This error type can occur if a formulary and benefit list has not been loaded at Surescripts, or if the Formulary Retriever has not been given distribution permission for that formulary and benefit list ID by the Formulary Publisher.</li>
+        </ul>
+    </body>
+</html>

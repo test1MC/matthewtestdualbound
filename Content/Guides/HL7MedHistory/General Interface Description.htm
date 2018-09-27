@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="790" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc445209619"></a>General Interface Description</h2>
+        <p class="BodyText1">Delimiters separate components, data elements, and segments. For HL7 transactions, the delimiters are defined in the MSH segment of the transaction. For NCPDP transactions, the delimiters are defined in the UNA Segment of the transaction. If a data element in the middle of a segment is omitted, the separator acts as a “place holder”.</p>
+        <p class="BodyText1">HL7 and NCPDP SCRIPT transactions utilize delimiters to separate components, segments, elements, etc., or as indicators (i.e. for segment repetition). These delimiters are defined within specified segments of the transactions. Participants’ systems need to be able to dynamically set and handle these delimiters. </p>
+        <p class="BodyText1">For the Medication History request and response, Surescripts recommends the use of unprintable characters as delimiters rather than the entire character set. The following table details the default non-printable characters recommended for a Medication History request and response.</p>
+        <p class="BodyText1">&#160;</p>
+        <p class="BodyText1">Figure 4-1. Default delimiter values for the Medication History request and response.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p>Delimiter</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p>Suggested Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p>Usage</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Segment Terminator</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Hex 1E</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Terminates a segment record. </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Element Separator</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Hex 1D</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Separates two adjacent data fields within a segment. It also separates the segment ID from the first data field in each segment. </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Component Separator</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Hex 1C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Separates adjacent components of data fields where allowed.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Repetition Separator</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Hex 1F</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Separates multiple occurrences of a field where allowed.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Release Character</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Hex 07</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Release character.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">For HL7 transactions, refer to the HL7 documentation for a list of valid delimiters. HL7 utilizes the carriage return (hex value 0D) for a segment terminator and allows the sender to define the remaining delimiters in the MSH segment. In the absence of a trading partner to trading partner agreement, HL7 recommends the following delimiters:</p>
+        <p class="BodyText1">&#160;</p>
+        <p class="BodyText1" style="page-break-before: always;">Figure 4-2. Default delimiter Values from the HL7 Specification Guide</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 99pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 70pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 63pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 176pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-top-style: double;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="page-break-after: avoid;font-family: Arial;">Delimiter</p>
+                    </th>
+                    <th style="border-top-style: double;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: double;border-right-width: 1pt;border-right-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="page-break-after: avoid;font-family: Arial;">Suggested Value</p>
+                    </th>
+                    <th style="border-top-style: double;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: double;border-right-width: 1pt;border-right-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="page-break-after: avoid;font-family: Arial;">Encoding Character Position</p>
+                    </th>
+                    <th style="border-top-style: double;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: double;border-right-width: 1pt;border-right-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="page-break-after: avoid;font-family: Arial;">Usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: Arial;">Segment Terminator</p>
+                    </td>
+                    <td style="border-top-style: none;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">&lt;cr&gt; (hex 0D)</p>
+                    </td>
+                    <td style="border-top-style: none;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">-</p>
+                    </td>
+                    <td style="border-top-style: none;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-family: Arial;">Terminates a segment record. This value cannot be changed by implementers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: Arial;">Field Separator</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">|</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">-</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p><span style="font-family: Arial;">Separates two adjacent</span><span style="font-family: Arial;"> data fields within a segment. </span><span style="font-family: Arial;">It also separates the segment ID </span><span style="font-family: Arial;">from the first data field in each segment.&#160; </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: Arial;">Component Separator</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">^</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">1</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-family: Arial;">Separates adjacent components of data fields where allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: Arial;">Repetition Separator</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">~</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">2</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-family: Arial;">Separates multiple occurrences of a field where allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: Arial;">Escape Character</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">\</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">3</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p><span style="font-family: Arial;">Escape character for use with any field represented by an ST, TX or FT data type, or for use with the data (fourth) c</span><span style="font-family: Arial;">omponent of the ED data type. </span><span style="font-family: Arial;">If no escape characters are used in a message, this character may be omitted. However, it must be present if subcomponents are used in the message.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: double;border-left-width: 1pt;border-left-color: black;border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-family: Arial;">Subcomponent Separator</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">&amp;</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="text-align: center;font-family: Arial;">4</p>
+                    </td>
+                    <td style="border-right-style: double;border-right-width: 1pt;border-right-color: black;border-bottom-style: double;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p><span style="font-family: Arial;">Separates adjacent subcomp</span><span style="font-family: Arial;">onents</span><span style="font-family: Arial;"> of data fields where allowed. </span><span style="font-family: Arial;">If there are no subcomponents, this character may be omitted.</span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc445209620"></a>Requirement Designation</h3>
+        <p class="BodyText1" style="font-weight: bold;">Segment Attributes:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 46pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 43pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 300pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>NCPDP</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>HL7</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">M </p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">R</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Required/Mandatory - the segment must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">C</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">O</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Situational/Conditional - the segment must be used if conditions are met.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">Rec </p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">Rec</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Recommended - the segment is recommended by Surescripts.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">NU</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">NU</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Not Used by Surescripts.</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Element Attributes:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 39pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 300pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>NCPDP</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>HL7</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">M</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">R</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Required/Mandatory - the element must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">C</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">O</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Situational/Conditional - the element must be used if conditions are met.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">Rec</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">Rec</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Recommended - the element is recommended by Surescripts.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">R</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Required by Surescripts.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">B</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText">Retained for backward compatibility only.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">Elements that are not used have been grayed out or removed from the transaction specifications.</p>
+    </body>
+</html>

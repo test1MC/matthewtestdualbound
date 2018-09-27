@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="5165.333" MadCap:lastWidth="731">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc441585625"></a>Messages Overview</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="top"></a>Message Format</h2>
+        <p>For all messages, customers must be able to process incoming syntactically valid maximum and minimum populated messages. Optional data elements (and values therein) shall not cause message failure.</p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="General"></a>General Message Requirements</h2>
+        <p>(TBD-general ACRs)</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.1 "><a name="UTC"></a>UTC Time Format</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h3 class="Heading3" MadCap:autonum="1.2.2 "><a name="_Toc441585626"></a>XML Escape Characters</h3>
+        <p class="BodyText1">Most symbols should be 'safe' within most alphanumeric fields; however, XML validation has issues with some characters, such as 'less than' (&lt;) and 'ampersand' (&amp;); therefore, these symbols should be properly escaped or un-escaped. The quote and apostrophe only need to be escaped when used in an attribute. The most common escape encodings are: </p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 123px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 127px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">ASCII Characters</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">XML Escape</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">quote (")</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&amp;quot;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">apostrophe (')</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&amp;apos;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">ampersand (&amp;)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&amp;amp;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">less than (&lt;)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&amp;lt;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">greater than (&gt;)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">&amp;gt;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">String lengths are calculated based on the un-escaped value. For example, “&gt;98 degrees” should be encoded as “&amp;gt;98 degrees” but it would only be counted as a string length of 11, not 14. The quote and apostrophe only need to be escaped if they are used within an attribute.</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.3 "><a name="_Toc441585631"></a>File Download Escape Characters</h3>
+        <p class="BodyText1">For Prescriber and Organization download files the following three characters require escape logic. </p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 4pt;">Character</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 4pt;">Escape String in Download Field</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">^</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">\S\</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">|</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">\F\</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">~</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">\R\</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Directory 6.0 is a pipe delimited file, not a fixed width file. Escaping characters we use as delimiters in the file make the data in the field &gt; 35 characters until it has been ‘unescaped’.</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.4 "><a name="Message"></a>Message Validation</h3>
+        <p>Surescripts will ensure that customers are in compliance with the message specifications outlined in this guide during Integration testing and will continue to enforce once in production.</p>
+        <p>At a minimum, Surescripts validations include:</p>
+        <ul>
+            <li>XML schema validation</li>
+            <li>The sender identification authentication</li>
+            <li>The recipient identification</li>
+            <li>Syntax of the message, including field lengths, data types and code values</li>
+            <li>Surescripts business rules and applicable requirements</li>
+        </ul>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="_Toc441585633"></a>Administration</h2>
+        <p>The Surescripts Directory is comprised of two data sets - Organizations and Providers. Customers are the primary managers of their respective records and are responsible for Maintaining alignment with credentialing authorities (e.g. state licensure, NPPES, DEA, NCPDP). </p>
+        <h3 class="Heading3" MadCap:autonum="1.3.1 "><a name="_Toc441585634"></a>Organizations</h3>
+        <p class="BodyText1">Organizations represent routable entities on the Surescripts network for messages destined to or from an entity that is not identified as a specific individual. Customers must have in place a contractual agreement with the organization before adding or updating that organization's directory record information. Organizations are broken down into organization types to further define the entity. Current organization types are Pharmacy, General, and Payer. New organization types may be added in the future.</p>
+        <p class="BodyText1">Surescripts assigns an Organization ID&#160;which uniquely identifies each organization. Customers will only have access to information in the Admin Console or download file based on permissions established in the Implementation process. </p>
+        <h4 class="Heading4" MadCap:autonum="1.3.1.1 "><a name="Pharmacy"></a>Pharmacy Organization </h4>
+        <p class="BodyText1">The Pharmacy Organization type identifies locations that provide medication dispensing services, for example: mail order, retail, in-house dispensing and kiosk delivery services. Each record requires a unique NCPDPID identifier used in the routing of supported transactions. </p>
+        <h4 class="Heading4" MadCap:autonum="1.3.1.2 "><a name="General2"></a>General Organization</h4>
+        <p class="BodyText1">The General Organization allows for non-pharmacy specific entities. General Organization records support clinical direct messaging at the organizational level and provide a facility level record that can be associated to individual provider records. General Organization locations are currently not used for traditional prescription routing.</p>
+        <p class="BodyText1">Surescripts assigns the Organization ID which uniquely identifies all organizations. The administrator of the account is responsible for maintaining the accuracy of information of their organizations on the network. The administrator can perform the following general functions:</p>
+        <ul>
+            <li>Add a new organization to the directory (AddOrganization type: General)</li>
+            <li>Update existing organization information (including active time frame)</li>
+            <li>Download the list of providers on the Surescripts network</li>
+            <li>Download the list of organizations on the Surescripts network</li>
+        </ul>
+        <h4 class="Heading4" MadCap:autonum="1.3.1.3 "><a name="Payer"></a>Payer Organization</h4>
+        <p class="BodyText1">The Payer Organization ID uniquely identifies a payer.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.2 "><a name="_Toc441585635"></a>Provider</h3>
+        <p class="BodyText1">Provider is identified as a credentialed individual enabled to send/receive relevant transactions. Provider vendors must have a relationship with the provider before adding or updating that provider's directory record information.</p>
+        <h4 class="Heading4" MadCap:autonum="1.3.2.1 "><a name="Surescri"></a>Surescripts Provider ID (SPI)</h4>
+        <p class="BodyText1">Because the National Provider ID (NPI) is not location-specific, Surescripts developed its own provider identifier, the Surescripts Provider ID(SPI) to capture the multiple locations in which a provider may practice. The SPI is a unique routing identifier.</p>
+        <p class="BodyText1">Surescripts generates the SPI, a ten-digit number that is unique and associated to the provider's NPI. A three-digits are added to the initial 10 digits to identify a specific location for the provider. Since a provider can practice from more than one location, the location ID is used to distinguish between multiple locations for the same provider.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Providers should only be registered for locations where they are known and expected to work during the year. An SPI root is limited to 999 registrations.</p>
+        <p class="BodyText1">In addition to practicing from multiple locations, a provider may be registered with Surescripts by more than one vendor. Surescripts' intent is to use the same SPI for a provider, even when multiple vendors register that same provider. The vendor that originally registered that entry in the Surescripts system maintains that provider's SPI.</p>
+        <p class="BodyText1">Surescripts recommends capturing the Surescripts assigned SPI in the vendor system for use in future update transactions.<a name="_Toc251936969"></a></p>
+        <h4 class="Heading4" MadCap:autonum="1.3.2.2 "><a name="Learning"></a>Learning Directory</h4>
+        <p>The Learning Directory service allows for augmenting the Surescripts Directory with provider locations not registered by vendors. When activated for the provider's vendor, Learning Directory will "learn" a new directory listing when the address location in the NewRx message is different from that of the registered address for the SPI. the service will assign the SPI routing identifier from the registered record to the learned locations(s). While the learned locations are created by Surescripts, the vendor that created the registered SPI can expire or remove the learned location using Admin Console. </p>
+        <p>The Learning Directory simplifies the registration and management process for providers that practice at multiple locations, addressing the significant misalignment between provider information received in NewRx messages and provider information registered in the Surescripts Directory. Learning directory does not replace management of the primary provider location and service levels. </p>
+        <p>Pharmacies benefit through improved matching opportunities when initiating an RxRenewalRequest or an RxChangeRequest. Provider vendors benefit from a streamlined, automated registration process for these additional care delivery locations. See  Sec XX Learning Directory, for more information.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.3 "><a name="User"></a>User Permissions/Administration</h3>
+        <p>Surescripts provides vendors with a UserID to manage the directory process. Permission levels are assigned to the UserID and tie to the level of access for Directory record management using the Directory Messaging API or Admin Console. </p>
+        <p>UserIDs are created for:</p>
+        <ul>
+            <li>Directory UserID - specific Directory functionality</li>
+            <li>Shared Account UserID - a group of shared users within a vendor account, e.g. Support or Registration Teams</li>
+            <li>Individual UserID - when access to message details requires special PHI&#160;permission; e.g. management or administrative roles. Directory messaging content details require the CSPMessagePHIAccess permission.</li>
+        </ul>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 167px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Key
+ Permissions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>UserID&#160;Applied
+ to</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>CSPDirectory</p>
+                        <p>UpdateBasic
+  </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Used
+  only when managing records and requesting downloads using Directory
+ Messaging API features.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Directory UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Prescriber/Pharmacy/Org</p>
+                        <p>BASIC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Best
+ for users who do not need to create or update records.  Basic users can still search for messages.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Shared
+ Acct UserID</p>
+                        <p>Individual
+UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Prescriber/Pharmacy/Org</p>
+                        <p>ADMIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Manages
+ records. Provides access to download files and other features. Respective
+ Admin permissions required if managing records across multiple
+ products.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Shared
+ Acct UserID</p>
+                        <p>Individual
+ UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>CSPMessage
+  PHIAccess</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>May be
+ used with Basic or Admin, but only on an Individual
+UserID.  Allows for the view of message content –
+ both transactional and directory-based.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>Individual
+UserID</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Additional insight into UserID and the required permissions for Directory Messaging/Admin Console access is available during the Integration process and from Customer Support post Production.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.4 "><a name="Record"></a>Record Maintenance</h3>
+        <p>The vendor is responsible for the timely update of their record content. This applies to all management elements of the record, including enabling and disabling record use on the network. The vendor should employ processes that keep content up-to-date and in alignment with external entities (e.g. NPPES, DEA, State Licensure) as shared information changes. The Directory content should also align with other internal data sets used by vendor when populating transaction content. Alignment should be in element formatting (e.g. "North" vs. "N", "Street " vs. "ST"). Registration and Message Content data sets should mirror each other for any element that is required between the Superscripts Directory and the corresponding message content.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.5 "><a name="Director"></a>Directory Status Definitions</h3>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 190px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 405px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Status</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Not Enrolled <i>(not registered in the directory)</i></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The Provider/Organization exists in the real world at a specific
+ physical location that is not currently associated with or captured by the
+ Surescripts network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Enrolled <i>(registered in the directory)</i></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The Provider/Organization has been captured at the physical
+ location identified within the record and assigned a Surescripts Provider Identifier (SPI) or Organization (Pharmacy, General, Payer) Identifier.&#160;
+ Enrolled Providers/Organizations make up the respective,
+ composite directory.&#160;Records in this category will have an established
+ ActiveStartTime (AST) and ActiveEndDate (AED) that may be in the future or
+ past. A service level is not required for an enrolled record.&#160; </p>
+                        <p>An enrolled record may publish to the directory download depending
+ on the account relationship / visibility permissions to the record.&#160; The
+ presence of a Service Level will identify the enrolled record as enabled and
+ able to send/receive transactions on the network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Enabled <i>(registered and able to transact in the directory)</i></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>An enabled record is one in which the AST is in the past, the AED
+ is in the future, and at least one Service Level is present.&#160; </p>
+                        <p>When all three criteria are met, the record will be
+ searchable as an enabled record within the Surescripts Admin Console.&#160;
+ If the AST is in the future and/or the AED is in the past, then the record
+ will not return in the search results as an enabled record, regardless of whether a
+ Service Level is present.</p>
+                        <p>The (F)ull Directory download file will publish the record, and be
+ deemed enabled based on all three criteria being met. The (F)ull
+ directory download file will include a disabled record (when the AST is in
+ the future and/or AED is in the past) for seven days before the AST or
+ seven days after the AED date. Service levels should be ignored within the
+ download file for records identified as disabled based on record start
+ and end dates.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Active <i>(registered, able to transact, and has  sent a
+ transaction within the last 30 days.</i>&#160;  </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>The provider is working at a location that supports
+ electronic transactions, has been added to the Surescripts’
+ Directory, is Enabled, and has sent a transaction
+ within the last month.&#160; &#160;&#160;</p>
+                        <p>An active record is identified as a record which is enabled and
+has sent an outbound, supported transaction within a specified number
+ of days based on the Product/Transaction type.&#160;For Routing-based
+ transactions, this is 30 days.&#160;Other Products may vary.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="1.3.6 "><a name="Automate"></a>Automated Directory Maintenance (ADM) </h3>
+        <p>In addition to vendor required record management, Surescripts will monitor network transaction activity and as applicable, manage vendor records not showing active use.</p>
+        <p>The Automated Directory Maintenance processes assist with managing and focusing the Provider and Organization records against the download files made available to vendors. ADM rules can vary by product line and frequency. Current ADM related processes include:</p>
+        <ul>
+            <li class="ListBullet2">
+                <MadCap:annotation MadCap:createDate="2017-12-26T14:58:38.1553230-06:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="This informatino was added the day before start of the review. We can discuss what to do with this section in the comments review and offline." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-12-26T14:59:58.5801124-06:00">Provider</MadCap:annotation> records that do not respond to a RxRenewalRequest in 180 days will result in the removal of the Refill service level.</li>
+            <li class="ListBullet2">Provider records that do not send a NewRx transaction in 366 days will result in removal of the <MadCap:annotation MadCap:createDate="2017-12-26T14:43:51.9860189-06:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Confirm service level names are correct.(Admin Console and API)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-12-26T14:44:16.5140189-06:00">NewRx</MadCap:annotation> and associated Core Routing service levels.</li>
+            <li class="ListBullet2">When a Provider Records reaches its published Active End Date (AED) and has NewRx service level, the service level will remain until the monthly ADM process has run. any other service levels will be removed on the AED. If the record has sent a NewRx in the last 30 days, the AED will be extended for two years. any service levels that were removed on the AED will not be re-instated; the vendor will have to re-add as applicable. If no NewRx were noted in the last 30 days, the record will be disabled of the service level.</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Additional business rules apply to the Provider and Organization record.</p>
+        <h4 class="Heading4" MadCap:autonum="1.3.6.1 "><a name="Best"></a>Best Practices</h4>
+        <p>Records that are impacted as a result of ADM are published in a monthly ADM reports on the Reports Log page of the Admin console. It is the vendor's responsibility to review the report and as appropriate, make updates to their respective data sets as well as the Surescripts Directory. The record owner can re-enable any records updated as a result of ADM. If the transactional activity does not change before the next ADM processing cycle, the record will be updated according to the processing criteria.</p>
+        <p>Vendors are encouraged to pull a copy of their respective Directory download to review owner records and apply any updates prior to expiration of a record. This ongoing review may need to occur monthly or quarterly based on the size of the vendor and registration workflows. Vendors should also compare their directory records against the Surescripts directory to ensure field elements are in alignment and complete.</p>
+    </body>
+</html>

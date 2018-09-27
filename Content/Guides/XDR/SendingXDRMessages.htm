@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="710" MadCap:lastWidth="617">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc445279350"></a>Sending XDR Messages</h2>
+        <p class="BodyText1">Sending a message refers to the customer XDR interface initiating an XDR transaction to submit a <i>Provide and Register Document Set-b, </i>ITI-41, transaction to Surescripts. The effect of this is to send a message from the customer software to a recipient through the Surescripts network.</p>
+        <p class="BodyText1">In terms of ITI TF-1 section 15.1, the customer XDR interface is the Document Source and Surescripts is the Document Recipient.</p>
+        <p class="BodyText1">To address messages:</p>
+        <ul>
+            <li>The customer XDR interface must include the <span style="font-family: 'Courier New';">direct:addressBlock</span> SOAP header defined in <i>(XDR for Direct)</i>.</li>
+            <li>Within the address block, one <span style="font-family: 'Courier New';">direct:from</span> element must be present and contain the Direct address of the user (or role) that sent the message. The address must be part of the domain assigned to the customer on the network.</li>
+            <li>At least one recipient address must be included in<span style="font-size: 11pt;"> the </span><span style="font-family: 'Courier New';">direct:to</span> element. Surescripts allows multiple <span style="font-family: 'Courier New';">direct:to</span> elements.</li>
+        </ul>
+        <p class="BodyText1">The customer XDR interface should include a <span style="font-family: 'Courier New';">text/plain</span> document with a <span style="font-family: 'Courier New';">classCode</span> of 56444-3<a name="HealthcareCommunication"></a> <i>Healthcare Communication</i>. This document will be the body text of the email message when Surescripts translates the XDR. If the XDR message does not contain this document, Surescripts will include generic text as the message body.</p>
+        <p class="BodyText1">The customer XDR interface may generate metadata to conform to either Full XDS Metadata or Minimal Metadata, as defined by <i>XDR and XDM for Direct Messaging</i> section 6.1.</p>
+        <p class="BodyText1">If the receiving system is able to accept the message for delivery to the Surescripts network, it will return a success response to the SOAP call. If the receiving system is unable to accept the message, it will return an error response to the SOAP call, with a <span style="font-family: 'Courier New';">RegistryErrorList</span> entity in the <span style="font-family: 'Courier New';">RegistryResponse</span> entity.</p>
+        <p class="BodyText1">If the customer system is unable to connect to Surescripts, and if the message that a user is sending is able to be queued for later delivery retry, Surescripts suggests several retries over a period of three (3) hours to minimize the effect system maintenance or outages has on users.</p>
+    </body>
+</html>

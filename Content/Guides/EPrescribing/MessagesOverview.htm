@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"> Messages Overview</h1>
+        <p class="BodyText1">This section provides guidelines for the data messaging interfaces between the prescriber system and the pharmacy. Some message flows include the utilization of LTPAC information. LTPAC is a variety of settings and services which help meet both the medical and non-medical needs of people with a chronic illness or disability who cannot care for themselves for long periods of time.</p>
+        <div class="note">
+            <div><b>Notes</b>:</div>
+            <ul>
+                <li>EPCS and LTC will have specific sections below where applicable.</li>
+                <li>For the purposes of this Guide, when referring to LTPAC the term prescriber could be used in place of provider/prescriber/agent.</li>
+            </ul>
+        </div>
+        <h2 class="Heading2"><a name="_Toc513714466"></a>E-Prescribing Message Flows</h2>
+        <p class="BodyText1">The Surescripts E-Prescribing service enables new prescription transmissions from a prescriber to the patient's pharmacy of choice. The graphic below depicts allowable message flows between customers.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Surescripts E-Prescribing Message Flow Diagram</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EPrescribing/Surescripts E Prescribing.png" style="width: 857px;height: 616px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <div class="note">
+            <div><b>Notes</b>:</div>
+            <ul>
+                <li>Messages marked with one asterisk (*) are fillable messages. A fillable message is a message from the prescriber or prescribing system to the pharmacy that results in an initial prescription being filled, a change approval, or a refill approval. Other messages may support fillable messages or workflows.</li>
+                <li>Messages marked with two asterisks (**) only apply to LTC.</li>
+            </ul>
+        </div>
+        <h2 class="Heading2"><a name="_Toc513714467"></a>Prescriber Message Workflow</h2>
+        <p class="BodyText1">The following steps depict the basic workflow of a prescriber initiated message:</p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">Prescriber initiates a message for a patient via a prescriber system and transmits to Surescripts.</li>
+            <li>Surescripts validates the message:  <ul><li>If there is an issue with the message, Surescripts returns an Error back to the prescriber system and the process ends. </li></ul></li>
+            <li>If no error in validation occurs, Surescripts routes the message to the appropriate pharmacy system.  </li>
+            <li>The pharmacy system then validates the message and responds with a synchronous Status message (Code of either 000 or 010) or an Error to Surescripts.</li>
+            <li>Surescripts sends the synchronous response to the prescriber system:&#160; <ul><li>If either the Status message (Code 010) or Error are returned, then the process ends. </li></ul></li>
+            <li>If the synchronous message is a Status (Code 000) message, then the pharmacy system follows up with an asynchronous (free standing) Verify message (Code 010) or Error.</li>
+            <li style="color: #000000;">When Surescripts receives either the Verify or Error, the message is validated and forwarded to the prescriber system and the workflow is complete.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc513714468"></a>Pharmacy Message Workflow</h2>
+        <p class="BodyText1">The following steps depict the basic workflow of a pharmacy initiated message:</p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">Pharmacy initiates a message for a patient via a pharmacy system and transmits to Surescripts.</li>
+            <li>Surescripts validates the message:  <ul><li>If there is an issue with the message, Surescripts returns an Error back to the pharmacy system and the process ends.</li></ul></li>
+            <li>If no error in validation occurs, Surescripts routes the message to the appropriate prescriber system.  </li>
+            <li>The prescriber system then validates the message and responds with a synchronous Status message (Code of either 000 or 010) or an Error to Surescripts.</li>
+            <li>Surescripts sends the synchronous response to the pharmacy system.&#160; <ul><li>If either the Status message (Code 010) or Error are returned, then the process ends. </li></ul></li>
+            <li>If the synchronous message is a Status (Code 000) message, then the prescriber system follows up with an asynchronous (free standing) Verify message (Code 010) or Error.</li>
+            <li>When Surescripts receives either the Verify or Error, the message is validated and forwarded to the pharmacy system and the workflow is complete.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">An asynchronous (free standing) Verify message shall only used after a Status message (Code 000).</p>
+        <h2 class="Heading2"><a name="_Toc513714469"></a>NewRx</h2>
+        <p class="BodyText1">The NewRx message was developed using the NCPDP SCRIPT standard. A Status, Error, or Verify response is always sent after a NewRx message. </p>
+        <h3 class="Heading3"><a name="_Toc513714470"></a>NewRx EPCS Requirements</h3>
+        <ul>
+            <li>For CS-II only, one dispense event is permitted per the DEA IFR. This means on a New Rx for a CS-II, the refill value must be equal to "0" (zero). Prescribers desiring to send a subsequent NewRx prescription(s) will send NewRxs with an effective date set 30 days, 60, days, 90 days, etc. in the future and the refill value on each will be set to "0" (zero). </li>
+        </ul>
+        <h3 class="Heading3"><a name="_NewRx_LTC_Requirements"></a><a name="_Toc513714471"></a>NewRx LTC Requirements</h3>
+        <ul>
+            <li>An open order is defined by specific usage of the medication quantity elements.&#160; An open order must have a medication CodeListQualifier = "QS" and use the corresponding quantity value = "0" (zero).&#160; Open orders are dependent on regulatory expiration and audit processes in LTPAC settings and services.&#160; </li>
+            <li>Open orders must not be sent for controlled substances when regulatory mandates apply. </li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714472"></a>NewRx LTC Best Practices</h3>
+        <ul>
+            <li>Prescriber initiated Change Process for LTC can be found in the <a href="#_Toc513714483">Prescriber Initiated Change Process for LTC - Requirements/Best Practices</a> section. </li>
+            <li>OrderCaptureMethod should be used in all instances of NewRxs for LTPAC settings and services. </li>
+            <li>Facility element information should be sent on all NewRx messages. <ul style="list-style-type: circle;"><li>At a minimum, the Facility elements requires Identification. One or more Identification elements may be sent as needed, but at least one is required to be sent. Per NCPDP guidance in the Prescriber, Pharmacy and Facility Identifiers, the NPI is expected to be sent if one is known.</li></ul></li>
+            <li>Patient Location fields for unit, room and bed are important to the pharmacy profile of a resident and should also be sent when known.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714473"></a>RxRenewal</h2>
+        <p class="BodyText1">An RxRenewalRequest is originated by the pharmacy. This message is for the purpose of requesting approval for additional refills of a prescription.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If a patient has approved refills remaining on a current prescription, no electronic message is required for a dispensing to occur.</p>
+        <p class="BodyText1">An RxRenewalResponse is sent by the prescriber to the pharmacy in response to a request to refill a prescription. The response indicates whether the RxRenewalRequest has been Approved, Approved with Changes, Denied, or Replace. An Approved, Approved with Changes, or Replace response is an indication to the pharmacy to discontinue dispensing the original prescription and instead begin dispensing the new prescription. In this case, a CancelRx is not sent for the original prescription following the RxRenewalResponse.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> The RxRenewalResponse no longer contains a MedicationPrescribed or a MedicationDispensed element, as it did in lower versions. The MedicationResponse element contains the medication information that the prescriber is approving within an RxRenewalResponse. The Approved, ApprovedWithChanges or Replace RxRenewalResponse is considered a fillable message.</p>
+        <h3 class="Heading3"><a name="_Toc513714474"></a>RxRenewal Requirements</h3>
+        <ul>
+            <li>Fillable RxRenewalResponse messages for controlled substance medications must be digitally signed. </li>
+            <li>When sent, PharmacyRequestedRefills must not be "0" (zero). Do not send this element if you want to allow the prescriber to determine appropriate number of refills.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714475"></a>RxRenewal Best Practices</h3>
+        <ul>
+            <li>The RxRenewalRequest contains a MedicationPrescribed and a MedicationDispensed loop. The MedicationDispensed element is the required element to be used per the RxRenewalRequest schema. In order to support the translation of messages between versions, both loops should be present. </li>
+        </ul>
+        <p class="BodyText3">Examples:</p>
+        <p class="BodyText3">NewRx sent by prescriber with substitutions allowed.</p>
+        <p class="BodyText2">MedicationPrescribed: Lipitor 10 MG Oral Tablet</p>
+        <p class="BodyText2">NumberOfRefills: 1</p>
+        <p class="BodyText3">Pharmacy dispenses Atorvastatin 10 MG Oral Tablet</p>
+        <p class="BodyText2">Pharmacy sends an RxRenewalRequest with the following information</p>
+        <p class="BodyText2">MedicationPrescribed: Lipitor 10 MG Oral Tablet</p>
+        <p class="BodyText2">NumberOfRefills: 1</p>
+        <p class="BodyText2">MedicationDispensed: Atorvastatin 10 MG Oral Tablet</p>
+        <p class="BodyText2">PharmacyRequestedRefills: 2</p>
+        <p class="BodyText3">Prescriber approves (based upon MedicationDispensed) and sends an RxRenewalResponse</p>
+        <p class="BodyText3">Response type Approved:</p>
+        <p class="BodyText2">MedicationResponse: Atorvastatin 10 MG Oral Tablet</p>
+        <p class="BodyText2">NumberOfRefills:2</p>
+        <p class="BodyText3">Response type ApprovedWithChanges:</p>
+        <p class="BodyText2">MedicationResponse: Atorvastatin 10 MG Oral Tablet</p>
+        <p class="BodyText2">NumberOfRefills:6</p>
+        <p class="BodyText3">Response type Replace:</p>
+        <p class="BodyText2">MedicationResponse: Lipitor 10 MG Oral Tablet</p>
+        <p class="BodyText2">NumberOfRefills: 2</p>
+        <ul>
+            <li>If the <span style="font-weight: bold;">non-EPCS</span> authorized prescriber receives an RxRenewalRequest for a controlled substance, they respond with a Denied message to the pharmacy. Should the prescriber wish to approve the request without having the "ControlledSubstance" service level enabled, they may then continue with their non-Electronic Data Interchange (EDI) workflow as determined by their application.</li>
+            <li>The NDC/ProductCode in the RxRenewalRequest should not be the sole determination of the identification of the requested medication. When the incoming NDC does not match the related NewRx or cannot be found, systems should use other potential identifiers (e.g. RxNorm codes) and must always allow manual review of the drug description by the user. Therefore, all response types should be permitted (i.e. approved, approved with changes, denied, replace).</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For more information on how to send a Follow Up Request, see the <a href="ElementUsage.htm#_Follow_Up_Request">Follow Up Request Requirements</a> section.</p>
+        <h4 class="Heading4"><a name="RxRenewa"></a>RxRenewal Prescriber Best Practices</h4>
+        <ul>
+            <li>Prescribers should review all requests. Prescribers should not delete a request message from a processing queue without a response being generated to the requestor.</li>
+            <li>Matching a request back to an original message is not required to present the RxRenewalRequest to the Prescriber. See the Message Linkage section for more details.</li>
+            <li>If another prescriber is responding to an RxRenewalRequest for non-controlled substances on the original prescriber's behalf (i.e., original prescriber who is out of the office), then one of the following options should be used.<ul style="list-style-type: circle;"><li>Option A – Using PrescribingAgent – If the prescriber is out for a short time, then the prescriber field in the RxRenewalResponse should contain the prescriber's name, but the PrescribingAgent element should contain the name of the agent that is authorized to approve/deny refills for the prescriber.</li></ul><ul style="list-style-type: circle;"><li>Option B – If the original prescriber is unable to respond, the original RxRenewalRequest should be responded to with the RxRenewalResponse type of Replace. The new prescriber information should be populated in the Prescriber elements. Additionally, the new prescriber’s SPI should be sent in the From element of the message header. If needed, the original prescriber information can be sent in the FollowUpPrescriber elements.  </li></ul></li>
+        </ul>
+        <h4 class="Heading4"><a name="RxRenewa2"></a>RxRenewal Pharmacy Best Practices</h4>
+        <ul>
+            <li>If the prescriber has not responded within 72 hours the FollowUpRequest workflow should be utilized. See <a href="#_RxRenewal_LTC_Best"><span class="Hyperlink" style="font-size: 11pt;">RxRenewal LTC Best Practices</span></a> section for exception information.</li>
+            <li>A pharmacy may send an RxRenewalRequest for controlled substances regardless of whether the prescriber has the "ControlledSubstance" service level.</li>
+            <li>For RxRenewal routing:<ul style="list-style-type: circle;"><li>Retain the original sending SPI for the electronically received NewRx. Evaluate this SPI (e.g., has Refill service level), and send RxRenewalRequest to this record.</li></ul><ul style="list-style-type: circle;"><li>Prescribers are allowed to have multiple SPI, it is important to ensure that when sending an RxRenewal the correct SPI is selected based on service level and location. For example confirm the Individual NPI, Address Line 1 or Address Line 2, Postal Code, Phone Fax, or Clinic Name prior to sending the message.</li></ul></li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714476"></a>RxRenewal EPCS Requirements</h3>
+        <ul>
+            <li>For CS-II only, one dispense event is permitted per the DEA IFR. This means on the RxRenewalResponse for a CS-II the MedicationResponse, the NumberOfRefills value shall be equal to one (1) on an Approved or Approved with Changes response type.</li>
+            <li>RxRenewalResponse type Replace must not be sent for controlled substances when the receiver uses a lower version because of the inability to translate the DigitalSignature. Instead prescribers should deny and follow up with a new prescription. </li>
+        </ul>
+        <h3 class="Heading3"><a name="_RxRenewal_LTC_Best"></a><a name="_Toc513714477"></a>RxRenewal LTC Best Practices</h3>
+        <ul>
+            <li>RxRenewal requests may be generated as an option for open orders that have hit their regulatory expiratory limit.<ul style="list-style-type: circle;"><li>Prescribers in the LTPAC industry may not respond to RxRenewal Requests in a care setting for up to 30 days. </li></ul></li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714478"></a>RxChange</h2>
+        <p class="BodyText1">An RxChangeRequest message is originated by the pharmacy to request a change to a new or fillable prescription. Response types for RxChange are Approved, ApprovedWithChanges, Denied, and Validated. </p>
+        <p class="BodyText1">An RxChangeRequest may be sent with the following MessageRequest codes:</p>
+        <ul>
+            <li>“G”, may be used to request a prescriber allow the dispensing of a generic medication.</li>
+            <li>“P”, may be used to request a prescriber review the drug requested and obtain a prior authorization from the payer for the existing prescription.</li>
+            <li>“T”, may be used to request a prescriber authorize a therapy change to the original prescription.</li>
+            <li>“D”, may be used to request a prescriber authorize a change to an alternative medication that will have fewer, or no, adverse effects than the original prescription.</li>
+            <li>“S”, may be used to request a prescriber clarify the original prescription.</li>
+            <li>“OS”, may be used to request a prescriber authorize a change to the original prescription due to the pharmacy being out of stock of the requested medication.</li>
+            <li>
+                <p>“U”, may be used to request prescriber authorization information, such as confirming their DEA number or enrollment with the prescription benefit plan. The “Validated” RxChangeResponse type is only used when responding to this type of request.</p>
+            </li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714479"></a>RxChange Requirements</h3>
+        <ul>
+            <li>An RxChangeResponse type of ApprovedWithChanges cannot be used in response to an RxChangeRequest with a MessageRequestCode of "P" (Prior Authorization).</li>
+            <li>MedicationPrescribed is required when an RxChange response is Approved or ApprovedWithChanges.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714480"></a>RxChange Best Practices</h3>
+        <ul>
+            <li>
+                <p>At least one loop of the MedicationRequested loop should be sent, unless the use cases are for PriorAuthorization (P) or PrescriberAuthorization (U).</p>
+            </li>
+            <li>
+                <p>The MedicationRequested loop utilizes discrete fields to provide the requested changes and the Note field to provide additional information that is not captured discretely for that loop.</p>
+            </li>
+            <li>
+                <p>Approved responses are utilized when one of the MedicationRequested loops is echoed in the MedicationPrescribed loop of the RxChangeResponse with no changes to the requested elements.</p>
+            </li>
+            <li>
+                <p>Approved with Changes responses are used when there are changes other than what was requested.  The Approved with Changes response is considered a new fillable prescription and indicates to the pharmacy that the in process prescription should no longer be dispensed and should be cancelled.</p>
+            </li>
+            <li>Prescriber vendors utilizing Surescripts Prior Authorization should optimize workflows by automatically triggering a PAInitiationRequest when they receive an RxChangeRequest for prior authorization and an RxChangeResponse upon receipt of a prior authorization approval.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714481"></a>RxChange LTC Best Practices</h3>
+        <ul>
+            <li>
+                <p>LTPAC settings and services do not always have prescribers available to approve or deny changes when initiated by a pharmacy which can make it difficult to support the RxChange messages. In many cases, facilities and pharmacies generally have contracts that apply to generic and therapeutic substitutions. RxFill is used in many cases to communicate when substitutions are made. If there is a pharmacy requested change to a prescribed therapy that is beyond a substitution and RxChange is not supported, an alternative method of communication is recommended.</p>
+            </li>
+            <li>
+                <p>The Prescriber Initiated Change Process is used for prescribers to alter existing therapies and utilizes a NewRx &gt; CancelRx &gt; NewRx process with appropriate message linking and MessageRequestCode field indicators. This process is outlined in the CancelRx section. Appropriate message linking and field population as outlined in the CancelRx section.</p>
+            </li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714482"></a>CancelRx and CancelRx Response</h2>
+        <p class="BodyText1">The CancelRx is used to notify the pharmacy that a previously sent prescription should be cancelled and not filled. The message is originated by the prescriber system as a CancelRx. </p>
+        <p class="BodyText1">The CancelRxResponse is sent from the pharmacy to the prescriber system in response to a CancelRx.</p>
+        <h3 class="Heading3"><a name="_Toc513714483"></a>Prescriber Initiated Change Process for LTC - Requirements/Best Practices</h3>
+        <ul>
+            <li><span style="font-weight: bold;">R.208:</span> In LTPAC prescriber systems, when making a prescription change using a NewRx, a MessageRequestCode and OrderCaptureMethod shall be used to identify the type of change and the source of the data. These fields shall be present in both the CancelRx and the subsequent NewRx. </li>
+            <li>The ChangeOfPrescriptionStatusFlag should contain the appropriate code for canceling a medication that has not been dispensed or discontinuing an active order. </li>
+            <li>Scenarios for Prescriber-Initiated Changes are as follows:<ul style="list-style-type: circle;"><li>A data entry error is corrected by a prescriber or an agent of a prescriber and a CancelRx is sent with a subsequent NewRx.</li></ul><ul style="list-style-type: circle;"><li>A prescriber alters a course of therapy after making a clinical decision regarding a medication and sends the pharmacy a CancelRx followed by a subsequent NewRx.</li></ul></li>
+            <li>CancelRx should contain a CodeListQualifier value of "QS" and Quantity of "0" when discontinuing an open order. </li>
+            <li>CancelRx and CancelRxResponse should also be accompanied by a ChangeOfPrescriptionStatusFlag. This is used on the CancelRx to indicate prescriber knowledge of dispensing/administering activity, and on the CancelRxResponse to indicate the pharmacy acknowledgement of dispensing process.&#160; </li>
+        </ul>
+        <p class="ListBullet2" style="margin-left: 54pt;"><span style="font-weight: bold;">Values</span>: </p>
+        <p class="ListBullet2" style="margin-left: 54pt;">C = Use for canceling a prescription prior to a dispensing (administration) </p>
+        <p class="ListBullet2" style="margin-left: 54pt;">D = Used for canceling a prescription that has been dispensed (administered)</p>
+        <h2 class="Heading2"><a name="_Toc513714484"></a>Fill Messages</h2>
+        <p class="BodyText1">RxFill messages are used to provide prescribers with information regarding dispensing activity for a prescription. Additionally, prescribers may select the types of notifications they desire over the life of the prescription.&#160; </p>
+        <p class="BodyText1">To optimize use of the RxFill transaction, both prescriber and pharmacy systems utilizing the RxFill messages must support the RxFillIndicator element and the RxFillIndicatorChange message. For prescriber systems, support of the RxFillIndicator element includes setting the desired value in prescriber initiated messages such as NewRx, RxRenewalResponse, RxChangeResponse, and Resupply. For pharmacy systems, this includes sending fill status notifications based on the indications selected by the prescriber as well as adding or altering preferred notification types when the RxFillIndicatorChange is utilized.&#160; </p>
+        <p class="BodyText1">Pharmacy systems must be able to support the following fill status types: Dispensed, PartiallyDispensed, and NotDispensed. Support for sending a fill status of Transferred is required when the pharmacy system also supports the RxTransfer message.&#160; While the use of Reason Codes or Notes is optional to send in RxFill messages, pharmacy systems are strongly encouraged to support the inclusion of these additional elements.&#160; </p>
+        <h3 class="Heading3"><a name="_Toc513714485"></a>Fill Status Workflow and Scenarios</h3>
+        <p class="BodyText1">Prescribers initiate the process of requesting fill status messages through the use of RxFillIndicator in prescriber initiated messages. The pharmacy then tracks the desired indications. The prescribers may add or alter selected fill status options when sending subsequent prescriber initiated messages. Additionally, prescribers have the ability to send an RxFillIndicatorChange message to request alterations to preferred fill status notifications. </p>
+        <p class="BodyText1">The following scenarios are examples of how the RxFillIndicator and RxFillIndicatorChange message can be used. </p>
+        <p class="BodyText1"><span style="font-weight: bold;">Scenario 1</span> – Prescriber opts into receiving RxFill notifications and then alters preferred selection: </p>
+        <ol>
+            <li>Prescriber initiated message sent with RxFillIndicator signifying “All Fill Statuses” to a pharmacy that is enabled for RxFill. </li>
+            <li>Pharmacy processes the message and tracks the preferred fill status options.</li>
+            <li>Prescriber chooses to alter selected fill status options to “Not Dispensed” using the RxFillIndicatorChange message. </li>
+            <li>Pharmacy updates the requested types and sends fill status only when prescription is not dispensed. <ul><li>This RxFill message type may be sent, for example, when a patient does not pick up an automatic refill and the prescription is returned to stock.</li></ul></li>
+        </ol>
+        <p class="BodyText1"><span style="font-weight: bold;">Scenario 2</span> – Prescriber initiates the process to indicate preference for<span style="font-weight: bold;"> PartialDispense and NotDispensed only</span>, and then chooses to not send any RxFillIndicator on an RxRenewalResponse: </p>
+        <ol>
+            <li>Prescriber sends NewRx with RxFillindicator signifying “Partially Dispensed And Not Dispensed” only.</li>
+            <li>Pharmacy processes the message and tracks the preferred fill status options. </li>
+            <li>Pharmacy sends RxFill messages only when the selected dispensing activity occurs.<ul><li>This RxFill message type may be sent, for example, when a regulatory limitation causes the patient to only be dispensed a partial fill. </li></ul></li>
+            <li>Pharmacy sends RxRenewalRequest.</li>
+            <li>Prescriber sends an RxRenewalResponse with no RxFillIndicator.&#160; </li>
+            <li>Pharmacy system processes the message. In this case, no fill status notifications are sent. </li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A fillable message indicates the preferred options going forward. In Scenario 2, for example, no RxFillIndicator is sent in the RxRenewalResponse, so the pharmacy would send no RxFill messages, even though the original NewRx had indicated a fill status preference.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">Scenario 3</span> – Prescriber initiates the process to indicate a <span style="font-weight: bold;">profile only medication</span>: </p>
+        <ol>
+            <li>Prescriber sends NewRx with no RxFillIndicator and additionally indicates “DoNotFill”. </li>
+            <li>Pharmacy processes the message and no fill status messages are sent to the prescribing system.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> As per Surescripts Directories requirements, RxFillIndicatorChange messages will only be sent to pharmacies that have the service level enabled to allow them to receive that message type.&#160; </p>
+        <h3 class="Heading3"><a name="_Toc513714486"></a>RxFill Requirements</h3>
+        <ul>
+            <li>
+                <MadCap:snippetText src="../../Resources/Snippets/EPrescribingAppCert/R_210.flsnp" /><![CDATA[          ]]></li>
+            <li>One medication loop must contain WrittenDate. If the MedicationPrescribed loop is not present, then the MedicationDispensed loop must provide WrittenDate.</li>
+            <li>When the status of the message is Dispensed or Partially Dispensed, then MedicationDispensed must be sent. When the status of the message is Not Dispensed or Transferred, either the MedicationPrescribed or MedicationDispensed must be sent. For any status, both MedicationPrescribed and MedicationDispensed may be sent.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714487"></a>Fill Status Best Practices</h3>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In the context of an RxFill message, ‘dispensed’ indicates the medication is no longer in the possession of the pharmacy and has been handed, shipped, or delivered to the patient (or the patient’s caregiver/representative). If the medication is still located in the pharmacy, it is not yet ‘dispensed’.</p>
+        <ul>
+            <li style="font-weight: normal;">Fillable messages and Resupply should contain the RxFillIndicator if RxFill messages are desired.&#160; </li>
+            <li style="font-weight: normal;">In order to receive fill status notifications the prescriber or prescriber system sets the preferred fill status options on each fillable message and Resupply.</li>
+            <li>Send Facility NPI in the Identification element when known. </li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714488"></a>LTC Best Practices</h3>
+        <ul>
+            <li>RxFill messages are designed to be sent based on the prescriber indication. When a prescription is sent to a pharmacy via non-electronic means (e.g. fax), the pharmacy will not have an indication of what types of fill status notifications the prescriber desires. In the LTPAC care setting, there is still a need to receive an RxFill message for prescriptions sent via a non-electronic method. Partnership agreements often allow and/or require RxFill messages to be sent, regardless of the method in which the pharmacy received the prescription.&#160; </li>
+            <li style="font-weight: normal;">Resupply messages include the ability to alter selected RxFillIndicator preferences. <ul style="list-style-type: circle;"><li style="font-weight: normal;">If no RxFillIndicator element is indicated in the Resupply message, no change would be made to previous preferences.&#160; </li></ul></li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714489"></a>Acknowledgement Messages</h2>
+        <p class="BodyText1">This section contains acknowledgement details, workflows, and scenarios.</p>
+        <h3 class="Heading3"><a name="_Toc513714490"></a>Status</h3>
+        <p class="BodyText1">Status is used to indicate to the sender that the message was accepted for processing. A Status is always a synchronous response. Status 010 indicates that message processing is complete and was successful, Status 000 indicates that the final response is pending.</p>
+        <p class="BodyText1">A Status 000 indicates the process is not complete. A subsequent acknowledgement message should be expected.</p>
+        <h4 class="Heading4"><a name="Status"></a>Status Best Practice</h4>
+        <p class="BodyText1">DescriptionCode is an optional element that contains codes suitable for use on error messages only. DescriptionCode element should not be used on a Status message. </p>
+        <h3 class="Heading3"><a name="_Toc513714491"></a>Verify</h3>
+        <p class="BodyText1">This NCPDP SCRIPT message is returned only as an asynchronous response as a follow up to previous Status 000. The Verify message confirms that the receiver successfully received and accepted the message. </p>
+        <p class="BodyText1">A Verify indicates the process is complete. A subsequent acknowledgement message should not be expected.</p>
+        <h3 class="Heading3"><a name="_Toc513714492"></a>Error</h3>
+        <p class="BodyText1">This message indicates that an error has occurred. An error can be generated when there is a communication problem or when an error occurs during the processing of the message.  </p>
+        <h4 class="Heading4"><a name="Error"></a>Error Best Practice</h4>
+        <p class="BodyText1">In the case where the customer’s time limitation threshold has been exceeded, and a syntactically valid message has been received, an error is an incorrect response. </p>
+        <h3 class="Heading3"><a name="_Toc513714493"></a>Acknowledgement Message Table</h3>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-weight: bold;">
+                        <p class="TableHeading">Message</p>
+                        <p class="TableHeading">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Meaning(s)</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">As Sender</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">As Receiver</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-weight: bold;">
+                        <p class="TableBody">Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">000</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The transmission has been accepted for processing, but has not yet reached its final status. There should be a final Verify (010) or Error forthcoming.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Follow with an asynchronous (free standing) Verify or Error to complete the message flow. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">While an asynchronous Verify or Error is expected to follow a Status 000, if it is not received, no assumption should be made as to whether the original message has been received successfully or not. <br /></p>
+                        <p class="TableBody">The recommendation is to wait 24 hours before following a manual process or sending a duplicate message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-weight: bold;">
+                        <p class="TableBody">Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Confirms successful delivery and acceptance of a message to its final destination.<br /></p>
+                        <p class="TableBody">The final acknowledgement message to close the transaction workflow.<br /></p>
+                        <p class="TableBody">No further acknowledgement message should follow. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Synchronous response indicates the process is complete.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Subsequent acknowledgement message should not be expected. </p>
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-weight: bold;">
+                        <p class="TableHeading">Verify</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">Asynchronous message that confirms successful delivery and acceptance of a message to its final destination. <br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">The final acknowledgement message to close the transaction workflow. <br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">No further acknowledgement message should follow. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">Send only if the original message was responded to with a Status 000. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">Subsequent acknowledgement message should not be expected. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableHeading">Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">For a full list of NCPDP Error codes and their descriptions, see the NCPDP External Code List 2017071 or schema.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">Can be generated when there is a communication problem or when an error occurs during the processing of the message.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Closes the transaction workflow. Subsequent acknowledgement messages should not be expected.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Could be synchronous or asynchronous.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">A synchronous error is sent in response to a message.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">An asynchronous error (also called Free Standing Error) is initiated as a new message after the Status (Code 000) is sent.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">Send to acknowledge that the transaction failed.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Do not send if a transaction workflow has already been closed (Status/Verify Code 010).<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Send as soon as possible after a Status (Code 000) has been sent.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Customers may create and return unique error descriptions which may further indicate why failure has occurred.</p>
+                        <p class="TableHeading">&#160;</p>
+                        <p class="TableHeading">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableHeading" style="font-weight: normal;">After receiving an Error, do not expect subsequent acknowledgement messages.<br /></p>
+                        <p class="TableHeading" style="font-weight: normal;">Do not respond to an Error message with an Error message.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc513714494"></a>Error Codes</h3>
+        <p class="BodyText2" style="margin-left: 0pt;">For a full list of NCPDP Error codes (e.g. TransactionErrorCode) and their descriptions, see the NCPDP External Code List 2017071 or schema.</p>
+        <h4 class="Heading4"><a name="900"></a>900 Error Text Table</h4>
+        <p class="BodyText1">The error codes below are tied to the 900 “Other” code from the NCPDP External Code List 2017071. When applicable, Surescripts will send the 900 code along with an error message. The table below details example error messages.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Error Scenario</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Error/Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NPI in the Pharmacy element does not pass the Luhn check digit.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">NPI in Pharmacy does not pass the Luhn check digit.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NewRx message does not contain NDC, CompoundInformation element, or Supply qualifier.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">No NDC or compound or supply code in message for MedicationPrescribed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Sending prescriber does not have the service level to send EPCS transactions.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Not authorized to send Controlled Substance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Vendor application is not certified to send EPCS messages.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Message type not supported by sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Pharmacy is not certified to receive EPCS messages.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Receiving partner does not support this type of message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DEASchedule is not present in a NewRx EPCS message.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Controlled substance must have a DEASchedule populated in Medication Prescribed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Controlled substance has been identified, but is not digitally signed or there is no digital signature indicator.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Controlled substance must be signed or Digital Signature Indicator must be true.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Message contains translation errors.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unable to translate to receiver's version of this message</p>
+                        <p class="TableBody"><b>Note</b>: Additional details will also be presented along with above error message detailing the issue.&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Patient address is not present in EPCS message.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Patient address required for controlled substance</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="Heading4"><a name="9002"></a>900 Pharmacy Generated EPCS Errors</h4>
+        <p class="BodyText1">The error codes below are tied to the 900 “Other” code from the NCPDP External Code List 2017071. When applicable, it’s recommended that the pharmacies send the 900 code along with an error message. The table below details example error messages.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Error Scenario</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Error/Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The receiver only supports the digital signature indicator (flag), not the PKI digital signature.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Digital Signature Not Supported</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The receiver only supports the digital signature, not the digital signature indicator (flag).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Digital Signature Indicator Not Supported</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The prescription may not have met a legal or other requirement for EPCS.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Rx does not meet the requirements, legal or otherwise, for EPCS.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The Digital Certificate is not on file at the Certificate Authority.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Digital Certificate not on record.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">The Digital Certificate has been revoked by the Certificate Authority.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Digital Certificate has been revoked.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">The actual digest value does not match the calculated values or an error occurred when trying to process the digital signature.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Invalid Digital Signature</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"> <a name="_Toc513714495"></a>Acknowledgement Message Workflow Scenarios</h3>
+        <p class="BodyText1">The following workflows depict various scenarios where Verify, Error, and Status are sent in response to a NewRx request. Note that for all of these scenarios, NewRx could be any of the following messages: RxRenewalRequest, RxRenewalResponse, RxFill, RxChangeRequest, RxChangeResponse, CancelRx, and CancelRxResponse.</p>
+        <p class="BodyText1">Customers must support all messages as described in the <a href="#_Toc513714493">Acknowledgement Message Table</a>. Every message workflow ends with Status (Code 010), Verify, or Error.</p>
+        <p class="StylebodytextBold">Scenario 1 – Message errors at Surescripts</p>
+        <p class="BodyText1">1a). A NewRx is sent.</p>
+        <p class="BodyText1">1b). Surescripts receives the NewRx.</p>
+        <p class="BodyText1">1c). Surescripts does not recognize the format of the message, or errors are contained within the message, and returns an Error or error text to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 2 – Message is acknowledged successfully by recipient</p>
+        <p class="BodyText1">2a). A NewRx is sent.</p>
+        <p class="BodyText1">2b). Surescripts forwards the message to the receiving customer.</p>
+        <p class="BodyText1">2c). Receiving customer validates the message and returns a Status (Code 010) to Surescripts.&#160; This indicates the message was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">2d). Surescripts forwards the Status (Code 010) back to the sending customer. </p>
+        <p class="StylebodytextBold">Scenario 3 – Message errors at Receiver</p>
+        <p class="BodyText1">3a). A NewRx is sent.</p>
+        <p class="BodyText1">3b). Surescripts forwards the message to the receiving customer.</p>
+        <p class="BodyText1">3c). Receiving customer either does not recognize the format of the message, or errors are contained within the message, and returns an Error message or error text to Surescripts.</p>
+        <p class="BodyText1">3d). Surescripts sends an Error to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 4 – Status 000 followed by an Error</p>
+        <p class="BodyText1">4a). A NewRx is sent.</p>
+        <p class="BodyText1">4b). Surescripts forwards the message to the receiving customer.</p>
+        <p class="BodyText1">4c). Receiving customer validates the message and returns a pending Status (Code 000) to Surescripts. This indicates that the message has been received but processing is not yet complete and the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">4d). Surescripts forwards the Status (Code 000) back to the sending customer.</p>
+        <p class="BodyText1">4e). Receiving customer encounters an error when processing the message and initiates a new Error (sometimes referred to as a "Free-Standing Error").</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts may convert the message to fax and avoid sending the error back to the sending customer. See the <a href="#_Toc513714496">Faxing</a> section for more information.</p>
+        <p class="BodyText1">4f). Surescripts forwards the Error to the sending customer.</p>
+        <p class="BodyText1">4g). Sending customer acknowledges the Error by sending back a verified Status (Code 010) to Surescripts. </p>
+        <p class="BodyText1">4h). Surescripts forwards the verified Status (Code 010) to the receiving customer.</p>
+        <p class="StylebodytextBold">Scenario 5 – Status 000 followed by a Verify</p>
+        <p class="BodyText1">5a). A NewRx is sent to Surescripts.</p>
+        <p class="BodyText1">5b). Surescripts forwards the message to the receiving customer.</p>
+        <p class="BodyText1">5c). Receiving customer validates the message and sends back a Status (Code 000) to Surescripts. This indicates that the message has been received, but processing is not yet complete and the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">5d). Surescripts forwards the Status (Code 000) back to the sending customer.</p>
+        <p class="BodyText1">5e). Receiving customer delivers the NewRx to the end point and initiates a new Verify (sometimes referred to as a "Free-Standing Verify").</p>
+        <p class="BodyText1">5f). Surescripts forwards the Verify to the sending customer.</p>
+        <p class="BodyText1">5g). Sending customer acknowledges the Verify by sending back a Status (Code 010) to Surescripts. Code 010 indicates it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">5h). Surescripts forwards the Status (Code 010) to the receiving customer.</p>
+        <p class="StylebodytextBold">Scenario 6 – Connectivity Error with receiving customer</p>
+        <p class="BodyText1">6a). A NewRx is sent to Surescripts.</p>
+        <p class="BodyText1">6b). Surescripts attempts to forward the message to the receiving customer, but is unable to connect and receives an HTTP error or the connection times out after 24 seconds.</p>
+        <p class="BodyText1">6c). Surescripts sends back a Status (Code 000) to the sending customer. This indicates that the message has been received, but processing is not yet complete and the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">6d) Surescripts makes up to 3 additional delivery attempts with a delay of at least 1 minute, 5 minutes and then 10 minutes between each attempt.</p>
+        <p class="BodyText1">6e). If one of the delivery attempts is successful and the receiving customer returns a Status (000), Surescripts will audit the response, but it will not deliver that recent Status (000) to the sending customer as they have already received one from Surescripts in step 6c.&#160; Final status will be sent to the sending customer once the recipient sends a free standing Error or Verify as in steps 4e and 5e above.</p>
+        <p class="BodyText1">6f). If one of the delivery attempts is successful and the receiving customer returns a Status (010), Surescripts will convert the Status (010) into a Free Standing Verify and deliver the Verify to the sending customer.</p>
+        <p class="BodyText1">6g). Sending customer acknowledges the Verify by sending back a Status (Code 010) to Surescripts. Code 010 indicates it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">6h). If one of the delivery attempts is successful and the receiving customer returns an Error, Surescripts will forward the Error to the sending customer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts may convert the message to fax and avoid sending the error back to the sending customer.&#160; See the <a href="#_Toc513714496">Faxing</a> section for more information.</p>
+        <p class="BodyText1">6i). Sending customer acknowledges the Error by sending back a Status (Code 010) to Surescripts. Code 010 indicates it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">6j). If none of the delivery attempts are successful Surescripts will create send a Free Standing Error to the sending customer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts may convert the message to fax and avoid sending the error back to the sending customer.&#160; See the <a href="#_Toc513714496">Faxing</a> section for more information.</p>
+        <p class="BodyText1">6k). Sending customer acknowledges the Error by sending back a Status (Code 010) to Surescripts. Code 010 indicates it was accepted by the ultimate receiver.</p>
+        <h2 class="Heading2"><a name="_Toc513714496"></a>Faxing</h2>
+        <p class="BodyText1">This service is optional and creates an alternate route for transactions if electronic communication is disrupted. This service delivers certain messages via facsimile (FAX) when they cannot be delivered electronically due to temporary/transient transmission failures, unless prohibited by state law. Both sender and receiver must have this feature enabled to utilize faxing services. </p>
+        <div class="note">
+            <div><b>Notes</b>:</div>
+            <ul>
+                <li>Fillable messages for controlled substances will not be transmitted by fax. </li>
+                <li>If fillable fax messages are prohibited by state, messages sent via fax are for informational purposes only.</li>
+            </ul>
+        </div>
+        <p class="BodyText1">For faxing, consider the following:</p>
+        <ul>
+            <li>Current message types that are supported through faxing: NewRx, RxRenewal (Request/Response), and CancelRx (Request only).</li>
+            <li>Pharmacies may send an RxRenewalRequest for controlled substance that can fail over to a fax message when a connectivity issue occurs. </li>
+            <li>If a prescription for a controlled substance is sent, and a connectivity issue is encountered, an Error will be returned to the sender instead of failing over to a fax message.</li>
+            <li>Surescripts makes efforts to conform to the applicable state regulatory needs related to e-prescribing; however, it is ultimately the responsibility of the sender and receiver to fulfill compliance requirements.</li>
+            <li>Information only faxes – Some states permit information only faxes for non-controlled substances. These fax templates meet the state requirements for transmitting message details by fax, but provide further instruction for the pharmacy to validate the prescription.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714497"></a>Message Delivered by Fax</h3>
+        <p class="BodyText1">The following steps occur when a message fails over to fax:</p>
+        <ol>
+            <li>Electronic message is initiated and received by Surescripts.</li>
+            <li>Connectivity issue from the receiver is encountered by Surescripts.</li>
+            <li>Surescripts creates a Status (Code 000) message and returns to sender.&#160; </li>
+            <li>Surescripts fails the message for delivery via fax after determining that the message meets all required criteria.</li>
+            <li>The fax delivery process is monitored for success.</li>
+            <li>When confirmation is received for successful delivery of fax, a Verify (Code 010) status update is returned to the sender to notify that the message was delivered by fax.</li>
+            <li>If a timeout occurs, Surescripts will return an error to the sender and a message may still be delivered via fax. Duplicate messages should not be sent without confirming that the original message was received.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc513714498"></a>Faxable Error Messages</h3>
+        <p class="BodyText1">Surescripts can attempt to deliver the original message by fax when receiver respond with certain error code. The following steps summarize the process:</p>
+        <ol>
+            <li>Surescripts receives electronic message and attempts to deliver to the receiver.</li>
+            <li>Surescripts receives synchronous error message with code 600, 601 or 602 or a status 000 followed by asynchronous error message with code 600, 601 or 602. Codes that are faxable include: 600, 600-008, 601, 602, 602-008. Any other combination is not faxable.  &#160; </li>
+            <li>Surescripts returns status 000 and fails the message over for delivery via fax after determining that the message meets all required criteria.</li>
+            <li>The fax delivery process is monitored for success.</li>
+            <li>When successful, a Verify (Code 010) status update is returned to the sender to notify that the message was delivered by fax.</li>
+            <li>If a timeout occurs, Surescripts will return an error to the sender.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc513714499"></a>Fax Portal Pharmacy Configurations</h3>
+        <p class="BodyText1">This faxing configuration is at a portal level for pharmacies that do not receive messages electronically. A pharmacy that does not transmit electronic messages will only receive NewRx. This type of pharmacy will be identified through pharmacy directory services.&#160; </p>
+    </body>
+</html>

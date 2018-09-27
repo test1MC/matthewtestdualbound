@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="819.3334" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc443643445"></a>Variances from NCPDP SCRIPT 10.6</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_Toc443643446"></a>Message level</h2>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableBody" style="margin-top: 3pt;">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableBody" style="margin-top: 3pt;">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableBody" style="margin-top: 3pt;">Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableBody" style="margin-top: 3pt;">Justification</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;color: #ffffff;">NEWRX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">PVD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop required for the pharmacy. For a new prescription the pharmacy technology vendor needs this segment to route to the appropriate pharmacy.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">In NCPDP SCRIPT 10.6, the PVD segment in a NEWRX message is conditional (not required). In this implementation and in NCPDP SCRIPT 10.8, it is mandatory.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">REFREQ</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment (Drug dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop is required for the drug dispensed.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">In NCPDP SCRIPT 10.6, a second DRU loop for drug dispensed is conditional in a Refill Renewal Request message. In this implementation and in NCPDP SCRIPT 10.8, drug dispensed is Mandatory.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">REFRES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">PVD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD segment for pharmacy is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, pharmacy is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment (Drug prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop is required for the drug prescribed.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The DRU loop for drug prescribed is not required for NCPDP SCRIPT 10.6. In this implementation, the DRU loop for Drug prescribed is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Needed for translation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment (Drug dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop is required for the drug dispensed.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A second DRU loop for drug dispensed is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, drug dispensed is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">CHGRES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">PVD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD (pharmacy) segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, it is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment</p>
+                        <p class="TableBody" style="margin-top: 3pt;">(Drug Prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop is required for the drug prescribed if the request is approved. If the request is denied, the DRU segment is not required, and if it is sent, it should contain the prescribed loop from the Rx Change Request that is being denied.</p>
+                        <p class="TableBody" style="margin-top: 3pt;"><span style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6</span><b>:</b>
+                        </p>
+                        <p class="TableBody" style="margin-top: 0pt;">The DRU segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, one loop is required for the drug prescribed if the request is approved. If the request is denied, the DRU segment is not required, and if it is sent, it must contain the prescribed loop from the Rx Change Request that is being denied.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">RXFILL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment (Drug Prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One DRU loop of Prescribed or Dispensed is required, depending on what the pharmacy has knowledge of.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">If RES-020 Code List Qualifier = "AH" (Dispensed) or "AJ" (Partially Dispensed), the prescribed DRU Segment may be sent as clarification.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">If RES-020 Code List Qualifier = "AK" (Not Dispensed), the prescribed or dispensed DRU Segment is required, depending upon what the pharmacy has knowledge of.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A DRU loop for the Prescribed and the Dispensed drug is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, either a Prescribed or a Dispensed segment is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Drug Segment (Drug Dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One DRU loop of Prescribed or Dispensed is required, depending on what the pharmacy knows </p>
+                        <p class="TableBody" style="margin-top: 3pt;">If RES-020 Code List Qualifier = "AH" (Dispensed) or "AJ" (Partially Dispensed), the dispensed DRU Segment is required </p>
+                        <p class="TableBody" style="margin-top: 3pt;">If RES-020 Code List Qualifier = "AK" (Not Dispensed), the Prescribed or Dispensed DRU Segment is required, depending upon what the pharmacy has knowledge of.</p>
+                        <p class="TableHeading" style="margin-top: 3pt;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A DRU loop for the prescribed and the dispensed drug is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, either a Prescribed or a Dispensed segment is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">CANRX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">PVD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="margin-top: 3pt;font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, it is required.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">VERIFY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="color: #ffffff;background-color: #000000;font-weight: bold;">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">STS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Is not required in a Verify message. If used, Status Type must be 010 and reject codes may not be used. Free text may be used.</p>
+                        <p class="TableBody" style="margin-top: 2pt;"><span style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6</span>:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The STS segment Status Type must be 000 for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, Status Type must be 010.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">PVD</p>
+                        <p class="TableBody" style="margin-top: 3pt;">PTT</p>
+                        <p class="TableBody" style="margin-top: 3pt;">DRU</p>
+                        <p class="TableBody" style="margin-top: 3pt;">SIG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">If a Verify message contains a PVD, PTT, DRU, or SIG segment, the message will be rejected.</p>
+                        <p class="TableBody" style="margin-top: 2pt;"><span style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6</span>:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">For the message type Verify, a PVD, PTT, DRU, or SIG segment could be included for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, these segments are not supported.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">In current implementation and in future version (10.8) of SCRIPT</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

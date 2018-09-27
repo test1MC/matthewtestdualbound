@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="705" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc445209621"></a>Failure Mode/Response Approach</h2>
+        <p class="BodyText1">Surescripts’ error processing approaches are defined below. For more information on Medication History – Acute error processing, refer to Section 12.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc445209622"></a>Medication History Error Processing </h3>
+        <p class="BodyText1">Surescripts has identified different levels of failure for the Medication History request/response transaction.&#160; </p>
+        <ul>
+            <li>
+                <p>In instances where Surescripts or a participant receives a transaction that is unrecognizable, the recipient will send back an XML formatted NAK.</p>
+            </li>
+            <li>
+                <p>If an error occurs after the sender has been identified and validated, and the message has been determined to be an NCPDP message, an NCPDP ERROR message is returned.</p>
+            </li>
+            <li>
+                <p>If the recipient identifies an error, an ERROR message is created and Surescripts will pass the error text on to the original requester.</p>
+            </li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc445209623"></a>HL7 Error Processing</h3>
+        <p class="BodyText1">Surescripts has identified different levels of failure for HL7 transactions.</p>
+        <ul>
+            <li>
+                <p>In instances where Surescripts or a participant receives a transaction that is unrecognizable, the recipient will send back an XML formatted NAK.</p>
+            </li>
+            <li>
+                <p>If an error has occurred after Surescripts has determined that this is an HL7 transaction, the recipient will respond with an HL7 ACK and the appropriate error.</p>
+            </li>
+            <li>
+                <p>If an error occurs after the message has been accepted, the responder will respond with an error message within the appropriate response format. </p>
+            </li>
+        </ul>
+        <p>&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="_Toc445209624"></a>Flat File Processing</h3>
+        <p class="BodyText1">Some transactions are very large file loads that are defined in a fixed width flat file. Each row is separated by a new line (hex 0A) character. Surescripts will accept these transactions, validate the format, and process the file. Surescripts then produces a fixed width response file that details out any file errors, row errors, and processing acknowledgements.</p>
+    </body>
+</html>

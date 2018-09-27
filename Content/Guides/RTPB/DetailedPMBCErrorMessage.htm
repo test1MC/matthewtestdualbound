@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="864" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" style="page-break-before: always;" MadCap:autonum="0.1 "><a name="_Toc441592482"></a>Detailed PMBC Error Message Scenarios</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Error messages or PBMC Response messages with business errors are sent in response to a PMBC message.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/PMBC/PMBCErrorMessageScenarios.svg" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 400pt;" />
+        </p>
+        <p class="StylebodytextBold">Scenario 1: Surescripts Cannot Recognize the Message. Surescripts returns an error message.</p>
+        <p class="BodyText1Indent">1a) A provider vendor sends a PMBC Request to Surescripts.</p>
+        <p class="BodyText1Indent">1b) Surescripts cannot recognize the message (e.g. improperly formed XML) and sends an error back to the provider vendor.</p>
+        <p class="StylebodytextBold">Scenario 2: Surescripts Finds Message Errors in PMBC Request. Surescripts returns an ERROR message.</p>
+        <p class="BodyText1Indent">2a) A provider vendor sends a PMBC Request to Surescripts.</p>
+        <p class="BodyText1Indent">2b) Surescripts recognizes the format but finds errors (e.g. schema validation error) in the message. Surescripts returns an ERROR message.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Scenario 3: PBM/payer Finds Message Errors in PMBC Request. PBM/payer returns an ERROR message.</p>
+        <p class="BodyText1Indent">3a) A provider vendor sends a PMBC Request message to Surescripts.</p>
+        <p class="BodyText1Indent">3b) Surescripts forwards the PMBC Request to the PBM/payer.</p>
+        <p class="BodyText1Indent">3c) During validation, the PBM/payer finds message errors and sends an ERROR message to Surescripts.</p>
+        <p class="BodyText1Indent">3d) Surescripts forwards the ERROR message to the provider vendor.</p>
+        <p class="StylebodytextBold">Scenario 4: PBM/payer Finds Business Errors in PMBC Request. PBM/payer returns a PMBC Response Message with Business Errors.</p>
+        <p class="BodyText1Indent">4a) A provider vendor sends a PMBC Request to Surescripts.</p>
+        <p class="BodyText1Indent">4b) Surescripts forwards the PMBC Request to the PBM/payer.</p>
+        <p class="BodyText1Indent">4c) During business processing, the PBM/payer finds business errors (e.g. Patient Not Found, Drug Not Found, etc.) and returns a PMBC Response message to Surescripts.</p>
+        <p class="BodyText1Indent">4d) Surescripts forwards the PMBC Response to the provider vendor.</p>
+    </body>
+</html>

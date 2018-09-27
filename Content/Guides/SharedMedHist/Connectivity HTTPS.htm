@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="839" MadCap:lastWidth="624">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="megan.hayden" MadCap:initials="MH" MadCap:id="1" MadCap:timestamp="2016-03-29T14:51:19.4245506-05:00" />
+        </MadCap:changeData><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Connectivity HTTPS</h2>
+        <p class="BodyText1">The Surescripts network uses the HTTPS protocol for the transport of messages between network participants. HTTPS is a secure, reliable, and widely used protocol for the exchange of information over TCP/IP. <MadCap:change MadCap:changes="1">With HTTPS, participants act as the client and send transactions to the server on the Surescripts system. With certain transactions, Surescripts also acts as the client by sending HTTPS requests to servers on participants’ systems. </MadCap:change></p>
+        <ul>
+            <li MadCap:changes="1">The preferred connectivity method is HTTPS with the following specifications: </li>
+            <li MadCap:changes="1">TCP/IP is the communication protocol utilized between the participant and Surescripts.</li>
+            <li MadCap:changes="1">HTTPS (Version 3) is the preferred application protocol.</li>
+            <li MadCap:changes="1">A static, registered IP address is required of the participant.</li>
+            <li MadCap:changes="1">Participants use the standard HTTPS post method to connect and send transactions to Surescripts.</li>
+            <li MadCap:changes="1">Surescripts uses the standard HTTPS post method to connect and send transactions to participants. </li>
+            <li MadCap:changes="1">The URLs are supplied at the point of integration.</li>
+            <li MadCap:changes="1">Server certificates with 128-bit encryption are utilized at Surescripts. The participant is responsible for providing its own 128-bit (server) digital certificate. </li>
+            <li>Separate test and production instances are created for Surescripts and the participant’s systems.</li>
+            <li>A participant receiving Point-to-Point messages via SSL from Surescripts will need to identify the Certificate Authority associated with the participant’s certificate. Surescripts needs to check for the participants’ certificate from that Certificate Authority. If the participant is using a self-signed certificate, Surescripts will need the participant’s Certificate Authority certificate.</li>
+            <li>Outbound HTTP Basic Authentication is an option for participants. If Basic Authentication is selected for Medication History it will also be used for the Eligibility since they share the same connection.</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 ">HTTPS POST</h3>
+        <p class="BodyText1">This section contains supplemental information on the usage of HTTPS connectivity. The flow of a HTTPS transaction requires the following generic steps:</p>
+        <ol>
+            <li>Format the transaction (sending transaction in body).<ol style="list-style-type: lower-alpha;"><li>Setting the HTTP content-type to text/xml if xml, or text/plain if not xml.</li><li>Write the transaction to the body</li></ol></li>
+            <li>Send the transaction using the POST method.</li>
+        </ol>
+        <h4 class="Heading4" MadCap:autonum="0.1.1.1 ">HTTP-Level Authentication</h4>
+        <p class="BodyText1">If a participant's infrastructure requires that incoming HTTP communication must be authenticated using basic HTTP authentication before being passed along to a business system for processing, Surescripts will format the Authorization property in the HTTP header. Participants that are in need of this feature must notify their Surescripts Implementation Manager during the implementation process.</p>
+        <p class="BodyText1">An example of the HTTP Authorization header formatted by Surescripts for authentication on the participant’s system follows:</p>
+        <p class="BodyText3">Authorization: Basic U1VSRVNDUklQVFM6Tk9QQVNT where U1VSRVNDUklQVFM6Tk9QQVNT is the result of base64 encoding “SURESCRIPTS:NOPASS” (NOPASS was Surescripts’ password for the receiving participant system in this example.)</p>
+        <h4 class="Heading4" MadCap:autonum="0.1.1.2 ">POST Method Snippets</h4>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;margin-left: 5pt;">
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">The following Java Code is an example of how to POST to Surescipts:</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">/**</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * Send a transaction to the Surescripts Network.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * @param urlString&#160;&#160;&#160; - The url to use.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * @param transaction&#160; - The transaction.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * @param isXML&#160;&#160;&#160;&#160;&#160;&#160;&#160; - Set to true if this is an XML transaction.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * @return&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; - The response from Surescripts’ Network.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; * @throws Exception&#160;&#160; On any unhandled error.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160; */</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160; public static String sendTransaction(String urlString, String transaction, boolean isXML) </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">throws Exception </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160; {</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; OutputStream out;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; BufferedReader in;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; HttpURLConnection con;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; String response = "";</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; int BUFFER_SIZE = 500;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; URL url = new URL(urlString);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con = (HttpURLConnection) url.openConnection();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.setDoOutput(true);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.setDoInput(true);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.setRequestMethod("POST");</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.setRequestProperty("Content-length", String.valueOf(transaction.length()));</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.setRequestProperty("Content-type: ", isXML ? "text/xml" : "text/plain");</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; out = con.getOutputStream();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; // Send the transaction</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; out.write(transaction.getBytes());</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; out.flush();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; // The InputStreamReader cannot be created until after the write and</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; // flush have occurred.&#160; If it is, the write fails.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; in = new BufferedReader(new InputStreamReader(con.getInputStream()));</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; char[] cbuf = new char[BUFFER_SIZE + 1];</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; // Read the response</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; while (true) {</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; //String line = in.readLine();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; int numCharRead = in.read(cbuf, 0, BUFFER_SIZE);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; // If -1, it is the end of the file/stream</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; if (numCharRead == -1) {</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; break;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; // Null terminate the final position of the string read into cbuf</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; String line = new String(cbuf, 0, numCharRead);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; response += line;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; //close the streams</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; in.close();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; out.close();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; con.disconnect();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; return response;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160; }</p>
+        </div>
+        <p class="BodyText1">&#160;</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;margin-left: 5pt;">
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">The following .NET Code gives an example of how to POST to Surescipts:</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">/**</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * Sends a transaction to the Surescripts Network.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * Parameters:</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; *&#160;&#160;&#160; urlString&#160;&#160; --&#160; The URL to send to.&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; *&#160;&#160;&#160; transaction --&#160; The transaction to submit.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * Returns the response from the Surescripts Network.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; * Throws System.Net.WebException if it doesn't get a good response.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; */</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; public static string sendTransaction(string urlString, string transaction) {&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ASCIIEncoding encoding=new ASCIIEncoding();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; byte[] data = encoding.GetBytes(transaction);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; HttpWebRequest req = (HttpWebRequest)WebRequest.Create(urlString);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; req.Method = "POST";</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; req.ContentLength = data.Length;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Stream newStream=req.GetRequestStream();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; newStream.Write(data,0,data.Length);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; newStream.Close();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; HttpWebResponse res = (HttpWebResponse)req.GetResponse();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Stream receiveStream = res.GetResponseStream ();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; // Pipes the stream to a higher level stream reader with the </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; // required encoding format.</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; StreamReader readStream = new StreamReader (receiveStream, Encoding.UTF8);</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; string response = readStream.ReadToEnd();&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; res.Close ();</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; readStream.Close (); </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; return response;</p>
+            <p class="CodeExample" style="margin-right: 5pt;margin-left: 5pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        </div>
+        <h4 class="Heading4" MadCap:autonum="0.1.1.3 ">SSL Information</h4>
+        <p class="BodyText1">Surescripts expects SSL (HTTPS) traffic on the standard SSL port, 443.</p>
+        <h4 class="Heading4" MadCap:autonum="0.1.1.4 ">Server Certificates</h4>
+        <p class="BodyText1">When setting up a Web server to accept SSL, it is necessary to use a digital certificate. The certificate that is used in the production environment must be signed by an established certificate authority, such as VeriSign. In the certification environment, the certificate can be self-signed. In the case of a self-signed cert, it will be necessary to send a copy of the cert to Surescripts so it can be recognized as a valid certificate when Surescripts connects to the site.</p>
+        <h4 class="Heading4" MadCap:autonum="0.1.1.5 ">Supported Network Connections for HTTPS</h4>
+        <p class="BodyText1">Participants may use one of the following network connectivity methods with HTTPS.</p>
+        <ul>
+            <li>Internet: <ul><li>Address filtering will be done in the Surescripts firewall.</li><li>Surescripts will work with participants to review their current connection speed and bandwidth to ensure they are adequate for anticipated transaction volumes.</li></ul></li>
+            <li>Frame Relay: <ul><li>128 kbps minimum bandwidth over a frame relay circuit between Surescripts and the participant.</li><li>The line must be encrypted with 3DES.</li><li>The participant must allow Surescripts to install and manage two routers in their data center that connect to their extranet environment.</li><li>The participant must have a dual network connection through two different telecommunications providers.</li></ul></li>
+        </ul>
+    </body>
+</html>

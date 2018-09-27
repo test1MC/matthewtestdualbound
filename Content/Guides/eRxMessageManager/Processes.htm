@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="271.3333" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Processes</h1>
+        <h2 class="Heading2"><a name="Test"></a>Test Message Compliance</h2>
+        <p class="BodyText1">There are two levels of compliance: </p>
+        <ul>
+            <li>Validation of XML.</li>
+            <li>Compliance with business rules. Business Rules are data validations applied by Surescripts beyond the schema requirements that will cause a message to be successful or rejected.</li>
+        </ul>
+        <h3 class="Heading3"><a name="XML"></a>XML Validation</h3>
+        <ol>
+            <li style="margin-bottom: 6pt;">Create a new message from the Compose page or create a response message. </li>
+            <li>Select the message, and click <span style="font-weight: bold;">Validate XML</span> to validate the message against the syntax rules of the XML schema. </li>
+            <p>
+                <img src="../../Resources/Images/eRXMessageManager/Processes.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;width: 1098px;height: 718px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+            </p>
+            <li>Validation errors are displayed at the bottom of the screen. </li>
+            <p>
+                <img src="../../Resources/Images/eRXMessageManager/Processes_1.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;width: 1097px;height: 538px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+            </p>
+        </ol>
+        <h3 class="Heading3"><a name="Translat"></a>Translation and Business Rules</h3>
+        <p class="BodyText1">When sending test messages through the eRx Message Manager, Surescripts will perform any necessary data translation and business rule verification.</p>
+        <ol>
+            <li> If any business rules are violated, an error will display on the screen.</li>
+        </ol>
+        <p class="BodyText" style="margin-left: 36pt;">
+            <img src="../../Resources/Images/eRXMessageManager/Processes_2.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;width: 1089px;height: 675px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2"><a name="Example"></a>Example Test Scenarios</h2>
+        <p class="BodyText1">Users will be able to send messages from a Surescripts test prescriber or pharmacy sender to their application to test functionality.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">These process flows will apply to any of the response messages a user may want to test.</p>
+        <h3 class="Heading3"><a name="Provider"></a>Provider Vendor or IDN Scenario Test Receipt of RxRenewalRequest</h3>
+        <ol>
+            <li style="margin-bottom: 6pt;">Send the NewRx from your application to a Surescripts Test Pharmacy endpoint.</li>
+            <li style="margin-bottom: 6pt;">Search for the NewRx in eRx Message Manager using the <span style="font-weight: bold;">Search</span> function.</li>
+            <li style="margin-bottom: 6pt;">Click <span style="font-weight: bold;">Respond</span> to build a response message.</li>
+            <li style="margin-bottom: 6pt;">Select <b>RxRenewalRequest</b> type message from the drop-down.</li>
+            <ul>
+                <li>Edit fields, or add to the response message if desired.</li>
+            </ul>
+            <li>Validate XML.</li>
+            <li>Send the RxRenewalRequest to your application endpoint.</li>
+        </ol>
+        <h3 class="Heading3"><a name="Pharmacy"></a>Pharmacy Scenario Test Receipt of NewRx, RxRenewalResponse, and Creation of RxRenewalRequest </h3>
+        <ol>
+            <li>Send the NewRx from the eRx Message Manager to your Pharmacy.</li>
+            <li>Select <span style="font-weight: bold;">Compose</span>.</li>
+            <li>Select a Surescripts test provider from the <span style="font-weight: bold;">From</span> drop-down list.</li>
+            <li>Select your target test pharmacy from the <span style="font-weight: bold;">To</span> type-ahead search.</li>
+            <li>Select <span style="font-weight: bold;">Version</span>.</li>
+            <li>Select NewRx in the message <span style="font-weight: bold;">Type</span> drop-down.</li>
+            <li>Select the desired message from the <span style="font-weight: bold;">Template</span> drop-down and edit if needed.</li>
+            <li>Select <span style="font-weight: bold;">Validate XML</span> if the message was modified.</li>
+            <li>Click <span style="font-weight: bold;">Send</span>.</li>
+            <li>Send the RxRenewalRequest from your application based on the NewRx that was received, back to the Surescripts test endpoint.</li>
+            <li>Select <span style="font-weight: bold;">Search</span> in eRx Message Manager.</li>
+            <li>Find the RxRenewalRequest message sent from your application.</li>
+            <li>Click the <span style="font-weight: bold;">Respond</span> link to begin building a response message.</li>
+            <li>On the new Compose page, select RxRenewalResponse in the message <span style="font-weight: bold;">Type</span> drop-down.</li>
+            <li>Select a template from the <span style="font-weight: bold;">Template</span> drop-down.</li>
+            <li>Edit the message, being sure to choose a RxRenewalResponse type (e.g. Approved, Denied).</li>
+            <li>If the XML was edited, click <span style="font-weight: bold;">Validate XML</span>.</li>
+            <li>Click <span style="font-weight: bold;">Send</span>.</li>
+        </ol>
+    </body>
+</html>

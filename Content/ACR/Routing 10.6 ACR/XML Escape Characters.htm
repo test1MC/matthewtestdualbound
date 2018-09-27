@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="6" MadCap:lastHeight="636.6667" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc452734031"></a><span style="font-family: Arial;">XML </span><span style="font-family: Arial;">Escape Characters</span>
+        </h2>
+        <p class="BodyText1">Participant shall<sup>*106R-021</sup> not send empty elements within XML messaging. The exceptions to this rule are on response messages:</p>
+        <ul>
+            <li>Refill Renewal Response - &lt;Approved/&gt; or &lt;ApprovedWithChanges/&gt;</li>
+        </ul>
+        <ul>
+            <li>Rx Change and Rx Cancel Response - &lt;Approved/&gt;</li>
+        </ul>
+        <p class="BodyText1">All non-essential characters shall<sup>*106R-018</sup> be suppressed from the message where permissible (see EDIFACT Representation above). Non-essential characters include leading spaces, trailing spaces, leading zeroes, and trailing zeroes where permissible (see Numeric Representation above).</p>
+        <p class="BodyText1">Most symbols should be ‘safe’ within most alphanumeric fields; however, XML validation has issues with some characters, such as ‘less than’ (&lt;) and ‘ampersand’ (&amp;); therefore, these symbols shall<sup>*106R-146</sup> be properly escaped or un-escaped. The most common escape encodings are:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 95pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 66pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Head-Header1">
+                    <th style="background-color: #DDDDDD;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">ASCII Characters</p>
+                    </th>
+                    <th style="background-color: #DDDDDD;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">XML Escape</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>quote (")</p>
+                    </td>
+                    <td style="background-color: #auto;vertical-align: middle;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="HTMLTypewriter" style="font-family: 'Courier New';color: #000000;font-size: 9pt;">&amp;quot;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;vertical-align: middle;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>apostrophe (')</p>
+                    </td>
+                    <td style="background-color: #auto;vertical-align: middle;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="HTMLTypewriter" style="font-family: 'Courier New';color: #000000;font-size: 9pt;">&amp;apos;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;vertical-align: middle;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ampersand (&amp;)</p>
+                    </td>
+                    <td style="background-color: #auto;vertical-align: middle;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="HTMLTypewriter" style="font-family: 'Courier New';color: #000000;font-size: 9pt;">&amp;amp;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;vertical-align: middle;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>less than (&lt;)</p>
+                    </td>
+                    <td style="background-color: #auto;vertical-align: middle;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="HTMLTypewriter" style="font-family: 'Courier New';color: #000000;font-size: 9pt;">&amp;lt;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>greater than (&gt;)</p>
+                    </td>
+                    <td style="background-color: #auto;vertical-align: middle;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="HTMLTypewriter" style="font-family: 'Courier New';color: #000000;font-size: 9pt;">&amp;gt;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">String lengths are calculated based on the un-escaped value. For example, “&gt;98 degrees” should be encoded as “&amp;gt;98 degrees” but it would only be counted as a string length of 11, not 14. The quote and apostrophe only need to be escaped if they are used within an attribute.</p>
+        <p class="BlankPage">&#160;</p>
+    </body>
+</html>

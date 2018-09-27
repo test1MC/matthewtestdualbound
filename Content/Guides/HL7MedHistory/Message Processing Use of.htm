@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="696" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 " style="page-break-before: always;"><a name="_Toc445209675"></a>Message Processing Use of Transactions</h2>
+        <p class="BodyText1">The Medication History – Acute process utilizes HL7 transactions on the request and response to a sender and utilizes Surescripts Medication History transaction communicating with the responder’s. The following flow illustrates the use of these messages.</p>
+        <p style="margin-left: 108pt;">
+            <img src="../../Resources/Images/HL7MedHistory/Message Processing Use of.png" style="width: 460px;height: 298px;" />
+        </p>
+        <ul>
+            <li>
+                <p>The MSA ACK responding to the ADT event indicates acceptance of the ADT message. If an error occurred, it would be placed within the MSA ACK. Steps 1.0 through 1.8 describe those types of errors.</p>
+            </li>
+            <li>
+                <p>If any error occurs in the sending or receiving of the Medication History request, an error is sent back to the requester inside the OBR segment in the ORU event or an ORC segment of a RDS event.</p>
+            </li>
+            <li>
+                <p>If responses are obtained containing the history information, the report is returned in the OBX segments of the ORU message for the report option. Data elements are returned in a RXD segment of a RDS message.</p>
+            </li>
+            <li>
+                <p>The original requester will acknowledge the ORU or RDS message with an MSA ACK.</p>
+            </li>
+        </ul>
+        <p>&#160;</p>
+        <p style="page-break-before: always;">The physical format of a NAK is a small XML string in place of a transaction. </p>
+        <p style="margin-top: 3pt;margin-bottom: 3pt;">Error (NAK)</p>
+        <p style="margin-top: 3pt;margin-bottom: 3pt;margin-left: 36pt;">&lt;nak status=”n”&gt;Text Message&lt;/nak&gt;</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 60pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 49pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 142pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 157pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="StyleTableHeadingLeftBefore0ptAfter0pt">Message Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="StyleTableHeadingLeftBefore0ptAfter0pt">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="StyleTableHeadingLeftBefore0ptAfter0pt">Error</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="StyleTableHeadingLeftBefore0ptAfter0pt">Message</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">NAK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">1</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableText">Invalid Syntax</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableText" style="text-transform: uppercase;">Transaction cannot be identified nor processed</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <p>An example of a nak:</p>
+        <p>&lt;nak status=”1”&gt; Transaction Cannot Be Identified Or Processed &lt;/nak&gt;</p>
+    </body>
+</html>

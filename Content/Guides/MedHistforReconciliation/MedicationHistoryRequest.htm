@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="989.3333" MadCap:lastWidth="983">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc442967372"></a>Medication History Request XML Requirements</h1>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This Guide includes data elements only where Surescripts has specific requirements or further explains the field usage. Refer to the SS_SCRIPT_XML_10_6MU.xsd for a complete list of fields.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Details</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td colspan="2" class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #d3d3d3;">
+                        <p><b>Header</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>To</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Must be populated with the Surescripts ID: S00000000000002.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">To/@Qualifier</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Value:</p>
+                        <p>ZZZ = Mutually defined</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>From</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Must be populated with the requester's Participant ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">From/@Qualifier</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Value:</p>
+                        <p>ZZZ = Mutually defined</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">MessageID</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">A minimum set of standards/algorithms
+should be used when generating message
+IDs to ensure uniqueness. If possible,
+customers should utilize Global Unique
+Identifiers (GUIDs).</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security/Sender/SecondaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Must be populated with the requester’s Surescripts-assigned password.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security/Sender/TertiaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Must be populated with the value of S00000000000002.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TestMessage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Required in the Staging environment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TertiaryIdentifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Must be populated with the value NTR (Non-targeted Request) to
+ indicate it is the version of MHR that does not require a 270/271 eligibility
+ request. However, 'NTR' is not passed on to the PBM/payer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td colspan="2" class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #d3d3d3;">
+                        <p><b>Patient</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Address/ZipCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>It is recommended to send the Address/ZipCode to aid in patient
+ matching.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td colspan="2" class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #d3d3d3;">
+                        <p><b>Prescriber</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Prescriber/Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Organizational NPI is to be sent in this field. If an Organizational NPI does not exist, then an Individual NPI of the prescriber should be provided.</p>
+                        <p>The NPI will be validated against the industry standard check digit routine (LUHN check). For specific
+ information see: <a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf" target="_blank">https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf</a> <![CDATA[ ]]></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td colspan="2" class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #d3d3d3;">
+                        <p><a name="Benefits_Coordination"></a><b>Benefits Coordination</b>
+                        </p>
+                        <p><b>Note</b>: These are the only fields used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>EffectiveDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">EffectiveDate is the beginning date for the desired history (e.g., 1 year ago).</p>
+                        <p style="font-size: 10pt;"><b>Note</b>: For EffectiveDate, errors will occur if the date range is more than one year, or if it is into the future.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ExpirationDate</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">ExpirationDate is the end date for the desired history.</p>
+                        <p style="font-size: 10pt;">This should be set to the date the RXHREQ was initiated.</p>
+                        <p style="font-size: 10pt;">Up to one year of medication history data can be requested.</p>
+                        <p style="font-size: 10pt;"><b>Note</b>: For ExpirationDate, errors will occur if the date range is more than one year, or if it is into the future.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Consent</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Values:</p>
+                        <p>Y = Consent given </p>
+                        <p>X = Parental/Guardian consent on behalf of a minor for prescriber to
+ receive the medication history from any prescriber</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

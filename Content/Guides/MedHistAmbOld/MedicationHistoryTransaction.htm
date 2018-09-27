@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="1978" MadCap:lastWidth="1146">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2017-09-18T09:38:02.9840066-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2017-09-18T09:38:02.9870152-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="5" MadCap:timestamp="2017-09-18T11:21:29.2747116-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="6" MadCap:timestamp="2017-09-18T11:31:52.0215611-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="7" MadCap:timestamp="2017-09-18T11:31:52.0366352-05:00" />
+        </MadCap:changeData><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="Medication_History_Transaction_Flow"></a>Medication History <MadCap:change MadCap:changes="2">Message </MadCap:change><MadCap:change MadCap:changes="1">Transaction </MadCap:change>Flow</h2>
+        <p class="BodyText1">The Surescripts Prescription Benefit &amp; Medication History service provides prescribers with the electronic delivery of PBM claim data and/or pharmacy fill data in an ambulatory setting. Through the prescriber vendor interface, the prescriber requests patient information such as eligibility to obtain medication history. A separate request is required for each message and data type (i.e. Eligibility, claim medication history, fill medication history). The graphic below depicts the transaction flow between customers in this process.</p>
+        <p class="BodyText1">&#160;</p>
+        <h3 class="Heading3" MadCap:changes="5"><a name="_Toc445388895" MadCap:changes="5"></a>Medication History Request</h3>
+        <p class="BodyText1" MadCap:changes="5">The prescriber sends a Medication History request for a patient to Surescripts. The request is routed to the appropriate PBM for processing. For fill data (which is optional), the request is handled internally using the pharmacy database. </p>
+        <p class="BodyText1" MadCap:changes="5">Customers need to send two messages to get both types of medication history. One indicates it is for fill data from the pharmacy, the other contains the PBM identifier indicating it is requesting history from the PBM. In addition, if the patient has multiple coverages each coverage type would need a separate RXHREQ to the PBM(s).</p>
+        <h3 class="Heading3"><a name="_Toc445388896"></a>
+            <MadCap:change MadCap:changes="5">Detailed </MadCap:change>RxHistory <MadCap:change MadCap:changes="7">Message </MadCap:change><MadCap:change MadCap:changes="6">Transaction </MadCap:change>Workflow </h3>
+        <h4 class="Heading4">Request/Response Claim Data (PBM)</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/MedHistAmb/Medication History Transaction.png" style="width: 622px;height: 415px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li>An eligibility request is sent by the Prescriber system to Surescripts to obtain the PBM Unique Member ID used for the Rx History Request.</li>
+            <li>Prescriber System sends a Medication History request for an eligible patient, supplying the PBM Unique Member ID for the patient.</li>
+            <li>Surescripts validates the transaction and passes it to the appropriate PBM.</li>
+            <li>The PBM processes the request. If it fails, the PBM returns an Error message instead of a History response. The processing steps are as follows:<ol style="list-style-type: lower-alpha;"><li>PBM validates the format of the request.</li><li>PBM finds the patient via the PBM Unique Member ID.</li><li>(Optional) PBM determines that the patient is still eligible.</li><li>PBM checks level of consent.<ul><li>If Y (Yes) or X (Parental/Guardian), request is processed.</li><li>If N (No), no drugs are returned.</li><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Patient Consent = N, it is expected that the Medication History Request transaction would not be sent.</p><li>If P (Physician Only) or Z (Parental/Guardian), the PBM checks for the existence of a Physician identifier in the PVD segment. If physician only consent is given, the PBM will only look for drugs prescribed by the identified physician.</li></ul></li><li>PBM checks for the date range of the history request. <ul><li>If empty, up to the last 50 drugs filled are returned, starting with the most recent.</li><li>If populated with an effective and expiration date up to 50 drugs, starting with the end date, are returned to the requester.</li></ul></li><li>If more drugs are available, a More Drugs Available response is returned in the RES segment.</li></ol></li>
+            <li>The PBM creates the Medication History response transaction and submits it back to Surescripts.</li>
+            <li>Surescripts validates the response transaction and sends it back to the Prescriber system.</li>
+        </ol>
+        <h4 class="Heading4">Request/Response Fill Data (Pharmacy)</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/MedHistAmb/Medication History Transaction_1.png" style="visibility: visible;mso-wrap-style: square;width: 619px;height: 247px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li>Prescriber system sends a Medication History request for a patient, indicating it is for fill data.</li>
+            <li>Surescripts processes the request. If it fails, Surescripts returns an Error message instead of a History response. Processing steps are as follows:<ol style="list-style-type: lower-alpha;"><li>Surescripts validates the format of the request.</li><li>Surescripts looks for pharmacy fill data in the pharmacy database.</li><li>Surescripts checks level of consent.<ul><li>If Y (Yes) or X (Parental/Guardian), request is processed.</li><li>If N (No), no drugs are returned.</li><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Patient Consent = N, it is expected that the Medication History Request transaction would not be sent.</p></ul></li><li>Surescripts checks for the date range of the history request.<ul><li>If empty, up to the last 50 drugs filled are returned, starting with the most recent. Up to one year of medication history can be returned.</li><li>If populated with an effective and expiration date, up to 50 drugs, starting with the end date, are returned to the requester. For fill requests, the request can only go back one year from the date of the request.</li></ul></li><li>If more drugs are available, a More Drugs Available response is returned in the RES segment.</li></ol></li>
+            <li>Surescripts sends the response back to the Prescriber system.</li>
+        </ol>
+    </body>
+</html>

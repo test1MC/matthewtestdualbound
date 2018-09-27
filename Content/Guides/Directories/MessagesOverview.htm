@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <h2 class="Heading2"><a name="_Toc512495526"></a>Message Descriptions</h2>
+        <p class="BodyText1">All of the following messages are initiated by the customer to Surescripts.</p>
+        <p class="BodyText1" style="font-weight: bold;">AddProviderLocation</p>
+        <p class="BodyText1">Use this message to add a new provider or an additional unique physical location (AddressLine1) to an existing provider. Individual providers may be registered at multiple practice locations. When adding a new provider, the required information must be supplied; a Surescripts Provider ID (SPI) is automatically assigned and returned to the customer in the AddProviderLocationResponse message. For more information on the Surescripts Provider ID, please see the <a href="#_Surescripts_Provider_ID">Surescripts Provider ID (SPI)</a> section.</p>
+        <p class="BodyText1">When adding a new location to an existing provider, an SPI should not be sent or the message will be rejected. Once the location is added, Surescripts returns a new SPI for the provider that represents the new location.</p>
+        <p class="BodyText1">If a provider has more than one record at the same practice address, only the first record to which the Refill and/or Change service levels were added may have those service levels. All subsequent attempts to add those service levels would receive an error.</p>
+        <p class="BodyText1" style="font-weight: bold;">AddProviderLocationResponse</p>
+        <p class="BodyText1">This message is returned to the customer noting the provider was added successfully, contains the new SPI for the provider, and returns back the current state of the record information from the directory as a result of the AddProviderLocation message.</p>
+        <p class="BodyText1" style="font-weight: bold;">AddOrganization</p>
+        <p class="BodyText1">Use this message to add a new organization. The Organization type must be specified in the message as either: General, Pharmacy, or Payer.</p>
+        <p class="BodyText1">When adding a Pharmacy organization, the NCPDPID specified in the AddOrganization message must not already exist in the Surescripts Pharmacy Directory or an error message will be returned.</p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">AddOrganizationResponse</p>
+        <p class="BodyText1">This message is returned to the customer noting when an organization was added successfully. The message contains a new OrganizationID for the organization and echoes back the information that was in the AddOrganization message.</p>
+        <p class="BodyText1" style="font-weight: bold;">UpdateProviderLocation</p>
+        <p class="BodyText1">Use this message to update provider information, such as provider name, demographics, service levels, or to reactivate a provider record. This message cannot be used to move an SPI from one technology vendor to another (switch vendors). To switch vendors for a provider, use Admin Console and follow the Change of Vendor process.</p>
+        <p class="BodyText1">The information provided in the UpdateProviderLocation message will replace the previous record information. For example, the message will set to null or default any optional element that is not included in the update message. If the submitted update is a name change, the change will be made without proactively notifying other provider vendors of the change(s).</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">All provider record updates must include the Identification element with the SPI of the location being updated.</p>
+        <p class="BodyText1" style="font-weight: bold;">UpdateOrganization</p>
+        <p class="BodyText1">Use this message to update organization information, such as: organization name, demographics, service levels, or to reactivate an organization record.</p>
+        <p class="BodyText1">The information provided in the UpdateOrganization message will replace the previous record information. For example, the message will set to null or default any optional element that is not included in the update message.</p>
+        <p class="BodyText1" style="font-weight: bold;">GetProviderLocation</p>
+        <p class="BodyText1">Provider customers use this message to search for/retrieve the latest provider data they manage using one of the following identifiers for an existing provider: SPI, NPI, or DEANumber.</p>
+        <p class="BodyText2"><span style="font-weight: bold;">Error Scenarios</span>:</p>
+        <p class="BodyText2">If the data supplied or the structure of message is invalid, an Error message will be returned.</p>
+        <p class="BodyText2">If there are no provider records found that match the provided identifiers, the system will return a response message indicating that the provider is not found.</p>
+        <p class="BodyText1" style="font-weight: bold;">GetProviderLocationResponse</p>
+        <p class="BodyText1">This message is returned with the requested information, including up to 250 results. In the instance where no results were found, please see the <a href="DirectoryErrorMessages.htm#_Directory_Error_">Directory Error Messages</a> section.</p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">GetOrganization</p>
+        <p class="BodyText1">Organization customers use this message to search for/retrieve the latest pharmacy, general and payer organization data they manage using one of the following identifiers: NCPDPID, PayerID, OrganizationID, NPI, or DEANumber.</p>
+        <p class="BodyText2" style="font-weight: bold;">Error Scenarios:</p>
+        <p class="BodyText2">If the data supplied, or the structure of the message is invalid, an error message will be returned.</p>
+        <p class="BodyText2">If there are no organization records found that match the provided identifiers, the system will return a response message indicating that the organization is not found.</p>
+        <p class="BodyText1" style="page-break-after: avoid;font-weight: bold;">GetOrganizationResponse</p>
+        <p class="BodyText1">This message is returned with the requested information, including up to 250 results. In the instance where no results were found, please see the <a href="DirectoryErrorMessages.htm#_Directory_Error_">Directory Error Messages</a> section.</p>
+        <p class="BodyText1" style="page-break-after: avoid;font-weight: bold;">DeactivateProviderLocation</p>
+        <p class="BodyText1">Use this message to disable a provider at a specific location. Only the provider's SPI is required to deactivate a provider.</p>
+        <p class="BodyText1" style="font-weight: bold;">DeactivateOrganization</p>
+        <p class="BodyText1">Use this message to disable an organization. The only required information to disable an organization is the organization's routing identifier or the OrganizationID, if known:</p>
+        <ul>
+            <li>Pharmacy Organization – NCPDPID</li>
+            <li>General Organization – OrganizationID</li>
+            <li>Payer Organization – PayerID</li>
+        </ul>
+        <p class="BodyText1" style="margin-top: 18pt;font-weight: bold;">DirectoryDownload</p>
+        <p class="BodyText1">Use this message to request a ProviderLocation or Organization DirectoryDownload file.</p>
+        <p class="BodyText1" style="font-weight: bold;">DirectoryDownloadResponse</p>
+        <p class="BodyText1">This message is returned with a URL for the download file.</p>
+        <p class="BodyText1" style="font-weight: bold;">Status and Error Response Messages</p>
+        <p class="BodyText1">Some directory messages will return either a Status or Error message, while others that modify or return content will return a related response message. Refer to the schema for definitions of these fields.</p>
+        <p class="BodyText2" style="font-weight: bold;page-break-before: always;">Status Message</p>
+        <p class="BodyText2" style="color: #000000;">A Status code of "010" indicates that Surescripts received and processed the message successfully.</p>
+        <p class="BodyText2" style="font-weight: bold;">Error Message</p>
+        <p class="BodyText2">Error messages will include a DescriptionCode and Description elements that will describe the issue. The error could be directory related or a general error message. A full description of Error Codes is given in <a href="DirectoryErrorMessages.htm#_Directory_Error_Messages">Directory Error Messages</a>.</p>
+        <p class="BodyText2">There are two primary Error message codes:</p>
+        <ul style="list-style-type: disc;margin-left: 75pt;">
+            <li style="list-style-type: disc;color: #000000;">A "900" indicates that there was an error due to content or validation.</li>
+            <li style="list-style-type: disc;color: #000000;">A "600" indicates there is a communication-based error.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc512495527"></a>Message Format</h2>
+        <p class="BodyText1">For all messages, customers must be able to process incoming syntactically valid maximum and minimum populated messages. Optional data elements (and values therein) shall not cause message failure. </p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">0</span><span style="font-weight: bold;">0</span><span style="font-weight: bold;">1 </span>Receivers shall not reject any incoming messages due to misalignment of local directory contents, lack of entries for the sender, or use of address standardization within the customer’s local directories.</p>
+        <p class="rfsNote"><span style="font-weight: bold;">D.001 Note</span>: Vendors should validate message content prior to sending a message.</p>
+        <p class="BodyText1">When sending only a Date (not Date and Time), it should be sent in your local time zone and the receiver should interpret it in their local time. Neither party should attempt to convert the Date to UTC.</p>
+        <p class="BodyText1">All standard programming languages should have a function for generating a date in the UTC time zone or displaying a date in the local time zone. The format of the date/time fields in the XML schema must use the xsd:dateTime format. Examples of that format are: CCYY-MM-DDTHH:MM:SS.FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example 2013-01-01T16:09:04.5Z, or 2013-01-01T16:09:04.5-00:00, or 2013-01-01T16:09:04.5+00:00, where 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the “Z” in the first example or the “-00:00” in the second example, or the “+00:00” in the third example. The fractional seconds is not required. Refer to xsd:dateTime for more information.</p>
+        <p class="BodyText1">For simple date fields that do not include the time portion, the format is: CCYY-MM-DD.</p>
+        <h3 class="Heading3"><a name="_Toc512495530"></a>File Download Escape Characters</h3>
+        <p class="BodyText1">For Provider Location download files the following three characters require escape logic.</p>
+        <table style="border-collapse: collapse;">
+            <col style="width: 53pt;" />
+            <col style="width: 161pt;" />
+            <tr>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #C0C0C0;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;">
+                    <p class="TableHeading">Character</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #C0C0C0;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;">
+                    <p class="TableHeading">Escape String in Download Field</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;">
+                    <p class="TableBody">^</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;">
+                    <p class="TableBody">\S\</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;">
+                    <p class="TableBody">|</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;">
+                    <p class="TableBody">\F\</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;">
+                    <p class="TableBody">~</p>
+                </td>
+                <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;">
+                    <p class="TableBody">\R\</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Directory 6.0 is a pipe delimited file. Escaping characters we use as delimiters in the file make the data in the field &gt; 35 characters until it has been ‘unescaped’.</p>
+        <h3 class="Heading3"><a name="_Toc512495531"></a>Message Validation</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+        <h2 class="Heading2"><a name="_Toc512495532"></a>Administration</h2>
+        <p class="BodyText1">Customers are the primary managers of their respective records and are responsible for maintaining alignment with credentialing authorities, for example: state licensure, National Plan and Provider Enumeration System (NPPES NPI Registry), Drug Enforcement Administration (DEA), and NCPDP. Customers should ensure that, when using multiple datasets for directory and messaging activities, attention and commitment to field alignment is made. </p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">009</span> When Organization details are included within a message transaction on the Surescripts network, the following fields shall match the information in the Surescripts Organization Directory Download for the sender and/or recipient segment:</p>
+        <ul>
+            <li>NCPDPID</li>
+            <li>Store Number</li>
+            <li>NPI</li>
+            <li>PayerID</li>
+            <li>Business (Organization) Name </li>
+        </ul>
+        <div class="noteACR">
+            <p><span style="font-weight: bold;">D.009 </span><span style="font-weight: bold;">Notes/Examples:</span> A friendly business/organization name for the pharmacy organization may be established but may not replace or eliminate the pharmacy organization name as supplied in the Surescripts Directory and shall not be sent in the outgoing message.</p>
+            <ul>
+                <li>Address (Standardization permissible)</li>
+                <li>Phone (Primary preferred, Secondary accepted)</li>
+                <li>Fax (Primary preferred, Secondary accepted)</li>
+            </ul>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">010 </span>When Provider details are included within a message transaction on the Surescripts network, the following fields shall match the information in the Surescripts Provider Directory Download for the sender and/or recipient segment:</p>
+        <ul>
+            <li>SPI</li>
+            <li>NPI</li>
+            <li>Provider First Name</li>
+            <li>Provider Last Name</li>
+            <li>Address (Standardization permissible)</li>
+            <li>Phone (Primary preferred, Secondary accepted)</li>
+            <li>Fax (Primary preferred, Secondary accepted)</li>
+        </ul>
+        <div class="noteACR">
+            <p class="ExampleText"><span style="font-weight: bold;">D.010 Note:</span><span style="font-weight: bold;">Field content consistency when using multiple datasets is critical.</span>
+            </p>
+            <p class="ExampleText">It is critical that key and routing identifiers not be altered in regards to credential or address demographics; this could result in an unintended sharing of PHI and/or delay in patient care.</p>
+            <p class="ExampleText">Composite and enhanced records may be used provided they do not contradict nor conflict with the Surescripts Directory listing.</p>
+            <p class="ExampleText">In regards to communication numbers, the primary number in the Surescripts Directory is always preferred, but secondary numbers provided against a record within the directory are also acceptable.</p>
+            <p class="ExampleText">If the Surescripts Directory listing does not have the required field for a specific message (for example Pharmacy NPI for a NewRx message), the sender may use local directory or third-party information to ensure the message is complete.</p>
+        </div>
+        <p class="BodyText1">Administration rights are by directory type (Provider, Pharmacy Organization, etc.). Users must have the respective permission in place against their UserID. When set up as an Administrator user, the following general functions can be provided:</p>
+        <ul>
+            <li>Add a new record to the directory</li>
+            <li>Update existing information (including active time frame)</li>
+            <li>Download the list of providers or organization on the Surescripts network</li>
+        </ul>
+        <p class="BodyText1">Customers are responsible for the timely update of all customer sourced information.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">002 </span>Customers shall ensure that modifications to corresponding Provider or Organization directory information are sent to Surescripts within 24 hours.</p>
+        <div class="noteACR" style="page-break-before: always;">
+            <p style="margin-bottom: 6pt;"><span style="font-weight: bold;font-size: 11pt;">D.002 Notes/Examples: </span><span style="font-size: 11pt;">Modifications include, but are not limited to:</span>
+            </p>
+            <ul>
+                <li style="margin-bottom: 6pt;">Service Level (the ability to accept/receive transactions)</li>
+                <li style="margin-bottom: 6pt;">Address Demographics</li>
+                <li style="margin-bottom: 6pt;">Legal Name</li>
+            </ul>
+            <p style="margin-bottom: 6pt;font-size: 11pt;">Keeping the local directories in sync with the Surescripts Directory drives reduced errors and minimizes delay in patient care.</p>
+        </div>
+        <h3 class="Heading3"><a name="_Toc512495533"></a>Organizations</h3>
+        <p class="BodyText1">There are three types of Organizations: Pharmacy, General and Payer. Customers must have a contract with the organization before adding or updating that organization's directory record information. New organization types may be added in the future.</p>
+        <p class="BodyText1">Surescripts assigns an OrganizationID which uniquely identifies each organization. Customers will only have access to information in the Admin Console or download file based on permissions established in the Integration process.</p>
+        <h4 class="Heading4">Pharmacy Organization</h4>
+        <p class="BodyText1">The Pharmacy Organization type identifies locations that provide medication dispensing services: Mail Order, Retail, and In-house dispensing. Additional characteristics (for example Kiosk, LongTermCare, Specialty) may be added to the record details. Each pharmacy requires a unique NCPDPID, which is used as the routing identifier in supported messages and when making directory entries.</p>
+        <h4 class="Heading4">General Organization</h4>
+        <p class="BodyText1">The General Organization allows for non-pharmacy specific entities, such as clinics, private practices or hospital departments. General Organization records support clinical direct messaging at the organizational level and provide a facility level record that can be associated to individual provider records. General Organization locations are currently not used for traditional prescription routing, but may be linked to provider records to help with discovery. </p>
+        <h4 class="Heading4">Payer Organization</h4>
+        <p class="BodyText1">The PayerID uniquely identifies a payer and is used for Surescripts Electronic Prior Authorization and Real-Time Prescription Benefit-related transactions. This element may be expanded for other uses in the future.</p>
+        <h3 class="Heading3"><a name="_Toc512495534"></a>Provider Information</h3>
+        <p class="BodyText1"><span style="font-weight: bold;">Provider</span>: A credentialed individual enabled to send/receive relevant transactions at one or more locations. Provider vendors must have a relationship with the provider before adding or updating that provider's directory record information. It is recommended to only add provider locations where the provider actually delivers services and shortly before the provider goes live.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">Provider Location</span>: A specific address that is associated to an individual provider.</p>
+        <h4 class="Heading4"><a name="_Surescripts_Provider_ID"></a><a name="_Ref511127305"></a>Surescripts Provider ID (SPI)</h4>
+        <p class="BodyText1">Providers eligible to e-prescribe will have a unique individual National Provider ID (NPI). As the NPI is not location-specific for the provider, Surescripts assigns its own provider identifier, the Surescripts Provider ID (SPI) to capture the multiple locations in which a provider may practice. The SPI is a unique routing identifier.</p>
+        <p class="BodyText1">In addition to practicing from multiple locations, a provider may be registered with Surescripts by more than one vendor. Each vendor is responsible for maintaining their own directory information.</p>
+        <p class="BodyText1">The SPI is required for the UpdateProviderLocation and DeactivateProviderLocation transactions.</p>
+        <h4 class="Heading4">Learning Directory Capability</h4>
+        <p class="BodyText1">This capability simplifies the registration and management process for providers that practice at multiple locations. Customer accounts continue to own the management of the registered SPI's location and service levels.</p>
+        <p class="BodyText1">The provider's address in a message should match the directory addresses for that provider's SPI. A mismatch in address information can cause routing issues for pharmacies sending RxRenewalRequests. The omission of an address from the Surescripts Directory can result in faxes and delay in patient care. For customers with single registration address workflows, the requirement for this matching of directory to transaction content can be an issue. To assist and provide an alternative registration approach, Surescripts Learning Directory capability allows for augmenting provider locations not registered by vendors. When this capability is activated for the provider's customer account, Learning Directory will learn (enroll) an address location when the address in the NewRx message is different from that of the SPI's registered address. The registered SPI value is assigned to the learned locations(s). The customer that manages the registered SPI can expire or remove the learned location using Admin Console. However, locations will be relearned if a NewRx is sent from that same provider and location.</p>
+        <p class="BodyText1">Pharmacies benefit through improved matching opportunities when initiating an RxRenewalRequest or RxChangeRequest. Provider vendors benefit from this streamlined, automated registration process. See the <a href="LearningDirectory.htm">Learning Directory</a> section for more information.</p>
+        <h3 class="Heading3"><a name="_Toc512495535"></a>User Permissions/Administration</h3>
+        <p class="BodyText1">Surescripts provides customers with one or more UserIDs to administer the directory management process. Permissions are assigned to the UserID and control which directory management functions the UserID can perform.</p>
+        <p class="BodyText1">UserIDs are created for:</p>
+        <ul>
+            <li>Account Directory UserID - specific directory functionality that can be used for account level directory record management and download requests.</li>
+            <li>Shared Account UserID - a group of shared users within a customer account, e.g. Support or Registration Teams, accessible using Admin Console.</li>
+            <li>Individual UserID - when access to message content details requires special message content permission; e.g. management or administrative roles, accessible using Admin Console. </li>
+        </ul>
+        <p class="BodyText1" style="margin-top: 0pt;margin-bottom: 0pt;">&#160;</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Key Permissions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Applies to</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">CSPDirectory</p>
+                        <p class="TableBody">UpdateBasic </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Used only when managing records and requesting downloads using Directory Messaging features.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Account Directory UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Prescriber/Pharmacy/Org</p>
+                        <p class="TableBody">BASIC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Best for users who do not need to create or update records (read-only). Basic users can still search for messages.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Shared Acct UserID</p>
+                        <p class="TableBody">Individual UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Prescriber/Pharmacy/Org</p>
+                        <p class="TableBody">ADMIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Manages records. Provides access to download files and other features. Respective Admin permissions required if managing records across multiple products (read/write access).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Shared Acct UserID</p>
+                        <p class="TableBody">Individual UserID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">CSPMessage PHIAccess</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">May be used with Basic or Admin, but only on an Individual UserID. Allows for the view of message content – both transactional and directory-based. Allows visibility to PHI.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Individual UserID</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc512495536"></a>Record Maintenance</h3>
+        <p class="BodyText1">The vendor is responsible for the timely update of their record content. This applies to all management elements of the record, including enabling and disabling record use on the network. </p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">002 </span>Customers shall ensure that modifications to corresponding Provider or Organization directory information are sent to Surescripts within 24 hours.</p>
+        <div class="noteACR">
+            <p style="margin-bottom: 6pt;"><span style="font-weight: bold;font-size: 11pt;">D.002 </span><span style="font-weight: bold;font-size: 11pt;">Notes/Examples: </span><span style="font-size: 11pt;">Modifications include, but are not limited to:</span>
+            </p>
+            <ul>
+                <li style="margin-bottom: 6pt;">Service Level (the ability to accept/receive transactions)</li>
+                <li style="margin-bottom: 6pt;">Address Demographics</li>
+                <li style="margin-bottom: 6pt;">Legal Name</li>
+            </ul>
+            <p style="font-size: 11pt;">Keeping the local directories in sync with the Surescripts Directory drives reduced errors and minimizes delay in patient care.</p>
+        </div>
+        <p class="BodyText1">The vendor should employ processes that keep content up-to-date and in alignment with external entities (e.g. NPPES NPI Registry, DEA, State Licensure) as shared information changes. The directory content should also align with other internal data sets used by vendor when populating transaction content. Alignment should be in element formatting (e.g. "North" vs. "N", "Street" vs. "ST"). Registration and Message Content data sets should mirror each other for any element that is required between the Surescripts Directory and the corresponding message content.</p>
+        <h3 class="Heading3"><a name="_Toc512495537"></a>Automated Directory Maintenance (ADM)</h3>
+        <p class="BodyText1">In addition to Surescripts requiring customer record management, Surescripts will monitor network transaction activity and, as applicable, manage customer records not showing active use.</p>
+        <p class="BodyText1">The Automated Directory Maintenance (ADM) process assists with managing the Provider and Organization download files made available to customers. ADM rules can vary by product line and frequency. Current ADM related rules include:</p>
+        <ul>
+            <li>Provider records that do not respond to any RxRenewalRequest in 180 days will result in the removal of the Refill service level.</li>
+            <li>Provider records that do not send a NewRx transaction in 366 days will result in removal of the New and associated electronic prescribing service levels.</li>
+            <li>When a Provider Record reaches its published active end time and has the New service level, the New service level will remain until the next cycle of the monthly ADM process has run. If the record has sent a NewRx message in the last 30 days, the active end time will be extended for two years. </li>
+        </ul>
+        <div class="note">
+            <p><b>Note</b>:</p>
+            <ul>
+                <li>Any other service levels will be removed on the scheduled active end time and will not be reinstated as part of ADM; the customer will have to add them as applicable.  </li>
+                <li>ADM processing rules may be updated by Surescripts as business dictates. Notification to customers will occur at least 30 days before such updates are put in place.</li>
+            </ul>
+        </div>
+        <h4 class="Heading4">Best Practices</h4>
+        <p class="BodyText1">Records that are changed as a result of ADM are published in a monthly ADM report on the Reports Log page of the Admin Console. It is the customer's responsibility to review the report and make updates to their directory information.</p>
+        <p class="BodyText1">Customers are encouraged to pull a copy of their respective directory download to review owner records and apply any updates prior to expiration of a record. This ongoing review may need to occur monthly or quarterly based on the size of the customer and registration workflows. Customers should also compare their directory records against the Surescripts Directory to ensure field elements are in alignment and complete.</p>
+    </body>
+</html>

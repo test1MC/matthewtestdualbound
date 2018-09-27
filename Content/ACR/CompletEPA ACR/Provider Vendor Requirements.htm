@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1575" MadCap:lastWidth="754">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc451429930"></a>Provider Vendor Requirements</h1>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For customers (participants) using CompletEPA<sup>®</sup> Accelerator, the items marked with<span style="font-size: 14pt;"> *</span> are certified by Surescripts on your behalf.</p>
+        <p class="BodyText1Indent">2.1 The application shall make available for display the &lt;ResponseStatus&gt; and each occurrence of a &lt;PANote&gt; from all response transactions (PAInitiationResponse, PAResponse, PAAppealResponse, and PACancelResponse). In cases where the PBM is not the PA processor or enabled for CompletEPA®, there may be multiple PAInitiationResponses for a single PAInitiationRequest and the application shall make available for display the &lt;PANote&gt; from all PAInitiationResponse(s).*</p>
+        <p class="BodyText1Indent">2.2 When the PBM or payer provides a question set in the PAInitiationResponse, the application shall display: </p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>&lt;QuestionSetTitle&gt;, </li>
+            <li>&lt;QuestionSetDescription&gt;, </li>
+            <li>&lt;QuestionSetContactCommunicationNumber&gt;, and </li>
+            <li>&lt;DeadlineForReply&gt;.*</li>
+        </ol>
+        <p class="BodyText1Indent">2.3 The application shall support the ePA question set conditional logic as outlined in the NCPDP ePA standard.*</p>
+        <p class="BodyText1Indent">2.4 The application shall require all specified questions to be answered prior to sending the PARequest.*</p>
+        <p class="BodyText1Indent">2.5 The application shall require users to start the ePA process from the beginning if they want to reinitiate an ePA that was cancelled by the providervendor or closed by the PBM/Payer.</p>
+        <p class="BodyText1Indent">2.6 The application shall not allow users/systems to delete an ePA task awaiting a response from the PBM/Payer, but shall send a PACancelRequest transaction.*</p>
+        <p class="BodyText1Indent">2.7 Provider vendors who are using Admin Console to identify PBMs/Payers with an ePA service level shall update their local PBM/Payer list on a weekly basis, at a minimum.</p>
+        <p class="BodyText1Indent" style="page-break-before: always;">2.8 For all request message types, when someone other than the prescriber is the main contact and has a different &lt;PrimaryTelephone&gt; than the prescriber, the application shall populate the Provider composite with the &lt;Name&gt; and &lt;PrimaryTelephone&gt;.</p>
+        <p class="BodyText1Indent">2.9 Provider vendors shall not send a PAAppealRequest if the value of the &lt;IsEAppealSupported&gt; field is set to N on the PAResponse.*</p>
+        <p class="BodyText1Indent">2.10 Provider vendors shall populate the following fields in the PAInitiationRequest transaction when returned in the X12 Eligibility Response (271):</p>
+        <ul>
+            <li class="ListBullet5">BIN</li>
+        </ul>
+        <ul>
+            <li class="ListBullet5">PCN</li>
+        </ul>
+        <ul>
+            <li class="ListBullet5">Plan ID</li>
+        </ul>
+        <ul>
+            <li class="ListBullet5">Group Number</li>
+        </ul>
+        <ul>
+            <li class="ListBullet5">PBM Member ID</li>
+        </ul>
+        <ul>
+            <li class="ListBullet5">PBM Participant ID</li>
+        </ul>
+        <p class="BodyText1Indent">2.11 &lt;Prescriber&gt; &lt;Address&gt;: For ePA messages, this address shall match what is in the directory for this provider.</p>
+        <p class="BodyText1Indent">2.12 &lt;DrugDescription&gt; The item or drug description field shall include the full drug name, strength, and form (in that exact sequence).</p>
+        <p class="BodyText1Indent">2.13 &lt;DrugCoded.ProductCode&gt; When sending, the NDC must be an 11-digit numeric NDC in the 5-4-2 format. Dashes shall not be used and leading zeros shall NOT be suppressed.</p>
+        <p class="BodyText1Indent">2.14 If the &lt;DrugCoded.Strength&gt; composite is sent, the values shall be equivalent to the corresponding portions of the &lt;DrugDescription&gt; field (strength, unit of measure, and dose form).</p>
+        <p class="StylebodytextBold">
+            <br /><span style="font-family: Arial;">Example 1:</span>
+        </p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 246pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 112pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 97pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Field Name</p>
+                    </th>
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Proper Use</p>
+                    </th>
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Improper Use</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugDescription&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Primariea 10mg/10ml liquid</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthValue&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>5</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>10</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthUnitOfMeasure.Code&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>C91131 (mg/5ml)</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthForm.Code&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>C42953</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Example 2:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 246pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 112pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 97pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Field Name</p>
+                    </th>
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Proper Use</p>
+                    </th>
+                    <th style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Improper Use</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugDescription&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Amoxicillin 500 mg oral capsule</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthValue&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>500</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>250</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthUnitOfMeasure.Code&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>C28253 (Milligram)</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>C28254 (Milliliter)</p>
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-top-style: none;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&lt;DrugCoded.Strength.StrengthForm.Code&gt;</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>C25158 (Capsule)</p>
+                    </td>
+                    <td style="border-top-style: none;border-left-style: none;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-top: 0pt;padding-left: 5pt;padding-bottom: 0pt;padding-right: 5pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>C42998 (Tablet)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1Indent">2.15 &lt;PotencyUnitCode&gt; Quantity Unit of Measure Code Qualifiers shall be correctly associated with drug descriptions.</p>
+        <p class="BodyText1Indent">2.16 The drug name shall be an item that is currently available for dispensing in the marketplace. Participants are expected to work with their drug database vendor to satisfy this requirement.</p>
+        <p class="BodyText1Indent">2.17 &lt;AddressLine1&gt; PO Box information shall not be sent in this field.</p>
+    </body>
+</html>

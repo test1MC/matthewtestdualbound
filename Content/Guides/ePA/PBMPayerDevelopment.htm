@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="816" MadCap:lastWidth="977">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">PBM/Payer Development and Integration</h2>
+        <p class="BodyText1" style="font-weight: bold;">Drug and Patient Matching</p>
+        <p class="BodyText1">The PAInitiationRequest might not include the PBM Member ID in all cases. PBM/payers must develop secondary patient-matching criteria to successfully find the patient. Unmatchable patients may go into to a manual queue, or the PAInitiationRequest could respond with automated “patient not found”.</p>
+        <p class="BodyText1" style="font-weight: bold;">Work Queue</p>
+        <p class="BodyText1">There are several instances where prior authorizations might need to be manually worked:</p>
+        <ul>
+            <li>Drug cannot be matched</li>
+            <li>Provider vendor sends an attachment</li>
+            <li>Denials and other cases where you are contractually or regulatory obliged to send to a manual queue</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">Exceptions and Medicaid Process</p>
+        <p class="BodyText1">PBM/payers should consider having a generic question set for all Medicaid prior authorizations since these are typically not medication/condition specific. </p>
+        <p class="BodyText1" style="font-weight: bold;">Workflow and Internal Process</p>
+        <p class="BodyText1">PBM/payers should consider sending coded references (e.g. LOINC codes) along with questions in a question set. This will allow the provider vendor to extract information from the patient's record instead of manually answering each question.</p>
+        <p class="BodyText1" style="font-weight: bold;">Handling Prior Authorization Priority</p>
+        <p class="BodyText1">Priorities and processing requirements vary among health plans and other government programs, so the NCPDP standard does not support a priority flag. Rather, in cases where PBM/payers have to determine the priority of a PA, a question should be provided to determine the priority of the request within the question set.</p>
+        <p class="BodyText1" style="font-weight: bold;">Service Date</p>
+        <p class="BodyText1">As there is no discrete ServiceDate field in the PAInitiationRequest, PBM/payers should treat the PAInitiationRequest message SentTime field as the de facto service date of the message.</p>
+    </body>
+</html>

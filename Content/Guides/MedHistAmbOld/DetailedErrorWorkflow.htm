@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1641" MadCap:lastWidth="1224">
+    <head>
+    </head>
+    <body>
+        <h3 class="Heading3">Detailed RxHistory&#160;Message Error Workflow</h3>
+        <p>The following diagrams depict various scenarios where Error and Status messages are sent in response to request and response messages. Note that this applies to any of the Medication History messages for all of these scenarios.</p>
+        <p>
+            <img src="../../Resources/Images/MedHistAmb/Med Hist Amb error transaction workflow.png" style="width: 657px;height: 759px;" MadCap:mediastyle="@media print { min-width: 75%; }" />
+        </p>
+        <p style="font-weight: bold;">Scenario 1:</p>
+        <p>1a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>1b) Message cannot be recognized and a NAK is sent to the sending customer.</p>
+        <p style="font-weight: bold;">Scenario 2:</p>
+        <p>2a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>2b) Format is recognized as NCPDP but errors were found in the message. An Error message is returned to the sending customer from Surescripts.</p>
+        <p style="font-weight: bold;">Scenario 3:</p>
+        <p>3a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>3b) Message is forwarded on to the receiving customer from Surescripts.</p>
+        <p>3c) Receiving customer cannot recognize the message and sends a NAK to Surescripts.</p>
+        <p>3d) An Error message is returned to the sending customer from Surescripts.</p>
+        <p style="font-weight: bold;">Scenario 4:</p>
+        <p>4a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>4b) Message is forwarded on to the receiving customer from Surescripts.</p>
+        <p>4c) Receiving customer validates the message, finds errors in the message, and returns an Error message.</p>
+        <p>4d) Error message is forwarded to the sending customer.</p>
+        <p style="font-weight: bold;">Scenario 5:</p>
+        <p>5a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>5b) Message is forwarded on to the receiving customer from Surescripts.</p>
+        <p>5c) Receiving customer sends a syntactically invalid Medication History response.</p>
+        <p>5d) Message can be recognized, but a Syntax Validation Error (code 900) message is sent back to the receiving customer from Surescripts.</p>
+        <p>5e) Error message is sent to the sending customer indicating that there was a communication issue (602-007).</p>
+        <p>5f) Receiving customer responds with a Status (code 010) message.</p>
+        <p style="font-weight: bold;">Scenario 6:</p>
+        <p>6a) Sending customer sends a Medication History message to Surescripts.</p>
+        <p>6b) Message is forwarded on to the receiving customer from Surescripts.</p>
+        <p>6c) Receiving customer sends a Medication History message to Surescripts.</p>
+        <p>6d) Message is recognized, but failed validation. Error message is sent to the receiving customer from Surescripts.</p>
+        <p>6e) Error message indicating that there was a communication issue (602-007) is sent to the sending customer from Surescripts.</p>
+        <p>6f) Receiving customer responds with a Status (code 010) message.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the 010 indicates that no further messages will follow.</p>
+    </body>
+</html>

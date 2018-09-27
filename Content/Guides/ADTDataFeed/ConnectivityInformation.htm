@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1169.333" MadCap:lastWidth="855">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1">Connectivity Information</h1>
+        <h2 class="Heading2"><a name="Connecti"></a>Connectivity HTTPS</h2>
+        <p class="BodyText1">The Surescripts network uses the HTTPS protocol for the transport of messages between network customers. HTTPS is a secure, reliable, and widely used protocol for the exchange of information over TCP/IP.</p>
+        <h2 class="Heading2"><a name="Basic"></a>Basic Authentication</h2>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentic information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Message data for customer processing is included in the HTTP response body when the HTTP status code is 200. Response body content for all status codes other than 200 will not contain data for parsing (e.g., message data). Instead, reference HTTP status code provided in the response.</p>
+        <p class="BodyText1">Security Rules - Surescripts requires that all messages sent and received use Basic Authentication. The "Authorization" header of the HTTP message must contain the user-ID and password, separated by a single colon (":") character, within a base64 encoded string. </p>
+        <p class="StylebodytextBold">How Basic Authentication is Used</p>
+        <p class="BodyText1">Surescripts sets up a username and password for customers to use in messages customers send to Surescripts. Customers use Basic Authentication in the message header for messages posted to the Surescripts assigned URL in test and production. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="font-size: 11pt;">Customers must use the complete URL provided to them by Surescripts.</span>
+        </p>
+        <p class="StylebodytextBold">Attaching the username and password to the header (Base64 password encoding)</p>
+        <p class="BodyText1">Concatenate the username and password, separating them with a colon: “username:password”</p>
+        <p class="BodyText1">Convert that concatenation into a UTF8 encoded byte array</p>
+        <p class="BodyText1">Convert that array into a BASE64 encoded string:<br></br>dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Specify the authentication type of 'Basic' by adding the word 'Basic' to it:<br></br>"Basic dXNlcm5hbWU6cGFzc3dvcmQ="</p>
+        <p class="BodyText1">Add that string to the Authorization header. It will look like:<br></br>Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Send the web request - HttpWebRequest.Post</p>
+        <p class="StylebodytextBold">Basic Authentication Example:</p>
+        <p class="BodyText1">This Basic Authentication example can be found at: <a href="http://en.wikipedia.org/wiki/Basic_authentication_scheme" class="Hyperlink" target="_blank">http://en.wikipedia.org/wiki/Basic_authentication_scheme</a></p>
+        <p class="BodyText1">The user name "Aladdin" and password "open sesame" would be combined as "Aladdin:open sesame" – which is equivalent to QWxhZGRpbjpvcGVuIHNlc2FtZQ== when encoded in base-64. In other words, </p>
+        <p class="BodyText1">Sample Post:</p>
+        <p style="margin-left: 72pt;">POST /URL Provided to you by Surescripts HTTP/1.1</p>
+        <p style="margin-left: 72pt;">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <p style="margin-left: 72pt;">Content-Type: text/xml</p>
+        <p style="margin-left: 72pt;">Host: xxx.xx.x.xxx</p>
+        <p style="margin-left: 72pt;">Content-Length: 1142</p>
+        <p style="margin-left: 72pt;">Expect: 100-continue</p>
+        <p style="margin-left: 72pt;">HTTP/1.1 100 Continue</p>
+    </body>
+</html>

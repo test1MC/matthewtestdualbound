@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="596" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" style="font-family: Arial;" MadCap:autonum="0.1 "><a name="_Toc452734029"></a>EDIFACT Trimming</h2>
+        <p class="BodyText1">All non-essential characters shall<sup>*106R-018</sup> be suppressed from the message where permissible (see EDIFACT Representation in the Prescription Routing Implementation Guide). Non-essential characters include leading spaces, trailing spaces, leading zeroes, and trailing zeroes where permissible (see Numeric Representation in the Prescription Routing Implementation Guide).</p>
+        <p class="BodyText1">The length of SCRIPT message can be optimized in several ways:</p>
+        <ul style="list-style-type: disc;">
+            <li>Empty segments should not be transmitted.</li>
+        </ul>
+        <ul style="list-style-type: disc;">
+            <li>Depending on the trading partner and the message, not all data elements will be utilized. All data elements within a segment after the last data element used may be dropped.</li>
+        </ul>
+        <p class="BodyText1">Although SCRIPT messages can be trimmed in several ways, software systems shall<sup>*106R-019</sup> not assume that a trading partner would always trim. The systems shall<sup>*106R-020</sup> be capable of properly interpreting a full-length message. If a data element is unused, it may be omitted; however, the data element separator character must be used to “hold the place” of the data element. SCRIPT messages do not contain field identifiers; therefore, all data elements (up to the segment trim point) must be accounted for with separator characters.</p>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="BodyText1">In the following example, a colon : is used to simulate a data element separator character. A single quote ’ represents the segment terminator. These two characters are used for illustrative purposes only. In an actual transmission, the terminators are unprintable characters.</p>
+        <p class="BodyText1Indent2">Using all data elements: 771011:30:ML:456’</p>
+        <p class="BodyText1Indent2">Omitting 2 data elements: 771011:::456’</p>
+        <p class="BodyText1Indent2">Trimmed last element: 771011:30:ML’</p>
+    </body>
+</html>

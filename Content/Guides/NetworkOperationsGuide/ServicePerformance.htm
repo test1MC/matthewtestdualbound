@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc440291251"></a>Service Performance</h1>
+        <p class="BodyText1">Surescripts service performance includes responsiveness and other fit-for-use system measurements.</p>
+        <p class="BodyText1">Surescripts service performance management function includes:</p>
+        <ul>
+            <li>Service threshold establishment;</li>
+            <li>Service monitoring;</li>
+            <li>Transaction and process performance analysis and tuning;</li>
+            <li>Implementing change requests specific to performance.</li>
+        </ul>
+        <h2 class="Heading2"><a name="Surescri"></a>Surescripts Performance</h2>
+        <p class="BodyText1">Please refer to the appropriate implementation or companion guide for specific product response timeout thresholds.</p>
+        <h3 class="Heading3"><a name="_Toc440291253"></a>File Loads</h3>
+        <p class="BodyText1">Surescripts processes files from customers using a first-in, first-out (FIFO) file processing approach. Files are processed by file type, in the order that they are received from customers. Excluding Formulary files, Surescripts processes and appropriately responds to each file receipt per customer within a 24-hour period from confirmed receipt of each file, unless specified otherwise in a product specific implementation guide.</p>
+        <h3 class="Heading3"><a name="Director"></a>Directory Download Files</h3>
+        <p>Directory download files (FULL and NIGHTLY ) will be available by 7:00AM ET for all customers except when immediately following a scheduled maintenance event.</p>
+        <h2 class="Heading2"><a name="Customer"></a>Customer Performance</h2>
+        <p class="BodyText1">Please refer to the appropriate implementation or companion guide for specific product response timeout thresholds.</p>
+        <h3 class="Heading3"><a name="Master"></a>Master Patient Index (MPI)</h3>
+        <p>Prescription Benefit Managers (PBMs) and other health care payers (Payers) provide Surescripts with PBM ID Load files containing their member rosters to populate the Surescripts Master Patient Index (MPI).  Surescripts uses the PBM ID Load files to identify individuals across the Surescripts network. The Surescripts search process uses demographics to identify a patient and then uses the PBM/Payers’ unique member ID to communicate with PBM/Payers.  Loading updated PBM ID files is critical for accurate, effective, and efficient day-to-day MPI operations.  Delays or inaccuracies lead to patient matching failures.</p>
+        <p>PBMs/Payers are required to actively manage their members by loading the PBM ID Load file at regular intervals, as specified by current application certification requirements, or no less than weekly. PBM/Payers should have in place the necessary workflow/protocols to ensure that the Surescripts member directory is up-to-date for accurate patient matching.</p>
+        <h3 class="Heading3"><a name="_Toc440291255"></a>Directory Management &amp; Connectivity</h3>
+        <p class="BodyText1">Directory Management encompasses all actions required to register and maintain organizations, including Pharmacies, Payers, and General organizations and ProviderLocations using the Surescripts network and the end-user system locations. Directory Management is critical to the accurate, effective and efficient day-to-day operations of the Surescripts network. Delays in directory updates or vendor sourced information leads to message misrouting, delayed delivery, and transmission of electronic messages via alternative delivery methods such as fax, or message delivery failures.</p>
+        <p class="BodyText1">Surescripts provides the following mechanisms for customers to manage their directories:</p>
+        <ul>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Surescripts Admin Console</li>
+            <li>
+                <p>Surescripts Directory Messaging API</p>
+            </li>
+            <li>
+                <p>Surescripts Directory Download Export Files</p>
+            </li>
+        </ul>
+        <p>Customers are required to actively maintain their local directory information that is published to the Surescripts directory at regular intervals, either as specified by current application certification requirements, or within a week if requirements do not exist. Customers should also establish necessary workflow/protocols to ensure the Surescripts directory and the end-user local customer’s directory are audited on a regular bases.  Customer  ProviderLocation/Organization records updated prior to 7:00 PM ET will be included in the following day’s directory file output.</p>
+        <p>Customers are also required to retrieve Surescripts network directory information on a daily basis and apply updates to end-user systems as specified by published application certification requirements, or within 48 hours of the previous directory retrieval.</p>
+        <h3 class="Heading3"><a name="_Toc440291256"></a>Formulary File Loads</h3>
+        <p class="BodyText1">Formulary files are an important part of e-prescribing and keeping this information up to date is required on a regular basis due to frequent changes. Customers should refer to current application certification requirements to determine appropriate formulary download frequency. Customers must ensure adequate bandwidth for download speed as well as off-hours process scheduling to download these weekly updates in support of e&#8209;prescribing.</p>
+    </body>
+</html>

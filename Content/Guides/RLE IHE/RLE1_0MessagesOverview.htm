@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="5596.333" MadCap:lastWidth="1125">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Lori.Ash" MadCap:initials="LO" MadCap:id="2" MadCap:timestamp="2018-06-04T15:27:11.2810021-05:00" />
+            <MadCap:AddChange MadCap:userName="Lori.Ash" MadCap:initials="LO" MadCap:id="3" MadCap:timestamp="2018-06-04T15:27:31.1760425-05:00" />
+        </MadCap:changeData><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc435024006"></a>RLE 1.0 Messages Overview</h1>
+        <h2 class="Heading2"><a name="_Toc435024007"></a>Responsibilities of an IHE Enabled Vendor</h2>
+        <p class="BodyText1">As described above, the primary responsibility of a <MadCap:variable name="Variables.ProductName" /> requesting location is to submit record requests to the Surescripts.</p>
+        <p class="BodyText1">In addition, IHE enabled requesting locations are also asked to be IHE enabled, responding locations. This involves two responsibilities:</p>
+        <ol>
+            <li>Provide Surescripts with covered patients. This could be done through loading the Master Patient Index (MPI) or by responding to XCPD Requests from Surescripts.</li>
+        </ol>
+        <ul class="BulletIndent1">
+            <li>Reference the Surescripts Master Patient Index (MPI) File Load Supplement Guide or the<MadCap:change MadCap:changes="3"> INSERT XREF TO ADT MESSAGES OVERVIEW SECTION</MadCap:change><MadCap:change MadCap:changes="2"> Surescripts ADT Data Feed Implementation Guide</MadCap:change> for more information.</li>
+        </ul>
+        <ol MadCap:continue="true">
+            <li>Respond to XCA Query and Retrieve requests from Surescripts and other <MadCap:variable name="Variables.ProductName" /> customers.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc435024008"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold"><a name="_Toc435024009"></a>XCPD ITI-55 (Cross Community Patient Discovery)</p>
+        <p class="BodyText1">The IHE XCPD Request/Response supports the means to locate communities that hold patient records and the translation of patient identifiers across communities holding the same patient's data. The request is sent from the requesting location to the Surescripts <MadCap:variable name="Variables.ProductName" /> to discover if a patient matching the demographics sent from the requester is known. The response sent from Surescripts to the requesting location indicates if there was a patient match or no match.</p>
+        <p class="StylebodytextBold"><a name="_Toc435024010"></a>PLQ ITI-56 (Patient Location Query) </p>
+        <p class="BodyText1">The IHE PLQ Request/Response queries for a list of communities that may have records for a patient referenced by a patient identifier. The request message is sent from the requesting location after receipt of an XCPD Response from Surescripts indicating a patient match. The response sent from Surescripts to the requesting location contains the patient’s record locations.</p>
+        <p class="StylebodytextBold"><a name="_Toc435024011"></a>XCA Query ITI-38 (Cross-Community Access) </p>
+        <p class="BodyText1">The IHE XCA Query Request/Response supports the means to request retrieval of the list of available documents from responding locations.</p>
+        <p class="StylebodytextBold"><a name="_Toc435024012"></a>XCA Retrieve ITI-39 (Cross-Community Retrieve)</p>
+        <p class="BodyText1">The IHE XCA Retrieve Request/Response supports the means to directly obtain documents from IHE enabled responding locations. </p>
+        <p class="StylebodytextBold"><a name="_Toc435024013"></a>Surescripts Location Summary CDA</p>
+        <p class="BodyText1">Surescripts Location Summary CDA contains information on locations where a patient has been seen based on information gathered from the Surescripts network.</p>
+        <p class="BodyText1">Per IHE standards, the Location Summary CDA is an on-demand document.&#160; Metadata for the document will be returned in response to an XCA Query transaction. The actual CDA will be returned in response to an XCA Retrieve for the Location Summary CDA Unique Document ID. As an on-demand document, the content of the Location Summary CDA will reflect the most recent data available as of the date and time the XCA Retrieve transaction is processed.</p>
+        <h2 class="Heading2"><a name="_Toc435024015"></a>Detailed <MadCap:variable name="Variables.ProductName" /> Message Flow</h2>
+        <p class="Graphic" style="page-break-after: avoid;margin-left: 0pt;">
+            <img src="../../Resources/Images/NRLS/Detailed NRLS Message Flow.jpg" style="visibility: visible;mso-wrap-style: square;width: 787px;height: 344px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="StylebodytextBold"><b>Discover the Patient</b>
+        </p>
+        <p class="BodyText1Indent">1a) The requesting location sends an XCPD Message to query the Surescripts <MadCap:variable name="Variables.ProductName" /> and discover if a patient matching the demographics sent is known. </p>
+        <p class="BodyText1Indent">1b) <MadCap:variable name="Variables.ProductName" /> responds with a patient match or no match.</p>
+        <p class="BodyText1"><b>Discover Responding Record Locations (optional)</b>
+        </p>
+        <p class="BodyText1Indent">2a) The requesting location sends a PLQ Message to retrieve from the <MadCap:variable name="Variables.ProductName" /> a list of locations that have records for the patient.</p>
+        <p class="BodyText1Indent">2b) The <MadCap:variable name="Variables.ProductName" /> responds with record locations identified by home community and patient identification. </p>
+        <h3 class="Heading3"><a name="_Toc435024016"></a>Query and Obtain Patient Records Message Flow when PLQ is used to Discover Responding Locations</h3>
+        <p class="BodyText1"><MadCap:variable name="Variables.ProductName" /> does not maintain a Clinical Document Repository. Documents are retrieved from the source. </p>
+        <p class="BodyText1">There are three possible paths for retrieving documents from the responding locations including the following:</p>
+        <ul>
+            <li>Obtain patient records from IHE enabled vendor through Surescripts</li>
+            <li>Obtain Location Summary Document from Surescripts</li>
+            <li>Obtain patient records directly from IHE enabled vendor</li>
+        </ul>
+        <p class="StylebodytextBold">Scenario 1: Obtain Patient Records from IHE Enabled Vendor through Surescripts</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/NRLS/Query and Obtain Patient Records.png" style="visibility: visible;mso-wrap-style: square;width: 704px;height: 382px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1Indent">3a) An XCA Query Request is sent to Surescripts requesting patient records from the record location. The request is forwarded to the responding location.</p>
+        <p class="BodyText1Indent">3b) The responding location sends an XCA Query Response to Surescripts, which is forwarded to the requesting location.</p>
+        <p class="BodyText1Indent">4a) An XCA Retrieve Request is sent to Surescripts requesting retrieval of the patient records. The request is forwarded to the responding location.</p>
+        <p class="BodyText1Indent">4b) The responding location sends the patient records to Surescripts in an XCA Retrieve Response, which is forwarded to the requesting location.</p>
+        <p class="StylebodytextBold">Scenario 2: Obtain Location Summary Document from Surescripts</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/NRLS/Query and Obtain Patient Records_2.png" style="visibility: visible;mso-wrap-style: square;width: 476px;height: 399px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="BodyText1">3a) An XCA Query Request is sent to Surescripts.</p>
+        <p class="BodyText1Indent">3b) Surescripts sends an XCA Query Response with the Document ID and metadata of the dynamically generated Location Summary Document.</p>
+        <p class="BodyText1Indent">4a) The requesting location sends an XCA Retrieve Request for the patient record locations.</p>
+        <p class="BodyText1Indent">4b) Surescripts sends the Location Summary Document in the XCA Retrieve Response.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Scenario 3: Obtain Patient Records Directly from IHE Enabled Vendor</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/NRLS/Query and Obtain Patient Records_3.png" style="visibility: visible;mso-wrap-style: square;width: 350px;height: 388px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="BodyText1Indent">3a) An XCA Query Request is sent directly to the IHE enabled responding location requesting patient records.</p>
+        <p class="BodyText1Indent">3b) The responding location sends an XCA Query Response to the requesting location. </p>
+        <p class="BodyText1Indent">4a) An XCA Retrieve Request is sent to obtain the records from the IHE responding location.</p>
+        <p class="BodyText1Indent">4b) The responding location sends the patient records in the XCA Retrieve Response.</p>
+        <h3 class="Heading3"><a name="_Toc435024017"></a>Query and Obtain Patient Records Message Flow Without PLQ</h3>
+        <p class="BodyText1"><MadCap:variable name="Variables.ProductName" /> does not maintain a Clinical Document Repository. Documents are retrieved from the source. </p>
+        <p class="BodyText1">For systems that do not utilize PLQ, Surescripts is able to provide the detail of documents available from multiple sources using customized logic when processing an XCA Query request and response.&#160; This customized version allows systems to submit an XCA Query to Surescripts using the Surescripts assigned patient identifier returned in the XCPD response and receive information on documents available from the following sources:</p>
+        <ul>
+            <li>
+                <bodytext1>Patient records from IHE enabled vendors</bodytext1>
+            </li>
+            <li>
+                <bodytext1>Location Summary Document from Surescripts</bodytext1>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Scenario: Obtain documents from any responder using a single XCA Query followed by XCA Retrieve(s)</p>
+        <p class="StylebodytextBold">Step 1 – XCA Query</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/NRLS/NRLS XCA Query Federation.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="max-width: 95%;width: 735px;height: 429px;" />
+        </p>
+        <p class="BodyText1Indent">1a) An XCA Query Request is sent to Surescripts.</p>
+        <p class="BodyText1Indent">1b) Surescripts requests metadata from all possible responders:</p>
+        <p class="BodyText1Indent2">1b-1) An XCA Query is sent to available IHE responders.</p>
+        <p class="BodyText1Indent2">1b-2) A search is issued for Location Summary data. </p>
+        <p class="BodyText1Indent">1c) Surescripts aggregates responses and builds an XCA Query Response containing the combined document IDs with metadata for all available documents.</p>
+        <p class="BodyText1Indent">1d) Surescripts sends the XCA Query Response to the requester.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Step 2 – XCA Retrieve</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/NRLS/NRLS XCA Retrieve.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="max-width: 100%;width: 797px;height: 398px;" />
+        </p>
+        <p class="BodyText1Indent">2a) The requesting location sends an XCA Retrieve Request for the desired documents. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">It is recommended that each document be requested in a separate XCA Retrieve Request.&#160; This avoids any issue with a slow responder delaying return of all requested documents.</p>
+        <p class="BodyText1Indent">2b) Surescripts requests documents from all requested responders:</p>
+        <p class="bodytext1indent2">2b-1) An XCA Retrieve is sent to IHE responders.</p>
+        <p class="bodytext1indent2">2b-2) A Location Summary is generated.</p>
+        <p class="bodytext1indent">2c) Surescripts aggregates responses and builds an XCA Retrieve Response containing the requested documents.</p>
+        <p class="bodytext1indent">2d) Surescripts sends the XCA Retrieve Response to the requester.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Documents from IHE Enabled Vendors may be retrieved directly using peer-to-peer connectivity, when available.</p>
+    </body>
+</html>

@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="3806" MadCap:lastWidth="898">
+    <head>
+        <link href="../../Resources/Stylesheets/NoBorderGuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909616"></a>Formulary and Benefit Publishing (For PBM/payers)</h2>
+        <p class="BodyText1">The following sections described how Formulary Publishers develop, set up, and load their formulary and benefit files for processing at Surescripts.</p>
+        <h3 class="Heading3"><a name="_File_Processing_Options"></a><a name="_Toc443909617"></a>File Processing Options</h3>
+        <p class="BodyText1">Formulary Publishers specify within the formulary and benefit file header and each file list header how that data should be processed. The options for the formulary and benefit file are “U” (Updates) or “F” (Full formulary replace). The options for lists are “F” (Full list replace) or “D” (Delete the list). </p>
+        <p class="BodyText1" style="font-weight: bold;">Update Process:</p>
+        <p class="BodyText1">After receiving the formulary and benefit files from the Formulary Publisher, Surescripts checks each section of the file to validate that the data is formatted correctly. If any of the lists were previously loaded in the database, the new lists replace the existing ones, thereby updating the information. Any new information not previously loaded in the database is added. Updates will be processed even if the file contains validation errors. This process is outlined in the <MadCap:xref href="FormularyBenefitFileValidation.htm#_Reject_Code_Summary">Reject Code Summary</MadCap:xref>.</p>
+        <p class="BodyText1">When a Formulary Publisher would like to notify its partners of the discontinuation of a list, they send an action code of “D” (Delete) within the list header and include no detail rows in the list. The Formulary Retriever responds by removing the previously loaded list with that ID. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the Formulary Publisher wants the Formulary Retriever to be notified of the delete, they cannot remove access to the deleted list within the distribution list. </p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Full Replace Process:</p>
+        <p class="BodyText1">With the Full Replace process, the new formulary and benefit file overwrites all the previously loaded lists from that Formulary Publisher. Full loads will be processed even if the file contains validation errors. This process is outlined in the Reject Code Summary below.</p>
+        <ul>
+            <li>
+                <p>Full replace option should only be used when all list types can be sent to Surescripts in one physical file.</p>
+            </li>
+            <li>
+                <p>Any formulary and benefit list previously loaded in the database that is not included in the new file is purged from the system. There will be a delay removing these lists as the lists will be removed when the next full load is successful. Removal of a list is always one full load behind.</p>
+            </li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc443909618"></a>Environment Setup</h3>
+        <p class="BodyText1">Before sending formulary and benefit files to Surescripts, Formulary Publishers need to set up a network connection to Surescripts and implement the selected file transfer method within their environment. The network connection is set up and configured as part of the regular integration process with Surescripts. For more information, refer to the <MadCap:xref href="AppBSecureFileTransfer.htm">Secure File Transfer</MadCap:xref>.</p>
+        <h3 class="Heading3"><a name="_Toc443909619"></a>Formulary and Benefit File Naming and Structure</h3>
+        <p class="BodyText1">The Formulary Publisher’s data load can be made up of several list types. Surescripts stores these individually, as separate lists, to give the Formulary Retriever the ability to select the formulary status, alternative, coverage or copay list applicable to a specific patient. The structure of these lists as they appear to the Formulary Retriever is described below. The file naming and WebDAV directory structure for the formulary and benefit lists is described in the following sections.</p>
+        <p class="StylebodytextBold">File Naming</p>
+        <p class="BodyText1">The individual formulary and benefit lists are named according to the value specified within the formulary and benefit list file header (the “Formulary ID” field). The field is a text field; it can only contain the following characters (A-Z, a-z, Numeral 0-9, period “.”, and a dash “-“). This also applies to Alternative ID, Coverage ID, Copay ID, and Classification ID as these fields are also used to create file names. The Formulary ID can be up to 10 characters long. The list names are tied to each Participant’s ID; therefore, if two Formulary Publishers use the same file name, the Participant ID is what distinguishes them within the system.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Underscores are not allowed in the List ID&#160;portion of the file name.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">List Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Key Field (with Participant ID)</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Formulary Status List</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Formulary ID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Alternative List</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Alternative ID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Coverage List</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Coverage ID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Copay List</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Copay ID</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">Each list is available to Formulary Retrievers on the WebDAV server in a directory respective to the list’s type. The file name contains the date the list was extracted from the Publisher’s system. The date the list was made available through Surescripts is displayed as date modified. For coverage and copay lists the first two characters of the file name are the type of coverage list.</p>
+        <table class="TableStyle-OutsideBorderGuideTables" style="mc-table-style: url('../../Resources/Stylesheets/NoBorderGuideTables.css');" cellspacing="0">
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 317px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 257px;" />
+            <tbody>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" colspan="2" style="font-weight: bold;">File Name Structure</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1" style="font-weight: bold;">Example</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" colspan="2">Formulary Status List</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">/FSL/Formulary id_effective date_extract date</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">/FSL/123451_20120301_20120318</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" colspan="2">Alternative File List</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">/ALT/Alternative id_effective date_extract date</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">/ALT/214312_20120301_2020318</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" colspan="2">Coverage List</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">/COV/List id_effective date_extract date</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">/COV/ALFFT_20120301_20120318</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" colspan="2">Copay List</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyB-Column1-Body1">/COP/List id_effective date_extract date</td>
+                    <td class="TableStyle-OutsideBorderGuideTables-BodyA-Column1-Body1" style="background-color: #ffffff;">/COP/SLCDE_20120301_20120318</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Directory Structure</p>
+        <p class="BodyText1">The WebDAV environment contains a directory structure similar to the examples below. The actual appearance may vary slightly due to the different WebDAV client interfaces that Formulary Retrievers may use. The three examples in this section use the following customer names:</p>
+        <ul>
+            <li>ABC - ABC Corporation (Health Plan)</li>
+            <li>BMI - Benefit Management, Inc. (PBM/payer)</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This structure assumes that the Formulary Retriever has access to files from the following Formulary Publishers: “ABC Corporation”, and “Benefit Management, Inc.”.</p>
+        <table class="TableStyle-OutsideBorderGuideTables" style="mc-table-style: url('../../Resources/Stylesheets/NoBorderGuideTables.css');" cellspacing="0">
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;font-size: 8pt;"> &#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;font-size: 8pt;">Filename</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;font-size: 8pt;">Size</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;font-size: 8pt;">Last Modified</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;font-size: 8pt;">ABC</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">ALT</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHA_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0318</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;"> 30KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p><span style="font-size: 8pt;">4</span><span style="font-size: 8pt;">/12/</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHB_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0318</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;"> 24KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p><span style="font-size: 8pt;">4</span><span style="font-size: 8pt;">/12/20</span><span style="font-size: 8pt;">13</span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHC_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0318</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">100KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p><span style="font-size: 8pt;">4</span><span style="font-size: 8pt;">/12/20</span><span style="font-size: 8pt;">13</span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHA_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">630KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHB_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">362KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHC_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">424KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">COP</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">DSABCD_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">2230KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">DSDFFG_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">2</span><span style="font-size: 8pt;">0</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;"> 242KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">SLAAON_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 19KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">COV</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">ALABCD_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 877KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">PATTHI_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 188KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">QLFFVG_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0317</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">3900KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/12/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;font-size: 8pt;">BMI</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHD_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0316</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">630KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p><span style="font-size: 8pt;">4</span><span style="font-size: 8pt;">/11/</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span>
+                    </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHE_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0316</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">362KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/11/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">HEALTHG_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0316</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">424KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/11/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">COV</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">QL1234_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 843KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/11/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">QL11DE_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 128KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/11/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p><span style="font-size: 8pt;">RL44DE_</span><span style="font-size: 8pt;">20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span><span style="font-size: 8pt;">_20</span><span style="font-size: 8pt;">13</span><span style="font-size: 8pt;">0301</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="font-size: 8pt;">&#160; 500KB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p style="font-size: 8pt;">4/11/2013</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="Heading3Text" style="margin-top: 0pt;margin-left: 0pt;">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <h3 class="Heading3"><a name="_Toc443909620"></a>Formulary Distribution List Creation</h3>
+        <p class="BodyText1">Before distributing its formulary and benefit files, the Formulary Publisher creates or updates a formulary distribution list spreadsheet at Surescripts. The list indicates which Technology Providers (Formulary Retrievers) have access to which formulary and benefit lists. An example distribution list follows:</p>
+        <table class="TableStyle-OutsideBorderGuideTables" style="mc-table-style: url('../../Resources/Stylesheets/NoBorderGuideTables.css');" cellspacing="0">
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" />
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">Source Participant:</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">Participant ID:</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;"><span style="font-weight: bold;">List Date<br /></span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">File Type:</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">PBMB</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">T0000000000xxxx</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;">
+                    <p style="text-align: center;font-weight: bold;">10/13/2003</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p style="text-align: center;">DIS</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td colspan="2" class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;"><span style="font-weight: bold;">Receiving Customer</span>
+                    </p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">List Type</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">Coverage List Type</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">List ID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">Name</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;font-weight: bold;">Participant ID</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p class="TableText" style="margin-top: 3pt;margin-bottom: 3pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;">select from list</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;">select from list</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;">select from list <br />if <span style="font-style: italic;">List Type = COV</span></p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1" style="border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;background-color: #a9a9a9;">
+                    <p style="text-align: center;">enter</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>POC System, Inc.</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>P0000001</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>1111</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>POC System, Inc.</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>P0000001</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>2222</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>POC System, Inc.</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>P0000001</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>FSL</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>3333</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>POC_A Company</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>P0000002</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>ALT</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p>4444</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">Access rights are tracked at the individual list level. For example, a particular Formulary Retriever may be given access to Formulary Status Lists 1111, 2222, and 3333, while another Formulary Retriever is given access for Alternative List 4444.</p>
+        <p class="BodyText1">Publishers can use an “All customers” wildcard in the distribution list instead of a particular Technology Provider Participant ID to indicate that all Technology Providers that have a formulary contract relationship with the Formulary Publisher can access a particular list. In the same way, an “All lists” wildcard may also be used to indicate that the named customer has access to all lists for that Publisher. Wildcards take precedence over all other entries in the distribution list.</p>
+        <p class="BodyText1">Surescripts updates its system according to the information provided by the Publisher in the distribution list and validates that all Technology Providers included in the list have Formulary Contract Relationships with the Publisher. The Surescripts system also determines what has changed since the last distribution and identifies the specific access changes (adds and deletes) that are reflected in the list. </p>
+        <p class="BodyText1">When an update has been made to the list, Surescripts re-runs the distribution process, treating the Publisher’s complete, current set of formulary information as a new load. If a particular Technology Provider has gained access to a file due to the Publisher’s new access rules, Surescripts distributes the most recent version of the list to them. If a Technology Provider loses access to a file in the new rules, Surescripts removes the files from the customer’s folder. Surescripts also records distribution lists that have references to lists that do not exist (for example, in cases where lists have been deleted). For more information, refer to <MadCap:xref href="#_File_Processing_Options">File Processing Options on page 1</MadCap:xref>.</p>
+    </body>
+</html>

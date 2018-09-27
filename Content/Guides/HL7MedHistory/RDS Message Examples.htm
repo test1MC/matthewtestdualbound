@@ -1,0 +1,2830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="9757" MadCap:lastWidth="994">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/TableSegments.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc445209671"></a>RDS Message Examples</h2>
+        <p class="BodyText1">The following scenarios all begin with the same ADT A01 message as a trigger. The responses are displayed for an RDS message format.</p>
+        <p class="BodyText1">Scenario:</p>
+        <ol>
+            <li>Patient was identified as a member of PBM A. The patient history is comprised of two drugs.</li>
+            <li>Patient was identified as a member of PBM A and PBM B. Patient history exists at both PBMs.</li>
+            <li>Patient was not found at Surescripts.</li>
+            <li>Patient was identified as a member of PBM A. No medication history was found at PBM A.</li>
+            <li>Patient was identified as a member of PBM A. An error occurred while attempting to connect to PBM A.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1: Patient was identified as a member of PBM A. The patient history is comprised of two drugs.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|RDS^O01|999991|P|2.3|</p>
+        <p class="EDIExample">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CM||^^30|||||DEA12341^JEFFRIES^RHONDA^^^^^DEA|||||P0000000000111^PBM A^99RXHUB^Claim|</p>
+        <p class="EDIExample">RXD|1|00173017855^WELLBRUTRIN 100MG TABLET^NDC^^BUPROPION HC^Generic Name|20030201|30|00^Not Specified^NCPDP0355| |GHD12311|||1234567^ JOES PHARMACY #02236^^^^^^NCPDP|||||||^100 MG^00^Not Specified^NCPDP0355</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CM||^^30|||||DEA12341^JEFFRIES^RHONDA^^^^^DEA|||||P0000000000111^PBM A^99RXHUB^Claim|</p>
+        <p class="EDIExample">RXD|2|00046042181^INDERAL 10MG TABLET^NDC^^PROPRANOLOL HCL^Generic Name|20030201|30|00^Not Specified^NCPDP0355||GHD12311|||9999999^CORNER DRUG 01521^^^^^^NCPDP|||||||^10 MG^00^Not Specified^NCPDP0355</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p class="ExampleText2">&#160;</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Surescripts supplied fields:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/TableSegments.css');" class="TableStyle-TableSegments" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-TableSegments-Column-MC" />
+            <col style="width: 86pt;" class="TableStyle-TableSegments-Column-ElementNo" />
+            <col style="width: 125pt;" class="TableStyle-TableSegments-Column-ElementName" />
+            <col style="width: 149pt;" class="TableStyle-TableSegments-Column-DataType" />
+            <thead>
+                <tr class="TableStyle-TableSegments-Head-Header1">
+                    <th class="TableStyle-TableSegments-HeadE-MC-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadE-ElementNo-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadE-ElementName-Header1">
+                        <p style="font-weight: bold;">Value </p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadD-DataType-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Surescripts password into the participant system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>PID is repeated from the originating request transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-7</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Duration</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>30 Days Supply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Ordering Provider</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>DEA12341</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>DEA number of dispensing physician.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>JEFFRIES</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Last Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Given Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>RHONDA</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>First Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>DEA</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>ID in identifier is a DEA Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Entering Organization Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>P00000000001111</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Participant ID of the assigning authority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>PBM A</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Source of information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>99RXHUB</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Assigning authority of Surescripts participant IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Alternative Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>Claim</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Source Type – can be either Claim from payer for Fill from Pharmacy</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispense Sub-ID Counter</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>First drug in the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispense Give Code –</p>
+                        <p>Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>00173017855</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>NDC number of the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>WELLBRUTRIN 100MG TABLET</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Drug Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>NDC</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>ID in RXD-2 is a NDC number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Alternative Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>BUPROPION HC</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Generic Name for the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-3</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Date Time Dispensed</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>20030201</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Date issued.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-4</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Actual Dispense Amount</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Quantity of 30 dispensed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-5</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Actual Dispense Units</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>00^Not Specified^NCPDP0355</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Code not specified use NDC instead</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-7</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Prescription Number</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>GHD12311</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Prescription number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispensing Provider (ID Number)</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>1234567</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>NCPDP Provider ID of dispensing Provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>JOES PHARMACY #02236</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Dispensing Pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>NCPDP</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Assigning authority of the NCPDP Provider ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>100 MG</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Drug Strength.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXR-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Route</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>OTH (Other)</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Added because it is a required segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-7</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Duration</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>30 Days Supply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Ordering Provider</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>DEA12341</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>DEA number of dispensing physician.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>JEFFRIES</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Last Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Given Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>RHONDA</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>First Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>DEA</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>ID in identifier is a DEA Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Entering Organization Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>P00000000001111</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Participant ID of the assigning authority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>PBM A</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Source of information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>99RXHUB</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Assigning authority of Surescripts participant IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Alternative Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>Claim</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Source Type – can be either Claim from payer for Fill from Pharmacy</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispense Sub-ID Counter</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Second drug in the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispense Give Code –Identifier</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>00046042181</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>NDC number of the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>INDERAL 10MG TABLET</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Drug Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>NDC</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>From NDC definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Alternative Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>PROPRANOLOL HCL</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Generic name for the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-3</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Date Time Dispensed</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>20030201</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Date issued.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-4</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Actual Dispense Amount</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Quantity of 30 dispensed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-5</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Actual Dispense Units</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>00^Not Specified^NCPDP0355</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Code not specified use NDC instead</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-7</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Prescription Number</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>GHD12311</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Dispensing Provider (ID Number)</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>9999999</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>NCPDP Provider ID of dispensing Provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>CORNER DRUG 01251</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Dispensing Pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>NCPDP</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Assigning authority of the NCPDP Provider ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p>RXD-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p>10 MG</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p>Drug Strength.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyB-MC-Body1">
+                        <p>RXR-1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyB-ElementNo-Body1">
+                        <p>Route</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyB-ElementName-Body1">
+                        <p>OTH (Other)</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyA-DataType-Body1">
+                        <p>Added because it is a required segment.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Scenario 2:&#160; Patient was identified as a member of PBM A and PBM B. Patient history exists at both PBMs.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|RDS^O01|999991|P|2.3|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|</p>
+        <p>&#160;</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CM||^^30|||||DEA12341^JEFFRIES^RHONDA^^^^^DEA|||||P0000000000111^PBM A^99RXHUB^Claim|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">RXD|1|00173017855^WELLBRUTRIN 100MG TABLET^NDC^^BUPROPION HC^Generic Name|20030201|30|00^Not Specified^NCPDP0355| |GHD12311|||1234567^ JOES PHARMACY #02236^^^^^^NCPDP|||||||^100 MG^00^Not Specified^NCPDP0355</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CM||^^30|||||DEA12341^JEFFRIES^RHONDA^^^^^DEA|||||P0000000000111^PBM A^99RXHUB^Claim |RXR|OTH</p>
+        <p class="EDIExample">RXD|2|00046042181^INDERAL 10MG TABLET^NDC^^PROPRANOLOL HCL^Generic Name|20030201|30|00^Not Specified^NCPDP0355||GHD12311|||9999999^CORNER DRUG 01521^^^^^^NCPDP|||||||^10 MG^00^Not Specified^NCPDP0355</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CM||^^30|||||DEA76860^JONES^JIMMY^^^^^DEA|||||P0000000002222^PBM B^99RXHUB^Claim |</p>
+        <p class="EDIExample">RXD|3|00009876877^GLEEVAK 50MG TABLET^NDC|200212010000|30|00^Not Specified^NCPDP0355||GHD12311|||9999999^CORNER DRUG 01521^^^^^^NCPDP|||||||^50 MG</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 102pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 132pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 126pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="text-align: left;">Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Password to get into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PID is repe4ated from the originating request transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Duration</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>30 Days Supply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Ordering Provider</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA12341</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DEA number of dispensing physician.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>JEFFRIES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Last Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Given Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RHONDA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>ID in identifier is a DEA Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Entering Organization Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000001111</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Participant ID of the assigning authority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PBM A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source of information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>99RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of Surescripts participant IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Alternative Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Claim</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source Type – can be either Claim from payer for Fill from Pharmacy</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Sub-ID Counter</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First drug in the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Give Code –</p>
+                        <p>Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00173017855</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NDC number of the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>WELLBRUTRIN 100MG TABLET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NDC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>From NDC definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Alternative Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>BUPROPION HC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Generic Name for the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date Time Dispensed</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>20030201</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Date issued.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Amount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Quantity of 30 dispensed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Units</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00^Not Specified^NCPDP0355</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code not specified use NDC instead</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Prescription Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GHD12311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispensing Provider (ID Number)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1234567</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NCPDP Provider ID of dispensing Provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>JOES PHARMACY #02236</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Dispensing Pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NCPDP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of the NCPDP Provider ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>100 MG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Strength.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXR-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OTH (Other)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Added segment because it’s Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Duration</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>30 Days Supply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Ordering Provider</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA12341</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DEA number of dispensing physician.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>JEFFRIES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Last Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Given Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RHONDA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>ID in identifier is a DEA Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Entering Organization Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000001111</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Participant ID of the assigning authority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PBM A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source of information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>99RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of Surescripts participant IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Alternative Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Claim</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source Type – can be either Claim from payer for Fill from Pharmacy</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Sub-ID Counter</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Second drug in the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Give Code –</p>
+                        <p>Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00046042181</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NDC number of the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>INDERAL 10MG TABLET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NDC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>From NDC definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Alternative Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PROPRANOLOL HCL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Generic name for the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date Time Dispensed</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>20030201</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Date issued.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Amount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Quantity of 30 dispensed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Units</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00^Not Specified^NCPDP0355</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code not specified use NDC instead</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Prescription Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GHD12311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispensing Provider (ID Number)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>9999999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NCPDP Provider ID of dispensing Provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CORNER DRUG 01251</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Dispensing Pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NCPDP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of the NCPDP Provider ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>10 MG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Strength.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXR-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Route</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OTH (Other)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Added segment because it’s Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Duration</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>30 Days Supply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Ordering Provider</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA76860</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DEA number of dispensing physician.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>JONES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Last Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Given Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>JIMMY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>ID in identifier is a DEA Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Entering Organization Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002222</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Participant ID of the assigning authority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PBM B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source of information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>99RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of Surescripts participant IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Alternative Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Claim</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Source Type – can be either Claim from payer for Fill from Pharmacy</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Sub-ID Counter</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Third drug in the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispense Give Code –</p>
+                        <p>Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00009876877</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NDC number of the drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GLEEVAK 50MG TABLET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of Coding System</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NDC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>From NDC definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date Time Dispensed</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>20021201</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Date issued.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Amount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Quantity of 30 dispensed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Actual Dispense Units</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00^Not Specified^NCPDP0355</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code not specified use NDC instead</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Prescription Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GHD12311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Dispensing Provider (ID Number)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>9999999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>NCPDP Provider ID of dispensing Provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Family Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CORNER DRUG&#160; 01251</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Dispensing Pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Assigning Authority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NCPDP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Assigning authority of the NCPDP Provider ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXD-17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>50 MG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Strength.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>RXR-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Route</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OTH (Other)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Added segment because it’s Required.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="examplehead1">&#160;</p>
+        <p class="StylebodytextBold">Scenario 3: Patient was not found at Surescripts.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|RDS^O01|999991|P|2.3|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||1961615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC| </p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">NTE|1|O|NP:Note: Patient not found.|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||ER</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">RXD|1|NONE|00000000|0|||NA</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 100pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 135pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 134pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Password to get into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PID is repeated from the originating request transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>One Comment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Comment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NP:Note:  Patient not found.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code and Actual Error Message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>ER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>ER – Order not found.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Scenario 4:&#160; Patient was identified as a member of PBM A. No medication history was found at PBM A.</p>
+        <p class="EDIExample"><span style="font-family: Arial;">MSH|^~\&amp;|</span><span style="font-family: Arial;">MEDS|</span><span style="font-family: Arial;">RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|RDS^O01|999991|P|2.3|</span>
+        </p>
+        <p class="EDIExample"><span style="font-family: Arial;">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 </span><span style="font-family: Arial;">N ELM STREET</span><span style="font-family: Arial;">^^</span><span style="font-family: Arial;">GREENSBORO</span><span style="font-family: Arial;">^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|</span>
+        </p>
+        <p class="EDIExample"><span style="font-family: Arial;">NTE|1|O|</span><span style="font-family: Arial;">NH:</span><span style="font-family: Arial;">:</span><span style="font-family: Arial;">Note: Although a patient record was found, no medications were </span><span style="font-family: Arial;">available</span><span style="font-family: Arial;"> in their medication claims</span> <span style="font-family: Arial;">history.</span></p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample"><span style="font-family: Arial;">PV1|1|I|2000^2012^01||||004777^LEBAUER^</span><span style="font-family: Arial;">SIDNEY</span><span style="font-family: Arial;">^J.|||SUR||||ADM|A0||||56567|</span>
+        </p>
+        <p class="EDIExample"><span style="font-family: Arial;">ORC|OK</span><span style="font-family: Arial;">|12345677|123456||</span><span style="font-family: Arial;">CM</span>
+        </p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">RXD|1|NONE|00000000|0|||NA</p>
+        <p class="ExampleText2">&#160;</p>
+        <p class="ExampleText2" style="font-family: Arial;">RXR|OTH</p>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 106pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 130pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 134pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Password to get into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PID is repeated from the originating request transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>One Comment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Comment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NH:Note: Although a patient record was found, no medications were available in their medication claims history.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code and Actual Error Message..</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>CM – Order was completed.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Scenario 5:&#160; Patient was identified as a member of PBM A. An error occurred while attempting to connect to PBM A.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|RDS^O01|999991|P|2.3|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">NTE|1|O|ER:Note: An error occurred while processing the report.&#160; No medication history was returned.</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">ORC|OK|12345677|123456||CA</p>
+        <p class="ExampleText2">&#160;</p>
+        <p class="EDIExample">RXD|1|NONE|00000000|0|||NA</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="EDIExample">RXR|OTH</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 50pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 103pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 139pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 129pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Password to get into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PID is repeated from the originating request transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-family: 'Courier New';">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>One Comment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NTE-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Comment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ER:Note:  An error occurred while processing the report. No medication history was returned.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Code and Actual Error Message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Order Control</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>OK – Order accepted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Placer Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>12345677</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Number from MSH-10 of ADT message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ORC-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique number for the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>ORC-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Order Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>CA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>CA – Order was canceled.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="415" MadCap:lastWidth="1231">
+    <head>
+    </head>
+    <body>
+        <h2 class="Heading2">PAInitiation Requests After Patient Medication Benefit Check (Real-Time Benefits Inquiry)</h2>
+        <p>Patient Medication Benefit Check (PMBC) provides patient-specific drug coverage information directly from the patient’s PBM/payer. The type of information returned from this transaction (or other integrated real-time solutions) and the level of detail may vary from one PBM/payer to another and can affect whether or not a PAInitiationRequest should be sent. The key difference in workflow is that provider vendors can no longer trigger a PAInitiationRequest based on the presence of the batch formulary prior authorization flag. Rather, the application must wait for the PMBC response before sending the PAInitiationRequest.</p>
+        <p>If the batch formulary indicates prior authorization is required for the target medication, provider vendors should send a PAInitiationRequest if the PBM/payer:</p>
+        <ul>
+            <li>Does not provide alternatives in their real-time response</li>
+            <li>Provides alternatives, but the provider does not choose one</li>
+            <li>Provides alternatives, but the provider chooses one that is flagged as needing a PA</li>
+        </ul>
+        <p>Provider vendors should not send a PAInitiationRequest for a requested drug if the PBM/payer:</p>
+        <ul>
+            <li>Provides alternatives AND the provider chooses one not flagged as needing a PA</li>
+        </ul>
+    </body>
+</html>

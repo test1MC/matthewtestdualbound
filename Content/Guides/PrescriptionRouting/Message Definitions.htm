@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="16567.33" MadCap:lastWidth="558">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="2" MadCap:timestamp="2017-09-29T08:09:00.3439347-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="3" MadCap:timestamp="2017-09-29T08:09:00.4219347-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="9" MadCap:timestamp="2017-09-29T13:34:47.0252043-05:00" />
+        </MadCap:changeData>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="top"></a>Message Definitions</h1>
+        <p>This section provides guidelines for the data messaging interfaces between the prescriber using a prescriber system and the pharmacy. For LTPAC application, please refer to Sec. 1.2.1 Terms Used for LTPAC in This Guide.</p>
+        <h2 class="Heading2" MadCap:autonum="1.1 ">NewRx - New Prescription <MadCap:annotation MadCap:createDate="2017-09-25T13:34:27.8746982-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Where do we want to add NewRxRequest? (initiated by the pharmacy)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T13:34:55.2789497-05:00">Request</MadCap:annotation></h2>
+        <p>The <i>NewRx</i> messages to be transmitted have been developed using the NCPDP SCRIPT standard. A <i>Status</i>, <i>Error</i>, or <i>Verify</i> response is always sent after a NewRx message.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 ">NewRx Message Flow</h3>
+        <p>The following steps depict the NewRx message flow:</p>
+        <ol>
+            <li> Prescriber initiates a new prescription for a patient via a prescriber system.</li>
+            <li>Prescriber system successfully transmits the new prescription to Surescripts.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an <i>Error</i> message back to the requester.</li>
+            <li>Surescripts uses the<MadCap:annotation MadCap:createDate="2017-09-22T16:21:22.1584871-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="still the same?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T16:21:24.7597472-05:00"> Recipient ID</MadCap:annotation> and routes the message appropriately.</li>
+            <li>Pharmacy validates the prescription request and responds with a <i>Status</i>, <i>Error</i> (if errors are found), or <i>Verify</i> message.</li>
+            <ol style="list-style-type: lower-alpha;">
+                <li>If a <i>Status</i> 000 is sent in step 5, the pharmacy would send a Verify.</li>
+            </ol>
+            <li>Surescripts transmits the <i>Status</i>, <i>Error</i>, or <i>Verify</i> back to the sender.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.1.2 ">NewRx XML</h3>
+        <p>&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.3 ">NewRx - Prescriber Best Practices</h3>
+        <ol>
+            <li>For NewRx after <MadCap:annotation MadCap:createDate="2017-09-22T16:38:01.3807714-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="\r\nDNTF goes away. Update." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-10T21:00:46.0192023-05:00">a Denied NewRx to Follow (DNTF) </MadCap:annotation>response, the prescriber application should show the Refill/Renewal denied NewRx detail on the NewRx screen, when applicable, to streamline the prescription writing process.</li>
+            <li> A bridge prescriptions scenario is when a patient requests a mail order prescription but also needs a retail order for a limited supply of the medication until the mail order prescription arrives. The prescriber should use the notes field to indicate on both prescriptions (mail and retail) that this prescription has also been sent to retail/mail.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.1.4 ">NewRx - Pharmacy Best <MadCap:annotation MadCap:createDate="2017-10-10T21:01:27.1630271-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Delete?????? Are there new bullets to replace those deleted below?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-10T21:01:49.4570436-05:00">Practices</MadCap:annotation></h3>
+        <p>When receiving a NewRx, the pharmacy application should display the following in its entirety to the pharmacist:</p>
+        <p MadCap:changes="3">&#160;</p>
+        <ul MadCap:changes="2">
+            <li MadCap:changes="2">Prior Authorization Number and Prior Authorization Status</li>
+            <li MadCap:changes="2">Observation Segment: This information (Weight, Height) is especially important for infused, injected, oncology, and pediatric medications.</li>
+        </ul>
+        <h2 class="Heading2" MadCap:autonum="1.2 ">RxRenewalRequest(FKA Refill)</h2>
+        <p>A <i>RefillRequest</i> message is originated by the pharmacy. This message is for the purpose of requesting approval for additional refills of a prescription once the original number of refills has been dispensed.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If a patient has approved refills remaining on a current prescription, no electronic message is required for a dispensing to occur.</p>
+        <p>A <i>RefillResponse</i> is sent by the prescriber to the pharmacy in response to a request to refill a prescription. The response indicates whether the RefillRequest has been accepted or denied.</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.1 ">RxRenewal Total Number of Dispensings</h3>
+        <p>In the NewRx, the total number of dispensings is 1 + the refill quantity, however, in the refill renewal response the total number of dispensings is only the refill quantity. <MadCap:annotation MadCap:createDate="2017-09-22T16:43:50.8667714-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Verify - Retain as an ACR? (4/27/17 ACCR WkGrp B)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T16:44:16.9229639-05:00">The application shall 106R-053 make this distinction clear to the user during the approval process.</MadCap:annotation></p>
+        <p>
+            <MadCap:annotation MadCap:createDate="2017-09-22T16:44:30.0332748-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Roni's placeholder for Refill table (added 4/27/17 by Roni)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T16:44:45.1137827-05:00">RefillResponse Requirements Rewrite Doc – include in guide- All App Certs related to this are in this doc.</MadCap:annotation>
+        </p>
+        <h3 class="Heading3" MadCap:autonum="1.2.2 ">RxRenewalMessage Flow</h3>
+        <p>The following steps depict the Refill Renewal message flow:</p>
+        <ol>
+            <li>The Refill Renewal message is successfully transmitted from the pharmacy system to Surescripts.</li>
+            <li>Surescripts validates the message and utilizes the Recipient ID to route the message to the appropriate prescriber via their prescriber system. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li> Prescriber system validates the RefillRequest and returns a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 3, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify message back to the pharmacy system.</li>
+            <li>Prescriber system processes the RefillRequest and returns the prescriber's RefillResponse message.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the prescriber system.</li>
+            <li>Surescripts transmits the RefillResponse message back to the pharmacy system.</li>
+            <li>
+                <p>Pharmacy system validates the RefillResponse and returns a Status, Error (if errors are found), or Verify message.</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li> If a Status 000 is sent in step 8, the pharmacy system would send a Verify.</li>
+                </ol>
+            </li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the prescriber system.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.2.3 ">RxRenewal<MadCap:annotation MadCap:createDate="2017-09-22T16:56:07.0429688-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="stopped here (Sec. 5.2.3 in RxRtg DRAFT gd- moving in content.\r\nTim, do you want to spell this out or use what they have in the NCPDP guide: RxRenewalRequest?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:32:13.2988303-05:00">Request </MadCap:annotation></h3>
+        <p class="BodyText1">Recommendation/guidance for EHRs on how to handle the incoming Refill Renewal Request NDC mismatch or ‘NDC not found’ issue.</p>
+        <p class="BodyText1">The NDC/ProductCode in the Refill Renewal Request should not be the sole determination of the identifcation of the <MadCap:annotation MadCap:createDate="2017-09-25T14:32:38.6581357-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Both of these paragraphs were added at the request of Tim McNeil - per joy Adams - see 6/9/17 7:49a.m. email Subject: FWD EHR NDC Validation&quot; (filed under &quot;Change Requests&quot;)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-10T21:05:34.0936591-05:00">requested</MadCap:annotation> medication. When the incoming NDC does not match the related NewRx or cannot be found, systems should use other potential identifiers (e.g. RxNorm codes) and as <span style="color: #ff0000;">per ACR …., must always allow manual review of the drug description by the user. Therefore, all response types should be permitted (i.e. approved, approved with changes, denied, replace).</span></p>
+        <h3 class="Heading3" style="color: #000000;" MadCap:autonum="1.2.4 ">RxRenewalResponse XML (diagram)</h3>
+        <p>&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.5 ">RefillResponse Handling</h3>
+        <h4 class="Heading4" MadCap:autonum="1.2.5.1 ">General RefillResponse</h4>
+        <p>On a refill response, if the pharmacy needs to be changed, the prescriber <span style="color: #ff0000;">shall R6.182</span> send a “Denied” Response and send a new NewRx to the desired pharmacy.</p>
+        <p>An automatic response for RefillRequest shall <span style="color: #ff0000;">R6.178 </span>never be sent back to the pharmacy. User review and approval/denial of the RefillResponse shall <span style="color: #ff0000;">R6.179</span> is always be required. Note: the exception to this requirement is for a participant that does not support CP/SP. When possible use Approve or Approve with Changes rather than Replace.</p>
+        <h4 class="Heading4" MadCap:autonum="1.2.5.2 ">Controlled Substance RefillResponse</h4>
+        <p>If the non-EPCS authorized prescriber receives a RefillRequest for a controlled substance, they should respond with a Denied message to the pharmacy. Should the prescriber wish to approve the request, they may continue with their non-EDI workflow as determined by their application.</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.6 ">Refill Renewal Best <MadCap:annotation MadCap:createDate="2017-09-25T14:44:19.7234212-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Did NOT include Example (pg 43) of RxRtg Draft. JIRA-GUIDE-273 to follow these paragraphs." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:45:04.3512392-05:00">Practices</MadCap:annotation> <![CDATA[ ]]></h3>
+        <p>In SCRIPT 10.8 the mandatory drug loop was changed from “prescribed” to “dispensed”. Since we are moving toward a mandatory segment, we need to require both in the transition period. The reason for sending the prescribed is to assist the prescriber in matching the medication to what was sent on the original NewRx.</p>
+        <p>On the RefillRequest the pharmacy should use both the prescribed and dispensed medication loops to indicate the number of refills requested.</p>
+        <p>Surescripts requires that the medication prescribed and medication dispensed loops be included on the RefillRequest. The medication prescribed loop from the pharmacy should not contain the literal prescribed medication information that was provided by the prescriber on a NewRx, but instead should include the pharmacist’s interpretation of the medication ordered by the prescriber. The medication dispensed is the medication that the pharmacy dispensed to the patient. The pharmacy is requesting that the medication listed in the dispensed loop be renewed. The prescriber system should indicate that the dispensed medication is the item being requested for renewal. The medication prescribed information is displayed to the prescriber for cross-reference only.</p>
+        <p>As stated in the RES segment definition, only certain fields can be changed on a RefillResponse for an Approve. Refer to RES-010, for details.</p>
+        <p>If the RefillResponse is for a controlled substance, the prescriber is required to sign the medication prescribed information. Even though the medication prescribed is sent for cross-reference on the RefillRequest, it becomes what the prescriber is approving on the RefillResponse. Therefore, the prescriber is actually approving both what was prescribed and dispensed. The pharmacy can still substitute and dispense what was dispensed before.</p>
+        <p class="BodyText1"><b>Example</b>:</p>
+        <p class="BodyText1">NewRx sent by prescriber with substitutions allowed.</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET<br />Refill Qualifier: R<br />Refill Value: 1</p>
+        <p class="BodyText1">Pharmacy dispenses ATORVASTATIN 10MG TABLET</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET (Name can be changed to match what is in pharmacy’s database for this medication.)<br />Refill Qualifier: P<br />Refill Value: 2</p>
+        <p class="BodyText1">Medication Dispensed: ATORVASTATIN10MG TABLET</p>
+        <p class="BodyText1Indent2">Refill Qualifier: P<br />Refill Value: 2</p>
+        <p class="BodyText1">Prescriber approves and sends Refill Renewal Response</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET<br />Refill Qualifier: A<br />Refill Value: 2</p>
+        <p class="BodyText1">Medication Dispensed: ATORVASTATIN10MG TABLET</p>
+        <p class="BodyText1Indent2">Refill Qualifier: A<br />Refill Value: 2</p>
+        <h3 class="Heading3" MadCap:autonum="1.2.7 ">	RxRenewal Prescriber Best <MadCap:annotation MadCap:createDate="2017-09-25T14:46:47.8929435-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Include or not?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T08:30:53.3057496-05:00">Practices</MadCap:annotation></h3>
+        <ol>
+            <li>Prescriber should respond to all requests received within 48 hours. Prescribers should not delete a request message from a processing queue without a response being generated to the requestor.</li>
+            <li>If another prescriber is responding to a Refill Renewal Request for non-controlled substances on the original prescriber's behalf (i.e. original prescriber who is out of the office), then one of the following options should be used.<p>Option A – Using Prescribing Agent – If the prescriber is out for a short time, then the prescriber field in the Refill Renewal Response should contain the prescriber's name, but the Prescribing Agent field should contain the name of the prescriber that is authorized to approve/deny refills for the prescriber.</p><p>Option B – If the prescriber is out for a long time, the original Refill Renewal Request should be denied using the DeniedNewRxToFollow (DNTF) status type and followed by a NewRx. The DNTF Refill Renewal Response should contain the original prescriber's name, and the NewRx should be from the new prescriber.</p></li>
+            <li>If the prescriber order number cannot be used to match a NewRx to a Refill Renewal Request; the following data in the prescribed drug, prescriber, and pharmacy segments in the Refill Renewal Request should be used to link the Refill Renewal Request to the original NewRx:<ul><li><p>RelatesToMessageID</p></li><li><p>Patient matching: name, date of birth, gender</p></li><li><p>Prescribed Drug – one or more of these data elements in the prescribed drug segment: Drug name, dose form, strength, NDC, FMT coded quantity</p></li><li><p>Prescriber – One or more of these elements: SPI, NPI, name, communication number</p></li><li><p>Pharmacy – One or more of these elements: NCPDP ID, NPI, Pharmacy Name, Communication Number</p></li></ul></li>
+            <li>Many of our vendors have found it helpful to couple the Refill Renewal Request/Refill Renewal Response/Denied New Prescription To Follow processes together, so they do not send the Refill Renewal Response until the NewRx has been completed. This helps keep the messages tied together and prevents issues with the pharmacy receiving the Refill Renewal Response, but not the NewRx.</li>
+            <li>When a prescriber leaves a practice the prescriber should be disabled in the directory from that practice as soon as they leave to prevent renewals from being sent and approved for a prescriber no longer practicing at that location.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.2.8 ">Refill Renewal Pharmacy Best <MadCap:annotation MadCap:createDate="2017-09-25T14:47:53.9894938-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Correct style if we keep this in the guide." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:48:01.8082011-05:00">Practices</MadCap:annotation></h3>
+        <ol>
+            <li>If the prescriber has not responded within 48 hours, another message should not be sent. Instead, the pharmacist should call the prescriber.</li>
+            <li>A pharmacy may send a Refill Renewal Request for controlled substances regardless of whether the prescriber is set up for the EPCS service.</li>
+            <li>The pharmacy application should only allow a Refill Renewal Request to be sent when there are no more refills on the original prescription to fill or if the prescription is expired.</li>
+            <li>When the application receives the following data points, the screen should also display:<ul><li><p>Prior Authorization Number and Prior Authorization Status</p></li><li><p>Observation Segment: This information (Weight, Height) is especially important for infused, injected, oncology, and pediatric medications</p></li></ul></li>
+            <li>Renewal routing:<ol style="list-style-type: lower-alpha;"><li>Retain the original sending SPI for electronically received NewRx. Evaluate this SPI (e.g., has Refill Renewal Service Level), and send RefillRenewalRequest to this record.</li><li>Instead of selecting the first SPI in the file where the SPI has renewals enabled, evaluate all of the provider's SPIs where renewals are enabled to establish confidence to send the electronic request. Take into account the individual provider and location context necessary to find a prescriber within the appropriate organizational context (e.g., find the Individual [NPI or DEA or Name] at a Location [Address Line 1or Address Line 2 or zip code or phone or fax or clinic name], and Refill Renewal Service level).</li><li>If more than one SPI is found with Refill Renewal Service level, it is recommended that additional refinement be performed based on information from the new prescription, or provide options for manual review.</li><li>Pharmacies should send RefillRenewal Request via a non-EDI method (i.e. fax, call) when prescriber location is not found.</li></ol></li>
+        </ol>
+        <h2 class="Heading2" MadCap:autonum="1.3 ">
+            <MadCap:annotation MadCap:createDate="2017-09-29T08:54:34.0181828-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Did we not want to include the general description? It isn't in the Rg Gd." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T08:54:51.0068006-05:00">RxChange</MadCap:annotation>
+        </h2>
+        <h3 class="Heading3" MadCap:autonum="1.3.1 ">RxChange General Message Flow</h3>
+        <p>The following steps depict the RxChange message flow:</p>
+        <ol>
+            <li>A NewRx is processed by the pharmacy and the pharmacy identifies that a change to the prescription may be appropriate.</li>
+            <li>Pharmacy submits the RxChangeRequest via Surescripts to the original prescriber.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Surescripts successfully transmits the RxChangeRequest to the prescriber via the prescriber system.</li>
+            <li>Prescriber system validates the RxChangeRequest and returns a Status or Error (if errors are found) message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 5, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify message back to the pharmacy system.</li>
+            <li>Prescriber system processes the RxChangeRequest and returns the prescriber's Change Response message.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the prescriber system.</li>
+            <li>Surescripts transmits the RxChangeResponse message back to the pharmacy system.</li>
+            <li>Pharmacy system validates the RxChangeResponse and returns a Status or Error (if errors are found) message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 11, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the prescriber system.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.3.2 ">RxChange Best <MadCap:annotation MadCap:createDate="2017-09-25T14:52:04.7281594-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Tim, how do we handle this when XML breaks it into &quot;request&quot; and &quot;response&quot;? Per Tim, can continue to use RxChange." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:52:45.4357553-05:00"><MadCap:annotation MadCap:createDate="2017-09-25T14:54:11.7359527-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Do we want to compare against NCPDP's best practices?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:54:21.7622890-05:00">Practices</MadCap:annotation></MadCap:annotation></h3>
+        <ol>
+            <li>Notes specific to the reason for the request should go in the prescribed drug segment as defined in the use cases above. Notes specific to all drugs requested should go on the first requested drug segment.</li>
+            <li>The COO Benefit segment should be included so the prescriber knows which payer the pharmacist is using to determine coverage/pricing.</li>
+            <li>If the Rx Change for Therapeutic Interchange or Generic Substitution is approved, this replaces the original Rx. The prescriber should create a new PON (prescriber order number); the old one becomes inactive for this approval. If the Rx Change for Prior Authorization is approved, the original prescription can still be used.</li>
+            <li>A (RxChange) denial does not make the prescription invalid or stop therapy. If the prescriber wishes to stop therapy, the prescriber should send a cancel message for the original NewRx.</li>
+            <li>An Approved with Changes Response (RES-010 = C) should not be used for Prior Authorization request<MadCap:change MadCap:changes="9">; it has been removed in a future version of </MadCap:change><MadCap:annotation MadCap:createDate="2017-09-29T13:34:52.9327950-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Deleted by Roni (Wkgrp A on 4.27.17)\r\nCompare against NCPDPs best practices." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T13:35:29.7521846-05:00">SCRIPT</MadCap:annotation>.</li>
+            <li>Even though the request segment is optional, it should be sent to identify the type of request and it also should be returned on the response.</li>
+            <li>A pharmacy may send an RxChangeRequest for controlled substances (EPCS) regardless of whether the prescriber is setup for the EPCS service. For approvals, when received, if the prescriber is not enabled for the EPCS service, the prescriber should deny the electronic request with status type "denied" and indicate in the free text field that the denial will be followed by a written or telephoned prescription order. If the prescriber is set up for the EPCS service they can approve the change request as stated in the requirements. Denials should occur as stated above in Section 5.3 for the specific use case that applies.</li>
+            <li>The free text field <MadCap:annotation MadCap:createDate="2017-10-10T21:17:38.2496612-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-10T21:17:43.4415608-05:00">(RES-040)</MadCap:annotation> should be accessible for entry and accessible for prescriber viewing (added per advisory group notes).</li>
+            <li>If the prescriber approves the change response it should be treated just like a new prescription. With a change response there are no limits or requirements around what can or cannot change in the message like there are on a renewal response. The pharmacy system should absorb the response data like they would on a new prescription in order to capture all the necessary information the prescriber sent.</li>
+        </ol>
+        <h2 class="Heading2" MadCap:autonum="1.4 ">RxFill</h2>
+        <p class="BodyText1">The <span style="font-style: italic;">RxFill</span> message is originated by the pharmacy. This message notifies the prescriber about the status of a prescription - either new, renewal or resupply. <span style="font-style: italic;">RxFill</span> messages should be viewed by the prescriber as individual snapshots in time regarding a prescription; not a final or complete status. The <span style="font-style: italic;">RxFill</span> message can be used in three instances:</p>
+        <ul>
+            <li>
+                <p>to notify of a dispensed prescription (the patient picked up the medication or the medication will be delivered to the specified LTC organization),</p>
+            </li>
+            <li>
+                <p>to notify of a partially dispensed prescription (patient picked up part of the medication or part of the medication will be delivered to the specified LTC organization), and </p>
+            </li>
+            <li>
+                <p>to notify of a prescription never dispensed, (patient did not pick up the medication or the medication will not be dispensed at the present time).</p>
+            </li>
+        </ul>
+        <p class="BodyText1">The differentiation of the three cases is with the use of the FillStatus XML tags.</p>
+        <h3 class="Heading3" MadCap:autonum="1.4.1 ">RxFill <MadCap:annotation MadCap:createDate="2017-09-25T14:57:20.3071219-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Do we want to add the terms: Dispensed, Partially Dispensed and Not Dispensed to the Glossary to address JIRA GUIDE-10 request re: confusion over our terms as compared to the xml tags: Filled, PartialFill and NotFilled?\r\nAlso see Sec. 5.4.4 RxFill (EDIFACT &quot;RES&quot;, DRU (do a search to catch all instances if this is the decision) where the same (non-XML) terms are used.\r\n\r\nAdd a Glossary? Discuss with Team." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-25T14:59:01.1001093-05:00">Assumptions</MadCap:annotation></h3>
+        <ul>
+            <li>The implementation of RxFill messaging will be a transition over a significant period of time due to the requirements for coding and rollout of pharmacy and prescriber systems to utilize RxFill.</li>
+            <li>Since RxFill is not a mandatory transaction, utilization will likely not achieve 100% participation.</li>
+            <li>Participation in RxFill usage is voluntary for both pharmacies and prescribers.</li>
+            <li>RxFill messages may be sent for prescriptions received by the pharmacy in any form (paper, fax, phone, or electronic) when the prescriber associated with the prescription is accessible via the electronic network.</li>
+            <li>Since all pharmacies and prescriber practices may not have all the technology required to send all types of RxFill messages, some percentage of providers will not participate in RxFill message tracking.</li>
+            <li>Because of the variation in participation, capability, and timing by pharmacies in the utilization of RxFill messages, the prescriber should be careful in the analysis and assumptions based on their usage.</li>
+        </ul>
+        <h4 class="Heading4" MadCap:autonum="1.4.1.1 ">RxFill for LTC Assumptions</h4>
+        <ul>
+            <li>Implementation of RxFill is standard in LTC pharmacy/organization communication and is used to inform the LTC organization of medication review and pharmacy approval for dispensing. In addition, this message indicates that a medication order has/has not been dispensed by the pharmacy.</li>
+            <li>Where RxFill is not a mandatory transaction, utilization in LTC is likely to still be 100% participation as most trading partner agreements consider this transaction mandatory.</li>
+            <li>Because of the variation in the use cases of RxFill in LTC, careful consideration should be taken to consume the information provided as sent by the pharmacy.</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="1.4.2 ">RxFill Message Flow</h3>
+        <p>The following steps depict the RxFill message flow:</p>
+        <ol>
+            <li>A prescription at the pharmacy is dispensed to a patient or, for LTC, is delivered.</li>
+            <li>The pharmacy submits an <span style="font-style: italic;">RxFill</span> message via Surescripts to the original prescriber.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the pharmacy.</li>
+            <li>Surescripts successfully transmits the <span style="font-style: italic;">RxFill</span> message to the prescriber.</li>
+            <li>The prescriber's system validates the request and returns a <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> (if errors are found) or <span style="font-style: italic;">Verify</span> message.<ol style="list-style-type: lower-alpha;"><li>If a <span style="font-style: italic;">Status 000</span> is sent in step 5, the prescriber's system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> or <span style="font-style: italic;">Verify</span> message back to the pharmacy system.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.4.3 ">RxFill XML</h3>
+        <h3 class="Heading3" MadCap:autonum="1.4.4 ">RxFill Best <MadCap:annotation MadCap:createDate="2017-09-25T15:11:27.1409796-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="No best practices in NCPDP guide. Keep here." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-11T08:40:58.4288331-05:00">Practices</MadCap:annotation></h3>
+        <h4 class="Heading4" MadCap:autonum="1.4.4.1 ">RxFill General</h4>
+        <ul>
+            <li>For prescriptions received by the pharmacy in non-electronic form, the subsequent RxFill messages will not be able to reference an original electronic Message ID or other unique electronic identifier for the prescription. The pharmacy should populate the RxFill message with adequate patient and drug information and the prescriber should be able to match these messages to the appropriate patient and prescription.</li>
+            <li>Prescriber should anticipate and successfully process RxFill messages where the status (dispensed, partially dispensed, not dispensed, or transferred) changes over time. For example, the physician may receive an RxFill (not dispensed) message for a specific prescription today and then receive an RxFill (dispensed) message for the same prescription the next day in the case where a patient forgot to pick up their medication in time but came to the pharmacy again the next day. <b>The RxFill messages should be viewed as a snapshot in time, not a permanent status indicator.</b></li>
+            <li>Prescriber should anticipate that RxFill messages will only be received for a portion of the prescriptions the physician writes. <b>If no RxFill message is received for a prescription, the system cannot assume that the prescription has not been dispensed or that the patient is not compliant.</b><ul><li>Prescriber should anticipate receiving an RxFill notification only for prescriptions from pharmacies that support the RxFill transaction.</li><li>Prescriber should anticipate there may be significant time delays between writing the prescription and the receipt of an RxFill indicating the current status.</li></ul></li>
+        </ul>
+        <h4 class="Heading4" MadCap:autonum="1.4.4.2 ">RxFill Dispensed</h4>
+        <p>The RxFill message is originated by the pharmacy. This message is used to notify the prescriber when a prescription has been dispensed. This message can be used to notify dispensed status of new prescriptions, refills or medication resupply requests.</p>
+        <ul>
+            <li>RxFill (dispensed) message would be sent for all dispensed prescriptions including each refill/resupply, but excluding partial fills, which are represented by a separate message.</li>
+            <li>RxFill (dispensed) message should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and not simply filled and waiting. Therefore, the RxFill (dispensed) message should not be triggered simply by label printing or adjudication in the pharmacy, but through an action such as a Point of Sale message, Electronic Signature Capture at pickup, a <MadCap:annotation MadCap:createDate="2017-09-29T13:51:37.0977084-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="See JIRA item for changes to BIN – now using IIN." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T13:51:47.0937079-05:00">Will Call Bin Management </MadCap:annotation>action, or similar positive indication of actual dispensing. For LTC, RxFill (dispensed) should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and/or filled and approved for administration to the patient by the LTC organization.</li>
+        </ul>
+        <h4 class="Heading4" MadCap:autonum="1.4.4.3 ">RxFill Not dispensed</h4>
+        <p>The RxFill message (not dispensed) is originated by the pharmacy. This message is used when the pharmacy has not dispensed a previously filled prescription and the pharmacy will return the medication to stock. This might occur if the patient never picked up the prescription. This message is used in LTC when the pharmacy will not dispense a prescription to notify the LTC organization of the status and reason the prescription will not be dispensed. This message can be used to notify dispensing status of new prescriptions, refills or resupply requests.</p>
+        <ul>
+            <li>RxFill (not dispensed) message would be sent when a pharmacy does not successfully dispense or does not intend to dispense a prescription that has been received and processed by the pharmacy, and/or has been waiting for patient pickup.</li>
+            <li>RxFill (not dispensed) message should be triggered by the Return to Stock process of the pharmacy, which indicates the patient has not picked up the prescription within the time period set by the pharmacy for their Return To Stock procedures.</li>
+            <li>RxFill (not dispensed) message should be sent for any prescription (first fill, refill/resupply, partial fill, etc.) that is processed by the pharmacy during Return to Stock procedures.</li>
+            <li>RxFill (not dispensed) message should not be sent by the pharmacy in the case where a prescription is being reversed, but with the intent of subsequent reprocessing and dispensing. An example would be a change in payment coverage requested by the patient at the time of pickup.</li>
+            <li>	RxFill (not dispensed) message should not be sent by the pharmacy to indicate that the patient has not requested his/her next refill based on elapsed time since the patient’s previous refill. For example, if the pharmacy dispensed a 30-day supply to the patient but more than 30 days have elapsed and the patient has not requested another refill, the pharmacy system should not automatically generate an RxFill (not dispensed) message. The pharmacy system should use the specific actions of the patient when sending RxFill messages and not inferences in every case possible.</li>
+            <li>RxFill (not dispensed) message in LTC should be triggered by events as determined by the pharmacy at the time of processing. Examples include Drug Use Evaluation conflicts that could not be resolved, the medication order has expired, the pharmacy has no intent to stock the prescribed medication, or a prior authorization was required for the prescribed medication and the payer has denied.</li>
+            <li>Since Return to Stock procedures and timing differ between pharmacies, the timing of the RxFill (not dispensed) message will also vary.</li>
+        </ul>
+        <h4 class="Heading4" MadCap:autonum="1.4.4.4 ">RxFill Partially Dispensed</h4>
+        <p>The RxFill (Partially Dispensed) message is originated by the pharmacy. This message is used to notify the prescriber or LTC organization when a prescription has only been partially dispensed. This message can be used to notify dispensing status of new prescriptions, refills, or medication resupply requests. An RxFill message (partially dispensed) can be repeatedly initiated until the prescription has been completely dispensed or the remaining quantity is returned to stock, thereby requiring an RxFill (not dispensed) message for the remaining quantity. The message requires that, at a minimum, the dispensed drug with the quantity received be included in the message. It is suggested that the prescribed drug be included for clarification.</p>
+        <ul>
+            <li>RxFill (partially dispensed) message would be sent for all dispensed prescriptions where only a portion of the specified quantity is provided. Subsequent dispensing of the remainder of the partial fill, or additional partial fills, would also require an appropriate RxFill (partially dispensed) message to be sent.</li>
+            <li>RxFill (partially dispensed) message should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and not simply filled and waiting. Therefore, the RxFill (partially dispensed) message should not be triggered simply by label printing or adjudication in the pharmacy, but through an action such as a Point of Sale message, Electronic Signature Capture at pickup, a <MadCap:annotation MadCap:createDate="2017-09-29T13:58:58.2016208-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Also verify JIRA for change from BIN to IIN." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T13:59:12.7008005-05:00">Will Call Bin Management</MadCap:annotation> action, or similar positive indication of actual dispensing.</li>
+        </ul>
+        <h2 class="Heading2" MadCap:autonum="1.5 ">Census </h2>
+        <p>In LTC, three changes to the patient status occur regularly that drive processes at the pharmacy but are not necessarily tied to a prescription. Because of this, a message type is necessary to convey patient information “decoupled” from any prescription information. The three key use cases that are relevant in LTC are New Admission, Information Change, and Discharge.</p>
+        <p class="BodyText1">The <span style="font-style: italic;">Census</span> message is originated by the facility in an LTC environment. This message notifies the pharmacy about census events and can be used in three cases - to notify the pharmacy of a new resident, a change to demographic information of a resident, or the discharge of a resident.</p>
+        <p>The differentiation of the three cases is with the use of the 010 Message Function Coded in the REQ <MadCap:annotation MadCap:createDate="2017-09-25T15:19:41.8736652-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Replace REQ 010 with coorect element." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-11T09:00:23.6192728-05:00">Segment.</MadCap:annotation></p>
+        <h3 class="Heading3" MadCap:autonum="1.5.1 ">Census Message flow</h3>
+        <p>The following steps depict the Census message flow:</p>
+        <ol>
+            <li>A resident record is added or updated within a facility system.</li>
+            <li>Facility system submits a Census message via Surescripts to the pharmacy.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Surescripts successfully transmits the Census message to the pharmacy.</li>
+            <li>Pharmacy system validates the message and returns a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 5, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status or Error message back to the facility system.</li>
+        </ol>
+        <h2 class="Heading2" MadCap:autonum="1.6 ">Resupply</h2>
+        <p class="BodyText1">In the LTC environment there is a need to send a <span style="font-style: italic;">Resupply</span> message from a facility to a pharmacy. An example use case is when a medication supply for a resident is running low (2-3 doses) and a new supply is needed from the pharmacy, the nurse needs a way to notify the pharmacy that more medication is needed. Since medication has already been authorized on the original order, the Resupply is simply a request for more inventory, therefore this is not a fillable message like the Refill Renewal Response.</p>
+        <h3 class="Heading3" MadCap:autonum="1.6.1 "><a name="_Toc443643336"></a>Resupply Message Flow</h3>
+        <p>When it is determined that medication supply is running low, the following steps depict the Prescription Resupply message flow</p>
+        <ol>
+            <li>The Resupply message is successfully transmitted via the facility system to Surescripts.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Pharmacy system validates the Resupply and returns a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 3, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify message back to the facility system.</li>
+        </ol>
+        <h2 class="Heading2" MadCap:autonum="1.7 "><a name="_Toc443643338"></a>Cancel Rx</h2>
+        <p class="BodyText1">The Cancel Rx Request message is used to notify the pharmacy that a previously sent prescription should be cancelled and not filled. The message is originated by the prescriber system as a Cancel Rx Request message.</p>
+        <p class="BodyText1">The Cancel Rx Response message is sent from the pharmacy to the prescriber system in response to a Cancel Rx Request message.</p>
+        <h3 class="Heading3" MadCap:autonum="1.7.1 "><a name="_Toc443643339"></a>Cancel Workflow One</h3>
+        <ol>
+            <li>Patient has not picked up the medication; pharmacist cancels the prescription from the system and returns it back to stock. Pharmacist also sends back a Cancel Rx Response message to the prescriber.</li>
+            <li>In this scenario, pharmacy should send an "A" (Approval) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy has cancelled the entire prescription and no medication was dispensed to the patient.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy customers should update the patient medication profile within their systems to document along with the appropriate reasons.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has not picked up the medication; pharmacist cancels the prescription from the system and returns it back to stock. Pharmacist also sends back a Cancel Rx Response message to the prescriber.</li>
+            <li>In this scenario, pharmacy should send an "A" (Approval) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy has cancelled the entire prescription and no medication was dispensed to the patient.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy customers should update the patient medication profile within their systems to document along with the appropriate reasons.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up the medication and pharmacy cancels the remaining refills. Pharmacy then sends back the Cancel Rx Response message to the prescriber indicating that the prescription has already been picked up, i.e. "first fill" by the patient but the pharmacy has cancelled the remaining refills.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many fills have been dispensed already. This would clearly indicate that partial fills were dispensed to the patient but all remaining refills have been cancelled.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy should update the patient medication profile within their systems to document along with the appropriate reasons.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up all the medications. There is nothing left in the record to be canceled. Pharmacist sends back a Cancel Rx Response message to the physician.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many refills have been dispensed already. This would clearly indicate the number of prescription refills that were dispensed and that there are no remaining refills left. Pharmacy should mark the prescription cancelled so that a refill request will not be sent at a later date.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy can't identify the patient or the patient in the pharmacy system doesn't have the medication that the prescriber wants to cancel.</li>
+            <li>In this scenario, pharmacies should send a "D" (Denied) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy hasn't cancelled the prescription. Pharmacies should also include the denial reason or denial reason code to further explain the reason.</li>
+            <li>Prescriber systems should maintain a record within their system i.e. patient prescription profile to document that a CancelRx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.7.2 "><a name="_Toc443643340"></a>Cancel Workflow Two</h3>
+        <ol>
+            <li>Patient has picked up three out of the six prescription fills. Prescriber sends a Cancel Rx Request message asking the pharmacy to no longer continue dispensing any open refills on an active prescription.</li>
+            <li>In this scenario, prescribers should send a Cancel Rx Request message to the pharmacy. Sending this message indicates that prescriber wants to cancel the remaining prescription refills and assumes previous fills have been dispensed to the patient.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy receives the request and cancels the remaining refills from the system. Pharmacist also sends back a Cancel Rx Response message to the physician.</li>
+            <li>In this scenario, our pharmacy partners should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many fills have been dispensed already. This would clearly indicate that partial fills were dispensed to the patient but all remaining refills have been cancelled.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy should update the patient medication profile within their systems to document along with the appropriate response.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up all the medications. There is nothing left in the queue to be canceled. Pharmacist sends back a Cancel Rx Response message to the physician.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many refills have been dispensed already. This would clearly indicate the number of prescription refills that were dispensed and that there are no remaining refills left. Pharmacy should mark the prescription cancelled so that a refill request will not be sent at a later date.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy can't identify the patient or the patient in the pharmacy system doesn't have the medication that the prescriber wants to cancel.</li>
+            <li>In this scenario, pharmacies should send a "D" (Denied) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy hasn't cancelled the prescription. Pharmacies should also include the denial reason or denial reason code to further explain the reason.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.7.3 ">CancelRx Prescription Message Flow</h3>
+        <p>The following steps depict the Cancel Rx message flow:</p>
+        <ol>
+            <li>Prescriber initiates a Cancel Rx Request for a patient via a prescriber system.</li>
+            <li>Prescriber system successfully transmits the Cancel Rx Request to Surescripts.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Surescripts utilizes the Recipient ID and routes the message appropriately.</li>
+            <li>Pharmacy system validates the Cancel Rx Request and responds with a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 was sent in step 5, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the sender.</li>
+            <li>Pharmacy processes the Cancel Rx Request and returns the prescribers' Cancel Prescription Response.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the pharmacy system.</li>
+            <li>Surescripts transmits the Cancel Rx Response message back to the prescriber system.</li>
+            <li>Prescriber system validates the Cancel Rx Request Response and returns a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 10, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the pharmacy system.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="1.7.4 "><a name="_Toc443643344"></a>CancelRx General Best <MadCap:annotation MadCap:createDate="2017-09-29T15:01:18.4514680-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="5.24.17 Just starting to look at adding this to NCPDP Recommendations doc.Remove if it was added." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-11T09:03:14.7786103-05:00">Practices</MadCap:annotation></h3>
+        <ol>
+            <li>Cancel Rx Request can be sent for paper or electronic.</li>
+            <li>Cancel Rx Request should not be faxed.</li>
+            <li>Cancel Rx Response time – If no response after 12 hours the prescriber should call the pharmacy.</li>
+            <li>Pharmacy should always treat incoming Cancel Rx Request messages as top priority and as such display them prominently to their end users. If the Cancel Rx Request message has already been processed, further action may be required, but it doesn't need to be treated as top priority.</li>
+            <li>Prescribers should not send a Cancel Rx Request for a prescription that is expired based on federal or state regulations. There should be programmatic checks in place to allow a Cancel Rx Request up to the expiration date of the prescription based off of the written date of the prescription. For example, the DEA requires Controlled Substance Rx to be filled within 6 months from the date written, and most states limit the filling of non-controlled Rx's to 1 year from the date written.</li>
+            <li>Pharmacy should always include a Note in an "A" (Approval) Cancel Rx Response message when responding to a Cancel Rx Request message if the patient has picked up the "first fill" or any refills thereafter and the pharmacy is cancelling the remaining refills left on the prescription.</li>
+            <li>Pharmacy should not send any Refill Renewal Request message after a Cancel Rx Request message is received.</li>
+            <li> A prescriber who has assumed responsibility for the patient's care may potentially cancel any prescription, even if they are not the original prescriber. It remains up to the pharmacy to determine if the Cancel Rx Request from the prescriber is appropriate.</li>
+            <li>The Cancel Rx Request should contain the RxNorm in the &lt;DrugCoded&gt;.</li>
+            <li>The Cancel Rx Request should contain pertinent information for the pharmacy to be able to find the prescription in their system (patient, medication (name, strength, and dosage form), and prescriber). If the pharmacy cannot definitively determine the prescription to be canceled, manual processes will occur to verify the cancellation.</li>
+            <li>Pharmacies should not delete a Cancel Rx Request message from a processing queue without a response being generated to the requestor. Pharmacy edits should be put in place to not allow a medication to be provided to the patient if a Cancel Rx Response has not been sent.</li>
+            <li>The prescriber should notify the patient or caregiver to inform them of the cancellation of a prescription. The Cancel Rx Request was not intended to relieve the prescriber of the responsibility of notifying the patient or caregiver to advise of the drug therapy change – it is only intended as a backup to prevent inadvertent drug therapy continuation or resumption at a later date.</li>
+            <li>Pharmacy should provide clear denial reasons in Cancel Rx Response denial responses. Note the Description of &lt;DenialReasonCode&gt; is the description of the value defined in the NCPDP External Code List. If the &lt;DenialReasonCode&gt; is sent, the &lt;DenialReason&gt; should not contain the echoing of this description as it adds no <MadCap:annotation MadCap:createDate="2017-09-29T15:03:55.5364257-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="5.24.17 Check the codes in this table against those in the schema as well." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T15:04:08.6011481-05:00">information</MadCap:annotation>.</li>
+        </ol>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">Scenario</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-left: 5pt;">Scenario Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">DenialReason</p>
+                        <p class="TableHeading" style="text-align: center;"> Code Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">External Code List Value Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">DenialReason textual intent recommendation for display to prescriber user</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span><span style="letter-spacing: 0pt;"> unknown</span> or cannot be determined by the pharmacy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;">AA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">unknown</span> to the provider</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span><span style="letter-spacing: 0pt;">unknown</span> to the <span style="letter-spacing: 0pt;">pharmacy.</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span> found, <span style="letter-spacing: 0pt;">but</span> no prescription <span style="letter-spacing: 0pt;">is</span> found <span style="letter-spacing: 0pt;">that</span> matches the drug on the cancel request.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;">AE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Medication never prescribed for the patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to <span style="letter-spacing: 0pt;">Cancel</span><span style="letter-spacing: 0pt;">Rx.</span> Prescription not found <span style="letter-spacing: 0pt;">at</span> pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Prescription <span style="letter-spacing: 0pt;">was</span> transferred to another pharmacy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;">AC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient no longer under provider care.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to <span style="letter-spacing: 0pt;">Cancel</span><span style="letter-spacing: 0pt;">Rx.</span> Rx transferred. Include available pharmacy <span style="letter-spacing: 0pt;">contact</span> information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Prescription <span style="letter-spacing: 0pt;">was</span> already responded to by a non-electronic <span style="letter-spacing: 0pt;">workflow.</span></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;">AP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Request already responded to by <span style="letter-spacing: 0pt;">other</span> means <span style="letter-spacing: 0pt;">(e.g.</span> Phone or <span style="letter-spacing: 0pt;">Fax)</span></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;"><span style="font-style: italic;">N/A</span><span style="font-style: italic;">–</span><span style="font-style: italic;">DenialReasonCode Description provides</span><span style="font-style: italic;"> enough clarity.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">All other denials</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">N/A (Send free text reasoning)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to Cancel Rx. Please contact Pharmacy.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" MadCap:autonum="1.8 "><a name="_Toc443643345"></a>Verify</h2>
+        <p class="BodyText1">This NCPDP SCRIPT message is returned only in an asynchronous response. The <span style="font-style: italic;">Verify</span> message confirms delivery of a message to its final destination. The <span style="font-style: italic;">Verify</span> message is an NCPDP message that indicates the acceptance of the request. This message is used to communicate the data content status of a message and to indicate the delivery of the message to its final<MadCap:annotation MadCap:createDate="2017-09-29T15:12:17.6835332-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="10.20.16\r\n(ACRG Small Wkgroup 10/20/16) Mike R. thinks this statement (this sentence) is too neutral. Consider using the same description both here and in the Message Type in Acknowledgment/Status Messages Table. We haven't decided where this information (from the ACRG) will live in the Routing Guide once/if they are combined.\r\nCompare to the table language. Is it the same? Where is the new language – settled by the ACR group. Ask Roni for the spreadsheet from 2-day. \r\n" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-11T09:10:38.0624962-05:00"> destination</MadCap:annotation>.</p>
+        <p class="BodyText1">A <span style="font-style: italic;">Verify</span> indicates the process is complete. Subsequent acknowledgment messages should not be expected.</p>
+        <h3 class="Heading3" MadCap:autonum="1.8.1 "><a name="_Toc443643346"></a>Verify (XML)</h3>
+        <p class="BodyText1">The VerifyStatus shown below is a Complex Type made up of code and description.</p>
+        <h2 class="Heading2" MadCap:autonum="1.9 "><a name="_Toc443643348"></a>Error</h2>
+        <p class="BodyText1">This message indicates that an error has occurred. An error can be generated when there is a communication problem or when an error occurs during the processing of the message.</p>
+        <p class="BodyText1">An <span style="font-style: italic;">Error</span> message can either be free-standing (asynchronous) or as an HTTP response.</p>
+        <p class="BodyText1">An <span style="font-style: italic;">Error</span> indicates the process is complete. Subsequent acknowledgment messages should not be expected.</p>
+        <p class="BodyText1">A <span style="font-style: italic;">synchronous</span> error is sent in response to a message before breaking the communication connection. An <span style="font-style: italic;">asynchronous</span> error message (also called Free Standing Error message) is sent in response to a message any time after the <span style="font-style: italic;">Status 000</span> message is sent.</p>
+        <p class="BodyText1">
+            <MadCap:annotation MadCap:createDate="2017-09-29T15:16:27.0260054-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="7.28.16. Per Tim M., this is an App Cert..\r\nCheck to see if this is somewhere else from the ACR work.\r\n" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-11T09:11:47.8333997-05:00">An <span style="font-style: italic;">Error</span> message may not be used to respond to an <span style="font-style: italic;">Error</span> message.</MadCap:annotation>
+        </p>
+        <p>Please refer to the 900 Error Text Table for <MadCap:annotation MadCap:createDate="2017-09-29T15:17:23.3260643-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="9.20.17 Moved from STS section below.\r\n11.3.16:Do we describe the Error fields in the guide as a place where the Customer may create their own error message?\r\n\r\nWe need to include some place in the guide that customers often create their own Error descriptions.&quot;\r\nSee if I can determine who had this comment.  Usually the description is where  -. \r\nRefer to element table in next section (did not include the table in this doc)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T15:19:24.1631867-05:00">EPCS.</MadCap:annotation></p>
+        <h2 class="Heading2" MadCap:autonum="1.10 "><a name="_Toc443643351"></a>Status</h2>
+        <p class="BodyText1">The <span style="font-style: italic;">Status</span> message is used to indicate the message was accepted of a message back to the sender. A <span style="font-style: italic;">Status</span> message is used in response to a <span style="font-style: italic;">NewRx</span>, <span style="font-style: italic;">Refill Renewal Request</span>, <span style="font-style: italic;">Rx Change Request</span>, <span style="font-style: italic;">Rx Change Response</span>, <span style="font-style: italic;">Cancel Rx Request</span>, <span style="font-style: italic;">Cancel Rx Response</span>, <span style="font-style: italic;">RxFill</span>, <span style="font-style: italic;">Resupply</span>, <span style="font-style: italic;">Census</span> or <span style="font-style: italic;">Refill Renewal Response</span> to indicate acceptance and responsibility for a request.</p>
+        <p class="BodyText1">The <span style="font-style: italic;">Status</span> message is an NCPDP message that indicates the acceptance of the request. Surescripts is utilizing the <span style="font-style: italic;">Status</span> message for all messages.</p>
+        <p class="BodyText1">This message is used to indicate the message was accepted for processing.</p>
+        <p class="BodyText1">A <span style="font-style: italic;">Status</span> message can only be used in the HTTP response to a message synchronously.</p>
+        <p class="BodyText1">A <span style="font-style: italic;">Status</span> code of 010 indicates the process is complete. Subsequent acknowledgement messages should not be <MadCap:annotation MadCap:createDate="2017-09-29T15:21:06.4197862-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="7.28.16: Does this need clarification? Or is this incorrect? Should we state that a status should not be sent after this? \r\n5.24.17 Table should address this as well." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-29T15:22:35.9520267-05:00">expected.</MadCap:annotation></p>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="423" MadCap:lastWidth="983">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc442967354"></a>Detailed Medication History Message Flow</h2>
+        <ol>
+            <li>The requester sends a Medication History Request for a patient to Surescripts.</li>
+            <li>Surescripts validates the Medication History Request message. <ol style="list-style-type: lower-alpha;"><li>If an error occurs, Surescripts sends back an ERROR response to the requester.</li><li>If no error occurs, Surescripts sends STATUS to the requester acknowledging that the request was received and the process continues per Step 3.</li></ol></li>
+            <li>Surescripts attempts to locate patient. <ol style="list-style-type: lower-alpha;"><li>If patient is not found, Surescripts sends Medication History Response back to the requester indicating the patient was not found.</li><li>If patient is found, the process continues per Step 4.</li></ol></li>
+            <li class="ListParagraph">The request is routed to the appropriate PBM/payer(s) for processing. For fill data, the request is handled internally using the pharmacy database.</li>
+            <li>Surescripts compiles the claim and fill data results.</li>
+            <li>
+                <p>Surescripts sends one response back to the requester with up to 300 aggregated medication records. If the patient has more than 300 medication records, Surescripts sends a second response that may include up to 200 additional medication records, for a total maximum of 500 medication records.</p>
+            </li>
+            <li class="ListParagraph">The requester sends a STATUS message to Surescripts acknowledging each response.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="712.3333" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1">Best Practices</h1>
+        <h2 class="Heading2"><a name="Benefit"></a>Benefit Request</h2>
+        <p class="StylebodytextBold">RTF Workflow</p>
+        <ul>
+            <li>A Benefit Request containing a single-NDC should be leveraged after the medication therapy has been selected to return copay, alternative(s), and coverage information for a single target medication.</li>
+            <li>A Benefit Request should be limited to a maximum of 500 therapeutic alternatives.    If the number of therapeutic alternatives on a Benefit Request exceeds 500, then an additional Benefit Request with the remaining alternatives should be sent.</li>
+            <li>A Benefit Request containing multiple NDCs should be leveraged early in the medication search process to return formulary status for a therapeutic class, favorites list, etc.</li>
+        </ul>
+        <p class="StylebodytextBold">RTPB Workflow</p>
+        <ul>
+            <li>The representative NDC of the single requested medication, days supply, quantity and requested pharmacy are required in the Benefit Request. Modifying any of these fields after the original request and before routing the prescription may impact the Benefit Response, therefore a new Benefit Request is recommended.</li>
+            <li>The PBM's ability to price a medication is based on the quantity and days supply. When sending days supply and/or quantity ensure that they reflect what may be dispensed at the pharmacy.</li>
+            <li>
+                <p class="BodyText1">The Benefit Request for the RTPB workflow is most effective if triggered automatically when the required data elements are available. Allowing the prescriber to trigger with the use of a prompt or button will result in lower utilization of the RTPB information.</p>
+            </li>
+        </ul>
+        <h2 class="Heading2"><a name="Benefit2"></a>Benefit Response</h2>
+        <p class="StylebodytextBold">RTF Workflow</p>
+        <ul>
+            <li>If   the customer desires to cache Real-Time Formulary Benefit Responses, the customer may do so for a period of up to 24 hours.  Beyond that time frame, the customer should be refreshing results to ensure that the information being utilized remains accurate.</li>
+        </ul>
+        <p class="StylebodytextBold" style="page-break-before: always;">RTPB Workflow – Alternatives</p>
+        <ul>
+            <li>If the Benefit Response contains alternative Pharmacy Type options or medications, the provider vendor should allow the prescriber to easily switch to that alternative. If the prescriber selects a different medication, they should be given the opportunity to review the prescription details prior to routing.</li>
+            <li>There may be instances where the price of an alternative is higher than that of the requested medication at the time of the Benefit Request. The patient may be in a deductible situation where once the deductible is met, the copay will be less over time than the requested medication.</li>
+        </ul>
+        <h2 class="Heading2"><a name="Display"></a>RTPB Display</h2>
+        <p class="StylebodytextBold">Plan Pay Amount</p>
+        <ul>
+            <li>If the Plan Pay Amount is received in the Benefit Response, the provider vendor should not to display this information.</li>
+        </ul>
+        <p class="StylebodytextBold">User Interface (UI)</p>
+        <ul>
+            <li>RTPB information is most effective if displayed directly to the prescriber without requiring user interaction. Prescribers are less likely to view the information if a click or separate screen is needed to display the information.</li>
+            <li>If space is a concern, some of the RTPB information can be displayed with the use of a hover over or secondary screen. For example, deductible amounts may be returned on the response, but displayed using a hover over.</li>
+        </ul>
+        <p class="StylebodytextBold">Patient Information Unavailable for Patient</p>
+        <ul>
+            <li>There are some scenarios in which the provider may not be able to access RTPB information for a patient. In these instances the provider vendor should do the following:<ul><li>Display a message to the prescriber that indicates RTPB information is unavailable for the patient’s coverage at this time. Or,</li><li>Continue the e-prescribing workflow without notifying the prescriber.</li></ul></li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1491.333" MadCap:lastWidth="1172">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Using Web Service API</h1>
+        <p class="BodyText1">The Web Service API allows access to functionality via RESTful web services for customers who prefer to develop their own user interface.</p>
+        <h2 class="Heading2">General Conventions</h2>
+        <p class="BodyText1">The Web Service API follows Representational State Transfer (REST) architecture principles using HTTP requests with appropriate HTTP verbs and status codes.</p>
+        <p class="BodyText1">The message body for requests and responses are of type application/json or application/xml.</p>
+        <h2 class="Heading2">Versioning and URLs</h2>
+        <p class="BodyText1">URLs are of the form <a href="../../../../../Desktop/Med Mgmt for Adherence Native IG for Provider Vendors.docx"><MadCap:annotation MadCap:createDate="2017-10-03T09:53:48.6274849-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="We were wanting to update this to:\r\nHYPERLINK &quot;../../../../../../../../Desktop/Med Mgmt for Adherence Native IG for Provider Vendors.docx&quot;\r\n\r\nthe format seems different, so I wanted to check" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-10-03T09:54:04.2304817-05:00">https</MadCap:annotation>://{{host}}/uiservice/api/{{version}}/{{path}}</a> or , <a href="../../../../../Desktop/Med Mgmt for Adherence Native IG for Provider Vendors.docx">https://{{host}}/mmpoc/api/{{version}}/{{path}}</a> where:</p>
+        <ul>
+            <li>the host depends on the environment and is provided&#160; as part of the Surescripts integration process;</li>
+            <li>version is the requested version of the endpoint and is provided as part of the Surescripts integration process</li>
+            <li>path is the path to the specific service</li>
+        </ul>
+        <p class="BodyText1">For example: https://{{host}}/uiservice/api/v0/worklist</p>
+        <p class="BodyText1">The API version number ("v0" in the above example) is incremented when a breaking change is introduced. A breaking change prevents an existing implementation from communicating with a particular version. Adding additional fields is not considered a breaking change. An API client application needs to support additional fields being added to an existing version.</p>
+        <p class="BodyText1">Examples of breaking changes includes, but are not limited to:</p>
+        <ul>
+            <li>Changing type or attributes of an existing field</li>
+            <li>Changing an endpoint path</li>
+            <li style="margin-top: 8pt;color: #000000;">Changing the semantic meaning of an existing field</li>
+        </ul>
+        <h2 class="Heading2">Summary of API Endpoints</h2>
+        <p class="BodyText1">The following provides a summary of API endpoints and the data that they provide.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 814px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>API Endpoint</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET worklist</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves a paged list of medication management messages for a given
+ patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>POST&#160; worklist</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves a paged list of the active tasks for a given collection of
+ recipients (providers).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET worklist/summary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves the count of worklist tasks for the patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>POST&#160; worklist/summary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves the count of worklist tasks for the provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET&#160;&#160; adherence-profiles/summary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves the patient’s lowest PDC ratio.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET&#160; patient-ids</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Searches the Surescripts PBM/payer MPI and retrieves the pbmMemberId
+ and payerId. Note: This is used instead of the eligibility 271 in workflows
+ that are not associated with a patient visit/encounter. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves the medication management message details for a task_id</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GET&#160; Observation/</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Retrieves the patients adherence profile ( PDC ratios, medications,
+ last fill date)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>POST  QuestionnaireResponse/</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Submits the response from the EHR end user to the medication
+ management message</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2">User Security</h2>
+        <p class="BodyText1">Web Service API requests are sent using HTTPS and routed through a whitelisted vendor aggregation server. </p>
+        <p class="BodyText1">A call to a Web Service API requires the following headers:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Header Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Example</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Authorization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>A standard basic authentication header using the credentials assigned
+ during the integration process.&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Example:Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>X-SENDER-UID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>A custom header that contains a Surescripts identifier assigned
+ during the integrations process. The format for the header value is
+ &lt;qualifier&gt;&lt;id&gt;.&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Qualifier: DPExample:X-SENDER-UID: DP-ABC1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Content-Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>The MIME type of the body of the request &#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values: application/xml, application/json+fhirExamples: Content-Type:
+ application/xmlContent-Type: application/json+fhir</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Accept</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>The MIME type of the body of the response &#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values: application/xml, application/json+fhirExamples: Accept:
+ application/xmlAccept: application/json+fhir</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>x-SPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>The SPI of the provider end user or the provider that the end user is
+ working on behalf of.&#160; Multiple values are separated by a comma.Used
+ with GET CommunicationRequest and Observation APIs</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Examples:x-SPI: 6598607334001x-SPI: 6598607334001,6390518189001</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>x-user-role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>The end user role. Multiple values are separated by a commaUsed with
+ GET CommunicationRequest and Observation APIs</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>x-user-role: mmpocsubmitter,mmpocviewer</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

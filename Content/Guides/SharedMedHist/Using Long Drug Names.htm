@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="755" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Using Long Drug Names</h2>
+        <p class="BodyText1">DRU 010-02 Item Description is mandatory and must be populated with the drug name. Commonly, this field is populated with the drug name from the prescriber / pharmacy system files, which may contain the drug name, strength, and dosage form. In cases where the 35 characters are not sufficient to properly display the full drug name, strength, and dosage form, three Item Description fields may be used – DRU -010-10 Item Description, -11- Item Description, and -12- Item Description.</p>
+        <p class="BodyText1">DRU-010-02 Item Description must always be populated. If the 35 characters are sufficient for the drug name, strength, and form, elements 10-12 are not to be used.</p>
+        <p class="BodyText1">If the 35 characters are not sufficient for the drug name, strength, and dosage form, elements 10-12 are to be used sequentially. The three fields should result in the concatenation of the full drug name, strength, and dosage form, using as many of the bytes necessary of the 35 times 3 fields. The information should begin in elements 010-10 Item Description and continue to 010-11 Item Description for as many bytes are needed and if necessary continue to 010-12 Item Description for as many bytes are needed up to the 35 length. </p>
+        <p class="BodyText1">The following examples show the use of the 02, 10, 11, and 12 Item Description fields.</p>
+        <p class="BodyText1">Example 1:&#160; CALAN SR 240mg</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010-02</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">CALAN SR 240mg</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -10</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Not transmitted</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -11</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Not transmitted</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -12 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Not transmitted</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">Example 2:&#160; Hydrocholorothizazide; lisinopril 12.5 mg;10 mg tablets</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -02 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="color: #000000;">Hydrocholorothizazide; lisinopril</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -10 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="color: #000000;">Hydrocholorothizazide; lisinopril</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -11 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="color: #000000;"> 12.5 mg;10 mg tablets</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">010 -12 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Not transmitted</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The space before “12.5mg” is part of the text and occupies a byte.</p>
+    </body>
+</html>

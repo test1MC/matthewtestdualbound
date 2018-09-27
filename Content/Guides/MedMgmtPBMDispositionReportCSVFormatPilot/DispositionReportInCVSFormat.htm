@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="4279.333" MadCap:lastWidth="1139">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc466492239"></a>Disposition Report in CVS&#160;Format</h1>
+        <p>The generation of a Disposition report in CSV format is being done to minimize the cost of the pilot to PBM/payer partners. &#160;The CSV report format is anticipated to be used through the duration of a pilot.</p>
+        <h2 class="Heading2"><a name="_Toc466492240"></a>Secure FTP</h2>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>#</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Requirement</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>File Name Format</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="NormalWeb">File name format includes enough meta data that if the PBM/payer calls in for support they can identify the unique file.</p>
+                        <p class="NormalWeb">The time is UTC</p>
+                        <p class="NormalWeb">Format:&#160; (items in brackets &lt;&gt; are variable)</p>
+                        <p class="NormalWeb">SS_&lt;PBM Abbreviation&gt;_&lt;YYYYMMDD_HHMM&gt;_&lt;UID&gt;.csv&#160;<br />&#160;&#160;<br />Example:<br />SS_T00000000001010 _20151125_0500_1.csv&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>One file per payer id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Surescripts will produce one csv file per payer Id&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="_Toc466492241"></a>Report Generation Cadence</h2>
+        <p>The disposition report will include any messages created by a PBM/payer where the message is either past the expiry date or a provider vendor end user has submitted feedback.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+            The disposition report will be generated on an agreed upon schedule.&#160; The most common schedule is to generate the disposition report monthly.
+</p>
+        <h2 class="Heading2"><a name="_Toc466492242"></a>Message Process Flow</h2>
+        <p>
+            <img src="../../Resources/Images/MedMgmtPBMDispositionReportCSVFormatPilot/Message Process Flow.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="width: 838px;height: 440px;">
+            </img>
+        </p>
+        <ol start="1">
+            <li class="ListParagraph">PBM/payer sends HRM, Missing Medication, Medication Adherence and PDC messages to Surescripts.</li>
+            <li class="ListParagraph">Surescripts receives and validates the message.</li>
+            <li class="ListParagraph">Provider vendor end user views the message (viewed).</li>
+            <li class="ListParagraph">Provider vendor end user optionally submits a feedback response to the HRM, Missing Medication or Medication Adherence message (response).</li>
+            <li class="ListParagraph">On an agreed upon cadence, the Disposition Report in CSV format is generated.</li>
+            <li class="ListParagraph">The PBM/payer pulls the CSV report from the Surescripts SFTP site.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc466492243"></a>CSV File Specification</h2>
+        <p>File format:  CSV</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">All date/times are UTC.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Comments, Examples or Values</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Unique message ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique message Id from the PBM/payer system which was included in the message sent to Surescripts by the PBM/payer.&#160; <br />This message Id is used by the PBM to link the disposition/results to the original message/opportunity in the PBM/payer system.</p>
+                        <p>Example: 5bd3fa644927901e763880ec6891</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageReceiveDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date message delivered</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts received the message UTC Date/Time<br />Example:  2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageDeliveredDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Obsolete</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Obsolete<br />This data element will be blank and is included for backward compatibility.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Message Type</p>
+                        <p>Values: MedicationAdherence, MissingMedication, HighRiskMedication</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageText</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Message Text </p>
+                        <p>Example: <br />&lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;CVS Caremark records show ADAM EVERYWHERE may not be adherent on their SIMVASTATIN prescription. Your patient may have missed or have been late to refill their medication during this year. Please advise your patient of the importance of refilling on-time and staying adherent.&lt;/div&gt;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageHRMMedicationName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>High risk medication name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Medication Name</p>
+                        <p>If message type is HighRiskMedication, send the first medication name if it was sent in the message<br />Example:&#160; Glyburide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewed1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>First date/time the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First date message opened&#160; UTC Date/Time </p>
+                        <p>Example:&#160; 2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewer1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>First date/time viewer user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role</p>
+                        <p>Provider vendor provides the end user role when available<br />Values:&#160; mmpocviewer, mmpocsubmitter, <MadCap:annotation MadCap:createDate="2017-02-13T09:34:22.4793823-06:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="reminder to add this to user roles in the main IGs" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-03-30T15:04:54.5212516-05:00">mmpocprescriber</MadCap:annotation></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewed2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Second date/time the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Second date message opened&#160; UTC Date/Time<br />Example:&#160; 2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewer2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Second date/time user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role</p>
+                        <p>Provider vendor provides the end user role when available<br />Values:&#160; mmpocviewer, mmpocsubmitter, mmpocprescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewed3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Third date/time the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Third date message opened&#160; UTC Date/Time<br />Example:  2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewer3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Third date/time user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role</p>
+                        <p>Provider vendor provides the end user role when available<br />Values:&#160; mmpocviewer, mmpocsubmitter, mmpocprescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewed4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fourth date/time the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Fourth date message opened&#160; UTC Date/Time<br />Example:&#160; 2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewer4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fourth date/time user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role<br />Values:&#160; mmpocviewer, mmpocsubmitter, mmpocprescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewed5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fifth date/time the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Fifth date message opened&#160; UTC Date/Time<br />Example:&#160; 2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewer5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fifth date/time user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role</p>
+                        <p>Provider vendor provides the end user role when available<br />Values:&#160; mmpocviewer, mmpocsubmitter, mmpocprescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageViewedTotalCount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Count of times the message was opened</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Total count of the times the message was viewed  </p>
+                        <p>Example:  3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PatientPayerId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Payer Id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PBM/payer Id</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PatientIdentifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PBM Member ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PBM/payer patient id</p>
+                        <p>Wrap in double quotes if the value in the field contains a comma</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PatientGiven</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Member first name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Send the first given name if multiple names were supplied</p>
+                        <p>Wrap in double quotes if the value in the field contains a comma</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PatientFamily</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Member last name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Send the first last name provided if multiple names were supplied</p>
+                        <p>Wrap in double quotes if the value in the field contains a comma</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PatientBirthDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Member DOB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DOB sent in the message YYYYMMDD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ResponseSubmitDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date feedback received</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Date a response was submitted by an provider vendor user UTC Date/Time</p>
+                        <p>This field will have a value if a response has been submitted<br />Example:  2015-07-01T18:03:13.477+00:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ResponseSubmitter</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date feedback received user role</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Provider vendor end user role</p>
+                        <p>Provider vendor provides the end user role when available<br />Values:&#160; mmpocsubmitter, mmpocprescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseQuestionCode1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Question code for the first question</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>HRM.TherapyChanged
+</p>
+                        <p>MA.ConfirmedIssue
+</p>
+                        <p>MM.TherapyChanged
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseQuestionText1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Text of the question as it is shown to the user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:  
+</p>
+                        <p>Has the patient's drug therapy been changed?
+</p>
+                        <p>Is adherence a confirmed issue?
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseAnswerCode1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">The value associated to the answer chosen by the end user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values: 
+</p>
+                        <p>HRM.TherapyChanged.Yes
+</p>
+                        <p>HRM.TherapyChanged.No
+
+</p>
+                        <p>&#160;</p>
+                        <p>MA.ConfirmedIssue.Yes
+</p>
+                        <p>MA.ConfirmedIssue.No
+
+</p>
+                        <p>&#160;</p>
+                        <p>MM.TherapyChanged.Yes
+</p>
+                        <p>MM.TherapyChanged.No
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseAnswerText1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Text of the answer as it is shown to the user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>No
+</p>
+                        <p>Yes
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseQuestionCode2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">The value associated to the answer chosen by the end user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>HRM.TherapyChanged.No.WhyNot
+</p>
+                        <p>
+MA.ConfirmedIssue.Yes.Why
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot
+
+</p>
+                        <p>MM.TherapyChanged.No.WhyNot
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseQuestionText2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Text of the question as it is shown to the user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>Why was the therapy not changed?
+</p>
+                        <p>Why is adherence an issue?
+</p>
+                        <p>Why is adherence NOT an issue?
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseAnswerCode2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">The value associated to the answer chosen by the end user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>HRM.TherapyChanged.No.InvalidInfo
+</p>
+                        <p>HRM.TherapyChanged.No.CurrentApp
+</p>
+                        <p>HRM.TherapyChanged.No.Unlisted
+</p>
+                        <p>&#160;</p>
+                        <p>
+MA.ConfirmedIssue.Yes.Why.BeenEducated
+</p>
+                        <p>MA.ConfirmedIssue.Yes.Why.Cost
+</p>
+                        <p>MA.ConfirmedIssue.Yes.Why.SideEffects
+</p>
+                        <p>MA.ConfirmedIssue.Yes.Why.Other
+</p>
+                        <p>MA.ConfirmedIssue.Yes.Why.Unlisted</p>
+                        <p>&#160;</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.NoLongerNecc
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.TakingSamples
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.CashReducedRate
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.SplittingTablets
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.ExcessSupply
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.DataInaccurate
+</p>
+                        <p>MA.ConfirmedIssue.No.WhyNot.Unlisted
+
+</p>
+                        <p>&#160;</p>
+                        <p>MM.TherapyChanged.No.CurrentApp
+</p>
+                        <p>MM.TherapyChanged.InvalidInfo
+</p>
+                        <p>MM.TherapyChanged.No.Unlisted
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ResponseAnswerText2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Text of the answer as it is shown to the user</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Values:
+</p>
+                        <p>Current therapy is most appropriate under patient's circumstances
+
+</p>
+                        <p>&#160;</p>
+                        <p>Patient has been educated on importance of adherence and plans to resume therapy
+</p>
+                        <p>Patient refuses drug due to cost
+</p>
+                        <p>Patient refuses drug due to side effects
+</p>
+                        <p>Patient refuses drug due to other reasons
+
+</p>
+                        <p>&#160;</p>
+                        <p>Therapy no longer necessary
+</p>
+                        <p>Patient taking samples
+</p>
+                        <p>Patient purchases drug with cash/reduced rate program
+</p>
+                        <p>Patient splitting tablets
+</p>
+                        <p>Patient has excess supply and has been adherent
+</p>
+                        <p>Patient states they are taking therapy (data inaccurate)
+
+</p>
+                        <p>&#160;</p>
+                        <p>Recommended therapy is not appropriate under patient's circumstances
+</p>
+                        <p>Invalid/inaccurate information
+
+</p>
+                        <p>&#160;</p>
+                        <p>An unlisted reason
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">ResponseComment</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">Text comment from the end user</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">Example:  Liver enzymes a problem at present as well as money</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

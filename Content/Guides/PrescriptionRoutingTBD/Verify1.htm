@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="814" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443643435"></a>Verify</h2>
+        <p class="BodyText1">Surescripts uses a VERIFY message as a response for certain messages. The following is an example of what a Verify message may look like.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In the EDIFACT examples, line breaks are used at the end of the segments for display purposes – live messages should not contain line breaks.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc443643436"></a>VERIFY (EDIFACT)</h3>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UNA:+./*'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIB+UNOA:0++888333:123+++1234563:P::678+1234567890123:D::12345+20020702:140429'</p>
+        <p class="H3T">UIH+SCRIPT:010:006:VERIFY+1515+991'</p>
+        <p class="H3T">STS+010++TRANSACTION RECEIVED'</p>
+        <p class="H3T">UIT+1515+3'</p>
+        <p class="H3T">UIZ++1'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;font-weight: bold;">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;font-weight: bold;">Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;font-weight: bold;">Note</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UNOA:0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">UNOA is the Syntax identifier; 0 is the syntax version number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">888333:123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">888333 is the Message ID; 123 is the Relates To Message ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234563:P::678</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1234563 is the identification number (NCPDP ID) of the sender (pharmacy); P is the code qualifier for pharmacy; 678 is the Surescripts-populated Account ID of the pharmacy (sender).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-070</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890123:D::<br />12345</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1234567890123 is the identification number (SPI) of the recipient (prescriber); D is the code qualifier for prescriber; 12345 is the Surescripts-populated Account ID of the prescriber (recipient).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-080</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">20020702:140429</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">20100125 is the date the message was sent (07/02/2002); 140429 is the time the message was sent (02:04:29 P.M.).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SCRIPT:010:006:<br />VERIFY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SCRIPT is the message type, 010 is the version; 006 is the release to be used in decoding this message. All messages in this set use this value. VERIFY is the message function.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1515 is the prescription number asssigned by the pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">991</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">991 is the prescription number assigned by the prescribing system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">STS-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">010 indicates the message was successfully accepted by ultimate receiver.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">STS-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TRANSACTION RECEIVED</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Free text description of status.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1515 is the Message Reference Number assigned by the pharmacy. This must match the value in UIH-020.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">3 is the number of segments in the message between and including the UIH and UIT segments.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">UIZ-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">1 is the Interchange Control Count – the number of messages in this transaction.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc443643437"></a>Verify (XML)</h3>
+        <p style="page-break-after: avoid;margin-top: 0pt;color: #008080;background-color: #FFFFFF;font-size: 9pt;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns:xsi</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> version</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">010</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> release</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">006</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xsi:schemaLocation</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT SS_SCRIPT_XML_10_6MU.xsd</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">D</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234567890123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">P</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234563</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">888333</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25T08:13:22</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">12345</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">678</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">PON123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Verify</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">VerifyStatus</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Code</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">010</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Code</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">VerifyStatus</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Verify</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+    </body>
+</html>

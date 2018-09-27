@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="787.8334" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc416953419"></a>Acute Vendor Requirements</h1>
+        <p class="StylebodytextBold">Numeric Representation</p>
+        <p class="BodyText1Indent">2.1 The decimal point is represented by a period and <sup>shall*106M-001</sup> be used as follows:</p>
+        <ul>
+            <li>only when there are significant digits to the right of the decimal</li>
+            <li>when there is a digit before and after the decimal point</li>
+            <li>not with whole numbers</li>
+        </ul>
+        <p class="BodyText1">For example, consider the following possible values:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">Correct:</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">2.515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">251.5</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">25.15</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">0.2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableParagraph">2.5</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">Incorrect:</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">.2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">2515.</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableParagraph">3.00</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StylebodytextBold">XML Empty Tags</p>
+        <p class="BodyText1Indent">2.2 All non-essential characters <sup>shall*106M-002</sup> be suppressed from the message where permissible. Non-essential characters include: leading spaces, trailing spaces, leading zeroes, and trailing zeroes where permissible.</p>
+        <p class="BodyText1Indent">2.3 Participant <sup>shall*106M-005</sup> not send empty elements within XML messaging with exception of the RxHistoryResponse-&lt;Approved&gt; element.</p>
+        <p class="StylebodytextBold">Handling Optional Fields</p>
+        <p class="BodyText1Indent">2.4 The participant <sup>shall*106M-007</sup> be able to process any valid incoming transaction request or response, including syntactically valid maximum and minimum population messages. </p>
+        <p class="BodyText1Indent">2.5 Optional data elements (and values therein) <sup>shall*106M-008</sup> not cause message failure.</p>
+        <p class="StylebodytextBold">Common Message Header Elements</p>
+        <p class="BodyText1Indent">2.6 Each message sent from a participant <sup>shall*106M-009</sup> have a unique Message ID.</p>
+        <p class="StylebodytextBold">Error Handling</p>
+        <p class="BodyText1Indent">2.8 An Error message shall*106M-023 never be responded to with an Error message; this could create an endless loop.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Phone Number: Pharmacy, Prescriber and Patient</p>
+        <p class="BodyText1Indent">2.9 Phone Number <sup>shall*106M-025</sup> be in the format 5552223333X4444 - where 555 is the area code, 2223333 is the main number and X4444 is the extension. </p>
+        <p class="BodyText1Indent">2.10 Phone number <sup>shall*106M-028</sup> not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</p>
+        <p class="StylebodytextBold">XML</p>
+        <p class="BodyText1Indent">2.11 Most symbols should be ‘safe’ within most alphanumeric fields; however, XML validation has issue with the following characters and they <sup>shall*106M-035</sup> be escaped. The most common escape encodings are:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 114px;" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">ASCII Characters</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">XML Escape</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: normal;">
+                    <p class="Table"> quote ("")</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> &amp;quot;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> apostrophe (')</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> &amp;apos;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> ampersand (&amp;)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> &amp;amp;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> less than (&lt;)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> &amp;lt;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> greater than (&gt;)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: normal;">
+                    <p class="TableHeading" style="font-weight: normal;"> &amp;gt;</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">String lengths are calculated based on the un-escaped value. For example, “&gt;98 degrees” should be encoded as “&amp;gt;98 degrees” but would only be counted as a string length of 11, not 14. The quote and apostrophe only need to be escaped if they are used within an attribute.</p>
+        <p class="BodyText1Indent">2.12 The application <sup>shall*106M-012</sup> display a disclaimer regarding use of medication history retrieved via Surescripts.</p>
+        <ul>
+            <li>Sample Disclaimer: Certain information may not be available or accurate in this report, including items that the patient asked not be disclosed due to patient privacy concerns, over-the-counter medications, low cost prescriptions, prescriptions paid for by the patient or non-participating sources, or errors in insurance claims information. The provider should independently verify medication history with the patient.</li>
+        </ul>
+        <p class="BodyText1Indent">2.13 The application <sup>shall*106A-001</sup> provide access to all history data available for a specific request. When a medication history response indicates more medication history is available, the application shall systematically retrieve all medication history available.</p>
+        <p class="BodyText1Indent">2.14 One instance of the provider identification/reference number &lt;Prescriber&gt;&lt;Identification&gt; <sup>shall*106A-002</sup> be the Participant ID of the participant making the medication history request.  </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This uses the &lt;MutuallyDefined&gt; element. </p>
+    </body>
+</html>

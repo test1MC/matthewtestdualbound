@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="2225" MadCap:lastWidth="1551">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-04-02T14:27:21.1083490-05:00" />
+        </MadCap:changeData><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Message Descriptions</h2>
+        <p class="BodyText1">The prior authorization messages are not dependent on a particular workflow. There are two possible prior authorization message flows: solicited and unsolicited. In the solicited model, the provider vendor notifies the PBM/payer that they wish to start the prior authorization process to determine if an authorization is needed for the patient and desired medication. In the unsolicited model, the provider vendor presumes that an authorization is needed and submits the information they anticipate the PBM/payer needs. Provider vendors and PBM/payers are required to support all message types outlined below.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In this version, Surescripts only supports the solicited model.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PAInitiationRequest</p>
+        <p class="BodyText1">In the solicited model, this message is used by the provider vendor to initiate the prior authorization process by notifying the PBM/payer of the patient and the medication for which prior authorization is being requested, along with the provider vendor’s information and other related details.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PAInitiationResponse</p>
+        <p class="BodyText1">After receiving the PAInitiationRequest, the PBM/payer returns a PAInitiationResponse. This message contains the set of questions which have already been established by the PBM/payer for the prior authorization, or can contain a request for information that could be obtained from the patient’s electronic medical record using coded references and sent in lieu of the provider vendor answering one or more questions.  </p>
+        <p class="BodyText1">This message may indicate that prior authorization is not needed for the patient and medication identified in the initiation request.</p>
+        <p class="BodyText1">It is anticipated that the PAInitiationResponse from the PBM/payer will identify all the information needed from the provider vendor to complete the PA determination, so the determination can be made based on information contained in one exchange of the PA request and response messages.</p>
+        <p class="BodyText1">The PAInitiationResponse is for the medication (name, strength and dosage form) indicated in the PAInitiationRequest. The PBM/payer should not respond with an equivalent to the medication (e.g., generic product equivalent to brand product) indicated in the PAInitiationRequest.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PARequest </p>
+        <p class="BodyText1">The provider vendor gathers the requested information by presenting questions for the provider vendor to answer and/or by extracting information from the patient’s electronic medical record using the coded references associated to the question. The information is sent to the PBM/payer in the PARequest message. </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PAResponse</p>
+        <p class="BodyText1">The PBM/payer determines whether authorization can be granted and provides the determination to the provider vendor in the PAResponse message. In some cases, the PAResponse message may indicate that the PBM/payer needs additional information in order to make a determination. The payer will also indicate whether it supports electronic appeals for this case.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PAAppealRequest</p>
+        <p class="BodyText1">The PAAppealRequest message enables the provider vendor to obtain the information required to submit an appeal. The PAAppealRequest message also enables the provider vendor to submit the appeal information for a prior authorization determination.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">PAAppealRequest should only be sent when the IsEAppealSupported flag is set to “Y” in the PAResponse.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PAAppealResponse</p>
+        <p class="BodyText1">The PAAppealResponse message provides information from the PBM/payer to the provider vendor on what is needed for an appeal. The PAAppealResponse message is also used by the PBM/payer to indicate the outcome of an appeal.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PACancelRequest</p>
+        <p class="BodyText1">The provider vendor sends the PACancelRequest to a PBM/payer to cancel a PARequest. This can be sent any time after the PAInitiationResponse is received by the provider vendor.</p>
+        <p MadCap:changes="1" class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">PACancelRequest messages should only be sent for PA cases that are still considered open and valid at the PBM/payer. If a closed PAInitiationResponse or PAResponse determination has been returned to the provider vendor, a PACancelRequest should not be sent to the PBM/payer.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">PACancelResponse</p>
+        <p class="BodyText1">The PBM/payer sends the PACancelResponse to a provider vendor to indicate whether the PARequest was canceled. This is only sent if a PACancelRequest is sent by the provider vendor to the PBM/payer.</p>
+    </body>
+</html>

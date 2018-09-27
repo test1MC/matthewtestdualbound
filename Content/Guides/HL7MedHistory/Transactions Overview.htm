@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="7" MadCap:lastHeight="852.3333" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc445209615"></a>Transactions Overview</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_Toc445209616"></a>Medication History – Acute Transaction Flow</h2>
+        <p class="BodyText1">The Surescripts Medication History – Acute service provides clinicians with convenient access to up-to-date medication history for patients in an inpatient setting. The hospital system provides basic patient demographic information, and the Surescripts Medication History – Acute service responds with information about prescriptions that the patient’s pharmacy benefit manager (PBM) has paid for over a selected period of time. It also can contain retail fill data from pharmacies connected to Surescripts for Medication History.</p>
+        <p class="BodyText1">The specifications required for requesting and receiving a medication history through the Surescripts Medication History – Acute service were created with the following assumptions:</p>
+        <ul>
+            <li>
+                <p class="BodyText1">A Medication History request requires patient authorization in order to be retrieved. If Surescripts receives a transaction requesting a medication history, Surescripts will assume consent has been granted.</p>
+            </li>
+            <li>
+                <p class="BodyText1">A requester can receive multiple response formats from one request. The responses returned are determined by what formats the participant is certified to receive.</p>
+            </li>
+        </ul>
+        <p class="BodyText1">The graphic below depicts the transaction flow between participants in this process. </p>
+        <p class="BodyText1">&#160;</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/HL7MedHistory/Transactions Overview.png" style="visibility: visible;width: 586px;height: 293px;" />
+        </p>
+        <p class="BodyText1"><span style="font-weight: bold;">Figure </span><span style="font-weight: bold;">3</span><span style="font-weight: bold;">&#8209;</span><span style="font-weight: bold;">1</span> <span style="font-weight: bold;">Surescripts</span> <span style="font-weight: bold;">Medication</span> <span style="font-weight: bold;">History </span><span style="font-weight: bold;">– Acute</span><span style="font-weight: bold;"> Transaction Flow Diagram</span></p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p class="BodyText1">The processing flow for the Medication History – Acute service is below:</p>
+        <ol>
+            <li>
+                <p>The Requester sends an ADT event to Surescripts when a Medication History – Acute response is desired.&#160; </p>
+                <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The hospital system determines when it is appropriate for Surescripts to get a request. The ADT message that Surescripts will expect and process is any of the valid event codes in the HL7 version 2.3 standard, including the admit/visit notification (A01), A04 register a patient (Emergency), or A08 update patient information.</p>
+            </li>
+            <li>
+                <p>Surescripts validates that the message is structurally sound, that the sender is authenticated and authorized to make a request, and that the request is sent to the proper environment. If the process succeeds, the sender will get an ACK with an AA (Application Accepted) acknowledgement code. If it fails, the sender will get an AE (Application Error) acknowledgement code or an AR (Application Reject) error, depending on the error. The ACK is a synchronous response to the ADT event received by Surescripts. Surescripts will audit and investigate any errors that are transmitted within the message. </p>
+            </li>
+            <li>
+                <p>Surescripts utilizes the patient information sent within the PID (Patient Identification) segment to locate the desired patient coverage in the Surescripts MPI (Master Patient Index).</p>
+            </li>
+            <li>
+                <p>Once the patient is identified and the coverages are determined, Surescripts queries each source for medication history utilizing the Medication History request and response transaction. </p>
+            </li>
+            <li>
+                <p>Surescripts compiles the results and creates an HL7 ORU message and/or an HL7 RDS message for the original requester.</p>
+            </li>
+            <li>
+                <p>Surescripts sends the appropriate messages to the original requester.</p>
+            </li>
+        </ol>
+    </body>
+</html>

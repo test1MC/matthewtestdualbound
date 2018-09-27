@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc446417719"></a>Application Specifications</h1>
+        <p class="BodyText1">As an addendum to the Surescripts E-Prescribing Companion Guide, this section pertains to <span class="code">GetMessage</span> sent to Surescripts by the Mailboxing service.</p>
+        <h2 class="Heading2"><a name="_Toc446417720"></a>Transmission Protocol</h2>
+        <p class="BodyText1">The HTTPS transmission protocol is the only one currently supported for Surescripts Mailboxing service.</p>
+        <h2 class="Heading2"><a name="_Toc446417721"></a>Message Protocol Requirements</h2>
+        <p class="BodyText1">Surescripts supports Messaging in the XML format. The following sections describe the message details specific to the Mailboxing service.</p>
+        <h3 class="Heading3"><a name="_Toc513714501"></a>Requirements Designation</h3>
+        <p class="StylebodytextBold">Element Attributes</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required/Mandatory - the element must be used according to the specification (e.g. XML schema validation).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required – the element must be used according to the Surescripts business rules.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Situational/Conditional - the element must be used if conditions are met. Some fields do not have specific conditions. Data should be sent if available.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="note">
+            <div><b>Notes</b>:</div>
+            <ul>
+                <li>Elements that are grouped together may be marked as mandatory; however, if the group itself is marked as conditional, then these are only required if you use the group. </li>
+                <li>This Guide only includes data elements where Surescripts has specific requirements or further explains the field usage. Refer to the NCPDP SCRIPT Schema listed in <a href="../Mailboxing/DocumentPurpose.htm#_Toc446417708">Document References</a> for a complete list of fields.</li>
+            </ul>
+        </div>
+        <h3 class="Heading3"><a name="_Toc446417722"></a>Message Header Security Elements</h3>
+        <p class="BodyText1">The message header must contain security elements that include a <span class="code">UsernameToken</span> element - authentication information for the Mailboxing service customer.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Username
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Username is provided by Surescripts and is configured through Admin Console.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Password
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Password is issued to a customer and contains a BASE64 encoded digest calculated as: BASE64(SHA1(Nonce + Created + &gt;Password))</p>
+                        <p class="TableBody">The Password is provided by Surescripts and is configured through Admin Console.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Nonce
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The Nonce should be a unique value used to calculate the password hash for the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Created
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Date/Time the message was created, in the following format: YYYY-MM-DDTHH:MM:SS.FZ Military (24 hour) time only, UTC (Universal Coordinated Time). This timestamp value must be within =/- 60 minutes from the current UTC time.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc446417724"></a>Message Header Elements</h3>
+        <p>The message header contains the following elements for Mailboxing service .</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableHeading">Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>To
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The identification of the intended receiver of the message. </p>
+                        <p class="TableBody">When sending to Surescripts, the value = Surescripts.</p>
+                        <p class="TableBody">This field will contain the NCPDPID of the pharmacy or the SPI
+						(Surescripts Prescriber ID) of the prescriber.</p>
+                        <p><b>Note:</b> All response messages and free standing messages should be
+						sent to the same sender that initiated the original message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160; @Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">M = MailboxID</p>
+                        <p class="TableBody">D = PrescriberID (Used for SPI)</p>
+                        <p class="TableBody">P = Pharmacy NCPDPID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">MailboxID
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The MailboxID element contains the sender’s Mailbox ID provided by Surescripts and is configured through Admin Console.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">AcknowledgementID
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Contains the DeliveredID from the message previously retrieved from the mailbox. The DeliveredID is a unique identifier assigned by Surescripts to each message retrieved from a mailbox. The AcknowledgementID element should be omitted for the first GetMessage or the GetMessage following an empty mailbox Status is returned.</p>
+                        <p class="TableBody">This element can acknowledge the receipt of the previous message and causes Surescripts to return the next message in the mailbox.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc446417725"></a>Message Body Elements</h3>
+        <p class="BodyText1">The Mailboxing service body must contain the <span class="code">&lt;GetMessage/&gt; </span>element.</p>
+    </body>
+</html>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="723" MadCap:lastWidth="712">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Message Linkage</h1>
+        <p>
+            <MadCap:annotation MadCap:createDate="2017-10-04T12:24:42.3090715-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Added on 4/27/17 at 20:27 by Wkgrp B" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-04T12:25:09.9248328-05:00">Customers must follow all message linkage as described in the table below. Four key fields are used to link messages together, as defined below.</MadCap:annotation> This linkage allows a software system to tie one message to another. For example, on a RefillRequest the prescribing system needs to find the original NewRx to which the pharmacy is referring. This linkage should be done in an automated manner.</p>
+        <p>MessageID - The unique number assigned to each message.</p>
+        <p>RelatesToMessageID –The &lt;MessageID&gt; of the message being responded to.</p>
+        <p>RxRefereneNumber – The prescription number assigned by pharmacy system.</p>
+        <p>PrescriberOrderNumber – The prescription number created by the prescribing system. For diagram below this is called <MadCap:annotation MadCap:createDate="2017-10-04T12:27:41.6360024-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Add Use Cases for DNTF, etc. See App Cert Relationship table. A lot of repetition. Try to generalize the rules. \r\n\r\nSee JIRA GUIDE-303\r\n\r\nThis is the original table and may have been replaced by the table we started in the ACR groups. Requested confirmation from Tim on what to use/not keep." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-04T12:36:15.2843621-05:00">PON.</MadCap:annotation></p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">NEWRX</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody"><span style="font-weight: bold;">REFREQ/RXFILL<br />RXCHG/CANRX/<br />RESUPPLY</span>
+                    </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody"><span style="font-weight: bold;">REFRES/CHGRES<br />CANRES</span>
+                    </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">NEWRX (Following Denied Refill Response)</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 12345 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 444333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 888333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">MessageID = 89999</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = (should contain the Message ID of the Refill Renewal Response on a DNTF)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = 12345</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = 444333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">RelatesTo = 888333</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RxRef# = </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RxRef# = Pp56</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RxRef# = Pp56</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">RxRef# = Pp56 (Use this field first for matching back to refill response)</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">PON = RX123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">PON = RX123 ( This field should be used first for matching back to NewRx)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">PON = RX123A (use a new PON for REFRES or CHGRES)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">PON = RX456</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 888</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 77777</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">MessageID = 555555</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">MessageID =111111</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = 12345</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = 444333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">RelatesTo = 888333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">RelatesTo = 89999</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

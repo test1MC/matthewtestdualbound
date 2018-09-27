@@ -1,0 +1,2366 @@
+/*<meta />*/
+
+/* 
+dark blue: #105677
+light blue: #0886b2
+bright blue: #089bcd
+orange: #f7901e
+*/
+
+.MCDropDown_Closed a.MCDropDownHotSpot,
+.MCDropDown_Open a.MCDropDownHotSpot
+{
+	color: white;
+}
+
+@font-face 
+{
+	font-family: "Proxima N W01 Reg";
+	src: url("/dv2/2/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb#iefix");
+	src: url("/dv2/2/7e90123f-e4a7-4689-b41f-6bcfe331c00a.eot?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb#iefix") format("eot"), url("/dv2/14/64017d81-9430-4cba-8219-8f5cc28b923e.woff2?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb") format("woff2"), url("/dv2/3/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb") format("woff"), url("/dv2/1/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb") format("truetype"), url("/dv2/11/ab9cd062-380f-4b53-b1a7-c0bec7402235.svg?d44f19a684109620e484167ca090e81848fd098920d0563867786e98e8b7d5e2d781ca692b989aab9eb8f279f1cffae2f475dfd5d1aef49082bf52e674fcae69e37b87774ae3c8980b701eee4887e71d681a7313332e9530a393e1ae4ef767762dadd60db1e7e82b77377aabc5e085c9c191b243c892b10e1ea120843cc2c7411577670d72d5fcdc6d2b90d740f224c9276bfbf8225bcbc85a511ae7736bcbb62e6ff2410b50d5d169c98c1d8339a6f387790aa2bb40d3e17c50afc16d3ea735fdee78b04602bf89e83bd13b87f30b219162a3d68b754326dba67b8655ac1136bfaca6ccfd061bcc73ee4e313cc8c413721d44f2f7290aa529255a4d4dbe47fd4f&projectId=cb527d7d-0d4a-45f2-a535-b03b5ec45bdb#ab9cd062-380f-4b53-b1a7-c0bec7402235") format("svg");
+}
+
+body
+{
+	font-family: "Proxima N W01 Reg", "Proxima Nova Rg", Arial, Helvetica, sans-serif;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+p
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-size: 11pt;
+	font-family: Arial;
+	mc-hyphenate: never;
+}
+
+ol
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+	margin-bottom: 0pt;
+}
+
+ul
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-family: Arial;
+	font-size: 11pt;
+}
+
+li
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-family: Arial;
+	font-size: 11pt;
+}
+
+td
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+	vertical-align: top;
+}
+
+p.Header	/*I'm not sure if this is used. It might be used on our internal site.*/
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+}
+
+p.Footer	/*I don't think this is used.*/
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+	border-top-style: double;
+	border-top-width: 3pt;
+	border-top-color: #808080;
+	font-variant: small-caps;
+}
+
+p.CoverLogo	/*I don't think this is used.*/
+{
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 18pt;
+	margin-top: 66pt;
+}
+
+span.CommentReference
+{
+	font-size: 8pt;
+}
+
+p.CoverTitle1	/*I don't think this i used.*/
+{
+	margin-top: 0pt;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 18pt;
+}
+
+p.CoverTitle2	/*I don't think this is used.*/
+{
+	margin-top: 0pt;
+	margin-left: 5pt;
+	font-weight: normal;
+	font-style: italic;
+	font-size: 12pt;
+}
+
+p.CoverDate	/*Formats the Date variable on the Cover page.*/
+{
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+	font-size: 16pt;
+}
+
+p.bodytextTitlepage	/*I don't think this is used.*/
+{
+	margin-top: 24pt;
+	margin-bottom: 6pt;
+	text-align: center;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 13pt;
+}
+
+span.Hyperlink
+{
+	color: #0000FF;
+	font-size: 10pt;
+	text-decoration: underline;
+}
+
+p.TitlePageBodyText	/*I think this was previously used on the title page. This could possibly be deleted.*/
+{
+	text-align: center;
+	font-size: 9pt;
+}
+
+p.BodyText1	/*Recommend to use for all paragraph body text.*/
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-family: Arial;
+}
+
+p.TableHeading	/*This may have been used when table styles were reassigned. Most tables should use Guides Table. At some point this style can probably be deleted.*/
+{
+	margin-top: 5pt;
+	margin-bottom: 1pt;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+p.TableBody	/*This may have been used when table styles were reassigned. Most tables should use Guides Table. At some point this style can probably be deleted.*/
+{
+	page-break-after: avoid;
+	margin-top: 5pt;
+	margin-bottom: 1pt;
+	mc-hyphenate: never;
+	font-size: 10pt;
+}
+
+p.BodyText2
+{
+	margin-top: 12pt;
+	font-size: 11pt;
+	margin-bottom: 9pt;
+	margin-left: 47pt;
+}
+
+p.BlankPage	/*I don't think this is used.*/
+{
+	page-break-after: avoid;
+	margin-top: 3pt;
+	margin-bottom: 0pt;
+	text-align: center;
+	font-style: italic;
+	font-size: 10pt;
+}
+
+h1.TOCTitle	/*I don't know if this is used or not.*/
+{
+	margin-top: 6pt;
+	border-bottom-width: 1pt;
+	margin-bottom: 18pt;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: 20pt;
+	mc-auto-number-position: none;
+	mc-heading-level: 1;
+}
+
+p.TOC1	/*Formats the 1st level of the TOC.*/
+{
+	font-size: 10pt;
+}
+
+p.TOC2	/*Formats the 2nd level of the TOC.*/
+{
+	font-size: 10pt;
+}
+
+p.TOC3	/*Formats the 3rd level of the TOC.*/
+{
+	font-size: 10pt;
+}
+
+h1.Heading1	/*Formats level 1 section headers in Guide.*/
+{
+	page-break-after: avoid;
+	page-break-before: always;
+	border-bottom-style: solid;
+	border-bottom-width: 1pt;
+	margin-top: 18pt;
+	margin-bottom: 10pt;
+	mc-heading-level: 1;
+	font-variant: small-caps;
+	mc-auto-number-offset: 0px;
+	font-size: 2em;
+	font-weight: bolder;
+	mc-auto-number-position: none;
+}
+
+h2.Heading2	/*Formats level 2 headers in Guide.*/
+{
+	page-break-after: avoid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
+	font-weight: bold;
+	font-variant: small-caps;
+	border-bottom-style: none;
+	margin-top: 30pt;
+	margin-bottom: 6pt;
+	mc-heading-level: 2;
+	font-size: 16pt;
+	mc-auto-number-position: none;
+	page-break-before: avoid;
+}
+
+p.StyleHead2TextBold1	/*This is bold, indented text that can used as a Heading 4. Includes a 47 pt left margin.*/
+{
+	margin-top: 12pt;
+	font-size: 11pt;
+	margin-left: 47pt;
+	page-break-after: avoid;
+	margin-bottom: 6pt;
+	font-weight: bold;
+}
+
+h3.Heading3	/*Formats level 3 headers in Guide.*/
+{
+	page-break-after: avoid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
+	font-weight: bold;
+	font-variant: small-caps;
+	page-break-before: always;
+	border-bottom-style: none;
+	margin-bottom: 6pt;
+	page-break-inside: avoid;
+	margin-top: 18pt;
+	mc-heading-level: 3;
+	font-size: 13pt;
+	mc-auto-number-position: none;
+}
+
+li.ListBullet5	/*I'm not sure if this is still used.*/
+{
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+	font-size: 11pt;
+}
+
+table.TableGrid
+{
+	border-collapse: collapse;
+	margin-left: 0pt;
+}
+
+p.ListNumber2	/*I don't think this is used. Or at least, if iit is, it should be reassigned with an ol and li tag.*/
+{
+	margin-top: 9pt;
+	margin-left: 72pt;
+	font-size: 11pt;
+}
+
+p.StyleNOTE2	/*This seems to be an old note style carried over from import. This includes more of an indent than the other old note style. We might be able to delete it.*/
+{
+	border-top-style: solid;
+	border-top-width: 1pt;
+	border-top-color: black;
+	border-bottom-style: solid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
+	margin-bottom: 6pt;
+	letter-spacing: 0pt;
+	font-size: 10pt;
+	margin-top: 12pt;
+	margin-left: 68pt;
+}
+
+p.Graphic	/*I don't think this is used.*/
+{
+	margin-left: 36pt;
+	font-size: 11pt;
+	margin-top: 12pt;
+	margin-bottom: 12pt;
+}
+
+p.FigureName	/*Formats figure captions.*/
+{
+	font-size: 9pt;
+	margin-top: 2pt;
+	margin-bottom: 6pt;
+	font-weight: bold;
+}
+
+p.ListParagraph	/*This could be used. Will need to look this one up.*/
+{
+	page-break-after: avoid;
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+	margin-left: 36pt;
+	font-size: 11pt;
+}
+
+p.Workflow	/*I don't think this is used.*/
+{
+	font-size: 11pt;
+	margin-left: 47pt;
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+}
+
+h4.Heading4	/*This should not be used anymore.*/
+{
+	page-break-after: avoid;
+	margin-top: 10pt;
+	margin-bottom: 3pt;
+	mc-heading-level: 4;
+	font-weight: bold;
+	font-variant: small-caps;
+	mc-auto-number-position: none;
+	font-size: 12pt;
+}
+
+p.StyleExampleText1Left065	/*I don't know if this is used.*/
+{
+	font-size: 9pt;
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+	margin-left: 47pt;
+	text-align: justify;
+}
+
+p.StylebodytextBold	/*Formats what was traditionally a Heading 4.  Used for a bold header that is not numbered.*/
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+p.TTLJ25	/*I don't think this is used.*/
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+	margin-left: 18pt;
+}
+
+p.Style5Head2BOLD	/*Formats what was traditionally a Heading 4 and includes a 36 pt left margin.  Used for a bold header that is not numbered.*/
+{
+	margin-top: 12pt;
+	font-size: 11pt;
+	page-break-after: avoid;
+	page-break-inside: avoid;
+	margin-bottom: 3pt;
+	margin-left: 36pt;
+	font-weight: bold;
+}
+
+li.ListBullet3	/*I'm not sure if this is still used.*/
+{
+	margin-top: 6pt;
+	font-size: 11pt;
+	margin-bottom: 6pt;
+	margin-left: 108pt;
+}
+
+p.SegmentHyperlink	/*I'm not sure that this is used.*/
+{
+	font-size: 9pt;
+	page-break-after: avoid;
+	margin-top: 5pt;
+	margin-bottom: 1pt;
+}
+
+p.TT	/*I don't think this is used.*/
+{
+	font-size: 9pt;
+	margin-top: 1pt;
+	margin-bottom: 1pt;
+}
+
+p.TTChar	/*I don't think this is used.*/
+{
+	margin-top: 6pt;
+	font-size: 9pt;
+}
+
+p.TableText	/*This may have been used when table styles were reassigned. Most tables should use Guides Table. At some point this style can probably be deleted.*/
+{
+	font-size: 9pt;
+	margin-top: 2pt;
+	margin-bottom: 2pt;
+}
+
+p.BodyText	/*This is the out of the box Madcap style. Don't use it.*/
+{
+	font-size: 9pt;
+	page-break-after: avoid;
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+
+p.Variance	/*Not sure what this is .*/
+{
+	font-size: 9pt;
+	page-break-after: avoid;
+	margin-top: 5pt;
+	margin-bottom: 1pt;
+	font-weight: bold;
+}
+
+p.H3T	/*I don't think this is used.*/
+{
+	font-size: 9pt;
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+	margin-left: 54pt;
+}
+
+p.StylenormalnospaceDarkRed	/*This might be used for code examples.*/
+{
+	font-size: 9pt;
+	margin-top: 0pt;
+	color: #800000;
+}
+
+li.TableBody	/*I think this was created to be used in a table.*/
+{
+	page-break-after: avoid;
+	margin-top: 5pt;
+	margin-bottom: 1pt;
+	font-size: 10pt;
+}
+
+p.normalnospace	/*I don't believe this is used.*/
+{
+	font-size: 9pt;
+	margin-top: 0pt;
+}
+
+li.ListNubmer2	/*I'm not sure if this is still used.*/
+{
+	margin-left: 36pt;
+	font-size: 11pt;
+	page-break-after: avoid;
+	margin-top: 6pt;
+	margin-bottom: 6pt;
+}
+
+li.ListBullet2	/*I'm not sure if this is still used.*/
+{
+	margin-top: 6pt;
+	font-size: 11pt;
+}
+
+p.BodyText3
+{
+	margin-top: 10pt;
+	margin-left: 36pt;
+	font-size: 11pt;
+}
+
+span.nb0
+{
+	font-weight: bold;
+}
+
+p.HeaderFooter	/*Formats HeaderFooter area of Body and Landscape page layouts for printed version.*/
+{
+	font-size: 8.5pt;
+	font-variant: small-caps;
+}
+
+p.GuideTitle	/*Formats the GuideTitle variable that is pulled into the print and online Title Page.*/
+{
+	color: #ffffff;
+	font-size: 18pt;
+	font-weight: bold;
+}
+
+p.Date	/*Formats the Date variable used on the Cover page.*/
+{
+	color: #f7901e;
+	font-size: 14pt;
+}
+
+p.Header
+{
+	color: #ffffff;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+p.noteOLD	/*This isn't used anywhere. This could be another option for formatting a note.*/
+{
+	border: 1px solid #105677;
+	border-radius: 8px;
+	background-color: #105677;
+	background-image: url('../Images/note.png');
+	background-position: left top;
+	background-repeat: no-repeat;
+	color: #ffffff;
+	padding: 8px;
+	padding-left: 40px;
+	mc-auto-number-format: '{b}Note: {/b}';
+}
+
+p.note	/*Formats the main Note style used in Flare. Includes the word "Note" in bold and an orange border.*/
+{
+	border: 1px solid #f7901e;
+	border-radius: 8px;
+	padding: 8px;
+	mc-auto-number-format: '{b}Note: {/b}';
+	font-family: Arial;
+	font-size: 11pt;
+}
+
+h1
+{
+	color: #105677;
+}
+
+h1.TOC	/*This is the level 1 header on the TOC page. Prevents the TOC page heading from appearing in the TOC itself.*/
+{
+	mc-auto-number-format: '';
+	mc-auto-number-position: none;
+	font-variant: small-caps;
+	mc-heading-level: 1;
+}
+
+#footer	/* fixes the footer at the bottom of the page */
+{
+	/* position: fixed;*/
+	left: 0px;
+	bottom: 0px;
+	height: 56px;
+	width: 100%;
+	background: #ffffff;
+}
+
+p.Published	/*Formats the LastPublished variable in the bottom left of the topic.*/
+{
+	margin-top: 10pt;
+	margin-left: 10px;
+	font-size: 9pt;
+	font-variant: small-caps;
+}
+
+p.Copyright	/*Formats the copyright area in the bottom right area of online topics. Applied to master page.*/
+{
+	text-align: right;
+	margin-top: 10pt;
+	margin-right: 10px;
+	font-size: 9pt;
+	font-variant: small-caps;
+}
+
+MadCap|breadcrumbsProxy	/*Formats the breadcrumb pulled into online pages.*/
+{
+	font-size: 9pt;
+	padding-bottom: 4px;
+	border: none;
+}
+
+html.welcome	/*Hides the mobile content on the welcome page in the desktop version */
+{
+	background-color: #089bcd;
+	text-align: center;
+	mc-master-page: url('../MasterPages/masterpage_welcome.flmsp');
+	padding: 0;
+	margin: 0;
+}
+
+html.welcome body	/* removes extra space Flare normally adds around the topic */
+{
+	padding: 0;
+	margin: 0;
+	margin-top: -8px;
+}
+
+html.welcome h1	/* formats the h1 on the welcome page */
+{
+	color: #f7901e;
+	font-size: 2.6em;
+}
+
+html.welcome h2	/* formats the h2 on the welcome page */
+{
+	color: #ffffff;
+	font-size: 1.6em;
+	margin-bottom: 2em;
+}
+
+html.welcome h2 > sup	/* formats the tm in the welcome page */
+{
+	font-size: .4em;
+}
+
+html.welcome p	/* formats the paragraphs on the welcome page */
+{
+	font-size: 1em;
+}
+
+html.welcome a	/* formats the links on the welcome page as white  */
+{
+	color: #ffffff;
+}
+
+html.welcome p.desktopCopyright	/* formats the 'copyright' info on the welcome page */
+{
+	color: #ffffff;
+	position: absolute;
+	width: 200px;
+	right: 14px;
+	bottom: 20%;
+}
+
+div.mobileWelcome	/*Hides the mobile content on the welcome page in the desktop version */
+{
+	display: none;
+}
+
+img[usemap]
+{
+	/* allows the image map hotspots to resize */
+	border: none;
+	height: auto;
+	max-width: 100%;
+	width: auto;
+}
+
+MadCap|snippetText
+{
+	mc-hyphenate: never;
+}
+
+MadCap|toggler
+{
+	mc-image-spacing: 10px;
+	font-size: 12pt;
+}
+
+MadCap|toggler:focus
+{
+	background-color: #d3d3d3;
+}
+
+MadCap|toggler:hover
+{
+	background-color: #d3d3d3;
+}
+
+p.buttons	/*This style is applied to the buttons on the online Title page. This style includes padding to provide white space between the buttons. It should only be used in this location.*/
+{
+	
+}
+
+p.BasedOn	/*This is applied to the BasedOn variable that is pulled into the Title page. This variable identifies which standard the guide is based on.*/
+{
+	
+}
+
+p.InternalHomeText	/*This is used on the Internal Home site where we publish our guides. Verified it's used on the StandardsConnectDocumentation page.*/
+{
+	
+}
+
+p.InternalHomeTitle	/*This is used on the Internal Home site where we publish our guides. Verified it's used on the StandardsConnectDocumentation page.*/
+{
+	
+}
+
+p.mobileCopyright	/*I don't believe this is used.*/
+{
+	
+}
+
+p.OnlineGuideHeader	/*Formats the Guide Title Name in the right upper corner of online guide version.*/
+{
+	
+}
+
+h1.InternalHeading1	/*Format level 1 topic header on the Internal Site pages.*/
+{
+	
+}
+
+h3.Appendix3	/*Formats level 3 headers in Appendix.*/
+{
+	
+}
+
+div.desktopWelcome	/*I don't think this is used.*/
+{
+	
+}
+
+div.note	/*Use this note style if you have a note that requires multiple lines of text.*/
+{
+	mc-hyphenate: never;
+}
+
+li.GuideList	/*Formats bulleted list on Internal Documentation site.*/
+{
+	
+}
+
+td.TableInternal	/*Formats the guide names and description on the Internal Documentation site.*/
+{
+	
+}
+
+img	/*Formats the thumbnail image.*/
+{
+	
+}
+
+html.guideHome	/*This style applies the background image to the masterpageNew.flmsp. It is associated to this masterpage through the Unclassified element.*/
+{
+	
+}
+
+html.internalHome	/*This style applies the background image to the masterpageInternal.flmsp. It is associated to this masterpage through the Unclassified element.*/
+{
+	
+}
+
+html.internalHomeBody	/*I don't think this is used anymore.*/
+{
+	
+}
+
+MadCap|dropDownHotspot.TableText
+{
+	color: #000000;
+	font-family: Arial;
+	font-weight: normal;
+	font-size: 10pt;
+}
+
+div.noteACR
+{
+	border: solid 1px #461ef7;
+	mc-hyphenate: never;
+}
+
+p.Div
+{
+	margin-top: 8pt;
+}
+
+div
+{
+	mc-hyphenate: never;
+}
+
+div.across2	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.across2::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.across2::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.across2 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.across2 > div:nth-child(1)
+{
+	width: 66.66667%;
+	margin-left: 0%;
+}
+
+div.across2 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across1	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.across1::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.across1::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.across1 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.across1 > div:nth-child(1)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across1 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across1 > div:nth-child(3)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across3	/*This is a custom responsive layout row style (div class) in your stylesheet. To provide your own description for this style: (1) Open the stylesheet; (2) Find and select the div class with this name; and (3) In the Comment field, replace this text with your own. For more information on adding comments to styles, see the online Help.*/
+{
+	mc-grid-row: true;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+div.across3::before
+{
+	content: ' ';
+	display: table;
+}
+
+div.across3::after
+{
+	content: ' ';
+	display: table;
+	clear: both;
+}
+
+div.across3 > div
+{
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.across3 > div:nth-child(1)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across3 > div:nth-child(2)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+div.across3 > div:nth-child(3)
+{
+	width: 33.33333%;
+	margin-left: 0%;
+}
+
+@media screen and (max-width: 1024px)
+{
+	/* switches to the mobile welcome page and formats the content */
+
+	html.welcome
+	{
+		background-color: #105677;
+	}
+
+	html.welcome div.desktopWelcome
+	{
+		display: none;
+	}
+
+	html.welcome div.mobileWelcome
+	{
+		display: block;
+		text-align: center;
+		color: #ffffff;
+	}
+
+	html.welcome p.mobileCopyright
+	{
+		margin-top: 4em;
+		font-size: .9em;
+	}
+
+	p.TableBodyIndent1
+	{
+		margin-left: 8pt;
+	}
+}
+
+@media print
+{
+	body
+	{
+		font-family: Arial;
+	}
+
+	h1
+	{
+		mc-auto-number-format: 'GH:Section {n+}{ =0}: ';
+		mc-hyphenate: never;
+		page-break-before: always;
+	}
+
+	h2
+	{
+		mc-auto-number-format: 'GH:{n}.{n+}{ =0} ';
+		mc-hyphenate: never;
+		page-break-before: avoid;
+	}
+
+	h3
+	{
+		mc-auto-number-format: 'GH:{n}.{n}.{n+} ';
+		page-break-before: avoid;
+		mc-hyphenate: never;
+	}
+
+	h4
+	{
+		page-break-before: auto;
+		mc-hyphenate: never;
+	}
+
+	tr
+	{
+		page-break-inside: avoid;
+	}
+
+	li
+	{
+		mc-hyphenate: never;
+	}
+
+	h1.Heading1
+	{
+		page-break-before: always;
+		border-bottom-color: #000000;
+		font-weight: bold;
+		mc-auto-number-position: inside-head;
+		mc-auto-number-format: 'GH:Section {n+}{ =0}: ';
+		mc-multiline-indent: 129pt;
+	}
+
+	h2.Heading2
+	{
+		border-bottom-color: #ffffff;
+		page-break-after: avoid;
+		mc-auto-number-position: inside-head;
+		page-break-before: avoid;
+		mc-multiline-indent: 28pt;
+	}
+
+	h3.Heading3
+	{
+		page-break-before: auto;
+		border-bottom-color: #ffffff;
+		mc-auto-number-position: inside-head;
+		mc-multiline-indent: 34pt;
+	}
+
+	/* formats the content for print */
+
+	h1.TOCTitle
+	{
+		border-bottom-color: #000000;
+		border-bottom-style: solid;
+		mc-auto-number-position: none;
+		mc-auto-number-format: ' ';
+	}
+
+	h1.TOC
+	{
+		font-weight: bold;
+		mc-auto-number-position: none;
+		mc-auto-number-format: ' ';
+		border-bottom-style: solid;
+		border-bottom-color: #000000;
+		border-bottom-width: 1px;
+		mc-heading-level: 0;
+	}
+
+	p.TitlePageBodyText
+	{
+		margin-top: 0pt;
+	}
+
+	p.TOC2
+	{
+		margin-left: 20pt;
+	}
+
+	p.TOC3
+	{
+		margin-left: 40pt;
+	}
+
+	p.TOC1
+	{
+		frame-break-after: avoid;
+	}
+
+	p.TOC4
+	{
+		margin-left: 60pt;
+	}
+
+	h1.Appendix1
+	{
+		page-break-before: always;
+		border-bottom-color: #000000;
+		font-weight: bold;
+		mc-auto-number-position: inside-head;
+		font-variant: small-caps;
+		margin-bottom: 10pt;
+		mc-multiline-indent: 140pt;
+		border-bottom-style: solid;
+		border-bottom-width: 1pt;
+		mc-auto-number-format: 'GA:Appendix {A+}: ';
+	}
+
+	p.note
+	{
+		border-bottom-width: 2px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		border-left-width: 2px;
+		font-size: 11pt;
+		margin-bottom: 8px;
+		margin-top: 8px;
+	}
+
+	table
+	{
+		mc-hyphenate: never;
+	}
+
+	p
+	{
+		mc-hyphenate: never;
+		font-size: 11pt;
+	}
+
+	ul.BulletIndent1
+	{
+		margin-left: 60px;
+	}
+
+	p.TableBody
+	{
+		font-size: 10pt;
+	}
+
+	p.TableHeading
+	{
+		font-size: 10pt;
+	}
+
+	p.TableText
+	{
+		font-size: 10pt;
+	}
+
+	p.BodyText1Indent
+	{
+		mc-multiline-indent: 19pt;
+	}
+
+	p.Graphic
+	{
+		margin-left: 0pt;
+	}
+
+	p.BodyText1Indent2
+	{
+		margin-left: 30pt;
+		mc-multiline-indent: 17pt;
+	}
+
+	ol
+	{
+		mc-hyphenate: never;
+	}
+
+	p.GraphicLeftIndent
+	{
+		margin-left: -40px;
+	}
+
+	h2.Appendix2
+	{
+		page-break-before: avoid;
+		mc-auto-number-position: inside-head;
+		mc-multiline-indent: 42pt;
+		mc-auto-number-format: 'GA:{A}.{n+}:  ';
+	}
+
+	p.StylebodytextBoldPageBreak
+	{
+		frame-break-before: always;
+	}
+
+	p.draftDisclaimer
+	{
+		color: #ff0000;
+		font-family: Arial;
+		font-weight: bolder;
+		font-size: 14pt;
+	}
+
+	span.Hyperlink
+	{
+		font-family: Arial;
+		font-size: 11pt;
+	}
+
+	MadCap|xref
+	{
+		color: #0000ff;
+		text-decoration: underline;
+		mc-format: '{paratext} {pageref}';
+	}
+
+	h4.Heading4
+	{
+		mc-auto-number-position: inside-head;
+		mc-auto-number-format: 'GH:{n}.{n}.{n}.{n+} ';
+	}
+
+	html.guideHome
+	{
+		background: url(../Images/backgroundwithlogo.png);
+		background-size: 100% 100%;
+	}
+
+	p.TableBodyIndent1
+	{
+		margin-left: 5pt;
+		font-size: 10pt;
+	}
+
+	p.EDIExample
+	{
+		font-family: Arial;
+		font-size: 10pt;
+		margin-top: 4pt;
+	}
+
+	img
+	{
+		border: solid 0px;
+	}
+
+	td
+	{
+		font-size: 9pt;
+	}
+
+	h3.Appendix3
+	{
+		page-break-before: avoid;
+		mc-auto-number-position: inside-head;
+		mc-multiline-indent: 42pt;
+		mc-auto-number-format: 'GA:{A}.{n}.{n+}';
+	}
+
+	p.titleGraphicLeft
+	{
+		text-align: right;
+	}
+
+	p.WordTitleBackground	/*I think this formats the image on the print title page.*/
+	{
+		background-image: url('../Images/Copy of background.png');
+		background-repeat: no-repeat;
+		height: 794px;
+		width: 615px;
+		background-size: 100% 100%;
+	}
+
+	p.OnlineGuideHeader
+	{
+		font-family: Arial;
+		font-variant: small-caps;
+		font-size: 8pt;
+	}
+
+	div.note
+	{
+		border: solid 1px #f7901e;
+		border-radius: 8px;
+		padding: 8px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		font-size: 11pt;
+		margin-bottom: 8px;
+		margin-top: 8px;
+		mc-auto-number-position: inside-head;
+		position: relative;
+		mc-dita-type: p;
+	}
+
+	p.BodyText1IndentContinue
+	{
+		margin-left: 19pt;
+		mc-multiline-indent: 0pt;
+	}
+
+	p.BasedOn	/*This is applied to the BasedOn variable that is pulled into the Title page. This variable identifies which standard the guide is based on.*/
+	{
+		font-family: Arial;
+		color: #ffffff;
+		font-size: 14pt;
+		font-style: italic;
+	}
+
+	p.insideNote
+	{
+		mc-auto-number-format: '{b}Note: {/b}';
+	}
+
+	p.BodyText1	/*Recommend to use for all paragraph body text.
+*/
+	{
+		
+	}
+
+	p.Workflow	/*I don't think this is ued anymore.*/
+	{
+		
+	}
+
+	div.noteACR
+	{
+		border-radius: 8px;
+		padding: 8px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		font-size: 11pt;
+		margin-bottom: 8px;
+		margin-top: 8px;
+		mc-auto-number-position: inside-head;
+		position: relative;
+		mc-dita-type: p;
+		border: solid 2px #4613f7;
+	}
+
+	p.Div
+	{
+		margin-top: 8pt;
+	}
+
+	div.codeExample
+	{
+		width: 100%;
+	}
+
+	p.InternalHomeTitle
+	{
+		
+	}
+
+	p.ExternalHomeTitle
+	{
+		
+	}
+}
+
+MadCap|tocProxy
+{
+	border-top-style: none;
+	border-top-width: 0px;
+}
+
+p.TOC4	/*Formats the 4th level of the TOC.*/
+{
+	font-size: 10pt;
+}
+
+@media non-print
+{
+	h1.Heading1
+	{
+		color: #005677;
+		border-bottom-style: solid;
+	}
+
+	h1
+	{
+		mc-hyphenate: never;
+	}
+
+	h2
+	{
+		mc-hyphenate: never;
+	}
+
+	h3
+	{
+		mc-hyphenate: never;
+	}
+
+	h4
+	{
+		mc-hyphenate: never;
+	}
+
+	li
+	{
+		mc-hyphenate: never;
+	}
+
+	p
+	{
+		mc-hyphenate: never;
+	}
+
+	table
+	{
+		mc-hyphenate: never;
+	}
+
+	ul
+	{
+		mc-hyphenate: never;
+	}
+
+	html.guideHome
+	{
+		mc-master-page: url('../MasterPages/masterpageNew.flmsp');
+		padding: 0px;
+		margin: 0px;
+		background-size: 100% 100%;
+		background-attachment: fixed;
+		background: url(../Images/backgroundOnline.png) no-repeat center center fixed;
+		background-color: #005677;
+	}
+
+	p.buttons
+	{
+		text-align: right;
+		padding-bottom: 1em;
+		padding-top: 0.5em;
+		margin-top: 1pt;
+		background-color: transparent;
+	}
+
+	p.BodyText1Indent
+	{
+		mc-multiline-indent: 19pt;
+	}
+
+	p.BodyText1Indent2
+	{
+		mc-multiline-indent: 17pt;
+		margin-left: 30;
+	}
+
+	html.internalHome
+	{
+		padding: 0px;
+		margin: 0px;
+		background-size: 100% 100%;
+		background-attachment: fixed;
+		background-color: #005677;
+		mc-master-page: url('../MasterPages/masterpageInternal.flmsp');
+	}
+
+	p.InternalHomeTitle
+	{
+		font-family: Arial;
+		color: #f18903;
+		font-weight: bolder;
+		font-size: 30pt;
+		text-align: center;
+		margin-bottom: 12pt;
+	}
+
+	li.GuideList
+	{
+		color: #ffffff;
+		font-size: 12pt;
+		font-weight: normal;
+	}
+
+	MadCap|dropDownHead.InternalMenuHead
+	{
+		color: #ffffff;
+		margin-left: 0px;
+		margin-top: 6px;
+		font-family: Arial;
+		font-weight: normal;
+		padding-bottom: 0px;
+		padding-top: 0px;
+	}
+
+	MadCap|dropDown.InternalHomeDropDown
+	{
+		color: #ffffff;
+		margin-top: 5px;
+		font-size: 12pt;
+		font-weight: normal;
+		font-family: Arial;
+	}
+
+	a.MCDropDownHotSpot:link
+	{
+		color: #000000;
+		font-weight: bold;
+	}
+
+	a.MCDropDownHotSpot:hover
+	{
+		color: #1e90ff;
+		font-weight: bold;
+	}
+
+	a.MCDropDownHotSpot:visited
+	{
+		color: #000000;
+		font-weight: bold;
+	}
+
+	a:link
+	{
+		font-weight: bolder;
+		color: #0000ff;
+	}
+
+	a.internalSite:link
+	{
+		color: #ffffff;
+		font-weight: normal;
+	}
+
+	a:hover
+	{
+		font-weight: bolder;
+		color: #0000ff;
+	}
+
+	a.internalSite:hover
+	{
+		color: #f7901e;
+		font-weight: normal;
+	}
+
+	a:visited
+	{
+		color: #0000ff;
+	}
+
+	a.internalSite:visited
+	{
+		color: #ffffff;
+		font-weight: normal;
+	}
+
+	a:active
+	{
+		font-weight: bolder;
+		color: #0000ff;
+	}
+
+	a.internalSite:active
+	{
+		color: #ffffff;
+		font-weight: normal;
+	}
+
+	a:focus
+	{
+		color: #0000ff;
+	}
+
+	a.internalSite:focus
+	{
+		color: #ffffff;
+		font-weight: normal;
+	}
+
+	a.internalSite
+	{
+		color: #f18903;
+		font-family: Arial;
+		font-size: 12pt;
+	}
+
+	MadCap|dropDownBody
+	{
+		font-family: Arial;
+		font-size: 12pt;
+		font-weight: normal;
+		color: #000000;
+	}
+
+	td.TableInternal
+	{
+		color: #ffffff;
+		font-family: Arial;
+		font-size: 11pt;
+		padding: 15px;
+		font-weight: normal;
+	}
+
+	td
+	{
+		font-size: 11pt;
+	}
+
+	h1.InternalHeading1
+	{
+		color: #ffffff;
+		font-size: 16pt;
+	}
+
+	p.InternalHomeText
+	{
+		color: #ffffff;
+		font-family: Arial;
+		font-size: 12pt;
+		font-weight: normal;
+	}
+
+	MadCap|dropDown
+	{
+		font-weight: normal;
+		color: #000000;
+		font-family: Arial;
+		font-size: 12pt;
+		padding-left: 0px;
+		padding-right: 0px;
+		padding: 0pt;
+		padding-bottom: 3pt;
+		padding-top: 3pt;
+	}
+
+	html
+	{
+		
+	}
+
+	h1.Appendix1
+	{
+		mc-auto-number-format: 'GA:Appendix {A+}: ';
+		border-bottom: solid 1pt #000000;
+	}
+
+	p.OnlineGuideHeader	/*Formats the Guide Title Name in the right upper corner of online guide version.*/
+	{
+		font: Arial;
+		font-weight: bold;
+		color: #105677;
+		font-size: 10pt;
+		text-align: right;
+		margin-bottom: 0pt;
+		margin-top: 0pt;
+	}
+
+	p.Graphic
+	{
+		margin-left: 0pt;
+	}
+
+	div.note
+	{
+		border: solid 1px #f7901e;
+		border-bottom-right-radius: 8px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		border-radius: 8px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		font-size: 11pt;
+		padding: 8px;
+		margin-bottom: 8px;
+		margin-top: 8px;
+		border-bottom-left-radius: 8px;
+		mc-auto-number-position: inside-head;
+		mc-dita-type: p;
+		position: relative;
+	}
+
+	p.note
+	{
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		margin-bottom: 8px;
+		margin-top: 8px;
+	}
+
+	p.BasedOn
+	{
+		color: #ffffff;
+		font-family: Arial;
+		font-size: 14pt;
+		font-style: italic;
+	}
+
+	li.ListBullet5
+	{
+		margin-bottom: 6px;
+		margin-top: 6px;
+	}
+
+	p.TableBodyIndent1
+	{
+		margin-left: 10px;
+	}
+
+	p.TitlePageBodyText
+	{
+		margin-left: 60pt;
+		margin-right: 60px;
+	}
+
+	MadCap|dropDownHotspot.Internal
+	{
+		color: #ffffff;
+	}
+
+	MadCap|dropDownHotspot.Internal:hover
+	{
+		color: #f7901e;
+		font-family: Arial;
+		font-size: 12pt;
+	}
+
+	MadCap|dropDownHotspot.Internal:active
+	{
+		font-family: Arial;
+	}
+
+	MadCap|dropDownHotspot.Internal:focus
+	{
+		font-family: Arial;
+		font-size: 12pt;
+	}
+
+	MadCap|dropDownHotspot.Internal:link
+	{
+		font-family: Arial;
+		font-size: 12pt;
+		text-decoration: none;
+	}
+
+	MadCap|dropDownHotspot.Internal:visited
+	{
+		font-family: Arial;
+		font-size: 12pt;
+		text-decoration: none;
+	}
+
+	MadCap|dropDownBody.Internal
+	{
+		color: #ffffff;
+	}
+
+	MadCap|dropDownHead
+	{
+		color: #000000;
+		font-family: Arial;
+		font-size: 12pt;
+		padding-bottom: 0px;
+		padding-top: 0px;
+		font-weight: bold;
+	}
+
+	MadCap|dropDownHotspot
+	{
+		font-size: 12pt;
+		color: #000000;
+		padding: 0pt;
+		font-weight: bold;
+	}
+
+	a.MCDropDownHotSpot
+	{
+		color: #000000;
+		font-family: Arial;
+		font-size: 12pt;
+		padding: 0pt;
+		font-weight: bold;
+	}
+
+	a.MCDropDownHotSpot:active
+	{
+		font-family: Arial;
+		font-size: 12pt;
+		color: #000000;
+	}
+
+	a.MCDropDownHotSpot:focus
+	{
+		font-weight: bold;
+	}
+
+	p.TableBody
+	{
+		font-size: 10pt;
+	}
+
+	p.BodyText	/*This is the Madcap default. Don't use it.*/
+	{
+		
+	}
+
+	img	/*Formats the thumbnail image.*/
+	{
+		
+	}
+
+	MadCap|dropDown.TableText
+	{
+		font-size: 10pt;
+	}
+
+	MadCap|dropDownBody.TableText
+	{
+		font-size: 10pt;
+	}
+
+	MadCap|dropDownHead.TableTextHead
+	{
+		font-size: 10pt;
+		font-weight: normal;
+	}
+
+	MadCap|dropDownHotspot.TableText
+	{
+		font-weight: normal;
+	}
+
+	MadCap|dropDownHotspot.TableText:active
+	{
+		
+	}
+
+	MadCap|dropDownHotspot.TableText:hover
+	{
+		
+	}
+
+	MadCap|dropDownHotspot.TableText:focus
+	{
+		
+	}
+
+	MadCap|dropDownHotspot.TableText:link
+	{
+		
+	}
+
+	MadCap|dropDownHotspot.TableText:visited
+	{
+		
+	}
+
+	div.noteACR
+	{
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-bottom-width: 2px;
+		border-left-width: 2px;
+		border-radius: 8px;
+		border-right-width: 2px;
+		border-top-width: 2px;
+		border-width: 2px;
+		padding: 8px;
+	}
+
+	.tab
+	{
+		overflow: hidden;
+		border: solid 1px #ccc;
+		background-color: #f1f1f1;
+	}
+
+	.tab button
+	{
+		background-color: inherit;
+		float: left;
+		border: none;
+		outline: none 0;
+		cursor: pointer;
+		padding: 14px 16px;
+		transition: 0.3s;
+	}
+
+	.tab button:hover
+	{
+		background-color: #ddd;
+	}
+
+	.tab button.active
+	{
+		background-color: #ccc;
+	}
+
+	.tabcontent
+	{
+		display: none;
+		padding: 6px 12px;
+		border: 1px solid #ccc;
+		border-top: none;
+	}
+
+	div.codeExample
+	{
+		width: 70%;
+	}
+
+	p.ExternalHomeTitle
+	{
+		color: #ffffff;
+		font-weight: bolder;
+		text-align: center;
+		font-family: Arial;
+		padding-bottom: 50px;
+		font-size: 5rem;
+	}
+
+	div.BannerBackground
+	{
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 100px 50px 50px;
+		background-image: url('../Images/ExternalSite/HeroHome.png');
+		height: auto;
+	}
+
+	div.lightGrayBackground
+	{
+		padding-top: 50px;
+		background-color: #dcdcdc;
+		padding-bottom: 50px;
+	}
+
+	h2.Heading2
+	{
+		
+	}
+
+	h2.ExternalHeading2
+	{
+		color: #07475e;
+		font-size: 20pt;
+		text-align: center;
+		padding-bottom: 10px;
+	}
+
+	p.TileWhite
+	{
+		color: #0082ca;
+		font-weight: bolder;
+		font-size: 15pt;
+		background: #ffffff;
+		background-repeat: repeat;
+		margin-top: 0px;
+		padding: 50px 50px 50px 50px;
+		padding-bottom: 150px;
+	}
+
+	p.TileBlue
+	{
+		font-weight: bolder;
+		font-size: 15pt;
+		background: #ffffff;
+		background-repeat: repeat;
+		margin-top: 0px;
+		padding: 50px 50px 50px 50px;
+		background-color: #0082ca;
+		color: #ffffff;
+		padding-bottom: 150px;
+	}
+
+	h1.ExternalHeading
+	{
+		color: #ffffff;
+		padding-bottom: 20px;
+		padding-top: 10px;
+		font-size: 20pt;
+	}
+
+	p.ExternalHomeText
+	{
+		color: #ffffff;
+		font-family: Arial;
+		font-weight: normal;
+		padding-bottom: 10px;
+		padding-top: 15px;
+		font-size: 13pt;
+	}
+
+	li.ExternalBullets
+	{
+		color: #ffffff;
+		font-weight: normal;
+		font-size: 13pt;
+	}
+
+	p.ExternalBodyText
+	{
+		font-family: Arial;
+		font-weight: bold;
+		margin-left: 60px;
+		padding: 0px 0px 0px;
+		padding-left: 0px;
+		text-indent: 130px;
+		color: #07475e;
+		font-size: 20pt;
+		margin-top: 20px;
+	}
+
+	li.ExternalBodyBullets
+	{
+		font-weight: normal;
+		color: #000000;
+		padding-left: 0px;
+		font-size: 12pt;
+		margin-left: 185px;
+		width: 78%;
+	}
+}
+
+ul.BulletIndent1	/*I'm not sure if this is still used.*/
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-family: Arial;
+	font-size: 11pt;
+}
+
+p.BodyText1Indent	/*This style includes a hanging indent that is applied through the Unclassified mc-multiline-indent. This can work well for numbered steps that cannot use autonumber (e.g. 1a, 1b, 1c, etc.).*/
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-family: Arial;
+	mc-multiline-indent: 19pt;
+}
+
+p.BodyText1Indent2
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-family: Arial;
+	mc-multiline-indent: 17pt;
+}
+
+p.GraphicLeftIndent	/*I don't think this is used.*/
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-family: Arial;
+}
+
+h2.Appendix2	/*Formats level 2 headers in Appendix.*/
+{
+	page-break-after: avoid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
+	font-weight: bold;
+	font-variant: small-caps;
+	page-break-before: always;
+	border-bottom-style: none;
+	margin-top: 30pt;
+	margin-bottom: 6pt;
+	mc-heading-level: 2;
+	font-size: 16pt;
+	mc-auto-number-position: none;
+}
+
+p.StylebodytextBoldPageBreak	/*I don't know that this is used.*/
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+p.draftDisclaimer	/*Formats the Draft Statement variable used on the Title Page.*/
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	color: #ff0000;
+	font-family: Arial;
+	font-size: 14pt;
+	font-weight: bolder;
+}
+
+p.TableBodyIndent1	/*Can be used for requirements tables to show 1 level of inheritance. */
+{
+	page-break-after: avoid;
+	margin-bottom: 1pt;
+	font-size: 10pt;
+	margin-top: 8pt;
+	text-indent: 10px;
+	margin-left: 10pt;
+	mc-multiline-indent: 10px;
+}
+
+h1.Appendix1	/*Formats level 1 section headers in Appendix.*/
+{
+	
+}
+
+p.EDIExample	/*I don't think this is used.*/
+{
+	
+}
+
+MadCap|dropDownHead.InternalMenuHead
+{
+	
+}
+
+img.Border	/*Formats the border of images if applied.*/
+{
+	
+}
+
+p.HeadText2	/*I don't think this is used.*/
+{
+	margin-left: 0pt;
+	font-weight: bold;
+	font-size: 9pt;
+}
+
+p.titleGraphicLeft	/*I think this was previously used on the title page. This could possibly be deleted.*/
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-size: 11pt;
+}
+
+body.wordTitle	/*I don't think this is used anymore.*/
+{
+	font-family: "Proxima N W01 Reg", "Proxima Nova Rg", Arial, Helvetica, sans-serif;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+p.ManualNbrACR	/*This was brought in through the Word import. I think most of these styles were reassigned and can be deleted.*/
+{
+	
+}
+
+p.BodyText1IndentContinue
+{
+	margin-top: 12pt;
+	margin-bottom: 6pt;
+	font-size: 11pt;
+	font-family: Arial;
+	mc-multiline-indent: 19pt;
+}
+
+p.insideNote	/*I don't think this is used.*/
+{
+	margin-top: 6pt;
+	margin-bottom: 0pt;
+	font-size: 11pt;
+	font-family: Arial;
+	mc-auto-number-format: '{b}Note: {/b}';
+}
+
+span.Highlight
+{
+	font-family: Arial;
+	font-size: 11pt;
+	background-color: #f9fb00;
+}
+
+span.code
+{
+	font-family: 'Courier New';
+	position: relative;
+	border-left-width: 1px;
+	border-radius: 4px;
+	padding: 1px;
+	border-left-color: #cccccc;
+	border-bottom-color: #dcdcdc;
+	font-size: 12pt;
+	background-color: #f1f1f1;
+	border: solid 1px #f1f1f1;
+	color: #101056;
+}
+
+p.TableBodyIndent2	/*Can be used for requirements tables to show 2 levels of inheritance. */
+{
+	page-break-after: avoid;
+	margin-bottom: 1pt;
+	font-size: 10pt;
+	margin-top: 8pt;
+	margin-left: 4pt;
+	text-indent: 30px;
+	mc-multiline-indent: 30px;
+}
+
+p.TableBodyIndent3	/*Can be used for requirements tables to show 3 levels of inheritance. */
+{
+	page-break-after: avoid;
+	margin-bottom: 1pt;
+	font-size: 10pt;
+	margin-top: 8pt;
+	margin-left: 4pt;
+	text-indent: 50px;
+	mc-multiline-indent: 50px;
+}
+
+div.codeExample
+{
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	padding: 6px;
+	margin: 15px;
+	margin-left: 2px;
+	width: 50%;
+	border: solid 1px #cccccc;
+}
+
+p.rfsNote	/*Formats the main Note style used in Flare. Includes the word "Note" in bold and an orange border.*/
+{
+	border-radius: 8px;
+	padding: 8px;
+	font-family: Arial;
+	border: solid 1px #461ef7;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-right-width: 2px;
+	border-top-width: 2px;
+	font-size: 10pt;
+}
+
+span.yellow
+{
+	background-color: #ffff00;
+	font-family: Arial;
+	font-size: 11pt;
+	margin-top: 6px;
+	margin-bottom: 12px;
+}
+
+span.lightBlue
+{
+	font-family: Arial;
+	font-size: 11pt;
+	margin-top: 6px;
+	margin-bottom: 12px;
+	background-color: #00FFFF;
+}
+
+span.lightGreen
+{
+	font-family: Arial;
+	font-size: 11pt;
+	margin-top: 6px;
+	margin-bottom: 12px;
+	background-color: #99FF66;
+}
+
+span.lightPurple
+{
+	font-family: Arial;
+	font-size: 11pt;
+	margin-top: 6px;
+	margin-bottom: 12px;
+	background-color: #ccccff;
+}
+
+span.salmonPink
+{
+	font-family: Arial;
+	font-size: 11pt;
+	margin-top: 6px;
+	margin-bottom: 12px;
+	background-color: #ff99ff;
+}
+
+@media tablet
+{
+	div.across2 > div:nth-child(1)
+	{
+		width: 66.66667%;
+		margin-left: 0%;
+	}
+
+	div.across2 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(1)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(3)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(1)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(2)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(3)
+	{
+		width: 33.33333%;
+		margin-left: 0%;
+	}
+}
+
+@media mobile
+{
+	div.across2 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across2 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across1 > div:nth-child(3)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(1)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(2)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+
+	div.across3 > div:nth-child(3)
+	{
+		width: 100%;
+		margin-left: 0%;
+	}
+}
+
+span.codeSnippet
+{
+	background: #f5f5f5;
+	border: solid 1px #cccccc;
+	border-radius: 5px;
+	margin: 15px;
+	margin-bottom: 2px;
+	margin-left: 6px;
+	padding: 6px;
+}
+
+p.TileWhite
+{
+	
+}
+

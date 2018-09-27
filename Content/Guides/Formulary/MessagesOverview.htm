@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805466"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold">Formulary and Benefit Data Load</p>
+        <p class="BodyText1">As requested or scheduled, the PBM/payer sends group-level formulary updates to Surescripts using the Formulary and Benefit Data Load message. Once the file is retrieved, the provider vendor utilizes the file as a local repository for formulary checks.</p>
+        <h2 class="Heading2"><a name="_Toc499805467"></a>Formulary Message Flow</h2>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/Formulary/Messages Overview.png" style="width: 823px;height: 205px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1" style="font-weight: bold;">Formulary Workflow</p>
+        <p class="BodyText1">F1) Formulary Publisher (PBM/Payer) develops and sends Surescripts a formulary file.</p>
+        <p class="BodyText1">F2) After validating the files, Surescripts creates a response file for the PBM/payer and loads the files into the database.</p>
+        <p class="BodyText1">F3) The Formulary Retriever (provider vendor) downloads formulary data from WebDAV by an automated or manual process.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805468"></a>General Interface Description</h2>
+        <p class="BodyText1" style="color: #000000;">The message specifications have been defined to allow the most effective processing.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805469"></a>Character Set</h3>
+        <p class="BodyText1" style="color: #000000;">The character set contains ASCII values 32 – 126, which include:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Symbols</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Numerals</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Ø to 9</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Letters, upper and lower case</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">A to Z, a to z</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">All ID data types are case sensitive, including routing IDs in the header.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805470"></a>Numeric Representation</h3>
+        <p class="BodyText1" style="color: #000000;">The decimal point is represented by a period and should be used as follows:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">only when there are significant digits to the right of the decimal</li>
+            <li style="color: #000000;">when there is a digit before and after the decimal point </li>
+            <li style="color: #000000;">not with whole numbers</li>
+        </ul>
+        <p class="BodyText1" style="color: #000000;">
+            <MadCap:annotation MadCap:createDate="2018-07-02T14:17:28.2868459-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="PK, your comment said to use the table in 2.8 from ePrescribing. This table matches that. Are we good to go?" MadCap:editor="Megan.Hayden" MadCap:editDate="2018-07-02T14:17:46.6742403-05:00">For </MadCap:annotation>example, consider the following possible values for a 5-digit field:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">Correct:</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">2.515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">251.5</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">25.15</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">0.2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">2.5</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">Incorrect:</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">.2515</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">2515.</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText" style="font-size: 10pt;">3.00</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableText">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <h2 class="Heading2"><a name="_Toc499805471"></a>File Validation</h2>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;font-size: 11pt;">Surescripts will ensure that customers are in compliance with the message specifications outlined in this Guide during implementation and will continue to enforce once in production.</p>
+        <p>To validate a file, Surescripts:</p>
+        <ul>
+            <li>validates the sender identification and password.</li>
+            <li>validates the recipient identification.</li>
+            <li>verifies that the sender and recipient are in agreement contractually to exchange information.</li>
+            <li style="margin-top: 6pt;">validates the syntax of the file including field lengths, data types and code values.</li>
+        </ul>
+    </body>
+</html>

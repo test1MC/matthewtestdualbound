@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3530.333" MadCap:lastWidth="1999">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-04-02T13:44:19.6512605-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Best Practices</h1>
+        <p class="BodyText1">The following best practices apply to all electronic prior authorization (ePA) message types.</p>
+        <h2 class="Heading2"><a name="Utilizat"></a>Utilization for Non-PA Coverage Rules</h2>
+        <p class="BodyText1">Provider vendors are strongly encouraged to initiate an ePA if the target drug has an indication that prior authorization may be required. </p>
+        <p class="BodyText1">Similarly, some other coverage files have rules that help determine when ePA should be initiated. This will streamline the e-prescribing process by providing doctors with significantly more opportunities to prospectively address PBM/payer coverage rules and prevent rejected claims from occurring when the patient tries to obtain the medication from the pharmacy. If prior authorization is not required, the PBM/payer will return a PAInitiationResponse in a Closed status stating that prior authorization is not required. Providers who prescribe outside the limits indicated in the files below should have the ability to initiate (or should be prompted to initiate) a PAInitiationRequest:</p>
+        <ul>
+            <li>Gender Limit</li>
+            <li>Quantity Limit</li>
+            <li>Age Limit</li>
+            <li>Step Medication</li>
+            <li>Step Therapy</li>
+        </ul>
+        <p class="BodyText1">Example:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 130px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 377px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Coverage Limit</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Example</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Gender Limit</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Gender Limit coverage list indicates a female coverage limit for Activella, a female hormone replacement, but the doctor wants to prescribe for a male patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Age Limit</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Age Limit coverage list indicates a coverage limit of 30 years for Atralin, an acne treatment, but the doctor wants to prescribe for a 43-year old patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Quantity Limit</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Quantity Limit coverage list indicates a coverage limit of 15 days for Imitrex, a migraine treatment, but the doctor wants to prescribe a 30-day treatment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Step Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Step Medication list indicates that before Bextra (a Cox-2 inhibitor) is covered, at least one drug from the Cox-1 inhibitor category must be tried (e.g. Ibuprofen), but the doctor wants to prescribe Bextra without trying a Cox-1 inhibitor first.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Step Therapy</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">The Step Therapy coverage list identifies that other drugs must be tried first before the patient can receive coverage for Retin-A, a brand of dermatologic preparation used to treat Acne, but the patient has already failed treatment with generic topical tretinoin.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Dispense"></a>Dispense as Written (DAW) Guidance</h3>
+        <p class="BodyText1">When both a brand and generic NDC exist for a drug, in the PAInitiationRequest provider vendors should submit the NDC of the form of the drug they want to prescribe for the patient. If the prescriber does not select DAW, the PAInitiationRequest should contain the NDC of the generic form of the drug. If the prescriber selects DAW, the PAInitiationRequest should contain the NDC of the brand form of the drug.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The NDC for a generic drug should only be submitted if it is the form of the drug that is expected to be filled by pharmacy (through generic substitution) and the generic drug is flagged as needing a prior authorization or has a coverage factor detailed in <MadCap:xref href="#Utilizat">Utilization for Non-PA Coverage Rules</MadCap:xref></p>
+        <p class="BodyText1">For example, there are cases where Coumadin requires a prior authorization but the generic warfarin does not. If the provider writes a prescription for Coumadin and sets the DAW flag to “N,” the expectation is that the pharmacy will dispense the generic warfarin. The EMR system should not submit a PAInitiationRequest in this case if the DAW flag is set to “N,” because warfarin does not require a prior authorization and that is what the pharmacy will dispense. The provider vendor system should only submit a PAInitiationRequest in this case if the DAW flag is set to “Y.”</p>
+        <p class="BodyText1" MadCap:changes="1">
+            <img src="../../Resources/Images/CompletEPA/daw.PNG" MadCap:changes="1" />
+        </p>
+    </body>
+</html>

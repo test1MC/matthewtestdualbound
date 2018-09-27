@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="3588" MadCap:lastWidth="1003">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Detailed Electronic Prior Authorization Message Scenarios</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Verify, Error, and Status messages are sent in response to a Prior Authorization message.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This applies to <span style="font-weight: bold;">any</span> of the ePA messages for all of these scenarios.</p>
+        <p class="BodyText1" style="font-weight: bold;">Surescripts Detailed Electronic Prior Authorization Message Flow Scenarios</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In the following scenarios, if Surescripts routes the PAInitiationRequest to a third party processor, an error returned to the provider vendor will be sent from a different party than where the request was originally addressed. For example, a PAInitiationRequest sent to EPAINI could result in an error from the PBM/Payer.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 1 - Surescripts Cannot Recognize Message:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/CompletEPA/Scenario 1.PNG" style="width: 410px;height: 152px;" MadCap:mediastyle="@media print { max-width: 50%; }" />
+        </p>
+        <p class="BodyText1">1a) A PA message is sent to Surescripts.</p>
+        <p class="BodyText1">1b) Surescripts cannot recognize the message and sends error text back to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 2 - Surescripts Recognized Message Format but Errors Found:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/CompletEPA/Scenario 2.PNG" style="width: 428px;height: 154px;" MadCap:mediastyle="@media print { max-width: 50%; }" />
+        </p>
+        <p class="BodyText1">2a) A PA message is sent to Surescripts.</p>
+        <p class="BodyText1">2b) Surescripts recognizes the format as NCPDP, but finds errors in the message. Surescripts returns an error message.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 3 - PBM/Payer Cannot&#160;Recognize Message:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/CompletEPA/Scenario 3.PNG" style="max-width: 100%;" />
+        </p>
+        <p class="BodyText1">3a) A PA message is sent to Surescripts.</p>
+        <p class="BodyText1">3b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">3c) The PBM/payer cannot recognize the message and sends error text to Surescripts.</p>
+        <p class="BodyText1">3d) Surescripts creates an Error and returns it to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 4 - PBM/Payer Validates Message and Returns Status Code 010:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/CompletEPA/Scenario 4.PNG" style="width: 900px;height: 210px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">4a) A PA message is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer validates the message and returns a Status (code 010) message to Surescripts. The code 010 means the message was accepted by ultimate receiver. Status is a synchronous message.</p>
+        <p class="BodyText1">4d) Surescripts forwards the Status (code 010) message back to the provider vendor. </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 5 - PBM/Payer Validates Message and Returns Error Message:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/CompletEPA/Scenario 5.PNG" style="width: 892px;height: 236px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">5a) A PA message is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">5b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">5c) The PBM/payer validates the message, finds errors in the message, and returns an error message to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">5d) Surescripts forwards the error message back to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 6 - PBM/Payer Returns Status Code 000 and Message Results in Error:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/CompletEPA/Scenario 6.PNG" style="width: 900px;height: 340px;max-width: 100%;" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">6a) A PA message is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">6b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">6c) The PBM/payer validates the message and returns a pending Status (code 000) message to Surescripts.</p>
+        <p class="BodyText1">6d) Surescripts forwards the pending Status (code 000) message back to the provider vendor.</p>
+        <p class="BodyText1">6e) The PBM/payer fails trying to process message and initiates a new error message (sometimes referred to as a Free Standing Error) to Surescripts.</p>
+        <p class="BodyText1">6f) Surescripts forwards the error to the provider vendor.</p>
+        <p class="BodyText1">6g) The provider vendor acknowledges the error by returning a verified Status (code 010) message to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">6h) Surescripts forwards the verified Status (code 010) to the PBM/payer.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 7 - PBM/Payer Returns Status Code 000 and Message is Accepted:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/CompletEPA/Scenario 7.PNG" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">7a) A PA message is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">7b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">7c) The PBM/payer validates the message and returns a Status (code 000) message to Surescripts. In this case the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">7d) Surescripts forwards the Status (code 000) message back to the provider vendor.</p>
+        <p class="BodyText1">7e) The PBM/payer delivers the PA message to the end point and returns a Verify.</p>
+        <p class="Workflow" style="margin-left: 0pt;">7f) Surescripts forwards the Verify to the provider vendor. </p>
+        <p class="BodyText1">7g) The provider vendor acknowledges the Verify by returning a Status (code 010) message to Surescripts. The 010 Code means it was accepted by the ultimate receiver. </p>
+        <p class="Workflow" style="margin-left: 0pt;">7h) Surescripts forwards the Status (code 010) to the PBM/payer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made as to whether the message has been received successfully or not. The 010 indicates that no further messages will follow.</p>
+    </body>
+</html>

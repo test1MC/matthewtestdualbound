@@ -1,0 +1,1244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="8885.333" MadCap:lastWidth="994">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc441585648"></a>Provider Messages</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_AddPrescriber"></a><a name="_Toc441585649"></a>AddProviderLocation</h2>
+        <p class="BodyText1">This message can be used to add a new provider or to add an additional unique physical location (Address Line 1) to an existing <MadCap:annotation MadCap:createDate="2017-12-18T10:07:25.1019363-06:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="provider?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-12-18T10:07:27.9531921-06:00">account</MadCap:annotation>. Individual providers may register multiple practice locations.</p>
+        <p class="StylebodytextBold">When adding a new provider:</p>
+        <p class="BodyText1">The provider customer must supply all required information and an SPI is automatically assigned and returned to the customer in the AddProviderLocationResponse message.</p>
+        <p class="StylebodytextBold">When adding a new location to an existing provider:</p>
+        <p>The provider customer must supply the SPI root in addition to other required information. Once the location is added, Surescripts returns a new SPI that consists of the SPI Root (first 10 digits of the SPI) and the newly generated Location ID (last three digits of the SPI) for the provider that represents the new location. The root will be the same, only the location code will be new.  </p>
+        <p>For example, SPI&#160;locations: 123 Main St (SPI-001), 456 Oak St (-002), etc. for the same provider. The same physical AddressLine1 location (e.g. 123 Main St) may be used at more than one of the SPI locations (e.g. 001 and 003) for the provider; however, only one of the SPI locations (001 or 003) with that address (123 Main St) may have the RxRenewal and/or RxChange service levels. An Error message is returned if the data supplied or the structure of the message is invalid. </p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="_Toc441585650"></a>AddProviderLocation Process Flow</h3>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/AddProviderLocation ProcessFlow.bmp" style="width: 994px;height: 763px;">
+            </img>
+        </p>
+        <h3 class="Heading3" MadCap:autonum="1.1.2 "><a name="_AddPrescriber_-_Diagram"></a><a name="_Toc441585651"></a>AddPoviderLocation – Diagram</h3>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/AddProviderLocation_diagram.png">
+            </img>
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="Provider"></a>Provider Elements</h2>
+        <p class="BodyText1">Each message that updates or retrieves provider information contains a prescriber element in the message body. See schema for details.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The identification of the
+ provider; supports 16 identifiers. Directory messages are limited to 14 identifiers; Prescription Routing messages are limited to 3 identifiers per the NCPDP SCRIPT
+ standard. </p>
+                        <p>AddProviderLocation message</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; NPI (Required for e-prescribing services.)</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; DEANumber required only if the EPCS service is used.</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; SPI must not be used.</p>
+                        <p>All other provider messages
+ (AddPrescriberLocation &amp; UpdatePrescriberLocation) will not be supported in Directory 6.0.</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; NPI (Required for e-prescribing services.)</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; SPI is recommended, but not required.</p>
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160; ·&#160;&#160;&#160;&#160; DEANumber required only if the EPCS service is used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  CertificateToPrescribe</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Data2000WaiverID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  DEANumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required for sending controlled
+ substance on NewRx, RxRenewalResponse and RxChangeResponse messages.
+ <br />The 9 character DEA number must be presented with optional suffix separated
+ by the “-“, e.g. 'AA0000001-123XX'. </p>
+                        <p>Surescripts will verify that the DEA number
+ is a valid number according to the official DEA Registry and is assigned to a person, not an organization. The exception to
+ this rule is where military personnel and public health providers are the
+ prescriber, when the prescriber does not have a DEA number, the social
+ security number and the military/public health provider specialty must be
+ populated with the MPH specialty type code of “2083P0901X”,
+ "171000000X", "1710I1002X", or "1710I1003X".</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  FacilityID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  MedicareNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  MedicaidNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  MutallyDefined</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  NPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>NPI is required for provider
+ messages that include the e&#8209;prescribing services (AddProviderLocation and
+ UpdateProviderLocation). </p>
+                        <p>NPI must contain the individual (not organizational)
+ NPI of the provider. WhenMust be a valid NPI according to the NPI check digit
+ routine and assigned to the provider according to the official NPI Registry.</p>
+                        <p>NPI is not required for
+ clinical mess present, the NPI will be validated against the check digit routing. For specific information, see:https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf aging.</p>
+                        <p>NPI is not required for clinical  messaging. Providers with clinical messaging service levels, but no e&#8209;prescribing service levels, may be
+ registered without an NPI. Those clinical messaging providers with no NPI will
+ not be published in the download received by other vendors. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  REMSHealthcareSettingEnrollmentID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SocialSecurity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required for EPCS if provider
+ is military or public health provider and does not have a DEA number, along
+ with providing the military/public health provider specialty.</p>
+                        <p>Do not include punctuation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  StateControlSubstanceNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  StateLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  UPIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Veterinarian</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean. </p>
+                        <p>Values:</p>
+                        <p>Y = Yes</p>
+                        <p>N = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Typee</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Name must be legal name as
+ it appears on government-issued ID or state medical license; alignment with
+ how the name is represented in NPPES NPI Registry is strongly recommended.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  LastName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Provider Last Name. </p>
+                        <p>The only allowable
+ punctuation is a hyphen or apostrophe. Cannot contain a suffix.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  FirstName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Provider First Name. </p>
+                        <p>The only allowable
+ punctuation is a hyphen or apostrophe. Cannot contain a suffix.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  MiddleName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Suffix </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;Suffix – Since some
+ states require credentials, this field can be used for that purpose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Prefix </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Address </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Street number for the
+ practice address of the provider and used in electronic communications.</p>
+                        <p>Surescripts standardizes all
+ addresses based on the US Postal Service CASS standards for download. Both
+ vendor-submitted and standardized addresses are available in the download.  </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  AddressLine1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..40</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Must
+ be physical street address; P.O. Box is not allowed and Surescripts strongly
+ recommend this match the information in the transaction. Must contain at
+ least one whitespace character.</p>
+                        <p>Do not include physical sub-section
+ identifiers (e.g. Suite, Floor); see AddressLine2. Follow USPS&#160;publication 28: https://pe.usps.com/cpim/ftp/pubs/pub28/pub28.pdf </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  AddressLine2 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..40</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Physical sub-section of a
+ building or location (e.g. Suite, Floor).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  City </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>City of the practice address of the provider and should match the information in the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  StateProvince</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>State of the practice address of the
+ provider and should match the information in the transaction. </p>
+                        <p>For values, see the NCPDP External Code List
+ Appendix C - United States and Canadian Province Postal Service
+ Abbreviations.</p>
+                        <p>Note: Even though the Canadian codes are listed, the rest of
+ the Canadian address is not supported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  PostalCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Zip
+ Code of the practice address of the provider and should match the information
+ in the transaction.</p>
+                        <p>Only US states and
+ territories are supported. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  CountryCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ClinicName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..70</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Name of the practice/business.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Communication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>    PrimaryTelephone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Phone
+ number where provider would like to be contacted regarding patient care,
+ including prescription orders.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>    Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required
+ if PrimaryTelephone element is present.</p>
+                        <p>Phone
+ number must be 10 digits.</p>
+                        <p>Area
+ code cannot be '555'.</p>
+                        <p>Phone
+ number may not consist of  all sequential numbers, (e.g.'1234567890' or '0987654321' or one repeated digit, (e.g. '0000000000'); ('6126666666'
+ is acceptable).</p>
+                        <p>Required
+ unless provider has clinical messaging service levels ONLY.</p>
+                        <p>  The character limit noted in the Data Type
+ applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>    Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean. Indicates the number supports texts.</p>
+                        <p>Y = Yes</p>
+                        <p>N = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Beeper</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Phone
+ number where provider would like to be contacted regarding patient care,
+ including prescription orders.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean.
+ Indicates the number supports texts. </p>
+                        <p>Y
+ = Yes</p>
+                        <p>N
+ = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  ElectronicMail</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..80</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Provider's email address.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Fax</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Fax
+ number for provider to receive confidential patient information; therefore must be
+ secure from the public.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Phone
+ number must be 10 digits.</p>
+                        <p>Area
+ code cannot be '555'.</p>
+                        <p>Phone
+ number may not consist of all sequential numbers, (e.g.'1234567890' or '0987654321'), or one repeated digit, (e.g. '0000000000'); ( '6126666666' is acceptable).</p>
+                        <p>Required unless provider has clinical messaging service
+ levels ONLY.</p>
+                        <p>The
+ character limit noted in the Data Type applies to each individual value in a
+ repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean.
+ Indicates the number supports texts. </p>
+                        <p>Y
+ = Yes</p>
+                        <p>N
+ = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  HomeTelephone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Phone number must be 10 digits.</p>
+                        <p style="font-size: 10pt;">Area code cannot be '555'.</p>
+                        <p style="font-size: 10pt;">Phone number may not consist of all sequential numbers, (e.g. '1234567890' or '0987654321'), or one repeated digit, (e.g. '0000000000'); ('6126666666' is acceptable).</p>
+                        <p style="font-size: 10pt;">Required unless provider has clinical messaging service levels ONLY.</p>
+                        <p style="font-size: 10pt;">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean.
+ Indicates the number supports texts.</p>
+                        <p>Y
+ = Yes</p>
+                        <p>N
+ = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  WorkTelephone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean.
+ Indicates the number supports texts. </p>
+                        <p>Y
+ = Yes</p>
+                        <p>N
+ = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  OtherTelephone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  SupportSMS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean.
+ Indicates the number supports texts. </p>
+                        <p>Y
+ = Yes</p>
+                        <p>N
+ = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  DirectAddress</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..254</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Used in clinical messaging to
+ identify an endpoint (sender or receiver) when information is exchanged.
+ The Direct Address has two parts, a Health End Point Name and a Health Domain
+ Name.</p>
+                        <p>For example, drbob@sample-direct.com.</p>
+                        <p>The Direct Address is also
+ sometimes referred to as a “Health Internet address”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DomainTrustBundle</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>FormerName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Name must be legal name as
+ it appears on government-issued ID or state medical license; alignment with
+ how the name is represented in NPPES NPI Registry is strongly recommended.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  LastName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Provider Last Name. </p>
+                        <p>The only allowable
+ punctuation is a hyphen or apostrophe. Cannot contain a suffix.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  FirstName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Provider First Name.</p>
+                        <p>The only allowable
+ punctuation is a hyphen or apostrophe. Cannot contain a suffix.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  MiddleName </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p />
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Suffix </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;Suffix – Since some
+ states require credentials, this field can be used for that purpose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>  Prefix </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>  <![CDATA[ ]]></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>OperationStatus</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>OperationStatusNotes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>OrganizationID </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>ID of the General Organization
+ to whom the provider is associated. This is an optional element that may be
+ used to provide information on the relationship of this provider to a specific
+ clinic, hospital, department, etc. that has been added as a General
+ Organization.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>OrganizationNPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>OrganizationNPI must be a valid
+ NPI according to the NPI check digit routine.</p>
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ProviderGender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>NUCCProviderSpecialty</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>Surescripts
+ supports only NUCC values. See SpecialtyQualifier field element in this table
+ below for the NUCC supported value.</p>
+                        <p>For
+ NUCC values, visit the website www.NUCC.org and click on the Provider Taxonomy codes under the Code
+ Sets tab. http://www.nucc.org/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=117</p>
+                        <p>Note: Values can change over time. Systems should not fail if
+ an unexpected value is received.</p>
+                        <p>If military personnel or
+ public health provider and no DEA number, SpecialtyCode and Social Security
+ Number must be provided.</p>
+                        <p>AMA
+ and NUCC values are supported. Qualifier is listed above.</p>
+                        <p>For AMA values please refer to
+  Code Sets.</p>
+                        <p>For NUCC values, visit www.NUCC.org and click on the Provider Taxonomy codes under the Code Sets tab. http://www.nucc.org/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=117 .</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="AddProvi"></a>AddProviderLocationResponse</h2>
+        <p>When &#160;new provider is successfully added, the AddProviderLocationResponse message is returned to the customer, noting the that provider was added successfully. The message contains a new SPI for the provider and echoes back the information that was in the AddProviderLocation message.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.1 "><a name="AddProvi2"></a>AddProviderLocationResponse - Diagram</h3>
+        <p>For Provider element details, please see Provider Elements. </p>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/AddProviderLocationResponse.diagram.png" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.4 "><a name="UpdatePr"></a>UpdateProviderLocation</h2>
+        <p>Use the UpdateProviderLocation message to update provider information, such as provider name, demographics, or to activate/deactivate a provider record. This message cannot be used to switch vendors. To switch vendors for a provider, use Admin Console and follow the Provide Update Request (PUR) process.</p>
+        <p>The information provided in the UpdateProviderLocation message will replace the previous record information. For example, the message will set to null or default any optional element that is not included in the update message. If the submitted update is a name change, the change will be made without proactively notifying other provider vendors of the change(s).</p>
+        <p>When using UpdateProviderLocation to deactivate a provider location, set the ActiveEndTime to the current date and remove all ServiceLevels from the provider record, or use the DeactivateProviderLocation message.</p>
+        <p><b>Best Practice:</b> To avoid unintentional deletion of data, Surescripts recommends implementing provider updates by first using a GetProviderLocation message to obtain all information that should be included in the UpdateProviderLocation message.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">All provider record updates must include the Identification element with the SPI of the location being updated.</p>
+        <h3 class="Heading3" MadCap:autonum="1.4.1 "><a name="UpdatePr2"></a>UpdateProviderLocation - Diagram</h3>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/UpdateProviderLocation.png" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.5 "><a name="GetProvi"></a>GetProviderLocation</h2>
+        <p>The GetProviderLocation message is used to retrieve provider information based on an existing provider's SPI, NPI, DEA Number or State License Number. Surescripts recommends use of this message to obtain real-time information for the following:</p>
+        <ul>
+            <li>Prior to provider record owner updating a provider record. Provider details will be returned only if the requesting account (software vendor) owns the provider record.</li>
+            <li>Search for a provider record by an Organization.</li>
+        </ul>
+        <p>To facilitate the PUR&#160;process, setting up the Account drop-down to <b>All</b> in Admin Console allows customers to search for providers managed by other accounts.</p>
+        <p class="StylebodytextBold">Error Scenarios:</p>
+        <p class="BodyText1">If the data supplied or the structure of message is invalid, an Error message will be returned.</p>
+        <p class="BodyText1">If there are no provider records found that match the provided identifiers, the system will return a response message indicating that the provider is not found.</p>
+        <h3 class="Heading3" MadCap:autonum="1.5.1 "><a name="GetProvi2"></a>GetProviderLocation - Diagram</h3>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/GetProviderLocation-Diagram.png" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.6 "><a name="GetProvi3"></a>GetProviderLocationResponse</h2>
+        <p>The information contained in the message will include all directory related information for the given provider that is stored in the Surescripts database.</p>
+        <h3 class="Heading3" MadCap:autonum="1.6.1 "><a name="GetProvi4"></a>GetProviderLocationResponse - Diagram</h3>
+        <p>See DirectoryInformation and Provider Elements for details.</p>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/GetProviderLocationResponse-Diagram.png" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.7 "><a name="Deactiva"></a>DeactivateProviderLocation</h2>
+        <p>Use this message to deactivate a provider at a specific location. the only required information to deactivate a provider is the provider's SPI. See also UpdateProviderLocation.</p>
+        <h3 class="Heading3" MadCap:autonum="1.7.1 "><a name="Deactiva2"></a>DeactivateProviderLocation - Diagram</h3>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/DeactivateProviderLocation.png">
+            </img>
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.8 "><a name="Status"></a>Status and Error Response Messages</h2>
+        <p>Some directory messages will return either a Status or Error message, while others that modify or return content will return a related response message. Refer to schema for definitions of these fields.</p>
+        <h3 class="Heading3" MadCap:autonum="1.8.1 "><a name="Status2"></a>Status Message</h3>
+        <p>A Status code of "010" indicates that Surescripts received and processed the message successfully.</p>
+        <h4 class="Heading4" MadCap:autonum="1.8.1.1 "><a name="Status3"></a>Status Message-Diagram</h4>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/Status-diagram.png" />
+        </p>
+        <h3 class="Heading3" MadCap:autonum="1.8.2 "><a name="Error"></a>Error Message</h3>
+        <p>An Error message will always include a code of "900" indicating that there was an error that needs to be corrected before resending. The message will include DescriptionCode and Description elements that will describe the error. The error could be directory related or a general error message. A full description of Error codes is given in Directory Error Messages.</p>
+        <h4 class="Heading4" MadCap:autonum="1.8.2.1 "><a name="Error2"></a>Error Message-Diagram</h4>
+        <p>
+            <img src="../../Resources/Images/Directory6.0/Error-diagram.png" />
+        </p>
+    </body>
+</html>

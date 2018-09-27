@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2357" MadCap:lastWidth="729">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc444699068"></a>Net2Net Clinical Message</h2>
+        <p class="BodyText1">A <span style="font-style: italic;">Clinical</span> message is used to communicate patient related clinical information between health care providers. It may contain textual data, as well as structured content and file attachments.</p>
+        <p class="StylebodytextBold">Net2Net Message XML Diagram</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Net2Net Clinical Message.png" style="visibility: visible;mso-wrap-style: square;width: 580px;height: 363px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc444699069"></a>Sending a Net2Net Clinical Message</h3>
+        <p class="BodyText1">To send a Net2Net <span style="font-style: italic;">Clinical</span> message, the customer must</p>
+        <ol>
+            <li>Collect message content, attachments, and the recipient information;</li>
+            <li>Validate that the message conforms to the schema; and</li>
+            <li>Call the Surescripts API to submit the <span style="font-style: italic;">Clinical</span> message(s).</li>
+        </ol>
+        <p class="BodyText1">Once a <span style="font-style: italic;">Clinical</span> message is sent, the Surescripts API provides a synchronous response to the submission of a message. This response is a Status message "010" if the message was received and delivered; a Status message "000" if the message was accepted for processing, or an Error message if the message could not be accepted for processing.</p>
+        <h3 class="Heading3"><a name="_Toc444699070"></a>Receiving a Clinical Message</h3>
+        <p class="BodyText1">To receive a message, customers must set up a server to which Surescripts can send messages. Surescripts will send all messages to the customer as an HTTP POST. The customer system must provide a synchronous response to messages and freestanding Error/Verify messages. See <MadCap:xref href="DetailedClinicalMessaging.htm">Detailed Clinical Messaging Workflows on page 1</MadCap:xref> for more information.</p>
+        <h3 class="Heading3"><a name="_Toc444699071"></a>Clinical Document Message XML Diagram</h3>
+        <p class="Graphic" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Net2Net Clinical Message_1.png" style="visibility: visible;mso-wrap-style: square;width: 729px;height: 507px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Net2Net_Clinical_Message"></a><a name="_Toc444699072"></a>Net2Net Clinical Message Body Elements</h3>
+        <p class="BodyText1" style="page-break-after: avoid;page-break-inside: avoid;margin-bottom: 0pt;font-weight: bold;">M/C Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ClinicalMessage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Subject</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The subject of the <i>Clinical</i> message.</p>
+                        <p class="TableBody">Protected Health Information (PHI) under HIPAA must not be included in the subject.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Document</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Required if sending a <i>Clinical</i> message in the message body.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160; PlainText</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Example: "ABC Clinic has provided services to the patient named in the attached document. The patient has identified you as their primary care physician."</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160; HtmlText</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">This is optional and allows for content formatting.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; DocumentData</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Specifies the additional data in the message. This consists of a collection of items, with a key attribute and the value.</p>
+                        <p class="TableBody">Ignore values not supported by your system. For example:</p>
+                        <p class="TableBody">&#160;</p>
+                        <p>&lt;DocumentData&gt;</p>
+                        <p>&#160; &lt;Item key="x-kryptiq-notification"&gt;onetime&lt;/Item&gt;</p>
+                        <p>&#160; &lt;Item key="x-kryptiq-message-class-type"&gt;Standard&lt;/Item&gt;</p>
+                        <p>&#160; &lt;Item key="x-kryptiq-trackingid"&gt;6dabf2a36fa4406eacd09ce23190ceb1&lt;/Item&gt;</p>
+                        <p>&#160; &lt;Item key="x-kryptiq-remotemessagekey"&gt;jzcs3dnchvrbhbdvso2eatloj4molg&lt;/Item&gt;</p>
+                        <p>&lt;/DocumentData&gt;<br /></p>
+                        <p>&#160;</p>
+                        <p>Note: Empty tags are permitted for use in the DocumentData element. See .</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160; Item</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Specified data value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160; Item/@key</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Identifier of the specified data value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Attachment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A collection of one or more attachments. Each occurrence consists of a DocumentName and one (only one) of the document elements.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160; DocumentName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Filename of the document.</p>
+                        <p class="TableBody">The file extension should be included.</p>
+                        <p class="TableBody">Example: visitsummary.pdf</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160; cda:ClinicalDocument</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The sender can use this type of attachment to include a CDA attachment.</p>
+                        <p class="TableBody">Note: Inline XML is the preferred method for passing the CDA.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160; File</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The sender can use this type of attachment to include a file attachment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160;&#160;&#160; DocumentType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If a file attachment is included, then a &lt;DocumentType&gt; must be specified and should be a valid MIME type.</p>
+                        <p class="TableBody">For example: application/pdf</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160;&#160;&#160; DocumentVersion</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Optional version number for the document.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160;&#160;&#160; DocumentData</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">The Base64 Encoded string of the file attachment.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="838.3333" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: ">Messages Overview </h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="Message"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold">SPO Medication Identification Service Request/Response</p>
+        <p class="BodyText1">The SPO Medication Identification Service Request message is sent to Surescripts to check if the medication being prescribed is an SPO medication (considered specialty by our pharmacy customers), which is identified through the NDC on the associated NewRx. Alternatively, the medication may be identified by the appropriate RxNorm Concept Unique Identifier (RXCUI). Surescripts returns an SPO Medication Identification Service Response message that will indicate whether or not the requested medication is an SPO medication.</p>
+        <p class="StylebodytextBold">NewRx (New Prescription Request)</p>
+        <p>The NewRx message for an SPO medication will follow the standard prescription routing requirements with the addition of requiring the TertiaryIdentifier (UIB-030-03) in the UIB – Interactive Interchange Control Header to be populated with a value of "SPO". This will be used as an indicator to the pharmacy to expect an SPO Enrollment Request.</p>
+        <p class="StylebodytextBold">SPOInitiationRequest</p>
+        <p class="BodyText1">The SPOInitiationRequest message, which is based on NCPDP Standards, initiates the SPO enrollment process. This message contains data required for the enrollment process.  In addition, this message triggers the creation of a worklist task that prompts the user to complete an enrollment form via the Accelerator.</p>
+        <p class="StylebodytextBold">SPO Clinical Information Request/Response (optional)</p>
+        <p class="BodyText1">The SPO Clinical Information Request (optional) is a FHIR®-based message that simplifies the enrollment process by allowing the provider vendor system to prepopulate answers to questions within the enrollment form that were identified by Surescripts, thereby reducing the total questions to be answered by the user. If supported by the provider vendor, Surescripts will send the SPO Clinical Information Request to the provider vendor system requesting clinical data based off of the selected enrollment form. The provider vendor system responds with an SPO Clinical Information Response including answers to questions (provided as FHIR resources) identified within the SPO Clinical Information Request. These responses will be combined with data from the SPOInitiationRequest.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="Error"></a>Error Response Messages</h3>
+        <p class="BodyText1">This NCPDP SCRIPT Error message transmits that an error has occurred, indicating the SPOInitiationRequest message was terminated. An error can be generated when there is a communication problem or when the message actually had an error (e.g., a syntax error).</p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="Determin"></a>Determining if a Medication is Specialty</h2>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/SPO/SPOMedicationCheckFlow.png" MadCap:mediastyle="@media print { max-width: 90%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 300px;" />
+        </p>
+        <p class="BodyText1Indent">1a) The provider vendor system sends an SPO Medication Identification Service Request message to Surescripts that contains the medication, and includes the NDC and/or RXCUI used on the associated NewRx. See the <a href="SPOMedicationIdentificationService.htm">SPO Medication Identification Service Request/Response</a> section for more information.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the message does not contain a medication, an error message is returned to the provider vendor system.</p>
+        <p class="BodyText1Indent">1b) Surescripts checks the medication sent to determine if it is an SPO medication and then sends the SPO Medication Identification Service Response message with the SPO medication flagged with a value of "true" in the IsSpecialty element if it is an SPO medication, or "false" if it is not.</p>
+        <p class="BodyText1Indent">2a) For each medication flagged as an SPO medication, the provider vendor system sends a NewRx to Surescripts that includes the TertiaryIdentifier (UIB-030-03) in the UIB – Interactive Interchange Control Header populated with a value of "SPO". The TertiaryIdentifier is used as an indicator to the pharmacy to expect an SPO Enrollment Request.</p>
+        <p class="BodyText1Indent">2b) The provider vendor system sends a SPOInitiationRequest message that includes the medication flagged as an SPO medication along with the PrescriberOrderNumber from the NewRx. See the <a href="SPOInitiationRequest.htm">SPO Initiation Request</a> section for more information.</p>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="SPO"></a>SPO Message Flow</h2>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This diagram applies when the medication is identified as an SPO medication, or in the select cases when the SPO enrollment process needs to be initiated regardless of whether the medication is classified as SPO or not.</p>
+        <p>
+            <img src="../../Resources/Images/SPO/SPOMessageFlow.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 700px;" />
+        </p>
+        <p class="BodyText1Indent">1) For each medication flagged as an SPO medication, the provider vendor system sends a NewRx to Surescripts that includes the TertiaryIdentifier (UIB-030-03) in the UIB – Interactive Interchange Control Header to be populated with a value of "SPO". The TertiaryIdentifier informs the pharmacy that an SPO Enrollment Request related to the NewRx will be sent.</p>
+        <p class="BodyText1Indent">2)	The provider vendor system sends a SPOInitiationRequest message that includes the medication flagged as an SPO medication along with the PrescriberOrderNumber from the NewRx. See the <a href="SPOInitiationRequest.htm">SPO Initiation Request</a> section for more information.</p>
+        <p class="BodyText1Indent">3)	SPO creates a “Complete Specialty Enrollment” task.</p>
+        <p class="BodyText1Indent">4)	The provider vendor system sends an Auth Token Request (see the <a href="../Accelerator/LaunchingAccelWebAppAPI.htm#top">Accelerator Launch Process</a> section) to launch the accelerator by POST /uiservice/app/v0/launch/#/worklist.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">To launch the worklist, the provider vendor system sets properties in the auth token to define which tasks are included when the Accelerator is launched (see <a href="../Accelerator/AuthTokenRequest.htm">Auth Token Request</a> section). These properties specify whether the worklist displays a list of patients or a list of providers, and the task type.</p>
+        <p class="BodyText1Indent">5)	SPO displays the tasks specified by the parameters in the previous step.</p>
+        <p class="BodyText1Indent">6)	The user selects the “Complete Specialty Enrollment” task.</p>
+        <p class="BodyText1Indent">7)	SPO displays the enrollment form selector to the user to select the desired form.</p>
+        <p class="BodyText1Indent">8)	The user selects the desired enrollment form.</p>
+        <p class="BodyText1Indent">9)	<b>Optional</b>: SPO sends an SPO Clinical Information Request (if supported by provider vendor) to the provider vendor system requesting clinical data based on the selected enrollment form.</p>
+        <p class="BodyText1Indent">10)	<b>Optional</b>: The provider vendor system sends an SPO Clinical Information Response containing the requested clinical data. The returned clinical data is used to pre-answer questions in the enrollment form.</p>
+        <p class="BodyText1Indent">11)	SPO displays the desired form for the user to complete. If data was sent in the previous step, the appropriate questions within the form are displayed along with the pre-answered questions.</p>
+        <p class="BodyText1Indent">12)	The provider vendor submits the completed enrollment form to SPO.</p>
+        <p class="BodyText1Indent">13)	SPO creates and transmits the SPO Enrollment Request.</p>
+        <h2 class="Heading2" MadCap:autonum="1.4 "><a name="General"></a>General Message Requirements</h2>
+        <h3 class="Heading3" MadCap:autonum="1.4.1 "><a name="UTC"></a>UTC Time Format</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h3 class="Heading3" MadCap:autonum="1.4.2 "><a name="Characte"></a>Character Set</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CharacterSet.flsnp" />
+        <h2 class="Heading2" MadCap:autonum="1.5 "><a name="Message2"></a>Message Validation</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+    </body>
+</html>

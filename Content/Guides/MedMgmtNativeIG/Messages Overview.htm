@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="2050.333" MadCap:lastWidth="1198">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <h2 class="Heading2">Message Descriptions</h2>
+        <p class="StylebodytextBold">Find out if patients are adhering to their treatment plans </p>
+        <p class="BodyText1">With Medication Management for Adherence, obtaining patient insights is simple. We provide a Proportion of Days Covered (PDC) score that allows you to quickly see if your patients are taking their medications as prescribed.</p>
+        <p class="BodyText1">PDC is calculated by PBMs based on the refill records obtained from prescription claims, and shows the percentage of time patients have medications available to take.&#160; </p>
+        <p class="BodyText1">Currently Medication adherence summaries are provided for hyperlipidemia, hypertension, and diabetes.<br /></p>
+        <p class="StylebodytextBold">Identify and close gaps in care</p>
+        <p class="BodyText1">Medication Management for Adherence also provides medication-specific messages based on your patient’s diagnosis and PDC score so you can easily identify and address gaps in care. Three types of messages are provided:</p>
+        <ul>
+            <li>High risk medications: medications that could cause adverse effects</li>
+            <li>Medication adherence: medications not being properly taken</li>
+            <li>Missing medications: drugs that should be taken, but weren’t prescribed</li>
+        </ul>
+        <p class="StylebodytextBold">
+            <br />Provide optional feedback to PBMs</p>
+        <p>When you use Medication Management for Adherence, you’ll have the option to provide feedback to PBMs based on your conversations with patients. This will help tailor the medication messaging you receive from PBMs in the future.</p>
+        <h3 class="Heading3">Message Priority</h3>
+        <p class="BodyText1">PBM/payers have the ability to indicate the priority of a message as urgent.&#160;&#160; High risk medication, medication adherence and missing medication messages could be designated as urgent.</p>
+        <h3 class="Heading3">Provider Inbox</h3>
+        <p class="BodyText1">When the PBM/payer designates a provider in a high risk medications, medication adherence or missing medication message the message will be delivered to the provider inbox.</p>
+        <h3 class="Heading3">Provider Inbox Opt-Out</h3>
+        <p class="BodyText1">All providers will be opt-in to the provider inbox for all High risk medications, medication adherence and missing medication messages once they are set up in the Surescripts Directory. See the Surescripts Directory Implementation Guide for information on adding and removing service levels for providers. Providers may opt-out of receiving messages into their inbox by message type through the Surescripts Directory by disabling the Medication Management for Adherence message service levels. Opt-out is currently supported for the following message types:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1">Providers that opt-out of receiving messages in their inbox will continue to have access to messages through the patient worklist.</p>
+        <h3 class="Heading3">Expiration</h3>
+        <p class="BodyText1">PBM/payers may send an optional expiration date in the messages to Surescripts that reflects the cadence of analytics and expected message refresh.</p>
+        <p class="BodyText1">Additionally, Surescripts will enforce an upper limit expiration date for messages that do not contain an expiration date, and to ensure medication repository is consistently refreshed. This limit will be 30 days from the time it is received by Surescripts for the initial product release.</p>
+        <p class="BodyText1">Expired messages are removed from the worklist and are retained by Surescripts for purposes of reporting, analytics, longitudinal products, etc.</p>
+        <h2 class="Heading2">Message Flow</h2>
+        <p class="BodyText1">Medication Management for Adherence provides provider vendors with the electronic delivery of PBM/payer medication adherence messages and patient medication adherence profile. Through the provider vendor interface, the provider can view and respond to PBM/payer medication adherence messages and access the patient's adherence profile. The graphic below depicts the transaction flow between customers<MadCap:annotation MadCap:createDate="2017-10-03T09:46:30.5376361-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="Do we not send anything to the provider vendor?" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-10-03T09:46:40.1023105-05:00"> in this pr</MadCap:annotation>ocess.</p>
+        <p class="p">
+            <img src="../../Resources/Images/MedMgmtNativeIG/Messages Overview.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li style="margin-top: 8pt;color: #000000;">PBM/payer sends messages (High Risk Medication, Medication Adherence, and/or Missing Medication) and PDC ratios to Surescripts destined for a provider and a specific patient. Messages and PDCs are XML or JSON based, discrete and structured data elements.</li>
+            <li style="color: #000000;">Surescripts processes messages and PDC ratios upon receiving, forwards urgent messages directly to the provider’s inbox.</li>
+            <li style="color: #000000;">Non-urgent messages and PDC ratios are available during the patient visit.</li>
+            <li style="color: #000000;">Surescripts closes out those messages which have been acted upon, ensuring provider’s inbox and patient’s messages list only display messages needing viewing and attention.</li>
+            <li style="color: #000000;">There are two ways Surescripts delivers messages into a provider’s environment: </li>
+            <li style="color: #000000;">When the PBM/payer designates a provider, messages will be delivered to the provider’s inbox.</li>
+            <li style="color: #000000;">All messages and PDC ratios will be available for viewing within patient’s chart.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The PBM/payer is responsible for sending the NPI to Surescripts, which is then used to route the message to the appropriate provider SPI(s).</p>
+            <li style="color: #000000;">Physicians can provide feedback for messages read and feedback is sent to Surescripts for processing.</li>
+            <li style="color: #000000;">PBM/payer pulls feedback to complete the communication loop.</li>
+        </ol>
+    </body>
+</html>

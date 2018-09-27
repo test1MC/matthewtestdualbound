@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2018-07-23T09:22:31.5556338-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="5" MadCap:timestamp="2018-07-23T09:27:31.7936944-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="7" MadCap:timestamp="2018-07-23T09:30:38.6997130-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="Roles"></a>Roles</h2>
+        <p class="BodyText1">A list of roles is required in order to generate an auth token. The provider vendor system assigns a role to the user, which authorizes them to perform certain tasks within the Accelerator. The provider vendor system requests an auth token, which specifies role requests for each launch of the Accelerator UI. The Accelerator encodes the requested roles into the auth token. See <a href="WebAppUserSecurity.htm#Authentication_Authorization">Authentication and Authorization</a> for role(s) authorized to perform specific tasks.</p>
+        <p class="BodyText1">Roles can be specified per the following: </p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">A common role can be specified across all providers assigned to that user.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">Roles can be specified on a role-per-provider basis or on a list of providers basis. </li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The list of providers the user can access is managed by the provider vendor system.</p>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <li class="ListBullet2" style="list-style-type: disc;">Roles can be specified on a per-patient basis or on a list of patients basis. </li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The list of patients is managed by the provider vendor system.</p>
+        </ul>
+        <p class="BodyText1">If an attempt to create an auth token violates one of the following rules, the Accelerator will return a <a href="#Error">validation error</a>. The rules include:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">Roles must be assigned at the common level<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">,</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator"> or</MadCap:conditionalText> the provider level.<MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator"><MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">, or the patient level</MadCap:conditionalText>.</MadCap:conditionalText></li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">Levels cannot be combined and at least one level must be specified.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">When specifying providers, a provider may not be specified more than once.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <li class="ListBullet2" style="list-style-type: disc;">When specifying patients, a patient may not be specified more than once.</li>
+        </ul>
+        <p class="StylebodytextBold">Roles Definitions</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Roles</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Common Roles</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An array of Roles that apply to all submitted providers or patients. When Common Roles are included in the request, Roles assigned for Providers<MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator"> and Patient</MadCap:conditionalText> will be ignored and should not be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Providers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An array of Provider objects, each with an array of roles for that provider, an id, and a qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An object that describes a patient with an <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">alternateId, an alternateOrganization, alternateQualifier</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">id, an organization</MadCap:conditionalText>, and an array of roles that apply.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.SPOAccelerator">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>An object that describes a patient with an id, an organization, and an array of roles that apply.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Role_Assignment_Examples"></a>Role Assignment Examples</h3>
+        <p class="BodyText1">The JSON field in the following examples is defined per the table below:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">roles</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An array of roles assigned to this provider. </p>
+                        <p class="Table"><b>Note</b>: When Common Roles are included in the request, Roles assigned for Providers will be ignored and should not be sent.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Common Role Assignment</p>
+        <p class="BodyText1">The following example shows how a single role can be assigned for all providers assigned to that user as part of an Auth Token Request.</p>
+        <p class="BodyText1">In addition to the table at the beginning of this section, the table below details additional JSON fields specific to this example.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">commonRoles</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">In this example the common role is the <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">sposubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">pn.viewer</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpocsubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">pasubmitter</MadCap:conditionalText>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The provider’s SPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">The qualifier for the provider.</p>
+                        <p style="font-size: 9pt;"><b>Qualifier</b>: <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="page-break-after: avoid;">Common Role Assignment Example</p>
+        <p style="page-break-after: avoid;font-size: 9pt;page-break-before: avoid;">{</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160; "systemUserId": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.SPOAccelerator,Default.PatientNotificationsAccelerator">ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">EPA123</MadCap:conditionalText>",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160; "systemUserQualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">DP</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">NP</MadCap:conditionalText>",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160; "endUserId": "user1",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160; "roles": {</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "commonRoles": [</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "<MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">sposubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpocsubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">pasubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">pn.viewer</MadCap:conditionalText>"</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "providers": [</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6487851746001",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText>"</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6920673533001",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText>"</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">&#160;&#160;&#160; }</p>
+        <p style="page-break-after: avoid;font-size: 9pt;">}</p>
+        <p class="StylebodytextBold" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Role per Provider Assignment</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">The following example shows how roles can be assigned on a per provider basis. </p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">In addition to the table at the beginning of this section, the table below details additional JSON fields specific to this example.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.ePAAccel,Default.SPOAccelerator">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 342px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">The provider’s SPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">The qualifier for the provider.</p>
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator"><b>Qualifier</b>: D</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Role per Provider Assignment Example</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">{</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; "systemUserId": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.SPOAccelerator">ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">EPA123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">",</MadCap:conditionalText></p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; "systemUserQualifier": "DP",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; "endUserId": "user1",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; "roles": {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "providers": [</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "roles": [</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "<MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">sposubmitter</MadCap:conditionalText></MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpocsubmitter</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">pasubmitter</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">"</MadCap:conditionalText>
+        </p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6487851746001",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D"</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "roles": [</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "<MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">sporeviewer</MadCap:conditionalText></MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpocviewer</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">pareviewer</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">"</MadCap:conditionalText>
+        </p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6920673533001",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D"</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; }</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">}</p>
+        <p class="StylebodytextBold" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Role per Patient Assignment</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">The following example shows how a specific role can be assigned for a specific patient.</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">In addition to the table at the beginning of this section, the table below details additional JSON fields specific to this example.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">alternateId</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">Corresponds to the patient’s PBM Unique Id returned in the 271 eligibility response.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">alternateOrganization</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">Corresponds to the payer Id returned in the 271 eligibility response.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="Default.MedMgmtAccel">alternateQualifier</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">Qualifier for the patient identifier.</p>
+                        <p MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel"><![CDATA[
+
+]]><b>alternateQualifier</b>: PBMUID
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel,Default.SPOAccelerator">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel" MadCap:changes="2">Corresponds to the MedicalRecordIdentificationNumberEHR field (...Patient/Identification/MedicalRecordIdentificationNumberEHR) specified in the PAInitiationRequest.</p>
+                        <p class="Table">Matches the MedicalRecordIdentificationNumberEHR field (...Patient/Identification/MedicalRecordIdentificationNumberEHR) specified in the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PAInitiationRequest</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPOInitiationRequest</MadCap:conditionalText>.</p>
+                        <p class="Table" style="font-weight: normal;">This field is optional in the schema, but has to be included in the original <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PAInitiationRequest</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPOInitiationRequest</MadCap:conditionalText> in order for the resulting process to be visible when launching the Accelerator for a specific patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel,Default.SPOAccelerator">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="Default.SPOAccelerator">
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">organization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel" MadCap:changes="7">The value sent in the MutuallyDefined field of the PAInitiationRequest. Used to identify a patient with the same ID&#160;across different locations/facilities.</p>
+                        <p class="Table" style="font-weight: normal;">The value sent in the MutuallyDefined field (...Patient/Identification/MutuallyDefined) of the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PAInitiationRequest</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPOInitiationRequest</MadCap:conditionalText>. Used to identify a patient with the same ID&#160;across different locations/facilities.</p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel" MadCap:changes="5">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel" MadCap:changes="5"><b MadCap:changes="5">Note</b>: If this optional field is not included in the PAInitiationRequests, it cannot be included in  auth token requests for the specified patient.  Without “organization”, all PAs for the specified patient will display regardless of location/facility.</MadCap:conditionalText>
+                        </p>
+                        <p><b>Note</b>: If this optional field is not included in the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PAInitiationRequest</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPOInitiationRequest</MadCap:conditionalText>, it should not be included in Auth Token Request for the specified patient. The worklist items will show when patient id equals MedicalRecordIdentificationNumberEHR and organization equals MutuallyDefined. For example, if organization is "null" and MutuallyDefined is "test clinic", the task for that <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PAInitiationRequest</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPOInitiationRequest</MadCap:conditionalText> will not be displayed.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="page-break-before: always;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">Role per Patient Assignment Example</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">{</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">"systemUserId":"</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.SPOAccelerator">ABC123</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">EPA123</MadCap:conditionalText>",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">"systemUserQualifier":"DP",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">
+            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">"endUserId":"</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.SPOAccelerator">fred</MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">ehruser123</MadCap:conditionalText>",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">"roles":{</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160; "patient":{</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160; "id":"elizabeth",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160; "organization":"clinic2",</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160; "roles":[</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"pasubmitter"</p>
+        <p style="color: #000000;background-color: #FFFFFF;margin-top: 6px;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateId":"1234567890",</p>
+        <p style="color: #000000;background-color: #FFFFFF;margin-top: 6px;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateOrganization":"D44444444444444",</p>
+        <p style="color: #000000;background-color: #FFFFFF;margin-top: 6px;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160; "alternateQualifier":"PBMUID",</p>
+        <p style="color: #000000;background-color: #FFFFFF;margin-top: 6px;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "roles":[</p>
+        <p style="color: #000000;background-color: #FFFFFF;margin-top: 6px;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "mmpocsubmitter"</p>
+        <p style="color: #000000; background-color: #FFFFFF; margin-top: 6px; font-size: 9pt;" MadCap:conditions="Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "sposubmitter"</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;]</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="page-break-after: avoid;font-size: 9pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">}</p>
+        <h3 class="Heading3"><a name="Auth_Token_Response"></a>Auth Token Response</h3>
+        <p class="BodyText1">The Accelerator returns the Auth Token Response in the "application/json" format and may include a success or error message. If the response is successful, the payload of the response will contain an encrypted auth token, which is used to further access the Accelerator.</p>
+        <p class="StylebodytextBold">Auth Token Response Examples</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">Successful Response Example</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">HTTP/1.1 200 OK</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Cache-Control: no-cache</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Pragma: no-cache</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Content-Type: application/json; charset=utf-8</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Expires: -1</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Date: Thu, 06 Mar 2014 16:42:17 GMT</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Content-Length: 547</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; {</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "Token"</p>
+        <p style="font-family: Arial;font-size: 9pt;">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJzZWxmIiwiYXVkIjoiaHR0cDov</p>
+        <p style="font-family: Arial;font-size: 9pt;">L3d3dy5zdXJlc2NyaXB0cy5jb20iLCJuYmYiOjE0MDcxODAyNzMsImV4cCI6MTQwNzIxNjI3My</p>
+        <p style="font-family: Arial;font-size: 9pt;">wibmFtZWlkIjoibWlsZXMiLCJyb2xlIjoie1wiQ29tbW9uUm9sZXNcIjpbXCJwYXN1Ym1pdHRl</p>
+        <p style="font-family: Arial;font-size: 9pt;">clwiXSxcIlByb3ZpZGVyc1wiOlt7XCJSb2xlc1wiOm51bGwsXCJJZFwiOlwiNjQ4Nzg1MTc0Nj</p>
+        <p style="font-family: Arial;font-size: 9pt;">AwMVwiLFwiT3JnYW5pemF0aW9uXCI6bnVsbCxcIlF1YWxpZmllclwiOlwiRFwifV0sXCJQYXRp</p>
+        <p style="font-family: Arial;font-size: 9pt;">ZW50XCI6bnVsbCxcIk9yZ2FuaXphdGlvblwiOm51bGx9Iiwic3VyZXNjcmlwdHMuY29tL3Bvcn</p>
+        <p style="font-family: Arial;font-size: 9pt;">RhbCI6IjExNDYifQ.kKT1EEsJedbaxjKERCUsgLXxtZ7fGe8BJwTb8W3iA7E",</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "UtcExpiration": "2014-08-05T05:24:33.9298548Z"</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; }</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;"><a name="Error"></a>Error Response Example</p>
+        <p style="font-family: Arial;font-size: 9pt;">HTTP/1.1 400 Bad Request</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Cache-Control: no-cache</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Pragma: no-cache</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Content-Type: application/json; charset=utf-8</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Expires: -1</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Date: Mon, 04 Aug 2014 19:28:02 GMT</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; Content-Length: 148</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "message": "The request is invalid.",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "modelState": {</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "": [</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "One or more invalid common role has been specified."</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; }</p>
+    </body>
+</html>

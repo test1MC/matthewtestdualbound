@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="809" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="User_Security"></a>User Security</h2>
+        <p class="BodyText1">Web Service API messages are sent using HTTPS and routed through a whitelisted vendor aggregation server. </p>
+        <p class="BodyText1">A call to a Web Service API requires two headers:</p>
+        <ol style="list-style-type: decimal;margin-left: 65pt;" start="1">
+            <li class="BodyText2">A standard basic authentication header using the credentials assigned during the integration process. </li>
+        </ol>
+        <p class="BodyText2" style="margin-left: 65pt;">For example: Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <ol style="list-style-type: decimal;margin-left: 65pt;" start="2">
+            <li class="BodyText2">A custom X-SENDER-UID header that contains a Surescripts identifier assigned during the integration process. The format for the header value is qualifier-id. </li>
+        </ol>
+        <p class="BodyText2" style="margin-left: 65pt;">For example: X-SENDER-UID: <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">DP-EPA123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">DP-ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">NP-ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">DP-SPO123</MadCap:conditionalText></p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="Security"></a>Security Headers in an API Call Example</h3>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Security headers for a sample API call are shown in <span style="color: #0000FF;">blue</span> below.</p>
+        <p style="font-family: Arial;font-size: 9pt;">POST <u style="color: #0000ff;">//uiservice/api/v0/worklist HTTP/1.1</u></p>
+        <p style="font-family: Arial;font-size: 9pt;">Host: localhost</p>
+        <p style="font-weight: bold;color: #0000FF;font-family: Arial;font-size: 9pt;">Authorization: Basic dXNlcjE6cGFzc3dvcmQx</p>
+        <p style="font-weight: bold;color: #0000FF;font-family: Arial;font-size: 9pt;">X-SENDER-UID: <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">DP-EPA123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">DP-ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">NP-ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">DP-SPO123</MadCap:conditionalText></p>
+        <p style="font-family: Arial;font-size: 9pt;">Content-Type: application/json</p>
+        <p style="font-family: Arial;font-size: 9pt;">Cache-Control: no-cache</p>
+        <p style="font-family: Arial;font-size: 9pt;">Postman-Token: f920dfc3-bc53-db39-fc4d-b365f8cfb44c</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;</p>
+        <p style="font-family: Arial;font-size: 9pt;">{</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; User: "rob",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; "recipients": [</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6689026196001",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText>",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Micky"</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; ]</p>
+        <p style="font-family: Arial;font-size: 9pt;">}</p>
+    </body>
+</html>

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1438" MadCap:lastWidth="1172">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2017-10-03T09:55:45.3967134-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2017-10-03T09:55:45.4123378-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2">QuestionnaireResponse</h2>
+        <p class="BodyText1">The QustionnaireResponse API is used to submit a completed questionnaire back to the PBM for a medication management message (High Risk, Medication Adherence or Missing Medication.&#160; The QuestionnaireResponse endpoint link should be endpoint saved in your system from the CommunicationRequest.&#160; The task Id passed is also obtained from the CommunicationRequest API.</p>
+        <p class="StylebodytextBold">Workflow Considerations</p>
+        <p class="BodyText1">It is recommended to show the questionnaire with the medication management message detail and the adherence profile in areas of the workflow where the provider will take action on non-adherence or gaps in care.&#160; </p>
+        <ul>
+            <li>The CommunicationRequest API is used to get the message details and questionnaire.&#160; </li>
+            <li>The Observation API is used to get the member’s adherence profile (PDC scores).</li>
+        </ul>
+        <p class="BodyText1">The diagram below illustrates where the QuestionnaireResponse API should be used in a typical patient visit workflow.</p>
+        <p>
+            <img src="../../Resources/Images/MedMgmtNativeIG/Adherence Profile Summary.png" style="width: 1027px;height: 337px;" />
+        </p>
+        <p class="StylebodytextBold">Request Template Example</p>
+        <p class="BodyText1"> [<MadCap:change MadCap:changes="2">POST</MadCap:change><MadCap:change MadCap:changes="1">GET</MadCap:change>] {{host}}/mmpoc/api/v0/<MadCap:change MadCap:changes="2">QuestionnaireResponse/{{taskId}}</MadCap:change><MadCap:change MadCap:changes="1">CommunicationRequest?_id={taskId}</MadCap:change></p>
+        <p class="StylebodytextBold">Request Parameters</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">Data</p>
+                        <p class="p_4">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">taskId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">AN 60</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_1">Task Id obtained from the worklist API</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="p">&#160;</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">FHIR® Resource</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Cardinality</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">QuestionnaireResponse<br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">A structured set of questions and their answers. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The questionnaire associated with the questions and answers.</p>
+                        <p class="p_TableBody_1">Example: http://surescripts.net/Questionnaire/HRM</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">status@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The status of the questionnaire response. A questionnaire response may only be posted one time.</p>
+                        <p class="p_TableBody_1">Value:&#160; completed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">subject.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The subject of the questions. Reference to the patient.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">"http://surescripts.net/identifiers/Patient/DD14564564560"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">author.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Person who received and recorded the answers.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">"http://surescripts.net/fhir/identifiers/npi/Practitioner/3044134757"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">Author.display@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Name of the author</p>
+                        <p class="p_TableBody_1">Example: Jane Smith</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">authored@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Date this version was authored.</p>
+                        <p class="p_TableBody_1">Example:  2017-03-26T10:37:00-06:00 (UTC)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">group</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Grouped questions based on the questionnaire obtained from the CommunicationResponse</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">group.title</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Title of the questionnaire obtained from the CommunicationResponse</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">group.question</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Question obtained from the CommunicationResponse</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">group.question.answer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody_1">Answer obtained from the CommunicationResponse</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

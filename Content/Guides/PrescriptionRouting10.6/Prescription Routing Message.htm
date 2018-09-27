@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="3280" MadCap:lastWidth="1059">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643291"></a>Prescription Routing Message Flow</h2>
+        <p class="BodyText1">The Surescripts Prescription Routing service enables new prescription transmissions from a prescriber to the patient's pharmacy of choice. It also includes the ability to facilitate renewal requests/responses and prescription change requests/responses, etc. between pharmacies and prescribers. The graphic below depicts the message flow between customers in this process.</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/RxRtgMsgFlow-no LTC.bmp" style="width: 679px;height: 461px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing Message Flow Diagram</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/PresRtg Trans Flow LTC.bmp" style="width: 671px;height: 345px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing LTC Message Flow Diagram</p>
+        <h2 class="Heading2"><a name="_Detailed_Prescription_Routing"></a><a name="_Toc443643292"></a>Detailed Prescription Routing Message Workflow</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Verify, Error, and Status messages are sent in response to a NewRx request. Note that for all of these scenarios, NewRx could be any of the following messages: Refill Renewal Request, Refill Renewal Response, RxFill, Rx Change Request, Rx Change Response, Cancel Rx Request, Cancel Rx Response, Census, or Resupply.</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Prescription Routing Message_2.png" MadCap:mediastyle="@media print { max-width: 90%; }" style="width: 642px;height: 670px;" />
+        </p>
+        <p class="FigureName">Detailed Prescription Routing Message Workflow</p>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <p class="BodyText1">1a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">1b). Surescripts cannot determine what format the message is in and sends an error text back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <p class="BodyText1">2a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">2b). Surescripts recognizes the format as NCPDP but finds errors in the message. Surescripts sends back an Error message.</p>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <p class="BodyText1">3a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">3b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">3c). Receiving customer cannot recognize the message and sends an Error text to Surescripts.</p>
+        <p class="BodyText1">3d). Surescripts creates an Error and sends it back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <p class="BodyText1">4a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">4b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">4c). Receiving customer validates the message and sends back a Status (code 010) message to Surescripts. Code 010 means the message was accepted by ultimate receiver.</p>
+        <p class="BodyText1">4d). Surescripts forwards the Status (Code 010) message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 5:</p>
+        <p class="BodyText1">5a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">5b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">5c). Receiving customer validates the message, finds errors in the message, and sends back an Error message to Surescripts.</p>
+        <p class="BodyText1">5d). Surescripts forwards the Error message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 6</p>
+        <p class="BodyText1">6a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">6b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">6c). Receiving customer validates the message and sends back a pending Status (Code 000) message to Surescripts.</p>
+        <p class="BodyText1">6d). Surescripts forwards the pending Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">6e). Receiving customer fails trying to process message and initiates a new Error message (sometimes referred to as a "Free Standing Error") to Surescripts.</p>
+        <p class="BodyText1">6f). Surescripts forwards the Error to the sending customer.</p>
+        <p class="BodyText1">6g). Sending customer acknowledges the Error by sending back a verified Status (Code 010) message to Surescripts.</p>
+        <p class="BodyText1">6h). Surescripts forwards the verified Status (code 010) to the receiving customer.</p>
+        <p class="StylebodytextBold">Scenario 7</p>
+        <p class="BodyText1">7a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">7b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">7c). Receiving customer validates the message, and sends back a Status (Code 000) message to Surescripts. In this case the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">7d). Surescripts forwards the Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">7e). Receiving customer delivers the NewRx to the end point and sends back a Verify.</p>
+        <p class="BodyText1">7f). Surescripts forwards the Verify to the sending customer.</p>
+        <p class="BodyText1">7g). Sending customer acknowledges the Verify by sending back a Status (Code 010) message to Surescripts. Code 010 means it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">7h). Surescripts forwards the Status (Code 010) to the receiving customer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made on whether the message has been received successfully or not. The 010 indicates that no further messages will follow</p>
+    </body>
+</html>

@@ -1,0 +1,1154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4770" MadCap:lastWidth="1423">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h2 class="Heading2">Formulary Roll-Up Exception Reports</h2>
+        <p class="BodyText1">Exception reports show the PBM/payer data that needs to be reviewed due to inconsistent or obsolete data. An initial set of reports is automatically created upon the initial load and the reports are made available in the same location as the formulary response file. Once the initial set of reports is created, the reports will be generated quarterly or upon request. See the Surescripts Prescription Benefit Implementation Guide for more information on response files. Two sets of reports will always be available (current and the most recent prior to the current). The exception reports available are described below.</p>
+        <h3 class="Heading3"><a name="Missing"></a>Missing or Obsolete NDCs</h3>
+        <p class="BodyText1">Surescripts will provide PBM/payers with a report that shows how many NDCs within the formulary files do not match or match to obsolete NDCs in the major drug databases. Those NDCs that cannot be found will not be included in the roll-up process since they cannot be identified. The NDCs that map to obsolete NDCs will be used for the roll-up, but will not be candidates for the Representative NDC being provided to the prescriber vendors. These NDCs should be investigated by the PBM/payers to verify their validity.</p>
+        <p class="StylebodytextBold">Example: </p>
+        <p class="BodyText1">This report indicates the NDC in question(either missing or obsolete) and how many times it occurs across all the formulary, coverage, and copay files.</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001
+        </p>
+        <p><u>Source Name</u>: PBMA (PBM/payer name)
+</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 140px;" />
+            <col style="width: 127px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Usage Count</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[00006383334]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>63</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[49884077486]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[49884077586]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[49884077686]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[00149075215]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>62</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[00023921805]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>61</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>[00406142301]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>61</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>[63481052270]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>61</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Conflict"></a>Conflicting Data</h3>
+        <p>Surescripts will provide PBM/payers with reports of conflicting or questionable data for formulary files and coverage files.&#160; The reports include:</p>
+        <h4 class="Heading4"><a name="Formular"></a>Formulary Status</h4>
+        <p class="BodyText1">These reports show differing formulary status within a prescribable drug grouping. </p>
+        <p class="StylebodytextBold">Example: Conflicting Status</p>
+        <p class="BodyText1">This report shows conflicting Formulary Status for the same Representative NDC:</p>
+        <p class="BodyText1"><u>Participant ID</u>: P00000000000001
+        </p>
+        <p><u>Source Name</u>: PBMA (PBM/payer name)
+        </p>
+        <p><u>Formulary Name</u>: ABC
+        </p>
+        <p><u>Formulary ID</u>: 1223
+</p>
+        <p><u>Extract Date</u>: 5/2/2012 (Date PBM/payer created the file)
+        </p>
+        <p><u>Effective Date</u>: 5/2/2012 (Date this formulary takes effect)
+        </p>
+        <p><u>List Action</u>: F (Describes type of list:"F"=Full, "D"=Delete)
+</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Formulary Status</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Rolled up Formulary Status</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00143318801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00904620560</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>31722054401</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054852625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>68462022001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054252625</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00143319001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>31722054601</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>000542531252</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>000548531252</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>684620222014</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>00054253125</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="Heading4"><a name="Coverage"></a>Coverage File Discrepancies</h4>
+        <p class="BodyText1">These reports show differing formulary status within a dispensable drug name, strength, form and grouping. </p>
+        <p class="StylebodytextBold">Example – Age Limits</p>
+        <p>This report shows conflicting age limits for the same NDCs. </p>
+        <p><u>Participant ID</u><u>:</u> P00000000000001</p>
+        <p><u>Source Name</u><u>:</u> PBMB (PBM/payer name)</p>
+        <p><u>Coverage List ID</u><u>:</u> 12234</p>
+        <p><u>List Type</u><u>:</u>  AL (Indicates this is age limit report)</p>
+        <p><u>Extract Date:</u> 2/6/2012 (Date PBM/payer created the file)</p>
+        <p><u>Effective Date</u><u>:</u>&#160;2/6/2012 (Date this formulary takes effect)</p>
+        <p><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 109px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 142px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 186px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" style="height: 43px;">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Coverage ID&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">NDC (Source NDC)</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Rep. NDC&#160;&#160;&#160; </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" colspan="4">
+                        <p class="TableHeading">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Min Age: 0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062016524</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062016501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062017699</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062017512</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019073</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019088</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062019011</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020587</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020402</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062020411</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age:30</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062027654</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062027501</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-size: 9pt;">Max Age: 29</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">COV123</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">00062047537</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">00062047542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" style="font-size: 9pt;">Min Age: 0</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" style="font-size: 9pt;">Min Age Qualifier: Y</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" style="font-size: 9pt;">Max Age: 30</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">Max Age Qualifier: Y</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Example – Gender Limits</p>
+        <p class="BodyText1">This report shows conflicting Gender Limits for the same NDCs:</p>
+        <p class="ExampleText1"><u>Participant ID:</u> P00000000000001</p>
+        <p class="ExampleText1"><u>Source Name:</u> PBMB (PBM/payer name)</p>
+        <p class="ExampleText1"><u>Coverage List ID:</u> 12234</p>
+        <p class="ExampleText1"><u>List Type:</u> GL (Indicates gender limits)</p>
+        <p><u>Extract Date:</u> 2/6/2012 (Date PBM/payer created the file)</p>
+        <p class="ExampleText1"><u>Effective Date:</u> 2/6/2012 (Date this formulary takes effect)</p>
+        <p class="ExampleText1"><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 175px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 141px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 202px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 177px;" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Coverage ID&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160; </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">NDC (Source NDC)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Rep. NDC&#160;&#160;&#160; </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Coverage List Value</p>
+                    <p class="TableHeading">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">COV123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062016501</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062016501</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Gender: M</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">COV123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062016895</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062016501</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Gender: F</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">COV123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062017512</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062017512</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Gender: F</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">COV123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062017529</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">00062017512</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Gender: M</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StylebodytextBold">Example – Quantity Limits</p>
+        <p class="BodyText1">This report shows conflicting Quantity Limits for the same Representative NDCs:</p>
+        <p class="ExampleText1"><u>Participant ID:</u> P00000000000001</p>
+        <p class="ExampleText1"><u>Source Name:</u> PBMD (PBM/payer name)</p>
+        <p class="ExampleText1"> <![CDATA[ ]]></p>
+        <p class="ExampleText1"><u>Coverage List ID:</u> COVABC</p>
+        <p class="ExampleText1"><u>List Type:</u> QL (Indicates quantity limits)</p>
+        <p class="ExampleText1"><u>Extract Date:</u> 5/2/2012 (Date PBM/payer created the file)</p>
+        <p class="ExampleText1"><u>Effective Date:</u> 5/2/2012 (Date this formulary takes effect)</p>
+        <p class="ExampleText1"><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" colspan="6">
+                        <p style="font-size: 9pt;">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount: 3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Start Date: 11/01/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period End Date: 12/31/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00169406456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00169406012</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount: 25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Qualifier: DL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period: CM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Start Date: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period End Date: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Start Date: 07/18/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period End Date: 09/13/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">COVABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00173068264</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00173068220</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount: 3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Qualifier: FL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period: SP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Start Date: 11/01/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period End Date: 12/31/2013</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Amount Time Period Units: 30</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Example – Step Medication</p>
+        <p class="BodyText1">This report shows conflicting Step Medications for the same Representative NDCs:</p>
+        <p class="ExampleText1"><u>Participant ID:</u> P00000000000001</p>
+        <p class="ExampleText1"><u>Source Name:</u> PBMD (PBM/payer name)</p>
+        <p class="ExampleText1"><u>Coverage List ID:</u> COVABC</p>
+        <p class="ExampleText1"><u>List Type</u> (Indicates step medication)</p>
+        <p><u>Extract Date:</u> 5/2/2012 (Date PBM/payer created the file)</p>
+        <p class="ExampleText1"><u>Effective Date:</u> 5/2/2012 (date this formulary takes effect)</p>
+        <p class="ExampleText1"><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 58px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Step NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Step Rep. NDC</p>
+                    </th>
+                    <th colspan="5" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-size: 9pt;">Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">COV900</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">No. Of Drugs to Try: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Step Order: 1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Step Drug Qualifier: SM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Diagnosis Code: J301.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Diagnosis Code Qualifier: 02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">COV900</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00054327888</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00054327099</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">93104810</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">93104801</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">No. Of Drugs to Try: 1</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Step Order: 1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Step Drug Qualifier: SM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Diagnosis Code: J301.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-size: 9pt;">Diagnosis Code Qualifier: 02</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Example – Text Messages</p>
+        <p class="BodyText1">The following report shows potentially conflicting text messages for the same NDC11 and Representative NDC. The PBM/payer will determine if a change needs to be made or if the messages are intentional: </p>
+        <p class="ExampleText1"><u>Participant ID:</u> P00000000000001</p>
+        <p class="ExampleText1"><u>Source Name:</u> PBMC (PBM/payer name)</p>
+        <p class="ExampleText1"><u>Coverage List ID:</u> COVBNN</p>
+        <p class="ExampleText1"><u>List Type:</u> TM (Indicates Text Messages)</p>
+        <p><u>Extract Date:</u> 1/30/2012 (Date PBM/payer created the file)</p>
+        <p class="ExampleText1"><u>Effective Date:</u> 1/30/2012 (Date this formulary takes effect)</p>
+        <p class="ExampleText1"><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Coverage Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" colspan="3">
+                        <p>Coverage List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>32550378</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text Message Type: GI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Short Message: Different short msg</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Long Message: This Drug is Covered-same long msg.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>32550378</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>00004008618</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>00004008694</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Text Message Type: FM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Short Message: Designated Specialty Pharmacy Program, Call Walgreens
+ at 1-800-237-2767</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Long Message: Designated Specialty Pharmacy Program, Call Walgreens
+ at 1-800-237-2767</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="Heading4"><a name="Copay"></a>Copay File Discrepancies</h4>
+        <p class="BodyText1">These reports show conflicting copays for percent copay, flat copay, or both for the same Representative NDC:</p>
+        <p class="ExampleText1" style="page-break-after: avoid;"><u>Participant ID:</u> P00000000000001</p>
+        <p class="ExampleText1"><u>Source Name:</u> PBMD (PBM/payer name)</p>
+        <p class="ExampleText1"><u>Coverage List ID:</u> COVDEF</p>
+        <p class="ExampleText1"><u>List Type:</u> DS (Indicates drug specific copay)</p>
+        <p><u>Extract Date:</u> 5/2/2012 (Date PBM/payer created the file)</p>
+        <p class="ExampleText1"><u>Effective Date:</u> 5/2/2012 (Date this formulary takes effect)</p>
+        <p class="ExampleText1" style="page-break-after: avoid;"><u>List Action:</u> F (Describes type of list: "F"=Full, "D"=Delete)</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Copay Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Rep. NDC</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-size: 9pt;">Pharmacy Type</p>
+                    </th>
+                    <th colspan="7" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-size: 9pt;">Copay List Value</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Flat Copay Amount: 10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Percent Copay Rate: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Minimum Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Copay Tier: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Copay Tier: 2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00338500242</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315311</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Flat Copay Amount: 10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Percent Copay Rate: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Minimum Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Copay Tier: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Copay Tier: 2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00338500348</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315511</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Flat Copay Amount: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Percent Copay Rate: .50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Minimum Copay: 20.50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="font-size: 9pt;">Copay Tier: 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Copay Tier: 3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">56132212</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315553</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">00264315511</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Flat Copay Amount: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Percent Copay Rate: .75</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">First Copay Term: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Minimum Copay: 28</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Days Supply Per Copay: </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="font-size: 9pt;">Copay Tier: 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-size: 9pt;">Max Copay Tier: 4</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

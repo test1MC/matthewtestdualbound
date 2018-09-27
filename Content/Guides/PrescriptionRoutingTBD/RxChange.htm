@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="9149" MadCap:lastWidth="818">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643325"></a>Rx Change</h2>
+        <p class="BodyText1">The <span style="font-style: italic;">Rx Change Request</span> message is originated by the pharmacy. This message is used to request a change to a new prescription. This request may be used when a pharmacy identifies a need to make a change to the original new prescription.</p>
+        <p class="BodyText1">An <span style="font-style: italic;">Rx Change Response</span> message is used to respond to an <span style="font-style: italic;">Rx Change Request </span>message. An example would be a request for a generic substitution.</p>
+        <p class="BodyText1">The three codes available in the standard for <span style="font-style: italic;">Rx Change</span> are Therapeutic Interchange, Generic Substitution, and Prior Authorization. However, because we have more than three use cases, we have combined several into Therapeutic Interchange as shown below.</p>
+        <p class="BodyText1">Use cases are described below along with how to populate the pertinent fields.</p>
+        <h3 class="Heading3"><a name="Use"></a>Use Cases – Therapeutic Interchange (Rx Change Request<br />Type = T)</h3>
+        <p class="StylebodytextBold">Use Case #1: DUR (Drug Utilization Review)</p>
+        <p class="BodyText1">When the pharmacy and/or payer detects a DUR event related to the written product, the pharmacy can send an <span style="font-style: italic;">Rx Change Request </span>– Therapeutic Interchange to the prescriber requesting a switch to an alternative drug that will treat the condition with lesser or no adverse effects. Possible interactions include: allergies, dose alerts, drug interactions, and drug diseases.</p>
+        <ul>
+            <li>
+                <p>REQ-010 &lt;ChangeRequestType&gt; = T</p>
+            </li>
+            <li>
+                <p>Use DRU-100 &lt;DrugUseEvaluation&gt; of the medication prescribed segment to document further explanation, conflict, or clarification of services related to drug use evaluation.</p>
+            </li>
+            <li>
+                <p>Use DRU-090 &lt;Note&gt; of the medication prescribed segment to indicate DUR event.</p>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Use Case #2: Formulary Compliance Change to an On Formulary or Preferred Drug</p>
+        <p class="BodyText1">When the pharmacy receives a claim reject (or even paid) message which identifies preferred alternative drugs which may have a lower copay for a patient, the pharmacy can send an <span style="font-style: italic;">Rx Change Request </span>– Therapeutic Interchange to the prescriber requesting a switch to one of the preferred products.</p>
+        <ul>
+            <li>
+                <p>REQ-010 &lt;ChangeRequestType&gt; = T</p>
+            </li>
+            <li>
+                <p>Use DRU-090 &lt;Note&gt; of the medication prescribed to indicate Formulary Compliance.</p>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Use Case #3: Days Supply Change From 30 Days to 90 Days Supply</p>
+        <p class="BodyText1">When the pharmacy receives a prescription indicating a 30-day supply, but the pharmacy determines that the patient has a 90-day benefit, the pharmacy can send an Rx Change Request – Therapeutic Interchange to the prescriber requesting a switch to a 90-day supply.</p>
+        <ul>
+            <li>
+                <p>REQ-010 &lt;ChangeRequestType&gt; = T</p>
+            </li>
+            <li>
+                <p>Use DRU-090 &lt;Note&gt; of the medication prescribed segment to indicate Days Supply.</p>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Use Case #4: Therapy Change – Daily Dose Optimization</p>
+        <p class="BodyText1">When the pharmacy receives a prescription indicating a one 10 MG Tablet twice a day, but the patient desires to take one 20 MG tablet once a day, the pharmacy can send an Rx Change Request – Therapeutic Interchange to the prescriber requesting a switch to one 20 MG Tablet once a day.</p>
+        <ul>
+            <li>REQ-010 &lt;ChangeRequestType&gt; = T</li>
+        </ul>
+        <p class="StylebodytextBold">Use Case #5: Script Clarification</p>
+        <p class="BodyText1">When the pharmacy is unsure of the prescriber's intent; e.g. Prozac weekly once a day for 200 MG versus 20 MG which looks like a prescriber error. The pharmacy can send an Rx Change – Therapeutic Interchange to the prescriber requesting clarification.</p>
+        <ul>
+            <li>
+                <p>REQ-010 &lt;ChangeRequestType&gt; = T</p>
+            </li>
+            <li>
+                <p>Use the Medication Requested segment to indicate what the pharmacy thought the prescriber intended.</p>
+            </li>
+        </ul>
+        <h3 class="Heading3"><a name="Workflow"></a>Workflow – Therapeutic Interchange</h3>
+        <ol>
+            <li>Pharmacist determines which one of the following applies: DUR issue, Formulary Compliance, Days Supply, or Therapy Change, and wishes to request a change.</li>
+            <li>Rx Change Request is sent for Therapeutic Interchange.<ol><li class="ListBullet5" style="list-style-type: disc;">REQ-010 &lt;ChangeRequestType&gt; = T<ol style="list-style-type: lower-roman;"><li>If the original prescription was sent electronically, the RelatesToMsg will be set to the MessageID of the original prescription.</li><li>If the original prescription was sent electronically and included the prescriber order number (PON), it will be sent on the request.</li><li>If the original prescription was filled, the pharmacy will send the RxReferenceNumber of the original prescription.</li></ol></li></ol></li>
+            <li>Prescribed medication is sent with the DUR information added in the prescribed drug and a reason in the Notes field. For DUR scenarios, the DUR information is also coded in the DRU-100 &lt;DrugUseEvaluation&gt;.</li>
+            <li>For each Requested Medication, at least the Drug Description, Quantity, SIG, and Number of Refills is sent.<ul><li>If this is a DUR scenario, then the requested drug segment is not required.</li></ul></li>
+            <li>Prescriber receives request – possible responses:<ul><li><span style="font-weight: bold;">Approved</span> (no changes to requested drug)<ol style="list-style-type: lower-roman;"><li>The prescriber may only send <span style="font-style: italic;">Approved</span> status type if the prescriber selects one of the Medication Requested drug items and all information from the Medication Requested is approved by the prescriber.</li><li>If the prescriber selects one of the Medication Requested drug items but wishes to change one of the requested element values (e.g. Directions from Take one Tablet every day to Take two Tablets every day), the prescriber should instead specify <span style="font-style: italic;">Approved With Changes</span> status type (see below).</li><li><span style="font-style: italic;">Approved</span> status type is an indication to the pharmacy to discontinue dispensing the original prescription and instead begin dispensing the new prescription as sent in the Rx Change Response.</li><li>When the prescriber responds with <span style="font-style: italic;">Approved</span>, the prescriber should send the Medication Prescribed set to one of the medications requested by the pharmacy.</li><li>If no requested drug is sent as in the DUR scenario, the <span style="font-style: italic;">Approved</span> response is not allowed.</li></ol></li></ul><ul><li><span style="font-weight: bold;">Approved with changes</span> (anything can be changed on requested medication)<ol style="list-style-type: lower-roman;"><li>The prescriber should send <span style="font-style: italic;">Approved With Changes</span> status type if the prescriber wishes to approve the change request, but also wishes to:</li><li>Prescribe a drug item that differs from one of the Medication Requested drugs</li><li>Select one of the Medication Requested drugs <span style="font-style: italic;">AND</span> change one of the requested element values (e.g. Directions from Take one Tablet every day to Take two Tablets every day),</li><li><span style="font-style: italic;">Approved with Changes</span> status type is an indication to the pharmacy to discontinue dispensing the original prescription and instead begin dispensing the new prescription as sent in the Rx Change Response.</li><li> <span style="font-style: italic;">Approved with Changes</span> is not to be used when one of the Medication Requested segments is selected and none of the fields are changed. Instead, use <span style="font-style: italic;">Approved</span> status type as described above.</li></ol></li></ul><ul><li><b>Denied</b><ol style="list-style-type: lower-roman;"><li><span style="font-style: italic;">Denied</span> is an indication to the pharmacy to not make a change and instead, to continue dispensing the original prescription.</li><li>On a <span style="font-style: italic;">Denied</span> response, no drug information is required to be sent back.</li><li>A note or reason code explaining the denial is required to be sent back.</li><li>If the prescriber wishes to discontinue the original prescription, then a <span style="font-style: italic;">Denied</span> Rx Change Response should be sent and a Cancel request on the original prescription or follow up phone call should then be made to the pharmacy.</li><li>If no Medication Requested is sent as in the DUR scenario, the <span style="font-style: italic;">Denied</span> implies the prescriber is aware of the DUR but wants to continue the original order.</li></ol></li></ul></li>
+            <li>Prescriber sends back response.<ul><li>Appropriate status type is sent</li><li>The RelatesToMsg will be set to the MessageID of the request.</li></ul></li>
+        </ol>
+        <h3 class="Heading3"><a name="Use2"></a>Use Cases – Generic Substitution (Rx Change Request Type = G)</h3>
+        <p class="StylebodytextBold">Use Case #1: Switching From Brand To Generic</p>
+        <p class="BodyText1">When the pharmacy receives a prescription which indicates Substitution not allowed, but a generic is available, the pharmacy can send an Rx Change Request – Generic Substitution to the prescriber requesting that the generic be allowed to be dispensed.</p>
+        <p class="StylebodytextBold">Use Case #2: New Generic Available</p>
+        <p class="BodyText1">When the pharmacy received the original prescription, it was written for a brand drug with no generic alternatives. The prescriber indicates substitution not allowed. During the course of therapy, a generic becomes available; the pharmacy can send an Rx Change Request – Generic Substitution to the prescriber requesting that the generic be allowed to be dispensed.</p>
+        <p class="StylebodytextBold">Use Case #3: Brand Not Covered</p>
+        <p class="BodyText1">When the pharmacy received the original prescription, it was written for a brand drug and the prescriber indicated substitution not allowed. The pharmacy bills the brand, but the payer indicates brand not covered. The pharmacy can send an Rx Change Request – Generic Substitution to the prescriber requesting the generic be allowed to be dispensed.</p>
+        <ul>
+            <li>REQ-010 &lt;ChangeRequestType&gt; = G</li>
+        </ul>
+        <h3 class="Heading3"><a name="Workflow2"></a>Workflow – Generic</h3>
+        <ol>
+            <li>Pharmacist/Pharmacy application determines there is a generic available and original prescription is marked as substitution not allowed (DAW). If the original prescription is not marked as DAW then the pharmacy can change to a generic without sending this message.</li>
+            <li>Rx Change Request is sent for Generic Substitution<ul><li>REQ–010 &lt;ChangeRequestType&gt; = G<ol style="list-style-type: lower-roman;"><li>If the original prescription was sent electronically, the RelatesToMsg will be set to the MessageID of the original prescription.</li><li>If the original prescription was sent electronically and included the prescriber order number (PON) that will be sent on the request.</li><li>If the original prescription was filled, the pharmacy will send the RxReferenceNumber of the original prescription.</li></ol></li></ul></li>
+            <li>Prescribed Medication from the original order is sent.</li>
+            <li>The requested medications are sent with the generic(s) that the pharmacist is requested to switch to.</li>
+            <li>Prescriber receives request – possible responses:<ul><li><span style="font-weight: bold;">Approved</span> (no changes to requested drug)<ol style="list-style-type: lower-roman;"><li><span style="font-style: italic;">Approved</span> is indication to the pharmacy to discontinue dispensing the original prescription and instead begin dispensing the new prescription.</li><li>The prescriber may only send <span style="font-style: italic;">Approved</span> status type if the prescriber selects one of the Medication Requested drugs and all information from the Medication Requested is approved by the prescriber.</li></ol></li></ul><ul><li><b>Approved with changes</b></li></ul><p class="BodyText1Indent2">This value is <span style="font-style: italic;">not allowed</span> for generic substitution. If the prescriber wishes to change the medication, they will need to send a Denied status type as described below, then send a Cancel Rx Request message that the pharmacy will need to approve, and then a NewRx message.</p><ul><li><b>Denied</b><ol style="list-style-type: lower-roman;"><li><span style="font-style: italic;">Denied</span> is an indication to the pharmacy to not make a change and instead, to continue dispensing the original prescription.</li><li>On a <span style="font-style: italic;">Denied</span> response, no drug information is required to be sent back.</li><li>A note or reason code explaining the denial is required to be sent back.</li><li>If the prescriber wishes to discontinue the original prescription, a <span style="font-style: italic;">Denied</span> Rx Change Response should be sent and a Cancel Rx Request on the original prescription or follow up phone call should then be made to the pharmacy.</li></ol></li></ul></li>
+            <li>Prescriber sends back response.<ul><li><p>Appropriate status type is sent.</p></li><li><p>The RelatesToMsg will be set to the MessageID of the request.</p></li></ul></li>
+        </ol>
+        <h3 class="Heading3"><a name="Use3"></a>Use Case – Prior Authorization (Change Request Type = P)</h3>
+        <p class="BodyText1">When the pharmacy receives a claim reject indicating that a Prior Authorization is required, the pharmacy can request a Prior Authorization from the prescriber.</p>
+        <ul>
+            <li>REQ-010 &lt;ChangeRequestType&gt; = P</li>
+        </ul>
+        <h3 class="Heading3"><a name="Workflow3"></a>Workflow – Prior Authorization</h3>
+        <ol>
+            <li>Pharmacist determines that Prior Authorization is required for this prescription. This is usually done by submitting the claim and getting a reject for prior auth.</li>
+            <li>Rx Change Request is sent for Prior Authorization.<ul><li>REQ-010 &lt;ChangeRequestType&gt; = P<ol style="list-style-type: lower-roman;"><li>If the original prescription was sent electronically, the RelatesToMsg will be set to the MessageID of the original prescription.</li><li>If the original prescription was sent electronically and included the prescriber order number (PON), it will be sent on the Rx Change Request.</li><li>If the original prescription was filled, the pharmacy will send the RxReferenceNumber of the original prescription.</li></ol></li></ul></li>
+            <li>The COO &lt;BenefitsCoordination&gt; information is sent so the prescriber knows who to contact.</li>
+            <li>Prescriber receives request – possible responses:<ul><li style="font-weight: bold;">Approved<ol style="list-style-type: lower-roman;"><li style="font-weight: normal;">The prescriber has obtained prior authorization from the Payer for this medication.</li><li style="font-weight: normal;">The medication prescribed segment is sent back to the pharmacy in the Rx Change Response.</li><li style="font-weight: normal;">If a prior authorization number is required by the payer, this number should be included in the medication prescribed segment.</li></ol></li></ul><ul><li><span style="font-weight: bold;">Denied </span>(Payer Contacted)<ol style="list-style-type: lower-roman;"><li>The prescriber contacted the payer but the payer denied the request.</li></ol></li></ul><ul><li><span style="font-weight: bold;">Denied</span> (Payer not Contacted)<ol style="list-style-type: lower-roman;"><li>RES-020 &lt;DenialReasonCode&gt; No attempt will be made by the prescriber to obtain Prior Authorization. This is an existing code (AO) in the NCPDP external code list.</li></ol></li></ul><ul><li><b>Denied</b><ol style="list-style-type: lower-roman;"><li>On a Denied response, no drug information is required to be sent back.</li><li>A note or reason code explaining the denial is required to be sent back.</li><li>The original prescription remains valid.</li></ol></li></ul></li>
+            <li>Prescriber sends back response.<ul><li style="page-break-after: avoid;page-break-inside: avoid;">Appropriate status type is sent.</li><li>The RelatesToMsg will be set to the MessageID of the request.</li></ul></li>
+        </ol>
+        <h3 class="Heading3"><a name="Rx"></a>Rx Change General Message Flow</h3>
+        <p class="BodyText1">The following steps depict the Rx Change message flow:</p>
+        <ol>
+            <li>A NewRx is processed by the pharmacy and the pharmacy identifies that a change to the prescription may be appropriate.</li>
+            <li>Pharmacy submits the Rx Change Request via Surescripts to the original prescriber.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Surescripts successfully transmits the Rx Change Request to the prescriber via the prescriber system.</li>
+            <li>Prescriber system validates the Rx Change Request and returns a Status or Error (if errors are found) message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 5, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify message back to the pharmacy system.</li>
+            <li>Prescriber system processes the Rx Change Request and returns the prescriber's Change Response message.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the prescriber system.</li>
+            <li>Surescripts transmits the Rx Change Response message back to the pharmacy system.</li>
+            <li>Pharmacy system validates the Rx Change Response and returns a Status or Error (if errors are found) message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 11, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the prescriber system.</li>
+        </ol>
+        <h3 class="Heading3"><a name="RxChange"></a>RxChangeRequest (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Rx Change.png" style="visibility: visible;mso-wrap-style: square;width: 448px;height: 669px;" alt="RxChangeRequest.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="RXCHG"></a>RXCHG (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 122px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UNA Service String Advice.htm#_UNA_–_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIH Interactive Message Header.htm#_UIH_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message. </p>
+                        <p class="TableBody">For Rx Change Request, Message function = RXCHG.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/REQ Request Segment.htm#_REQ_–_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to specify the type of change.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Prescriber Segment.htm#_PVD_–_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Facility Segment.htm#_PVD_–_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Pharmacy Segment.htm#_PVD_–_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug requested)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If one drug is being requested for the change, one loop for the drug being requested should be sent.</p>
+                        <p class="TableBody" style="font-style: italic;">OR</p>
+                        <p class="TableBody">If the pharmacy wishes to send the prescriber a choice of alternative drugs, additional loops may be sent as alternatives. The first alternative sent in the loop is the preferred.</p>
+                        <p class="TableBody">(Not used for Prior Authorization Request)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/OBS Observation Segment.htm#_OBS_–_Observation" class="Hyperlink" style="font-size: 9pt;">OBS</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Observation Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to send patient's height and weight.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/COO Coordination of Benefits.htm#_COO_–_Coordination" class="Hyperlink" style="font-size: 9pt;">COO</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Coordination of Benefits Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to convey to information that was on the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIT Interactive Message Trailer.htm#_UIT_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIZ Interactive Interchange.htm#_UIZ_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">&#160;</p>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">For Rx Change Request from the pharmacy to prescriber:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: RXCHG</p>
+        <h3 class="Heading3"><a name="_Toc443643326"></a>RxChangeResponse (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Rx Change_1.png" style="visibility: visible;mso-wrap-style: square;width: 486px;height: 909px;" alt="chgres.png" MadCap:mediastyle="@media print { max-width: 65%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443643327"></a>CHGRES (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UNA Service String Advice.htm#_UNA_–_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIH Interactive Message Header.htm#_UIH_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message. For Rx Change Response, Message function = CHGRES. Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/REQ Request Segment.htm#_REQ_–_Request" class="Hyperlink">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to specify the type of change.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/RES Response Segment.htm#_RES_–_Response" class="Hyperlink" style="font-size: 9pt;">RES</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Response Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the approval or denial of the Rx Change Request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Prescriber Segment.htm#_PVD_–_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Facility Segment.htm#_PVD_–_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Pharmacy Segment.htm#_PVD_–_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD (pharmacy) segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, it is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment</p>
+                        <p class="TableBody">(Drug Prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed if the request is approved. If the request is denied, the DRU segment is not required, and if it is sent, it should contain the prescribed loop from the Rx Change Request that is being denied.</p>
+                        <p class="TableBody"><span style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6</span>:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The DRU segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, one loop is required for the drug prescribed if the request is approved. If the request is denied, the DRU segment is not required, and if it is sent, it must contain the prescribed loop from the Rx Change Request that is being denied.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/OBS Observation Segment.htm#_OBS_–_Observation" class="Hyperlink" style="font-size: 9pt;">OBS</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Observation Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to send patient's height and weight.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIT Interactive Message Trailer.htm#_UIT_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIZ Interactive Interchange.htm#_UIZ_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">For an Rx Change Response from the prescriber to pharmacy:</p>
+        <p class="BodyText1Indent2">UIB Segment</p>
+        <p class="BodyText2">030-02 Initiator Reference Identifier ties this Response to the original message. Maps to the original message field UIB-030-01.</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: CHGRES</p>
+        <h3 class="Heading3"><a name="_Toc443643328"></a>Rx Change Best Practices</h3>
+        <ol>
+            <li>Notes specific to the reason for the request should go in the prescribed drug segment as defined in the use cases above. Notes specific to all drugs requested should go on the first requested drug segment.</li>
+            <li>The COO Benefit segment should be included so the prescriber knows which payer the pharmacist is using to determine coverage/pricing.</li>
+            <li>If the Rx Change for Therapeutic Interchange or Generic Substitution is approved, this replaces the original Rx. The prescriber should create a new PON (prescriber order number); the old one becomes inactive for this approval. If the Rx Change for Prior Authorization is approved, the original prescription can still be used.</li>
+            <li>A (RxChange) denial does not make the prescription invalid or stop therapy. If the prescriber wishes to stop therapy, the prescriber should send a cancel message for the original NewRx.</li>
+            <li>An Approved with Changes Response (RES-010 = C) should not be used for Prior Authorization request; it has been removed in a future version of SCRIPT.</li>
+            <li>Even though the request segment is optional, it should be sent to identify the type of request and it also should be returned on the response.</li>
+            <li>A pharmacy may send an Rx Change Request for controlled substances (EPCS) regardless of whether the prescriber is setup for the EPCS service. For approvals, when received, if the prescriber is not enabled for the EPCS service, the prescriber should deny the electronic request with status type "denied" and indicate in the free text field that the denial will be followed by a written or telephoned prescription order. If the prescriber is set up for the EPCS service they can approve the change request as stated in the requirements. Denials should occur as stated above in Section 5.3 for the specific use case that applies.</li>
+            <li>The free text field (RES-040) should be accessible for entry and accessible for prescriber viewing (added per advisory group notes).</li>
+            <li>If the prescriber approves the change response it should be treated just like a new prescription. With a change response there are no limits or requirements around what can or cannot change in the message like there are on a renewal response. The pharmacy system should absorb the response data like they would on a new prescription in order to capture all the necessary information the prescriber sent.</li>
+        </ol>
+    </body>
+</html>

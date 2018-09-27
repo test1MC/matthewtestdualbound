@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3518" MadCap:lastWidth="1002">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="Worklist_Summary"></a>Worklist Summary</h2>
+        <p class="BodyText1">The api/v0/worklist/summary provides summary information of task counts for a provider or a patient. The API takes an array of recipients or a patient and a products object, which can include all or just one product. If product is not sent, the customer will get back the task counts for all products implemented. </p>
+        <p class="StylebodytextBold">Patient Request Template Example</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel">[GET] {{host}}/uiservice/api/v0/worklist/summary?patientId={patientId]<br />&amp;facility={facility}</p>
+        <p MadCap:conditions="Default.MedMgmtAccel">[GET] /uiservice/api/v0/worklist/summary?alternateId={alternateId}&amp;alternateOrganization={alternateOrganization}&amp;alternateQualifier=PBMUID</p>
+        <p class="StylebodytextBold">Patient Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C - Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.ePAAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 82px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 48px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 49px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 490px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" MadCap:conditions="Default.ePAAccel">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">patientId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Matches the patientId specified in the PAInitiationRequest/Body/Patient/Identification/MedicalRecordIdentificationNumberEHR.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Required if patientId is sent.</p>
+                        <p class="TableBody">Qualifier the provider vendor may use to make their Patient ID unique across their installations. Facility is only used in conjunction with patientId.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">an..5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody"><span style="font-weight: bold;">Value</span>: epa</p>
+                        <p class="TableBody">Optional qualifier the vendor may use to filter the active tasks to only ePA when using the patientId.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" MadCap:conditions="Default.ePAAccel">Patient Request Example</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel">[GET] {{host}}/uiservice/api/v0/worklist/summary?patientId=george&amp;facility=clinic1</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0" MadCap:conditions="Default.MedMgmtAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 745px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" MadCap:conditions="Default.MedMgmtAccel">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p>&#160;</p>
+                        <p>Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p>Data</p>
+                        <p>Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p>&#160;</p>
+                        <p>M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" MadCap:conditions="">
+                        <p>&#160;</p>
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternateId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>an..60</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Matches the
+  patient  PBM  Unique
+  Id returned
+  in an eligibility  response</p>
+                        <p>271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternateOrganization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Matches the
+ Payer  Identifier  returned in
+  an eligibility  response 271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternateQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>an..3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Value:  PBMUID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>an..5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Value:  mmpoc</p>
+                        <p>Optional  qualifier the vendor  may  use
+  to filter  the active  tasks
+  to only Medication
+ Management  for  Adherence  when used in
+ conjunction  with the alternateId.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" MadCap:conditions="Default.MedMgmtAccel">Patient Worklist Summary Example</p>
+        <p MadCap:conditions="Default.MedMgmtAccel">[GET] {{host}}uiservice/api/v0/worklist/summary?alternateId=80000045342&amp;</p>
+        <p MadCap:conditions="Default.MedMgmtAccel">alternateOrganization=D00000000393933&amp;alternateQualifier=PBMUID&amp;product=mmpoc</p>
+        <h3 class="Heading3"><a name="Provider_Worklist_Summary"></a>Provider Worklist Summary</h3>
+        <p class="BodyText1">[POST] {{host}}/uiservice/api/v0/worklist/summary</p>
+        <p class="StylebodytextBold">Provider Request JSON Fields</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C - Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">JSON Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">recipients</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Collection of recipients for which Accelerator based tasks will be retrieved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 8pt;">SPI's corresponding qualifier.</p>
+                        <p class="TableBody"><b>Value</b>: D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SPI of the provider</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">products</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">Required if customer needs a specific product. If not sent, all products will be returned. </p>
+                        <p class="TableBody">Example: epa</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">products</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" MadCap:conditions="">
+                        <p style="font-size: 9pt;">Collection of products for which accelerator based tasks will be retrieved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Product Id. At least one product Id is required if ‘products’ is used.</p>
+                        <p class="TableBody"><b>Value</b>: <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">epa</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpoc</MadCap:conditionalText></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">processTypes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">an..12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">Required if process types filter is needed.</p>
+                        <p class="TableBody">Note: Process types are not currently used for CompletEPA®.</p>
+                        <p class="TableBody"><b>Value</b>: null</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">processTypes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" MadCap:conditions="">
+                        <p class="TableBody">O</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1" MadCap:conditions="">
+                        <p style="font-size: 9pt;">Process types filter.</p>
+                        <p style="font-size: 9pt;"><b>Values</b>: </p>
+                        <p style="font-size: 9pt;">medadherence</p>
+                        <p style="font-size: 9pt;"> highrisk </p>
+                        <p style="font-size: 9pt;">missingmed</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:conditions="Default.MedMgmtAccel">Provider Request Template Example</h3>
+        <p MadCap:conditions="Default.MedMgmtAccel">[POST] {{host}}/api/v0/worklist/summary</p>
+        <p class="StylebodytextBold">
+            <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">Provider </MadCap:conditionalText>Request <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">Template </MadCap:conditionalText>Example</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">{</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160; "recipients": [</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6598607334001"</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160; ],</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;">&#160;&#160;&#160; "products": [</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "mmpoc",</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processTypes": [</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "highrisk"</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160; ]</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">}</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel"> {</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "epa",</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processTypes": null</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160; ]</p>
+        <p class="NoSpacing" style="margin-left: 9pt;margin-right: 23pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">}</p>
+        <h3 class="Heading3"><a name="Worklist_Summary_Response"></a>Worklist Summary Response</h3>
+        <p class="StylebodytextBold">HTTP Status Codes</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 155px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 431px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Http Status Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">200</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Successful response</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Invalid request</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Description Message Body JSON Fields</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 151px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 436px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Name of the product.</p>
+                        <p class="TableBody"><span style="font-weight: bold;">Value</span>: <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">epa</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpoc</MadCap:conditionalText></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">low</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Integer representing the count of active tasks with a low priority.</p>
+                        <p class="TableBody">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel"><span style="font-weight: bold;">Note</span>: Currently ePA does not use priority types for messages.</MadCap:conditionalText>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">medium</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Integer representing the count of active tasks with a medium priority.</p>
+                        <p class="TableBody">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel"><span style="font-weight: bold;">Note</span>: Currently ePA does not use priority types for messages.</MadCap:conditionalText>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">high</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Integer representing the count of active tasks with a high priority.</p>
+                        <p class="TableBody">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel"><span style="font-weight: bold;">Note</span>: Currently ePA does not use priority types for messages.</MadCap:conditionalText>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">urgent</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Integer representing the count of active tasks with an urgent priority.</p>
+                        <p class="TableBody">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel"><span style="font-weight: bold;">Note</span>: Currently ePA does not use priority types for messages.</MadCap:conditionalText>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">alert</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Integer representing the count of active tasks with an alert priority.</p>
+                        <p class="TableBody">
+                            <MadCap:conditionalText MadCap:conditions="Default.ePAAccel"><span style="font-weight: bold;">Note</span>: Currently ePA does not use priority types for messages.</MadCap:conditionalText>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">total</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Integer representing the total count of active tasks.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">JSON Response Example</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel"> [</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;{</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"product": "mmpoc",</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"low": 2,</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"medium": 1,</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"high": 0,</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"urgent": 0,</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"alert": 3,</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"total": 6</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;}</p>
+        <p class="NoSpacing" style="margin-right: 5pt;margin-left: 5pt;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">]</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel"> [</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;{</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"product": "epa",</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"low": 0,</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"medium": 0,</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"high": 0,</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"urgent": 0,</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"alert": 0,</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"total": 6</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;}</p>
+        <p class="NoSpacing" style="margin-left: 5pt;margin-right: 41pt;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">]</p>
+    </body>
+</html>

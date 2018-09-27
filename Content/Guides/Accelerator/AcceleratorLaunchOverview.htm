@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="827" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="Accel_Launch_Overview"></a>Accelerator Launch Overview</h2>
+        <p class="BodyText1">If the hosting application is web-based, the Accelerator is embedded in an iframe.</p>
+        <p class="BodyText1">For non-web-based vendor applications, the Accelerator may be embedded in web browser controls that meet the minimum browser requirements. The .NET IE base WebBrowser control is one example.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="Embed_Web_App"></a>Embedding the Web Application in an iframe </h3>
+        <p class="BodyText1">Launch the Accelerator user interface by posting a form that targets an embedded iframe. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The following is an example and is for illustration only.</p>
+        <p style="font-size: 9pt;">&lt;form action="https://[host_name]/uiservice/app/v0/launch/#/worklist" method="post" target="worklist" id="worklistformid"&gt;</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; &lt;input type="hidden" name="authToken" value="[auth_token]" /&gt;</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; &lt;input type="hidden" name="appPrimaryColor" value="#0099FF" /&gt;</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; &lt;input type="submit" value="Work List" /&gt;</p>
+        <p style="font-size: 9pt;">&lt;/form&gt;</p>
+        <p style="font-size: 9pt;">&#160;</p>
+        <p style="font-size: 9pt;">&lt;iframe name="worklist" id="worklist" </p>
+        <p style="font-size: 9pt;">&#160; style="overflow-y:hidden;width:810px;height:410px"&gt;Worklist&lt;/iframe&gt;</p>
+        <p class="BodyText1" style="font-weight: bold;">Parameters</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">[host_name]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">The address of the Accelerator server being used. The route following the hostname specifies which view the Accelerator will initially display (in the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">case</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">SPO enrollment</MadCap:conditionalText> above, the worklist.) </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">[auth_token]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">The “Token” retrieved from the auth token web service.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">styling parameters – e.g., appPrimaryColor in the example above </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;">See <a href="#Styling">Styling</a> below for available options.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="Styling"></a>Styling</h3>
+        <p class="BodyText1">Launch the iframe (or a web browser control) with a CSS similar to the following:</p>
+        <p class="BodyText1">iframe { overflow-y: hidden;width: 810px;height: 410px; scrolling: no; border: 0;}</p>
+        <p class="BodyText1" style="page-break-before: avoid;">The following are the styles that can be set with their default values from parameters on the initial post:</p>
+        <p style="margin-left: 59pt;">appFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif</p>
+        <p style="margin-left: 59pt;">appFontSize: 13px</p>
+        <p style="margin-left: 59pt;">appFontColor: #333333</p>
+        <p style="margin-left: 59pt;">appBorderRadius: 4px</p>
+        <p style="margin-left: 59pt;">appBackgroundColor: #FFFFFF</p>
+        <p style="margin-left: 59pt;">appPrimaryColor: #3484d6</p>
+        <p style="margin-left: 59pt;">appWarningColor: #D66934</p>
+        <p style="margin-left: 59pt;">appSuccessColor: #4FD634</p>
+        <p style="margin-left: 59pt;">
+            <MadCap:annotation MadCap:createDate="2016-12-07T14:09:43.1053921-06:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="changed appNavbarHeidht to appNavbar " MadCap:editor="megan.hayden" MadCap:editDate="2016-12-07T14:10:36.5403921-06:00">appNavbar</MadCap:annotation>: “normal”</p>
+        <p class="BodyText1" style="font-weight: bold;">Navigation Bar Style Parameter</p>
+        <p>The navigation bar style parameter is named appNavbar.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The default is “normal” which is set to 50px.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 92px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 305px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Result</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>none</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Navigation
+  bar  is  not  displayed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>large</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>70px</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>normal</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>50px</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>small</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>30px</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-weight: bold;">Example – Turning the navigation bar off:</p>
+        <p>&lt;input type="hidden" name="appNavbar" value="none" /&gt;</p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: avoid;">Styling Example</p>
+        <p style="font-size: 9pt;">POST <span style="color: #0000ff; text-decoration: underline;">https://&lt;host&gt;/uiservice/app/v0/launch/#/worklist</span> HTTP/1.1</p>
+        <p style="font-size: 9pt;">Body: appPrimaryColor=%23FF0000 &amp;authToken=eyJWZ...</p>
+        <p style="font-size: 9pt;">Connection: keep-alive</p>
+        <p style="font-size: 9pt;">Content-Length: 419</p>
+        <p style="font-size: 9pt;">Cache-Control: max-age=0</p>
+        <p style="font-size: 9pt;">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</p>
+        <p style="font-size: 9pt;">Origin: https://sur6104.surescripts.local</p>
+        <p style="font-size: 9pt;">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36</p>
+        <p style="font-size: 9pt;">Content-Type: application/x-www-form-urlencoded</p>
+        <p style="font-size: 9pt;">Accept-Encoding: gzip,deflate,sdch</p>
+        <p style="font-size: 9pt;">Accept-Language: en-US,en;q=0.8</p>
+    </body>
+</html>

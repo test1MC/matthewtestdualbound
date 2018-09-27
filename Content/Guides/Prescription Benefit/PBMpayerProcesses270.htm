@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="591" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 " style="page-break-before: always;"><a name="_Toc443909583"></a>PBM/payer Processes the 270</h2>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Errors that occur during any mapping/translation exercise would result in an AAA segment within the 2000A Source Segment. The error would be a 42 – Unable to respond at current time.</p>
+        <p class="BodyText1">Generic Error messages for the following messages would result in a 42 within the segment where the error occurred.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 380px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Event Id</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Location</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Event</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">PBM/payer Response</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">PBM/payer Error Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">PBM/payer Follow up</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Surescripts Follow up</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Provider Vendor Error</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Requestor Follow Up</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop ID 2100A (Note: Information Source is the PBM/payer info that was supplied by Surescripts)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Any issue that caused the process to halt during processing</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 42</p>
+                        <p class="TableBody">Unable to respond at current time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-weight: bold;color: #000000;">Investigate and contact Surescripts production support if additional information or clarification is needed.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 42</p>
+                        <p class="TableBody">Unable to respond at current time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">P – Please Resubmit Original Transaction</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop ID 2100A (Note: Information Source is the PBM/payer info that was supplied by Surescripts)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PBM/payer validates the Source Identifier to make sure it’s their own. Surescripts puts in wrong identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 79</p>
+                        <p class="TableBody">Invalid participant Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Investigate and contact Surescripts production support</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Investigate and translate to AAA system error for requestor</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 79</p>
+                        <p class="TableBody">Invalid participant Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">S – Do not resubmit; Inquiry initiated to a third party</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Name Segment Loop ID 2100A (Note: Information Source is the PBM/payer info that was supplied by Surescripts)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PBM/payer validates the source contact information. Surescripts puts in wrong PBM/payer contact name, etc.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 79</p>
+                        <p class="TableBody">Invalid participant Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Investigate and contact Surescripts production support</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Investigate and translate to AAA system error for requestor</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Source Segment</p>
+                        <p class="TableBody">Loop 2100A</p>
+                        <p class="TableBody">AAA – Error 79</p>
+                        <p class="TableBody">Invalid participant Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">S – Do not resubmit; Inquiry initiated to a third party</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B (This loop contains the physician info and the Physician System info)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PBM/payer validates the receiver. PBM/payer wants more fields populated than what is required by Surescripts; i.e. – the POC is not identified.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B</p>
+                        <p class="TableBody">AAA – Error 15</p>
+                        <p class="TableBody">Required application data missing</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B</p>
+                        <p class="TableBody">AAA – Error 15</p>
+                        <p class="TableBody">Required application data missing</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">C – Please correct and resubmit </p>
+                        <p class="TableBody">Surescripts recommends this value, however a PBM/Payer might send a different value</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B (This loop contains the physician info and the Physician System info)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PBM/payer validates receiver. PBM/payer cannot return eligibility for this patient because of the patients group or plan.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B</p>
+                        <p class="TableBody">AAA – Error 41 – Authorization/</p>
+                        <p class="TableBody">Access restrictions </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Segment Loop ID 2100B</p>
+                        <p class="TableBody">AAA – Error 41 – Authorization/</p>
+                        <p class="TableBody">Access restrictions </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">N – Resubmission not allowed</p>
+                        <p class="TableBody">Surescripts recommends this value, however a PBM/Payer might send a different&#160; value</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Name Segment Loop ID – 2100B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PBM/payer validates the physician Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Name Segment Loop ID – 2100B</p>
+                        <p class="TableBody">AAA – Error 43</p>
+                        <p class="TableBody">Invalid/Missing Provider Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"> None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Receiver Name Segment Loop ID – 2100B </p>
+                        <p class="TableBody">Physician Loop</p>
+                        <p class="TableBody">AAA – Error 43</p>
+                        <p class="TableBody">Invalid/Missing Provider Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">C – Correct and Resubmit</p>
+                        <p class="TableBody">Surescripts recommends this value, however a PBM/Payer might send a different value</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">5.8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Subscriber Name Loop ID 2100C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient found at Surescripts, but not in the PBM/payer’s system (could be caused by a difference between Surescripts and the PBM/payer’s patient databases or caused by the patient demographic mismatch between requestor and PBM/payer).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AAA – Error 75 – Subscriber / Insured Not Found</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AAA – Error 75 - Subscriber/Insured Not Found</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">S – Do not resubmit; Inquiry initiated to a third party</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">5.11</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">Dependant Name Loop ID 2100D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">Patient found at Surescripts, but not in the PBM’s system (could be caused by a difference between Surescripts and the PBM’s patient databases or caused by the patient demographic mismatch between requestor and PBM).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">271</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">Dependant Name Segment Loop ID 2100D AAA – Error 67 – Patient not found</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">None</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="color: #808080;">Dependant Name Segment Loop ID 2100D AAA – Error 67 – Patient not found</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;color: #808080;">S – Do not resubmit; Inquiry initiated to a third party</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

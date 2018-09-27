@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">E-Prescribing Integration &amp; Production</h1>
+        <p class="BodyText1">The following section defines related technical and support elements needed to achieve certification for moving into production, along with our Integration, Compliance, and Certification processes.</p>
+        <h2 class="Heading2"><a name="_Toc513714447"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714448"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714449"></a>Terminology Usage</h2>
+        <p class="BodyText1">The following table outlines terminology usage for this Guide.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Term</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Term Usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">must</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Requirements that are enforced as part of the production code or Surescripts business rules.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Requirements customers are required to meet in order to be certified on the Surescripts network. These requirements will be enforced as part of certification.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">should</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Used for guidance and best practices. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">R.###</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Designates a Surescripts E-Prescribing ACR. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">S.###</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Designates an ACR that is shared with other Surescripts products.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Application certification requirements are found throughout the Guide and summarized in the <a href="ApplicationCertification.htm">Application Certification Requirements Summary</a> section.</p>
+        <h2 class="Heading2"><a name="_Toc513714450"></a>Communication Rules</h2>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <h2 class="Heading2"><a name="_Toc513714451"></a>Timeouts</h2>
+        <p class="BodyText1">For timeouts, consider the following:</p>
+        <ul>
+            <li>When sending a message to Surescripts, the initiator should set the HyperText Transport Protocol (HTTP) timeout to no less than 30 seconds.<ul><li>A receiving system must reply with a valid response within 24 seconds.</li><p>Valid responses include: <ul><li>Status message (Code 010) </li><li>Error message</li><li>Status message (Code 000)</li></ul></p></ul></li>
+            <li>When a Status (Code 000) is sent as a reply, a receiving system must follow-up with a Verify or Error within 24 hours, as Surescripts may return a timeout error.</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Refer to the <a href="MessagesOverview.htm#_Toc513714489">Acknowledgement Messages</a> section for more information on using Status, Error, and Verify.</p>
+        <h2 class="Heading2"><a name="_UTC_Time_Format"></a><a name="_Toc513714452"></a>UTC Time Format</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714453"></a>Character Set</h2>
+        <p class="BodyText1">The character set contains ASCII values 32 – 126, which include:</p>
+        <table style="margin-left: 11pt;border-collapse: collapse;">
+            <col style="width: 173pt;" />
+            <col style="width: 277pt;" />
+            <tr>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">Symbols</p>
+                </td>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">Numerals</p>
+                </td>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">Ø to 9</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">Letters, upper and lower case</p>
+                </td>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;">
+                    <p class="TableBody">A to Z, a to z</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">UTF-8 is the required character encoding for XML. Other encoding formats are not supported by Surescripts. It is recommended that customers declare their UTF-8 formatting in the message header.</p>
+        <h2 class="Heading2"><a name="_Toc513714454"></a>Numeric Representation</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/SharedCommonAppCert/S_100.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714455"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

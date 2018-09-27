@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="7" MadCap:lastHeight="724.3334" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: ">Application Certification Requirements</h1>
+        <p class="BodyText1">As the source data can be slightly different in respective internal and external local databases, Surescripts provides the following definitions as support to the ACR:</p>
+        <ul>
+            <li style="margin-top: 12pt;margin-bottom: 12pt;"><span style="font-weight: bold;">STANDARDIZED RECORD</span><span style="font-weight: bold;"><br /></span>Shall be interpreted as an address record in which the intent of the physical location is not altered, but the formatting/styling/abbreviations of field such as directional (North vs N, South vs S., etc.) and location designations (Suite, Flr, etc.) are abbreviated and/or may have punctuation removed.</li>
+            <li style="margin-bottom: 12pt;"><span style="font-weight: bold;">ENHANCED RECORD</span>
+                <br />Shall be interpreted as content from an alternate credentialing source (e.g. NPPES or DEA) for a specific provider at a specific practice location.</li>
+            <li style="margin-bottom: 0pt;font-weight: bold;">COMPOSITE RECORD </li>
+            <p>A Composite record takes enhanced and standardized record elements and builds a “best possible” representation of the provider at that location. Some elements, such as phone and fax number, may be different.</p>
+            <li style="margin-bottom: 12pt;"><span style="font-weight: bold;">THIRD-PARTY DATA SOURCE</span><span style="font-weight: bold;"><br /></span>An alternate, third-party data source is defined as a credentialed entity or agency (e.g. NPPES, DEA, State Board) or a Surescripts recognized commercial entity that uses credentialed sources to develop an enhanced/composite record. Composite records may include enhanced sourced data, but should not change nor conflict with the intended physical address representative for the Provider.</li>
+            <li style="margin-bottom: 12pt;"><span style="font-weight: bold;">END POINT – </span>defined as the originating user who initiates (sends) a message or the “final” recipient of a message.</li>
+        </ul>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">0</span><span style="font-weight: bold;">0</span><span style="font-weight: bold;">1 </span>Receivers shall not reject any incoming messages due to misalignment of local directory contents, lack of entries for the sender, or use of address standardization within the customer’s local directories.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">002 </span>Customers shall ensure that modifications in their customer system to corresponding Provider or Organization directory information are sent to Surescripts within 24 hours.</p>
+        <div class="noteACR" style="page-break-before: always;">
+            <p><span style="font-weight: bold;font-size: 11pt;">D.002 Notes/Examples: </span><span style="font-size: 11pt;">Modifications include, but are not limited to:</span>
+            </p>
+            <ul>
+                <li>Service Level (the ability to accept/receive transactions)</li>
+                <li>Address Demographics</li>
+                <li>Legal Name</li>
+            </ul>
+            <p style="font-size: 11pt;">Keeping the local directories in sync with the Surescripts Directory drives reduced errors and minimizes delay in patient care.</p>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">003</span> Customers shall integrate a process to download the Nightly or Full version of the Surescripts download file daily. Customers must use the DirectoryDownload message type for these processes.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">004</span> If downloading the Nightly version daily, the customers shall integrate a weekly download of the Full version.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.005 </span>Customers shall have a process to ensure that all new and updated Surescripts Directory information, as received in the download, is available and used for message routing within 24 hours.</p>
+        <div class="noteACR">
+            <p><span style="font-weight: bold;font-size: 11pt;">D.003 - D.005 Notes/Examples:</span><span style="font-size: 11pt;"> Customers are required to certify to download files using the Directory Messaging API service; manual retrieval of a Download file is no longer supported. The manual approach (using Admin Console) to Directory Record Management will continue to be supported, provided that the requirements of updates to occur within 24 hours are met.</span>
+            </p>
+            <p><span style="font-weight: bold;font-size: 11pt;">Recommendations: </span><span style="font-size: 11pt;">Pulling a Full file daily delivers all of the records and is better suited not to miss anything if an error with a daily Nightly file is encountered.</span>
+            </p>
+            <p style="font-size: 11pt;">If the Nightly file is pulled daily, then a process to capture the Full file and apply it against the dataset should be put in place; this will assist in “truing-up” the data, especially if a daily Nightly file error occurs. The information should reach the end user and be made available to them.</p>
+            <p style="font-size: 11pt;">Records that are no longer enabled for activity on the network should be removed in a timely manner.</p>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">006</span> Every provider or organization record within the downloaded Surescripts Directory shall be made available and considered for messaging. This includes when multiple records may have the same physical address, phone and/or fax.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">007 </span>Prior to sending a message through Surescripts, the sending customer shall ensure that the intended receiver is enabled with the appropriate service level to accept the electronic transaction.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;">D.008</span><span style="color: #000000;"> The sender shall</span> <span style="color: #000000;">not send a message when the recipient’s ActiveStartTime is in the future or the ActiveEndTime is in the past.</span></p>
+        <div class="noteACR">
+            <p style="page-break-after: avoid;"><span style="font-weight: bold;font-size: 11pt;">D.008 </span><span style="font-weight: bold;font-size: 11pt;">Notes/Examples</span><span style="font-weight: bold;color: #000000;font-size: 11pt;">:</span>
+            </p>
+            <p style="page-break-after: avoid;font-size: 11pt;">At times a provider or pharmacy may have listings at the same physical address, but they represent a different business entity or product and may have a different routing identifier. </p>
+            <p style="page-break-after: avoid;margin-bottom: 3pt;font-weight: bold;font-size: 11pt;">Examples:</p>
+            <ul>
+                <li style="margin-bottom: 3pt;font-size: 11pt;font-weight: normal;">Retail vs. LongTermCare - based pharmacy records</li>
+                <li style="margin-bottom: 3pt;font-size: 11pt;font-weight: normal;">Individual/multiple provider records set up with a distinct SPI (for example one SPI with New/EPCS; a second SPI with New/Refills; a third SPI with New/RxCancelCancelRx)</li>
+            </ul>
+            <p style="page-break-after: avoid;margin-bottom: 6pt;font-size: 11pt;">The customer must be able to support records with the same/similar demographics and not relegate similar records to fax or removal from the end user’s directory.</p>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">009</span> When Organization details are included within a message transaction on the Surescripts network, the following fields shall match the information in the Surescripts Organization Directory Download for the sender and/or recipient segment:</p>
+        <ul>
+            <li>NCPDPID</li>
+            <li>Store Number</li>
+            <li>NPI</li>
+            <li>PayerID</li>
+            <li>Business (Organization) Name </li>
+        </ul>
+        <p style="margin-top: 0pt;margin-left: 18pt;">&#160;</p>
+        <div class="noteACR">
+            <p style="margin-bottom: 3pt;margin-left: 3pt;"><span style="font-weight: bold;font-size: 11pt;">D.009 </span><span style="font-weight: bold;font-size: 11pt;">Notes/Examples:</span><span style="font-size: 11pt;"> A friendly business/organization name for the pharmacy organization may be established but may not replace or eliminate the pharmacy organization name as supplied in the Surescripts </span><span style="font-size: 11pt;">D</span><span style="font-size: 11pt;">irectory and shall not </span><span style="font-size: 11pt;">be sent in the outgoing message</span><span style="font-size: 11pt;">.</span>
+            </p>
+            <ul>
+                <li style="margin-bottom: 3pt;margin-left: 3pt;">Address (Standardization permissible)</li>
+                <li style="margin-bottom: 3pt;margin-left: 3pt;">Phone (Primary preferred, Secondary accepted)</li>
+                <li style="margin-bottom: 3pt;margin-left: 3pt;">Fax (Primary preferred, Secondary accepted)</li>
+            </ul>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">D.010 </span>When Provider details are included within a message on the Surescripts network, the following fields shall match the information in the Surescripts Provider Directory Download for the sender and/or recipient segment:</p>
+        <ul>
+            <li>SPI</li>
+            <li>NPI</li>
+            <li>Provider First Name</li>
+            <li>Provider Last Name</li>
+            <li>Address (Standardization permissible)</li>
+            <li>Phone (Primary preferred, Secondary accepted)</li>
+            <li>Fax (Primary preferred, Secondary accepted)</li>
+        </ul>
+        <p style="margin-left: 18pt;">&#160;</p>
+        <div class="noteACR">
+            <p><span style="font-weight: bold;font-size: 11pt;">D.010 </span><span style="font-weight: bold;font-size: 11pt;">Notes/Examples: Field content consistency when using multiple datasets is critical.</span>
+            </p>
+            <p style="font-size: 11pt;">It is critical that key and routing identifiers not be altered in regards to credential or address demographics; this could result in an unintended sharing of PHI and/or delay in patient care.</p>
+            <p style="margin-top: 5pt;font-size: 11pt;">Composite and enhanced records may be used provided they do not contradict nor conflict with the Surescripts Directory listing.</p>
+            <p style="margin-top: 5pt;"><span style="font-size: 11pt;">In regards to communication numbers, the primary number in the Surescripts Directory is always preferred, but secondary numbers provid</span><span style="font-size: 11pt;">ed against a record within the d</span><span style="font-size: 11pt;">irectory are also acceptable.</span>
+            </p>
+            <p style="margin-bottom: 3pt;"><span style="font-size: 11pt;">If the Surescripts Directory listing does not have the required field for a specific message (for example Pharmacy NPI for a NewRx message)</span><span style="font-size: 11pt;">,</span><span style="font-size: 11pt;"> the sender may use local directory or third</span><span style="font-size: 11pt;">-</span><span style="font-size: 11pt;">party information to ensure the message is complete.</span>
+            </p>
+        </div>
+        <p class="BodyText1"><span style="font-weight: bold;">S.103</span>: The sending customer shall send an address within the message which matches the associated Directory record. <span style="font-weight: bold;">Note</span>: When a provider system utilizes the Surescripts Learning Directory service, this requirement is satisfied.</p>
+        <p class="BodyText1">The address of the provider of the prescription order should be the practice physical address in which the patient encounter took place. For LTC based encounters, the provider should use the facility based location, or, for home-based service, their practice of record for prescription orders.&#160; For Telehealth based encounters that are not part of an associated provider practice location, the practice address within the message, and correlating directory record, should be associated with a provider associated credentialed location in the State from which the provider is licensed. </p>
+        <p class="BodyText1">On an RxRenewalResponse the provider should change this address to match what is in the Surescripts directory. For address element formatting and consistency information, customers should use the United States Postal Service (USPS) 28 standard as a guideline.</p>
+    </body>
+</html>

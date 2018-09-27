@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-08-14T12:55:59.8294858-05:00" />
+        </MadCap:changeData><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc434830169"></a>Product Integration &amp;&#160;Production</h1>
+        <p class="BodyText1" MadCap:changes="1">The Accelerator delivers a method for provider vendors to quickly offer customers core ePA features by embedding an iframe (or using a web browser control) in the provider vendor system that will manage the process of completing an ePA.</p>
+        <p class="BodyText1" MadCap:changes="1">The Accelerator is comprised of two APIs: the Web Application API, which provides a customizable user interface, and a Web Service API, which gives programmatic read-only access to the current state of workflow processes and tasks.</p>
+        <p class="BodyText1" MadCap:changes="1">The Web Application API provides a customizable interface that is displayed in an iframe (or a web browser control) in the provider vendor system. The interface interacts with the Accelerator and its managed workflow. In order to use the Web Application API, the provider vendor system must first call the Web Service API to request and receive an authorization token.</p>
+        <p class="note" MadCap:changes="1" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Authorization tokens are issued for 60 minutes and contain the expiration date and time. A new authorization token is not required to relaunch the Accelerator if still active or before the expiration period has elapsed.</p>
+        <p class="BodyText1" MadCap:changes="1">When an end user sends a PAInitiationRequest via the native CompletEPA<sup MadCap:changes="1">®</sup> route, the Accelerator workflow engine creates a workflow process. The workflow process is given an InitiatorsProcessID, which is the PAReferenceID from the PAInitiationRequest. The workflow engine tracks all subsequent messages related to the PAInitiationRequest and distributes workflow tasks related to the process.</p>
+        <p class="BodyText1" MadCap:changes="1">End users are able to interact with a worklist, which is the collection of active tasks that require action from the current user. The Web Service API gives programmatic read-only access to the current state of workflow processes and tasks.</p>
+        <p class="BodyText1" MadCap:changes="1">When an Accelerator process reaches a point where the end user needs to take action on a task, e.g.; complete a question set, the end user can complete the task via the user interface provided by the Web Application API. Additionally, the Accelerator provides a historic view of in-process and completed ePA activities.</p>
+        <h2 class="Heading2"><a name="_Toc434830170"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="_Toc434830171"></a>Terminology Usage</h2>
+        <p class="BodyText1">Requirements that are enforced as part of the production code are denoted as “must” and will need to be met to successfully complete certification. “Should” is used for guidance or best practices. See the following chart for terminology usage in this implementation guide.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Term</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Term usage</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">must</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Requirements that are enforced as part of the production code.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">should</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</p>
+                </td>
+            </tr>
+        </table>
+        <h2 class="Heading2"><a name="_Toc434830172"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="Communic"></a>Communication Rules</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CommunicationRules.flsnp" />
+        <h2 class="Heading2"><a name="Timeouts"></a>Timeouts</h2>
+        <p class="BodyText1">Each transaction that Surescripts submits to a customer has a time-out parameter. If Surescripts does not get a response from the customer within the specified time period, the transaction times out. Surescripts will then respond to the original sender with an error message.</p>
+        <ul>
+            <li>When sending a message to Surescripts, the initiator should set the http timeout to no less than 30 seconds.</li>
+        </ul>
+        <h2 class="Heading2"><a name="Complian"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

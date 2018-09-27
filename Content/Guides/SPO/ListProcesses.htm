@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="817" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">List Processes</h2>
+        <p class="BodyText1">The following endpoints are available to retrieve a list of processes based on parameters and search criteria. Each item in the list is a summary of a process. The responses are the same for all List Processes endpoints.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="List"></a>List Process for Patient ID</h3>
+        <p class="BodyText1">List Processes for patientId retrieves a paged list of process summaries for a given patient ID. If the optional parameter of Facility is not provided in the request, then only the processes that are not affiliated with a facility will be included in the results.</p>
+        <p class="StylebodytextBold">Request Template</p>
+        <p>[GET] {{host}}/api/v0/processes?patientId={patientId}&amp;facility={facility} &amp;fromDate=</p>
+        <p>{fromDate}&amp;createdThruDate={createdThruDate}&amp;pageIndex={pageIndex}&amp;pageSize=</p>
+        <p>{pageSize}</p>
+        <p class="StylebodytextBold">Request Parameters</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>patientId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Matches the MedicalRecordIdentificationNumberEHR field (…Patient/Identification/MedicalRecordIdentificationNumberEHR) specified in the SPOInitiationRequest.</p>
+                        <p style="font-size: 10pt;">This field is optional in the schema, but has to be included in the original SPOInitiationRequest in order for the resulting process to be visible when launching the Accelerator for a specific patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">The value sent in the MutuallyDefined field (…Patient/Identification/MutuallyDefined) of the SPOInitiationRequest. Used to identify a patient with the same ID across different locations/facilities.</p>
+                        <p style="font-size: 10pt;"><b>Note</b>: If this optional field is not included in the SPOInitiationRequest, it should not be included in Auth Token Request for the specified patient. The worklist items will show when patient id equals MedicalRecordIdentificationNumberEHR and facility equals MutuallyDefined. For example, if facility is "null" and MutuallyDefined is "test clinic", the task for that SPO Initiation Request will not be displayed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>fromDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Processes created on or after this date will be returned.</p>
+                        <p style="font-size: 10pt;"><b>Note</b>: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>createdThruDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Processes created on or prior to this date will be returned.</p>
+                        <p><b>Note</b>: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p><span style="font-size: 10pt;">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Request Example</p>
+        <p class="BodyText1">[GET] {{host}/uiservice/api/v0/processes?patientId=george123?facility=oakclinic77</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="List2"></a>List Process for Initiator(s)</h3>
+        <p class="bodytext1">List Processes for Initiator(s) retrieves a paged list of process summaries for the specified initiator(s). An initiator is an individual or physician that requested the SPO enrollment.</p>
+        <p class="StylebodytextBold">Request Template</p>
+        <p class="bodytext1">[POST] {{host}}/processes</p>
+        <p class="bodytext1" style="font-weight: bold;">Request Parameters</p>
+        <p class="bodytext1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 84pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 58pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 21pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 330pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="tableheading1" style="page-break-after: avoid;">Parameter</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">Data Type</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">M/C</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">initiators</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Complex Type</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">M</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">A collection of initiators. </p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">An initiator is a dataset containing the initiators identifying data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">&#160; id</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">an13</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">M</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">SPI of the initiator.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">&#160; qualifier</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">an1</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">M</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">SPI's corresponding qualifier. </p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Value = D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">createdFromDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">DateTime</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Processes created on or after this date will be returned.</p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;"><span style="font-weight: bold;font-size: 10pt;">Note</span><span style="font-size: 10pt;">: DateTime format is CCYY-MM-DDTHH:MM:SSZ</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">createdThruDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">DateTime</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Processes created on or prior to this date will be returned.</p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;"><b>Note</b>: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">pageSize</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Positive Int</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">pageIndex</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Positive Int</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Request Example</p>
+        <p>[POST] <span style="color: #0000FF;text-decoration: underline;">http://[host]/uiservice/api/v0/processes </span></p>
+        <p style="color: #000000;">{</p>
+        <p style="color: #000000;">&#160; "initiators": [</p>
+        <p style="color: #000000;">&#160;&#160;&#160; {</p>
+        <p style="color: #000000;">&#160;&#160;&#160;&#160;&#160; "id": "6223033492001"</p>
+        <p style="color: #000000;">&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="color: #000000;">&#160;&#160;&#160; }</p>
+        <p style="color: #000000;">&#160; ],</p>
+        <p style="color: #000000;">&#160; "fromDate": "2014-12-05T15:11:42.578706-06:00",</p>
+        <p style="color: #000000;">&#160; "createdThruDate": "2014-12-05T15:11:42.578706-06:00",</p>
+        <p style="color: #000000;">&#160; "pageIndex": 2,</p>
+        <p style="color: #000000;">&#160; "pageSize": 3</p>
+        <p style="color: #000000;">}</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="List3"></a>List Processes for InitiatorsProcessId(s)</h3>
+        <p class="BodyText1">List Processes for initiatorsProcessId(s) retrieves a paged list of processes for the specified initiatorsProcessId(s). InitiatorsProcessId is the SPOReferenceID as defined by the provider vendor system.</p>
+        <p class="StylebodytextBold">Request Template</p>
+        <p class="BodyText2" style="margin-left: 0pt;">[POST] {{host}}/processes</p>
+        <p class="StylebodytextBold">Request Parameters</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">Parameter</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">Data Type</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">M/C</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;font-weight: bold;font-size: 10pt;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;">initiatorsProcessId
+                        </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Complex Type</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">M</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">A collection of initiators process IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">fromDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">DateTime</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Processes created on or after this date will be returned.</p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;"><b>Note</b>: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">createdThruDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">DateTime</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Processes created on or thru this date will be returned.</p>
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;"><b>Note</b>: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">pageSize</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Positive Int</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">pageIndex</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Positive Int</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p style="page-break-after: avoid;margin-top: 5pt;margin-bottom: 1pt;font-size: 10pt;">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Request Example</p>
+        <p><span style="font-size: 11pt;">[POST] </span><span style="color: #0000FF;font-size: 11pt;text-decoration: underline;">http://[host]/uiservice/api/v0/intiators/processes</span>
+        </p>
+        <p style="color: #000000;">{</p>
+        <p style="color: #000000;">&#160; "initiatorProcessIds": [</p>
+        <p style="color: #000000;">&#160;&#160;&#160; "f050fc8601444af1be3c5ffeb4c1d703",</p>
+        <p style="color: #000000;">&#160;&#160;&#160; "3fb345ccf3814adc835f756e752c851a"</p>
+        <p style="color: #000000;">&#160; ]</p>
+        <p style="color: #000000;">}</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.4 "><a name="List4"></a>List Processes Response</h3>
+        <p class="bodytext1" style="font-weight: bold;">Response HttpStatus Codes</p>
+        <table style="margin-left: 0pt;border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 54pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 416pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="tableheading1">HttpStatus</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="tableheading2">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Successful response along with the processList and the corresponding process response fields</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="font-size: 10pt;">400</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p style="font-size: 10pt;">Bad Request</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bodytext1" style="font-weight: bold;">Response Field description – List Processes</p>
+        <table style="margin-left: 0pt;border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 53pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 416pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="tableheading1">Field</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="tableheading2">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">pageIndex</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Integer representing the returned page index</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">pageSize</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Integer representing the page size</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">totalRows</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Integer representing the total number of rows matching the search criteria</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p style="font-size: 10pt;">items</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p><span style="font-size: 10pt;">Collection of process summary objects. See<b> <![CDATA[ ]]></b></span><span class="Hyperlink" style="color: #000000; text-decoration: none; font-weight: normal;">Response Field Description – Process Summary</span>.  </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bodytext1" style="font-weight: bold;"><a name="ResponseFieldDescriptionProcessSum"></a>Response Field Description – Process Summary</p>
+        <table style="margin-left: 0pt;border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 96pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 371pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="tableheading1">Field</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #A9A9A9;padding-top: 2pt;padding-left: 2pt;padding-bottom: 2pt;padding-right: 2pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="tableheading2">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">processId</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody2">Unique Surescripts ID which represents the process instance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">processName</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Name of the process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">initiatorsProcessId</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">The initiatorsProcessId is the SPOReferenceID as defined by the provider vendor system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">initiator</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Dataset containing the recipient's identifying data.</p>
+                        <p class="tablebody1">Field(s) include:</p>
+                        <p class="tablebody1">id</p>
+                        <p class="tablebody1">qualifier</p>
+                        <p class="tablebody1">name</p>
+                        <p class="tablebody1"><b>Note</b>: Supported qualifier is D (indicating the ID is an SPI). </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">patientId</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">Matches </span><span style="font-size: 10pt;">the MedicalRecordIdentificationNumberE</span><span style="font-size: 10pt;">HR field (…Patient/Identification/MedicalRecordIdentificationNumberEHR) specified in the SPO</span><span style="font-size: 10pt;">InitiationRequest.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">facility</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">The value sent in the</span><span style="font-size: 10pt;"> MutuallyDefined field (…Patient/Identification/MutuallyDefined) of the SPO</span><span style="font-size: 10pt;">InitiationRequest. Used to identify a patient with the same ID&#160;across different locations/facilities.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">patientFirstName</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Patient’s first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">patientLastName</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Patient’s last name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">patientDob</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Patient’s date of birth.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">createdDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Date/time process was created.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">completedDate</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Date/time process was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">status</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Integer representing the status of the process, possible values are:</p>
+                        <p class="tablebody1">1: Draft</p>
+                        <p class="tablebody1">2: In Progress</p>
+                        <p class="tablebody1">3: Complete</p>
+                        <p class="tablebody1">4: Cancelled</p>
+                        <p class="tablebody1">5: Errored</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="tablebody1">statusName</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="tablebody1">Textual name representing the status of the process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="tablebody3">description</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 3pt;padding-bottom: 3pt;padding-right: 3pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="tablebody4">Description of the process instance.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bodytext1" style="font-weight: bold;">Response Example</p>
+        <p>{</p>
+        <p>&#160; "pageIndex": 0,</p>
+        <p>&#160; "pageSize": 25,</p>
+        <p>&#160; "totalRows": 1,</p>
+        <p>&#160; "items": [</p>
+        <p>&#160;&#160;&#160; {</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "processId": 122908,</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "processName": "Specialty Pharmacy Enrollment",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "06056ea227e144cd820cfc0f6e860d1f",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6590604289001",</p>
+        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p>&#160;&#160;&#160;&#160;&#160; },</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "patientId": "george",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "facility": "clinic1",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "patientFirstName": "George",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "patientLastName": "Jetson",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "patientDob": "1962-11-23T00:00:00",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "createdDate": "2014-12-05T17:36:38.476",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "completedDate": "2014-12-05T17:37:45.757",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "status": 4,</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "statusName": "In Progress",</p>
+        <p>&#160;&#160;&#160;&#160;&#160; "description": "0.2 ML Humira 100 MG/MLL Prefilled Syringe"</p>
+        <p>&#160;&#160;&#160; }</p>
+        <p>&#160; ]</p>
+        <p>}</p>
+    </body>
+</html>

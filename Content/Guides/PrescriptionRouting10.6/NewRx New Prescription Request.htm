@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2147" MadCap:lastWidth="790">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643310"></a>NewRx – New Prescription Request</h2>
+        <p class="BodyText1">The <span style="font-style: italic;">New</span><span style="font-style: italic;">Rx</span> messages to be transmitted have been developed using the NCPDP SCRIPT standard. A <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span>, or <span style="font-style: italic;">Verify</span> response is always sent after a NewRx message.</p>
+        <h3 class="Heading3"><a name="_Toc443643311"></a>NewRx Message Flow</h3>
+        <p>The following steps depict the <span style="font-style: italic;">New</span><span style="font-style: italic;">Rx</span> message flow:</p>
+        <ol>
+            <li>Prescriber initiates a new prescription for a patient via a prescriber system.</li>
+            <li>Prescriber system successfully transmits the new prescription to Surescripts.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an <span style="font-style: italic;">Error</span> message back to the requester.</li>
+            <li>Surescripts utilizes the Recipient ID and routes the message appropriately.</li>
+            <li>Pharmacy validates the prescription request and responds with a <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> (if errors are found), or <span style="font-style: italic;">Verify</span> message.<ol style="list-style-type: lower-alpha;"><li>If a <span style="font-style: italic;">Status</span> 000 is sent in step 5, the pharmacy would send a <span style="font-style: italic;">Verify</span>.</li></ol></li>
+            <li>Surescripts transmits the <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span>, or <span style="font-style: italic;">Verify</span> back to the sender.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643312"></a>NewRx (XML)</h3>
+        <p class="Graphic" style="orphans: 2;widows: 2;">
+            <img src="../../Resources/Images/Prescription Routing 10.6/NewRx New Prescription Request.png" style="visibility: visible;mso-wrap-style: square;width: 407px;height: 615px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443643313"></a>NEWRX (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UNA Service String Advice.htm#_UNA_%E2%80%93_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, and time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIH Interactive Message Header.htm#_UIH_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message. For New Prescription, Message function = NEWRX. Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="REQ Request Segment.htm#_REQ_%E2%80%93_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used in LTC to show significance of change.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Prescriber Segment.htm#_PVD_%E2%80%93_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Facility Segment.htm#_PVD_%E2%80%93_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Pharmacy Segment.htm#_PVD_%E2%80%93_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the pharmacy. For a new prescription, the pharmacy technology vendor needs this segment to route to the appropriate pharmacy.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">In NCPDP SCRIPT 10.6, the PVD segment in a NEWRX message is conditional (not required). In this implementation and in NCPDP SCRIPT 10.8, it is mandatory.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="DRU Drug Segment.htm#_DRU_%E2%80%93_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="SIG Structured SIG Segment.htm#_SIG_%E2%80%93_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="OBS Observation Segment.htm#_OBS_%E2%80%93_Observation" class="Hyperlink" style="font-size: 9pt;">OBS</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Observation Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to send the patient's height and weight.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="COO Coordination of Benefits.htm#_COO_%E2%80%93_Coordination" class="Hyperlink" style="font-size: 9pt;">COO</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Coordination of Benefits Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to convey to the pharmacy the patient's prescription program. When sending COO, only 1 loop is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIT Interactive Message Trailer.htm#_UIT_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="UIZ Interactive Interchange.htm#_UIZ_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="page-break-before: always;">Segment Notes:</p>
+        <p class="BodyText1Indent">NewRx from prescriber to pharmacy:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: NEWRX</p>
+        <h3 class="Heading3"><a name="_Toc443643314"></a>NewRx – Prescriber Best Practices</h3>
+        <ol>
+            <li>For NewRx after a Denied NewRx to Follow (DNTF) response, the prescriber application should show the Refill/Renewal denied NewRx detail on the NewRx screen, when applicable, to streamline the prescription writing process.</li>
+            <li> A bridge prescriptions scenario is when a patient requests a mail order prescription but also needs a retail order for a limited supply of the medication until the mail order prescription arrives. The prescriber should use the notes field to indicate on both prescriptions (mail and retail) that this prescription has also been sent to retail/mail.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643315"></a>NewRx – Pharmacy Best Practices</h3>
+        <p>When receiving a NewRx, the pharmacy application should display the following in its entirety to the pharmacist:</p>
+        <ul>
+            <li>Prior Authorization Number and Prior Authorization Status</li>
+            <li>Observation Segment: This information (Weight, Height) is especially important for infused, injected, oncology, and pediatric medications.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="138.3333" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1">Notifications Overview</h1>
+        <h2 class="Heading2"><a name="NOTIFICA"></a>Notifications Descriptions</h2>
+        <h3 class="Heading3"><a name="Medicati"></a>Medication Picked Up Notifications</h3>
+        <p class="StylebodytextBold">New Medication</p>
+        <p class="BodyText1">A New Medication (PMANewRx) notification occurs when a new medication record for the patient has a Prescription Number field that is different from prior medication records and the Fill Number field is 00 indicating the pharmacy has defined it as the original fill.</p>
+        <p class="StylebodytextBold">Refill Medication</p>
+        <p class="BodyText1">A Refill Medication (PMARefill) notification occurs when the Fill Number field in the medication record is greater than 00, indicating this is not the original fill.</p>
+        <p class="StylebodytextBold">New Prescriber</p>
+        <p class="BodyText1">A New Prescriber (PMANewPrescriber) notification occurs when a new medication record has 00 in the Fill Number field, indicating the pharmacy has defined it as the original fill, and the prescriber’s DEA, NPI, and/or SPI varies from all other prescribers within the last four months of the patient’s medication history.</p>
+        <p class="StylebodytextBold">Controlled Substance</p>
+        <p class="BodyText1">A Controlled Substance (PMAControlledSubstance) notification occurs when a new or refill medication record for the patient has a value greater than 0 in the Drug Class field, indicating the medication is a controlled substance.</p>
+        <h2 class="Heading2"><a name="Process"></a>Process Overview</h2>
+        <h3><a name="Patient"></a>Patient Enrollment File Flow</h3>
+        <p>
+            <img src="../../Resources/Images/PatientNotifications/PatientEnrollmentFileFlow.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 220px;" />
+        </p>
+        <ol>
+            <li>
+                The customer generates and posts onto the SFTP site the Patient Enrollment File that identifies which patients they want to enroll for Patient Notifications.<![CDATA[            ]]></li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If a patient does not grant access to their data, then the customer and provider vendor are responsible for excluding the patient from the Patient Enrollment File.</p>
+        <ol MadCap:continue="true">
+            <li>
+                Surescripts validates the submitted file. The identified patients are stored as separate records in the Patient Enrollment database</li>
+            <li>
+                <p>Surescripts generates and posts onto the SFTP site the Patient Enrollment Response File for retrieval which notifies the customer that the Patient Enrollment File was received and provides details into any errors that were encountered during the validation process.</p>
+            </li>
+            <li>Provider vendor and/or customer should review the Patient Enrollment Response File to determine if file and/or patient resubmission is required due to errors.</li>
+        </ol>
+        <h3><a name="Flow"></a>Notification Flow</h3>
+        <p>
+            <img src="../../Resources/Images/PatientNotifications/PatientNotificationsProcessOverview.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 600px;" />
+        </p>
+        <ol>
+            <li>Surescripts runs a daily MPI match against enrolled patient records stored in the Patient Enrollment database.</li>
+            <li>The Surescripts Insight Engine queries fill data to identify if notifications are triggered.</li>
+            <li>To view the notifications, the users access the Accelerator workflow through their provider vendor application.</li>
+        </ol>
+        <h2 class="Heading2"><a name="Monitore"></a>Patient Enrollment File Maintenance</h2>
+        <p class="BodyText1">After the initial enrollment file load, additions and changes to the list of enrolled patients is accomplished using the same file format and process.  Each file is considered an update to the current list of enrolled patients.  It is not necessary to resend the entire list every time.</p>
+        <p class="BodyText1">Patient Notifications uses the following to identify a notification recipient and each patient that recipient has enrolled.</p>
+        <p class="StylebodytextBold">Intended Recipient of a Notification</p>
+        <ul>
+            <li>Sender ID</li>
+            <li>Organizational NPI</li>
+        </ul>
+        <p class="StylebodytextBold">Patient the Recipient is Monitoring</p>
+        <ul>
+            <li>Assigning Authority</li>
+            <li>Patient ID</li>
+        </ul>
+        <div class="note">
+            <p><b>Notes</b>:</p>
+            <ul>
+                <li>Sender ID is from the file header (HDR) record.  The rest of the fields are from the patient detail (PMA) record.</li>
+                <li>When a patient (Assigning Authority plus Patient ID) is enrolled by more than one recipient (Sender ID plus Organizational NPI), it is necessary to send patient updates for each recipient’s enrolled record.</li>
+            </ul>
+        </div>
+        <h3 class="Heading3"><a name="Updating"></a>Updating a Previously Enrolled Patient</h3>
+        <p class="BodyText1">To change data for a patient, submit the patient in an enrollment file using the updated information for the patient.  Updates can be made to any data in the patient detail record (PMA) other than Organizational NPI, Assigning Authority, and Patient ID.</p>
+        <p class="BodyText1">Updates can include:</p>
+        <ul>
+            <li>Change of patient demographics (name fields, address fields, date of birth, gender)</li>
+            <li>Adding / removing Notifications Requested for this Patient</li>
+            <li>Changes to the End Monitoring Date</li>
+        </ul>
+        <h3 class="Heading3"><a name="Deleting"></a>Deleting a Previously Enrolled Patient</h3>
+        <p class="BodyText1">Technically, it is not possible to delete an enrolled patient.  However, it is possible to stop receiving notifications for a patient.  This is accomplished by updating the End Monitoring Date of the patient to the current date or a desired date in the future.   Once the update is processed by Surescripts and the date is reached, no notifications will be generated or sent for the patient.</p>
+        <h3 class="Heading3"><a name="Enrollin"></a>Enrolling / Adding a New Patient or a New Notification Recipient</h3>
+        <ul>
+            <li>New patients (Assigning Authority plus Patient ID) received in an enrollment file will be validated and loaded.</li>
+            <li>New recipients (Sender ID, Organizational NPI) with associated patient detail (PMA) records will be validated and loaded.</li>
+            <li>A new recipient for a patient already monitored by a different recipient will be validated and loaded independently from the original recipient record.  Surescripts considers the combination of Sender ID, Organizational NPI, Assigning Authority, and Patient ID to be the unique keys to a record being monitored for notifications.</li>
+        </ul>
+        <h2 class="Heading2"><a name="General"></a>General Message Requirements</h2>
+        <p class="BodyText1">The message specification have been defined to allow the most effective processing.</p>
+        <h3><a name="UTC"></a>UTC Time Format</h3>
+        <p class="BodyText1">By using UTC, the receiver of a message will know the time regardless of the time zone they are in. For example: If a message was sent from Boston at 5:30PM EDT (Eastern Daylight Time), the time would be sent as 21:30 UTC time. If this message was received in Chicago CDT (Central Daylight Time), the 21:30 UTC could be converted to the local CDT time of 4:30PM. Refer to <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time">http://en.wikipedia.org/wiki/Coordinated_Universal_Time</a>, or <a href="http://www.w3.org/XML/">http://www.w3.org/XML/</a> for more information. Synchronize UTC time with NIST (National Institute of Standards and Technology). Drift of no more than one minute will be acceptable.</p>
+        <p class="BodyText1">When sending only a Date (not Date and Time), it should be sent in your local time zone, and the receiver should interpret it in their local time. Neither party should attempt to convert the Date to UTC.</p>
+        <p class="BodyText1">All standard programming languages should have a function for generating a date in the UTC time zone or displaying a date in the local time zone. The format of the date/time fields in the XML schema must use the xsd:dateTime format. Examples of that format are: CCYY-MM-DDTHH:MM:SS.FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example, 2013-01-01T16:09:04.5Z, or 2013-01-01T16:09:04.5-00:00, or 2013-01-01T16:09:04.5+00:00, where 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the “Z” in the first example or the “-00:00” in the second example, or the “+00:00” in the third example. The fractional seconds is not required. Refer to xsd:dateTime for more information.</p>
+        <div class="note">
+            <p><b>Note</b>: For the Patient Enrollment File, the format is as follows:</p>
+            <ul>
+                <li>For Date fields the format is: CCYYMMDD</li>
+                <li>For Time fields the format is: HHMMSSDD</li>
+            </ul>
+        </div>
+        <h2 class="Heading2"><a name="Message"></a>Message Validation</h2>
+        <p class="BodyText1">Surescripts will ensure that customers are in compliance with the message specifications outlined in this Guide during Integration Testing and will continue to enforce once in production.</p>
+        <p class="BodyText1">At a minimum, Surescripts validations include:</p>
+        <ul>
+            <li MadCap:conditions="Default.XMLSchemaValidation">XML schema validation</li>
+            <li>The sender identification and authentication</li>
+            <li>The recipient identification</li>
+            <li>Syntax of the message, including field lengths, required fields, data types, number of repeats and code values</li>
+            <li>Surescripts business rules and applicable requirements</li>
+        </ul>
+    </body>
+</html>

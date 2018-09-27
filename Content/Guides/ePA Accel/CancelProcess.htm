@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc434830219"></a>Cancel Process </h2>
+        <p class="BodyText1">Cancelling a process sends a PACancelRequest to the PBM/payer, which begins the process of cancelling an ePA case.</p>
+        <h3 class="Heading3"><a name="_Toc434830220"></a>Cancel Process Using the ProcessId</h3>
+        <p class="BodyText1" style="font-weight: bold;">Request Template</p>
+        <p class="BodyText1">[PUT] {{host}}/cancel/processes/{processId}</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="background-color: #c0c0c0;">Parameter</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Data Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">processId</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Long </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Unique Surescripts ID which represents the process instance.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Request JSON Fields</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">JSON Field</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Data Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">user</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..250</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">ID of the end user logged into the provider vendor system.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">cancelCode</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an2</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">NCPDP code for the reason ePA is being cancelled. </p>
+                    <p class="TableBody">Values:</p>
+                    <p class="TableBody" style="margin-left: 8pt;">AC=Prescriber is no longer responsible for patient’s care</p>
+                    <p class="TableBody" style="margin-left: 8pt;">BW=Change to a different medication</p>
+                    <p class="TableBody" style="margin-left: 8pt;">BY=Other</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">isPatientNotified</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an1</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Boolean value signifying if the patient was notified. </p>
+                    <p class="TableBody">Values: </p>
+                    <p class="TableBody" style="margin-left: 8pt;">Y</p>
+                    <p class="TableBody" style="margin-left: 8pt;">N</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">note</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..2000</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Free text note to PBM/payer regard the cancellation of an ePA.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Request Example</p>
+        <p style="page-break-after: avoid;font-family: Arial;font-size: 9pt;">[PUT] <span style="color: #0000ff; text-decoration: underline;">https://[host]/uiservice/api/v0/cancel/processes/1234</span></p>
+        <p style="font-size: 9pt;">{&#160;&#160; </p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; User: “Jake”,</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; cancelCode: "BW",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; isPatientNotified: “N”,</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; note: “Sample note”</p>
+        <p style="page-break-after: avoid;font-family: Arial;font-size: 9pt;">}</p>
+        <h3 class="Heading3"><a name="_Toc434830221"></a>Cancel Process Using InitiatorsProcessId</h3>
+        <p class="BodyText1">Use the InitiatorsProcessId to cancel a process.</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Template</p>
+        <p class="BodyText1">[PUT] {{host}}/cancel/initiators/processes/{initiatorProcessId}</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Parameter</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Data Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">initiatorProcessId</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..255</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">The initiatorsProcessId is the PAReferenceID as defined by the provider vendor.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Description of JSON Fields</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">JSON Field</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Data Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">user</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..250</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">ID of the end user logged into the provider vendor system.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">cancelCode</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an2</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">NCPDP code for the reason ePA is being cancelled. </p>
+                    <p class="TableBody">Values:</p>
+                    <p class="TableBody" style="margin-left: 8pt;">AC=Prescriber is no longer responsible for patient’s care</p>
+                    <p class="TableBody" style="margin-left: 8pt;">BW=Change to a different medication</p>
+                    <p class="TableBody" style="margin-left: 8pt;">BY=Other</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">isPatientNotified</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an1</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Boolean value signifying if the patient was notified. </p>
+                    <p class="TableBody">Values: </p>
+                    <p class="TableBody" style="margin-left: 8pt;">Y</p>
+                    <p class="TableBody" style="margin-left: 8pt;">N</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">note</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..2000</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Free text note to PBM/payer regard the cancellation of an ePA.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Request Example</p>
+        <p style="font-size: 9pt;">[PUT] <span style="color: #0000ff; text-decoration: underline;">https://[host]/uiservice/api/v0/cancel/initiators/processes/123p</span></p>
+        <p style="font-size: 9pt;">{&#160;&#160; </p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; user: "Jake",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; cancelCode: "BW",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; isPatientNotified: “N”,</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; note: “Sample note”</p>
+        <p style="font-family: Arial;font-size: 9pt;">}</p>
+        <h3 class="Heading3"><a name="_Toc434830222"></a>Cancel a Process Response</h3>
+        <p class="BodyText1" style="font-weight: bold;">Response Codes and Fields</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">HttpStatus Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">200</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Successful response </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Invalid request</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

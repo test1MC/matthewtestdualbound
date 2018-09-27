@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="5" MadCap:lastHeight="2150" MadCap:lastWidth="1331">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc433357868"></a>HTTP Request Headers</h2>
+        <p class="BodyText1">The FHIR® messages delivered to the Surescripts Medication Management for Adherence FHIR® service must include the HTTP request headers listed below.</p>
+        <h3 class="Heading3"><a name="_Toc433357869"></a>Content Types and Encodings</h3>
+        <p class="BodyText1">According to Section 2.1.0.6 of the FHIR® specification Content Types and encodings,</p>
+        <p class="BodyText1">“The formal MIME-type for FHIR® resources is application/xml+fhir or application/json+fhir. The correct mime type SHALL be used by clients and servers.” Later in that same section, “FHIR® uses UTF-8 for all request and response bodies. Since the HTTP specification (section 3.7.1) defines a default character encoding of ISO-8859-1, requests and responses SHALL explicitly set the character encoding to UTF-8 using the charset parameter of the MIME-type in the Content-Type header. Requests MAY also specify this charset parameter in the Accept header and/or use the Accept-Charset header.”</p>
+        <p class="BodyText1">Because of these requirements, requests will need to include a Content-Type in the HTTP request header. Below are two examples:</p>
+        <ul>
+            <li>Content-Type: application/xml+fhir; charset=utf-8</li>
+            <li>Content-Type: application/json+fhir; charset=utf-8</li>
+        </ul>
+        <p class="BodyText1">There is a bit of ambiguity in the HTTP 1.1 specification regarding whether a charset parameter included in the Accept header takes precedence over the Accept-Charset header or vice-versa. Surescripts currently will not look at the Accept or Accept-Charset header when creating the response. Surescripts will reply to the message using the MIME-type and charset that was specified in the Content-Type request header.</p>
+        <h3 class="Heading3"><a name="_Toc433357870"></a>Authorization</h3>
+        <p class="BodyText1">Surescripts will use basic authentication as the security scheme for these HTTP based transactions. Therefore, standard basic authentication credentials will need to be provided in the Authorization header. The username and password will be provided by a member from the Surescripts Implementation team during the beta period.</p>
+        <h3 class="Heading3"><a name="_Toc433357871"></a>Custom HTTP Request Header</h3>
+        <p class="BodyText1">In order for Surescripts to identify the sender of the transaction, we require senders to use a custom HTTP request header named x-sender-uid. The format of the value of this header is UidQualifierType-UidValue. The following is an example where the sender is a PBM/payer who is providing their payer identifier in the x-sender-uid header with T00000000012345 being the payer identifier.</p>
+        <p class="BodyText1">x-sender-uid: PY-T00000000012345</p>
+        <h3 class="Heading3"><a name="_Toc433357872"></a>Post Body</h3>
+        <p class="BodyText1">Messages will contain a number of FHIR® resources. Listed below are links to the FHIR® documentation for the resources that will be included in the messages supported in the pilot.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableHeading">Resource Name</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableHeading">FHIR® <MadCap:annotation MadCap:createDate="2017-06-26T20:12:36.6955133-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="fix style" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-06-26T20:12:40.1940854-05:00">Documentation</MadCap:annotation></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Bundle</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/bundle.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/bundle.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">CommunicationRequest</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/communicationrequest.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/communicationrequest.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Contraindication</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/contraindication.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/contraindication.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Medication</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/medication.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/medication.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Medication Dispense</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/medicationdispense.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/medicationdispense.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MedicationPrescription</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/medicationprescription.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/medicationprescription.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageHeader</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/messageheader.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/messageheader.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Observation</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/observation.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/observation.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">OpterationOutcome</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/operationoutcome.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/operationoutcome.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Organization</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/organization.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/organization.html</a>
+                    </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Patient</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/patient.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/patient.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Practitioner</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody"><a href="http://www.hl7.org/FHIR/2015May/practitioner.html" class="Hyperlink" target="_blank">http://www.hl7.org/FHIR/2015May/practitioner.html</a> <![CDATA[ ]]></p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">	QuestionnaireAnswer</td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1"><a href="http://www.hl7.org/FHIR/2015May/questionnaireanswers.html" target="_blank">http://www.hl7.org/FHIR/2015May/questionnaireanswers.html</a> <![CDATA[ ]]></td>
+            </tr>
+        </table>
+    </body>
+</html>

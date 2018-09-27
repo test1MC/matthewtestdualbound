@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1565.333" MadCap:lastWidth="1100">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Product Integration &amp; Production</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379358"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2_1" style="font-weight: bold;color: #000000;"><a name="_Toc506379359"></a>Terminology Usage</h2>
+        <p class="BodyText1" style="color: #000000;"> For terminology usage throughout this guide, consider the following:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Term</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Term Usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>must</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Requirements that are enforced as part of the production
+ code or Surescripts business rules.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Requirements customers are required to meet in order to be
+ certified on the Surescripts network. These requirements will be enforced as
+ part of certification.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>should</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>Used for guidance and best practices. Customers are
+ encouraged, but not required, to meet best practices in order to be certified
+ on the Surescripts network.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379360"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2" style="color: #000000;"><a name="Communic"></a>Communication Rules</h2>
+        <p style="color: #000000;">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="Synchron"></a>Synchronous Processing</h2>
+        <p class="BodyText1">Each message that Surescripts submits to a customer has a time-out parameter. If Surescripts does not get a response from the customer within the specified time period, the message times out. If the timeout occurs, an error message will be returned to the sender as the reply. If the sender has timed out, the message is discarded.</p>
+        <ul>
+            <li>When sending a message to Surescripts, the provider vendor should set the http timeout to no less than 30 seconds.</li>
+            <li>A receiving system (PBM/Payer) must reply with a valid response within 10 seconds.</li>
+        </ul>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379363"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

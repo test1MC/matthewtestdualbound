@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="10" MadCap:lastHeight="175.3333" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="top"></a>Application Certification Requirements</h1>
+        <h2 class="Heading2"><a name="Formular"></a>Formulary and Benefits</h2>
+        <h3 class="Heading3"><a name="General"></a>General Requirements</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_100.flsnp" />
+        <p class="rfsNote"><b style="text-decoration: none;font-style: italic;font-size: 10pt;">RTF Implementation F.100</b><span style="font-size: 10pt;">: Customers implementing RTF will still need to implement an industry standard drug database listed above. It is not necessary to change databases as long as one of the above is presently implemented. RTF customers will send a Drug Database identifier on Benefit Request messages so that Surescripts can return the appropriate information on Benefit Response messages.</span>
+        </p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_101.flsnp" />
+        <p class="rfsNote" style="font-size: 10pt;"><b style="font-style: italic;">RTF Implementation F.101</b>: RTF will return Brand/Generic, OTC/Rx indicators for the requested medication and Alternatives. Previously, this information was used to determine the unlisted formulary status for Payer provided alternatives. Surescripts will now make this determination via RTF.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_102.flsnp" />
+        <h3 class="Heading3"><a name="Presenta"></a>Presentation of Formulary Status</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_103.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_104.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_105.flsnp" />
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation F.105</b>: RTF will return formulary information at the Representative NDC (dispensable medication) level. If the provider vendor chooses to display formulary status at a higher level, requirement F.105 shall be fulfilled.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_106.flsnp" />
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation F.106</b>: An RTF Benefit Request shall  not be submitted when the 271 Eligibility Response does not contain active coverage information.</p>
+        <p style="font-size: 10pt;page-break-before: always;"><b>F.107</b>: The application shall display a formulary status of "Unknown" for all medications when there is no formulary status list ID or corresponding formulary status list for the coverage selected.</p>
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation F.107</b>: An RTF Benefit Request shall  not be submitted if the 271 Eligibility Response does not contain a Formulary ID. In this instance, if the Benefit Request is sent, Surescripts returns an NCPDP ERROR (900/3000/Invalid Syntax. Message fails schema validation.) If the Benefit Request contains a Formulary ID that is not found at Surescripts, the Benefit Response returns a Reason Code of "NotProcessed" and "Unknown Formulary ID" in the Free Text field.</p>
+        <h3 class="Heading3"><a name="Presenta2"></a>Presentation of Formulary Alternatives Coverage and Copay</h3>
+        <p style="font-size: 10pt;"><b>F.108</b>: For active coverages, during the prescription writing process and prior to the summary screen, the application shall display, at a minimum, alternative medications when the target medication is an On-Formulary/Non-Preferred, Non-Formulary, or Non-Reimbursable medication.</p>
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation F.108</b>: When the requested medication is 2 - On-Formulary/Non-Preferred, Non-Formulary, or Non-Reimbursable (single-NDC Request), RTF will return payer provided alternatives or therapeutic alternatives (as identified by the provider vendor) of a higher formulary status.</p>
+        <p class="note" style="font-size: 10pt;" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A provider vendor may display Therapeutic alternatives if a Payer Alternative List is present, but an alternative match for the target NDC does not exist.</p>
+        <p style="font-size: 10pt;font-weight: bold;">Best Practice</p>
+        <ul>
+            <li style="font-size: 10pt;">The application may further filter alternatives by utilizing decision support logic (e.g. only showing alternatives applicable due to gender, age, diagnosis, etc.).</li>
+        </ul>
+        <ul>
+            <li style="font-size: 10pt;">If the target medication is a brand medication and the prescriber indicates that generic substitution is permitted, the application does not need to show alternatives if the generic equivalent has a higher formulary status.</li>
+        </ul>
+        <p style="font-size: 10pt;font-weight: bold;">Payer Provided Alternatives</p>
+        <ol style="font-size: 10pt;">
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">If the payer provides a Formulary Alternatives List, the application shall show all alternatives that have a higher On-Formulary status.</p>
+                <ol style="list-style-type: lower-alpha;font-size: 10pt;">
+                    <li style="font-size: 10pt;">
+                        <p><span style="font-size: 10pt;">For Non-Formulary or Non-Reimbursable medications, show alternatives that are On-Formulary/Non-Preferred or On-Formulary/Preferred.</span>
+                        </p>
+                    </li>
+                    <li style="font-size: 10pt;">
+                        <p><span style="font-size: 10pt;">For On-Formulary/Non-Preferred medications, show On-Formulary/Preferred.</span>
+                        </p>
+                    </li>
+                    <li style="font-size: 10pt;">Do not show alternatives for Unknown medications.</li>
+                </ol>
+            </li>
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">Show all strengths available that have a higher formulary status for the NDC provided in the Formulary Alternatives List.</p>
+            </li>
+        </ol>
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation</b>: When a payer provided alternative is returned in an RTF Benefit Response, Surescripts will return all strengths of that alternative with a higher formulary status. All alternatives in the Benefit Response shall be displayed.</p>
+        <ol MadCap:continue="true" style="font-size: 10pt;">
+            <li style="font-size: 10pt;">
+                <p><span style="font-size: 10pt;">The alternatives provided in a Formulary Alternatives List shall be ordered according to the stated preference level in that list from high to low.</span>
+                </p>
+            </li>
+            <li style="font-size: 10pt;">
+                <p><span style="font-size: 10pt;">Show all alternatives in the Formulary Alternatives List, even if the target medication is an OTC, multi-ingredient medication, or supply.</span>
+                </p>
+            </li>
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">The application shall not show drug database-provided alternatives if the PBM provides a Formulary Alternatives List.</p>
+            </li>
+        </ol>
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation</b>: Customers shall  send appropriate therapeutic alternatives on every single-NDC Benefit Request. If payer provided alternatives are present, Surescripts will remove the therapeutic alternatives and replace them with the payer provided alternatives on the Benefit Response. If payer alternatives are not provided, Surescripts will return necessary formulary information for the therapeutic alternatives sent in the Benefit Request.</p>
+        <ol MadCap:continue="true" style="font-size: 10pt;">
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">The application shall display formulary status and full or abbreviated retail copay data for all alternatives. Retail copay (defined as Pharmacy Type Retail, Any, or Null) data displayed shall be, at a minimum, the Copay Tier, Flat Copay Amount, or Percent Copay Rate.</p>
+            </li>
+        </ol>
+        <p class="note" style="font-size: 10pt;" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the application cannot display the complete list of alternatives on one page, the application may allow the user to take action to view additional alternatives.</p>
+        <p style="font-size: 10pt;font-weight: bold;">Drug Database Provided (Therapeutic Alternatives)</p>
+        <ol style="font-size: 10pt;">
+            <li style="font-size: 10pt;">If the PBM does not provide a Formulary Alternatives List, the application shall show all commercially available, generic, and branded alternatives with a higher On-Formulary status in the same therapeutic class as the target medication as determined by an approved medication data source.<ol style="font-size: 10pt;list-style-type: lower-alpha;"><li style="font-size: 10pt;"><p style="font-size: 10pt;">For Non-Formulary or Non-Reimbursable medications, show alternatives that are On-Formulary/Non-Preferred or On-Formulary/Preferred.</p></li><li style="font-size: 10pt;"><p style="font-size: 10pt;">For On-Formulary/Non-Preferred medications, show On-Formulary/Preferred.</p></li><li style="font-size: 10pt;"><p style="font-size: 10pt;">Do not show alternatives for Unknown medications.</p></li></ol></li>
+        </ol>
+        <p class="rfsNote"><b style="font-style: italic;">RTF Implementation</b>: Customers shall send all appropriate therapeutic alternatives on all single-NDC Benefit Request messages. Surescripts will respond with formulary information for any alternatives of a higher formulary status.</p>
+        <p style="font-size: 10pt;font-weight: bold;">Best Practice</p>
+        <ul style="font-size: 10pt;margin-left: 50px;">
+            <li style="font-size: 10pt;">If the target medication is OTC, the application should not display alternatives.</li>
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">If the target medication is a Supply, the application should not display alternatives.</p>
+            </li>
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">If possible, the application should only show alternatives for the same route of administration as the target medication.</p>
+            </li>
+        </ul>
+        <ol style="font-size: 10pt;" start="2">
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">If the target medication is single-ingredient, the application shall only display single-ingredient alternatives.</p>
+            </li>
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">If the target medication is multi-ingredient, the application shall only display multi-ingredient alternatives.</p>
+            </li>
+        </ol>
+        <ol MadCap:continue="true" style="font-size: 10pt;">
+            <li style="font-size: 10pt;">
+                <p style="font-size: 10pt;">The application shall display formulary status and full or abbreviated retail copay data for all alternatives. Retail copay (defined as Pharmacy Type Retail, Any, or Null) data displayed shall be, at a minimum, the Copay Tier, Flat Copay Amount, or Percent Copay Rate.</p>
+            </li>
+        </ol>
+        <p class="note" style="font-size: 10pt;" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the application cannot display the complete list of alternatives on one page, the application may allow the user to take action to view additional alternatives.</p>
+        <h2 class="Heading2"><a name="PMBC"></a>RTPB Workflow</h2>
+        <h3 class="Heading3"><a name="Benefit"></a>Benefit Request</h3>
+        <p style="font-size: 10pt;"><b>PM.100</b>: Benefit Requests are to be sent only to active PBM customers whose directory service level supports RTPB.</p>
+        <p style="font-size: 10pt;"><b>PM.101</b>: During the prescription writing process and prior to sending the NewRx when a Benefit Request is run, the Benefit Request shall include one target pharmacy and one NDC for one active patient coverage.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_102.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_103.flsnp" />
+        <h3 class="Heading3"><a name="Benefit2"></a>Benefit Response</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_104.flsnp" />
+        <h3 class="Heading3"><a name="Display"></a>Display Requirements</h3>
+        <p style="font-size: 10pt;"><b>PM.105</b>: During the prescription writing process and prior to sending the New Rx, the application shall display:</p>
+        <p class="BodyText1IndentContinue" style="font-size: 10pt;"><b>PM.106</b>: The Estimated Patient Pay Amount, Quantity Priced, and Days Supply Priced at requested pharmacy for all medications returned (including alternatives).</p>
+        <p class="BodyText1IndentContinue" style="font-size: 10pt;"><b>PM.107</b>: Pricing at other Pharmacy Types. This concession is allowed: An indicator that pricing at other Pharmacy Types apply. User action on this indicator presents all pricing at other Pharmacy Types in their entirety.</p>
+        <p class="BodyText1IndentContinue" style="font-size: 10pt;"><b>PM.108</b>: Coverage Factors for all Pharmacy Type and medication combinations returned (including alternatives). This concession is allowed: An indicator that Coverage Factor(s) apply to a specific combination. User action on this indicator presents all Coverage Factors in their entirety.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For more information, see the <a href="CoverageAlertCodes.htm">Coverage Alert Reference Codes and Text</a> section.</p>
+        <p class="BodyText1IndentContinue" style="font-size: 10pt;"><b>PM.109</b>: All available appropriate alternatives displayed together. If all alternatives cannot be shown together, this concession is allowed: An indicator that alternative medications are available. User interaction on this indicator presents all alternative medications together.</p>
+        <p style="font-size: 10pt;"><b>PM.110</b>: User shall be made aware that the pricing/coverage data is a point in time calculation based upon the Quantity and Days Supply provided in the Request and may vary once the prescription is filled at the dispensing pharmacy. Any returned alternative information is informational only and not intended to replace clinical decisions.</p>
+        <p style="font-size: 10pt;"><b>PM.111</b>: Alternatives shall be displayed in the order provided from the PBM. First alternative in response will be first alternative displayed.</p>
+        <p style="font-size: 10pt;"><b>PM.112</b>: Pricing information shall be displayed as returned in the Benefit Response. Advertisements, coupons and other discount program information shall not be used to influence or attempt to influence, through economic incentives or otherwise, the Prescribing Decision of a prescriber at the Point of Care.</p>
+        <h3 class="Heading3"><a name="General2"></a>General Requirements</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_113.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_114.flsnp" />
+        <p style="font-size: 10pt;"><b>PM.115</b>: Provider vendor shall be certified on Surescripts' Directory, Eligibility, Formulary, and Prescription Routing to implement the Benefit Request and Response (RTPB workflow).</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_116.flsnp" />
+        <p style="font-size: 10pt;"><b>PM.117</b>: Customers shall support the scenarios in the <a href="MessageHeader.htm#Message">Message ID Linkage</a> section of this Guide.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_118.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_119.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/PMBCSharedAppCert/PM_120.flsnp" />
+    </body>
+</html>

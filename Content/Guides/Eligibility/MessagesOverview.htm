@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc497126505"></a>Messages Overview</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc497126506"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold">Eligibility Request/Response</p>
+        <p class="BodyText1" style="color: #000000;">The X12 Health Care Eligibility, Coverage, or Benefit Inquiry (270) and Health Care Eligibility, Coverage, or Benefit Information (271) message sets are used to request and respond to a patient eligibility check. These messages enable prescribers to supply a patient’s name and demographic information to Surescripts and get back some or all of the following information from each PBM/payer that covers the patient:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Health Plan Number/Name</li>
+            <li style="color: #000000;">Cardholder ID</li>
+            <li style="color: #000000;">Relationship Code</li>
+            <li style="color: #000000;">Person Code</li>
+            <li style="color: #000000;">Group Number, Group Name</li>
+            <li style="color: #000000;">Formulary ID</li>
+            <li style="color: #000000;">Alternative List ID</li>
+            <li style="color: #000000;">Coverage List ID</li>
+            <li style="color: #000000;">Copay List ID</li>
+            <li style="color: #000000;">BIN</li>
+            <li style="color: #000000;">PCN</li>
+            <li style="color: #000000;">Type of Prescription Benefit: <ul><li style="color: #000000;">Pharmacy (Retail)</li><li style="color: #000000;">Mail Order</li><li style="color: #000000;">Specialty Pharmacy</li><li style="color: #000000;">Long Term Care (LTC)</li></ul></li>
+        </ul>
+        <p class="StylebodytextBold">Interchange Acknowledgment</p>
+        <p class="BodyText1" style="color: #000000;">This X12 specification, TA1, is utilized to acknowledge receipt/header errors for batch messages and errors in real time messages. For the Surescripts message set, it only applies to the X12 specifications (270 &amp; 271). None of the other specifications utilize this message.</p>
+        <p class="StylebodytextBold">Implementation Acknowledgement</p>
+        <p class="BodyText1">The implementation acknowledgement, or 999, informs the submitter that the functional group arrived at the destination and is required as a response to receipt of an X12 message in a batch environment, and only for errors with real time messages. Surescripts only supports a real time environment for the 270/271 messages, so the 999 will only be sent if there are errors. The 999 reports on errors generated due to data or segment issues that do not comply with the X12 guide. </p>
+        <h2 class="Heading2"><a name="_Toc497126507"></a>Eligibility Message Flow</h2>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary.png" style="width: 838px;height: 281px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="p" style="color: #000000;">The following steps depict the Eligibility message flow:</p>
+        <ol>
+            <li>A requester sends an Eligibility Request (270) to Surescripts.</li>
+            <li>Surescripts validates the format of the transaction.</li>
+            <li>Surescripts locates the patient based on demographic information.</li>
+            <li>Surescripts determines to which PBM/payers the Eligibility Request (270) should be directed.</li>
+            <li>The PBM/payer verifies the patient and responds to Surescripts with an Eligibility Response (271) indicating the patient’s eligibility status.</li>
+            <li>Surescripts validates the format of the incoming Eligibility Response (271), consolidates all 271 responses and sends the information back to the requester.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc497126508"></a>Eligibility Detailed Message Flow Scenarios</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where NAK, TA1, 999, and ACK messages are sent in response to an Eligibility message.</p>
+        <p class="StylebodytextBold">Scenario 1 - Surescripts Cannot Recognize Message or System Error:  </p>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary_1.png" style="width: 453px;height: 163px;" />
+        </p>
+        <p class="BodyText1">1a) Eligibility Request (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">1b) Surescripts cannot recognize the message and sends error text back to the provider vendor. Errors include:</p>
+        <ul>
+            <li style="margin-top: 12pt;margin-bottom: 6pt;color: #000000;font-size: 11pt;">cannot validate the sender’s Participant ID and/or password</li>
+            <li style="margin-top: 12pt;margin-bottom: 6pt;color: #000000;font-size: 11pt;">cannot identify the message</li>
+            <li style="margin-top: 12pt;margin-bottom: 6pt;color: #000000;font-size: 11pt;">a system error occurs before the message is being processed</li>
+        </ul>
+        <p class="StylebodytextBold">Scenario 2 - Surescripts Recognized Message Format but Errors Found:</p>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary_2.png" style="width: 459px;height: 165px;" />
+        </p>
+        <p class="BodyText1">2a) Eligibility Request (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">2b) Surescripts finds an error within the header and reports errors with the TA1.</p>
+        <p class="StylebodytextBold">Scenario 3 - Surescripts Recognized Message Format but Errors Found:</p>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary_3.png" style="width: 463px;height: 166px;" />
+        </p>
+        <p class="BodyText1">3a) Eligibility Inquiry (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">3b) Surescripts finds a syntax error within the message and reports errors with the 999.</p>
+        <p class="StylebodytextBold">Scenario 4 - PBM/Payer Cannot Recognize Message or System Error:</p>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary_4.png" style="width: 739px;height: 174px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">4a) Eligibility Request (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer cannot recognize the message or System Error and sends error text to Surescripts.</p>
+        <p class="BodyText1">4d) Surescripts creates a 271 with errors and returns it to the provider vendor.</p>
+        <p class="StylebodytextBold">Scenario 5 - PBM/Payer Validates Message and Returns Eligibility Response with AAA segment in the 271 showing business error to Provider Vendor</p>
+        <p>
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary 5.png" style="width: 731px;height: 200px;max-width: 100%;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">5a) Eligibility Request (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">5b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">5c) The PBM/payer returns (271) business error in AAA segment.</p>
+        <p class="BodyText1">5d) Surescripts forwards the (271) message on to the provider vendor.</p>
+        <p class="StylebodytextBold">Scenario 6 - PBM/Payer Returns Non-Compliant 271 (i.e., syntax error or header error):</p>
+        <p style="margin-top: 12pt;margin-bottom: 6pt;">
+            <img src="../../Resources/Images/EligibilityCG/Eligibility and Formulary_5.png" style="width: 744px;height: 278px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">6a) Eligibility Request (270) message is sent to Surescripts.</p>
+        <p class="BodyText1">6b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">6c) The PBM/payer returns (271) with syntax error or header error.</p>
+        <p class="BodyText1">6d) Surescripts creates a 271 with errors and returns it to the provider vendor.</p>
+        <p class="BodyText1">6e) Surescripts sends TA1 or an Acknowledgment (999) to PBM/payer.</p>
+        <p class="BodyText1">6f) PBM/Payer returns ACK.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc497126509"></a>General Interface Description</h2>
+        <p class="BodyText1">The message specifications have been defined to follow HIPAA standards where available and to allow the most effective processing. Delimiters separate components, data elements, and segments (see subsection <a href="DynamicDelimiters.htm#_Toc497126592">Appendix A: Dynamic Delimiters</a> for clarification). For the X12 specifications, the delimiters are defined in the ISA segment of the message. If a data element in the middle of a segment is omitted, the separator acts as a “place holder”.</p>
+        <p class="BodyText1">The significant characters  must be left justified. Leading spaces, if used, are assumed to be significant characters. Trailing spaces should be suppressed.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc497126510"></a><a name="1903131159"></a>Dynamic Delimiters</h3>
+        <p class="BodyText1">X12 utilizes delimiters to separate component, segments, elements, etc. or as indicators (i.e., for segment repetition.) These delimiters are defined within specified segments of the messages. Customer's systems need to be able to dynamically set and handle these delimiters. Surescripts recommends the use of unprintable characters as delimiters rather than the entire full character set (Refer to <a href="#_Toc497126510"><a href="DynamicDelimiters.htm#_Toc497126592">Appendix A: Dynamic Delimiters</a></a> for a full list of acceptable characters).</p>
+        <p class="BodyText1" style="color: #000000;">For X12 messages, the delimiter set is defined within the ISA segment. The following is an example:</p>
+        <p class="BodyText1Indent" style="color: #000000;">ISA*00* *01*PWPHY12345*ZZ*POCID *ZZ*S00000000000001*091217*0309*^*00501*000000001*1*P*&gt;~</p>
+        <p class="BodyText1" style="color: #000000;">In the example above, the asterisk (*) is a delimiter based on its position immediately following ISA. The segment delimiter is determined by calculating the last character of the fixed width row. The row is 106 total bytes; therefore, the segment delimiter is the 106th character.</p>
+        <p class="StylebodytextBold" style="color: #000000;">Choosing a Delimiter</p>
+        <p class="BodyText1">Surescripts has published a list of allowed delimiters for the X12 messages (Refer to <a href="#_Toc497126510"><a href="DynamicDelimiters.htm#_Toc497126592">Appendix A: Dynamic Delimiters</a></a> for a full list of acceptable characters). The customers may choose any allowed delimiter desired for the messages they create. However, it is important that customers communicate which delimiters they are using to ensure they will not cause issues with their trading partners’ messages.</p>
+        <p class="BodyText1" style="color: #000000;">Surescripts recommends the following delimiters for X12 data:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">Data Element Separator – hex 1D, decimal 29</li>
+            <li style="color: #000000;">Segment Terminator – hex 1E, decimal 30</li>
+            <li>Component Element Separator (ISA 16) – hex 1C, decimal 28</li>
+            <li style="color: #000000;">Repetition Character (ISA11) – hex 1F, decimal 31</li>
+        </ul>
+        <p class="StylebodytextBold" style="color: #000000;font-weight: bold;">Using Dynamic Delimiters</p>
+        <p class="BodyText1">A Surescripts customer can expect to receive delimiters that are different than the set they define for their messages. The customer needs to determine the delimiters dynamically when the message is processed according to the rules listed in the above section. See <a href="#_Toc497126510"><a href="DynamicDelimiters.htm#_Toc497126592">Appendix A: Dynamic Delimiters</a> </a>for a complete list of acceptable characters.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc497126511"></a>Delimiter Examples</h3>
+        <p class="BodyText1" style="color: #000000;">The delimiters used in the examples below are the ~ for segment separation and the * for element separation. </p>
+        <p class="BodyText1" style="color: #000000;font-weight: bold;">Example 1:</p>
+        <p class="BodyText1" style="color: #000000;">NM1*IL*1*SMITH*JOHN*L***34*444115555~ </p>
+        <p class="BodyText1" style="color: #000000;">Elements 6 and 7 are not included; therefore, the asterisks (**) act as placeholders for the omitted elements.</p>
+        <p class="BodyText1" style="color: #000000;">When data elements are omitted from the end of a segment, the data element delimiters do not need to be used. The segment is ended with a segment terminator.</p>
+        <p class="BodyText1" style="color: #000000;font-weight: bold;">Example 2:</p>
+        <p class="BodyText1" style="color: #000000;">Elements 8 and 9 can be omitted in the same segment as Example 1. The new segment would become:</p>
+        <p class="BodyText1" style="color: #000000;">NM1*IL*1*SMITH*JOHN*L~ </p>
+        <p class="BodyText1" style="color: #000000;">And not:</p>
+        <p class="BodyText1" style="color: #000000;">NM1*IL*1*SMITH*JOHN*L****~ </p>
+        <p class="BodyText1" style="color: #000000;font-weight: bold;">Example 3:</p>
+        <p class="BodyText1" style="color: #000000;">Surescripts does not publish segments that are HIPAA compliant but not utilized by Surescripts. If a message contains these segments, it will still be valid and accepted; but the data within the segment may not be utilized. </p>
+        <p class="BodyText1" style="color: #000000;">ABC*ABC01*ABC02*ABC03*ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1" style="color: #000000;">If elements ABC02 and ABC03 are not used (not shown on the Surescripts EDI specifications) then no value should be sent. However, the elements must be represented with a place holder because there are used elements (ABC04, 05 and 06) after them.&#160; </p>
+        <p class="BodyText1" style="color: #000000;">This is the correct representation:</p>
+        <p class="BodyText1" style="color: #000000;">ABC*ABC01***ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1" style="color: #000000;">ABC02 and ABC03 must be represented so that it is known that the next data value is ABC04.</p>
+        <p class="BodyText1" style="color: #000000;">This is the INCORRECT representation:</p>
+        <p class="BodyText1" style="color: #000000;">ABC*ABC01*ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1" style="color: #000000;">If the placeholders for ABC02 and ABC03 are removed, ABC04 would be mistaken for ABC02.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc497126512"></a>Representation</h3>
+        <p class="BodyText1" style="color: #000000;">The following table lists the Field Type Notation used within the messages:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">X12 Notation</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Alphanumeric</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">AN</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Date</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">DT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Decimal</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">R</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">ID Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Numeric</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Nn</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">String</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">AN</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">TM</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Each element, if sent, has a minimum and maximum length. </p>
+        <p>For example:<br />AN 1/3 means an alphanumeric with range from one to three characters.<br />AN 3/3 means an alphanumeric with three characters.</p>
+        <h4 class="Heading4" style="color: #000000;"><a name="_Toc497126513"></a>Numeric Representation</h4>
+        <p class="BodyText1" style="color: #000000;">The decimal point is represented by a period and should be used as follows:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">only when there are significant digits to the right of the decimal</li>
+            <li style="color: #000000;">when there is a digit before and after the decimal point </li>
+            <li style="color: #000000;">not with whole numbers</li>
+        </ul>
+        <p class="BodyText1" style="color: #000000;">For example, consider the following possible values for a 5-digit field:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">Correct:</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">2.515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">251.5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">25.15</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">2515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableText">0.2515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableText">2.5</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">Incorrect:</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">.2515</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">2515.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">3.00</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableText">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableText">&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="h4_Heading4"><a name="_Toc497126514"></a>Character Set</h4>
+        <p class="BodyText1">The character set contains ASCII values 32 – 126, which include:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <col class="TableStyle-GuideTables-Column-Column1">
+            </col>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Symbols</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Numerals</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Ø to 9</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Letters, upper and lower case</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">A to Z, a to z</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="color: #000000;">For ID File Load only:</p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">The decimal 94 ^ cannot be used in the ID Load process.</li>
+        </ul>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc497126515"></a>Message Validation</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc497126516"></a>Failure Mode/Response Approach</h2>
+        <p class="BodyText1" style="color: #000000;">Surescripts’ error processing approaches are defined below.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc497126517"></a>Error Processing for 270 and 271</h3>
+        <p class="BodyText1">When a network communication or system failure occurs between the originating customer and Surescripts, an error message will not be returned to the customer. Customers should establish a timeout parameter to allow their system to recover in the event that Surescripts does not respond.</p>
+        <p class="BodyText1">Surescripts has defined four different levels of failure for exchanging errors with the customer.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;">NAK</span><span style="color: #000000;">: In instances where Surescripts or a customer receives a message that is unrecognizable or a system error occurs, the recipient will send back an XML formatted NAK.</span>
+        </p>
+        <p class="BodyText1">The NAK is an XML formatted message. Error (NAK) &lt;nak status=”n”&gt;Text Message&lt;/nak&gt;</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Message Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Status</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Error</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Message</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Invalid Syntax</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Transaction cannot be identified nor processed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Transaction Timeout</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Transaction Timeout</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">System Error</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">An example of a nak: &lt;nak status=”4”&gt; System Error &lt;/nak&gt;</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;">TA1</span><span style="color: #000000;">: The TA1 acknowledges the receipt of a message. It validates the syntax of the interchange ISA and IEA segments. It notifies the sender that the receiver got the message, or it </span><span style="color: #000000;">reports errors so the sender is aware of interchange problems. Surescripts utilizes the TA1 to only report errors. Surescripts only utilizes the TA1 to report errors when an error occurs within the header.</span>
+        </p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;">999</span><span style="color: #000000;">: The 999 message reports functional problems to the sender. The sender will receive a 999 when a syntax error occurs in the body of the message or if the sender participant ID is invalid.</span>
+        </p>
+        <p class="BodyText1"><b>ACK</b>: The ACK message is a small XML file, containing &lt;ack status=”y”/&gt;, which serves as the PBM/Payer’s acceptance of the 999 message.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;">271</span><span style="color: #000000;">: When a non-syntax error occurs during processing of a 270 message, AAA segments in the 271 will be used to report the errors.</span>
+        </p>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="6556" MadCap:lastWidth="1499">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-04-02T14:38:56.1953676-05:00" />
+        </MadCap:changeData><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Electronic_Prior_Authorization"></a>Electronic Prior Authorization Message Flow</h2>
+        <p class="BodyText1">The NCPDP prior authorization messages support the electronic prescribing workflow by leveraging information through other electronic exchanges including the X12 eligibility messages and the NCPDP Formulary &amp; Benefit Standard.</p>
+        <p class="BodyText1">In addition, the prior authorization messages are designed to support the exchange of information obtained from the electronic health record system. The messages allow for the use of coded references, increasing the opportunity for interoperability. It is important for both provider vendors and PBM/payers to implement ePA using the most automated system possible to ensure timely responses to each of the messages.</p>
+        <p class="BodyText1">In an effort to increase the number of electronic prior authorizations available to providers, Surescripts will route prior authorizations to third party prior authorization processors, when available. While the PBM/payer is typically the prior authorization processor, there are scenarios where the health plan processes its own PAs or utilizes a third party processor to process prior authorizations on its behalf.</p>
+        <p class="BodyText1">Provider vendors do not have to use the Surescripts Directory to determine if a PBM/payer is ePA enabled. The provider vendor will address all PAInitiationRequests to EPAINI and Surescripts will find the PBM/payer or third party processor using the detailed workflow below.</p>
+        <p class="BodyText1">While Surescripts cannot guarantee that the provider vendor will receive a PAInitiationResponse with a question set or determination of coverage, sending as many of the fields in the Benefits Coordination  structure as possible will increase the provider vendor's chances that Surescripts will find a processor.</p>
+        <p class="BodyText1" style="font-weight: bold;">Surescripts Electronic Prior Authorization Message Flow</p>
+        <p class="BodyText1"> <img src="../../Resources/Images/CompletEPA/Electronic Prior Authorization.png" style="width: 764px;height: 778px;" MadCap:mediastyle="@media print { max-width: 100%; }" /></p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 1:</p>
+        <p class="BodyText1">1a) PBM/payer uploads Formulary &amp; Benefit file to Surescripts.</p>
+        <p class="BodyText1">1b) Provider vendor downloads formulary file from PBM/payer (this is an ongoing process).</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 2:</p>
+        <p class="BodyText1Indent">2a) Provider vendor sends an eligibility request to Surescripts to determine patient benefit coverage and what formularies to reference. The provider initiates a prior authorization based on the formulary coverage files. (Eligibility is part of the eRx workflow. If ePA is retrospective, use the eligibility that was run at the time of the eRx.)</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The customer should perform eligibility in accordance with prescription benefit eligibility requirements.</p>
+        <p class="BodyText1">2b) Surescripts forwards the eligibility request message on to the PBM/payer.</p>
+        <p class="BodyText1">2c) PBM/payer returns eligibility response. </p>
+        <p class="BodyText1">2d) Surescripts forwards the eligibility response message on to the provider vendor. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The PBM/payer who processes the eligibility for the patient could process the ePA itself or Surescripts will forward the ePA to the correct party (e.g. health plan or other ePA processor).</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 3:</p>
+        <p class="BodyText1">3a) The provider vendor sends a PAInitiationRequest to EPAINI, which is the Surescripts identifier for ePA. Surescripts will use the PayerID in the BenefitsCoordination composite to determine the PBM/payer. In order to maximize the potential for a positive ePA response, the provider vendor should send all available fields referenced in <MadCap:xref href="SendingPriorAuthorization.htm">Sending Prior Authorization Initiation Requests</MadCap:xref>.</p>
+        <p class="BodyText1">3b) Surescripts forwards the PAInitiationRequest message on to the PBM/payer. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts will always send the first PAInitiationRequest to the PBM/payer if the PBM/payer is enabled for ePA. The PBM/payer will determine if the patient and drug combination requires PA.</p>
+        <p class="BodyText1">3c) The PBM/payer returns the PAInitiationResponse indicating:</p>
+        <ul>
+            <li>Open status (a question set), or</li>
+            <li>Closed status (see Closed Reason Code information in <MadCap:xref href="MessageBusinessFlowResponse.htm">Message Business Flow Response Summary</MadCap:xref>), or </li>
+            <li>Closed status when the PBM/payer is not the PA processor (a reason code of CO or CP)</li>
+        </ul>
+        <p class="BodyText1">3c-1 (applies when PBM/payer is not the processor):</p>
+        <p class="BodyText1">In cases where the payer indicates they are not the PA processor, Surescripts will forward the PAInitiationResponse to the provider vendor and always initiate a secondary search to find a different ePA processor. If Surescripts finds a third party processor, it will route the PAInitiationRequest to that processor, who will return a PAInitiationResponse indicating: </p>
+        <ul>
+            <li>Open status (a question set), or</li>
+            <li>Closed status (see Closed Reason Code information in <MadCap:xref href="MessageBusinessFlowResponse.htm">Message Business Flow Response Summary</MadCap:xref>), or </li>
+            <li>The third party processor is not the PA processor (a reason code of CO or CP)</li>
+        </ul>
+        <p class="BodyText1">3c-2 (applies if third party is not the processor):</p>
+        <p class="BodyText1">If no third party processor is found, Surescripts will either:</p>
+        <ul>
+            <li>Send back a PAInitiationResponse indicating that ePA is not available and the prescriber should use the contact number, if provided, in the PANote field from the first PAInitiationResponse to continue with a manual PA process, or</li>
+            <li>For PDR (Physician’s Desk Reference) enabled provider vendor systems, send back a PAInitationResponse with the URL in the PANote field that the user can select to launch a fillable PA form via PDR. </li>
+        </ul>
+        <p>3c-3 (applies if health plan does not currently support ePA):</p>
+        <p>If either the PBM/payer or third party processor indicates that the requested health plan does not currently support ePA (a reason code of BX), Surescripts will either:</p>
+        <ul>
+            <li>Send back a PAInitiationResponse indicating that ePA is not available and the prescriber should use the contact number, if provided, in the PANote field from the first PAInitiationResponse to continue with a manual PA process, or</li>
+            <li>For PDR-enabled provider vendor systems, send back a PAInitationResponse with the URL in the PANote field that the user can select to launch a fillable PA form via PDR.</li>
+        </ul>
+        <p>See the message flow diagram at the bottom of this step for more details.</p>
+        <p class="BodyText1">Notes: </p>
+        <p class="BodyText1">Once the user fills out the PA form provided by PDR, PDR faxes the form to the PBM/payer and there will be no further electronic communication to the EMR by either PDR or Surescripts. The PBM/payer will fax the provider vendor back the approval or denial.</p>
+        <p class="BodyText1">The provider vendor may receive up to three (3) responses. These responses include a Closed status from the PBM/Payer, a Closed status from the third party processor, and/or a Closed status from Surescripts. The Closed status from Surescripts (EPAINI) will contain a BY reason code, which indicates that no further PAInitiationResponse(s) will follow. Either the PBM/payer or the third party processor may return an Open response with a question set if they are the processor.</p>
+        <p>If the provider vendor receives a CO, CP or BX reason code in the initial PAInitiationResponse, the provider vendor system is required to make the PANote field available and should make the PACaseID, when provided, available for reference in case Surescripts cannot determine the third party processor or return a PDR Url. </p>
+        <p class="BodyText1">The PANote field may include the communication number the provider should use to continue processing the prior authorization manually.</p>
+        <p class="BodyText1" style="font-weight: bold;">Third Party Processor/PDR Enabled Message Flow Diagram</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The following diagram shows the high-level process and does not capture all scenarios.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/CompletEPA/Electronic Prior Authorization_1.png" style="width: 1188px;height: 823px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">3d) Surescripts forwards the message on to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 4:</p>
+        <p class="Workflow" style="margin-left: 0pt;">4a) The provider vendor sends a PARequest to Surescripts containing the answers to the question set.</p>
+        <p class="Workflow" style="margin-left: 0pt;">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer returns the PAResponse indicating:</p>
+        <ul>
+            <li>Approval (Approved status), or</li>
+            <li>Denial (Denied status), or </li>
+            <li>a request for more information (Open status), or</li>
+            <li>that it cannot proceed (Closed status) (e.g., a request was received after the deadline for reply), or</li>
+            <li>Deferred (Open status).</li>
+        </ul>
+        <p class="BodyText1">4d) Surescripts forwards the message on to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 5:</p>
+        <p class="Workflow" style="margin-left: 0pt;">5a) The provider vendor can send a PAAppealRequest to Surescripts to:</p>
+        <ul>
+            <li>appeal a prior authorization determination, or </li>
+            <li>obtain the information required to submit an appeal reconsideration. </li>
+        </ul>
+        <p class="Workflow" style="margin-left: 0pt;">5b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">5c) The PBM/payer:  </p>
+        <ul>
+            <li>returns the PAAppealResponse indicating what information is required to submit an appeal reconsideration, or</li>
+            <li>returns PAAppeal approval, denial, or a request for more information.</li>
+        </ul>
+        <p class="BodyText1">5d) Surescripts forwards the message on to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Step 6:</p>
+        <p class="Workflow" style="margin-left: 0pt;">6a) A PACancelRequest can be sent any time after the PBM/payer returns the PAInitiationResponse with a Case ID populated.</p>
+        <p class="Workflow" style="margin-left: 0pt;">6b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">6c) The PBM/payer returns the PACancelResponse indicating if it was cancelled. A PAResponse is not sent after the PACancelResponse is sent.</p>
+        <p class="BodyText1">6d) Surescripts forwards the message on to the provider vendor.</p>
+        <p MadCap:changes="1" class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+            <MadCap:annotation MadCap:createDate="2018-04-02T14:39:20.5057585-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:changes="1" MadCap:comment="was this added in the right place?" MadCap:editor="Megan.Hayden" MadCap:editDate="2018-04-02T14:39:24.9052314-05:00">Provider</MadCap:annotation> vendors should ensure that PACancelRequests are sent to the entity that returned the question set and/or Case ID. If the PACancelRequest is sent to the primary PBM/payer (that indicated they do not process the PA), there is no guarantee that the cancel will be processed.</p>
+    </body>
+</html>

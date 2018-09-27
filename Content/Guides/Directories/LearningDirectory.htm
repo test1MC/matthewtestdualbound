@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="4202.333" MadCap:lastWidth="2396">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Learning Directory</h1>
+        <p class="BodyText1">The Learning Directory utilizes address demographic information content from within the NewRx message sent from the provider customer. It appends previously unknown provider locations to the Surescripts Directory and supplements the primary SPI registered in the directory. </p>
+        <h2 class="Heading2"><a name="_Toc512495572"></a>Criteria for Learning a New Provider Location</h2>
+        <ol>
+            <li>Learning Directory functionality must be enabled on the portal configuration for the provider customer.</li>
+            <li>The SPI and NPI registered in the directory must match the SPI and NPI in the successfully processed NewRx.</li>
+            <li>With the exception of controlled substances, other certified services may appear against the learned locations.</li>
+            <li>A new location is identified for being learned if the address in the NewRx is determined to be unique against the existing directory registration. Key fields such as AddressLine1, AddressLine2 and PostalCode may be used to determine whether an address is unique. Similar validations that prevent duplication of an SPI with refills at the same physical location will be enforced.</li>
+            <li>Learned locations will expire when:<ul><li>there have been at least 6 months of inactivity,</li><li><p>the registered SPI expires,</p></li><li><p>a technology vendor registers the provider for the same address as the learned location with the refill service level, or</p></li><li><p>a learned record is disabled.</p></li></ul></li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc512495573"></a>How Downloads Will Be Different</h2>
+        <p class="BodyText1">The SPI is not a unique identifier. The download format does not change; it will include all applicable results. A pharmacy account must have the appropriate "Directory Download Special Rules" in place on their account settings to publish the learned locations to their download files. An "LL" will be included in the Mutually Defined field in the download to indicate the record is a "learned record".</p>
+        <p class="Graphic" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/Directories6/Learning Directory.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="Note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The mocked up example above does not include all fields or headers. Your view may vary.</p>
+        <h2 class="Heading2"><a name="_Toc512495574"></a>Learning Directory Registration</h2>
+        <p class="BodyText1">In the example below, the diagram displays how Dr. Bob works in six locations: two under Practice Group 1 and four under Practice Group 2. In Practice Group 1, he uses two different applications (a primary application "A" and a downloaded mobile application "M" which sends only new prescriptions). In Practice Group 2, the provider vendor application "B" explicitly registers Dr. Bob at the primary location of practice. Then, while writing new prescriptions from a different location where he is seeing patients, the subsequent location(s), meeting all of the criteria for being "learned", are added as a "learned location" to the registered SPI-005.</p>
+        <p class="BodyText1">Without the Learning Directory, each location/application for a provider is registered creating a unique SPI. With the Learning Directory, one location is explicitly registered as the provider’s primary location of practice. As new locations are "learned" from new prescriptions, these "learned records" are associated with the registered SPI.</p>
+        <p>
+            <img src="../../Resources/Images/Directories6/Learning Directory_1.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2"><a name="_Toc512495575"></a>The Importance of Record Consistency</h2>
+        <p>
+            <img src="../../Resources/Images/Directories6/Learning Directory_2.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">It is important that the provider vendors ensure the formatting and style of the SPI directory listings are consistent with the NewRx content.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">D.</span><span style="font-weight: bold;">010 </span>When Provider details are included within a message transaction on the Surescripts network, the following fields shall match the information in the Surescripts Provider Directory Download for the sender and/or recipient segment:</p>
+        <ul>
+            <li>SPI</li>
+            <li>NPI</li>
+            <li>Provider First Name</li>
+            <li>Provider Last Name</li>
+            <li>Address (Standardization permissible)</li>
+            <li>Phone (Primary preferred, Secondary accepted)</li>
+            <li>Fax (Primary preferred, Secondary accepted)</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For <b>D.010</b>, see corresponding notes in the <a href="ApplicationCertification.htm">Application Certification Requirements</a> section.</p>
+        <p class="BodyText1">Alignment of these pieces of information helps ensure the respective databases used across the workflow are in sync. The following table offers recommendations on how to approach key fields within the registration and NewRx content. Please refer to the NCPDP External Code List Appendix C - United States and Canadian Province Postal Service Abbreviations for USPS standardization information.</p>
+        <p class="Note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">"Standardization" formatting offers a good foundation. If standardization formatting must be modified to address specific vendor database needs, ensure the formatting is consistent across the respective databases.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">Surescripts stresses consistency</span> in the following fields across all platforms used by the customer source information as a best practice to optimize the e-prescribing workflow.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Context</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Suggestions</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">BusinessName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">This field can impact the standardization of a record including the zip+4 values.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Inclusion (or omission) can impact standardization.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">AddressLine1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">If connections to other systems, (for example, Billing) restricts the ability to include suites or location identifiers in AD2, Surescripts recommends adding that information to AD1 consistently.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use abbreviations, such as "ST" for Street, "AVE" for Avenue, "S" for South and "NW" for Northwest. Avoid use of "." (periods) in the addresses.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">AddressLine2 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Reserved for externally identifiable clarifications, such as Suite, Apartment, Building, and Floor designations.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use abbreviations, such as "STE" for Suite, "BLDG" for Building, "APT" for Apartment", and "FL" for Floor.</p>
+                        <p class="TableBody">Exclude internal-only identifiers such as "Exam”.</p>
+                        <p class="TableBody">Room #" or "Nurses Station".</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">City</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">City-based searches impacted by formats.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use common abbreviations when part of an official city name: "ST" for Saint (e.g. St. Paul), "FT" for Fort (e.g. FT Collins). See this link for USPS products list including "City State Product": <a href="http://pe.usps.gov/text/pub28/welcome.htm" target="_blank">http://pe.usps.gov/text/pub28/welcome.htm</a></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">StateProvince </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Two character state/US Territory abbreviation is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">PostalCode </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Including a 9-digit Postal Code (ZIP+4) offers an excellent level of CASS- standardization detail. These address attributes impact the "+4" of the Postal Code:</p>
+                        <ul>
+                            <li class="TableBody">Business Name </li>
+                            <li class="TableBody">AddressLine1 (AD1)</li>
+                            <li class="TableBody">AddressLine2 (AD2)</li>
+                        </ul>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If using the verified Postal Code (ZIP+4) USPS that aligns to your practice/address information, include it. If not verified, use the basic 5-digit Postal Code (ZIP5).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">PrimaryPhone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Pharmacies have indicated this is an important field to include - especially to ensure that the phone is correct for the specific practice.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Do not include provider mobile/cell numbers; they are not unique to one practice group.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

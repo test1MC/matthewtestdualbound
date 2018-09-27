@@ -1,0 +1,2182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="7" MadCap:lastHeight="13492" MadCap:lastWidth="1223">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2">Adherence Profile Summary</h2>
+        <p class="BodyText1">The adherence-profiles/summary provides the member’s lowest PDC score and associated disease class. The patient’s unique PBM Id and payer Id obtained from an eligibility transaction are passed as parameters on this request.</p>
+        <p class="StylebodytextBold">Workflow Considerations</p>
+        <p class="BodyText1">The adherence-profiles/summary API is lightweight and useful when only the lowest PDC score is displayed to the user such as on a dashboard.</p>
+        <p class="BodyText1">The diagram below is an example of where the adherence-profiles/summary API could be used in a typical patient visit workflow.</p>
+        <p class="p_BodyText1">
+            <img src="../../Resources/Images/MedMgmtNativeIG/Worklist Summary.png" style="width: 1055px;height: 356px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="p_BodyText1">&#160;</p>
+        <p class="BodyText1">The response to this API will return the patient’s lowest PDC value and disease class.</p>
+        <p class="BodyText1">PDC values are categorized as:</p>
+        <ul>
+            <li>PDC&#160; value&#160; &lt;= 60%, low </li>
+            <li>PDC value&#160; &gt; 60% and &lt; 80%, moderate </li>
+            <li>PDC value =&gt; 80%, healthy</li>
+        </ul>
+        <p class="StylebodytextBold">Adherence Profile Summary Template Example</p>
+        <p class="BodyText1">[GET] {{host}}/mmpoc/api/v0/adherence-profiles/summary?memberId={Patient PBM Unique ID]&amp;payerId={Payer Id}</p>
+        <p class="StylebodytextBold">Request JSON Fields</p>
+        <p class="StylebodytextBold">M/C - Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">JSON Filed</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">memberId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">an 60</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Patient PBM unique Id.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">payerId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">an 15</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">PBM/payer’s Participant Id.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Adherence Profile Summary Request Example</p>
+        <p class="BodyText1">[GET] {{host}}/mmpoc/api/v0/adherence-profiles/summary?memberId=ZZQ-88-10011-249&amp;payerId=T00000000001000</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Response Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pdcLastUpdated</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Date the PDC ratio was last updated by the PBM/payer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pdcWorstStatus</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Indicates the status of the lowest PDC score for the patient based on the ratio value (healthy, moderate or low)&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pdcValue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the patient's lowest PDC value</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pdcValueUnits</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Units associated with the PDC value</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">pdcDiseaseClass</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">The disease class name (possible values are: cholesterol, hypertension, diabetes)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Response Example</p>
+        <p class="p_BodyText1">
+            <div style="margin-left: 0;margin-top: 6.9pt;width: 435.2pt;height: 110.6pt;visibility: visible;mso-wrap-style: square;mso-width-percent: 0;mso-height-percent: 200;mso-wrap-distance-left: 9pt;mso-wrap-distance-top: 3.6pt;mso-wrap-distance-right: 9pt;mso-wrap-distance-bottom: 3.6pt;mso-position-horizontal: left;mso-position-horizontal-relative: margin;mso-position-vertical: absolute;mso-position-vertical-relative: text;mso-width-percent: 0;mso-height-percent: 200;mso-width-relative: margin;mso-height-relative: margin;v-text-anchor: top;">
+                <p>{</p>
+                <p>"patientMemberId": "PBMID12345",</p>
+                <p>"payerId": "D00000000393933",</p>
+                <p>"pdcLastUpdated": "8/31/2015 8:00:00 AM +00:00",</p>
+                <p>"pdcWorstStatus": "low",</p>
+                <p>"pdcValue": 40,</p>
+                <p>"pdcValueUnits": "%",</p>
+                <p>"pdcDiseaseClass": "diabetes"</p>
+                <p>}</p>
+            </div>
+        </p>
+        <h2 class="Heading2">Retrieve Worklist</h2>
+        <h3 class="Heading3">Patient Worklist</h3>
+        <p class="BodyText1">Retrieving a worklist by patient retrieves a paged list of the active tasks for a given patient.&#160; This API also returns a count of messages for the patient.</p>
+        <p class="StylebodytextBold">Workflow Considerations</p>
+        <p class="BodyText1">The worklist API is a prerequisite to the CommunicationRequest API as this is where the task Id needed for the CommunicationRequest API is retrieved.</p>
+        <p class="BodyText1">The diagram below is an example of where the worklist API could be used in a typical patient visit workflow.</p>
+        <p>&#160;</p>
+        <p>
+            <img src="../../Resources/Images/MedMgmtNativeIG/Worklist Summary.png" style="width: 1032px;height: 349px;" />
+        </p>
+        <p class="StylebodytextBold">Request Example</p>
+        <p class="BodyText1">[GET] {{host}}/worklist?alternateId={alternateId}&amp;alternateOrganization={alternate<br />organization}&amp;alternateQualifier={ alternatequalifier }&amp;user={user}&amp;pageIndex={pageIndex}&amp;pageSize={pageSize}</p>
+        <p class="StylebodytextBold">Request Parameters</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternatetId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>AN 35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The patient PBM Unique Id returned from an eligibility 271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternateOrganization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>AN 35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The payer Id returned from an eligibility 271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>alternateQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>AN 35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>alternateQualifier: PBMUID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>user</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>AN 250</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique provider vendor user ID representing the user working the task
+ list. This user is not required to be a clinician vendor who has a registered
+ SPI. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Integer representing the number of records returned in each request.
+ If a pageSize is not specified, the default value of 25 is applied.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Integer representing the page index of data to be returned. If a
+ pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Request Example</p>
+        <p class="BodyText1">[GET] {{host}}/uiservice/api/v0/worklist?alternateId=PBM123456&amp;alternateOrganization=D44444444444444&amp;alternateQualifier=PBMUID&amp;user=jake</p>
+        <h3 class="Heading3">Get Worklist by Recipients</h3>
+        <p class="BodyText1">Retrieves a paged list of the active tasks for a given collection of recipients (providers).</p>
+        <p class="BodyText1">Request Template Example</p>
+        <p class="BodyText1">[POST] {{host}}/worklist</p>
+        <p class="BodyText1">Request JSON&#160;Fields</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">JSON Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">user</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">AN 250</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Unique provider vendor user ID representing the user working the task list. This user is not required to be a clinician vendor who has a registered SPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">recipients</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Collection of recipients for which accelerator based tasks will be retrieved. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160; id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">an13 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">SPI of the initiator.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160; qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">SPI's corresponding qualifier. </p>
+                        <p class="p_TableBody">Qualifier = D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Request Example</p>
+        <p class="NoSpacing">[POST] https://[host]/uiservice/api/v0/worklist&#160; </p>
+        <p class="NoSpacing">{</p>
+        <p class="NoSpacing">&#160;&#160; "user": "jake",</p>
+        <p class="NoSpacing">&#160;&#160; "recipients": [</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6417473720001"</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p class="NoSpacing">&#160;&#160; ]</p>
+        <p class="NoSpacing">}</p>
+        <h3 class="Heading3">Retrieve Worklist Response</h3>
+        <p class="StylebodytextBold">Response Codes and Fields</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>HttpStatus Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>HttpStatus Code</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>200</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Successful response along with the processList and the corresponding
+ process response fields</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>200</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Invalid request</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>400</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Description Message Body JSON Fields</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_4">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">items</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Collection of task details matching the corresponding process</p>
+                        <p class="p_TableBody">See <MadCap:annotation MadCap:createDate="2017-07-19T10:20:33.4620259-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="reminder to add link" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-07-19T10:20:39.7595022-05:00">Description Message Body - Items JSON Fields</MadCap:annotation>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the returned page index</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the page size </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">totalRows</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the total number of rows matching the search criteria</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Description Message Body - Items JSON Fields</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 587px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">processId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Unique Surescripts ID which represents the process instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">processName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Name of the process</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">initiatorsProcessId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">The initiatorsProcessId is the &lt;PAReferenceID&gt; as defined by the provider vendor</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">taskId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Unique Surescripts ID which represents the task instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">taskName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Name of the task</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1_1">alternateId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Patient PBM&#160;Unique ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">alternateOrganization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">Payer ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">alternateQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyDColumn1Body1">PBMUID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">patientFirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Patient’s first name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">patientLastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Patient’s last name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">patientDob</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Patient’s date of birth</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">initiator</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Dataset containing the recipients identifying data.&#160; </p>
+                        <p class="p_TableBody">Field(s) include:</p>
+                        <p class="p_TableBody">id</p>
+                        <p class="p_TableBody">qualifier</p>
+                        <p class="p_TableBody">name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">recipient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Dataset containing the recipient's identifying data.</p>
+                        <p class="p_TableBody">Field(s) include:</p>
+                        <p class="p_TableBody">id</p>
+                        <p class="p_TableBody">qualifier</p>
+                        <p class="p_TableBody">name</p>
+                        <p class="p_TableBody">Note: Supported qualifiers are D and PY. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">acceptedBy</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Dataset containing the accepted by identifying data.&#160; </p>
+                        <p class="p_TableBody">Field(s) include:</p>
+                        <p class="p_TableBody">id</p>
+                        <p class="p_TableBody">qualifier</p>
+                        <p class="p_TableBody">name</p>
+                        <p class="p_TableBody">Note: Supported qualifiers are D, PY, and userId. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID. UserId is the User ID assigned by the provider vendor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">createdDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Date/time task was created.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">dueDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Date/time task is required to be completed by.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">acceptedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Date/time task was accepted to be worked on.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">responseDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Date/time task was responded to.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the status of the task: </p>
+                        <p class="p_TableBody">Task values are:</p>
+                        <p class="p_TableBody">1: Draft</p>
+                        <p class="p_TableBody">2: Pending</p>
+                        <p class="p_TableBody">3: Assigned</p>
+                        <p class="p_TableBody">4: Distributed</p>
+                        <p class="p_TableBody">5: Accepted</p>
+                        <p class="p_TableBody">6: Released</p>
+                        <p class="p_TableBody">7: Complete</p>
+                        <p class="p_TableBody">8: Cancelled</p>
+                        <p class="p_TableBody">9: Errored</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">statusName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Textual name representing the status of the task.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="td_TableStyleGuideTablesBodyEColumn1Body1">priority</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_1">Integer representing the priority of the task </p>
+                        <p class="p_1">Priority values are: </p>
+                        <p class="p_1">Alert = 5 </p>
+                        <p class="p_1">Urgent = 4 </p>
+                        <p class="p_1">High = 3 </p>
+                        <p class="p_1">Medium = 2 </p>
+                        <p class="p_1">Low = 1 </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Worklist Response Example</p>
+        <p class="NoSpacing">&#160;&#160;&#160; {</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processId": 671730,</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processName": "High Risk Medication",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "46a7c15f.850a.4970.acdb.2d87a028c11a",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientFirstName": "HIRAM",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientLastName": "BACH",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientDob": "1933-12-15T00:00:00",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "PY",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "D00000000000444"</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "createdDate": "2015-09-14T22:04:50.807",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateId": "EHR32345",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateOrganization": "D00000000000444",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateQualifier": "PBMUID",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskId": 3323936,</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskName": "High Risk Medication Message",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "dueDate": "2015-09-30T00:00:00",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedDate": "2015-09-14T22:04:50.797",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "status": 5,</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "statusName": "Accepted",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedBy": {</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "Userid",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "nancy"</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "recipients": [</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6598607334001"</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "priority": 5</p>
+        <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <h2 class="Heading2">Communication Request</h2>
+        <p class="BodyText1">The communication request API retrieves a single message and the associated questionnaire.&#160; The response includes the endpoint link to be used when posting the QuestionnaireResponse.&#160; The QuestionnaireResponse endpoint link should be saved in your system and used as the endpoint when the end user submits a response.</p>
+        <p class="StylebodytextBold">Workflow Considerations</p>
+        <p class="BodyText1">It is recommended to show the medication management message detail, questionnaire and the adherence profile in areas of the workflow where the provider will take action on non-adherence or gaps in care.&#160; </p>
+        <ul>
+            <li>The CommunicationRequest API response contains the medication management message detail.&#160; </li>
+            <li>The Observation API response described in the next section of this document contains the member’s adherence profile (PDC scores).</li>
+        </ul>
+        <p class="BodyText1">The diagram below illustrates where the CommunicationRequest API should be used in a typical patient visit workflow.</p>
+        <p>
+            <img src="../../Resources/Images/MedMgmtNativeIG/Adherence Profile Summary.png" style="width: 1035px;height: 340px;" />
+        </p>
+        <p class="StylebodytextBold">Request Template Example</p>
+        <p class="BodyText1"> [GET] {{host}}/mmpoc/api/v0/CommunicationRequest?_id={taskId}</p>
+        <p class="StylebodytextBold">Request Parameters</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">Data</p>
+                        <p class="p_4">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">taskId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">AN 60</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_1">Task Id obtained from the worklist API</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="p">&#160;</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 341px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">FHIR® Resource</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Cardinality</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Bundle <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Domain resource, a container for a collection of resources.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Bundle</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The bundle is a list of resources returned as a result of a search/query interaction, operation, or message.</p>
+                        <p class="p_TableBody_1">Value: searchset</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">total</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The total number of matches</p>
+                        <p class="p_TableBody_1">Example:&#160; “total”: 10</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">link</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Links related to this bundle.&#160; This is the request URL sent</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">"relation": "self",</p>
+                        <p class="p_TableBody_1">"url": "{{host}}/mmpoc/api/v0/CommunicationRequest?_id=31728140"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest (Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">A request to convey information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="NoSpacing">&#160;CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The entity which is the source of the communication.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">sender.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the Organization Resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Organization/6e8bc430-9c3a-11d9-9669-0800200c9a6a</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">recipient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The Recipient of the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">recipient.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the practitioner resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Practitioner/0150101d-3d06-44a9-8fc4-d5c42ea7ae2b</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">payload</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Message payload</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">payload.contentReference.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the DetectedIssue resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">DetectedIssue/be8c955a-d778-4abb-a326-868b7bf85a72</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Payload</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Message payload</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">payload.contentReference.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the patient’s adherence profile (PDC scores)</p>
+                        <p class="p_TableBody_1">Example:</p>
+                        <p class="p_TableBody_1">{{host}}/mmpoc/api/v0/Observation/$pdc?memberId={{PBM Unique Id}}&amp;payerId={{payer Id}}</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Payload</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Message payload</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">payload.contentReference.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the questionnaire resource</p>
+                        <p class="p_TableBody_1">Example:</p>
+                        <p class="p_TableBody_1">Questionnaire/MA</p>
+                        <p class="p_TableBody_1">Questionnaire/HRM</p>
+                        <p class="p_TableBody_1">Questionnaire/MM</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Value: requested</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">subject</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The Patient who is the focus of this communication.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;CommunicationRequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">subject.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the Patient Resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Patient/6e8bc430-9c3a-11d9-9669-0800200c9a67</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Information about the search process that lead to the creation of this entry.</p>
+                        <p class="p_TableBody_1">Value: match</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">DetectedIssue (Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">text</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The text summary of the resource. (Narrative)</p>
+                        <p class="p_TableBody_1">This is the text message from the PBM/payer.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">ABC Health Plan records show ANTHONY STARK may not be adherent on their ROSUVASTATIN CALCIUM prescription. Your patient may have missed or have been late to refill their medication during this year. Please advise your patient of the importance of refilling on-time, and staying adherent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">text.status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Narrative Status Code:</p>
+                        <p class="p_TableBody_1">additional = Contents of the narrative contain additional information not found in the structured data</p>
+                        <p class="p_TableBody_1">Value: additional</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">patient.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the Patient Resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Patient/6e8bc430-9c3a-11d9-9669-0800200c9a67</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">severity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Indicates the degree of importance associated with the identified issue based on the potential impact on the patient.</p>
+                        <p class="p_TableBody_1">Value: high</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">implicated.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Indicates the resource representing the current activity or proposed activity that is potentially problematic.</p>
+                        <p class="p_TableBody_1">This references the medication associated with the medication management message.</p>
+                        <p class="p_TableBody_1">Example: MedicationOrder/2</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">DetectedIssue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">author.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This is a reference to the organization that authored the medication management message.</p>
+                        <p class="p_TableBody_1">Example:&#160; </p>
+                        <p class="p_TableBody_1">Organization/505fc118-8fbc-44fd-87f9-8672d00bf9e9"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">MedicationOrder (Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">An order for both supply of the medication and the instructions for administration of the medicine to a patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">MedicationOrder</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">patient.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the Patient Resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Patient/6e8bc430-9c3a-11d9-9669-0800200c9a67</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">MedicationOrder</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">prescriber.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the practitioner resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Practitioner/0150101d-3d06-44a9-8fc4-d5c42ea7ae2b</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">MedicationOrder</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">medicationReference.reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This references the medication resource.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">Medication/1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Medication <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">text.status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Medication name.</p>
+                        <p class="p_TableBody_1">Value: generated</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">code.coding.system</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">NDC coding system.&#160; </p>
+                        <p class="p_TableBody_1">Value:&#160; http://surescripts.net/fhir/identifiers/ndc</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">code.coding.code@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">11 digit NDC package code.</p>
+                        <p class="p_TableBody_1">Example:&#160; 00093757098</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">code.coding.display@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Medication name.</p>
+                        <p class="p_TableBody_1">Example:&#160; ROSUVASTATIN CALCIUM</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Patient <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Demographics and other administrative information about the person.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">identifier.system</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">One identifier system must be the Surescripts identifier system.</p>
+                        <p class="p_TableBody_2">Value: http://surescripts.net/identifiers/pbm-member-id</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">identifier.value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">PBM Unique Member Id.</p>
+                        <p class="p_TableBody_1">The external reference Id that is sent from the PBM/payer in the Eligibility 271 response (Subscriber/NM109).</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p class="p_TableBody_1">AB123 DE456 9020040 QR40210</p>
+                        <p class="p_TableBody_1">Note: The patient is uniquely identified by the provider vendor by referencing the Payer Id and Patient Identifier (PBM Unique Member Id).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">FHIR® Human Name.</p>
+                        <p class="p_TableBody_1">Use = Official</p>
+                        <p class="p_TableBody_1">This is the name supplied by the PBM/payer and is provided to the provider vendor. It is necessary to assure the proper patient has been matched between the provider vendor and the PBM/payer message.</p>
+                        <p class="p_TableBody_1">Patient Name is displayed in the UI to give the practitioner the ability to confirm that it's the right person.</p>
+                        <p class="p_TableBody_1">FHIR® Human Name:</p>
+                        <p class="p_TableBody_1">Use = Official</p>
+                        <p class="p_TableBody_1">Family = family name, often called surname</p>
+                        <p class="p_TableBody_1">Given = given name, first and middle name</p>
+                        <p class="p_TableBody_1">Prefix = Parts that come before the name</p>
+                        <p class="p_TableBody_1">Suffix = Parts that come after the name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">gender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Patient Gender.</p>
+                        <p class="p_TableBody_1">Patient gender value coded to match the AdministrativeGender Codes.</p>
+                        <p class="p_TableBody_1">This is the gender supplied by the PBM/payer and is provided to the provider vendor when available to better assist in ensuring the proper patient has been matched between the provider vendor and the PBM/payer message.</p>
+                        <p class="p_TableBody_1">Example: male</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">birthDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Patient Date of Birth.</p>
+                        <p class="p_TableBody_1">Conforms to the FHIR® date/time standards.</p>
+                        <p class="p_TableBody_1">Example: 1974-04-14</p>
+                        <p class="p_TableBody_1">This is the DOB supplied by the PBM/payer and is provided to the provider vendor to better assist in ensuring the proper patient has been matched between the provider vendor and the PBM/payer message</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Patient Address.</p>
+                        <p class="p_TableBody_1">Line, City, State, Zip</p>
+                        <p class="p_TableBody_1">May be used for contacting, reporting and also to help with identification.</p>
+                        <p class="p_TableBody">Example line: 123 Any Street</p>
+                        <p class="p_TableBody">Example city: Atlanta</p>
+                        <p class="p_TableBody">Example state: GA</p>
+                        <p class="p_TableBody">Example postalCode: 30341</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Practitioner <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Practitioner that this message is directed to.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Practitioner</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">identifier.system</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">One identifier system must be NPI.</p>
+                        <p class="p_TableBody_1">Value: http://surescripts.net/fhir/identifiers/npi</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Practitioner</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Identifier.value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Practitioner identifier, one identifier should be the practitioner's NPI.</p>
+                        <p class="p_TableBody_1">Practitioner that this message is targeted for. The NPI is used to locate the practitioner in the Surescripts Directory.</p>
+                        <p class="p_TableBody_1">Example: 0987654321</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Practitioner</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">FHIR® Human Name.</p>
+                        <p class="p_TableBody_1">Use = Official</p>
+                        <p class="p_TableBody_1">Family = family name, often called surname</p>
+                        <p class="p_TableBody_1">Given = given name, first and middle name</p>
+                        <p class="p_TableBody_1">Prefix = Parts that come before the name</p>
+                        <p class="p_TableBody_1">Suffix = Parts that come after the name</p>
+                        <p class="p_TableBody_1">This is the name supplied by the PBM/payer and may be used for contacting, reporting and also to aid with identification.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Practitioner</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">telecom</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Contact.System (Phone, Fax, Email, URL) - Contact.Use (Home, Work, Mobile, Other).</p>
+                        <p class="p_TableBody_1">This is the practitioner contact information supplied by the PBM/payer and may be used for contacting, reporting and also to aid with identification.</p>
+                        <p class="p_TableBody_1">Example: 612-555-0103</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Practitioner</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Practitioner address.</p>
+                        <p class="p_TableBody_1">Line, City, State, Zip (Address.Use for Home, Work, Other).</p>
+                        <p class="p_TableBody_1">This is the name supplied by the PBM/payer and may be used for contacting, reporting and also to aid with identification.</p>
+                        <p class="p_TableBody">Example line: 123 Any Street</p>
+                        <p class="p_TableBody">Example city: Atlanta</p>
+                        <p class="p_TableBody">Example state: GA</p>
+                        <p class="p_TableBody">Example postalCode: 30341</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Organization <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Organization that is the point of contact for this message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Organization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Message Contact Organization {Health Plan}.</p>
+                        <p class="p_TableBody_1">The name of the organization to contact with questions regarding the message.</p>
+                        <p class="p_TableBody_1">Example: Good Health Plan</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160; Organization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">telecom</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Contact.System (Phone, Fax, Email, URL) - Contact.Use (Home, Work, Mobile, Other).</p>
+                        <p class="p_TableBody_1">How to contact the organization associated with this message if questions arise regarding this message.</p>
+                        <p class="p_TableBody_1">Example: 612-555-0103</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">search</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">mode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This resource is returned because it is referred to from another resource in the search set.</p>
+                        <p class="p_TableBody_1">Value: include</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire <br />(Resource)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">A structured set of questions intended to guide the collection of answers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Resource identifier</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">HRM, MA, MM</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Specifies the allowable contents for coded elements within the questionnaire</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.id@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The identifier for the value set</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">yes-no</p>
+                        <p class="p_TableBody_1">adherence-issue-reason</p>
+                        <p class="p_TableBody_1">adherence-not-issue-reason</p>
+                        <p class="p_TableBody_1">no-change-reason</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Informal name for the value set</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">Yes-No</p>
+                        <p class="p_TableBody_1">Adherence Issue Reason</p>
+                        <p class="p_TableBody_1">Adherence Not an Issue Reason</p>
+                        <p class="p_TableBody_1">No Change Reason</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Status of the value set</p>
+                        <p class="p_TableBody_1">Value: active</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.codeSystem.system@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The ValueSet code system URL</p>
+                        <p class="p_TableBody_1">Examples:<br />http://surescripts.net/identifiers/questionnaire/yes-no</p>
+                        <p class="p_TableBody_1">http://surescripts.net/identifiers/questionnaire/no-change-reason</p>
+                        <p class="p_TableBody_1">http://surescripts.net/identifiers/questionnaire/adherence-issue-reason</p>
+                        <p class="p_TableBody_1">http://surescripts.net/identifiers/questionnaire/adherence-not-issue-reason  </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.codeSystem.concept</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..*</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.codeSystem.concept.code@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concept code system values</p>
+                        <p>Example:</p>
+                        <p>code value="BeenEducated"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">contained.ValueSet.codeSystem.concept.display@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The text value for the code</p>
+                        <p>Example:<br />display value="Patient has been educated on importance of adherence and plans to resume therapy"</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">extension</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The QuestionnaireResponse endpoint</p>
+                        <p class="p_TableBody_1">Value:</p>
+                        <p class="p_TableBody_1">http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-endpoint</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">valueUri@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The end point to submit the questionnaire response</p>
+                        <p class="p_TableBody_1">Example:</p>
+                        <p class="p_TableBody_1">http://mn-devint-mmpoc.surescripts.internal/mmpoc/api/v0/QuestionnaireResponse/{task Id}</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">identifier.system@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">System that administers this questionnaire</p>
+                        <p class="p_TableBody_1">Value:<br />http://surescripts.net/identifiers/questionnaire</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Idendifier.value@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Id value of the questionnaire.</p>
+                        <p class="p_TableBody_1">Values:</p>
+                        <p class="p_TableBody_1">HRM (high risk medication)</p>
+                        <p class="p_TableBody_1">MA&#160; (medication adherence)</p>
+                        <p class="p_TableBody_1">MM (missing medication)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Status of the questionnaire</p>
+                        <p class="p_TableBody_1">Values:</p>
+                        <p class="p_TableBody_1">draft, published, retired</p>
+                        <p class="p_TableBody_1">Note: In production questionnaire status will be published</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">date@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Date this version of the questionnaire was authored.</p>
+                        <p class="p_TableBody_1">Example: 2016-12-04T12:00:00-06:00</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">publisher@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1.1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Organization/individual who designed the questionnaire</p>
+                        <p class="p_TableBody_1">Value: Surescripts LLC</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">1..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Grouped questions</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.linkId@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Id to link the questionnaire to the response</p>
+                        <p class="p_TableBody_1">Values:&#160; HRM, MA, MM</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.title@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Name to be displayed for group</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">High Risk Medication</p>
+                        <p class="p_TableBody_1">Medication Adherence</p>
+                        <p class="p_TableBody_1">Missing Medication</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.required</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Whether the group must be included in data results</p>
+                        <p class="p_TableBody_1">Values: true, false</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.extension@url</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The URL to the questionnaire extension for the data entry control</p>
+                        <p class="p_TableBody_1">Value:&#160; <a href="http://hl7.org/fhir/questionnaire-question-control">http://hl7.org/fhir/questionnaire-question-control</a></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.extension.valueCode@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">The type of data entry control that should be exposed to the user when capturing the answer to the question.</p>
+                        <p class="p_TableBody_1">Example:&#160; radio-button</p>
+                        <p class="p_TableBody_1">See the full list here:&#160; <a href="http://www.hl7.org/FHIR/DSTU2/valueset-questionnaire-question-control.html">http://www.hl7.org/FHIR/DSTU2/valueset-questionnaire-question-control.html</a> <![CDATA[ ]]></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.linkId@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Links the questionnaire with questionnaire response</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">HRM.TherapyChanged<br />MM.TherapyChanged<br />MA.ConfirmedIssue</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.extension@url</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">If present, indicates that the group or question containing the extension should only be enabled (allow an answer to be present and, in most circumstances, even be visible to the user) when the specified condition is true.</p>
+                        <p class="p_TableBody_1">Example: </p>
+                        <p>&lt;extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-enableWhen"&gt;</p>
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.text@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Text of the question as it is shown to the user</p>
+                        <p class="p_TableBody_1">Examples:</p>
+                        <p class="p_TableBody_1">Has the patient's drug therapy been changed?<br />Is adherence a confirmed issue?</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.type@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Answer format</p>
+                        <p class="p_TableBody_1">Example: choice</p>
+                        <p class="p_TableBody_1">See:</p>
+                        <p class="p_TableBody_1"><a href="http://www.hl7.org/FHIR/DSTU2/valueset-answer-format.html" class="Hyperlink">http://www.hl7.org/FHIR/DSTU2/valueset-answer-format.html</a> <![CDATA[ ]]></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.required@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody_1">Whether the question must be answered </p>
+                        <p class="p_TableBody_1">Examples:&#160; true, false</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody_1">Questionnaire</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody_1">group.question.options.reference@value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody_1">0..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody_1">Reference to the value set containing the permitted answers</p>
+                        <p class="p_TableBody_1">Examples: </p>
+                        <p class="p_TableBody_1">#yes-no</p>
+                        <p class="p_TableBody_1">#adherence-issue-reason</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

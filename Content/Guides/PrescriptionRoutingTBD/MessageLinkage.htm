@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="886.3333" MadCap:lastWidth="804">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="1" MadCap:timestamp="2017-04-24T12:43:59.8927012-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="2" MadCap:timestamp="2017-04-24T12:44:41.1334112-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="3" MadCap:timestamp="2017-04-24T12:45:03.2768814-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="4" MadCap:timestamp="2017-04-24T12:45:56.8664546-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="5" MadCap:timestamp="2017-04-24T12:46:57.2165630-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="6" MadCap:timestamp="2017-04-24T12:49:41.8060634-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc443643397"></a>Message Linkage</h1>
+        <p class="BodyText1">In order to link messages together four key fields are defined below. This linkage allows a software system to tie one message to another. For example, on a <span style="font-style: italic;">Refill Renewal Request </span>the prescribing system needs to find the original <span style="font-style: italic;">NewRx</span> to which the pharmacy is referring. This linkage should be done in an automated manner.</p>
+        <p class="BodyText1" style="margin-left: 0pt;">
+            <MadCap:change MadCap:changes="1">UIB-030-01 Transaction Control Reference/</MadCap:change>&lt;MessageID&gt; – The unique number assigned to each message.</p>
+        <p class="BodyText1" style="margin-left: 0pt;">
+            <MadCap:change MadCap:changes="1">UIB-030-02 Initiator Reference ID/</MadCap:change>&lt;RelatesToMessageID&gt; –The UIB-030-01 &lt;MessageID&gt; of the message being responded to.</p>
+        <p class="BodyText1" style="margin-left: 0pt;">
+            <MadCap:change MadCap:changes="1">UIH-020&#160;&#160;&#160;&#160;&#160; Message Reference Number/</MadCap:change>&lt;RxRefereneNumber&gt; – The prescription number assigned by pharmacy system.</p>
+        <p class="BodyText1" style="margin-left: 0pt;">
+            <MadCap:change MadCap:changes="1">UIH-030-1&#160;&#160; Initiator Control Reference/</MadCap:change>&lt;PrescriberOrderNumber&gt; – The prescription number created by the prescribing system. For diagram below this is called PON.</p>
+        <p class="BodyText1">The table below shows how these fields are linked together for each message type.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 168px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 135px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 136px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 182px;" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="font-weight: bold;">NEWRX</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody">
+                        <MadCap:change MadCap:changes="2">(Requests)</MadCap:change><span style="font-weight: bold;">REFREQ/RXFILL<br />RXCHG/CANRX/<br />RESUPPLY</span>
+                    </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody">
+                        <MadCap:change MadCap:changes="2">(Responses)</MadCap:change><span style="font-weight: bold;">REFRES/CHGRES<br />CANRES</span>
+                    </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p MadCap:changes="2">2nd Renewal Request</p>
+                    <p class="TableBody" style="font-weight: bold;" MadCap:changes="3">NEWRX (Following Denied Refill Response)</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 12345 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 444333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 888333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">MessageID = 89999</p>
+                    <p class="TableBody" MadCap:changes="2">MessageID from REFRES</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = (<MadCap:change MadCap:changes="2">Messages translated from an earlier version may</MadCap:change><MadCap:change MadCap:changes="3">should</MadCap:change> contain the Message ID of the Refill Renewal Response on a DNTF)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 12345</p>
+                    <p class="TableBody" MadCap:changes="4">(MessageID from NewRx)</p>
+                    <p class="TableBody" MadCap:changes="4">RelatesTo = 888333</p>
+                    <p class="TableBody" MadCap:changes="4" style="font-style: normal;">(MessageID from <i MadCap:changes="4">the requesting message to which the response applies</i>)</p>
+                    <p class="TableBody" style="font-style: normal;" MadCap:changes="5">REFRES or CHGRES (This field should also be used for matching back to NewRx)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 444333</p>
+                    <p class="TableBody" MadCap:changes="6" style="font-style: italic;">(MessageID from REFREQ/RXFILL, RXCHG, CANRX, RESUPP? the MessageID&#160;of the requesting message to which the response applies.</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 888333</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RxRef# = </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RxRef# = Pp56</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RxRef# = Pp56</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">RxRef# = Pp56 (Use this field first for matching back to refill response)</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PON = RX123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PON = RX123 ( This field should be used first for matching back to NewRx)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PON = RX123A (use a new PON for REFRES or CHGRES)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">PON = RX456</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="font-weight: bold;">STATUS</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 888</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 77777</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">MessageID = 555555</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">MessageID =111111</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 12345</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 444333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 888333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">RelatesTo = 89999</p>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

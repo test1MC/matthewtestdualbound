@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="885" MadCap:lastWidth="617">
+    <head>
+    </head>
+    <body>
+        <h2 class="Heading2">Delivery Notification Tracking</h2>
+        <p class="BodyText1">Surescripts recommends XDR customers support Delivery Notification Tracking. The format of the delivery status notification will conform to section – 1.5.2.1.1 "Delivery Status Notifications Using XDR” within the <i>Implementation Guide for Direct Edge Protocols, </i>Version 1.1, 25 June 2014.</p>
+        <h3 class="Heading3">Send/Receive Delivery Notifications</h3>
+        <p class="StylebodytextBold">Send DSN – Receiving System</p>
+        <p class="BodyText1">When configured to send delivery notifications, the receiving system must send a follow-up DSN, per recipient, indicating the successful or failed delivery of the message to the intended recipient. If the receiving system does not send a follow-up DSN, the message remains “In Process.”</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> A DSN must be returned for each recipient managed by the receiving system.</p>
+        <p class="StylebodytextBold">Receive DSN – Sending System</p>
+        <p class="BodyText1">When configured to receive delivery notifications, the sending system should always expect to receive a follow-up DSN, per recipient, indicating success or failure of the message regardless of whether the header includes the request for the follow-up message.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A DSN will be returned for each recipient on the XDR message.</p>
+        <h3 class="Heading3">No Delivery Notification Tracking</h3>
+        <p class="BodyText1">For sending systems that are not configured to send delivery notifications, the final status of the message can be obtained by contacting the recipient directly.</p>
+        <p class="StylebodytextBold">Send – Receiving System</p>
+        <p>When the receiving system is not configured to send delivery notifications, the</p>
+        <ul>
+            <li>Success response will be translated into a <i>DSN: Success</i></li>
+            <li style="font-style: normal;">Failure response will be translated into a<i> DSN: Failure</i></li>
+        </ul>
+        <p>The XDR message will be identified with its final status and no further responses will be expected.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Receive – Sending System</p>
+        <p class="BodyText1">When the sending system is not configured to receive delivery notifications, Surescripts verifies if the direct address can be routed and responds with a success if the message is routable. The success response does not indicate if the message has been successfully delivered to the receiving system. The sending system will receive no further messages confirming delivery of the message.</p>
+    </body>
+</html>

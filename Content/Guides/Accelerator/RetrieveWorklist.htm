@@ -1,0 +1,933 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="162" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="Retrieve_Worklist"></a>Retrieve Worklist</h2>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.PatientNotificationsAccelerator">Retrieve worklist returns the list of active tasks awaiting action based on the given filter criteria. The items returned by a worklist request either have the acceptedBy as the user in the worklist request or the acceptedBy is null.</p>
+        <h3 class="Heading3" MadCap:conditions="Default.MedMgmtAccel"><a name="_Toc433355842"></a>Patient Worklist</h3>
+        <h3 class="Heading3" MadCap:conditions="Default.ePAAccel"><a name="Retrieve_Worklist_Patient"></a>Retrieve Worklist by Patient</h3>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">Retrieving a worklist by patient retrieves a paged list of the active tasks for a given patient.</p>
+        <p class="StylebodytextBold" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">Request Template Example</p>
+        <p class="BodyText1" MadCap:conditions="Default.MedMgmtAccel">[GET] {{host}}/worklist?alternateId={alternateId}&amp;alternateOrganization={alternate<br />organization}&amp;alternateQualifier={ alternatequalifier }&amp;user={user}&amp;pageIndex={pageIndex}&amp;pageSize={pageSize}</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel">[GET] {{host}}/worklist?patientId={patientId}&amp;facility={facility}&amp;user={user}&amp;<br />pageIndex={pageIndex}&amp;pageSize={pageSize}</p>
+        <p class="StylebodytextBold" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Parameter</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Data Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">M/C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">patientId</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">an..35</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">Matches the patientId specified in the PAInitiationRequest/Body/Patient/Identification/MedicalRecordIdentificationNumberEHR.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">alternatetId</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">an..35</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">The patient PBM Unique Id returned from an eligibility 271.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">alternateOrganization</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">an..35</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">The payer Id returned from an eligibility 271.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">alternateQualifier</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">an..35</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody"><span style="font-weight: bold;">alternateQualifier</span>: PBMUID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">user</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">an..250</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Unique provider vendor system user ID representing the user working the task list. This user is not required to be a clinician vendor who has a registered SPI. </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">facility</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">an..35</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                    <p class="TableBody">Optional qualifier the vendor may use to make their Patient ID unique across their installations. Facility is only used in conjunction with patientId.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">pageSize</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Positive Int</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">pageIndex</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">Positive Int</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StylebodytextBold" MadCap:conditions="Default.MedMgmtAccel">Request Example<MadCap:conditionalText MadCap:conditions="Default.ePAAccel">s</MadCap:conditionalText></p>
+        <p style="font-weight: normal;" MadCap:conditions="Default.MedMgmtAccel">[GET] {{host}}/uiservice/api/v0/worklist?alternateId=PBM123456&amp;alternateOrganization=D44444444444444&amp;alternateQualifier=PBMUID&amp;user=jake</p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel">[GET] {{host}/uiservice/api/v0/worklist?patientId=george&amp;facility=clinic1&amp;user=jake  </p>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel">[GET] {{host}/uiservice/api/v0/worklist?patientId=george&amp;user=jake  </p>
+        <h3 class="Heading3"><a name="Get_Worklist_Recipients"></a>Get Worklist by Recipients</h3>
+        <p class="BodyText1">Retrieves a paged list of the active tasks for a given collection of recipients (providers).</p>
+        <p class="StylebodytextBold">Request Template Example</p>
+        <p class="BodyText1">[POST] {{host}}/worklist</p>
+        <p class="StylebodytextBold">Request JSON&#160;Fields</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;">JSON Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">user</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an..250</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique provider vendor system user ID representing the user working the task list. This user is not required to be a clinician vendor who has a registered SPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">recipients</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Collection of recipients for which Accelerator based tasks will be retrieved. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an13 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">SPI of the initiator.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">SPI's corresponding qualifier. </p>
+                        <p class="TableBody">Qualifier = <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold" style="page-break-before: always;">Request Example</p>
+        <p style="font-size: 9pt;">[POST] <span style="color: #0000ff; text-decoration: underline;">https://[host]/uiservice/api/v0/worklist</span> <![CDATA[ ]]></p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">{</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160; "user": "jake",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160; "recipients": [</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6417473720001"</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">D</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">ZZ</MadCap:conditionalText>",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160; ]</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">}</p>
+        <h3 class="Heading3"><a name="Retrieve_Worklist_Response"></a>Retrieve Worklist Response</h3>
+        <p class="StylebodytextBold">Response Codes and Fields</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">HttpStatus Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">200</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Successful response along with the processList and the corresponding process response fields</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                    <p class="TableBody">400</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Invalid request</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StylebodytextBold" style="page-break-before: avoid;">Description Message Body JSON Fields</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">items</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Collection of task details matching the corresponding process</p>
+                        <p class="TableBody">See <MadCap:xref href="#DescriptionMessageBody">Description Message Body - Items JSON Fields</MadCap:xref> table below.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the returned page index</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the page size </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">totalRows</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Integer representing the total number of rows matching the search criteria</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold"><a name="DescriptionMessageBody"></a>Description Message Body - Items JSON Fields</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 198px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 407px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique Surescripts ID which represents the process instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of the process</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiatorsProcessId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The initiatorsProcessId is the PAReferenceID as defined by the provider vendor system</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">taskId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique Surescripts ID which represents the task instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">taskName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of the task</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">alternateId</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">Patient PBM&#160;Unique ID</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">alternateOrganization</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">Payer ID</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">alternateQualifier</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;" MadCap:conditions="">PBMUID</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="TableBody">patientId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="TableBody">Vendor supplied patient ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="TableBody">facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="TableBody">Vendor supplied value to create uniqueness across vendor installations</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientFirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s first name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientLastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s last name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientDob</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s date of birth</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiator</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the recipients identifying data.&#160; </p>
+                        <p class="TableBody">Field(s) include:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                        <p class="TableBody">name</p>
+                        <p class="TableBody" MadCap:conditions="Default.ePAAccel">See the NCPDP SCRIPT Standard Implementation Guide version 2013101 for field definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">recipient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the recipient's identifying data.</p>
+                        <p class="TableBody">Field(s) include:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                        <p class="TableBody">name</p>
+                        <p class="TableBody">Note: Supported qualifiers are D and PY. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID.</p>
+                        <p class="TableBody">See the NCPDP SCRIPT Standard Implementation Guide version 2013101 for field definitions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">acceptedBy</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the accepted by identifying data.&#160; </p>
+                        <p class="TableBody">Field(s) include:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                        <p class="TableBody">name</p>
+                        <p class="TableBody">Note: Supported qualifiers are D, PY, and userId. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID. UserId is the User ID assigned by the provider vendor system.</p>
+                        <p class="TableBody">See the NCPDP SCRIPT Standard Implementation Guide version 2013101 for field <MadCap:annotation MadCap:createDate="2016-04-12T12:49:57.1482011-05:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="should this be here for Med MGmt?" MadCap:editor="megan.hayden" MadCap:editDate="2016-04-12T12:50:02.5772011-05:00">definitions</MadCap:annotation>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task was created.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">dueDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task is required to be completed by.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">acceptedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task was accepted to be worked on.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">responseDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task was responded to.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the status of the task: </p>
+                        <p class="TableBody">Task values are:</p>
+                        <p class="TableBody">1: Draft</p>
+                        <p class="TableBody">2: Pending</p>
+                        <p class="TableBody">3: Assigned</p>
+                        <p class="TableBody">4: Distributed</p>
+                        <p class="TableBody">5: Accepted</p>
+                        <p class="TableBody">6: Released</p>
+                        <p class="TableBody">7: Complete</p>
+                        <p class="TableBody">8: Cancelled</p>
+                        <p class="TableBody">9: Errored</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">statusName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Textual name representing the status of the task.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.MedMgmtAccel">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">priority</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" MadCap:conditions="">
+                        <p>Integer representing the priority of the task
+</p>
+                        <p>Priority values are: </p>
+                        <p>Alert = 5
+</p>
+                        <p>Urgent = 4
+</p>
+                        <p>High = 3
+</p>
+                        <p>Medium = 2
+</p>
+                        <p>Low = 1
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel">&#160;</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.PatientNotificationsAccelerator">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 198px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 407px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique Surescripts ID which represents the process instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of the process</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiatorsProcessId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The initiatorsProcessId is the ReferenceID as defined by the Surescripts</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Vendor supplied patient ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Vendor supplied value to create a unique patient identifier across vendor installations.</p>
+                        <p class="TableBody"><b>Note</b>: This value is pulled from Assign Authority sent in the Patient Enrollment File.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientFirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s first name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientLastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s last name</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientDob</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s date of birth</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiator</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the recipients identifying data.&#160; </p>
+                        <p class="TableBody"><b>Field(s) include</b>:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task was created</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>description</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The Notification(s) for which the patient is enrolled.</p>
+                        <p><b>Description options</b>:</p>
+                        <p>Medication Picked Up: New Medication</p>
+                        <p>Medication Picked Up: Refill Medication</p>
+                        <p>Medication Picked Up: New Prescriber</p>
+                        <p>Medication Picked Up: Controlled Substance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">taskId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique Surescripts ID which represents the task instance</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">taskName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of the task</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">dueDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task is required to be completed by</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">acceptedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time task was accepted to be worked on</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the status of the task: </p>
+                        <p class="TableBody"><b>Task values are</b>:</p>
+                        <p class="TableBody">1: Draft</p>
+                        <p class="TableBody">2: Pending</p>
+                        <p class="TableBody">3: Assigned</p>
+                        <p class="TableBody">4: Distributed</p>
+                        <p class="TableBody">5: Accepted</p>
+                        <p class="TableBody">6: Released</p>
+                        <p class="TableBody">7: Complete</p>
+                        <p class="TableBody">8: Cancelled</p>
+                        <p class="TableBody">9: Errored</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">statusName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Textual name representing the status of the task.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">acceptedBy</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the accepted by identifying data.&#160; </p>
+                        <p class="TableBody"><b>Field(s) include</b>:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">recipient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the recipient's identifying data.</p>
+                        <p class="TableBody"><b>Field(s) include</b>:</p>
+                        <p class="TableBody">id</p>
+                        <p class="TableBody">qualifier</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">priority</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" MadCap:conditions="">
+                        <p>Integer representing the priority of the task.
+</p>
+                        <p><b>Priority value</b>: </p>
+                        <p>Medium = 2
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p MadCap:conditions="Default.MedMgmtAccel" class="StylebodytextBold"><span style="font-size: 12pt; font-family: Arial; font-weight: bold;">Worklist Response Example</span>
+        </p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processId": 671730,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processName": "High Risk Medication",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "46a7c15f.850a.4970.acdb.2d87a028c11a",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientFirstName": "HIRAM",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientLastName": "BACH",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientDob": "1933-12-15T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "PY",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "D00000000000444"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "createdDate": "2015-09-14T22:04:50.807",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateId": "EHR32345",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateOrganization": "D00000000000444",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "alternateQualifier": "PBMUID",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskId": 3323936,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskName": "High Risk Medication Message",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "dueDate": "2015-09-30T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedDate": "2015-09-14T22:04:50.797",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "status": 5,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "statusName": "Accepted",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedBy": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "Userid",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "nancy"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "recipients": [</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6598607334001"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "priority": 5</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p class="StylebodytextBold"><span style="font-size: 12pt; font-weight: bold;" MadCap:conditions="Default.ePAAccel">Worklist Response Example</span>
+        </p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">{</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160; "pageIndex": 0,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160; "pageSize": 25,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160; "totalRows": 2,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160; "items": [</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "processId": 123268,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "processName": "ePA Case",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "a27332aae4a04340a512be900bf09ca0",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientId": "elizabeth",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "facility": "clinic2",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientFirstName": "Elizabeth",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientLastName": "Johanson-Anderson",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientDob": "1967-08-13T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6223033492001",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "createdDate": "2014-12-10T21:47:59.582",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "taskId": 674376,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "taskName": "Complete PA Form",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "dueDate": "2013-08-13T09:30:47",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "status": 4,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "statusName": "Distributed",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "recipient": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6223033492001",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "processId": 123266,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "processName": "ePA Case",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "abd2dc86d5ab4ad09fe7ffa203411ee2",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientId": "george",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "facility": "clinic1",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientFirstName": "George",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientLastName": "Jetson",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "patientDob": "1962-11-23T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6223033492001",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "createdDate": "2014-12-10T21:47:50.798",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "taskId": 674370,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "taskName": "Complete PA Form",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "dueDate": "2013-08-13T09:30:47",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "status": 4,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "statusName": "Distributed",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; "recipient": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6223033492001",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">&#160; ]</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.ePAAccel">}</p>
+        <p MadCap:conditions="Default.PatientNotificationsAccelerator" class="StylebodytextBold"><span style="font-size: 12pt; font-family: Arial; font-weight: bold;">Worklist Response Example</span>
+        </p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processId": 671730,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processName": "Care Alert Request",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "46a7c15f.850a.4970.acdb.2d87a028c11a",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientId": "12345",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "facility": "12345",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientFirstName": "John",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientLastName": "Smith",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "patientDob": "1933-12-15T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "NP",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "D00000000000444"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "createdDate": "2015-09-14T22:04:50.807",</p>
+        <p style="font-family: Arial; font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "description": "Medication Picked Up: New Medication",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskId": 3323936,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "taskName": "Patient Monitoring Alert",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "dueDate": "2015-09-30T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedDate": "2015-09-14T22:04:50.797",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "status": 5,</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "statusName": "Accepted",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "acceptedBy": {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "Userid",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "nancy"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "recipients": [</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "ZZ",</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6598607334001"</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "priority": 2</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p MadCap:conditions="Default.PatientNotificationsAccelerator" class="StylebodytextBold">Error Response Example</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">HTTP/1.1 400 Bad Request</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Cache-Control: no-cache</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Pragma: no-cache</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Content-Type: application/json; charset=utf-8</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Expires: -1</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Date: Mon, 04 Aug 2014 19:28:02 GMT</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; Content-Length: 148</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160; "message": "The request body cannot be empty."</p>
+        <p style="font-family: Arial;font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160; }</p>
+    </body>
+</html>

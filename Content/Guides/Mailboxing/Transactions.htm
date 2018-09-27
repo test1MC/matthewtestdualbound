@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc446417710"></a>Messaging Overview</h1>
+        <p class="BodyText1">This section lists the GetMessage and acknowledgement messages used in the Mailboxing service message flow.</p>
+        <h2 class="Heading2">Message Descriptions</h2>
+        <p>This section describes the Mailboxing Service <span class="code">GetMessage</span> and Acknowledgement messages. </p>
+        <h3 class="Heading3"><a name="_Toc446417711"></a>Mailboxing Service GetMessage</h3>
+        <p class="BodyText1">The Mailboxing service uses the <span class="code">GetMessage</span> message in the service message flow. The <span class="code">GetMessage</span> is used to retrieve messages from the Mailboxing service. The response to each <span class="code">GetMessage</span> request is a routing message that is retrieved from the mailbox, or a <span class="code">Status</span> message, indicating that the mailbox is empty.</p>
+        <p class="BodyText1"> Refer to the  Surescripts E-Prescription Companion Guide for additional prescription routing messages.</p>
+        <h3 class="Heading3">Acknowledgement Messages</h3>
+        <p>The following acknowledgement messages are supported.</p>
+        <p class="StylebodytextBold">Verify</p>
+        <p class="BodyText1">
+            <MadCap:snippetText src="../../Resources/Snippets/CommonContent/Verify.flsnp" />
+        </p>
+        <p class="StylebodytextBold">Error</p>
+        <p class="BodyText1">This NCPDP SCRIPT message transmits that an error has occurred, indicating the request was terminated. An error can be generated when there is a communication problem or when the message actually had an error (e.g. a formatting problem).</p>
+        <p class="StylebodytextBold">Status</p>
+        <p class="BodyText1">This NCPDP SCRIPT message is used to communicate an acceptance message. Status messages will be sent to indicate receipt of a valid message.</p>
+        <h2 class="Heading2"><a name="_Toc446417712"></a>Push Message Flow Without Mailboxing</h2>
+        <p class="BodyText1">The following diagram shows the push message flow without Mailboxing for a prescriber system sending a <span class="code">NewRx</span> to Surescripts and Surescripts “pushing” the e-prescribing messages directly to the pharmacy recipient over a persistent Internet connection. The Mailboxing service is not required because the persistent Internet connection enables a continuous message flow from the prescriber system to Surescripts and on to the pharmacy. The push message flow is further described in the Surescripts E-Prescribing Companion Guide.</p>
+        <p class="BodyText1">&#160;</p>
+        <p>
+            <img src="../../Resources/Images/Mailboxing_6.0/Typical Push Transaction flow.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p>&#160;</p>
+        <p style="font-weight: bold;">Push Message Flow without Mailboxing Steps</p>
+        <ol>
+            <li> The prescriber system sends an HTTPS Request: <span class="code">NewRx</span> to Surescripts.</li>
+            <li> Surescripts sends the HTTPS Request: <span class="code">NewRx</span> to the pharmacy.</li>
+            <li>The pharmacy responds to Surescripts with an HTTPS Request: <span class="code">Status</span> or <span class="code">Error</span> message.</li>
+            <li>Surescripts forwards the HTTPS Request: <span class="code">Status</span> or <span class="code">Error</span> message to the prescriber system.</li>
+        </ol>
+    </body>
+</html>

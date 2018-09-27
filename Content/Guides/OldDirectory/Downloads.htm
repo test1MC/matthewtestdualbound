@@ -1,0 +1,2133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="10303.33" MadCap:lastWidth="1097">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc441585638"></a>Downloads</h1>
+        <p class="BodyText1">Network customers can download flat file lists of organizations and providers registered within the network. The lists are filtered based on the access of the network customer performing the download. Customer may choose to do a full nightly download or nightly delta downloads and complete a full update at least once a week. The same rules apply to downloads via the Admin Console or Directory Download Request messages.</p>
+        <p class="BodyText1">Surescripts generates Full download files every night, which contain every organization/provider available to the network customer performing the download. Nightly download files are a delta file of the records that changed during the course of that specific day.</p>
+        <p class="BodyText1">The Directory Download Response will either be an Error message (when there are no new updates or an error is encountered) or a DirectoryDownloadResponse message. There are two ways to get the directory downloads:</p>
+        <ol>
+            <li style="margin-left: 0pt;">Submit a directory download request message via directory messaging process. Surescripts processes the request and responds with either an Error Message or a DirectoryDownloadResponse, which includes the file name.</li>
+            <li style="margin-left: 0pt;">Admin Console: “Directory Downloads” web page (refer to the Admin Console guide for directory downloads.)</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc441585639"></a>DirectoryDownloadRequest – Diagram</h2>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Directories 4.6/DirectoryDownload Request.png" style="visibility: visible;mso-wrap-style: square;width: 460px;height: 173px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <h2 class="Heading2"><a name="_Toc441585640"></a>DirectoryDownloadRequest Elements</h2>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 392px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">DATA TYPE</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">&lt;AccountID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Account ID of the network customer performing the download, provided by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;VersionID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText">Version of the flat file format requested; up to two versions can be generated per account, based on configuration.</p>
+                        <p class="TableText">Valid values:</p>
+                        <p class="TableText">4.4</p>
+                        <p class="TableText">4.5</p>
+                        <p class="TableText">4.6</p>
+                        <p class="TableText">Surescripts provides version numbers to help you manage the transition from one version to another.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;TaxonomyCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText">Used to determine what type of download is being requested by the network customer:</p>
+                        <p class="TableText">Values:</p>
+                        <p class="TableText">193200000X - provider directory download</p>
+                        <p class="TableText">183500000X – organization directory download</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;DirectoryDate&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableText">Date of the nightly delta download file requested by network customer in YYYYMMDD format. If omitted, a full download file is retrieved. This date should be today’s date.</p>
+                        <p class="TableText">Files are available in the Admin Console for seven days.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="_Toc441585641"></a>DirectoryDownloadResponse</h2>
+        <p class="BodyText1">DirectoryDownloadResponse includes a name of the directory download flat file. For Directory Download URL details, please refer to the Surescripts Connectivity and Authentication Implementation Guide.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">When there are no new updates for the date requests, an ERROR is returned. See the following example:</p><pre><p>&lt;Error&gt;</p><p>&#160; &lt;Code&gt;900&lt;/Code&gt;</p><p>  &lt;DescriptionCode&gt;904&lt;/DescriptionCode&gt;</p><p>  &lt;Description&gt;No new updates available for download.&lt;/Description&gt;</p><p>&lt;/Error&gt;</p></pre>
+        <h2 class="Heading2"><a name="_Toc441585642"></a>DirectoryDownloadResponse – Diagram</h2>
+        <p class="Graphic" style="page-break-after: avoid;page-break-inside: avoid;">
+            <img src="../../Resources/Images/Directories 4.6/DirectoryDownloadResponse.bmp" MadCap:mediastyle="@media print { max-width: 65%; }" style="width: 411px;height: 50px;" />
+        </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The URL element shown in the diagram above and in the following element table is actually the filename that was returned in the URL field in the DirectoryDownloadResponse.</p>
+        <h2 class="Heading2"><a name="_Toc441585643"></a>DirectoryDownloadResponse Elements</h2>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 81px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 106px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 241px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">DATA TYPE</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #c0c0c0;">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;URL&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">an..210</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">For XML examples, see <a href="Examples.htm">Examples.</a></p>
+        <h2 class="Heading2"><a name="_Toc441585644"></a>Provider Flat File Overview</h2>
+        <p class="BodyText1">Provider demographic and routing information are valuable assets to our provider network customers. A provider/prescriber vendor has access to demographic data for providers they maintain. An organization/pharmacy vendor has access to demographic data for all e-prescribing providers. In addition, all vendors who support clinical messaging have access to demographic data for providers registered with a clinical messaging service level, such as <span style="font-style: italic;">CIMessage</span> or <span style="font-style: italic;">CIEvent</span>, regardless of which vendor registered the provider.</p>
+        <p class="BodyText1">Newly registered e-prescribing providers will be active in the directory immediately. However, pharmacy customers will see the <span style="font-style: italic;">Refill</span> service level in the download only after five successful <span style="font-style: italic;">NewRx</span> messages have been sent by the provider.</p>
+        <p class="BodyText1">Directory download files include all records to which the requester has access.</p>
+        <p class="StylebodytextBold">Full directory download files:</p>
+        <ul>
+            <li>Records with ActiveEndTime more than 30 days in the past will not be included in directory files.</li>
+            <li>The record detail will remain in the Full download file for 30 days from the ActiveEndTime for a deactivated provider.</li>
+        </ul>
+        <p class="StylebodytextBold">Nightly/Delta directory download files:</p>
+        <ul>
+            <li>All records with ActiveStartTime within the last 24 hours will be included with RecordChange field value of "<span style="font-weight: bold;">N</span>" (for New).</li>
+            <li>All records with ActiveEndTime within the last 24 hours will be included with the RecordChange field value of "<span style="font-weight: bold;">D</span>" (for Deactivated).</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> A deactivated record contains no service levels and an ActiveEndTime  in the past.</p>
+        <ul>
+            <li>If none of the above applies and LastModifiedTime is within the last 24 hours, the record will be included with a RecordChange field value of "<span style="font-weight: bold;">U</span>" (for Updated).</li>
+        </ul>
+        <p class="StylebodytextBold">Flat File Format</p>
+        <p class="BodyText1">Each field is delimited by the pipe character (|). Each line is separated by a new line (hex 0A) character. The tilde character (~) is used as a repetition character. If a pipe character (hex 7C) is used in field data, it will be escaped when returned in the directory download file with \F\. For example, Clinic | Name would be returned in the directory download as Clinic \F\ Name.</p>
+        <h2 class="Heading2"><a name="_Toc441585645"></a>Provider Delimited Download Elements</h2>
+        <p>** Required field may be empty in nightly or full downloads.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 302px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #d3d3d3;">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #d3d3d3;">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #d3d3d3;">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #d3d3d3;">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">Surescripts Provided</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #d3d3d3;">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description/Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">SPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">DEA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">Required for sending controlled substance on new prescriptions, refill renewal and change response messages.</p>
+                        <p class="TableBody" style="page-break-after: avoid;">See  for a more detailed description.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StateLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SpecialtyCodePrimary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">AMA and NUCC values are supported.<br />SpecialtyQualifier is listed below.</p>
+                        <p class="TableBody">For AMA values, please refer to <a href="AppendixA_CodeSets.htm">Code Sets</a>.</p>
+                        <p class="TableBody">For NUCC values, visit the website <a href="http://www.NUCC.org" target="_blank"><span class="Hyperlink" style="font-size: 9pt;">www.NUCC.org</span></a> and click on the Provider Taxonomy codes under the Code Sets tab. <a href="http://www.nucc.org/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=117" target="_blank"><span class="Hyperlink" style="font-size: 10pt;">http://www.nucc.org/index.php?option=com_content&amp;view=article&amp;id=22&amp;Itemid=117</span></a></p>
+                        <p class="TableBody"><span style="font-weight: bold;">Note:</span> Values can change over time. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PrefixName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">LastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider Last Name should be legal name as it appears on government-issued ID&#160;or state medical license; alignment with how the last name is represented in NPPES&#160;NPI&#160;Registry is strongly recommended.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">FirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider First Name should be legal name as it appears on government-issued ID&#160;or state medical license; alignment with how the first name is represented in NPPES NPI Registry is strongly recommended.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MiddleName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SuffixName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Suffix – Since some states require credentials this field can be used for that purpose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ClinicName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Name of the practice.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AddressLine1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Street and number for the practice location of the provider and matches the content of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Physical sub-section of a building or location (e.g. Suite, Floor)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">City</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">City of the practice address of the provider and used in electronic communications.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">State</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">State of the practice address of the provider and used in electronic communications.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Zip</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Zip Code of the practice address of the provider and used in electronic communications.</p>
+                        <p class="TableBody">Do not include punctuation. Canadian postal codes are not supported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedAddressLine1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td rowspan="5" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The address above in a standardized format based on a CASS (Coding Accuracy Support System) approved standard.</p>
+                        <p class="TableBody">According to the USPS, addresses that are CASS approved have been validated as mailable/deliverable as a physical mailing address.</p>
+                        <p class="TableBody">Note: Standardized address will be empty when the original input is not a valid USPS address.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedAddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedCity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedState</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedZip</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PhonePrimary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Phone number where provider would like to be contacted regarding patient care, including prescription orders.</p>
+                        <p class="TableBody">All phone numbers must follow the format: 8883331212x1234. Please note this extension is just an example. Less/more than four digits are allowed.</p>
+                        <ul>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 9pt;">Phone number must be 10 digits. If &gt; 10, then 11th digit must be an x, followed by an extension.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 9pt;">Area code cannot be 555.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 9pt;">Area code cannot start with a 0 or a 1.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 9pt;">Phone number cannot have &gt; 7 repeated digits.</li>
+                        </ul>
+                        <p class="TableBody">In Directory messages and NCPDP SCRIPT, this value is qualified by TE.</p>
+                        <p class="TableBody">Required unless provider has clinical messaging service levels ONLY.</p>
+                        <p class="TableBody">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Fax</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Fax number where provider would like to have faxed communication, which will be used to communicate patient confidential information and therefore must be secure from the public. In Directory messages and NCPDP SCRIPT, this value is qualified by FX.</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">- Fax number must be 10 digits, no punctuation</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Area code cannot be 555.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Area code cannot start with a 0 or a 1.</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">- Fax number cannot have &gt; 7 repeated numbers.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">Required unless provider has clinical messaging service levels ONLY.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Email</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..80</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider’s office email address.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AlternatePhoneNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Alternate phone numbers. Six AlternatePhoneNumbers allowed. Repetitions separated by ~. Number and Qualifier separated by ^. The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                        <p class="TableBody">Example: |6512321111^BN~6122212222^CP|</p>
+                        <p class="TableBody">The schema allows the following qualifiers where these are the same qualifiers you will see in the download:</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">BN = beeper</p>
+                        <p class="TableBody" style="margin-top: 3pt;">CP = cellular</p>
+                        <p class="TableBody">FX = fax</p>
+                        <p class="TableBody">HP = home</p>
+                        <p class="TableBody">NP = night</p>
+                        <p class="TableBody">TE = telephone</p>
+                        <p class="TableBody" style="margin-top: 3pt;">WP = work</p>
+                        <p class="TableBody" style="margin-top: 3pt;"><span style="font-weight: bold;">Note: </span>Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ActiveStartTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Date when the provider is added to the Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) should be used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ActiveEndTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) should be used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                        <p class="TableBody">Providers with ActiveEndTime more than 30 days in the past will not be included in directory files. For example, if ActiveEndTime is set to today’s date, the record would still be active until 12 AM UTC.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ServiceLevel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Designates the provider’s capabilities. Multiple service levels are separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element. Example: |New~Refill|. For more detail, please refer to <a href="AppendixB_ServiceLevelTypes.htm">Service Level Types</a>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PartnerAccount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The name of the portal for those provider records managed by the provider vendor. **</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">LastModifiedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Date account was last modified in the Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) is used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">RecordChange</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Indicates whether this record is new, updated, or deactivated.</p>
+                        <p class="TableBody">Valid Values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">N = New – records with ActiveStartTime within the last 24 hours.</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">U = Updated – records with LastModified Time within the last 24 hours that are not “N” or “D”.</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">D = Deactivated - records with ActiveEndTime within the last 24 hours. <span style="font-style: italic;">Appears in the nightly download only</span>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OldServiceLevel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Previous service level(s). Multiple service levels separated by ~. <span style="font-style: italic;">Appears in the nightly download only.</span><br />The character limit noted in the Data Type applies to each individual value in a repeatable field element. Example: |New~Refill|. Valid values are case sensitive and cannot be repeated. For more detail, please refer to <a href="AppendixB_ServiceLevelTypes.htm">Service Level Types</a>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Version</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SCRIPT Routing version used by the provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Individual NPI. Populated if the vendor provided NPI.</p>
+                        <p class="TableBody">Non-NPI providers will only be available in the directory download to the organization that registered them.</p>
+                        <p class="TableBody">NPI is not required for clinical messaging.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NPILocation</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="CommentText">Surescripts populates if the vendor provided NPI includes 3-digit location ID. Will be deprecated in a future version.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SpecialtyType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..140</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-right: 6pt;">Repetitions separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element. Example: |NP~InStoreClinic |</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Doctor</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- PA</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- NP</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Resident</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- InStoreClinic</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- MedReconciliation</p>
+                        <p class="TableBody" style="margin-top: 3pt;"><span style="font-weight: bold;">Note: </span>Surescripts supports four specialties per provider. Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">FileID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicareNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicaidNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DentistLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UPIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PPONumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SocialSecurity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier. Refer to Surescripts Prescription Routing Implementation Guide for Electronic Prescribing of Controlled Substances.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PriorAuthorization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MutuallyDefined</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Provider identifier.</p>
+                        <p class="TableBody">Note: For providers participating in the Learning Directory, this field will display “LL” for a record that has been learned and included in the directory.</p>
+                        <p class="TableBody">Records created under the Direct Trust account (for direct messaging) will display the associated HISP vendor value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">InStoreNCPDPID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Surescripts no longer uses this field, but it may be present in your file download.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DirectAddress</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..255</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Format: <a href="mailto:email@domain.com" class="Hyperlink" style="font-size: 9pt;" target="_blank">email@domain.com</a></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UseCases</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A use case has a defined set of expectations for message content for those participating.</p>
+                        <p class="TableBody">Repetitions separated by <span style="letter-spacing: 0pt;">~</span>. The character limit noted in the Data Type applies to each individual value in a repeatable field element.<br /> Example: <span style="letter-spacing: 0pt;">|usecase1~usecase2|</span></p>
+                        <p class="TableBody" style="letter-spacing: 0pt;">Not used for prescription routing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AvailableRoutes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Repetitions separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element.<br />Example: |CI EDI~CI Mail||</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- CI EDI</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- CI Fax</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- CI Mail</p>
+                        <p class="TableBody" style="margin-top: 3pt;"><span style="font-weight: bold;">Note: </span>Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;letter-spacing: 0pt;">Not used for prescription routing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OrganizationID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">This is the optional ID of the Organization assigned to the provider and can be cross referenced with the organization download.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Latitude</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Latitude of the provider's location.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Longitude</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Longitude of the provider's location.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Precise</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Indicator of whether the latitude and longitude are precise locations to the specific address or not.</p>
+                        <p class="TableBody">Valid Values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">Y = Yes</p>
+                        <p class="TableBody" style="margin-top: 3pt;">N = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">SpecialtyQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">an2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">AM = AMA</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">NU = Healthcare Provider Taxonomy (NUCC)</p>
+                        <p class="TableBody">Applies to the SpecialtyCodePrimary element above.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="_Toc441585646"></a>Organization Flat File Overview</h2>
+        <p class="BodyText1">An organization is an entity that can send and receive messages using the proper credentials. An organization can be a Pharmacy, Payer or General Organization, such as a clinic, private practice, or hospital department. Organization demographic and routing information is a valuable asset to our organization customers.</p>
+        <p class="BodyText1">An organization/pharmacy vendor has access to demographic data for organizations they maintain. In addition, organization/pharmacy vendors who support clinical messaging have access to demographic data for organizations registered with a clinical messaging service level, such as CIMessage or CIEvent regardless of which vendor registered the organization. A provider/prescriber vendor has access to demographic data for all pharmacy, payer, and general organizations with matching service levels. In other words, provider/prescriber vendors with a clinical messaging service level will have access to organizations with a clinical messaging service level and e-prescribing providers will have access to e&#8209;prescribing organization/pharmacies, etc.</p>
+        <p class="BodyText1">The Flat File Name and location is contained in the Directory Download Response.</p>
+        <p class="BodyText1">Directory download files include all records to which the requester has access.</p>
+        <p class="StylebodytextBold">Full directory download files:</p>
+        <ul>
+            <li>Records with ActiveEndTime more than 30 days in the past will not be included in directory files.</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">The record detail will remain in the Full download file for 30 days from the ActiveEndTime for a deactivated provider.</li>
+        </ul>
+        <p class="StylebodytextBold">Nightly/Delta directory download files:</p>
+        <ul>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">All records with ActiveStartTime within the last 24 hours will be included with RecordChange field value of "<span style="font-weight: bold;">N</span>" (for New).</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">All records with ActiveEndTime within the last 24 hours will be included with the RecordChange field value of "<span style="font-weight: bold;">D</span>" (for Deactivated).</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A deactivated record contains no service levels and an ActiveEndTime in the past.</p>
+        <ul>
+            <li>All records with ActiveEndTime in the past -- but not with ActiveEndTime within the last 24 hours will not be included.</li>
+            <li>If none of the above applies and LastModifiedTime is within the last 24 hours, the record will be included with RecordChange field value of "<span style="font-weight: bold;">U</span>" (for Updated).</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc441585647"></a>Organization Delimited Download Elements</h2>
+        <p>** Required field may be empty in nightly or full downloads.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Surescripts Provided</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">NCPDPID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">an..7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required for Pharmacy Organization type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StoreNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OrganizationName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Name of the organization in the download.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AddressLine1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Physical address of the organization.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">City</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">City name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">State</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Zip</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Do not include punctuation. Canadian postal codes are not supported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">StandardizedAddressLine1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;">Y</p>
+                    </td>
+                    <td rowspan="5" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The address above in a standardized format based on a CASS-approved standard.</p>
+                        <p class="TableBody">According to the USPS, addresses that are CASS approved have been validated as mailable/deliverable as a physical mailing address.</p>
+                        <p class="TableBody">Note: Standardized address will be empty when the original input is not a valid USPS address.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedAddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedCity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedState</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StandardizedZip</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PhonePrimary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Doctor call-in phone number where pharmacy Organization type would like to be contacted regarding prescription orders.</p>
+                        <p class="TableBody">All phone numbers must follow the following format: 8883331212x1234. Please note this extension is just an example. Less/more than four digits are allowed.</p>
+                        <ul>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Phone number must be 10 digits, If &gt; 10, then 11th digit must be an x, followed by an extension.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Area code cannot be 555.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Area code cannot start with a 0” or a 1.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Phone number cannot have &gt; 7 repeated numbers.</li>
+                        </ul>
+                        <p class="TableBody">In Directory messages and NCPDP SCRIPT, this value is qualified by TE.</p>
+                        <p class="TableBody">Required unless Organization has clinical messaging service levels ONLY.</p>
+                        <p class="TableBody">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Fax</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Fax number where Organization type pharmacy would like to have faxed communication with provider - the fax number will be used to communicate patient confidential information and therefore must be secure from the public. In Directory messages and NCPDP SCRIPT, this value is qualified by FX.</p>
+                        <ul>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Fax number must be 10 digits, no punctuation.</li>
+                            <li style="margin-top: 3pt;font-size: 10pt;">Area code cannot be 555.</li>
+                            <li style="margin-top: 3pt;font-size: 10pt;">Area code cannot start with a 0 or a 1.</li>
+                            <li style="margin-top: 3pt;margin-left: 0pt;font-size: 10pt;">Fax number cannot have &gt; 7 repeated numbers.</li>
+                        </ul>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;">Required unless Organization has clinical messaging service levels ONLY.</p>
+                        <p class="TableBody" style="margin-top: 3pt; margin-left: 0pt;">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Email</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..80</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Organization’s email address. This is not a Direct Address for clinical messaging.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AlternatePhoneNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Alternate phone numbers. Six AlternatePhoneNumbers allowed. Repetitions separated by ~. Number and Qualifier separated by ^. The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                        <p class="TableBody">Example: |6512321111^BN~6122212222^CP|.</p>
+                        <p class="TableBody">The schema allows the following qualifiers where these are the same qualifiers you will see in the download:</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">BN = beeper</p>
+                        <p class="TableBody" style="margin-top: 3pt;">CP = cellular</p>
+                        <p class="TableBody" style="margin-top: 3pt;">FX = fax</p>
+                        <p class="TableBody">HP = home</p>
+                        <p class="TableBody">NP = night</p>
+                        <p class="TableBody">TE = telephone</p>
+                        <p class="TableBody" style="margin-top: 3pt;">WP = work</p>
+                        <p class="TableBody"><span style="font-weight: bold;">Note: </span>Additional values may be added. Systems should not fail if an unexpected value is received. The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ActiveStartTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Date when the organization is added to the Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) is used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                        <p class="TableBody">Pharmacies with ActiveStartTime in the future or ActiveEndTime more than 30 days in the past will not be included in directory files intended for prescriber accounts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ActiveEndTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) is used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                        <p class="TableBody">Pharmacies with ActiveStartTime in the future or ActiveEndTime more than 30 days in the past will not be included in directory files intended for provider accounts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ServiceLevel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 3pt;">Designates the organization’s capabilities. Multiple service levels are separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element. Example: |New~Refill|. For more detail, please refer to <a href="AppendixB_ServiceLevelTypes.htm">Service Level Types</a>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PartnerAccount</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The name of the portal for those provider records managed by the provider vendor.**</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">LastModifiedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Date account was last modified in the Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) is used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">CrossStreet</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-left: 5pt;margin-right: 0pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">RecordChange</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Indicates whether this record is new, updated, or deactivated.</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p style="margin-top: 3pt;margin-left: 0pt;margin-right: 0pt;">N = New – records with ActiveStartTime within the last 24 hours.</p>
+                        <p style="margin-top: 3pt;margin-left: 0pt;margin-right: 0pt;">U = Updated – records with LastModified Time within the last 24 hours that are not “N” or “D”.</p>
+                        <p style="margin-top: 3pt;margin-left: 0pt;margin-right: 0pt;">D = Deactivated - records with ActiveEndTime within the last 24 hours. <span style="font-style: italic;">Appears in the nightly download only.</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OldServiceLevel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-right: 7pt;">Previous service level(s). Multiple service levels separated by ~. <span style="font-style: italic;">Appears in the nightly download only</span>.<br />The character limit noted in the Data Type applies to each individual value in a repeatable field element. Example: |New~Refill|. Valid values are case sensitive and cannot be repeated. For more detail, please refer to <a href="AppendixB_ServiceLevelTypes.htm">Service Level Types</a>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Version</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SCRIPT Routing version used by the provider.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Populated if NPI is provided by the vendor. Older entries may not have NPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SpecialtyType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..140</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Repetitions separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element.<br />Example: |Retail~TwentyFourHourStore|</p>
+                        <p class="TableBody">Valid values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- MailOrder</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- FaxPharmacySurescripts</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Retail</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Specialty</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- LongTermCare</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- TwentyFourHourStore</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- FaxPharmacyExternal</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- SupportsDigitalSignature</p>
+                        <p class="TableBody" style="margin-top: 3pt;"><span style="font-weight: bold;">Note: </span>Surescripts supports four specialties per pharmacy. Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">FileID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StateLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicareNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicaidNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PPONumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PayerID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">BINLocationNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DEANumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">HIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SecondaryCoverage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAICCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PromotionNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SocialSecurity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PriorAuthorization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MutuallyDefined</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Pharmacy identifier.<br />Records created under the Direct Trust account (for direct messaging) will display the associated HISP vendor value. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DirectAddress</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..255</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Address (identifier) used for clinical message routing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OrganizationType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- General</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Pharmacy</p>
+                        <p class="TableBody" style="margin-top: 3pt;">- Payer</p>
+                        <p class="TableBody" style="margin-top: 3pt;margin-left: 0pt;"><span style="font-weight: bold;">Note: </span>Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">OrganizationID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">This is the unique ID assigned to every organization by Surescripts. The Organization ID of a General Organization may be used on Add or Update Prescriber directory messages to link the provider to a general organization. This could allow for those searching for clinical messaging providers to find the proper recipient more easily.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ParentOrganizationID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A Surescripts-provided identifier which allows customers to create a hierarchy of organizations. This ID was created and returned when the parent organization was created in the Surescripts directory. Any organization type may be included in the hierarchy, as long as the customer adding the child organization manages the parent organization being assigned.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Latitude</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Latitude of the organization’s location.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Longitude</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n..9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Longitude of the organization’s location.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Precise</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Indicator of whether the latitude and longitude are precise locations to the specific address or not.</p>
+                        <p class="TableBody">Valid Values:</p>
+                        <p class="TableBody" style="margin-top: 3pt;">Y = Yes</p>
+                        <p class="TableBody" style="margin-top: 3pt;">N = No</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">UseCases</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">A use case has a defined set of expectations for message content for those participating.</p>
+                        <p class="TableBody">Repetitions separated by ~. The character limit noted in the Data Type applies to each individual value in a repeatable field element.<br />Example: |usecase1~usecase2|</p>
+                        <p class="TableBody" style="letter-spacing: 0pt;">Not used for prescription routing.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

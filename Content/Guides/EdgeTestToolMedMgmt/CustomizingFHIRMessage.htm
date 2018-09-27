@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="2615.333" MadCap:lastWidth="1224">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1">Customizing FHIR® Messages</h1>
+        <p class="BodyText1">The default set of FHIR® messages you receive for testing may be customized to your test plan.  This section assumes you are familiar with the FHIR® standard.  This Guide utilizes the HL7® FHIR® standard messaging standard DSTU 2 version 0.5 as a baseline.  Documentation can be obtained through HEALTH LEVEL SEVEN®.</p>
+        <p class="BodyText1">The HL7® FHIR® standard is copyrighted and may be obtained from: <a href="http://hl7.org/fhir/2015May/index.html" target="_blank">http://hl7.org/fhir/2015May/index.html</a></p>
+        <h2 class="Heading2"><a name="Targetin"></a>Targeting Message to a Provider</h2>
+        <p class="BodyText1">To send a High Risk Medication, Medication Adherence or Missing Medication message to a provider worklist enter the provider’s NPI into the Edge Test Tool NPI text box.</p>
+        <p class="BodyText1">If the Edge Test Tool NPI text box is blank, the message will NOT appear on the provider worklist.</p>
+        <p class="BodyText1">The provider must have the High Risk Medication, Medication Adherence and Missing Medication service levels enabled for a message to be targeted to the provider inbox.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/recipient.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">PBM/payers have the ability to designate the intended target of the communication/message through the CommunicationRequest.recipient element. Inclusion of this element will send the message to a practitioner inbox.</p>
+        <p class="BodyText1">High Risk Medication, Medication Adherence and Missing Medication messages you received include the recipient data element.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/recipientNPI.png" style="width: 770px;height: 333px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2"><a name="Changing"></a>Changing Priority of a Message</h2>
+        <p class="BodyText1">In the Surescripts accelerator UI urgent worklist messages have a priority of alert and are sorted to the top of the worklist with a red flag alert icon indicator.</p>
+        <p class="BodyText1">Message priority is designated in the Contraindication.severity element.  To designate a High Risk Medication, Medication Adherence or Missing Medication Message with an alert priority, add the severity data element with a value of “high”.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/MessagePriority.png" />
+        </p>
+        <h2 class="Heading2"><a name="Changing2"></a>Changing PBM/Payder Message Text</h2>
+        <p class="BodyText1">The message seen on the task detail UI is included in the Contraindication.text.div value.</p>
+        <p class="BodyText1">To customize the text message change the text included in the Contraindication.text.div value.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/PbmMsg.png" style="width: 1199px;height: 408px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2"><a name="Customiz"></a>Customizing Proportion of Days Covered (PDC) Score</h2>
+        <p class="BodyText1">The PDC score is contained in the PDC FHIR® message Observation resource within the contained.MedicationDispense.dosageInstruction.scheduleTiming.code.coding.value.</p>
+        <p class="BodyText1">PDC Value Interpretation based on the PDC score by the adherence profile summary API.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/PdcScore.png" />
+        </p>
+    </body>
+</html>

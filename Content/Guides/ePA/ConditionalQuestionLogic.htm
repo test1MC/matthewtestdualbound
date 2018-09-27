@@ -1,0 +1,844 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="4394" MadCap:lastWidth="1236">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Conditional Question Logic</h2>
+        <h3 class="Heading3"><a name="Conditio"></a>Conditional Question Logic Purpose</h3>
+        <p class="BodyText1">The NCPDP ePA standard is designed to minimize the number of questions a provider vendor must answer when requesting prior authorization for a drug. To accomplish this, the standard has features that enable the provider vendor to present only those <MadCap:annotation MadCap:createDate="2017-04-12T10:53:28.3769667-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="test" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-04-12T10:53:29.5811394-05:00">questions </MadCap:annotation>that pertain to the situation, based on:</p>
+        <ul>
+            <li>the patient’s specific pharmacy benefit</li>
+            <li>the particular prescribed medication</li>
+            <li>the provider vendor’s answers to clarifying questions contained in the electronic PA message</li>
+        </ul>
+        <p class="BodyText1">The goal is to improve on paper and PDF PA forms, which often contain questions relating to multiple medications and/or patient conditions. This forces the provider vendor to read and skip irrelevant questions in order to find those that apply to their patient and prescribed drug.</p>
+        <p class="BodyText1">Using the NCPDP ePA standard, the PBM/payer and provider vendor do the work of determining the specific subset of potential questions that need to be presented to the provider. The result is that: </p>
+        <ul>
+            <li>the PBM/payer limits the starting set of potential questions to those relating to the particular requested medication and the terms of the patient’s pharmacy benefit</li>
+            <li>the provider vendor only presents relevant questions as the provider vendor works through the electronic message. For example, the provider vendor’s answer about the patient’s diagnosis results in the provider vendor skipping questions related to other diagnoses.</li>
+        </ul>
+        <h3 class="Heading3"><a name="Question"></a>Question Logic Features</h3>
+        <p class="BodyText1">The following ePA message types may contain question sets:</p>
+        <ul>
+            <li>PAInitiationResponse</li>
+            <li>PAResponse</li>
+            <li>PAAppealResponse</li>
+        </ul>
+        <p class="BodyText1">The elements are available in the Question composite inside the Response structure and they function the same in all three message types.</p>
+        <h3 class="Heading3"><a name="Conditio2"></a>Conditional Question Logic Overview</h3>
+        <p class="BodyText1">Conditional question logic determines the next question to be answered by the provider vendor. In some cases, the next question is always the same, regardless of how the current question is answered. In other cases, the next question is based on the answer given to the current question. </p>
+        <p class="BodyText1">PBM/payers need to ensure strict quality control on the data fields so that the conditional question logic works as desired. Otherwise, additional questions will need to be sent to the provider vendor that should have been answered on the initial question set. This creates more work for both the provider vendor and the PBM/payer.</p>
+        <p class="BodyText1">PBM/payers should develop their question sets in the most efficient way. If the PBM/payer does not provide conditional question logic, it will take provider vendors longer to answer the question sets. It will also increase work on the PBM/payer side because the PBM/payer would have to review all answers.</p>
+        <p class="BodyText1">Other question logic features expand on the “if yes, then this; if no, then that” conditionality, enabling the next question to be determined based on:</p>
+        <ul>
+            <li>the answer to a multiple choice question, or</li>
+            <li>the range in which a numeric answer falls.</li>
+        </ul>
+        <p class="BodyText1">PBM/payers should avoid asking for information that is populated in other segments of the ePA message (e.g. patient age, gender, etc.).</p>
+        <ul>
+            <li>One option to consider is to pair a technical writer with a clinician so they can work together to determine the best way for the question sets to flow in order to get the necessary information from the provider vendor as efficiently as possible.</li>
+        </ul>
+        <h3 class="Heading3"><a name="Question2"></a>Question Logic Examples</h3>
+        <p class="BodyText1">Below are typical situations where ePA question logic would be used to convert conditional portions of paper PA forms into their electronic equivalents. The examples call out a few NCPDP message elements that play key roles in defining and arranging questions, including:</p>
+        <ul>
+            <li>SequenceNumber: Indicates the order in which questions are presented.</li>
+            <li>QuestionID: A unique identifier for each question in the message.</li>
+            <li>DefaultNextQuestionID: Used when the same next question is appropriate regardless of the current question’s answer.</li>
+            <li>NextQuestionID: Answer-specific field used when a question’s answer determines the next appropriate question.</li>
+            <li>the ePA question types that support conditional, answer-based logic:<ul><li>the Select question type: Used for Yes/No and multiple choice questions.</li><li>the Numeric question type and its SingleComparison and RangeComparison options: Enable the next question to be based on the answer’s relationship to a single value or a pair of lower and upper bound values.</li></ul></li>
+        </ul>
+        <p class="BodyText1">
+            <p class="BodyText1">Notes regarding the examples:</p>
+        </p>
+        <ul>
+            <li>Use of yes/no or multiple choice questions does not demand that conditional logic be employed. The next question following a multiple choice can be the same regardless of the choice selected by the provider vendor. <ul><li>To accomplish this, the DefaultNextQuestionID is specified for the question, and the NextQuestionID elements for each answer choice is not sent.</li></ul></li>
+            <li class="ListBullet5" style="list-style-type: disc;">The QuestionID gives a unique identity to each question in the PA. It is included for system use only, and is:<ul><li>not intended to be presented to the end-user</li><li>not required to match the sequence of the overall set of questions (i.e., a question with QuestionID 999 may precede a question with QuestionID 1). Instead, the SequenceNumber determines the order in which questions are presented.</li></ul></li>
+            <li class="ListBullet5" style="list-style-type: disc;">The number of questions presented to the provider vendor may vary depending on the question types and options defined in the ePA question set. The same electronic question set could result in two or ten questions for the provider vendor.</li>
+        </ul>
+        <p class="ListBullet5" style="margin-left: 90pt;">&#160;</p>
+        <h4 class="Heading4">Example 1: Yes / No Questions</h4>
+        <p class="BodyText1">This example is of a conditional next question logic based on yes/no questions.</p>
+        <p class="BodyText1">Original paper PA form:</p>
+        <ul>
+            <li>What is the patient’s diagnosis? </li>
+            <li>Has the patient had past use of any generic SSRI for the treatment of depression? (Y/N)</li>
+            <li>If not, does the patient have a history of contraindication, allergy or intolerance to generic SSRIs?</li>
+            <li>Is the patient currently taking the requested medication with a beneficial response?</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">Electronic version:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Sequence Number</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Question ID</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Default Next Question ID</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Question Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Question Text</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Choice Text</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 4pt;">Next Question ID</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">0640</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">406</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">FreeText</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">What is the patient’s diagnosis?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">2</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">406</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Has the patient had past use of any generic SSRI for the treatment of depression?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">888</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">999</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">3</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">888</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">999</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Does the patient have a history of contraindication, allergy or intolerance to generic SSRIs?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="2">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="2">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="2">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">END</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="2">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="2">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Is the patient currently taking the requested medication with a beneficial response?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">The two provider vendor question/answer possibilities examples below show how questions may vary based on how the prior question was answered. </p>
+        <p class="BodyText1">Provider vendor question/answer possibilities:</p>
+        <ul>
+            <li>What is the patient’s diagnosis? <span style="font-weight: bold;">Depression</span><ul><li style="page-break-after: avoid;page-break-inside: avoid;">Has the patient had past use of any generic SSRI for the treatment of depression? <span style="font-weight: bold;">Y</span></li><li style="page-break-after: avoid;page-break-inside: avoid;">Does the patient have a history of contraindication, allergy or intolerance to generic SSRIs? <span style="font-weight: bold;">Y</span></li><li style="page-break-after: avoid;page-break-inside: avoid;">Is the patient currently taking the requested medication with a beneficial response? <span style="font-weight: bold;">N</span></li></ul></li>
+            <li class="ListBullet5" style="list-style-type: disc;">What is the patient’s diagnosis? <span style="font-weight: bold;">Depression</span><ul><li style="page-break-after: avoid;page-break-inside: avoid;">Has the patient had past use of any generic SSRI for the treatment of depression? <span style="font-weight: bold;">N</span></li><li style="page-break-after: avoid;page-break-inside: avoid;">Is the patient currently taking the requested medication with a beneficial response? <span style="font-weight: bold;">N</span></li></ul></li>
+        </ul>
+        <h4 class="Heading4">Example 2: Multiple Choice Between Diagnoses</h4>
+        <p class="BodyText1">This example is of a conditional next question logic based on a multiple choice questions between diagnoses.</p>
+        <p class="BodyText1">Original paper PA form:</p>
+        <ul>
+            <li>Patient’s Diagnosis</li>
+            <li>If the diagnosis is asthma, is the patient currently using an orally inhaled corticosteroid?</li>
+            <li>If the diagnosis is asthma and the patient is not currently using an orally inhaled corticosteroid, does the patient have a history of intolerance or failure to that treatment?</li>
+            <li>If the diagnosis is asthma, does the patient have contraindications (such as allergy) to inhaled corticosteroids?</li>
+            <li>If the diagnosis is asthma, is the patient physically able to use an orally inhaled corticosteroid device?</li>
+            <li>If the diagnosis is allergic rhinitis, is the patient currently using a nasally inhaled corticosteroid?</li>
+            <li>If the diagnosis is allergic rhinitis and the patient is not currently using a nasally inhaled corticosteroid, does the patient have a history of intolerance or failure to that treatment?</li>
+            <li>If the diagnosis is allergic rhinitis, does the patient have contraindications (such as allergy) to inhaled corticosteroids?</li>
+            <li>If the diagnosis is allergic rhinitis, is the patient physically able to use a nasally inhaled corticosteroid device?</li>
+            <li>If the diagnosis is exercise-induced asthma, is the patient effectively able to use a metered dose inhaler (i.e., albuterol)?</li>
+            <li>If the diagnosis is exercise-induced asthma and the patient is not effectively able to use a metered dose inhaler (i.e., albuterol), please explain the reason.</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Electronic version:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 348px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Sequence Number</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Question ID</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Default Next Question ID</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Question Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Question Text</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Choice Text</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="margin-top: 3pt;">Next Question ID</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">1</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">0123</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">What is the patient’s diagnosis?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">asthma</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2000</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">exercise-induced asthma</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3000</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">allergic rhinitis</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">4000</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2000</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Is the patient currently using an orally inhaled corticosteroid?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2002</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2001</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2001</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2002</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Does the patient have a history of intolerance or failure using an orally inhaled corticosteroid?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">4</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2002</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2003</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Does the patient have contraindications (such as allergy) to inhaled corticosteroids?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">5</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">2003</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">END</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Is the patient physically able to use an orally inhaled corticosteroid device?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">6</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3000</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Is the patient currently using a nasally inhaled corticosteroid?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3002</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3001</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">7</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3001</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3002</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Does the patient have a history of intolerance or failure using a nasally inhaled corticosteroid?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">8</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3002</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3003</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Does the patient have contraindications (such as allergy) to inhaled corticosteroids?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">9</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">3003</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">END</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Is the patient physically able to use a nasally inhaled corticosteroid device?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="page-break-after: avoid;margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">10</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">4000</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Select</p>
+                    </td>
+                    <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Is the patient effectively able to use a metered dose inhaler (i.e., albuterol)?</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Y</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">END</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">N</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">4001</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">11</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">4001</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">END</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">FreeText</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;font-weight: normal;">Please explain the reason the patient is not effectively able to use a metered dose inhaler.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="Table" style="margin-top: 8pt;margin-bottom: 6pt;">&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">The four provider vendor question/answer possibilities examples below show how questions may vary based on how the prior question was answered. </p>
+        <p class="BodyText1">Provider vendor question/answer possibilities:</p>
+        <ul>
+            <li>What is the patient’s diagnosis? <span style="font-weight: bold;">Asthma</span><ul><li>Is the patient currently using an orally inhaled corticosteroid? <span style="font-weight: bold;">Y</span></li><li>Does the patient have contraindications (such as allergy) to inhaled corticosteroids? <span style="font-weight: bold;">N</span></li><li>Is the patient physically able to use an orally inhaled corticosteroid device? <span style="font-weight: bold;">N</span></li></ul></li>
+            <li class="ListBullet5" style="list-style-type: disc;">What is the patient’s diagnosis? <span style="font-weight: bold;">Asthma</span><ul><li>Is the patient currently using an orally inhaled corticosteroid? <span style="font-weight: bold;">N</span></li><li>Does the patient have a history of intolerance or failure using an orally inhaled corticosteroid? <span style="font-weight: bold;">Y</span></li><li>Does the patient have contraindications (such as allergy) to inhaled corticosteroids? <span style="font-weight: bold;">N</span></li><li>Is the patient physically able to use an orally inhaled corticosteroid device? <span style="font-weight: bold;">N</span></li></ul></li>
+            <li class="ListBullet5" style="list-style-type: disc;">What is the patient’s diagnosis? <span style="font-weight: bold;">Allergic Rhinitis</span><ul><li>Is the patient effectively able to use a metered dose inhaler (i.e., albuterol)? <span style="font-weight: bold;">Y</span></li></ul></li>
+            <li class="ListBullet5" style="page-break-after: avoid;">What is the patient’s diagnosis? <span style="font-weight: bold;">Allergic Rhinitis</span><ul><li style="page-break-after: avoid;">Is the patient effectively able to use a metered dose inhaler (i.e., albuterol)? <span style="font-weight: bold;">N</span></li><li style="page-break-after: avoid;">Please explain the reason the patient is not effectively able to use a metered dose inhaler. <span style="font-weight: bold;">The patient… [clinical reason]</span></li></ul></li>
+        </ul>
+        <h4 class="Heading4">Example 3: Numeric Answer</h4>
+        <p class="BodyText1">This example is of a conditional next question logic based on a numeric answer.</p>
+        <p class="BodyText1">Original paper PA form:</p>
+        <ul>
+            <li>What is the patient’s age? </li>
+            <li>If the patient is 36 or older, does the patient have a documented diagnosis of acne vulgaris?</li>
+            <li>If the patient is 36 or older, does the patient have a documented diagnosis of actinic keratosis?<ul><li style="page-break-after: avoid;">If yes, does the patient have lesions on the face?</li></ul></li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Electronic version:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 78px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 95px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 54px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 88px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 87px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 71px;" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Sequence Number</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Question ID</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Default Next Question ID</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Question Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Question Text</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Choice Text</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Comparison Operator</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Comparison Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="margin-top: 4pt;">Next Question ID</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">1</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">100</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">END</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Numeric</p>
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">(Single Comparison)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">What is the patient’s age?</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">GE</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">36</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #ffffff;">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">200</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">2</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">200</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">300</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Does the patient have a documented diagnosis of acne vulgaris?</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">3</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">300</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Does the patient have a documented diagnosis of actinic keratosis?</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">400</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">END</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">4</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">400</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">END</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Select</p>
+                </td>
+                <td rowspan="2" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Does the patient have lesions on the face?</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">Y</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;font-weight: normal;">N</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="Table" style="margin-top: 9pt;margin-bottom: 7pt;">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">The four provider vendor question/answer possibilities examples below show how questions may vary based on how the prior question was answered. </p>
+        <p class="BodyText1">Provider vendor question/answer possibilities: </p>
+        <ul>
+            <li>What is the patient’s age? <span style="font-weight: bold;">18</span></li>
+            <li>What is the patient’s age? <span style="font-weight: bold;">41</span><ul><li>Does the patient have a documented diagnosis of acne vulgaris? <span style="font-weight: bold;">N</span></li><li>Does the patient have a documented diagnosis of actinic keratosis? <span style="font-weight: bold;">N</span></li></ul></li>
+            <li>What is the patient’s age? 41<ul><li>Does the patient have a documented diagnosis of acne vulgaris? <span style="font-weight: bold;">N</span></li><li>Does the patient have a documented diagnosis of actinic keratosis? <span style="font-weight: bold;">Y</span></li><li>Does the patient have lesions on the face? <span style="font-weight: bold;">Y</span></li></ul></li>
+        </ul>
+        <p class="BodyText1">Further details on question types and question logic can be found in the NCPDP SCRIPT implementation guide’s section Question Set Usage.</p>
+    </body>
+</html>

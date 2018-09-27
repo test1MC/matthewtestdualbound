@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="704" MadCap:lastWidth="742">
+    <head>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Message Validation</h2>
+        <p class="BodyText1">Surescripts will ensure that customers are in compliance with the message specifications outlined in this Guide during implementation and will continue to enforce once in production.</p>
+        <p class="BodyText1">At a minimum, Surescripts validations include:</p>
+        <ul>
+            <li>Sender identification and password</li>
+            <li>Recipient identification</li>
+            <li>Sender and recipient are in agreement contractually to exchange information</li>
+            <li>Syntax of the message including field lengths, data types, number of repeats and code values</li>
+            <li>Surescripts business rules</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_State_Specific_Validation"></a><a name="_Toc443643302"></a>State Specific Validation for Controlled Substances</h3>
+        <p class="BodyText1">Surescripts will stop controlled substance messages from being sent or received that are prohibited by state law as outlined below. Technology vendor systems and their users are still ultimately responsible for continued compliance with all regulations.</p>
+        <p class="BodyText1">Each message without a DEA Schedule will have the NDC checked to determine if the medication is a controlled substance at a federal or state level. Once a medication has been identified as a controlled substance, either federally or by the state it is written in or being sent to, the following validation checks occur:</p>
+        <ul>
+            <li>Is the sender/receiver authorized to send/receive EPCS messages?</li>
+            <li>Is the Signature Indicator (SI) flag or Digital Signature on the message?</li>
+            <li>Is the DEA Schedule field populated?</li>
+            <li>If NDC is not present, is there a compound or supply flag?</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Does the state the prescription is written in/sent to allow e-Prescribing of Controlled Substances?<ul style="list-style-type: circle;"><li>If the medication is classified as a schedule II controlled substance, does the state allow e-Prescribing of schedule II controlled substances?</li><li>For mail order pharmacies Surescripts will not check the NDC against the location of the mail order pharmacy. Mail order pharmacies are still required to perform the appropriate state validations.</li></ul></li>
+        </ul>
+        <p class="StyleHeading2H2h2Level2TopicHeadingLeft006">&#160;</p>
+    </body>
+</html>

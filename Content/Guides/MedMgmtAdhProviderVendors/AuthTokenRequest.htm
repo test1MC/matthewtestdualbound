@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1616" MadCap:lastWidth="1176">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc433355828"></a>Auth Token Request</h2>
+        <p class="BodyText1">The Web Service API provides an endpoint for requesting an auth token that is used when launching the accelerator. The auth token identifies the individual end user and their roles and must be used when the accelerator is launched for that user. The token may be re-used for multiple launches of the accelerator until it expires. </p>
+        <p class="NOTE" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The request type is "POST", the Content-Type must be set to "application/json", and the request parameters are JSON encoded as part of the request body. The token follows the JWT pattern and requires that the roles for a particular session be included in the request.</p>
+        <p class="BodyText1">The JSON fields in the following example are defined per the table below:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">systemUserId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table"><span style="font-weight: normal;">The Data Provider ID (identification of the sender of the message). Use the Surescripts-provided network participant ID (e.g., </span><span style="font-weight: normal;">ABC</span><span style="font-weight: normal;">123</span><span style="font-weight: normal;">). </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">systemUserQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">The user qualifier assigned to the provider vendor. </p>
+                        <p style="font-size: 10pt;"><b>systemUserQualifier = “DP”</b>  (used when the systemUserId is a Data Provider)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">endUserId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">ID of the end user logged into the provider vendor system.</p>
+                        <p class="Table"><b>Note</b><span style="font-weight: normal;">: </span><span style="font-weight: normal;">endUserID </span><span style="font-weight: normal;">needs to be less than 250 characters and unique across provider vendor customers.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">roles</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">An array of roles assigned to this provider. </p>
+                        <p class="Table"><b>Note</b><span style="font-weight: normal;">: When Common Roles are included in the request, Roles assigned for Providers will be ignored and should not be sent.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="Table" style="font-weight: normal;">products</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="Table"><span style="font-weight: normal;">An array of products for which the user would like to see Tasks. </span>
+                        </p>
+                        <p class="Table"><b>Note</b><span style="font-weight: normal;">: If this field is not sent, then all products will be retu</span><span style="font-weight: normal;">rned.</span>
+                        </p>
+                        <p class="Table" style="font-weight: normal;">Each product has an “id” (the name of the product) and an array of “processTypes” to be returned for that product.</p>
+                        <p class="Table"><span style="font-weight: normal;">The product name for </span><span style="font-weight: normal;">Medication Management for Adherence</span><span style="font-weight: normal;"> is mmpoc</span><span style="font-weight: normal;">.</span>
+                        </p>
+                        <p class="Table" style="margin-left: 14pt;"><span style="font-weight: normal;">The process types for </span><span style="font-weight: normal;">Medication Management for Adherence </span><span style="font-weight: normal;">are:</span><span style="font-weight: normal;"><br />medadherence</span>
+                        </p>
+                        <p class="Table" style="margin-left: 14pt;font-weight: normal;">highrisk</p>
+                        <p class="Table" style="margin-left: 14pt;font-weight: normal;">missingmed</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Auth Token Request Example </p>
+        <p style="font-size: 9pt;">POST <span style="color: #0000ff; text-decoration: underline;">https://[host]/uiservice/api/v0/authtoken HTTP/1.1</span><![CDATA[  ]]></p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Host: localhost</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Connection: keep-alive</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Content-Length: 85</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Authorization: Basic ZGVtb0Jhc2ljQXV0aElkOmRlbW9CYXNpY0F1dGhQdw==</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Content-Type: application/json</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;"><span style="font-family: 'Courier New';">Accept: *</span><span style="font-family: 'Courier New';font-style: italic;">/</span><span style="font-family: 'Courier New';">*</span>
+        </p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Accept-Encoding: gzip,deflate,sdch</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Accept-Language: en-US,en;q=0.8</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">Body: </p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;font-family: Arial;">{</p>
+        <p style="margin-top: 0pt;font-size: 9pt;font-family: Arial;"><span style="font-family: 'Courier New';color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; <span style="font-family: Arial;">"systemUserId": "ABC123",</span></span>
+        </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160; "systemUserQualifier": "DP",</p>
+        <p style="margin-top: 0pt;font-size: 9pt;font-family: Arial;"><span style="font-family: 'Courier New';color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; <span style="font-family: Arial;">"endUserId": "ehruser",</span></span>
+        </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160; "products": [</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "mmpoc", </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processTypes": [</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "medadherence", </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "highrisk", </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "missingmed"</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; } </p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160; ],</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160; "Roles": {</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "CommonRoles": [</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "mmpocsubmitter"</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "Providers": [</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "Id": "6403175899002",</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "Qualifier": "D"</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="margin-top: 0pt;color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">&#160;&#160;&#160; }</p>
+        <p style="color: #000000;background-color: #FFFFFF;font-size: 9pt;font-family: Arial;">}</p>
+        <p class="NOTE" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The basic authorization header is the same as that used for e-prescribing or clinical messaging, the Host is given in the partner activation form, and the Body of the request is in application/json format.</p>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-08-15T13:12:01.3044315-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2018-08-15T13:12:01.3168220-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="3" MadCap:timestamp="2018-08-15T13:13:06.2065336-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="4" MadCap:timestamp="2018-08-15T13:13:06.2340088-05:00" />
+        </MadCap:changeData><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2">High-Level Process Flow</h2>
+        <p class="BodyText1">The following diagram displays the high-level process flow for the Accelerator.</p>
+        <p class="BodyText1" style="page-break-after: avoid;page-break-inside: avoid;margin-left: 5pt;">
+            <img src="../../Resources/Images/CompletEPA Accelerator/High Level Process Flow.jpg" style="visibility: visible;mso-wrap-style: square;width: 599px;height: 419px;" />
+        </p>
+        <p class="FigureName">Figure #1: <MadCap:change MadCap:changes="2">Electronic Prior Authorization </MadCap:change><MadCap:change MadCap:changes="1">CompletEPA</MadCap:change><sup MadCap:changes="1">®</sup><MadCap:change MadCap:changes="1"> </MadCap:change>Accelerator Process Flow</p>
+        <ol>
+            <li style="page-break-after: avoid;margin-left: 0pt;">The provider vendor sends a PAInitiationRequest to EPAINI, which is the Surescripts identifier for ePA. </li>
+            <li style="margin-left: 0pt;">Surescripts forwards the message on to the receiving customer. Surescripts will always send the first PAInitiationRequest to the PBM/payer identified in the PayerID if the PBM/payer is enabled for ePA. If the PBM/payer is not enabled for ePA, Surescripts will search for a third party processor. The PBM/payer or third party processor will determine if the patient and drug combination requires PA. </li>
+            <li style="margin-left: 0pt;">The PBM/payer or a third party processor returns the PAInitiationResponse indicating:<ul><li>Open status (a question set), or</li><li>Closed status </li><p>See the <MadCap:change MadCap:changes="2">Electronic Prior Authorization</MadCap:change><MadCap:change MadCap:changes="1">CompletEPA</MadCap:change><sup MadCap:changes="1">®</sup> <MadCap:change MadCap:changes="4">Companion </MadCap:change><MadCap:change MadCap:changes="3">Implementation </MadCap:change>Guide for Closed Reason Code information in the  Message Business Flow Response Summary, or </p><li>Closed status when the PBM/payer or a third party processor is not the PA processor<span class="CommentReference">.</span></li></ul><ol><p class="">In cases where the payer indicates they are not the PA processor, Surescripts will initiate a search to find a different ePA processor. If no route is found to an ePA processor, Surescripts will either:</p><ul><li>Create a worklist task for the provider from the most recently received PAInitiationResponse indicating that no processor could be found and a manual process should be followed, or </li><li>Create a workflow task with a URL in the PANote field that the user can select to launch a fillable PA form via PDR.<ol><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="font-size: 10pt;">Once the user fills out the PA form provided by PDR, PDR faxes the form to the PBM/payer and there will be no further electronic communication to the EMR by either PDR or Surescripts. The PBM/payer will fax the provider vendor back the approval or denial.</span><span style="font-size: 10pt;"> See the <MadCap:change MadCap:changes="4">Electronic Prior Authorization Companion </MadCap:change><MadCap:change MadCap:changes="3">CompletEPA</MadCap:change></span><sup style="font-size: 10pt;" MadCap:changes="3">®</sup><span style="font-size: 10pt;"><MadCap:change MadCap:changes="3"> Implementation</MadCap:change> Guide for more information on PDR.</span></p><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="font-size: 10pt;">The provider vendor </span><span style="font-size: 10pt;">will receive one </span><span style="font-size: 10pt;">“</span><span style="font-size: 10pt;">acknowledge closed PA</span><span style="font-size: 10pt;">”</span><span style="font-size: 10pt;"> task based on the most recent response</span>.</p></ol></li></ul></ol></li>
+            <li>The provider vendor application shows the Accelerator worklist.</li>
+            <li>The provider selects a task in the worklist and completes the question set.</li>
+            <li>The Accelerator builds a PARequest from the completed question set and sends it to the PBM/payer on behalf of the provider.</li>
+            <li>The PBM/payer processes the PARequest and sends a PAResponse to the provider.</li>
+            <li>Surescripts intercepts the PAResponse and creates a task for the provider to acknowledge the response.</li>
+            <li>The provider reviews the result of the PAResponse in the Accelerator.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="828" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc441592481"></a>PMBC Message Flow</h2>
+        <p>
+            <img src="../../Resources/Images/PMBC/PMBCMessageFlow.svg" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail: popup;mc-thumbnail-max-height: 550px;" />
+        </p>
+        <p class="BodyText1Indent">1). The provider vendor downloads Formulary data.</p>
+        <p class="BodyText1Indent">2). The provider vendor sends an Eligibility Request for a patient. Surescripts forwards the Eligibility Request to the PBM/payer.</p>
+        <p class="BodyText1Indent">3). The PBM/payer sends an Eligibility Response including coverage information for the patient. The Subscriber PBM Unique Member ID can be found in the 271 Eligibility Response from the PBM/payer in loop 2100C NM109. Surescripts forwards the message to the provider vendor.</p>
+        <p class="BodyText1Indent">4). Once the medication, days supply, quantity, quantity unit of measure and pharmacy have been selected, the provider vendor sends a PMBC Request for patient-specific estimated cost and benefit data.</p>
+        <p class="BodyText1Indent">5). The PBM/payer processes the request, formats a PMBC Response message with patient-specific estimated cost and benefit information and sends to Surescripts. Surescripts forwards the PMBC Response synchronously to the provider vendor.</p>
+        <p class="BodyText1Indent">6). Based on the information supplied, the provider vendor sends a NewRx to Surescripts. Surescripts forward the NewRx to the pharmacy.</p>
+    </body>
+</html>

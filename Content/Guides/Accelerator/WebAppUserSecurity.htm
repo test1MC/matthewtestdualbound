@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="276" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="User_Security"></a>User Security</h2>
+        <p class="BodyText1">Users do not log into the Accelerator separately from their provider vendor system. The provider vendor is responsible for authenticating the user and determining what data and activities users will have access to. The provider vendor system specifies the User ID and permissions in the Auth Token Request. The Accelerator limits information and activities available to those specified for the user in the token. In response, the Accelerator presents only the information and activities authorized for that user.</p>
+        <p class="BodyText1">At a high level, the provider vendor and the Accelerator share responsibilities for maintaining and enforcing user authentication and access controls for product functions. Responsibilities are described below.</p>
+        <p class="BodyText1" style="page-break-before: always;"><span style="font-style: italic;">The provider</span> <span style="font-style: italic;">vendor: </span></p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">maintains its users, their roles, their relationships (e.g., delegation of authority from providers to staff), and their authentication credentials, etc.</li>
+            <li class="ListBullet2" style="list-style-type: disc;">includes pertinent user information when initiating the Accelerator's user interface and task list components, including: <ul style="list-style-type: disc;margin-left: 36pt;"><li class="ListBullet2" style="list-style-type: disc;">the User ID (as defined by the provider vendor system)</li><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The provider vendor must ensure the User ID is unique across their customer base.</p><li class="ListBullet2" style="list-style-type: disc;">an assertion that the user has been authenticated by the provider vendor system</li><li class="ListBullet2" style="list-style-type: disc;">the specific roles the user possesses </li><li MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">the providers on whose behalf the user can act</li></ul></li>
+        </ul>
+        <p class="BodyText1"><i>The Accelerator</i>:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">logs the User ID (as defined by the provider vendor system) and activity </li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">enforces the user’s role(s) assigned by the provider vendor system</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;">enforces visibility of data according to the delegation information supplied by the provider vendor system</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="Authentication_Authorization"></a>Authentication and Authorization</h3>
+        <p class="BodyText1">Users are authenticated by the provider vendor system. The Accelerator tracks the User ID of the individual signed into the provider vendor system.</p>
+        <p class="BodyText1">The provider vendor system authorizes a user to perform a task by assigning them to a role. <MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator,Default.MedMgmtAccel,Default.ePAAccel">The types of roles are:</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">The type of role is:</MadCap:conditionalText></p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;" MadCap:conditions="Default.ePAAccel">PA Preparer: The PA Preparer has create, read, and edit permissions.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;" MadCap:conditions="Default.ePAAccel">PA Reviewer: The PA Reviewer has read-only permissions.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;" MadCap:conditions="Default.ePAAccel">PA Submitter: The PA Submitter has create, read, edit, and submit permissions<span class="CommentReference">.</span></li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;" MadCap:conditions="Default.MedMgmtAccel">Viewer: The Viewer has read-only permissions.</li>
+        </ul>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="ListBullet2" style="list-style-type: disc;" MadCap:conditions="Default.MedMgmtAccel">Submitter: The Submitter has create, read, edit, and submit permissions<span class="CommentReference">.</span></li>
+            <li MadCap:conditions="Default.PatientNotificationsAccelerator">PN.Viewer: The PN.Viewer has limited permissions.</li>
+            <li MadCap:conditions="Default.SPOAccelerator">SPO Reviewer: The SPO Reviewer has read-only permission.</li>
+            <li MadCap:conditions="Default.SPOAccelerator">SPO Submitter: The SPO Submitter has create, read, edit, and submit permissions.</li>
+        </ul>
+        <p class="BodyText1" MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">The user may have different roles depending on their relationship to the prescriber (e.g., a user may have the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PA Submitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">Submitter</MadCap:conditionalText> role when working on behalf of Dr. Smith and the <MadCap:conditionalText MadCap:conditions="Default.ePAAccel">PA Reviewer </MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">Viewer </MadCap:conditionalText>role when working on behalf of Dr. Jones).</p>
+        <p MadCap:conditions="Default.SPOAccelerator">The user may have different roles depending on their relationship to the provider (e.g., a user may have the SPO Submitter role when working on behalf of Dr. Smith and the SPO Reviewer role when working on behalf of Dr. Jones).</p>
+        <p class="BodyText1">The users and their roles are not stored by Surescripts. The provider vendor system must securely communicate the authenticated User ID and roles to Surescripts.</p>
+        <p class="BodyText1">The table below shows the role<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">(s)</MadCap:conditionalText> authorized to perform each task.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Role/Permission Map</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.MedMgmtAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" MadCap:conditions="Default.MedMgmtAccel">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Activity</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;"> Description/Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Viewer</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Submitter</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View Worklist</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View and select tasks that require action.</p>
+                        <p><b>Note</b>: Tasks may also be filtered by the provider or patient included in the auth token.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">View Task Detail</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">Select a task and view the medication management message from the PBM/payer. View the patient’s PDC ratio.</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="text-align: center;" MadCap:conditions="">X</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="text-align: center;" MadCap:conditions="">X</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">Submit a response to the medication management message</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p MadCap:conditions="">Submit a response and optional comment to a medication management message.
+</p>
+                        <p MadCap:conditions=""><![CDATA[
+]]><b>Note</b>: The response and optional comments are retrieved by the PBM/payer.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="text-align: center;" MadCap:conditions="">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="text-align: center;" MadCap:conditions="">X</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">View the Adherence Profile tab (PDC ratio)</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">When the user has selected a patient, the user will have access to view the Medication Adherence Profile information for the selected patient.</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="text-align: center;" MadCap:conditions="">X</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="text-align: center;" MadCap:conditions="">X</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:conditions="Default.ePAAccel">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" MadCap:conditions="Default.ePAAccel" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1" MadCap:conditions="Default.ePAAccel">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Activity</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;"> Description/Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">PAPreparer</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">PAReviewer</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" MadCap:conditions="">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">PASubmitter</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View Worklist</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View and select tasks that require action.</p>
+                        <p><b>Note</b>: Tasks may also be filtered by the provider or patient included in the auth token.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>View Response Details</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Read-only access to all response data including answers to questions for an Open response.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Prepare Open Response</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Answer questions on Open response.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Submit PARequest</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Take the answers created from ‘Prepare Open Response’ and submit the PARequest message to PBM/payer.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Acknowledge Closed</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Ends the workflow process for the associated ePA case.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Acknowledge Denial</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Ends the workflow process for the associated ePA case.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Acknowledge Approval</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>User indicates agreement with approval restrictions (if any). </p>
+                        <p>Ends the workflow process for the associated ePA case.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;letter-spacing: 0pt;">Acknowledge Deferred</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;">User indicates they have acknowledged that the PA has been deferred.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Create Appeal</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Add information required to submit initial PAAppealRequest and submit.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Submit Appeal</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Take the answers created from ‘Prepare Open Response’ and submit the PAAppealRequest message to PBM/payer.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;letter-spacing: 0pt;">Cancel Process</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p>Submit PACancelRequest request to the PBM/payer.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="CommentReference" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" MadCap:conditions="Default.ePAAccel">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;font-weight: normal;letter-spacing: 0pt;">Acknowledge Cancel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">
+                        <p>Ends the workflow process for the associated PA case.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">
+                        <p class="CommentReference" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" MadCap:conditions="">
+                        <p class="Table" style="page-break-after: avoid;page-break-inside: avoid;text-align: center;font-weight: normal;">X</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0" MadCap:conditions="Default.PatientNotificationsAccelerator">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 160px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 349px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 71px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Activity</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description/Notes</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">PN.Viewer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">View Worklist</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View and select tasks that require action.</p>
+                        <p><b>Note</b>:&#160;Tasks may also be filtered by the provider or patient included in the auth token.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">X</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">View Task Detail</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Select a task and view the patient notification(s) .</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">X</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Dismiss Notifications</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>User can dismiss patient notification(s).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" cellspacing="0" MadCap:conditions="Default.SPOAccelerator">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Activity</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description/Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>SPO Reviewer</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>SPO Submitter</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View Worklist</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View and select tasks that require action.</p>
+                        <p><b>Note</b>: Tasks may also be filtered by the provider or patient included in the auth token.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>View Response Details</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Read-only access to all response data including answers to clinical questions.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Answer Questions</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Answer enrollment clinical questions</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Submit Response</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Submit the clinical question responses to the pharmacy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Acknowledge Fax Status (if applicable)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Ends the workflow process for the associated task.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p><span style="font-size: 10pt;">Acknowledge Cancel</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Ends the workflow process for the associated SPO enrollment.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>X</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

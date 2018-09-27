@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Application Certification Requirements</h1>
+        <h2 class="Heading2"><a name="_Toc499805547"></a>General Formulary and Benefits Requirements</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_100.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_101.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_102.flsnp" />
+        <p class="BodyText1" style="font-size: 10pt;"><b>F.109</b>: The participant shall implement within its application updated formulary information published by PBMs within one week of its availability.</p>
+        <h2 class="Heading2"><a name="_Toc499805548"></a>Presentation of Formulary Status</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_103.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_104.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_105.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_106.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/FormularySharedAppCert/F_107.flsnp" />
+        <h2 class="Heading2"><a name="_Toc499805549"></a>Presentation of Formulary Alternatives Coverage and Copay</h2>
+        <p class="Default" style="font-size: 10pt;"><b>F.108:</b> For active coverages, during the prescription writing process and prior to the summary screen, the application shall display, at a minimum, alternative medications when the target medication is an On-Formulary/Non-Preferred, Non-Formulary, or Non-Reimbursable medication. </p>
+        <p class="Default" style="font-weight: bold;color: black;font-size: 11pt;">Best Practice </p>
+        <ul style="list-style-type: square;margin-left: 36pt;">
+            <li class="Default" style="margin-bottom: 5pt;color: black;font-size: 11pt;">The application may further filter alternatives by utilizing decision support logic (e.g. only showing alternatives applicable due to gender, age, diagnosis, etc.). </li>
+            <li class="Default" style="margin-bottom: 5pt;">If the target medication is a brand medication and the prescriber indicates that generic substitution is permitted, the application does not need to show alternatives if the generic equivalent has a higher formulary status.</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">Payer Provided Alternatives</p>
+        <ol>
+            <li>If the payer provides a Formulary Alternatives List, the application shall show all alternatives that have a higher On-Formulary status.<ol style="list-style-type: lower-alpha;"><li>For Non-Formulary or Non-Reimbursable medications, show alternatives that are On-Formulary/Non-Preferred or On-Formulary/Preferred.</li><li>For On-Formulary/Non-Preferred medications, show On-Formulary/Preferred.</li><li>Do not show alternatives for Unknown medications.</li></ol></li>
+            <li>Show all strengths available that have a higher formulary status for the NDC provided in the Formulary Alternatives List.</li>
+            <li>The alternatives provided in a Formulary Alternatives List shall be ordered according to the stated preference level in that list from high to low. </li>
+            <li>Show all alternatives in the Formulary Alternatives List, even if the target medication is an OTC, multi-ingredient medication, or supply.</li>
+            <li>The application shall not show drug database-provided alternatives if the PBM provides a Formulary Alternatives List.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A provider vendor may display Therapeutic alternatives if a Payer Alternative List is present, but an alternative match for the target NDC does not exist.</p>
+            <li>The application shall display formulary status and full or abbreviated retail copay data for all alternatives. Retail copay (defined as Pharmacy Type Retail, Any, or Null) data displayed shall be, at a minimum, the Copay Tier, Flat Copay Amount, or Percent Copay Rate. </li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If the application cannot display the complete list of alternatives on one page, the application may allow the user to take action to view additional alternatives.</p>
+        </ol>
+        <p class="BodyText1" style="font-weight: bold;">Drug Database Provided (Therapeutic Alternatives)</p>
+        <ol>
+            <li style="color: black;font-size: 11pt;">If the PBM does not provide a Formulary Alternatives List, the application shall show all commercially available, generic, and branded alternatives with a higher On-Formulary status in the same therapeutic class as the target medication as determined by an approved medication data source. <ol style="list-style-type: lower-alpha;"><li style="color: black;font-size: 11pt;">For Non-Formulary or Non-Reimbursable medications, show alternatives that are On-Formulary/Non-Preferred or On-Formulary/Preferred.</li><li style="color: black;font-size: 11pt;">For On-Formulary/Non-Preferred medications, show On-Formulary/Preferred.</li><li style="color: black;font-size: 11pt;">Do not show alternatives for Unknown medications.</li></ol><p class="StylebodytextBold">Best Practice </p><ul><li>If the target medication is OTC, the application should not display alternatives.</li><li style="color: #000000;">If the target medication is a Supply, the application should not display alternatives.</li><li style="color: #000000;">If possible, the application should only show alternatives for the same route of administration as the target medication.</li></ul></li>
+            <li style="color: #000000;">If the target medication is single-ingredient, the application shall only display single-ingredient alternatives.</li>
+            <li style="color: #000000;">If the target medication is multi-ingredient, the application shall only display multi-ingredient alternatives.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The application shall display formulary status and full or abbreviated retail copay data for all alternatives. Retail copay (defined as Pharmacy Type Retail, Any, or Null) data displayed shall be, at a minimum, the Copay Tier, Flat Copay Amount, or Percent Copay Rate. If the application cannot display the complete list of alternatives on one page, the application may allow the user to take action to view additional alternatives. </p>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc499805550"></a>Formulary Guidance Items</h2>
+        <p class="BodyText1" style="font-size: 10pt;"><b>F.110</b>: PBMs should provide a list of therapeutic alternatives for display using the Payer Specified Alternatives List.</p>
+        <p class="BodyText1" style="font-size: 10pt;"><b>F.111</b>: PBMs should send coverage and copay information.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;" style="font-size: 10pt;">CMS requires the coverage and copay list for Medicare Part D participants.</p>
+        <p class="BodyText1" style="font-size: 10pt;"><b>F.112</b>: Prescriber vendors should refrain from displaying unnecessary information to prescribers. For example, NDC numbers, Formulary IDs, Coverage IDs, PBM unique IDs.</p>
+    </body>
+</html>

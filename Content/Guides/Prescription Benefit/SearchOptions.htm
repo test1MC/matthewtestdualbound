@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909569"></a>Search Options</h2>
+        <p class="BodyText1">Unlike many other X12 transactions, the 270 transaction has the built-in flexibility of allowing a user to enter whatever patient information they have on hand to identify them to an information source. There are five key fields that are recommended to improve the chance of a match. They are first name, last name, date of birth, gender and zip code. </p>
+        <p class="BodyText1">By design, the 270 allows the requester to submit a patient as a subscriber or a dependent with a subscriber. Surescripts will follow the following process to determine the unique ID for the patient to retrieve eligibility.</p>
+        <p class="BodyText1">If a patient is supplied in the subscriber loop and no dependent is listed:<br />Surescripts will search for this patient. If found, a PBM Unique Member ID will be placed in the transaction and distributed to the PBM/payer. At this point, Surescripts does not know if this patient is a subscriber or dependent.</p>
+        <h3 class="Heading3"><a name="_Toc443909570"></a>Insufficient Information</h3>
+        <p class="BodyText1">In the event that insufficient identifying elements are sent to Surescripts to uniquely identify a patient, Surescripts returns a 271 with an AAA segment identifying “Subscriber/Insured Not Found” or “Patient Not Found” and sends recommendations for future searches, if appropriate.</p>
+        <h3 class="Heading3"><a name="_Toc443909571"></a>Multiple Matches</h3>
+        <p class="BodyText1">In the event that multiple matches are found, Surescripts returns a 271 with an AAA segment identifying “Subscriber/Insured Not Found or Patient Not Found” and, if possible, lists the missing data elements needed to help identify an exact patient match.</p>
+    </body>
+</html>

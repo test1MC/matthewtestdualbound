@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2675" MadCap:lastWidth="653">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643364"></a>Usage of the Prescriber/Supervisor/Agent</h2>
+        <p class="BodyText1">The following examples show the looping of the PVD Segment when reporting different physician entities. "Designated Agent" refers to the person without an identifier submitting the prescription on behalf of a prescriber (for example, an administrative assistant, or another prescriber that is covering for a prescriber on vacation). Supervisor information may be needed based upon state law. A supervisor is the supervising physician under whose authority the prescription is being prescribed by the primary care provider.</p>
+        <h3 class="Heading3"><a name="_Toc443643365"></a>Denoting Only the Prescriber</h3>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+PC+1234567890:HPI+++JONES:MARK'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Note</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Identifies this PVD segment as the information about a prescriber (PC = Primary Care Physician).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890:HPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The NPI of the prescriber.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">PVD-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">JONES:MARK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">The PC's name: Mark Jones.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Style5Head2BOLD">XML Example:</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160; <span style="color: #0000FF;">&lt;</span>Prescriber<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567890</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JONES</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">MARK</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <h3 class="Heading3"><a name="_Toc443643366"></a>Prescriber and Designated Agent</h3>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+PC+1234567890:HPI+++JONES:MARK+++++JACKSON'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Segment</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Note</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-010 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PC</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Identifies this PVD segment as the information about a prescriber (PC = Primary Care Physician).</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-020</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">1234567890:HPI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The NPI of the prescriber. HPI is the qualifier for NPI.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-050</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">JONES:MARK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The PC's name: Mark Jones.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-100</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">JACKSON</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The Designated Agent's last name.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Style5Head2BOLD">XML Example:</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160; <span style="color: #0000FF;">&lt;</span>Prescriber<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567890</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JONES</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">MARK</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>PrescriberAgent<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JACKSON</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>PrescriberAgent<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;page-break-after: always;">&#160;</p>
+        <h3 class="Heading3"><a name="_Toc443643367"></a>Prescriber with Designated Agent and Supervisor</h3>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+PC+1234567890:HPI+++JONES:MARK+++++JACKSON'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Segment</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Note</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-010 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PC</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Identifies this PVD segment as the information about a prescriber (PC = Primary Care Physician).</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-020</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">1234567890:HPI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The NPI of the prescriber. HPI is the qualifier for NPI.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-050</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">JONES:MARK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The PC's name: Mark Jones.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">PVD-100</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">JACKSON</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The designated agent's last name.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Style5Head2BOLD">XML Example:</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160; <span style="color: #0000FF;">&lt;</span>Prescriber<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567890</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JONES</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">MARK</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160; &lt;/Name&gt;</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>PrescriberAgent<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JACKSON</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 54pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>PrescriberAgent<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+SU+1234567898:HPI+++SMITH:JOE'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Segment</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Note</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-010 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">SU</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Identifies this PVD segment as the information about a Supervisor.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-020</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">1234567898:HPI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The NPI of the supervisor. HPI is the qualifier for NPI.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-050</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">SMITH:JOE</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The supervisor's name: Joe Smith.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Style5Head2BOLD">XML Example:</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160; <span style="color: #0000FF;">&lt;</span>Supervisor<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567898</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">SMITH</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JOE</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160; &lt;/Name&gt;</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;page-break-before: always;">&#160;</p>
+        <h3 class="Heading3"><a name="_Toc443643368"></a>Prescriber and Supervisor</h3>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+PC+1234567890:HPI+++JONES:MARK'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Note</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">PVD-010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Identifies this PVD segment as the information about a prescriber (PC = Primary Care Physician).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890:HPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">The NPI of the prescriber. HPI is the qualifier for NPI.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">PVD-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">JONES:MARK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">The PC's name: Mark Jones.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Style5Head2BOLD">XML <MadCap:annotation MadCap:createDate="2016-04-12T15:18:31.7858123-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="should not be indented so far. Was not in last published guide." MadCap:editor="Sally.Fresquez" MadCap:editDate="2016-04-12T15:18:49.5388123-05:00">Example:</MadCap:annotation></p>
+        <p style="margin-left: 36pt;">&#160; <span style="color: #0000FF;"><span style="font-size: 9pt;">&lt;</span></span><span style="color: #800000;"><span style="font-size: 9pt;">Prescriber</span></span><span style="color: #0000FF;"><span style="font-size: 9pt;">&gt;</span></span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567890</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JONES</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">MARK</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; &lt;/Name&gt;</p>
+        <p class="StylebodytextBold">EDIFACT Example:</p>
+        <p class="BodyText">PVD+SU+1234567898:HPI+++SMITH:JOE'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Segment</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Value</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Note</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-010</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">SU</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Identifies this PVD segment as the information about a Supervisor.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-020</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">1234567898:HPI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The NPI of the supervisor. HPI is the qualifier for NPI.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 5pt;">PVD-050</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">SMITH:JOE</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">The supervisor's name: Joe Smith.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="Style5Head2BOLD">XML Example:</p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160; <span style="color: #0000FF;">&lt;</span>Supervisor<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>NPI<span style="color: #0000FF;">&gt;</span><span style="color: black;">1234567898</span><span style="color: #0000FF;">&lt;/</span>NPI<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span>Identification<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>Name<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>LastName<span style="color: #0000FF;">&gt;</span><span style="color: black;">SMITH</span><span style="color: #0000FF;">&lt;/</span>LastName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span>FirstName<span style="color: #0000FF;">&gt;</span><span style="color: black;">JOE</span><span style="color: #0000FF;">&lt;/</span>FirstName<span style="color: #0000FF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160; &lt;/Name&gt;</p>
+    </body>
+</html>

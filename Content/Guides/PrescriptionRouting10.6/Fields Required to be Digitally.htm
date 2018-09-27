@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="832" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Fields_Required_to"></a><a name="_Toc443643394"></a>Fields Required to be Digitally Signed</h2>
+        <p class="BodyText1">The fields defined in the table below are used in the signature block. The Interim Final Ruling outlines the fields that are required to be signed in sections: 1306.05 (a), 1306.05 (b), 1306.05 (c) and 1311.120(b) (9).</p>
+        <p class="BodyText1">Fillable messages (see <MadCap:xref href="EPCS Message Workflow.htm">EPCS Message Workflow on page&#160;1</MadCap:xref>) that are for controlled substances are required to either be signed or contain the digital signature indicator flag. Messages that are not fillable are not required to be signed. The sender of the message is required to sign all fields in the digital signature, but the data may not be contained within the body of the message itself. So, the sender is signing that there is no data present for a particular field within the body of the message. This does not mean that you will find empty tags for these items in the body of the message, just that no data exists. For data types and lengths, refer to the sections above or the XML schema. The prescribed medication is what is to be signed for fillable messages.</p>
+        <p class="BodyText1">When a supervisor of a non-DEA registered clinician is involved in prescribing, they are the official signer and their information should be in the prescriber field. Only the individual listed as the prescriber may sign the message. This individual must be registered with Surescripts and have the Controlled Substance service level enabled in the Surescripts directory.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For Date/Time fields in the table below, only the Date portion of the field is to be signed.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 126px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 307px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 166px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;margin-top: 4pt;text-align: center;">&#160;</p>
+                    </th>
+                    <th colspan="3" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;margin-top: 4pt;text-align: center;">Signature Fields in Order</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody" style="margin-left: 0pt;text-align: center;font-weight: bold;">Seq</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody" style="text-align: center;font-weight: bold;">Element Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody" style="text-align: center;font-weight: bold;">XPath</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody" style="text-align: center;font-weight: bold;">EDIFACT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25"><span style="color: #ffffff;">Prescriber</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #000000;">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">DEA </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Identification/DEA<br />Number/text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-020-01 where PVD-020-02 = DH</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">SSN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="page-break-after: avoid;page-break-inside: avoid;margin-top: 4pt;margin-bottom: 1pt;">/Message/Body/*/Prescriber/Identification/Social<br />Security/ text()</p>
+                        <p style="page-break-after: avoid;page-break-inside: avoid;margin-top: 4pt;margin-bottom: 1pt;">Format must be 9 digits with no dashes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-020-01</p>
+                        <p class="TableBody">Where PVD-020-02 = SY</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Last Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Name/LastName/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-050-01</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">First Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/ Name/FirstName/ <br />text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-050-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Address Line 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Address/AddressLine1/<br /> text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-080-01</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Address Line 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Address/AddressLine2<br />/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-080-06</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">City Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Address/City/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-080-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">State </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Address/State/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-080-03</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Postal Code </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Prescriber/Address/ZipCode/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PVD-080-04</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25" style="margin-left: 0pt;color: #ffffff;">Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;">
+                        <p class="TTLJ25" style="margin-left: 0pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #000000;">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Last Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Name/LastName// text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-030-01</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">11</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">First Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Name/FirstName/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-030-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">12</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Address Line 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Address/AddressLine1/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-060-01</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Address Line 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Address/AddressLine2/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-060-06</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">14</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">City Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Address/City/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-060-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">15</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">State </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Address/State/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-060-03</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">16</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Postal Code </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/Patient/Address/ZipCode/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PTT-060-04</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;color: #ffffff;">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;color: #ffffff;">
+                        <p class="TTLJ25">Medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #000000;color: #ffffff;">
+                        <p class="TTLJ25" style="margin-left: 0pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #000000;color: #ffffff;">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">17</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Drug Name </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/Drug<br />Description/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-010-02</p>
+                        <p style="page-break-after: avoid;page-break-inside: avoid;margin-top: 4pt;margin-bottom: 1pt;">or</p>
+                        <p class="TableBody">DRU-010-10 + 11 + 12</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">18</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Drug Strength – Measurement Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/<br />DrugCoded/Strength/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-010-06</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">19</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Quantity </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/Quantity/<br />Value/ text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-020-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">20</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">SIG/Dosage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/Directions<br /> / text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-030-02 + DRU-030-03</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">21</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written – Year CCYY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />WrittenDate/Date/text(),1,4)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYY of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">22</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written – Month MM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed<br />/WrittenDate/Date/text(),6,2),</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">MM of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">23</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written –Day DD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />WrittenDate/Date/text(),9,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DD of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">24</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written – Year CCYY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />WrittenDate/DateTime/text(),1,4)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYY of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                        <p class="TableBody">This field is repeated from above to accommodate XML having distinct fields for date and time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written – Month MM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />WrittenDate/DateTime/text(),6,2),</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">MM of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                        <p class="TableBody">This field is repeated from above to accommodate XML having distinct fields for date and time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">26</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Date Written –Day DD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />WrittenDate/DateTime/text(),9,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DD of DRU-040-02</p>
+                        <p class="TableBody">Where DRU-040-01=85</p>
+                        <p class="TableBody">This field is repeated from above to accommodate XML having distinct fields for date and time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">27</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date&#160; – Year CCYY (This is being used as the Earliest Fill Date)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/Date/text(),1,4)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYY of DRU-040-02 Where DRU-040-01 –– 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">28</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date – Month MM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/Date/text(),6,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">MM of DRU-040-02 Where DRU-040-01 – 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">29</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date –Day DD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/Date/text(),9,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DD of DRU-040-02 Where DRU-040-01 --- 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">30</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date&#160; – Year CCYY (This is being used as the Earliest Fill Date)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/DateTIme/text(),1,4)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">CCYY of DRU-040-02 Where DRU-040-01 –– 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">31</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date – Month MM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/DateTime/text(),6,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">MM of DRU-040-02 Where DRU-040-01 – 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">32</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Effective Date –Day DD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">substring(Message/Body/*/MedicationPrescribed/<br />EffectiveDate/DateTime/text(),9,2)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DD of DRU-040-02 Where DRU-040-01 --- 07</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">33</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Refill quantity qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/Refills/<br />Qualifier/text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-060-01</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;text-align: center;">34</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">Refill Quantity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TTLJ25" style="margin-left: 0pt;">/Message/Body/*/MedicationPrescribed/Refills/<br />Value/text()</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DRU-060-02</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="text-align: center;">35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">FREE TEXT Comments to Pharmacist or Prescriber.</p>
+                        <p class="TableBody">This is where the Drug Abuse Treatment Identifier and GHB reason is stored.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">/Message/Body/*/MedicationPrescribed/Note<span style="font-size: 10pt;">/<br />text()</span></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">DRU-090 All three repeats</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

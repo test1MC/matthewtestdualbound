@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="803.0001" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc470011288"></a>Error Message Processing Summary</h1>
+        <p class="BodyText1"><span style="color: #000000;">This section explains the message processing that takes place for messages exchanged between a message sender and a message receiver. These messages are initiated in the form of a synchronous request and a response message</span>s<span style="color: #000000;">.</span><span style="color: #000000;"> The sender stays connected until the receiver sends a response. Depending on connectivity, the actual message vehicle may vary.</span></p>
+        <p class="BodyText1" style="color: #000000;">The system (Surescripts) stores round-trip messages until the receiver responds to the message or until the specified time limit has elapsed. If the timeout elapses before the message is processed, Surescripts will return an error message to the sender as the reply (explained below). If there is a desire to re-try a <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">Benefit Request</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PMBC">PMBC Request</MadCap:conditionalText>, the provider will need to send a new message. Surescripts does not run a re-try in the background.</p>
+        <div class="note">
+            <p class="BodyText1" style="color: #000000;"><b>Note</b>: The table below represents errors that are due to syntax or connectivity issues. There are other errors that may be returned in the response in one or more of the following elements:</p>
+            <ul>
+                <li style="color: #000000;">Response/ReasonCode</li>
+                <li style="color: #000000;">Response/FreeText</li>
+                <li style="color: #000000;">
+                    <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">PatientSpecific</MadCap:conditionalText>PricingCoverages/PricingCoverage/DrugStatus/DrugStatusCode</li>
+                <li style="color: #000000;">
+                    <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">PatientSpecific</MadCap:conditionalText>PricingCoverages/PricingCoverage/DrugStatus/FreeText</li>
+            </ul>
+            <p style="color: #000000;">The Reason Codes and Drug Status Codes are in the ECL schema.</p>
+        </div>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="color: #000000;">Errors are not necessarily processed in the order as shown below. The row number is there to help the reader indicate which error code they may be discussing.</span>
+        </p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 36pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 65pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 94pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 55pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 85pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 79pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 78pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 221pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">Row </p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">Event</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">Process</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">Type of SCRIPT message</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">HTTP Code</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableBody_1" style="margin-top: 2pt;margin-bottom: 2pt;color: #000000;">SCRIPT Code</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="b">SCRIPT Description Code (Optional)</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;background-color: #BFBFBF;padding-top: 2pt;padding-left: 6pt;padding-bottom: 2pt;padding-right: 6pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="b">Message Text (Optional)</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.0</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody" style="margin-top: 2pt;margin-bottom: 2pt;font-weight: bold;color: #000000;">Surescripts receives a message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.1</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">The message is malformed.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">HTTP 400 Bad Request Error is returned rather than a SCRIPT message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Validation error: Incoming message is not properly formatted XML.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.2</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender security credentials are missing.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">900 – Message rejected</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Blank</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Missing authentication info in header. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.3</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender security credentials are invalid.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">900 – Message rejected</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Blank</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_TableBody_3"><span style="color: #000000;">Authentication failed. Invalid username/password</span><span class="span9">.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.4</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">The incoming message exceeds Surescripts’ size limit of 20MB.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">HTTP 500 Internal Server Error is returned rather than a SCRIPT message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Internal server error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">1.5</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Any other system-related error which makes it impossible for Surescripts to accept the message.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA </p>
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">HTTP 500 Internal Server Error is returned rather than a SCRIPT message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">NA</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Internal server error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.0</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody" style="margin-top: 2pt;margin-bottom: 2pt;font-weight: bold;color: #000000;">Surescripts processes the message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody" style="margin-top: 2pt;margin-bottom: 2pt;font-weight: bold;color: #000000;">No acknowledgement is sent to the sender at this stage of processing.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.1</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the sending system is not certified to send this type of message.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4030 - Sender not allowed to send this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender portal does not support this message type</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.2</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the receiving system is not certified to receive this type of message.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4040 - Receiver does not support receiving this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Receiver portal does not support this message type</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.3</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender portal configuration error at Surescripts.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4020 - Intermediary system error.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts system error. Sender portal configuration error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.4</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Receiver portal configuration error at Surescripts.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4020 - Intermediary system error.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts system error. Receiver portal configuration error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.5 </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the sender’s Surescripts’ assigned Id was not found in the Surescripts’ directory.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4030 - Sender not allowed to send this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender ID not in directory</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.6 </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the receiver’s Surescripts’ assigned ID is not valid.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4040 - Receiver does not support receiving this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Receiver ID not in directory</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.7</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the sending provider vendor Surescripts’ assigned ID has not been authorized to send this type of message. (The sender’s Surescripts’ assigned ID has not been assigned the <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">RTF/RTPB</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.PMBC">PMBC</MadCap:conditionalText> service level.)</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4030 - Sender not allowed to send this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Sender not allowed to send this type of message</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.8</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts determines that the <MadCap:conditionalText MadCap:conditions="Default.PMBC">receiver</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">PBM/payer</MadCap:conditionalText> Surescripts’ assigned Id does not support this type of message. (The<MadCap:conditionalText MadCap:conditions="Default.PMBC"> receiver’s</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">receiving PBM/payer's</MadCap:conditionalText> Surescripts’ assigned Id has not been assigned the <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">RTF/RTPB</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PMBC"> PMBC</MadCap:conditionalText> service level.)</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">700 – Configuration error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4040 - Receiver does not support receiving this message type.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Receiver does not support this message type</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.9</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts fails to recognize the type of message.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">900 – Message rejected</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Unable to recognize incoming data as a supported message type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.10</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Based on the message type, Surescripts determines that a syntax error is present.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">900 – Message rejected</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">3000- Does not follow NCPDP standard or implementation guide rules.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Invalid syntax. Message fails schema validation. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">2.11</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts experiences a system failure during processing.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">900 – Message rejected</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts system error</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">3.0</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody" style="margin-top: 2pt;margin-bottom: 2pt;font-weight: bold;color: #000000;">Surescripts passes the message on to the recipient</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">3.1</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts is unable to deliver the message to the receiver (e.g. could not establish communication session.)</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody_3"><span style="color: #000000;">Error </span>
+                            <br /><span style="color: #000000;">(For Sender)</span>
+                        </p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">600 – Communication problem – try again later</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4000 - Intermediary is unable to deliver message to the recipient.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Communication problem. Try again later. Unable to deliver message to receiver.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">3.2</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">The message times out before a response is given.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error (For Sender)</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">600 – Communication problem – try again later</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">008 – Request timed out before response could be received.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Connection with receiver timed out before response was returned. Status of message at receiver is unknown.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4.0</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_TableBody" style="margin-top: 2pt;margin-bottom: 2pt;font-weight: bold;color: #000000;">Recipient responds to the message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4.1</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Surescripts is unable to process the response from the recipient.</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Error (to the sender of the original message)</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">200</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">For Sender:&#160; 600 – Communication problem – try again later</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">For Sender – 4010 - Intermediary is unable to process response from recipient</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;" class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Unable to process response from receiver.&#160; Message delivered but status of message at receiver is unknown.</p>
+                    </td>
+                </tr>
+                <tr style="height: 79pt;" class="TableStyle-GuideTables-Body-Body">
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">4.2</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">The recipient returns an Error message.</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">Pass through Error to initiating party</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">400</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">For Sender:&#160; 602 – Surescripts forwards the Error message</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">[as populated by the recipient]</p>
+                    </td>
+                    <td style="padding-top: 3pt;padding-left: 6pt;padding-bottom: 3pt;padding-right: 6pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;" class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Stylep_TableBodyBlack">[as populated by the recipient]</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-bottom: 12pt;">&#160;</p>
+        <p class="BodyText1">&#160;</p>
+    </body>
+</html>

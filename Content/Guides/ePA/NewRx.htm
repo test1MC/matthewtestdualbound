@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="655" MadCap:lastWidth="1231">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">NewRx</h2>
+        <p class="BodyText1">Provider vendors should wait for the ePA process to be completed before sending the prescription to the pharmacy. When the prior authorization is missing, some PBM/payers will deny the claim, which will require manual follow-up by the pharmacy.</p>
+        <ul>
+            <li>If the prescription must be sent prior to the ePA process being completed, then the provider vendor should indicate it is in process using PriorAuthorizationStatus or DRU-120 with the value of "R" (requested). This will let the pharmacy know that they should not initiate the prior authorization process.</li>
+            <li>
+                <p>If prior authorization has been completed and the PBM/Payer indicates prior authorization is not required the provider vendor should indicate that prior authorization is not required with  “N” Not Required - A prior authorization is not required for this medication.</p>
+            </li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">PA Has Been Approved</p>
+        <p class="BodyText1">To aid in claims processing, the electronic prescription (NewRx) should contain the prior authorization approval number.</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>In the ePA, the number is found in the AuthorizationNumber.</li>
+            <li>In the NewRx, it will be placed in the PriorAuthorization composite where Value holds the prior authorization number and the Qualifier or DRU-080-02 is (G1). PriorAuthorizationStatus or DRU-120 should contain "A" (approved).</li>
+        </ol>
+        <p style="font-weight: bold;">PA Has Been Denied</p>
+        <p>In situations where the prior authorization has been denied by the PBM/payer, but the patient and/or prescriber still wish to have the prescription sent to the pharmacy, the NewRx should indicate that the prior authorization was denied.</p>
+        <ul>
+            <li>In the NewRx, the PriorAuthorizationStatus or DRU-120 should contain “D” (denied)</li>
+        </ul>
+        <p style="font-weight: bold;">PAReferenceId and NewRx MessageId</p>
+        <p>Provider vendors may find it easier to track and associate ePA transactions with NewRx transactions by sharing a common identifier. Provider vendors can utilize a shared value for NewRx MessageId and PAReferenceId of PAInitiationRequest messages in order to provide efficiencies for troubleshooting and other tasks that may require knowledge of which NewRx had association with which ePA.</p>
+    </body>
+</html>

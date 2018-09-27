@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="809" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="MCDropDown_Closed" MadCap:autonum="0.1 "><a name="_DRU_–_Drug"></a><a name="_Toc443643375"></a>DRU – Drug Segment</h2>
+        <p class="BodyText1">The following should be used for developing the Medication Prescribed, the Medication Dispensed, and the Medication Requested Segment.  In XML the start/end tag will specify the type of data the segment contains.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc443643376"></a>Time Zone Example Chart</h3>
+        <table align="center" class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Example</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">-1000</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">10 hours from UTC = Hawaii-Aleutian Standard Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0900</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">9 hours from UTC = Alaska Standard Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0800</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">8 hours from UTC = Pacific Standard Time or Alaska Daylight Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0700</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">7 hours from UTC = Mountain Standard Time or Pacific Daylight Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0600</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">6 hours from UTC = Central Time or Mountain Daylight Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0500</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">5 hours from UTC = Eastern Standard Time or Central Daylight Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">-0400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">4 hours from UTC = Eastern Daylight Saving Time</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">-0000</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">UTC without offset</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Guidance_on_Drug"></a><a name="_Toc443643378"></a>Guidance on Drug Name</h3>
+        <p class="BodyText1">Customers should work with their drug database vendor to ensure that the configuration of drug names aligns with industry best practice standards as well as with the Surescripts requirements.</p>
+        <ul>
+            <li>Drug names should be spelled out in full, avoiding the use of abbreviations.</li>
+            <li>Drug descriptions for generic products should use the naming conventions found in the Food and Drug Administration's "Orange Book: Approved Drug Products with Therapeutic Equivalence Evaluations".</li>
+            <li>All orders should be written using metric measurements of weight (e.g., mg, gm and kg) and volume (e.g., ml). The apothecary and avoirdupois systems of weights and volumes are no longer considered appropriate in the world of pharmaceuticals. E.g. Use "Aspirin 81 mg" instead of "Aspirin 1 ¼ grains."</li>
+            <li>A zero should be used before a decimal (use 0.X mg instead of .X mg), but not after (use X mg instead of X.0 mg). Trailing zeros are particularly dangerous in that they can lead to ten-fold overdoses. Thus, trailing zeros should never be used. E.g. Use "Digoxin 0.25 mg" instead of "Digoxin .25 mg." Use "Haloperidol 5 mg" instead of "Haloperidol 5.0 mg."</li>
+            <li>Arabic (decimal) numerals are preferable to Roman numerals, and in some instances it is preferable for numbers to be spelled out. E.g. Use "Aspirin 325 mg" instead of "Aspirin V grains."</li>
+            <li>Other specific abbreviation issues:<ul style="list-style-type: circle;"><li>The term "microgram" can be abbreviated as "mcg," but it should not be abbreviated as "µg," which can easily be mistaken for the abbreviation for "mg," standing for "milligram."</li><li>The word "unit" should be spelled out and never abbreviated as "U" or "u."</li><li>"M" should not be used as an abbreviation for thousands (e.g., 5 M units), as it has been mistaken as meaning one million.</li><li>Do not use commas when expressing thousands as they might be misinterpreted as periods.</li></ul></li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="_Guidance_on_Use"></a><a name="_Toc443643379"></a>Guidance on Use of the Directions Field</h3>
+        <ul>
+            <li>The inclusion of the intended use or the indication for the medication in the directions for use is helpful to patients, pharmacists and other prescribers, and is strongly encouraged. Intended use can help patients to organize and better understand their medications and why they are taking them. Including the indication in the Sig field can help prevent dispensing errors, and it provides pharmacists with a foundation for patient counseling and medication therapy management. Other prescribers may find the indication helpful when a patient brings their medication bottles with them to office visits. <br /><span style="font-style: italic;">Example</span>: "Take according to instructions in dosepak for poison ivy rash."</li>
+            <li>Sig information should be clinically correct. <br /><span style="font-style: italic;">Example</span>: Use "Amoxicillin 500 mg Oral Capsules"—Sig "One capsule three times a day" instead of "500 caps 3 times a day."</li>
+            <li>Directions for use should be spelled out clearly in proper English. Since the pharmacist should interpret—and nearly always writes—the label in English, the use of abbreviations (particularly Latin) or symbols is unnecessary and discouraged because it can lead to medication errors. <span style="font-style: italic;">Example</span>: Use "Take 1 tablet by mouth twice a day" instead of "1 T PO BID."</li>
+            <li>Sigs should be complete, properly formatted, and not repeated. For example:</li>
+        </ul>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">&#160;</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Should Use</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Should Not Use</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Complete</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Apply topically to forearm three times a day</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Topical each day</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Properly Formatted</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Take one capsule three times a day</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">1 3 times a day</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Repeated</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Take one capsule daily</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">1 PO QD – Take one tablet every day</p>
+                </td>
+            </tr>
+        </table>
+        <ul>
+            <li>The instruction "take as directed" is rarely appropriate and should be avoided by prescribers. Such an instruction assumes an understanding on the part of the patient that may not exist, and even if it does, will very likely be short lived. Using the term "take as directed" provides little information upon which the pharmacist can base their counseling of the patient.</li>
+            <li>In instances in which a Sig builder is utilized to provide standardized Sig options, prescriber systems should allow the end user to append free text to the standardized Sig.<ul style="list-style-type: circle;"><li>The prescriber system should allow the prescriber to opt out of the standardized Sig and create a completely custom Sig.</li></ul></li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.4 "><a name="_Proper_Use_of"></a><a name="_Toc443643381"></a>Proper Use of Days Supply</h3>
+        <ol>
+            <li>The Length of therapy and Days Supply are not synonyms; they are not the same concept or used the same.</li>
+            <li>Length of therapy is a defined period of time during which the patient will be using this drug regimen. The Directions or the appropriate fields within Structured Sig are to be used to provide more information when necessary to indicate the length of therapy.<ol style="list-style-type: lower-alpha;"><li>Examples of length of therapy:<ol style="list-style-type: lower-roman;"><li>1 tablet daily for 7 days until gone</li><li>2 drops in each eye 2 times a day for 5 days (a 5 mL container with these instructions would have a Days Supply of 25; based on 20 drops per mL)</li></ol></li></ol></li>
+            <li>Since Days Supply is an optional field, if not aware of how many doses are in the container, do not transmit a Days Supply. The value 0 should not be sent. Days Supply may be sent for specialty prescriptions (e.g. titration range) or may be used for drug utilization review.</li>
+            <li>For maintenance medications - Length of therapy is typically not sent unless it is for a clinically necessary specification.</li>
+            <li>Days Supply is the estimated number of days the prescription will last excluding refills, based upon the prescribed quantity and directions. It is the prescribed quantity divided by the daily doses. While this is typically system calculated, the prescriber retains responsibility for the value. <span style="font-weight: bold;">If a number is entered into this field and it conflicts with the quantity and calculated metric dose per day, a call back from the pharmacy should be expected.</span><ol style="list-style-type: lower-alpha;"><li>Examples:<ol style="list-style-type: lower-roman;"><li>10 mg tablet, Quantity = 30, take one tablet per day, Refills = 5. Days Supply = 30.</li><li>1 tablet every week, quantity = 4, Refills = 5. Days Supply = 28.</li><li>1-2 tablets every 4-6 hours as needed for pain. Quantity = 36, Refills = 0. Days Supply = 3.</li><li>5 mLs twice daily, Quantity = 100 mLs, Refills = 0, Days Supply = 10.</li><li>Metered dose inhaler – 1-2 puffs every 6 hours as needed. Quantity = 6.7 grams (200 puffs in container). Refills = 0. Days Supply = 25.</li></ol><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If not aware of how many doses are in the container, do not transmit a Days Supply</p></li><li>Incorrect use of Days Supply<ol style="list-style-type: lower-roman;"><li>10 mg tablet, Quantity = 30, take one tablet per day, Refills = 5. Days Supply = 180 (should be 30).</li><li>5 mLs twice daily, Quantity = 100 mLs, Refills = 0, Days Supply = 30 (should be 10).</li></ol></li></ol></li>
+            <li>For ambiguous dose forms (e.g. creams, ointments, gels, drops), it is recommended that Days Supply should not be sent, unless the dose form has a specific measurable unit dosage (e.g. pump, gel packs).</li>
+            <li>The Free Text (&lt;Notes&gt;) field can be used for further clarification if the instructions cannot be clearly designated in the Directions or appropriate fields in the Structured Sig, but should not cause confusion in explanation with the discrete medication fields.</li>
+        </ol>
+    </body>
+</html>

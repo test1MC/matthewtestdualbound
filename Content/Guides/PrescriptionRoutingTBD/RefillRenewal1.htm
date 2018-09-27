@@ -1,0 +1,1374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="807" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443643405"></a>Refill Renewal</h2>
+        <p class="BodyText1">In this example, the pharmacy is requesting permission to extend a refill for Lipitor for patient John Andrews. The prescriber authorizes one more refill and asks to have the patient call for an appointment.</p>
+        <p class="BodyText1">The pharmacy sends the Refill Renewal Request to the clinic. The physician's system will return a Refill Prescription Response to the pharmacy.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In the EDIFACT examples, line breaks are used at the end of the segments for display purposes – live messages should not contain line breaks.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc443643406"></a>REFREQ (EDIFACT)</h3>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UNA:+./*'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIB+UNOA:0++888333:991+++1234563:P::12345+1234567890123:D::678+20100125:074530'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIH+SCRIPT:010:006:REFREQ+73737373+++20100125:074530'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">PVD+PC+1234567890:HPI*3334444:0B+++JONSON:TIM++++6518659191:TE'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">PVD+P2+1234567899:HPI*1234563:D3+++++MCMOHRS CORNER PHARMACY+123 THIRD ST:ST PAUL :MN:55101+6518952323:TE'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">PTT+1+19521001+WHITESIDE:KARA+F+YX-5-VA-20011246:2U+23230 SEAPORT:AKRON:OH:44306'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">DRU+P:LIPITOR 10MG TABLET:00071015523:ND+:30:38:AC:C48542+:TAKE 1 TABLET BY MOUTH EVERYDAY+85:20100125:102*ZDS:30:804+1+P:1'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">DRU+D:LIPITOR 10MG TABLET:00071015523:ND+:30:38:AC:C48542+:TAKE 1 TABLET BY MOUTH EVERYDAY+85:20100125:102*ZDS:30:804*LD:2021001:102+1+P:1'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIT+73737373+7'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIZ++1'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 80px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 158px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 380px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Segment </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Note</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">UIB-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">UNOA:0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">UNOA is the Syntax identifier and 0 is the syntax version number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">888333:991</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">888333 is the pharmacy system Message ID; 991 is the Relates To Message ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234563:P::678</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1234563 is the identification number (NCPDPID) of the sender (pharmacy); P is the code qualifier for pharmacy; 678 is the Surescripts-populated Account ID of the sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-070</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890123:D::678</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1234567890123 is the identification number (SPI) of the receiver (prescriber); D is the code qualifier for prescriber; 12345 is the Surescripts-populated Account ID of the receiver (prescriber).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-080</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">20100125:074530</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">20100125 is the date the message was sent (01/25/2010); 074530 is the time the message was sent (07:45:30 A.M.).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SCRIPT:010:006:<br />REFREQ</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">SCRIPT is the message type; 010 is the version, and 006 is the release to be used in decoding this message. All messages in this set use this value. REFREQ is the message function for Refill Renewal request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">73737373</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">73737373 is the prescription number (ID) assigned by the pharmacy for their use in referencing this message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">20100125:074530</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">20100125 is the date the message was sent in format CCYYMMDD (01/25/2010); 074530 is the time the message was sent (7:45:30 A.M.).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PC </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PC identifies this PVD segment as the information about a prescriber.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890:HPI*<br />3334444:0B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">1234567890 is the prescriber's reference number; HPI is the qualifier for NPI. 3334444 is the prescriber's reference number; 0B is the qualifier for State License Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">JONSON:TIM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Johnson is the last name of the prescriber; Tim is the first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">6518659191:TE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">6518659191 is the communication number of the provider (615) 221-9800; TE is the qualifier for telephone.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">P2 identifies this PVD segment as referring to pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567899:HPI*1234<br />563:D3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">1234567899 is the pharmacy's reference number; HPI is the qualifier for NPI. 1234563 is the reference number of the pharmacy; D3 is the qualifier for NCPDP ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-070</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MCMOHRS CORNER<br /> PHARMACY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">McMohr's Corner Pharmacy is the name of the pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-080</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">123 THIRD ST:ST PAUL<br /> :MN:55101</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">123 THIRD ST is Address Line 1 for the pharmacy; ST PAUL is the city; MN is the state and 55101 is the zip code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">6518952323:TE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">6518952323 is the Communication Number for the pharmacy (651) 895-2323; TE is the qualifier for telephone.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 is the patient relationship code of member.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">19521001 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">19521001 is the patient's date of birth 10/01/1952.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">WHITESIDE:KARA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">WHITESIDE is the last name of the patient; KARI is the first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">F</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">F indicates the patient is female.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">YX-5-VA-20011246<br />:2U</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">YX-5-VA-20011246 is the PBM Unique Member ID; 2U is the qualifier for payer ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">23230 SEAPORT:<br />AKRON:OH: 44306</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">23230 SEAPORT is Address Line 1 for the patient; AKRON is the city; OH is the state and 44306 is the zip code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P:LIPITOR 10MG <br />TABLET: 0007101<br />5523:ND</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">P is the medication prescribed; LIPITOR 10MG TABLET is the name of the prescribed drug; 00071015523 is the drug number and ND is the code list indicator for NDC11.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">:30:38: AC:C48542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">30 is the number of tablets; 38 is the code value for Original Qty; AC is the Source for NCI Potency Units; and C48542 is the code for Tablet dosing unit.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY<br /> MOUTH EVERYDAY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY MOUTH EVERYDAY indicates the dosage instructions or the SIG.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">85:20100125: 102*ZDS:<br />30:804</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">85 is the qualifier for Date Written; 20100125 indicates the date and 102 is the format qualifier for CCYYMMDD for 01/25/2010.</p>
+                        <p class="TableBody">Second loop for another date. ZDS is the code for Days Supply; 30 is the number of days supply and 804 is the qualifier for Quantity of Days.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 indicates no substitutions are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P:1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">P indicates pharmacy requested refills; 1 is the number of refills requested.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">D: LIPITOR 10MG <br />TABLET: 00071015<br />523:ND</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">D indicates medication dispensed; LIPITOR 10MG TABLET is the name of the drug. 00071015523 is the drug number and ND is the qualifier for NDC11.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">:30:38: AC:C48542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">30 is the quantity of tablets; 38 indicates the original quantity prescribed; AC indicates the Potency Units and C48542 is the code for Tablet dosing unit.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY <br />MOUTH EVERYDAY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY MOUTH EVERYDAY indicates the dosage instructions or SIG.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">85:20100125: 102*<br />ZDS:30:804*LD:<br />20100125:102</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">85 is the qualifier for Date Written; 20100125 is the date and 102 is the format qualifier for the format of CCYYMMDD for 01/25/2010.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">Second loop for another date. ZDS is the code for Days Supply; 30 is the number of days supply and 804 is the qualifier for Quantity of Days.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">Third loop. LD is the qualifier for Last Fill date; 20100125 is the date and 102 is the format qualifier for the format of CCYYMMDD for 01/25/2010.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 indicates no substitutions are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P:1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">P indicates Pharmacy requested refills; 1 is the quantity of refills requested.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">73737373</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">73737373 is the Message Reference Number assigned by the pharmacy. This must match the value in UIH-020.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">7 is the number of segments in the message between and including the UIH and the UIT segments.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">UIZ-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">1 is the Interchange Control Count – the number of messages in this interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc443643407"></a>RefillRequest (XML)</h3>
+        <p style="page-break-after: avoid;page-break-inside: avoid;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0070C0;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns:xsi</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.w3.org/2001/XMLSchema-instance</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> version</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">010</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> release</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">006</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xsi:schemaLocation</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT SS_SCRIPT_XML_10_6MU.xsd</span><span style="background-color: #FFFFFF;">"</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">D</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234567890123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #0070C0;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">P</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234563</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">888333</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">991</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25T07:45:30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">678</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">12345</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">RxReferenceNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">73737373</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RxReferenceNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">PON123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">RefillRequest</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">1234563</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567899</span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">StoreName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">MCMOHRS CORNER PHARMACY</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">StoreName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">123 THIRD ST</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">ST PAUL </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">MN</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">55101</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">6518952323</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TE</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">StateLicenseNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">3334444</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">StateLicenseNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567890</span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">JONSON</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TIM</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">6518659191</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TE</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">PatientRelationship</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">2</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">PatientRelationship</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">PayerID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;">YX-5-VA-20011246</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">PayerID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span> <![CDATA[ ]]></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">Whiteside</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">Kara</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">F</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">195</span><span style="color: black;background-color: #FFFFFF;">2</span><span style="color: black;background-color: #FFFFFF;">-1</span><span style="color: black;background-color: #FFFFFF;">0</span><span style="color: black;background-color: #FFFFFF;">-01</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">23230 SEAPORT</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Akron</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">OH</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">44306</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span>&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugDescription</span><span style="color: #0000FF;">&gt;</span>LIPITOR 10MG TABLET<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugDescription</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;">ProductCode</span><span style="color: #0000FF;">&gt;</span>00071015523<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCode</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span>ND<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">38</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">AC</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">C48542</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span>30<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span>TAKE 1 TABLET BY MOUTH EVERYDAY<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span>P<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span>1<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span>&lt;<span style="color: #800000;">Substitutions</span>&gt;<span style="color: #000000;">1</span>&lt;/<span style="color: #800000;">Substitutions</span>&gt;</p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MedicationDispensed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugDescription</span><span style="color: #0000FF;">&gt;</span>LIPITOR 10MG TABLET<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugDescription</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;">ProductCode</span><span style="color: #0000FF;">&gt;</span>00071015523<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCode</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span>ND<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">38</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">AC</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">C48542</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span>30<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span>TAKE 1 TABLET BY MOUTH EVERYDAY<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span>P<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span>1<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span>&lt;<span style="color: #800000;">Substitutions</span>&gt;<span style="color: #000000;">0</span>&lt;/<span style="color: #800000;">Substitutions</span>&gt;</p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">LastFillDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">LastFillDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MedicationDispensed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RefillRequest</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="_Toc443643408"></a>REFRES (EDIFACT)</h3>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UNA:+./*'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIB+UNOA:0++55512:888333+++1234567890123:D::12345+1234563:P::678+20100125:074530'</p>
+        <p class="H3T" style="page-break-after: avoid;page-break-inside: avoid;">UIH+SCRIPT:010:006:REFRES+73737373+991++20100125:074530'</p>
+        <p class="H3T">RES+A+++ONE REFILL AUTH.'</p>
+        <p class="H3T">PVD+PC+1234567890:HPI*3334444:0B+++JONSON:TIM++++6518659191:TE'</p>
+        <p class="H3T">PVD+P2+1234567899:HPI*1234563:D3+++++MCMOHRS CORNER PHARMACY+123 THIRD ST:ST PAUL :MN:55101+6518952323:TE'</p>
+        <p class="H3T">PTT+1+19521001+WHITESIDE:KARA+F+YX-5-VA-20011246:2U+23230 SEAPORT:AKRON:OH:44306'</p>
+        <p class="H3T">DRU+P:LIPITOR 10MG TABLET:00071015523:ND+:30:38:AC:C48542+:TAKE 1 TABLET BY MOUTH EVERYDAY+85:20100125:102*ZDS:30:804+1+A:1'</p>
+        <p class="H3T">DRU+D:LIPITOR 10MG TABLET:00071015523:ND+:30:38:AC:C48542+:TAKE 1 TABLET BY MOUTH EVERYDAY+85:20100125:102*ZDS:30:804*LD:20100125:102+1+A:1'</p>
+        <p class="H3T">UIT+73737373+8'</p>
+        <p class="H3T">UIZ++1'</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 164px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 393px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Note</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UNOA:0</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">UNOA is the Syntax identifier and 0 is the syntax version number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">55512:888333</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">55512 is the physician vendor Message ID; 888333 is the RelatesToMessageID, which is the MessageID from the Refill Renewal Request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890123:D::12345</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">1234567890123 is the identification number (SPI) for the sender (prescriber); D is the code qualifier for prescriber and 12345 is the Surescripts-populated Account ID of the sender (prescriber).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-070</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234563:P::678</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">1234563 is the identification number (NCPDP ID) of the receiver (pharmacy); P is the code qualifier for pharmacy and 678 is the Surescripts-populated Account ID of the receiver (pharmacy).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIB-080</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">20100125:074530</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">20100125 is the date the message was sent (01/25/2010) and 074530 is the time the message was sent (07:45:30 A.M.).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SCRIPT:010:006:REFRES</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SCRIPT is the message type; 010 is the version and 006 is the release to be used in decoding this message. All messages in this set use this value.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">REFRES is the message function for Refill Response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">73737373</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">73737373 is the prescription number (ID) assigned by the pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">991</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">991 is the prescription number assigned by the prescribing system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIH-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">20100125:074530</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">20100125 is the Date the message was sent 1/25/2010 and 074530 is the time it was sent (7:45:30 A.M.)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">RES-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A is the response type of Approved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">RES-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ONE REFILL AUTH.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">ONE REFILL AUTH. is the instructions in the Notes field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-010 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PC identifies this PVD segment as the information about a prescriber.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567890:HPI*333<br />4444:0B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1234567890 is the prescriber's reference number; HPI is the qualifier for NPI; 3334444 is the prescriber's reference number and 0B is the qualifier for State License Number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">JONSON:TIM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Johnson is the last name of the prescriber; Tim is the first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">6518659191:TE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">6518659191 is the Communication number of the provider (615) 221-9800; TE is the qualifier for telephone.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">P2 identifies this PVD segment as referring to pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1234567899:HPI*<br />1234563:D3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">1234567899 is the pharmacy's reference number; HPI is the qualifier for NPI. 1234563 is the reference number of the pharmacy; D3 is the qualifier for NCPDP ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-070</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MCMOHRS CORNER <br />PHARMACY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">McMohr's Corner Pharmacy is the name of pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-080</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">123 THIRD ST:ST PAUL :MN:55101</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">123 THIRD ST is Address Line 1 for the pharmacy; ST PAUL is the city; MN is the state and 55101 is the zip code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">6518952323:TE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">6518952323 is the Communication Number for the pharmacy (651) 895-2323; TE is the qualifier for telephone.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 is the patient relationship code of member.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">19521001 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">19521001 is the patient's date of birth 10/01/1952.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">WHITESIDE:KARA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">WHITESIDE is the last name of the patient; KARI is the first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">F</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">F indicates the patient is female.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">YX-5-VA-2001<br />1246:2U</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">YX-5-VA-20011246 is the PBM Unique Member ID; 2U is the qualifier for payer ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">23230 SEAPORT:<br />AKRON:OH: 44306</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">23230 SEAPORT is Address Line 1 for the patient; AKRON is the city; OH is the state and 44306 is the zip code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">P: LIPITOR 10MG <br />TABLET:00071015523:ND</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">P is the medication prescribed; LIPITOR 10MG TABLET is the name of the prescribed drug; 00071015523 is the drug number and ND is the code list indicator.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">:30:38:AC:C48542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">30 is the number of tablets; 38 is the code value for Original Qty; AC is the Source for NCI Potency Units and C48542 is the code for Tablet dosing unit.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY<br /> MOUTH EVERYDAY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY MOUTH EVERYDAY indicates the dosage instructions or the SIG.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">85:20100125:102*<br />ZDS:30:804</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">85 is the qualifier for Date Written; 20100125 indicates the date, and 102 is the format qualifier for the format of CCYYMMDD for 01/25/2010.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">Second loop: ZDS is the code for Days Supply; 30 is the number of days supply and 804 is the qualifier for Quantity of Days.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 indicates no substitutions are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">A:1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A is the qualifier for the number of refills quantity and indicates additional refills authorized; 1 indicates the quantity of additional refills allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">D: LIPITOR 10MG TABLET<br />:00071015523:ND</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">D is the medication dispensed; LIPITOR 10MG TABLET is the name of the drug; 00071015523 is the drug number and ND is the code list indicator for NDC11.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">:30:38:AC:C48542</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-top: 4pt;">30 is the number of tablets; 38 is the code value for Original Qty; AC is the Source for NCI Potency Units, and C48542 is the code for Tablet dosing unit.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-030</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY<br /> MOUTH EVERYDAY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">TAKE 1 TABLET BY MOUTH EVERYDAY indicates the dosage instructions or the SIG.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-040</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">85:20100125:102*ZDS<br />:30:804*LD:20100125:102</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">85 is the qualifier for Date Written; 20100125 indicates the date and 102 is the format qualifier for the format of CCYYMMDD for 01/25/2010.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">Second loop: ZDS is the code for Days Supply; 30 is the number of days supply and 804 is the qualifier for Quantity of Days.</p>
+                        <p class="TableBody" style="margin-top: 4pt;">Third Loop: LD is the qualifier for Last Demand (Fill) Date; 20100125 is the date and 102 is the format qualifier for the format of CCYYMMDD for 01/25/2010.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-050</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1 indicates no substitutions are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-060</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">A:1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">A qualifies the number of additional refills that are authorized; 1 is the quantity of refills allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-010</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">73737373</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">73737373 is the Message Reference Number assigned by the pharmacy. This must match the value in UIH-020.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">UIT-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">8 is the number of segments in the message between and including the UIH and UIT segments.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">UIZ-020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">1 is the Interchange Control Count – the number of messages in this interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.4 "><a name="_Toc443643409"></a>RefillResponse (XML)</h3>
+        <p style="page-break-after: avoid;page-break-inside: avoid;margin-left: 36pt;font-size: 9pt;"><span style="color: #0070C0;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">?xml version="1.0" encoding="UTF-8"?</span><span style="color: #0070C0;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0070C0;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns:xsi</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.w3.org/2001/XMLSchema-instance</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> version</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">010</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> release</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">006</span><span style="background-color: #FFFFFF;">"</span><span style="color: #FF0000;background-color: #FFFFFF;"> xsi:schemaLocation</span><span style="background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/SCRIPT SS_SCRIPT_XML_10_6MU.xsd</span><span style="background-color: #FFFFFF;">"</span><span style="color: #0070C0;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">P</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234563</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">To</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="background-color: #FFFFFF;">D</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="background-color: #FFFFFF;">1234567890123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">From</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">55512</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">888333</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25T07:45:30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">12345</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Sender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">678</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">TertiaryIdentification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Receiver</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Security</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">RxReferenceNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">73737373</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RxReferenceNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">991</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PrescriberOrderNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0070C0;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0070C0;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">RefillResponse</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Response</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Approved</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Note</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">ONE REFILL AUTH.</span> <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Note</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Approved</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Response</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">1234563</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567899</span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">StoreName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">MCMOHRS CORNER PHARMACY</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">StoreName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">123 THIRD ST</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">ST PAUL</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">MN</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">55101</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">6518952323</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TE</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">StateLicenseNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">3334444</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">StateLicenseNumber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567890</span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">NPI</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">JONSON</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TIM</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">6518659191</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">TE</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Communication</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">PatientRelationship</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">2</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">PatientRelationship</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">PayerID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;">YX-5-VA-20011246</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">PayerID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">Whiteside</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: black;background-color: #FFFFFF;">Kara</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">F</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">1952-10-01</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">23230 SEAPORT</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;  <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Akron</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">OH</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">State</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">44306</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ZipCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p class="StylenormalnospaceDarkRed" style="margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #000000;">&#160; </span>&lt;<span style="color: #800000;">DrugDescription</span>&gt;LIPITOR 10MG TABLET&lt;/<span style="color: #800000;">DrugDescription</span>&gt;</p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">ProductCode</span><span style="color: #0000FF;">&gt;</span>00071015523<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ProductCode</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span>ND<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">38</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">AC</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">C48542</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span>30<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span>TAKE 1 TABLET BY MOUTH EVERYDAY<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span>A<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span>1<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160; </span>&lt;<span style="color: #800000;">Substitutions</span>&gt;<span style="color: #000000;">0</span>&lt;/<span style="color: #800000;">Substitutions</span>&gt;</p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MedicationDispensed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span>&lt;<span style="color: #800000;">DrugDescription</span><span style="color: #0070C0;">&gt;</span>LIPITOR 10MG TABLET<span style="color: #0070C0;">&lt;/</span><span style="color: #800000;">DrugDescription</span>&gt;</p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;background-color: #FFFFFF;">ProductCode</span><span style="color: #0000FF;">&gt;</span>00071015523<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">ProductCode</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span>ND<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">ProductCodeQualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DrugCoded</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">30</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Value</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">38</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">CodeListQualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">AC</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">UnitSourceCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0070C0;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">C48542</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">PotencyUnitCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Quantity</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span>30<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">DaysSupply</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Directions</span><span style="color: #0070C0;">&gt;</span>TAKE 1 TABLET BY MOUTH EVERYDAY<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Directions</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span>A<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Qualifier</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span>1<span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Value</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; <span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">Refills</span><span style="color: #0000FF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;">Substitutions</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;">1</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span>/<span style="color: #800000;">Substitutions</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span></p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;</span><span style="color: #800000;">WrittenDate&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">WrittenDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">LastFillDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">2010-01-25</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">LastFillDate</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MedicationDispensed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">RefillResponse</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;margin-left: 36pt;font-size: 9pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Message</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+    </body>
+</html>

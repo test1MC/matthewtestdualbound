@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="6" MadCap:lastHeight="4240.333" MadCap:lastWidth="699">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc435024001"></a>Integration &amp; Production</h1>
+        <h2 class="Heading2" style="page-break-before: avoid;" MadCap:autonum="1.1 "><a name="top"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="Implemen"></a>Implementation of <MadCap:annotation MadCap:createDate="2017-08-09T15:33:02.3742384-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Do we want to keep this and if so, here or move it to the EPCS secrtion? Does this require an update? Also, isn't the first paragraph stating whe aw outline below? I suggest we keep one or the other. I like the paragraph." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T15:33:04.9031628-05:00">EPCS</MadCap:annotation></h3>
+        <p>Only qualified application vendors and pharmacies that have: completed Surescripts Certification, have a third-party Proof of Audit Letter, and have a Surescripts EPCS Audit Attestation Form, will be allowed to connect to the Surescripts network for EPCS.
+</p>
+        <p>The following steps are required to implement EPCS:
+</p>
+        <p class="BodyText1">1). Update e-prescribing software to meet all requirements specified by the DEA in the Interim Final Rule and the SCRIPT messaging version (this guide) that supports EPCS.</p>
+        <p class="BodyText1">
+2). Undergo a third-party audit to ensure the software meets all DEA EPCS requirements.
+</p>
+        <p class="BodyText1">3). Achieve Surescripts Certification to the Surescripts Implementation Guide.
+</p>
+        <p class="BodyText1">4). Make audit results available to Surescripts with a Proof of Audit Letter &amp; Surescripts EPCS Audit Attestation Form.
+</p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="Prescrip"></a>Prescription Routing General Best Practices</h2>
+        <p>The following general best practices apply to all prescription routing message types.</p>
+        <p>1. The application should make clear to the user, which data elements will be sent to the receiver and whic elements are for interna/local <MadCap:annotation MadCap:createDate="2017-08-09T14:17:59.8916378-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Added by Work Group A 4.27.17." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:18:14.2820767-05:00">use.</MadCap:annotation></p>
+        <p>2. If customers implement any type of prescription message store and forward methodology, e.g. hub or central location, the storage/hold time period should be no more than 1-2 minutes.</p>
+        <p>3. to maximize the use of electronic transmission, customers should default to electronically send within their application workflow when the receiver is electronically enabled.</p>
+        <p>4. Application should not duplicate messages; i.e. electronically delivered as well as faxed.</p>
+        <p>5. Applications should have the ability to send ICD-9 or ICD-10 information in all message types. This is because ICD-9/ICD-10 coding is required on some electronic claims. If the information is not included, it could result in a manual process between the provider and pharmacy.</p>
+        <p>6. Application should have the ability to send or receive EffectiveDate for future dating prescriptions.</p>
+        <p>7. Notes and other free-text fields should not contain information for which there is a designated field. </p>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="Certific"></a>Certification Requirements</h2>
+        <p>The Surescripts certification process ensures that customer software can send and receive electronic messages in accordance with industry standards and that it provides open choice for medication selection and dispensing location. In addition, Surescripts certification focuses on patient safety, efficiency of the electronic prescribing process and ease of use by end-users.</p>
+        <p>Surescripts certification testing focuses on message format, application workflow, and display in accordance with Surescripts Implementation Guides and the associated Application Certification Requirements (ACR) document noted in Document References on page 16. By holding all customers accountable for meeting the ACRs, our customers can send and receive the highest quality messages as e-prescribing and clinical messaging continue to progress overall as an industry.</p>
+        <p>
+            <MadCap:annotation MadCap:createDate="2017-08-09T15:11:41.3357500-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Do we want or need to include this paragraph in the new guide?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T15:11:56.0612224-05:00">Requirements that are enforced as part of the production code are denoted as “must” and will need to be met in order to successfully complete certification. “Should” is used for guidance or best practices. See the following chart for terminology usage in this implementation guide.</MadCap:annotation>
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.4 "><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1"> For terminology usage throughout this guide, consider the <MadCap:annotation MadCap:createDate="2017-09-18T09:18:35.6319734-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Keep. Probably will not add &quot;shall&quot;." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-18T09:19:05.8979997-05:00">following:</MadCap:annotation></p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Term</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Term usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">must</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">	Requirements that are enforced as part of the production code.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">should</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">		Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" MadCap:autonum="1.5 ">General Display Requirements (Name <MadCap:annotation MadCap:createDate="2017-08-09T15:01:41.4757700-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="This section was added as part of the ACRG work. " MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T15:01:53.4029626-05:00">TBD)</MadCap:annotation></h2>
+        <p class="BodyText1">Surescripts understands our customers are in the best position to make workflow design decisions and we are committed to encouraging innovative designs. Surescripts is also committed to ensuring the highest level of patient safety possible. If a workflow could potentially result in a patient safety issue, or if a patient safety issue is identified, Surescripts may require application code changes to ensure positive patient outcomes.</p>
+        <p class="BodyText1">To ensure patient safety, the application shall take steps to ensure that the following critical fields (as will be transmitted in the message) are reviewed by the sender for accuracy and displayed to the receiver.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The code value for codified fields does not have to be displayed, only the description.</p>
+        <ul>
+            <li>Patient First Name</li>
+            <li>Patient Last Name</li>
+            <li>Gender</li>
+            <li>DOB</li>
+            <li>Drug Description</li>
+            <li>Quantity/PUC</li>
+            <li>SIG (free text sig vs. Structured)</li>
+            <li>Notes (to/from pharmacy)</li>
+            <li>Refills</li>
+            <li>Days Supply</li>
+            <li>Pharmacy name</li>
+            <li>Effective Date (if in future)</li>
+            <li>Height and Weight, if applicable</li>
+        </ul>
+        <p>Any element that is not sent with the transaction shall*106R-041 be labeled “For internal use only” on the summary screen, so the prescriber knows that information will not be sent with the message.</p>
+        <p>
+            <MadCap:annotation MadCap:createDate="2017-08-09T14:38:27.2863650-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Keep as-is" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:38:31.2617625-05:00"> 
+When a field is not sent, it shall*106R-155 not be defaulted to display 0.
+</MadCap:annotation>
+        </p>
+        <p>To allow for patient choice, the application shall allow a pharmacy search based on pharmacy type of mail/retail at a minimum; other pharmacy search options may include<MadCap:annotation MadCap:createDate="2017-08-09T14:38:54.9851346-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="106R-031 &amp; -032 (Added by Same &amp; Sally at Roni's request)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:39:19.3165675-05:00"> specialty </MadCap:annotation>and long term care.
+</p>
+        <p>The application shall not filter out pharmacies of a specific type when a search by geography (city, state, and zip code) is performed, unless a specific pharmacy type is <MadCap:annotation MadCap:createDate="2017-08-09T14:39:39.5035860-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="This was 106R-033 (added by Same &amp; sally at Roni's request)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:39:58.3994754-05:00">requested</MadCap:annotation>. The application shall display the following pharmacy information in the pharmacy search <MadCap:annotation MadCap:createDate="2017-08-09T14:40:05.2841638-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="This was 106R-034; however, we did not include the pharmacy types because they were covered in the two previous paragraphs. (Added by Sam &amp; Sally at Roni's request)" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:40:43.3189669-05:00">results</MadCap:annotation>: Pharmacy Name, Street address, City, State, Zip code, phone number and pharmacy type.
+</p>
+        <h2 class="Heading2" MadCap:autonum="1.6 "><a name="Transiti"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;" MadCap:autonum="1.7 "><a name="Communic"></a>Communication <MadCap:annotation MadCap:createDate="2017-08-09T14:41:43.0499394-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Heading was &quot;Basic Authentication&quot; in previous Routing Guide. \r\n\r\nDo we want to keep everything in this section? Remove if all customers have to go to MATLS&gt;" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-08-09T14:43:54.9631294-05:00">Rules</MadCap:annotation></h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CommunicationRules.flsnp" />
+        <h2 class="Heading2" MadCap:autonum="1.8 "><a name="Timeouts"></a>Timeouts</h2>
+        <p class="BodyText1">For timeouts, consider the <MadCap:annotation MadCap:createDate="2017-03-30T10:57:29.1220145-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="The bullets for Timeouts are different for each product. Reference the Confluence Timeout Language for Implementation Guides page for your product's timeout requirements." MadCap:editor="Lori.Ash" MadCap:editDate="2017-06-22T21:19:35.1342320-05:00">following:</MadCap:annotation></p>
+        <ul>
+            <li>
+                <p>•	When sending a message to Surescripts, the initiator should set the http timeout to no less than 30 seconds.</p>
+            </li>
+            <li>
+                <p>•	A receiving system must reply with a Status/Error response within 24 seconds.</p>
+            </li>
+            <li>
+                <p>•	When a Status 000 is sent as a reply, a receiving system must follow-up with a Verify or Error message within 24 hours because Surescripts may return a timeout error.</p>
+            </li>
+            <li>
+                <p>•	To avoid duplicate requests, sending systems should wait at least 48 hours before retrying RefillRequest if no RefillResponse has been received.</p>
+            </li>
+        </ul>
+        <p>&#160;</p>
+        <h2 class="Heading2" MadCap:autonum="1.9 "><a name="Complian"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

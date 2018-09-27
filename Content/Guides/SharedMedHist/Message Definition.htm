@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="826.3333" MadCap:lastWidth="624">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="patrice.kuppe" MadCap:initials="PA" MadCap:id="1" MadCap:timestamp="2016-04-12T10:40:25.4371556-05:00" />
+            <MadCap:RemoveChange MadCap:userName="patrice.kuppe" MadCap:initials="PA" MadCap:id="2" MadCap:timestamp="2016-04-12T10:40:48.8701764-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: ">Message Definition</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 ">Medication History Request</h2>
+        <p class="BodyText1">Medication History request for a patient is sent to Surescripts. Refer to <MadCap:xref href="Medication History Transaction.htm">Medication History Transaction Flow on page 1</MadCap:xref>.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 ">RxHistoryRequest (XML)</h3>
+        <p class="BodyText1">In the following diagram, blocks that are solid are mandatory, whereas blocks that have dotted lines are conditional.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistAmb/Message Definition.png" style="visibility: visible;mso-wrap-style: square;width: 368px;height: 226px;" alt="rxhreq.png" />
+        </p>
+        <h3 class="Heading3" MadCap:autonum="1.1.2 ">RXHREQ – (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="Segment Details and UNA.htm#UNA" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all transactions in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIB Interactive Interchange.htm#UIB" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates Requester and Responder IDs, trace numbers, date, and time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIH Interactive Message Header.htm#UIH" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message. For History Request, Message function = RXHREQ. Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Prescriber Segment.htm#PVD" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If requestor or recipient is a prescriber, PVD Prescriber segment is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody"><a href="PVD Pharmacy Segment.htm#PVD_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Provider Segment<br />Pharmacy</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Currently Surescripts does not support a pharmacy-requested Rx History Request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PTT Patient Segment.htm#PTT" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="COO Coordination of Benefits.htm#COO" class="Hyperlink" style="font-size: 9pt;">COO</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Coordination of Benefits Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Benefit information used to determine plan and help identify the patient. Also contains the date range for the needed history records.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIT Interactive Message Trailer.htm#UIT" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="UIZ Interactive Interchange.htm#UIZ" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the transaction.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Segment Notes:</p>
+        <p class="BodyText1">Request from a Prescriber System to PBM or <MadCap:change MadCap:changes="1">to Surescripts for fill data from the </MadCap:change>Pharmacy:</p>
+        <p class="BodyText1">UIB Segment: </p>
+        <p class="BodyText3">060-01 Requester ID represents the <MadCap:change MadCap:changes="1">Prescriber </MadCap:change><MadCap:change MadCap:changes="2">Physician </MadCap:change>System. </p>
+        <p class="BodyText3">070-01 The Responder <MadCap:change MadCap:changes="1">(Receiver)</MadCap:change>ID represents the PBM. For Fill Data use S00000000000001 which represents Surescripts as the responder.</p>
+        <p class="BodyText1">UIH Segment:</p>
+        <p class="BodyText3">010-04 Message Function has the value: RXHREQ</p>
+    </body>
+</html>

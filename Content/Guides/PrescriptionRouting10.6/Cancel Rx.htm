@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="5588" MadCap:lastWidth="819">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643338"></a>Cancel Rx</h2>
+        <p class="BodyText1">The Cancel Rx Request message is used to notify the pharmacy that a previously sent prescription should be cancelled and not filled. The message is originated by the prescriber system as a Cancel Rx Request message.</p>
+        <p class="BodyText1">The Cancel Rx Response message is sent from the pharmacy to the prescriber system in response to a Cancel Rx Request message.</p>
+        <h3 class="Heading3"><a name="_Toc443643339"></a>Cancel Workflow One</h3>
+        <ol>
+            <li>Prescriber completes patient consultation and sends a NewRx message with four refills to the patient's pharmacy of choice.</li>
+            <li>Prescriber realizes that a mistake has been made with the prescription.</li>
+            <li>Prescriber initiates a Cancel Rx Request message to the pharmacy to notify the pharmacy to cancel a prescription that has not yet been dispensed.</li>
+            <li>In this scenario, prescribers should send a Cancel Rx Request message to the pharmacy. Sending this message indicates that prescriber wants to cancel the entire prescription.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has not picked up the medication; pharmacist cancels the prescription from the system and returns it back to stock. Pharmacist also sends back a Cancel Rx Response message to the prescriber.</li>
+            <li>In this scenario, pharmacy should send an "A" (Approval) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy has cancelled the entire prescription and no medication was dispensed to the patient.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy customers should update the patient medication profile within their systems to document along with the appropriate reasons.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up the medication and pharmacy cancels the remaining refills. Pharmacy then sends back the Cancel Rx Response message to the prescriber indicating that the prescription has already been picked up, i.e. "first fill" by the patient but the pharmacy has cancelled the remaining refills.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many fills have been dispensed already. This would clearly indicate that partial fills were dispensed to the patient but all remaining refills have been cancelled.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy should update the patient medication profile within their systems to document along with the appropriate reasons.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up all the medications. There is nothing left in the record to be canceled. Pharmacist sends back a Cancel Rx Response message to the physician.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many refills have been dispensed already. This would clearly indicate the number of prescription refills that were dispensed and that there are no remaining refills left. Pharmacy should mark the prescription cancelled so that a refill request will not be sent at a later date.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgement and the action taken by the pharmacy.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy can't identify the patient or the patient in the pharmacy system doesn't have the medication that the prescriber wants to cancel.</li>
+            <li>In this scenario, pharmacies should send a "D" (Denied) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy hasn't cancelled the prescription. Pharmacies should also include the denial reason or denial reason code to further explain the reason.</li>
+            <li>Prescriber systems should maintain a record within their system i.e. patient prescription profile to document that a CancelRx Request was initiated along with the acknowledgement and the action taken by the pharmacy.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643340"></a>Cancel Workflow Two</h3>
+        <ol>
+            <li>Patient has picked up three out of the six prescription fills. Prescriber sends a Cancel Rx Request message asking the pharmacy to no longer continue dispensing any open refills on an active prescription.</li>
+            <li>In this scenario, prescribers should send a Cancel Rx Request message to the pharmacy. Sending this message indicates that prescriber wants to cancel the remaining prescription refills and assumes previous fills have been dispensed to the patient.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy receives the request and cancels the remaining refills from the system. Pharmacist also sends back a Cancel Rx Response message to the physician.</li>
+            <li>In this scenario, our pharmacy partners should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many fills have been dispensed already. This would clearly indicate that partial fills were dispensed to the patient but all remaining refills have been cancelled.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+            <li>Pharmacy should update the patient medication profile within their systems to document along with the appropriate response.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Patient has picked up all the medications. There is nothing left in the queue to be canceled. Pharmacist sends back a Cancel Rx Response message to the physician.</li>
+            <li>Pharmacy should send an "A" (Approval) code in the Cancel Rx Response message with a Note that specifies how many refills have been dispensed already. This would clearly indicate the number of prescription refills that were dispensed and that there are no remaining refills left. Pharmacy should mark the prescription cancelled so that a refill request will not be sent at a later date.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgement and the action taken by the pharmacy.</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Pharmacy can't identify the patient or the patient in the pharmacy system doesn't have the medication that the prescriber wants to cancel.</li>
+            <li>In this scenario, pharmacies should send a "D" (Denied) code back in the Cancel Rx Response message to the prescriber. Sending this code back would clearly indicate to the prescriber that the pharmacy hasn't cancelled the prescription. Pharmacies should also include the denial reason or denial reason code to further explain the reason.</li>
+            <li>Prescriber systems should maintain a record within their system, i.e. patient prescription profile to document that a Cancel Rx Request was initiated along with the acknowledgment and the action taken by the pharmacy.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643341"></a>Cancel Rx Prescription Message Flow</h3>
+        <p>The following steps depict the Cancel Rx message flow:</p>
+        <ol>
+            <li>Prescriber initiates a Cancel Rx Request for a patient via a prescriber system.</li>
+            <li>Prescriber system successfully transmits the Cancel Rx Request to Surescripts.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Surescripts utilizes the Recipient ID and routes the message appropriately.</li>
+            <li>Pharmacy system validates the Cancel Rx Request and responds with a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 was sent in step 5, the pharmacy system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the sender.</li>
+            <li>Pharmacy processes the Cancel Rx Request and returns the prescribers' Cancel Prescription Response.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the pharmacy system.</li>
+            <li>Surescripts transmits the Cancel Rx Response message back to the prescriber system.</li>
+            <li>Prescriber system validates the Cancel Rx Request Response and returns a Status, Error (if errors are found), or Verify message.<ol style="list-style-type: lower-alpha;"><li>If a Status 000 is sent in step 10, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the Status, Error, or Verify back to the pharmacy system.</li>
+        </ol>
+        <h3 class="Heading3"><a name="CancelRx"></a>CancelRx (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Cancel Rx.png" style="visibility: visible;mso-wrap-style: square;width: 379px;height: 432px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="CANRX"></a>CANRX (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UNA Service String Advice.htm#_UNA_%E2%80%93_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIH Interactive Message Header.htm#_UIH_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message.</p>
+                        <p class="TableBody">For Cancel Rx Request, Message function = CANRX.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="REQ Request Segment.htm#_REQ_%E2%80%93_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Specifies type of cancel.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Prescriber Segment.htm#_PVD_%E2%80%93_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Facility Segment.htm#_PVD_%E2%80%93_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or the clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PVD Pharmacy Segment.htm#_PVD_%E2%80%93_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD segment is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, it is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="DRU Drug Segment.htm#_DRU_%E2%80%93_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="SIG Structured SIG Segment.htm#_SIG_%E2%80%93_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIT Interactive Message Trailer.htm#_UIT_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="UIZ Interactive Interchange.htm#_UIZ_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">For a Cancel Rx Request from prescriber to pharmacy:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: CANRX</p>
+        <h3 class="Heading3"><a name="_Toc443643342"></a>CancelRxResponse (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Cancel Rx_1.png" style="visibility: visible;mso-wrap-style: square;width: 627px;height: 478px;" alt="CancelRxResponse.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443643343"></a>CANRES (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UNA Service String Advice.htm#_UNA_%E2%80%93_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIH Interactive Message Header.htm#_UIH_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message.</p>
+                        <p class="TableBody">For Cancel Prescription Response Message function = CANRES.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="REQ Request Segment.htm#_REQ_%E2%80%93_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Specifies type of cancel.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="RES Response Segment.htm#_RES_%E2%80%93_Response" class="Hyperlink" style="font-size: 9pt;">RES</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Response Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Determines whether the prescription was canceled or not (accepted or denied).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="UIT Interactive Message Trailer.htm#_UIT_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="UIZ Interactive Interchange.htm#_UIZ_%E2%80%93_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">For a Cancel Rx Response from pharmacy to prescriber:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: CANRES</p>
+        <h3 class="Heading3"><a name="_Toc443643344"></a>Cancel Rx General Best Practices</h3>
+        <ol>
+            <li>Cancel Rx Request can be sent for paper or electronic.</li>
+            <li>Cancel Rx Request should not be faxed.</li>
+            <li>Cancel Rx Response time – If no response after 12 hours the prescriber should call the pharmacy.</li>
+            <li>Pharmacy should always treat incoming Cancel Rx Request messages as top priority and as such display them prominently to their end users. If the Cancel Rx Request message has already been processed, further action may be required, but it doesn't need to be treated as top priority.</li>
+            <li>Prescribers should not send a Cancel Rx Request for a prescription that is expired based on federal or state regulations. There should be programmatic checks in place to allow a Cancel Rx Request up to the expiration date of the prescription based off of the written date of the prescription. For example, the DEA requires Controlled Substance Rx to be filled within 6 months from the date written, and most states limit the filling of non-controlled Rx's to 1 year from the date written.</li>
+            <li>Pharmacy should always include a Note in an "A" (Approval) Cancel Rx Response message when responding to a Cancel Rx Request message if the patient has picked up the "first fill" or any refills thereafter and the pharmacy is cancelling the remaining refills left on the prescription.</li>
+            <li>Pharmacy should not send any Refill Renewal Request message after a Cancel Rx Request message is received.</li>
+            <li> A prescriber who has assumed responsibility for the patient's care may potentially cancel any prescription, even if they are not the original prescriber. It remains up to the pharmacy to determine if the Cancel Rx Request from the prescriber is appropriate.</li>
+            <li>The Cancel Rx Request should contain the RxNorm in the &lt;DrugCoded&gt;.</li>
+            <li>The Cancel Rx Request should contain pertinent information for the pharmacy to be able to find the prescription in their system (patient, medication (name, strength, and dosage form), and prescriber). If the pharmacy cannot definitively determine the prescription to be canceled, manual processes will occur to verify the cancellation.</li>
+            <li>Pharmacies should not delete a Cancel Rx Request message from a processing queue without a response being generated to the requestor. Pharmacy edits should be put in place to not allow a medication to be provided to the patient if a Cancel Rx Response has not been sent.</li>
+            <li>The prescriber should notify the patient or caregiver to inform them of the cancellation of a prescription. The Cancel Rx Request was not intended to relieve the prescriber of the responsibility of notifying the patient or caregiver to advise of the drug therapy change – it is only intended as a backup to prevent inadvertent drug therapy continuation or resumption at a later date.</li>
+            <li>Pharmacy should provide clear denial reasons in Cancel Rx Response denial responses. Note the Description of &lt;DenialReasonCode&gt; is the description of the value defined in the NCPDP External Code List. If the &lt;DenialReasonCode&gt; is sent, the &lt;DenialReason&gt; should not contain the echoing of this description as it adds no information.</li>
+        </ol>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">Scenario</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="margin-left: 5pt;">Scenario Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">&lt;DenialReasonCode&gt; Value</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">External Code List Value Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="text-align: center;">&lt;DenialReason&gt; textual intent recommendation for display to prescriber user</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span> <span style="letter-spacing: 0pt;">unknown</span> or cannot be determined by the pharmacy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">AA</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">unknown</span> to the provider</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span> <span style="letter-spacing: 0pt;">unknown</span> to the <span style="letter-spacing: 0pt;">pharmacy.</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient <span style="letter-spacing: 0pt;">is</span> found, <span style="letter-spacing: 0pt;">but</span> no prescription <span style="letter-spacing: 0pt;">is</span> found <span style="letter-spacing: 0pt;">that</span> matches the drug on the cancel request.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">AE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Medication never prescribed for the patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to <span style="letter-spacing: 0pt;">Cancel</span> <span style="letter-spacing: 0pt;">Rx.</span> Prescription not found <span style="letter-spacing: 0pt;">at</span> pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Prescription <span style="letter-spacing: 0pt;">was</span> transferred to another pharmacy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">AC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Patient no longer under provider care.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to <span style="letter-spacing: 0pt;">Cancel</span> <span style="letter-spacing: 0pt;">Rx.</span> Rx transferred. Include available pharmacy <span style="letter-spacing: 0pt;">contact</span> information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 4pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Prescription <span style="letter-spacing: 0pt;">was</span> already responded to by a non- electronic <span style="letter-spacing: 0pt;">workflow.</span></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;">AP</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Request already responded to by <span style="letter-spacing: 0pt;">other</span> means <span style="letter-spacing: 0pt;">(e.g.</span> Phone or <span style="letter-spacing: 0pt;">Fax)</span></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;"><span style="font-style: italic;">N/A</span> <span style="font-style: italic;">–</span> <span style="font-style: italic;">&lt;DenialReasonCode&gt; Description provides</span> <span style="font-style: italic;">enough clarity.</span></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">All other denials</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">N/A (Send free text reasoning)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 5pt;margin-right: 5pt;">Unable to Cancel Rx. Please contact Pharmacy.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

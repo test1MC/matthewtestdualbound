@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="737.3333" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc433355813"></a>Messages Overview</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_Toc433355814"></a>Message Descriptions</h2>
+        <p class="BodyText1" style="font-weight: bold;">Medication Adherence</p>
+        <p class="BodyText1">An adherence message, as indicated by claim activity, occurs when a patient is not taking the medication as frequently as prescribed.</p>
+        <p class="BodyText1">Example:</p>
+        <p class="BodyText1">"ABC Health Plan records indicate this patient may have discontinued taking Lipitor as instructed. Please discuss adherence with your patient."</p>
+        <p class="BodyText1" style="font-weight: bold;">High-Risk Medication</p>
+        <p class="BodyText1">A high-risk medication (HRM) message occurs when a patient has been prescribed a drug that is considered high-risk due to the potential for side-effects where alternative drug therapies exist.</p>
+        <p class="BodyText1">Examples:</p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient has been prescribed glyburide which is considered to be a high risk medication in the elderly causing prolonged hypoglycemia.  Please evaluate the risk and benefit of continuing use.”</p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient has been prescribed glyburide which is considered to be a high risk medication in the elderly causing prolonged hypoglycemia.  Please consider prescribing a safer alternative to this medication, if appropriate.  Alternatives:  glipizide, glimepiride.”</p>
+        <p class="BodyText1" style="font-weight: bold;">Missing Medication</p>
+        <p class="BodyText1">A missing medication is a medication that is expected based on a patient’s diagnosis codes or existence of another drug.</p>
+        <p class="BodyText1">Example:</p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient may benefit from a statin.  Please evaluate the use of a statin for a diabetic patient.”</p>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Proportion of Days Covered (PDC)</p>
+        <p class="BodyText1">The PDC calculation is based on the fill dates and days supply for each fill of a prescription. PDC is defined as the total numbers of days with possession of medication in a period of time.</p>
+        <p class="BodyText1">A PDC ratio will be provided by the PBM/payer on a monthly basis for cholesterol, diabetes and hypertension regardless if the PDC is below or above 80%.</p>
+        <p class="BodyText1">PDC ratios are categorized as:</p>
+        <ul>
+            <li>Lowest ratio &lt;= 60%, color red</li>
+            <li>Lowest ratio &gt; 60% and &lt; 80%, color orange</li>
+            <li>Lowest ratio =&gt; 80%, color green</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="Message"></a>Message Priority</h3>
+        <p class="BodyText1">PBM/payers have the ability to indicate the priority of a message as urgent. Any message type could be designated as urgent.</p>
+        <p class="BodyText1">Provider vendors choosing the Web Application API implementation option for worklist will see urgent messages sorted to the top of the worklist with an alert icon indicator.</p>
+        <p class="BodyText1">Provider vendors utililzing the Web Service API will see the workflow task priority set to 5 (alert) in the data brought back from the call to obtain worklist tasks.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.2 "><a name="Provider"></a>Provider Inbox</h3>
+        <p class="BodyText1">When the PBM/payer designates a provider, the message will be delivered to the provider inbox.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.3 "><a name="Provider2"></a>Provider Opt-Out</h3>
+        <p class="BodyText1">All providers will be opt-in for all message types once they are set up in the Surescripts Directory. See the Surescripts Directory Implementation Guide for information on adding and removing service levels for providers. Providers may opt-out of receiving messages into their inbox by message type through the Surescripts Directory by disabling the Medication Management for Adherence message service levels. Opt-out is currently supported for the following message types:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1">Providers that opt-out of receiving messages in their inbox will continue to have access to messages through the patient worklist.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.4 "><a name="Expirati"></a>Expiration</h3>
+        <p class="BodyText1">PBM/payers may send an optional expiration date in the messages to Surescripts that reflects the cadence of analytics and expected message refresh.</p>
+        <p class="BodyText1">Additionally, Surescripts will enforce an upper limit expiration date for messages that do not contain an expiration date, and to ensure medication repository is consistently refreshed. This limit will be 30 days from the time it is received by Surescripts for the initial product release.</p>
+        <p class="BodyText1">Expired messages are removed from the worklist and are retained by Surescripts for purposes of reporting, analytics, longitudinal products, etc.</p>
+    </body>
+</html>

@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1">SPO Initiation Request</h1>
+        <h2 class="Heading2"><a name="Message"></a>Message Header</h2>
+        <p class="BodyText1">The message header follows the NCPDP SCRIPT standard version 2013101.</p>
+        <h3 class="Heading3"><a name="Message2"></a>Message Header XML Diagram</h3>
+        <p class="BodyText1">In XML diagrams, blocks that are solid are mandatory, whereas blocks that have dotted lines are conditional.</p>
+        <p>
+            <img src="../../Resources/Images/SPO/SPOMessageHeader.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail-max-height: 600px;" />
+        </p>
+        <h3 class="Heading3"><a name="Message3"></a>Message&#160;Header Elements</h3>
+        <p class="StylebodytextBold">Requirement Designation</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Elements that are grouped together may be marked as mandatory; however, if the group itself is marked as conditional, then these are only required if you use the group.</p>
+        <p class="StylebodytextBold">Element Attributes:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required/Mandatory - the element must be used per the specification (e.g., XML schema validation).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required - the element must be used per the business rule.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Situational/Conditional - the element must be used if conditions are met. Some fields may not have specific conditions. Data should be sent if available.</p>
+                        <p class="TableBody">Where comments are "Not used by Surescripts"/"Not used by SPO", information will be passed on, but not used for processing by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Dependent - the element is required or conditional based on the message type.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This Guide only includes data elements where Surescripts has specific requirements or further explains the field usage. Refer to the NCPDP SCRIPT Schema listed in <a href="ProductOverview.htm#Document">Document References</a> for a complete list of fields.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 187px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 63px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 144px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 412px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Validations</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">To</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex <br />Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Contains the Surescripts ID.</p>
+                        <p style="font-size: 10pt;"><b>Note</b>: All response messages and free standing messages must be sent to the same sender that initiated the original message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>To/@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ecl:Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Value:</p>
+                        <p>ZZZ = Mutually defined</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">From</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex <br />Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The identification of the sender of the message. Contains the SPI for the provider that sent the related NewRx.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>From/@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ecl:Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 10pt;">Value:</p>
+                        <p style="font-size: 10pt;">D = Provider ID (used for SPI)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">MessageID</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an..35</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>	A minimum set of standards/algorithms should be used when generating message IDs to ensure uniqueness. Customers should utilize Global Unique Identifiers (GUIDs).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">RelatesToMessageID</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">This field should not be populated on a SPOInitiationRequest.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SentTime</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date time</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>YYYY-MM-DDTHH:MM:</p>
+                        <p><span style="font-size: 10pt;">SS.F</span>
+                        </p>
+                        <p><span style="font-size: 10pt;">&#160;</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>	Date/time of initiation .
+	</p>
+                        <p>Refer to <a href="MessagesOverview.htm#UTC">UTC Time Format</a> for information on how to properly format the date/time data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>SenderSoftware</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex <br />Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">Identifies the entity responsible that generated the transaction. Contains the software vendor name, product, and version / release.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">SenderSoftware/SenderSoftware</p>
+                        <p style="font-size: 10pt;">Developer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">Identified the entity responsible for the software that generated the transaction. The developer may be a software vendor or, if the software was developed “in-house”, the developer is the entity actually sending the transaction (e.g., a chain). The value transmitted is determined by the SenderSoftwareDeveloper.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">SenderSoftware/SenderSoftware</p>
+                        <p style="font-size: 10pt;">Product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">The text field that identifies the software developer’s product, as determined by the software developer.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p style="font-size: 10pt;">SenderSoftware/SenderSoftware</p>
+                        <p style="font-size: 10pt;">VersionRelease</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..50</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">The text field that identifies the version and release of the software product, as determined by the software developer.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">TestMessage</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0-9</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>When sent, allowable values must match platform that message is being sent to. If this field is not sent, then the default is production.
+Values: </p>
+                        <p>
+1 = Test 
+</p>
+                        <p>All other values = Live (Production)
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">PrescriberOrderNumber</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">This field is not used by SPO.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="SPO"></a>SPO Initiation Request XML Diagram</h2>
+        <p>
+            <img src="../../Resources/Images/SPO/SPOInitiationRequest.png" MadCap:mediastyle="@media print { max-width: 90%; }" style="mc-thumbnail-max-height: 400px;" />
+        </p>
+        <h2 class="Heading2" style="page-break-before: always;"><a name="SPO2"></a>SPO Initiation Request Data Element Requirements</h2>
+        <p class="StylebodytextBold">Requirement Designation</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Elements that are grouped together in a composite may be marked as mandatory; however, if the group itself is marked as conditional, then these are only required if you use the group.</p>
+        <p class="StylebodytextBold">Element Attributes:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required/Mandatory - the element must be used per the specification (e.g., XML schema validation).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required - the element must be used per the business rule.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Situational/Conditional - the element must be used if conditions are met. Some fields may not have specific conditions. Data should be sent if available.</p>
+                        <p class="TableBody">Where comments are "Not used by Surescripts"/"Not used by SPO", information will be passed on, but not used for processing by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Dependent - the element is required or conditional based on the message type.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This Guide only includes data elements where Surescripts has specific requirements or further explains the field usage. Refer to the SPO Draft XML and JSON file listed in <a href="ProductOverview.htm#Document">Document References</a> for a complete list of fields.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css'); margin-left: 0; margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 54px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 158px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 430px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"><span style="font-size: 10pt;">SPOReferenceID</span>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">The unique ID generated by the sender for the SPOInitiationRequest.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p><span style="font-size: 10pt;">BenefitsCoordination/PatientInsuranceCard</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">A scanned image of the patient’s insurance card (front and back of card) can be included in the BenefitsCoordination segment as a .png attachment embedded in within the message.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p><span style="font-size: 10pt;">BenefitsCoordination/MedicalBenefitsCoordination</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">In addition to pharmacy benefits information, medical benefits information can be provided.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Patient</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBodyIndent1">Identification/MedicalRecordIdentification<br />&#160;&#160;&#160;NumberEHR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The identifier that uniquely identifies the patient. If this identifier is not unique across all provider vendor installations, use the Identification/MutuallyDefined field in combination with this ID to make a globally unique patient identifier.</p>
+                        <p>This field is optional in the schema, however it is required by SPO. This field will be used in the patient ID field in the Auth Token Request.</p>
+                        <p><b>Note</b>: If this field is not sent an error will be returned.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBodyIndent1">Identification/MutuallyDefined</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Qualifier the provider vendor may use to make their patient ID unique across different organization/facility installations. This is used in conjunction with the Identification/MedicalRecordIdentificationNumberEHR field. This field will be used in the organization field in the Auth Token Request.</p>
+                        <p><b>Note</b>: If this optional field is not included in the SPOInitiationRequest, it should not be included in the Auth Token Request for the specified patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>MedicationPrescribed</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">This is modeled after the ePA Medication Prescribed segment; multiple segments are supported. Each segment must include the associated PrescriberOrderNumber.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBodyIndent1">PrescriberOrderNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p><span style="font-size: 10pt;">The prescription number assigned by the prescribing system. This will be the same number as what is sent in the NewRx and links the NewRx to the SPOInitiationRequest.</span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="SPO3"></a>SPO Initiation Request Example</h2>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SPOMessage</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns:spo</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:datatypes</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/datatypes</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:transport</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/transport</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:structures</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/structures</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:xsi</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; DatatypesVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransportVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransactionDomain</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">Specialized</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransactionVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; StructuresVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; ECLVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xsi:schemaLocation</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging spo.xsd</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:To</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">ZZZ</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="color: #000000;">SurescriptsID [provided at implementation]</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:To</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:From</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">D</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="color: #000000;">6790679529001</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:From</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">22233344</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">12345</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">2017-04-06T23:54:48.5448Z</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftware</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareDeveloper</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">EHRCOMPANY</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareDeveloper</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareProduct</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">EMRSYSTEM</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareProduct</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareVersionRelease</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">V1</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareVersionRelease</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftware</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SPOInitiationRequest</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SPOReferenceID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">123456</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SPOReferenceID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NCPDPID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NPI</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">12345678901</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NPI</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:BusinessName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Specialty Pharmacy #123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:BusinessName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">123 Main Street</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Minneapolis</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">MN</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">55402</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">US</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">6125159687</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Pharmacy</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:MedicalRecordIdentificationNumberEHR</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">123</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:MedicalRecordIdentificationNumberEHR</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:MutuallyDefined</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">test</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:MutuallyDefined</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Test</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Sandy</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">F</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Gender</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1982-01-01</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Date</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:DateOfBirth</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">101 Any Street</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Minneapolis</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">MN</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">55402</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">US</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">6125151212</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Patient</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NPI</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">1234567893</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:NPI</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Identification</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Testerson</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:LastName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Brad</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:FirstName</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Name</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">45 West Street</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:AddressLine1</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Minneapolis</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:City</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">MN</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:StateProvince</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">55402</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PostalCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">US</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:CountryCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:Address</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">6125150000</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:PrimaryTelephone</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Fax</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">6125150000</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Number</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Fax</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:CommunicationNumbers</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Prescriber</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:DrugDescription</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;">Humira 40 mg/0.8 ml pen</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">structures:DrugDescription</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">structures:DrugCoded</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:ProductCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Code</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;">00074433902</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Code</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">ND</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:ProductCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">datatypes:Strength</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:StrengthValue</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">50</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:StrengthValue</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:StrengthForm</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">C97717</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:StrengthForm</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:StrengthUnitOfMeasure</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">C42576</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:StrengthUnitOfMeasure</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:Strength</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">structures:DrugCoded</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">structures:Quantity</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:Value</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">1.6</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:Value</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:CodeListQualifier</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">38</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:CodeListQualifier</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:QuantityUnitOfMeasure</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">C28254</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:Code</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">datatypes:QuantityUnitOfMeasure</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">structures:Quantity</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">structures:DaysSupply</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">28</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">structures:DaysSupply</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">structures:Sig</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">structures:SigText</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">Inject 1 single-use pen once every other week</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">structures:SigText</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">structures:Sig</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">PrescriberOrderNumber</span><span style="color: #0000FF;">&gt;</span><span style="color: #000000;">11111</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">PrescriberOrderNumber</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">MedicationPrescribed</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SPOInitiationRequest</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SPOMessage</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <h3 class="Heading3"><a name="SPO4"></a>SPO Initiation Request Error Example</h3>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">SPOMessage</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns:spo</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:datatypes</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/datatypes</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:transport</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/transport</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:structures</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/structures</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns:xsi</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.w3.org/2001/XMLSchema-instance</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; DatatypesVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransportVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransactionDomain</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">Specialized</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; TransactionVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; StructuresVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; ECLVersion</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">v2013101</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging</span><span style="color: #0000FF;background-color: #FFFFFF;">"</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #FF0000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160; xsi:schemaLocation</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.surescripts.com/messaging spo.xsd</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:To</span><span style="color: #FF0000;background-color: #FFFFFF;"> Qualifier</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">ZZZ</span><span style="color: #0000FF;">"&gt;</span><span style="color: #000000;">6790679529001</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">transport:To</span><span style="color: #0000FF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;">&#160;&#160;&#160; </span><span style="color: #0000FF;">&lt;</span><span style="color: #800000;">transport:From</span><span style="color: #FF0000;"> Qualifier</span><span style="color: #0000FF;">="</span><span style="color: #000000;">D</span><span style="color: #0000FF;">"&gt;</span><span style="color: #000000;"> SurescriptsID [provided at implementation]</span><span style="color: #0000FF;">&lt;/</span><span style="color: #800000;">transport</span><span style="color: #800000;background-color: #FFFFFF;">:From</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;"> 1231214</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:MessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="background-color: #FFFFFF;">22233344</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:RelatesToMessageID</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">2017-04-06T23:54:48.5448Z</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SentTime</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftware</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareDeveloper</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Surescripts</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareDeveloper</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareProduct</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">SPO</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareProduct</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareVersionRelease</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span><span style="color: #000000;background-color: #FFFFFF;">V1</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftwareVersionRelease</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">transport:SenderSoftware</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Header</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Error</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Code</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/transport</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="color: #000000;background-color: #FFFFFF;">700</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Code</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">DescriptionCode</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/transport</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="color: #000000;background-color: #FFFFFF;">4040</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">DescriptionCode</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;background-color: #FFFFFF;">Description</span><span style="color: #FF0000;background-color: #FFFFFF;"> xmlns</span><span style="color: #0000FF;background-color: #FFFFFF;">="</span><span style="color: #000000;background-color: #FFFFFF;">http://www.ncpdp.org/schema/transport</span><span style="color: #0000FF;background-color: #FFFFFF;">"&gt;</span><span style="color: #000000;background-color: #FFFFFF;">Receiver does not support receiving this message type.</span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Description</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160;&#160;&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Error</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #000000;background-color: #FFFFFF;">&#160; </span><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">Body</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+        <p style="margin-top: 0pt;font-size: 8pt;"><span style="color: #0000FF;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;background-color: #FFFFFF;">SPOMessage</span><span style="color: #0000FF;background-color: #FFFFFF;">&gt;</span>
+        </p>
+    </body>
+</html>

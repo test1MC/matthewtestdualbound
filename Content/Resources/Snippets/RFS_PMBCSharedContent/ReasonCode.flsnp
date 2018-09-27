@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="663" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <p class="p_2" style="font-size: 10pt;"><span style="color: #000000;">Indicates if the </span>
+            <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC"><span style="color: #000000;"> Benefit Request</span>
+            </MadCap:conditionalText>
+            <MadCap:conditionalText MadCap:conditions="Default.PMBC"><span style="color: #000000;">PMBC Request</span>
+            </MadCap:conditionalText><span style="color: #000000;"> was processed, or if there was an error processing the request.</span> These values are accompanied by a Processed Status of "True" or "False" per the information below:</p>
+        <p class="p_2" style="font-size: 10pt;"><b>ProcessedStatus = True</b>: The Reason Code value will be either:</p>
+        <p class="p_2" style="font-size: 10pt;">Processed, or</p>
+        <p class="p_2" style="font-size: 10pt;">ProcessedAlternativesAvailable <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC">(RTPB only)</MadCap:conditionalText></p>
+        <p class="p_2" style="font-size: 10pt;"><b>Note</b>: ProcessedAlternativesAvailable indicates that the PBM processed the Request, but was not able to gather all alternative information due to time constraints. Only the pricing information on the requested medication only will be provided. The provider vendor can choose to show their own alternatives or decide not to show any alternatives. The provider vendor should indicate to the prescriber that alternatives are available if desired. The Free Text field will include the following note: “Multiple alternatives are available at potentially lower cost.”</p>
+        <p><span style="font-size: 10pt;"><b>ProcessedStatus = False</b>: The Reason Code will be one of the following values. In these cases limited information will be returned in the Response</span>
+            <MadCap:conditionalText MadCap:conditions="Default.RFSPMBC"><span style="font-size: 10pt;"> (RTPB workflow)</span>
+            </MadCap:conditionalText><span style="font-size: 10pt;">.</span>
+        </p>
+        <p class="p_2" style="color: #000000;font-size: 10pt;"><b>Values</b>:</p>
+        <p style="font-size: 10pt;">DiscontinuedNDC</p>
+        <p style="font-size: 10pt;">DrugNotFound</p>
+        <p style="font-size: 10pt;">MissingInvalidDOB</p>
+        <p style="font-size: 10pt;">MissingInvalidDaysSupply</p>
+        <p style="font-size: 10pt;">MissingInvalidGenderCode</p>
+        <p style="font-size: 10pt;">MissingInvalidPrescriberID</p>
+        <p style="font-size: 10pt;">MissingInvalidQuantity</p>
+        <p style="font-size: 10pt;">PBMMemberIDMissingInvalid</p>
+        <p style="font-size: 10pt;">PatientNotCovered</p>
+        <p style="font-size: 10pt;">PatientNotFound</p>
+        <p style="font-size: 10pt;">PharmacyIDMissingInvalid</p>
+        <p style="font-size: 10pt;">SystemError</p>
+        <p style="font-size: 10pt;">UnmatchedQuantityUnit</p>
+        <p style="font-size: 10pt;">ValidationError</p>
+        <p style="font-size: 10pt;">NotProcessed - Only used when there is not an applicable specific code on why the message was not processed.</p>
+    </body>
+</html>

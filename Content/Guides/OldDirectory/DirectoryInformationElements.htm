@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="2144" MadCap:lastWidth="799">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 MadCap:autonum="Section 1: ">Directory Information Elements</h1>
+        <p>DirectoryInformation is common to all Add and Update messages and their corresponding responses. </p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css'); margin-left: 0; margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 22px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 122px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 527px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>M</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>AccountID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>ID of the account associated with the record, provided by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ActiveStartTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Date Time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Date when the record will be enabled (in conjunction with a Service Level) and published to the Surescripts directory. Can set the ActiveStartTime to a future date to enable the record on the Surescripts network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ActiveEndTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Date Time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Date when the record is deactivated and will no longer be active in Surescripts directory. Will only display when within 7 days of end date; otherwise, expect this field to be blank. <b>Note:</b> To deactivate a record, ActiveEndTime must be set to the current date and ServiceLevel must not be present in the message. the record is removed from the directory download files 7 days after the ActiveEndTime. </p>
+                        <p><b>Note:</b> The DeactivateProviderLocation andDeactivateOrganization messages remove all service levels.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DirectAddressDefaultLocation</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Boolean</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The same Direct Address may be assigned to multiple directory records. This field allows customers to specify a default location for Clinical Direct messaging. When a provider or healthcare organization has multiple Direct Addresses, this field will be used by Surescripts to apply routing controls and configuration when delivery messages addressed to a Direct Address. If no record has the DirectAddressDefaultlocation set, Surescripts may be unable to deliver the message. </p>
+                        <p>Used in conjunction with SPI records that include Direct Addresses. This field allows customers to specify a single default location when the same Direct Address is used across multiple SPIs for the same Provider. I no one single SPI record (with the same direct address present) has the DirectAddressDefaultLocation set, Surescripts may be unable to deliver certain clinical direct messages. The field is not required when a single SPI with a specific direct address is in place.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DirectorySpecialties</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Specialties is always required for the Pharmacy organization type.</p>
+                        <p>Values:</p>
+                        <p>Doctor<br />MedReconciliation<br />PA<br />inStoreClinic<br />NP<br />Resident</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DirectorySpecialty</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required if DirectorySpecialties is present. Can repeat up to 50 times. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>DirectorySpecialtyName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required if Specialty is present. Surescripts directory identifier that can be used to designate additional information and characteristics that apply to the Pharmacy Organization record.</p>
+                        <p>This field is required for Pharmacy Organization type and is not used for General or Payer Organization types. Values are case sensitive. </p>
+                        <p>Values:</p>
+                        <p>Types: Each pharmacy must be designated with one of the following Types:</p>
+                        <ul>
+                            <li>MailOrder</li>
+                            <li>Retail</li>
+                            <li>InHouseDispensing</li>
+                        </ul>
+                        <p>The following directory specialties may also be included (as applicable):</p>
+                        <ul>
+                            <li>Compounding</li>
+                            <li>DME</li>
+                            <li>FaxPharmacyExternal (may only be set by Surescripts)</li>
+                            <li>FaxPharmacySurescripts (may only be set by Surescripts)</li>
+                            <li>Kiosk</li>
+                            <li>LongTermCare</li>
+                            <li>Specialty</li>
+                            <li>SupportsDigitalSignature</li>
+                            <li>TwentyFourHourStore</li>
+                        </ul>
+                        <p><b>Note:</b> In Admin Console, this field is called "Directory Specialties"</p>
+                        <p><b>Note:</b> Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>FaxBackup</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Boolean. Indicated that messages addressed to this directory entry allow Surescripts to attempt Fax delivery for failed messages if all attempts for electronic delivery have failed.</p>
+                        <p>Values</p>
+                        <p>-1 = Turned Off</p>
+                        <p>1 = Turned On</p>
+                        <p><b>Note:</b> Pharmacies in certain states, e.g. NY, may only use the value "-1" BackupPortalID. These states do not permit use of fax backup for pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>PortalID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>ID of the portal associated with the organization provided by Surescripts. If an account needs to support more than one application version, Surescripts can set up multiple Portal IDs. </p>
+                        <p><b>Note:</b> Enforced by business rule, not schema.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ServiceLevels</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>ServiceLevels is a collection of ServiceLevel elements in the schema. The schema allows up to 50 ServiceLevel elements. One ServiceLevelName is allowed for each ServiceLevel element. Do not send if there are no services.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ServiceLevel</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required if ServiceLevels element is present. Currently a maximum of 50 service levels are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>ServiceLevelName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required if ServiceLevel is present. </p>
+                        <p>Service Levels(s) associated with the account record. Designated by the account record capabilities. Values are case sensitive. For more detail, please refer to ServiceLevelTypes.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Test</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>For Surescripts' internal use only.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>UseCases</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Used to further define a message. A use case has a defined set of expectations for message content for those participating.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>UseCase</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Required if UseCases is used. Use cases are used to identify customers whose applications are capable of sending and receiving specifically defined content. </p>
+                        <p>Up to 10 occurrences of UseCase are permitted. More could be added in the future. Refer to schema for more details. </p>
+                        <p>Valid values will be distributed in documentation specific to each use case.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>UseCaseCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>Required if UseCases is used. </p>
+                        <p>For example:</p>
+                        <p>-PNLIMMUN</p>
+                        <p>-RTBC</p>
+                        <p>-ADVSAVE</p>
+                        <p>-PBMMedAdhr</p>
+                        <p>-GapsInCare</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

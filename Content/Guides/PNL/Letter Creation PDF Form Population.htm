@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="836" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc446316800"></a>Letter Creation (PDF Form Population)</h2>
+        <p class="BodyText1">A Physician Notification Letter (PNL) will be generated using certain elements contained in the immunization file submitted by the participant.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc446316801"></a>Letter Format(s)</h3>
+        <p class="BodyText1">The participant may supply a logo and static introductory text (including PHI compliance-related statements) to include in notifications sent to primary care providers. This information will be placed into a notification layout which defines the location of:</p>
+        <ul>
+            <li>logo/branding</li>
+            <li>static introductory text (content that does not change by patient or immunization), and</li>
+            <li>dynamic elements based on each immunization event: <ul><li>primary care provider name and information</li><li>patient name and information</li><li>place of care where the patient was seen, and</li><li>details of the vaccine administered.</li></ul></li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc446316802"></a>Letter Element Population</h3>
+        <p class="BodyText1">All person name elements in the letter will be composed of populated component name fields in the immunization file, omitting middle name if it is not populated, in this order: </p>
+        <p class="BodyText3">First Name + Middle Name (if populated) + Last Name</p>
+        <p class="BodyText1">All addresses in the letter will be presented in two text blocks, as follows:</p>
+        <p class="BodyText3">Text Block 1: Address Line 1 + [, Address Line 2 (if populated)]</p>
+        <p class="BodyText3">Text Block 2: City + “, ” + State Code + ZIP Code</p>
+        <p class="BodyText1">The administered dose element of the letter will be populated with the concatenation of Administered Amount and Administered Units, if populated</p>
+        <p class="BodyText3">Dose: Administered Amount + [Administered Units]</p>
+        <p class="BodyText1">The site and route of administration will be combined into a single text block in the letter, as follows: </p>
+        <p class="BodyText3">Route of administration [+ / Site of administration (if populated)]</p>
+        <p class="BodyText1">Dose number will be populated with Dose Number in Series plus Number of Doses in Series, if it is included in the Immunization File:</p>
+        <p class="BodyText3">Dose Number: Dose Number in Series + [Number of Doses in Series]</p>
+    </body>
+</html>

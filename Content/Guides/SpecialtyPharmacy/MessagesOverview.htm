@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <p class="BodyText1">Specialty Patient Enrollment supports the ability to communicate with pharmacies using structured FHIR® messages containing the information captured as part of the Specialty Patient Enrollment process. The content of this message is a FHIR® bundle object, where the Bundle is "message". The Bundle contains a collection of entries – a MessageHeader followed by other FHIR® objects that hold the information captured and/or sent by the provider vendor to Specialty Patient Enrollment.</p>
+        <p class="BodyText1">For more information on these FHIR® structured messages, see the <a href="FHIRMessageResources.htm">FHIR® Message Resources</a> section.</p>
+        <h2 class="Heading2"><a name="Message"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold">NewRx – New Prescription Request</p>
+        <p class="BodyText1">The NewRx message for Specialty Patient Enrollment will follow the NCPDP standard prescription routing requirements with the addition of requiring the &lt;TertiaryIdentifier&gt; (UIB-030-03) in the UIB – Interactive Interchange Control Header to be populated with a value of "SPO". This identifier will be used as an indicator to the pharmacy to expect an SPOEnrollmentRequest message. The &lt;PrescriberOrderNumber&gt; (UIH-030-01) in the NewRx message will be used to tie the NewRx to the SPOEnrollmentRequest.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The NewRx message flow is transmitted prior to the Specialty Patient Enrollment for Pharmacies workflow and is not included in the message flow examples below.</p>
+        <p class="StylebodytextBold">SPOEnrollmentRequest</p>
+        <p class="BodyText1">The SPOEnrollmentRequest is sent from Surescripts to the specialty pharmacy for the enrollment of the patient that was prescribed a specialty medication. The SPOEnrollmentRequest provides the ability to communicate with pharmacies with a structured FHIR® message containing the information captured as part of the Specialty Patient Enrollment process.</p>
+        <p class="StylebodytextBold">SpecialtyEnrollmentNote</p>
+        <p class="BodyText1">The SpecialtyEnrollmentNote is a structured FHIR® message that is sent from the specialty pharmacy to the provider to request additional enrollment information for the patient.</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">SpecialtyEnrollmentNoteResponse</p>
+        <p class="BodyText1">The SpecialtyEnrollmentNoteResponse is a structured FHIR® message that is sent from the provider vendor to the specialty pharmacy and contains the additional information requested from the specialty pharmacy to complete the enrollment of the patient.</p>
+        <h2 class="Heading2"><a name="SPOEnrol"></a>SPOEnrollmentRequest Message Flow</h2>
+        <p>
+            <img src="../../Resources/Images/SpecialtyPharmacy/SPOEnrollmentRequest.png" style="width: 492px;height: 287px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="BodyText1">1) Surescripts sends the SPOEnrollmentRequest to the specialty pharmacy.</p>
+        <p class="BodyText1">2) The specialty pharmacy responds with acknowledgement message or error message.</p>
+        <h2 class="Heading2" style="page-break-before: always;"><a name="SPOEnrol2"></a>SpecialtyEnrollmentNote Message Flow</h2>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This message flow only occurs when the specialty pharmacy requires additional information from the provider to dispense the medication. This process could be repeated as often as necessary to dispense the medication.</p>
+        <p>
+            <img src="../../Resources/Images/SpecialtyPharmacy/SpecialtyEnrollmentNoteFlow.png" MadCap:mediastyle="@media print { max-width: 102%; }" style="width: 682px;height: 312px;" />
+        </p>
+        <p class="BodyText1Indent">1a) The specialty pharmacy system sends the SpecialtyEnrollmentNote to Surescripts to request additional information from the provider to dispense the medication.</p>
+        <p class="BodyText1Indent">1b) Surescripts forwards the SpecialtyEnrollmentNote to the provider.</p>
+        <p class="BodyText1Indent">2a) The provider reviews the request and enters a response. The response is sent to the specialty pharmacy using the SpecialtyEnrollmentNoteResponse.</p>
+        <p class="BodyText1Indent">2b) Surescripts forwards the SpecialtyEnrollmentNoteResponse to the specialty pharmacy system.</p>
+        <h2 class="Heading2"><a name="Message2"></a>Message Validation</h2>
+        <p class="BodyText1">Surescripts will ensure that customers are in compliance with the message specifications outlined in this Guide during Integration Testing and will continue to enforce once in production.</p>
+        <p class="BodyText1">At a minimum, Surescripts validations include:</p>
+        <ul>
+            <li MadCap:conditions="Default.XMLSchemaValidation">
+                <p>JSON schema validation</p>
+            </li>
+            <li>
+                <p>The sender identification and authentication</p>
+            </li>
+            <li>
+                <p>The recipient identification</p>
+            </li>
+            <li>
+                <p>Syntax of the message, including field lengths, data types, and code values</p>
+            </li>
+            <li>
+                <p>Surescripts business rules</p>
+            </li>
+        </ul>
+    </body>
+</html>

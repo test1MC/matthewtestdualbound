@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="1483" MadCap:lastWidth="779">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443643369"></a>State License Numbers</h2>
+        <p class="BodyText1">Customers are responsible to meet the state requirements where they practice. This section gives guidance where the states have redefined how the state license number fields are used specifically for EPCS.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc443643370"></a>Ohio CTP Number</h3>
+        <p class="BodyText1">One of the Ohio state board requirements is the transmission of the "Certificate to Prescribe" (CTP) number. For several years now, the state of Ohio has had a requirement in its prescribing rules that prescriptions written by mid-level practitioners such as physician assistants, nurse practitioners, etc. are required to include their "Certified to Prescribe"(CTP) number. This number is issued to these practitioners after they have completed the requisite training and testing in order to have prescriptive authority in the state. The CTP number is required to be on prescriptions issued by these health care professionals so that pharmacists will know that they are certified to prescribe and that their prescriptions are legal. The requirement that the CTP number be on prescriptions applies regardless of the form of the prescription. Having conferred with representatives of the Ohio Board of Pharmacy and reached agreement with them as to how to handle the CTP number requirement on electronic prescriptions, the Ohio Board of Pharmacy has requested the following regarding how e-prescribing and pharmacy system vendors should comply with CTP number requirement.</p>
+        <p class="StylebodytextBold" MadCap:autonum="0.1.1.1 ">Prescribers</p>
+        <p class="BodyText1">E-prescribing vendors should populate the Prescriber State License Number field with the CTP number for all midlevel practitioners.</p>
+        <p class="BodyText1Indent2">XML: StateLicenseNumber tag in the Identification element in the prescriber section</p>
+        <p class="BodyText1Indent2">EDIFACT: 0B code in PVD 020.02</p>
+        <p class="BodyText1">In doing so, the letters "CTP" should always appear first in the field followed by the actual number.</p>
+        <p class="StylebodytextBold">Situation-specific Recommendation:</p>
+        <p class="BodyText1">Although the state of Ohio does not require that state license numbers for midlevel practitioners appear on prescriptions, some health systems, payers, and other entities require that state license numbers appear on these prescriptions pursuant to their own business needs. In these cases, it is permissible for the practitioner's state license number to be placed first in the Prescriber License Number field followed by a space, then the letters CTP, followed by the actual CTP number.</p>
+        <p class="StylebodytextBold" MadCap:autonum="0.1.1.2 ">Pharmacies</p>
+        <p class="BodyText1">Pharmacy system vendors should ensure that CTP numbers always appear on primary e-prescription screens for pharmacists to view during the dispensing process. In doing so, it is important that the letters CTP precede the number so that pharmacists can easily identify it. Pharmacy system vendors should also ensure that CTP numbers appear on hard copies of electronic prescriptions when they are printed out.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc443643371"></a>Texas APRN</h3>
+        <p class="BodyText1">The state of Texas requires advance practice nurses (APRNs) with prescriptive authority to include their prescriptive authority identification number in all prescriptions they create. In addition to their APRN prescription authorization number, advance practice registered nurses are required to also include the APRN's DEA number and the DEA number of the supervising practitioner on all prescriptions for controlled substances in Schedules III through V.</p>
+        <p class="BodyText1">E-prescribing vendors should populate the Prescriber State License Number field with the APRN's prescription authorization number on all prescriptions (for both non-controlled and controlled substances).</p>
+        <p class="BodyText1Indent2">XML: StateLicenseNumber tag in the Identification element in the prescriber section.</p>
+        <p class="BodyText1Indent2">EDIFACT: 0B code in PVD-020-02</p>
+        <p class="BodyText1">In doing so, the letters "APRN" should always appear first in the field followed by the actual number.</p>
+        <p class="BodyText1">In addition to the APRN's prescription authorization number, e-prescribing vendors should also include the ''APRN's DEA number which should be placed in the message in the prescriber loop and the supervising physician's DEA number should be placed in the supervisor loop.</p>
+        <p class="StylebodytextBold">Prescriber loop:</p>
+        <p class="BodyText1Indent2">XML: StateLicenseNumber tag in the Identification element in the prescriber section.</p>
+        <p class="BodyText1Indent2">EDIFACT: 0B code in PVD-020-02</p>
+        <p class="BodyText1">In doing so, the field content should be arranged as follows: letters "APRN" followed by the actual number.</p>
+        <p class="BodyText1">Example: APRN123456789</p>
+        <p class="BodyText1Indent2">XML: DEANumber tag in the Identification element in the prescriber section.</p>
+        <p class="BodyText1Indent2">EDIFACT: DH code in PVD-020-02</p>
+        <p class="StylebodytextBold">Supervisor loop:</p>
+        <p class="BodyText1Indent2">XML: DEANumber tag in the Identification element in the supervisor section.</p>
+        <p class="BodyText1Indent2">EDIFACT: DH code in PVD-020-02</p>
+    </body>
+</html>

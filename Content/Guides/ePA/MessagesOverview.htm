@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="539.3333" MadCap:lastWidth="1003">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <h2 class="Heading2"><a name="UTC"></a>UTC Time Format</h2>
+        <p class="BodyText1">By using UTC, the receiver of a message knows the time regardless of the time zone they are in. For example: If a message was sent from Boston at 5:30PM EDT (Eastern Daylight Time), the time would be sent as 21:30 UTC time. If this message was received in Chicago CDT (Central Daylight Time), the 21:30 UTC could be converted to the local CDT time of 4:30PM. Refer to <a href="http://www.w3.org/XML/" target="_blank"><span class="Hyperlink">http://www.w3.org/XML/</span></a> for more information.</p>
+        <p class="BodyText1">When sending only a Date (not Date and Time), send it in in your local time zone, and the receiver should interpret it in their local time. Neither party should attempt to convert the Date to UTC.</p>
+        <p class="BodyText1">All standard programming languages should have a function for generating a date in the UTC time zone or displaying a date in the local time zone. The format of the date/time fields in the XML schema must use the xsd:dateTime format. Examples of that format are: CCYY-MM-DDTHH:MM:SS.FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example 2013-01-01T16:09:04.5Z, or 2013-01-01T16:09:04.5-00:00, or 2013-01-01T16:09:04.5+00:00, where 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the "Z" in the first example or the "-00:00" in the second example, or the "+00:00" in the third example. The fractional seconds is not required. Refer to xsd:dateTime for more information.</p>
+        <p class="BodyText1">For simple date fields that do not include the time portion, the format is: CCYY-MM-DD example: 2006-12-07. </p>
+    </body>
+</html>

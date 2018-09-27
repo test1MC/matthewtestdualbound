@@ -1,0 +1,1495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="832.3334" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc445209640"></a>ACK Message – In Response to an ORU or RDS</h2>
+        <p class="BodyText1">This section outlines the format that will be returned by a Surescripts participant in response to an ORU or RDS message. </p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 53pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 54pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 252pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p style="font-weight: bold;">Segment</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p style="font-weight: bold;">Required</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p style="font-weight: bold;">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>MSH</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Y</p>
+                </td>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Message Header</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>MSA</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>Y</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Message Acknowledgment</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>ERR</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p>N</p>
+                </td>
+                <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p>Error</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc445209641"></a>MSH – Message Segment</h3>
+        <p class="BodyText1">The Message Header Segment defines the reason for the message, who sent it, who it is going to, and some details concerning the syntax. The table below outlines the Surescripts recommended usage of the MSH segment within the acknowledgement.</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 35pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 44pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 57pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 109pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 35pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 26pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 104pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr style="height: 26pt;" class="TableStyle-GuideTables-Head-Header1">
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">HL7</p>
+                        <p style="font-weight: bold;">OPT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Surescripts</p>
+                        <p style="font-weight: bold;">OPT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">LEN</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">DT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-1</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Field Separator</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Recommended value is |&#160; (Surescripts recommends same value that was on the original request).</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-2</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Encoding Characters</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>4</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the component separator, repetition separator, escape character, and subcomponent separator, in that order. (Surescripts recommends the same value that was on the original request).</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>180</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>HD</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Namespace ID</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Used for the sending system’s Surescripts Participant ID. Required by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identification for the sender if needed. Will be returned on a response. </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID Type</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identification for the sender if needed. Will be returned on a response.&#160; </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>180</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>HD</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Namespace ID</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identification for the sender if needed. Will be returned on a response.&#160; </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identification for the sender if needed. Will be returned on a response.&#160; </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID Type</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identification for the sender if needed. Will be returned on a response.&#160; </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>180</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>HD</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Namespace ID</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>MEDS (represents the Surescripts Application ID) </p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID Type</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>180</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>HD</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #auto;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Namespace ID</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #auto;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>RXHUB (represents the Surescripts Participant ID</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Universal ID Type</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-7</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Date/Time Of Message</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>26</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TS</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Date and time this acknowledgment was created.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>40</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Sender’s password into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-9</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Type</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>7</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CM</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Message Type</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>ACK</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Trigger Event</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Displays the value of the message this ACK is acknowledging.</p>
+                        <p>R01 event for the ORU message or O01 event for the RDS message.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Message Structure</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>ACK</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>35</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Uniquely identifies this message.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-11</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Processing ID</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>3</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PT</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 9pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Processing ID</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Defines Test (T) or Prod (P) or Dev (D) systems.</p>
+                    </td>
+                </tr>
+                <tr style="height: 9pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Processing Mode</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 9pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-12</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Version ID</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>8</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ID</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Version ID</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>2.3</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Internationalization Code</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Internal Version ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-13</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>15</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NM</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-14</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Continuation Pointer</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>180</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-15</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Accept Acknowledgment Type</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Left blank for original processing method.</p>
+                    </td>
+                </tr>
+                <tr style="height: 26pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-16</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Application Acknowledgment Type</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Left blank for original processing method.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-17</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Country Code</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-18</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Character Set (Repeats 3 times)</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>6</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ID</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-19</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Principal Language </p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>60</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>CE</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Identifier</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Text</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Name of Coding System</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Alternative Identifier</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Alternative Text</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="margin-left: 13pt;">Name of Alternative coding system</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc445209642"></a>MSA – Message Acknowledgment Segment</h3>
+        <p class="BodyText1">The Message Acknowledgment Segment contains information explaining the acknowledgment of receipt of the ADT message. The participant can inform Surescripts if there are errors within the transaction or if it was successful.</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 37pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 40pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 55pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 112pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 36pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 27pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 104pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr style="height: 26pt;" class="TableStyle-GuideTables-Head-Header1">
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">HL7 OPT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Surescripts</p>
+                        <p style="font-weight: bold;">OPT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">LEN</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">DT</p>
+                    </th>
+                    <th style="background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-1</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Acknowledgment Code</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ST</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Recommended values:</p>
+                        <p>AA – Application Accept</p>
+                        <p>AE – Application Error</p>
+                        <p>AR – Application Reject</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-2</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>20</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Trace number for original request. Value that was in MSH-10 of the ORU or RDS event.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-3</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Text Message</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>80</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Any additional error text, if necessary.</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-4</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Expected Sequence Number</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>15</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>B</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-5</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Delayed Acknowledgment Type</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-6</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Error Condition</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>250</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>O</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-6-01</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Identifier</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>0 - Message Accepted 207 - Application Internal Error</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-6-02</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Name of Coding System</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-6-03</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Alternative Identifier</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSA-6-04</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-left: 13pt;">Alternative Text</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>MSA-6-05</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="margin-left: 13pt;">Name of Alternative Coding System</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="_Toc445209643"></a>ERR – Error Segment</h3>
+        <p class="BodyText1">The Error segment contains one element that can be used for additional error reporting. Surescripts is not using the additional field.</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 30pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 47pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 54pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 113pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 36pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 27pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 104pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr style="height: 26pt;" class="TableStyle-GuideTables-Head-Header1">
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">HL7 OPT</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Surescripts</p>
+                        <p style="font-weight: bold;">OPT</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">Element Name</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">LEN</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p style="font-weight: bold;">DT</p>
+                    </th>
+                    <th style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;background-color: #B3B3B3;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p style="font-weight: bold;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="height: 13pt;" class="TableStyle-GuideTables-Body-Body1">
+                    <td style="background-color: #B3B3B3;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>R</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>NU</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>ERR-1</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Error code and location</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>80</p>
+                    </td>
+                    <td style="background-color: #B3B3B3;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding-left: 6pt;padding-right: 6pt;" class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Not Used</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="844.3333" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc442784670"></a>MPI File Load Overview</h1>
+        <p class="BodyText1">The MPI File Load is used to load the participant’s patients that have given consent into the Surescripts MPI.</p>
+        <p class="BodyText1">If a patient opts out of information sharing, exclude or inactivate (using an End Date) the patient from the MPI File Load.</p>
+        <h2 class="Heading2"><a name="MPI"></a>MPI File Load Process Flow</h2>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MPI File Load Supplement/MPI File Load Process Flow.png" style="visibility: visible;mso-wrap-style: square;width: 568px;height: 420px;" MadCap:mediastyle="@media print { max-width: 90%; }">
+            </img>
+        </p>
+        <p class="FigureName">Figure #1 MPI File Load Process Flow Diagram</p>
+        <p class="StylebodytextBold">Initial MPI File Load Process</p>
+        <p class="BodyText1">The following steps depict the flow of the Initial MPI File Load process:</p>
+        <ol>
+            <li>The participant creates a file of patient demographic information for patients that have provided consent to be part of the Surescripts MPI.</li>
+            <li>The participant submits the initial patient file load to Surescripts via SFTP.</li>
+            <li>Surescripts populates the MPI with the patient demographic information.</li>
+            <li>Surescripts creates a response file indicating success and failure details.</li>
+            <li>The participant pulls the response file via SFTP.</li>
+        </ol>
+        <p class="StylebodytextBold">Daily MPI File Load Update Process</p>
+        <p class="BodyText1">The following steps depict the flow of the Daily MPI File Load Update process:</p>
+        <ol>
+            <li>The participant creates a Daily Update file utilizing the same format to keep the Surescripts MPI current.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The Daily Update file should be sent when:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <p class="bodytext1indent"> a). There is a new patient or a change in a patient’s demographic data that Surescripts has defined in the file layout. (If other patient information not contained in the file layout changes, then no update should be sent.)</p>
+            <p class="bodytext1indent"> b). Any patient opts out of the program. In this case, the participant should include the date on which the patient’s participation will end in the End Date.</p>
+        </ol>
+        <ol start="2">
+            <li>The participant submits the Daily Update file to Surescripts via SFTP.</li>
+            <li>Surescripts processes the updates.</li>
+            <li>Surescripts creates a response file indicating success and failure details.</li>
+            <li>The participant pulls the response file via SFTP.</li>
+        </ol>
+        <h2 class="Heading2"><a name="Characte"></a>Character Set</h2>
+        <p class="BodyText1">Alphanumeric data must only contain ASCII characters with decimal values of 32 through 126, excluding the pipe (hex7c) delimiter character and line feed (hex 0a). All characters outside this range will be rejected. See http://www.asciitable.com/ for a list of valid characters. </p>
+        <p class="BodyText1">Numeric data is composed of the characters 0-9. </p>
+        <p class="BodyText1">Data should be utf-8 encoded.</p>
+        <h2 class="Heading2" style="page-break-before: always;"><a name="Requirem"></a>Requirement Designation</h2>
+        <p class="StylebodytextBold">Field Attributes:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Required/Mandatory - the segment must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Situational/Conditional - the segment must be used if conditions are met.</p>
+                </td>
+            </tr>
+        </table>
+        <h2 class="Heading2"><a name="File"></a>File Naming and Formats</h2>
+        <p class="BodyText1">The recommended file naming convention is:</p>
+        <ul>
+            <li>Application:</li>
+        </ul>
+        <ul>
+            <ul style="list-style-type: circle;">
+                <li>RLE for National Record Locator Service </li>
+            </ul>
+        </ul>
+        <ul>
+            <li>Participant Name</li>
+        </ul>
+        <ul>
+            <li>Date in YYMMDD format</li>
+        </ul>
+        <ul>
+            <li>XX where XX is a unique sequence within day, if required</li>
+        </ul>
+        <p class="BodyText3"><i>RLEParticipantNameYYYYMMDDXX </i>
+        </p>
+        <p class="BodyText1">It is strongly suggested to compress the file prior to transmission to Surescripts. The current zip protocols that are supported are gzip, bzip2 and zip.</p>
+        <ul>
+            <li>If compression is used, the archive file should contain only a single input file. </li>
+            <li>The compressed archive file should have the same file name as the file it contains, with the addition of the file extension of the compression method. </li>
+        </ul>
+        <p class="BodyText3"><b>Example</b>: File name: RLEAcmeHealthCare2014022001.txt is then placed in a compressed archived: RLEAcmeHealthCare2014022001.txt.gz </p>
+        <p class="BodyText1">The input file must be delivered to Surescripts using FTP and placed in the “to_surescripts” folder. </p>
+        <p class="BodyText1">The response file from Surescripts will be placed in a folder named “from_surescripts”.</p>
+        <p class="BodyText1">The response file name will be based on the original input file name.</p>
+        <p class="BodyText3">Example:</p>
+        <p class="BodyText3">Original input: &#160;&#160;&#160; RLEAcmeHealthCare2014022001.txt</p>
+        <p class="BodyText3">Response: &#160;&#160;&#160; RLEAcmeHealthCare2014022001.rsp</p>
+        <p class="BodyText3">Compressed response:   RLEAcmeHealthCare2014022001.rsp.gz</p>
+    </body>
+</html>

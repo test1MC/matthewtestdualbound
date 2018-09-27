@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="1326" MadCap:lastWidth="911">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909556"></a>Message Descriptions</h2>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Eligibility Request/Response</p>
+        <p class="BodyText1">The X12 Health Care Eligibility, Coverage, or Benefit Inquiry (270) and Health Care Eligibility, Coverage, or Benefit Information (271) message sets are used to request and respond to a patient eligibility check. These messages enable prescribers to supply a patient’s name and demographic information to Surescripts and get back the some or all of the following information from each PBM/payer that covers the patient:</p>
+        <ul>
+            <li style="page-break-after: avoid;">Health Plan Number/Name</li>
+            <li>Cardholder ID</li>
+            <li>Relationship Code</li>
+            <li>Person Code</li>
+            <li>Group Number, Group Name</li>
+            <li>Formulary ID</li>
+            <li>Alternative List ID</li>
+            <li>Coverage List ID</li>
+            <li>Copay List ID</li>
+            <li>BIN</li>
+            <li>PCN</li>
+            <li>Type of Prescription Benefit: Pharmacy and/or Mail Order</li>
+            <li>Specialty Pharmacy</li>
+            <li>Long Term Care (LTC)</li>
+        </ul>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Interchange Acknowledgment</p>
+        <p class="BodyText1">This X12 specification, TA1, is utilized to acknowledge receipt/header errors for batch messages and errors in real time messages. For the Surescripts message set, it only applies to the X12 specifications (270 &amp; 271). None of the other specifications utilize this message.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Implementation Acknowledgement</p>
+        <p class="BodyText1">The implementation acknowledgement, or 999, informs the submitter that the functional group arrived at the destination and is required as a response to receipt of an X12 message in a batch environment, and only for errors with real time messages. Surescripts only supports a real time environment for the 270/271 messages, so the 999 will only be sent if there are errors. The 999 reports on errors generated due to data or segment issues that do not comply with the X12 guide. </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">ID Load/Update (Flat File)/Response</p>
+        <p class="BodyText1">This message is used to load a PBM/payer’s patient directory into a directory at Surescripts. This directory is an index Surescripts uses when looking up a patient’s prescription benefit. The Patient Directory indicates which PBM/payer(s) can provide current coverage information. The elements provided are limited to the demographic data needed for patient searches.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Formulary and Benefit Data Load</p>
+        <p class="BodyText1">As requested or scheduled, the PBM/payer sends group-level formulary updates to provider vendors using the Formulary and Benefit Data Load message. Once the file is retrieved, the Physician System utilizes the file as a local repository for formulary checks.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Medication History Request/Response</p>
+        <p class="BodyText1">After a patient’s eligibility has been determined, this message is used to retrieve a listing of dispensed medications that were paid for by a patient’s PBM/payer. The message format is NCPDP SCRIPT.</p>
+    </body>
+</html>

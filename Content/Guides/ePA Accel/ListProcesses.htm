@@ -1,0 +1,1204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <MadCap:changeData>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-08-15T13:14:08.3440276-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Parameter</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">patientId </p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">an..35</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">M</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Matches the Patient ID specified in the PAInitiationRequest/Body/Patient/Identification/MedicalRecordIdentificationNumberEHR.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">facility</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">an..35</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Qualifier the vendor may use to make their Patient ID unique across their installations. </p>
+                                <p class="TableBody">Facility is only used in conjunction with patientId. If Facility is not specified, only records that have no Facility associated with them will be returned. </p>
+                                <p class="TableBody">This field matches the Facility specified in the PAInitiationRequest/Body/Patient/Identification/MutuallyDefined in the NCPDP XML Schema.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">fromDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or after this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">createdThruDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or prior to this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">pageSize</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">pageIndex</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2018-08-15T13:14:08.3570110-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Parameter</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">initiators</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">Complex Type</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">M</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">A collection of initiators. </p>
+                                <p class="TableBody">An initiator is a dataset containing the initiators identifying data.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">&#160; id</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">an13</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">M</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">SPI of the initiator.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">&#160; qualifier</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">an1</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">M</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">SPI's corresponding qualifier. </p>
+                                <p class="TableBody">Value = D</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">createdFromDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or after this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">createdThruDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or prior to this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">pageSize</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">pageIndex</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="3" MadCap:timestamp="2018-08-15T13:14:08.3610556-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">Parameter</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">Data Type</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">M/C</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">initiatorProcessId</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">Complex Type</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">M</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">A collection of initiators process IDs.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">fromDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or after this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">createdThruDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">DateTime</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Processes created on or thru this date will be returned.</p>
+                                <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">pageSize</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">pageIndex</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">Positive Int</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">C</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="4" MadCap:timestamp="2018-08-15T13:14:08.3700765-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">HttpStatus</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">200</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">Successful response along with the processList and the corresponding process response fields</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">400</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">Bad Request</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="5" MadCap:timestamp="2018-08-15T13:14:08.3740562-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">Field</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">pageIndex</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">Integer representing the returned page index</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">pageSize</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">Integer representing the page size</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">totalRows</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">Integer representing the total number of rows matching the search criteria</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="Table" style="font-weight: normal;">items</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="Table"><span style="font-weight: normal;">Collection of process summary objects. See <MadCap:xref href="#_Response_Field_description">Response Field Description – Process Summary</MadCap:xref></span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+            <MadCap:ReplaceChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="6" MadCap:timestamp="2018-08-15T13:14:08.3871209-05:00">
+                <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p class="TableHeading">Field</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p class="TableHeading">Description</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">processId</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Unique Surescripts ID which represents the process instance.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">processName</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Name of the process.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">initiatorsProcessId</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">The initiatorsProcessId is the PAReferenceID as defined by the provider vendor system.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">initiator</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Dataset containing the recipient's identifying data.</p>
+                                <p class="TableBody">Field(s) include:</p>
+                                <p class="TableBody" style="margin-left: 13pt;">id</p>
+                                <p class="TableBody" style="margin-left: 13pt;">qualifier</p>
+                                <p class="TableBody" style="margin-left: 13pt;">name</p>
+                                <p class="TableBody">Note: Supported qualifiers are D and PY. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">patientId</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Vendor supplied Patient ID.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">facility</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Optional vendor supplied value to create uniqueness across vendor installations.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">patientFirstName</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Patient’s first name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">patientLastName</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Patient’s last name.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">patientDob</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Patient’s date of birth.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">createdDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Date/time process was created.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">completedDate</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Date/time process was completed.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">status</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Integer representing the status of the process, possible values are:</p>
+                                <p class="TableBody" style="margin-left: 13pt;">1: Draft</p>
+                                <p class="TableBody" style="margin-left: 13pt;">2: In Progress</p>
+                                <p class="TableBody" style="margin-left: 13pt;">3: Complete</p>
+                                <p class="TableBody" style="margin-left: 13pt;">4: Cancelled</p>
+                                <p class="TableBody" style="margin-left: 13pt;">5: Errored</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p class="TableBody">statusName</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p class="TableBody">Textual name representing the status of the process.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p class="TableBody">description</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p class="TableBody">Description of the process instance.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </MadCap:ReplaceChange>
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc434830206"></a>List Processes</h2>
+        <p class="BodyText1">The following endpoints are available to retrieve a list of processes based on parameters and search criteria. Each item in the list is a summary of a process. The responses are the same for all List Processes endpoints.</p>
+        <h3 class="Heading3"><a name="_Toc434830207"></a>List Processes for PatientId</h3>
+        <p class="BodyText1">List Processes for patientId retrieves a paged list of process summaries for a given patient ID. If the optional parameter of Facility is not provided in the request, then only the processes that are not affiliated with a facility will be included in the results. </p>
+        <p class="BodyText1" style="font-weight: bold;">Request Template</p>
+        <p class="BodyText1">[GET] {{host}}/api/v0/processes?patientId={patientId}&amp;facility={facility} &amp;fromDate={fromDate}&amp;createdThruDate={createdThruDate}&amp;pageIndex={pageIndex}&amp;pageSize={pageSize}</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="1">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientId </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Matches the Patient ID specified in the PAInitiationRequest/Body/Patient/Identification/MedicalRecordIdentificationNumberEHR.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Qualifier the vendor may use to make their Patient ID unique across their installations. </p>
+                        <p class="TableBody">Facility is only used in conjunction with patientId. If Facility is not specified, only records that have no Facility associated with them will be returned. </p>
+                        <p class="TableBody">This field matches the Facility specified in the PAInitiationRequest/Body/Patient/Identification/MutuallyDefined in the NCPDP XML Schema.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">fromDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or after this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdThruDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or prior to this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Request Example</p>
+        <p class="BodyText1">[GET] {{host}/uiservice/api/v0/processes?patientId=george123</p>
+        <h3 class="Heading3"><a name="_Toc434830208"></a>List Processes for Initiator(s)</h3>
+        <p class="BodyText1">List Processes for Initiator(s) retrieves a paged list of process summaries for the specified initiator(s). An initiator is an individual or physician that requested the ePA.</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Template</p>
+        <p class="BodyText1">[POST] {{host}}/processes</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="2">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiators</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">A collection of initiators. </p>
+                        <p class="TableBody">An initiator is a dataset containing the initiators identifying data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">SPI of the initiator.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">SPI's corresponding qualifier. </p>
+                        <p class="TableBody">Value = D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdFromDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or after this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdThruDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or prior to this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;page-break-before: always;">Request Example</p>
+        <p style="font-family: Arial;font-size: 9pt;">[POST] <u style="color: #0000ff;">http://[host]/uiservice/api/v0/processes </u></p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">{</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "initiators": [</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; {</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "id": "6223033492001"</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; }</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; ],</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "fromDate": "2014-12-05T15:11:42.578706-06:00",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "createdThruDate": "2014-12-05T15:11:42.578706-06:00",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "pageIndex": 2,</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "pageSize": 3</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">}</p>
+        <h3 class="Heading3"><a name="_Toc434830209"></a>List Processes for InitiatorsProcessId(s)</h3>
+        <p class="BodyText1">List Processes for initiatorsProcessId(s) retrieves a paged list of processes for the specified initiatorsProcessId(s). InitiatorsProcessId is the PAReferenceID as defined by the provider vendor system.</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Template</p>
+        <p class="BodyText1">[POST] {{host}}/processes</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;font-size: 10pt;">M/C – Mandatory or Conditional</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="3">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiatorProcessId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">A collection of initiators process IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">fromDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or after this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdThruDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Processes created on or thru this date will be returned.</p>
+                        <p class="TableBody">Note: DateTime format is CCYY-MM-DDTHH:MM:SSZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the number of records returned in each request. If a pageSize is not specified, the default value of 25 is applied. This value is truncated to 100 if larger.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Positive Int</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Integer representing the page index of data to be returned. If a pageIndex is not specified, the default value of 0 is applied.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Request Example</p>
+        <p>[POST] <u style="color: #0000ff;">http://[host]/uiservice/api/v0/intiators/processes</u></p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">{</p>
+        <p class="HTMLPreformatted" style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; "initiatorProcessIds": [</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; "f050fc8601444af1be3c5ffeb4c1d703",</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; "3fb345ccf3814adc835f756e752c851a"</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">&#160; ]</p>
+        <p style="color: #333333;font-family: Arial;font-size: 9pt;">}</p>
+        <h3 class="Heading3"><a name="_Toc434830210"></a>List Processes Response </h3>
+        <p class="BodyText1" style="font-weight: bold;">Response HttpStatus Codes</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="4">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">HttpStatus</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">200</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Successful response along with the processList and the corresponding process response fields</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Bad Request</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Response Field description – List Processes</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="5">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">pageIndex</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Integer representing the returned page index</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">pageSize</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Integer representing the page size</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">totalRows</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">Integer representing the total number of rows matching the search criteria</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">items</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Table"><span style="font-weight: normal;">Collection of process summary objects. See <MadCap:xref href="#_Response_Field_description">Response Field Description – Process Summary</MadCap:xref></span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;"><a name="_Response_Field_description"></a>Response Field Description – Process Summary</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="6">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Unique Surescripts ID which represents the process instance.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">processName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of the process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiatorsProcessId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The initiatorsProcessId is the PAReferenceID as defined by the provider vendor system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">initiator</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Dataset containing the recipient's identifying data.</p>
+                        <p class="TableBody">Field(s) include:</p>
+                        <p class="TableBody" style="margin-left: 13pt;">id</p>
+                        <p class="TableBody" style="margin-left: 13pt;">qualifier</p>
+                        <p class="TableBody" style="margin-left: 13pt;">name</p>
+                        <p class="TableBody">Note: Supported qualifiers are D and PY. If the qualifier is D, then the ID will be the SPI. If the qualifier is PY, the ID will be the PBM/payer ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Vendor supplied Patient ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Optional vendor supplied value to create uniqueness across vendor installations.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientFirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s first name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientLastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s last name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">patientDob</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient’s date of birth.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">createdDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time process was created.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">completedDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date/time process was completed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Integer representing the status of the process, possible values are:</p>
+                        <p class="TableBody" style="margin-left: 13pt;">1: Draft</p>
+                        <p class="TableBody" style="margin-left: 13pt;">2: In Progress</p>
+                        <p class="TableBody" style="margin-left: 13pt;">3: Complete</p>
+                        <p class="TableBody" style="margin-left: 13pt;">4: Cancelled</p>
+                        <p class="TableBody" style="margin-left: 13pt;">5: Errored</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">statusName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Textual name representing the status of the process.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">description</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Description of the process instance.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Response Example</p>
+        <p style="font-family: Arial;font-size: 9pt;">{</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; "pageIndex": 0,</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; "pageSize": 25,</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; "totalRows": 1,</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; "items": [</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; {</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "processId": 122908,</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "processName": "ePA Case",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "initiatorsProcessId": "06056ea227e144cd820cfc0f6e860d1f",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "initiator": {</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6590604289001",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "name": "Mouse, Mickey"</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "patientId": "george",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "facility": "clinic1",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "patientFirstName": "George",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "patientLastName": "Jetson",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "patientDob": "1962-11-23T00:00:00",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "createdDate": "2014-12-05T17:36:38.476",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "completedDate": "2014-12-05T17:37:45.757",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "status": 4,</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "statusName": "Cancelled",</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160;&#160;&#160; "description": "Botox (onabotuilinumatoxina) 20mg vial"</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160;&#160;&#160; }</p>
+        <p style="font-family: Arial;font-size: 9pt;">&#160; ]</p>
+        <p style="font-family: Arial;font-size: 9pt;">}</p>
+    </body>
+</html>

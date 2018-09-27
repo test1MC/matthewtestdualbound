@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Lori.Ash" MadCap:initials="LO" MadCap:id="1" MadCap:timestamp="2018-08-03T15:31:58.4760658-05:00" />
+        </MadCap:changeData>
+    </head>
+    <body>
+        <h1 class="Heading1">SPO Medication Identification Service Request/Response</h1>
+        <p class="BodyText1">The SPO Medication Identification Service is a request/response message that allows provider vendor systems to determine if the prescribed medication is supported by SPO.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Provider vendors should enable customers with the ability to manually initiate the SPO process for medications even when they are not identified as an SPO medication.</p>
+        <h2 class="Heading2"><a name="Authenti"></a>Authentication</h2>
+        <p>For information on authentication, see the <a href="../Accelerator/WebServiceUserSecurity.htm">User Security</a> section.</p>
+        <h2 class="Heading2"><a name="SPO"></a>SPO Medication Identification Service Request Example</h2>
+        <p class="BodyText1">The following is an example of an SPO Medication Identification Service Request sent to Surescripts.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Security headers for a sample API call are shown in <span style="color: #0000ff;">blue</span> below.</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">POST </span><a href="http://localhost/sdis/api/v0/lookup"><span class="Hyperlink">http://localhost/sdis/api/v0/lookup</span></a><span style="color: #0000FF;text-decoration: underline;"> HTTP/1.1</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">Host: localhost</p>
+        <p style="font-weight: bold;color: #0000FF;font-size: 9pt;">Authorization: Basic bnJvbWE6cGFzczQzMndvciFk</p>
+        <p style="font-size: 9pt;"><span style="font-weight: bold;color: #0000FF;">X-SENDER-UID: D<MadCap:change MadCap:changes="1">P</MadCap:change>-123</span>
+        </p>
+        <p style="font-size: 9pt;">Content-Type: application/json</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">Cache-Control: no-cache</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">Postman-Token: 8054be72-6af4-435f-be22-4e7dfdb5135b</p>
+        <p style="color: #333333;font-size: 9pt;">User-Agent: PostmanRuntime/6.4.1</p>
+        <p style="color: #333333;font-size: 9pt;">Accept: */*</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">Accept-Encoding: gzip, deflate</span>
+        </p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">Content-Length:&#160;159</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">Connection: keep-alive</p>
+        <p style="font-size: 9pt;">&#160;</p>
+        <p style="color: #333333;font-size: 9pt;">[</p>
+        <p style="color: #333333;font-size: 9pt;">&#160; {</p>
+        <p style="color: #333333;font-size: 9pt;">&#160;&#160; "NDC":&#160;"65757040303",</p>
+        <p style="color: #333333;font-size: 9pt;">&#160;&#160; "RXCUI":&#160;"2315616-"</p>
+        <p style="color: #333333;font-size: 9pt;">&#160; }</p>
+        <p style="color: #333333;font-size: 9pt;">]</p>
+        <h2 class="Heading2"><a name="SPO2"></a>SPO Medication Identification Service Response Example</h2>
+        <p class="BodyText1">A successful response contains a status code of 200 with a body similar to the following.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Medications that are identified as an SPO Medication are marked with a value of "true" in the IsSpecialty element if it is an SPO medication, or "false" if it is not.</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">HTTP/1.1&#160;200&#160;OK</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">Cache-Control: no-cache</p>
+        <p style="color: #333333;font-size: 9pt;">Pragma: no-cache</p>
+        <p style="color: #333333;font-size: 9pt;">Content-Type: application/json; charset=utf-8</p>
+        <p style="color: #333333;font-size: 9pt;">Expires: -1</p>
+        <p style="color: #333333;font-size: 9pt;">Server: Microsoft-IIS/10.0</p>
+        <p style="color: #333333;font-size: 9pt;">X-AspNet-Version:&#160;4.0.30319</p>
+        <p style="color: #333333;font-size: 9pt;">X-Powered-By: ASP.NET</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">Date: Fri,&#160;08&#160;Dec&#160;2017&#160;18:55:46&#160;GMT</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">Content-Length:&#160;273</p>
+        <p style="color: #333333;font-size: 9pt;">&#160;&#160; &#160;</p>
+        <p style="color: #333333;font-size: 9pt;">[</p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">&#160; {</span>
+        </p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">&#160;&#160;&#160; "NDC":"65757040303","RXCUI":"2315616-","IsSpecialty":true</span>
+        </p>
+        <p style="font-size: 9pt;"><span style="color: #333333;">&#160; }</span>
+        </p>
+        <p style="color: #333333;font-size: 9pt;">]</p>
+        <h2 class="Heading2"><a name="SPO3"></a>SPO Medication Identification Service Error Response Example</h2>
+        <p class="BodyText1">The following is an example of an error returned to an SPO Medication Identification Service Request message.</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">HTTP/1.1 401 Unauthorized</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Cache-Control: No-Cache</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Pragma: no-cache</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Content-Type: application/json; charset=utf-8</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Expires: -1</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Server: Microsoft-IIS/10.0</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">X-AspNet-Version: 4.0.30319</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">X-Powered-By: ASP.NET</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Date: Fri, 15 Dec 2017 17:11:07 GMT</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">Content-Length: 61</p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">{</p>
+        <p class="BodyText2" style="margin-left: 4pt;margin-top: 6px;"><span style="font-size: 9pt;">&#160;&#160;&#160; "Message": "Authorization has been denied for this request."</span>
+        </p>
+        <p class="BodyText2" style="margin-left: 4pt;font-size: 9pt;margin-top: 6px;">}</p>
+    </body>
+</html>

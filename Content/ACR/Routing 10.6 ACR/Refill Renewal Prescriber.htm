@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="856" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" style="font-family: Arial;" MadCap:autonum="0.1 "><a name="_Toc452734035"></a>Refill Renewal Prescriber Requirements</h2>
+        <ol>
+            <li>The application shall<sup>*106R-048</sup> support each Refill Renewal Response status type (Approved, Approved with Changes, Denied, Denied New Rx to Follow (DNTF). The DNTF workflow is not for application limitations. Meaning, if the prescriber application receives a Refill Renewal Request, the application shall<sup>*106R-049</sup> not create a DNTF because of internal workflow limitations (i.e., an optional field like DaysSupply is not sent in the Refill Renewal Request and the application requires it).<br /><br />In a Refill Renewal Approved/Approved with Changes Response, there shall<sup>*106R-050</sup> be a non-zero value sent for the refill quantity. Denied and DNTF Refill renewal response shall<sup>*106R-051</sup> have refill quantity 0.</li>
+            <li>When a refill response is approved for 2 refills with qualifier A, it shall<sup>*106R-053</sup> be interpreted as 2 refills only (1 current dispense + 1 refill). To ensure proper refill dispensing, prescribing vendors shall<sup>*106R-052</sup> adhere to the following display requirements: </li>
+        </ol>
+        <ul>
+            <li>The refills field as "Total number of dispensings approved: _______". In this case the number the prescriber enters in the blank field shall<sup>*106R-055</sup> be considered as the total number (current dispense + refills) and shall<sup>*106R-056</sup> be sent directly in the Refills field in the Refill Renewal Response message. </li>
+        </ul>
+        <ul>
+            <li>If, however, your Refill Renewal Response screen indicates the number of refills approved (as opposed to number of dispensings) then the display on the screen shall<sup>*106R-057</sup> read: "total number of refills approved: 1 + _______". The '1' here indicates the current dispensing; the prescriber will enter the additional refills approved in the blank field. In the Refills field in your Refill Renewal Response message to the pharmacy you will add one to the value input in the blank field and send it along. </li>
+        </ul>
+        <ul>
+            <li class="ListBullet5" style="list-style-type: disc;">If the screen only says "number of refills approved", then it either needs to have clearer language, or some hint shall<sup>*106R-058</sup> be given to the physician so there can be no ambiguity.</li>
+        </ul>
+        <ol start="3">
+            <li>When receiving a Refill Renewal Request, all the following fields shall<sup>*106R-059</sup> be displayed, at a minimum, as received in its entirety to the end user to assist in making the decision to accept or deny the request: </li>
+        </ol>
+        <ul>
+            <li>Patient first and last name, gender and DOB. Additional information such as address and phone number is encouraged. Both the prescribed and dispensed drug information as sent in the Refill Renewal request shall<sup>*106R-060</sup> be available for display including: Drug description (Full drug name, strength, and dosage form), quantity/Potency Unit Code Description, directions/sig, notes, refills value or PRN, substitution or DAW, and date written. </li>
+        </ul>
+        <ul>
+            <li>When the application supports these data points, the screen shall<sup>*106R-061</sup> also display: days supply, diagnosis, and prior authorization, if populated. </li>
+        </ul>
+        <ul>
+            <li>Pharmacy name, address, and phone</li>
+        </ul>
+        <ul>
+            <li>Prescriber name, address, and phone</li>
+        </ul>
+        <p class="BodyText3">If the above content does not fit into one screen view, an alternative technique can be offered such that the prescriber shall<sup>*106R-063</sup> have access to review all the content before responding. </p>
+        <ol start="4">
+            <li>The prescriber order number shall<sup>*106R-064</sup> be used as the first matching criteria back to the original New Rx for which the Refill Renewal Request is being sent. If the prescriber order number matches that of the original New Rx, the system shall<sup>*106R-177</sup> allow the user to visually confirm that the patient demographics are accurate. The patient first name, last name, and date of birth should be used as the second set of matching criteria back to the original New Rx for which the Refill Renewal Request is being sent. An automatic Refill Renewal Response for Refill Renewal Requests shall<sup>*106R-178</sup> never be sent back to the pharmacy. User review and approval/denial of the Refill Renewal Response shall<sup>*106R-179</sup> always be required. Note: the exception to this requirement is for a participant that does not support CP/SP (Compounds/Supplies). </li>
+            <li>Refill Renewal Response –Free text cannot be modified in the DRU Segment: All information on the Refill Renewal Request shall<sup>*106R-065</sup> be echoed back on the response except for fields defined in Section 6.6, RES Response Segment.</li>
+            <li>For a controlled substance:</li>
+        </ol>
+        <ul>
+            <li>If the prescriber, who is NOT authorized to send EPCS messages, denies the Refill Renewal Request for the controlled substance, the Refill Renewal Response shall<sup>*106R-170</sup> be sent electronically to the pharmacy with the appropriate denial information, just like denials for any non-controlled Refill Renewal Request. </li>
+        </ul>
+        <ul>
+            <li>If the prescriber, who is NOT authorized to send EPCS messages, “approves” the Refill Renewal Request for the controlled substance, the application shall<sup>*106R-171</sup>, on the back-end, send to the pharmacy a Refill Renewal Response with a “Denied New Prescription To Follow” status along with a note in the Denied Response segment (RES-040 or &lt;DenialReason&gt;) stating: “Prescriber system cannot transmit approved controlled e prescription”. </li>
+        </ul>
+        <ul>
+            <li>The application shall<sup>*106R-172</sup> then direct the prescriber to a non-EDI workflow. On a printed prescription there shall<sup>*106R-173</sup> be an indication that this is in response to an electronic refill renewal request for a controlled substance. The appropriate RxReferenceNumber from the original Refill Renewal Request shall<sup>*106R-174</sup> be included on the printed prescription.</li>
+        </ul>
+        <p class="StylebodytextBold">Non-EDI Workflow for Controlled Substance Prescribing</p>
+        <p class="BodyText1">Please reference local state rules and the DEA’s Practitioner’s Manual section on Valid Prescription Requirements, which can be found at: <a href="http://www.deadiversion.usdoj.gov/pubs/manuals/pract/section5.htm" class="Hyperlink" target="_blank">http://www.deadiversion.usdoj.gov/pubs/manuals/pract/section5.htm</a></p>
+    </body>
+</html>

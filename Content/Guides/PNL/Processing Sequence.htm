@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="730" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Processing_Sequence"></a><a name="_Toc446316784"></a>Processing Sequence</h2>
+        <p class="BodyText1">Overall file validation</p>
+        <ul>
+            <li>If errors exist in over 10% of the individual immunization file records, or if a partial file was received, then the file will be rejected with a file-level error message.</li>
+        </ul>
+        <p class="BodyText1">Individual data validation</p>
+        <ul>
+            <li>The system validates field formats, lengths, and valid values, and confirms mandatory elements are present and conditionality requirements are met.</li>
+        </ul>
+        <p class="BodyText1">Physician Notification Letter Delivery</p>
+        <p class="BodyText1">The Physician Notification Letters for Immunizations product uses Surescripts Guaranteed Delivery capability to determine how letters will be routed. Guaranteed Delivery operates by matching data in the PNL record to data in the Surescripts directory and makes routing decisions through an algorithm. The Guaranteed Delivery algorithm sequences as follows:</p>
+        <ul>
+            <li>The system determines whether the primary care provider is accessible electronically. If so, it initiates an electronic message containing a PDF <MadCap:annotation MadCap:createDate="2016-03-24T13:28:12.0449146-05:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="From: Flessner, Rob \r\nSent: Tuesday, January 21, 2014 10:15 AM\r\nTo: Kuppe, Patrice\r\nCc: Rosenthal, Michael\r\nSubject: PNL Guide Updates\r\n\r\nHi Patrice,\r\nThere is one very small change needed to the PNL Implementation Guide. In 2014.1 we included CDA attachments in addition to PDF attachments for electronic delivery. I looked at the Implementation Guide and found only one place where a change must be made to accommodate the update. This update does not constitute a new version of PNL. We do not need to provide any additional specificity regarding the CDA attachment because we are generating it and it does not impact the implementation process.  \r\n\r\n1) Page 14, first bullet under Physician Notification Letter Delivery. \r\na. The system determines whether the primary care provider is accessible electronically. If so, it initiates an electronic message containing a PDF and a CDA of the physician notification letter. \r\n\r\nPlease make the update at your earliest convenience, I don’t think we need a formalized review process given the small change.\r\n\r\n" MadCap:editor="megan.hayden" MadCap:editDate="2016-03-24T13:28:29.7326832-05:00">of </MadCap:annotation>the physician notification letter. <br /><br />If delivery is not successful, the system attempts fax delivery.</li>
+            <li>If the participant provides a physician’s fax number in the immunization record, the system will attempt to deliver the physician notification letter to the physician’s fax number. </li>
+            <li>If the participant does not provide a fax number or fax delivery fails, then the system will attempt delivery using postal mail.</li>
+            <li>Surescripts will use the mailing address for the primary care provider provided in the file to mail the physician notification letter. The system will validate and format the address according to the USPS CASS process. If the address is determined to be deliverable, then the system prints the physician notification letter(s) and they are sent for delivery by postal mail. <br /><br /><span style="font-style: italic;">The physician letter will be delivered through only one method.</span></li>
+        </ul>
+        <p class="BodyText1">Response file creation process</p>
+        <ul>
+            <li>Once all immunizations have been processed, the system creates the Immunization Delivery Report described in a later section.</li>
+            <li>The response file contains the processing outcome of each record, including:<ul><li>method by which delivery of the physician notification letter was initiated (electronic, fax or postal mail)</li><li>notice when delivery was not attempted due to a physician postal address that was not USPS-deliverable</li><li>other processing errors encountered</li><li>the fax number used (when fax is delivery method)</li><li>scrubbed primary care provider address (Surescripts will validate and format primary care provider postal addresses according to the USPS Coding Accuracy Support System (CASS process), and</li><li>a field indicating that one or more address elements were modified by CASS processing (e.g., ZIP Code added, street directional added).</li></ul></li>
+        </ul>
+    </body>
+</html>

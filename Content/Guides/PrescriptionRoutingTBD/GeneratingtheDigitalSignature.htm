@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="1281" MadCap:lastWidth="708">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643395"></a>Generating the Digital Signature</h2>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing/Generating the Digital Signature.png" style="visibility: visible;mso-wrap-style: square;width: 526px;height: 469px;" />
+        </p>
+        <p class="BodyText1">The above image was based on an image from: <a href="http://en.wikipedia.org/wiki/File:Digital_Signature_diagram.svg" class="Hyperlink" style="font-size: 11pt;" target="_blank">http://en.wikipedia.org/wiki/File:Digital_Signature_diagram.svg</a></p>
+        <p class="BodyText1">To generate a digital signature the following steps are required to be performed.</p>
+        <p class="BodyText1">Concatenate the fields to be signed and create a single plain text string.</p>
+        <ol>
+            <li>The value of the fields listed in Section 7.2 Fields Required to be Digitally Signed are required to be selected in the order specified in the above table and concatenated into a single plain text string.<br /><br />The plain text string should not use any field separators or include additional characters that are not the same values communicated in the data field.<br /><br />The fields are required to be constrained to the alpha-numeric character set matching the pattern [ !-~]* or a more restrictive pattern as defined by the implementation guide. Trailing and leading whitespace should be included exactly as sent in the message.<br /><br />The plain text string should not use XML escaping. If the prescriber wished to send the literal value of "&gt; 100 degrees" in a field, DO NOT change this to "&amp;gt; 100 degrees" when creating the plain text string.<br /><br />If the field is constrained to a code set, then the value of the code should be included in the plain text string, not the value. For example, DRU-060-01 (Refill quantity qualifier) should include "R" in the plain text string, not "Number of Refills".</li>
+            <li>Calculate the Digest Value of the Plain Text String<br /><br />The ASCII encoded plain text string will be reduced to a unique DigestValue using a SHA-1 hash. Note, because all customers on the Surescripts network are required to agree on a single method for signing and verifying a digital signature, additional secure hash algorithms such as SHA-256 will not be supported in version 10.6.</li>
+            <li>Calculate the Signature Value<br /><br />An encrypted SignatureValue is now calculated by encrypting the result of SHA-1 Hash with the prescriber's private key. This encryption is required to be done with RSASSA-PKCS1-v1_5. This standard is implemented by the RSACryptoServiceProvider in Microsoft.Net, Java Cryptography Extension (JCE) and many other popular development platforms.</li>
+            <li>Format the Message<br /><br />The results of the SHA-Hash, the Signature Value and the Prescriber's X.509 Public Certificate are required to each be base64 encoded and included in the XML message header.</li>
+        </ol>
+    </body>
+</html>

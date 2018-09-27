@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="10" MadCap:lastHeight="1955" MadCap:lastWidth="833">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909609"></a>High-Level Processing Examples (For Provider Vendors)</h2>
+        <p class="BodyText1">The following examples show processing flows for:</p>
+        <ul>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Presenting Formulary and Coverage Information</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Presenting Medication Copay</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Presenting Formulary Alternatives</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc443909610"></a>Flow One: Presenting Formulary &amp; Coverage Information</h3>
+        <p class="BodyText1">For each medication presented to the prescriber:</p>
+        <ol>
+            <li>Note the medication’s NDC(s) (“drug ID(s)” hereafter).</li>
+            <li>Determine the patient’s Formulary ID and Coverage ID using the Eligibility 271 message.</li>
+            <li>Determine the medication’s formulary status:<ol style="list-style-type: lower-alpha;"><li>Search the Coverage Information Detail - Product Coverage Exclusion list for this drug ID and Coverage ID. If an exclusion is found, present “Not Reimbursable” as the formulary status. </li><li>If no Product Coverage Exclusion is associated with this medication, search the Formulary Status List and present the highest Formulary Status reflected there.</li><li>If the payer has not included this drug ID in the Formulary Status List, use the appropriate non-listed default status specified in the Formulary Status Header (if provided by the payer):<ul><li>Non-Listed Prescription Brand Formulary Status</li><li>Non-Listed Prescription Generic Formulary Status </li><li>Non-Listed Brand Over The Counter Formulary Status </li><li>Non-Listed Generic Over The Counter Formulary Status</li><li><p>Non-Listed Supplies Formulary Status </p></li></ul></li></ol></li>
+            <li>Present coverage information:<ul><li>Search the various coverage lists for this Drug ID and Coverage ID.</li><li>Display each overage rule found.</li></ul></li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443909611"></a>Flow Two: Presenting Medication Copay</h3>
+        <p class="BodyText1">For each medication presented to the prescriber:</p>
+        <ol>
+            <li>Note the medication’s NDC(s) (“drug ID” hereafter).</li>
+            <li>Determine the patient’s Formulary ID and Copay ID using the Eligibility 271 message).</li>
+            <li>Determine the medication’s formulary status<ul><li>See step 3 in the previous example, “Flow One: Presenting Formulary And Coverage Information”</li></ul></li>
+            <li>If the formulary status from the previous step is Not Reimbursable, finish (do not display copay terms), otherwise proceed to step 5.</li>
+            <li>Reference the Benefit Copay List/Copay Information Detail - Drug Specific to determine whether a drug-specific copay override applies to this medication. If so, present the drug-specific copay.</li>
+            <li>If no drug-specific copay is found for this medication, look up the copay based on the drug’s characteristics.<ul><li>Search the Benefit Copay List/Copay Information Detail - Summary Level for the record that matches this medication’s characteristics (below) and present the copay terms for each type of pharmacy specified by the payer:<ul><li>Formulary Status </li><li>Product Type </li></ul></li></ul></li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443909612"></a>Flow Three: Presenting Formulary Alternatives</h3>
+        <p class="BodyText1">To present preferred alternatives for Not Reimbursable, Non Formulary, and On Formulary (Not Preferred) medications, use the following methods.</p>
+        <p class="BodyText1">Method One: Use payer-specified formulary alternatives</p>
+        <ol>
+            <li>Note the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s NDC(s) identifier (“drug ID” hereafter).</li>
+            <li>Using the Eligibility 271 message, determine the patient’s Alternatives ID. </li>
+            <li>Search the corresponding Formulary Alternatives List’s “source drug” field as appropriate for the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s drug ID.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This search may yield multiple record matches, indicating there are multiple preferred alternatives for the drug.</p>
+        <p class="BodyText1">Method Two: Use a third-party drug classification system to determine formulary alternatives </p>
+        <ol>
+            <li>Note the Not Reimbursable, Non Formulary, or On Formulary (Not Preferred) medication’s NDC(s) (“drug ID”).</li>
+            <li>Reference a third-party drug classification scheme to locate medications within the same drug class. Within these medications, reference the patient’s Formulary Status List to identify preferred alternatives.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The third party classification system mentioned above is a Surescripts approved drug database. </p>
+    </body>
+</html>

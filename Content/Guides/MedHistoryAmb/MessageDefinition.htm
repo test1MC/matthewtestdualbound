@@ -1,0 +1,1638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="11759.33" MadCap:lastWidth="1100">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Message Definition</h1>
+        <h2 class="Heading2"><a name="_Toc506379382"></a>Requirement Designation</h2>
+        <p class="StylebodytextBold" style="color: #000000;">Element Attributes</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required/Mandatory - the element must be used per the specification (e.g., XML schema validation).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required - the element must be used per the Surescripts business rule.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Situational/Conditional – the element must be used if conditions are met. Some fields do not have specific conditions. Data should be sent if available.</p>
+                        <p class="TableBody">Where comments are “Not used by Surescripts for medication history”, information will be passed on, but not used, by Surescripts for processing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Not used, will be rejected if sent.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This Guide includes data elements only where Surescripts has specific requirements or further explains the field usage. Refer to the schema for a complete list of fields.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="Message"></a>Message Header </h2>
+        <h3 class="Heading3"><a name="Message2"></a>Message Header (XML)</h3>
+        <p class="BodyText1" style="color: #000000;">In the following diagram, blocks that are solid are mandatory, whereas blocks that have dotted lines are conditional.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For this implementation the digital signature is not used.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Message Definition.png" style="width: 339px;height: 704px;" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc506379380"></a>Message Header XML Requirements</h3>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 188px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 780px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td rowspan="4" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td rowspan="4" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">To</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">This field contains the identification of the receiver. This field is used in conjunction with To/@Qualifier, which qualifies which ID was used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain the PBM/Payer ID.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000001”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from PBM/payers will contain the Provider Vendor ID assigned by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Reconciliation&#160; </p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain the PBM/Payer ID.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000002”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from PBM/payers will contain “S00000000000002”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Populations&#160; </p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from PBM/payers will contain “S00000000000003”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; @Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">ZZZ = Mutually Defined</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">From</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">This field is used in conjunction with From/@Qualifier, which qualifies which ID was used. </p>
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory,&#160; Reconciliation, and Populations&#160; </p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain the Provider Vendor ID assigned by Surescripts.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from PBM/payers will contain the PBM/Payer ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; @Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Value:</p>
+                        <p class="TableBody">ZZZ = Mutually defined </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">MessageID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Each message sent from a customer shall*106M-009 have a unique Message ID. Message IDs should not be reused for 18 months. </p>
+                        <p class="TableBody">A minimum set of standards/algorithms should be used when generating message IDs to ensure uniqueness. If possible, customers should utilize Global Unique Identifiers (GUIDs). </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">RelatesToMessageID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory,&#160; Reconciliation, and Populations</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History </p>
+                        <p class="TableBodyIndent1">Not used. </p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim History</p>
+                        <p class="TableBodyIndent1">Mandatory - The claim medication history request for a patient shall*106M-013 be tied to the most recent eligibility response for that patient. This is accomplished by using the ISA control number (ISA-13) from the 271 Eligibility response populated in the RelatesToMessageID of the RxHistoryRequest Medication History Request. </p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses to Fill and Claim History </p>
+                        <p class="TableBodyIndent1">Mandatory - This field is mandatory and is used to link the original RxHistoryRequest to the RxHistoryResponse. The MessageID shall*106M-010 be echoed back in the response to the message that was received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">SentTime</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Date / time of initiation. (Format: YYYY-MM-DDTHH:MM:SS.F)</p>
+                        <p class="TableBody">The local date and time the message was sent.</p>
+                        <p class="TableBody">Seconds must be included, but fractional seconds not required.</p>
+                        <p class="TableBody">Example: </p>
+                        <p class="TableBody">2017-10-01T016:09:04.5 would be October 1, 2017 16 hours, 09 minutes, 04 seconds, 5 fractional seconds</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Sender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;SecondaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Sender Password</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;TertiaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests and Responses for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Reconciliation</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000002”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Populations</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000003”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160; &#160;&#160;Receiver</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td rowspan="4" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td rowspan="4" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;SecondaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If no data is sent, then an empty Receiver field is required to make XML valid.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000001”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000001”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from provider vendors will contain “RXHUB”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;">Medication History for Reconciliation</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000002”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Response for Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from provider vendors will contain “RXHUB”.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “S00000000000002”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Populations</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Responses Claim History</p>
+                        <p class="TableBodyIndent1">Response messages from provider vendors will contain “RXHUB”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;TertiaryIdentification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">MailBox</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">TestMessage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">When sent, allowable values must match platform that message is being sent to. </p>
+                        <p class="TableBody">Values: </p>
+                        <p class="TableBody">1 = Test </p>
+                        <p class="TableBody">All other values = Live (Production)</p>
+                        <p class="TableBody">If this field is not sent, then the default is production.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">RxReferenceNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td rowspan="3" class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody"><a name="TertiaryId"></a>TertiaryIdentifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Ambulatory</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests and Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “FIL”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Reconciliation</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests and Responses for Claim History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests for Fill History</p>
+                        <p class="TableBodyIndent1">Request messages from provider vendors will contain “FIL”.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody" style="font-weight: bold;text-decoration: underline;">Medication History for Populations</p>
+                        <p class="TableBodyIndent1" style="font-weight: bold;">Requests and Responses for Claim and Fill History</p>
+                        <p class="TableBodyIndent1">Not used by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">PrescriberOrderNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                        <p class="TableBody">The prescription number of the prescribing system is found in MedicationDispensed. See <a href="#_Toc506379387">RxHistoryResponse XML Requirements</a> for more information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">DigitalSignature</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="color: #000000;"><a name="Medicati"></a>Medication History Request</h2>
+        <p class="BodyText1" style="color: #000000;">Medication History request for a patient is sent to Surescripts. </p>
+        <h3 class="Heading3"><a name="_Toc506379383"></a>RxHistoryRequest (XML)</h3>
+        <p class="BodyText1" style="color: #000000;">In the following diagram, blocks that are solid are mandatory, whereas blocks that have dotted lines are conditional.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Message Definition_1.png" alt="rxhreq.png" style="width: 410px;height: 251px;" />
+        </p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379384"></a>RxHistoryRequest XML Requirements</h3>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Details</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="RequestPrescriber"></a>Prescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Repeats up to 3 times</p>
+                        <p class="TableBody">For Medication History for Ambulatory, at least one occurrence must contain the prescriber's individual NPI.</p>
+                        <p class="TableBody">For Medication History for Reconciliation, at least one occurrence must contain either the prescriber's individual NPI or the organizational NPI.</p>
+                        <p class="TableBody">For Medication History for Populations, at least one occurrence must contain either the prescriber's individual NPI or the organizational NPI.</p>
+                        <p class="TableBody">The NPI will be validated against the check digit routine. For specific information see:</p>
+                        <p class="TableBody"><a href="https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf" target="_blank">https://www.cms.gov/Regulations-and-Guidance/Administrative-Simplification/NationalProvIdentStand/Downloads/NPIcheckdigit.pdf </a>&#160; </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ZipCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the format 99999 or 999999999.</p>
+                        <p class="TableBody">Do not include hyphen (-) or other punctuation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; PlaceLocationQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                        <p class="TableBody">“AD2” should be used for address line 2.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">CommunicationNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160; Communication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Phone Number shall*106M-025 be in the format 5552223333X4444 – where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If a communication number is sent, one occurrence must contain “TE” for telephone. </p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (X12 DE 365).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="RequestPatient"></a>Patient</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Gender</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">It is recommended to send Gender to aid in patient matching.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DateOfBirth</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">It is recommended to send DateOfBirth to aid in patient matching.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ZipCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">It is recommended to send Address/ZipCode to aid in patient matching.</p>
+                        <p class="TableBody">Use the format 99999 or 999999999. Do not include hyphen (-) or other punctuation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; PlaceLocationQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                        <p class="TableBody">“AD2” should be used for address line 2.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">CommunicationNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160; Communication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Phone Number shall*106M-025 be in the format 5552223333X4444 – where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If a communication number is sent, one occurrence must contain “TE” for telephone. </p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (X12 DE 365).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="p_2" style="font-weight: bold;"><a name="RequestBenefitsCoordination"></a>BenefitsCoordination</p>
+                        <p class="p_1"><b>Note</b>: Information received in the 271 response will be used In the Benefits Coordination for PBM/payer claim data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Date Composite</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If empty, up to the last 50 medications filled are returned, starting with the most recent.</p>
+                        <p class="TableBody">If populated with an effective and expiration date, up to 50 medications are returned to the requester, starting with the expiration date.</p>
+                        <p class="TableBody">When more medications are available, a More Drugs Available (AQ) response is returned in the ApprovalReasonCode and then another RxHistoryRequest is needed to obtain additional available medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; EffectiveDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">EffectiveDate is the beginning date for the desired history (e.g., 1 year ago from today’s date).</p>
+                        <p class="TableBody">Up to one year of medication history fill data can be requested.</p>
+                        <p class="TableBody">It is suggested that no more than one year of medication history claim data be requested.</p>
+                        <p class="TableBody">If the Date composite is used, both the effective date and expiration date are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ExpirationDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">ExpirationDate is the end date for the desired history (e.g., today’s date).</p>
+                        <p class="TableBody">This should be set to the date the RxHistoryRequest was initiated for the initial request, if populated. This would be set to the last medication’s LastFillDate in the previous RxHistoryResponse if the "AQ" indicator was in the ApprovalReasonCode.</p>
+                        <p class="TableBody">Up to one year of medication history fill data can be requested.</p>
+                        <p class="TableBody">It is suggested that no more than one year of medication history claim data be requested.</p>
+                        <p class="TableBody">If the Date composite is used, both the effective date and expiration date are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Consent</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient Consent Indicator</p>
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">Y = Consent given</p>
+                        <p class="TableBody">N = No consent</p>
+                        <p class="TableBody">Note: If Patient Consent = N, it is expected the Medication History transactions would not be sent. </p>
+                        <p class="TableBody">P = Prescriber. Patient gave consent for prescriber to only receive the medication history this prescriber prescribed.</p>
+                        <p class="TableBody">X = Parental/Guardian consent on behalf of a minor for prescriber to receive the medication history from any prescriber</p>
+                        <p class="TableBody">Z = Parental/Guardian consent on behalf of a minor for prescriber to only receive the medication history this prescriber prescribed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">PBMMemberID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Required for claim history. </p>
+                        <p class="TableBody">PBM Unique Member ID</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379385"></a>Medication History Response</h2>
+        <p class="BodyText1" style="color: #000000;">This response is sent from Surescripts back to the prescriber vendor and includes the patient’s medication history. </p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379386"></a>RxHistoryResponse (XML)</h3>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">MedicationPrescribed is not used by Surescripts for Medication History.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Message Definition_2.png" alt="rxhres.png" style="width: 470px;height: 433px;" />
+        </p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379387"></a>RxHistoryResponse XML Requirements</h3>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 222px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Details</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="ResponseResponse"></a>Response</p>
+                        <p class="TableBody"><b>Note</b>: Either Approved or Denied must be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Approved</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Either an Approved or Denied response must be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ApprovalReasonCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">AQ (More History Available) is sent to indicate that another RxHistoryRequest is needed to obtain additional available medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">&#160; ReferenceNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Note</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Note field may be used for Approved responses.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Denied</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;Either an Approved or Denied response must be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">&#160; ReferenceNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Not used by Surescripts for medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">B</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; DenialReason</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">DenialReason field is used for Denied responses.</p>
+                        <p class="TableBody">A “Denied” response must be accompanied by Free Text since there is not a valid code list qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;background-color: #d3d3d3;"><a name="ResponsePrescriber"></a>Prescriber</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Identification</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Repeats up to 3 times</p>
+                        <p class="TableBody">May be echoed from the data in the request. &#160; </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Prescriber Name </p>
+                        <p class="TableBody">Should be sent on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; LastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Prescriber Last Name </p>
+                        <p class="TableBody">Should be sent on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ZipCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the format 99999 or 999999999.</p>
+                        <p class="TableBody">Do not include hyphen (-) or other punctuation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; PlaceLocationQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                        <p class="TableBody">“AD2” should be used for address line 2.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">CommunicationNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160; Communication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Phone Number shall*106M-025 be in the format 5552223333X4444 - where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If a communication number is sent, one occurrence must contain “TE” for telephone. </p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (X12 DE 365).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="ResponsePatient"></a>Patient</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Name</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Should be sent on the response.</p>
+                        <p class="TableBody">The NCPDP SCRIPT Standard allows the input of additional information such as “Name Prefix,” “Middle Name” and “Name Suffix”. This information should be populated in the designated fields and should not be included with the first or the last names.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; LastName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Should be sent on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; FirstName</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Should be sent on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Address</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; AddressLine2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ZipCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the format 99999 or 999999999. Do not include hyphen (-) or other punctuation.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; PlaceLocationQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either PlaceLocationQualifier or AddressLine2 are sent, then both are required.</p>
+                        <p class="TableBody">“AD2” must be used for address line 2.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">CommunicationNumbers</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>&#160; Communication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Phone Number shall*106M-025 be in the format 5552223333X4444 – where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; &#160;&#160;&#160;@Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If a communication number is sent, one occurrence must contain “TE” for telephone. </p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (X12 DE 365).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="ResponseBenefitsCoordination"></a>BenefitsCoordination</p>
+                        <p class="TableBody"><b>Note</b>: Information received in the 271 response will be used in the Benefits Coordination for PBM/payer claim data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Date Composite</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If empty, up to the last 50 medications filled are returned, starting with the most recent.</p>
+                        <p class="TableBody">If populated with an effective and expiration date, up to 50 medications are returned to the requester, starting with the expiration date.</p>
+                        <p class="TableBody">Note: When more medications are available, a More Drugs Available (AQ) response is returned in the ApprovalReasonCode and then another RxHistoryRequest is needed to obtain additional available medication history.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; EffectiveDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">EffectiveDate is the beginning date for the desired history (e.g., 1 year from today’s date).</p>
+                        <p class="TableBody">Up to one year of medication history fill data can be requested.</p>
+                        <p class="TableBody">It is suggested that no more than one year of medication history claim data be requested.</p>
+                        <p class="TableBody">If the Date composite is used, both the effective date and expiration date are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ExpirationDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">ExpirationDate is the end date for the desired history (e.g., today’s date).</p>
+                        <p class="TableBody">If the Date composite is used, both the effective date and expiration date are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Consent</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Patient Consent Indicator</p>
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">Y = Consent given</p>
+                        <p class="TableBody">N = No consent</p>
+                        <p class="TableBody">P = Prescriber. Patient gave consent for prescriber to only receive the medication history this prescriber prescribed.</p>
+                        <p class="TableBody">X = Parental/Guardian consent on behalf of a minor for prescriber to receive the medication history from any prescriber</p>
+                        <p class="TableBody">Z = Parental/Guardian consent on behalf of a minor for prescriber to only receive the medication history this prescriber prescribed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">PBMMemberID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required for claim history. </p>
+                        <p class="TableBody">PBM Unique Member ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td colspan="3" class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #d3d3d3;">
+                        <p class="TableBody" style="font-weight: bold;"><a name="ResponseMedicationDispensed"></a>MedicationDispensed</p>
+                        <p class="TableBody"><b>Note</b>: MedicationPrescribed is not used for Surescripts Medication History. Will be rejected if sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DrugDescription</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Drug Name.</p>
+                        <p class="TableBody">The self-contained full drug name, strength, and form.</p>
+                        <p class="TableBody">The item or drug description field shall*106M-031&#160;include the full drug name, strength and form (in that exact sequence).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">DrugCoded</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ProductCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Drug number</p>
+                        <p class="TableBody">If either DrugCoded/ProductCode or DrugCoded/ProductCodeQualifier is sent, then both are required.</p>
+                        <p class="TableBody">When sending, the NDC must be an 11 digit NDC in the 5-4-2 format. Dashes shall*106M-032&#160;not be used and leading zeros shall*106M-033&#160;not be suppressed. </p>
+                        <p class="TableBody">Example: 12345123412.</p>
+                        <p class="TableBody">Note: When this is all 9s for the NDC&#160;and this is for fill data, this means that the prescription is a compound.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; ProductCodeQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">MF = MFG</p>
+                        <p class="TableBody">UP = UPC</p>
+                        <p class="TableBody">ND = NDC11 (Should be sent).</p>
+                        <p class="TableBody">Other codes listed in the NCPDP External Code list are used in Allergy and DiagnosisGeneral. For RxNorm codes use the DrugCoded/DrugDBCodeQualifier so both NDC and RxNorm codes can be sent.</p>
+                        <p class="TableBody">If either DrugCoded/ProductCode or DrugCoded/ProductCodeQualifier is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; DrugDBCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If either DrugCoded/DrugDBCode or DrugCoded/DrugDBCodeQualifier is sent, then the other must also be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; DrugDBCodeQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Code value to define the reference number.</p>
+                        <p class="TableBody">Additional values were added which are also in NCPDP published schema. Refer to the newer NCPDP External code list which will provide definitions of these codes.</p>
+                        <p class="TableBody">SCD = Semantic Clinical Drug</p>
+                        <p class="TableBody">SBD = Semantic Branded Drug</p>
+                        <p class="TableBody">BPC = Branded Pack</p>
+                        <p class="TableBody">GPC = Generic Pack</p>
+                        <p class="TableBody">Note: BPC or PBK may be translated to BPK or GPK for 10.6MU. See <a href="10.6MUVersionTranslation.htm#MU">10.6 Meaningful Use (MU) Version Translation</a> for more information.</p>
+                        <p class="TableBody">If either DrugCoded/DrugDBCode or DrugCoded/DrugDBCodeQualifier is sent, then the other must also be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; FormSourceCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Code identifying the source organization.</p>
+                        <p class="TableBody">Value: AA = Pharmaceutical Dosage Form</p>
+                        <p class="TableBody">If either FormSourceCode or FormCode is sent, then the other must also be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; FormCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Drug form, in a code. Dosage form code. Pharmaceutical Dosage Form. Qualified by Source Code List.</p>
+                        <p class="TableBody">For a list of FMT codes, go to:&#160;<a href="http://evs.nci.nih.gov/ftp1/NCPDP/About.html" target="_blank">http://evs.nci.nih.gov/ftp1/NCPDP/About.html</a>. Use the NCPDP StrengthForm Terminology rows from the downloaded data. This list should be updated on a monthly basis.</p>
+                        <p class="TableBody">If either FormSourceCode or FormCode is sent, then the other must also be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; StrengthSourceCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Code identifying the source organization.</p>
+                        <p class="TableBody">Value: AB = Units of Presentation</p>
+                        <p class="TableBody">If either StrengthSourceCode or StrengthCode is sent, then the other must also be sent. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; StrengthCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Drug Strength – measurement value of drug strength information should be consistent across all fields in which it appears.</p>
+                        <p class="TableBody">If either or both the StrengthCode and StrengthCode are sent they shall*&#160;106M-034&#160;match the Drug Strength in the DrugDescription. Drug strength units should not be sent in free text Drug Strength field.</p>
+                        <p class="TableBody">For a list of FMT codes, go to:&#160;<a href="http://evs.nci.nih.gov/ftp1/NCPDP/About.html" target="_blank">http://evs.nci.nih.gov/ftp1/NCPDP/About.html</a>. Use the NCPDP StrengthUnitOfMeasure Terminology rows from the downloaded data.</p>
+                        <p class="TableBody">This list should be updated on a monthly basis.</p>
+                        <p class="TableBody">Note: If either StrengthSourceCode or StrengthCode is sent, then the other must also be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; DEASchedule</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">If the medication is categorized as a controlled substance by the Drug Enforcement Agency (DEA), this field shall*106M-027&#160;be sent.</p>
+                        <p class="TableBody">The DEA Schedule would be populated by the system generating the message, and would utilize the Federal DEA Schedule classification code list, based on federal classification of the medication or the state reclassification of the medication.</p>
+                        <p class="TableBody">For a complete list of values, see the NCPDP External Code List (7996).</p>
+                        <p class="TableBody">C38046 – Unspecified (Unable to determine the schedule for this medication)</p>
+                        <p class="TableBody">C48672 – Schedule I</p>
+                        <p class="TableBody">C48675 – Schedule II</p>
+                        <p class="TableBody">C48676 – Schedule III</p>
+                        <p class="TableBody">C48677 – Schedule IV</p>
+                        <p class="TableBody">C48679 – Schedule V</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Quantity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; CodeListQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Values: </p>
+                        <p class="TableBody">38 = Original Qty </p>
+                        <p class="TableBody">40 = Remaining Qty </p>
+                        <p class="TableBody">87 = Quantity Received </p>
+                        <p class="TableBody">QS = Quantity Sufficient – for Long Term Care only</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; UnitSourceCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Code identifying the source organization. </p>
+                        <p class="TableBody">Value: AC = Potency Unit</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; PotencyUnitCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">For a list of codes, go to: <a href="http://evs.nci.nih.gov/ftp1/NCPDP/About.html" target="_blank">http://evs.nci.nih.gov/ftp1/NCPDP/About.html</a>. This list should be updated on a monthly basis. Use the NCPDP QuantityUnitOfMeasure Terminology rows from the downloaded data.</p>
+                        <p class="TableBody">Where possible, quantities should reflect the actual metric quantity to be dispensed. Example: Use "Amoxicillin 250mg/5ml, 150 ml" instead of "Amoxicillin 250mg/5ml, 1 bottle".</p>
+                        <p class="TableBody">The use of "C38046-Unspecified" should be limited to instances in which none of the available qualifiers in the Units of Measure table can be applied. Examples of improper use: Drug description—Amoxicillin 500 mg Oral Capsule, Quantity 30 and Potency Unit Code sent "C38046-Unspecified, "instead of "C48480 - Capsule Dosage Form".</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Refills</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Qualifier</p>
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Qualifies the number of refills quantity.</p>
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">R = Number of Refills</p>
+                        <p class="TableBody">A = Additional Refills Authorized</p>
+                        <p class="TableBody">P = Pharmacy Requested Refills</p>
+                        <p class="TableBody">REM = Remaining number of Refills</p>
+                        <p class="TableBody">PRN = As Needed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Quantity for the number of refills.</p>
+                        <p class="TableBody">This field is mandatory except when Qualifier = PRN. No quantity is required for PRN.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">LastFillDate</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">For dispensed, at least one loop must contain last fill date.</p>
+                        <p class="TableBody">Qualification of Date/Time field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">PriorAuthorization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Surescripts uses this field for Prescriber Order Number (PON) and/or Prior Authorization. </p>
+                        <p class="TableBody">&#160;</p>
+                        <p class="TableBody">PriorAuthorization, if used, then requires both Qualifier and Value. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">94 - Used for Prescriber Order Number (PON)</p>
+                        <p class="TableBody">G1 - Used for Prior Authorization Number </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Value as defined by the PriorAuthorization/@Qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">HistorySource</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">This is the source and fill number information for the medication listed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; Source</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;&#160;&#160; SourceQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Qualifies the Source Description.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7895).</p>
+                        <p class="TableBody">P2 – Pharmacy</p>
+                        <p class="TableBody">PY – Payer</p>
+                        <p class="TableBody">PC – Prescriber (Not used by Surescripts for medication history).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;&#160;&#160; SourceDescription</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Name of medication history source. Participant Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;&#160;&#160; Reference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160; IDValue</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The identification for the prescriber, pharmacy, payer, et cetera, which is the medication source, which is qualified by the Reference Qualifier below.</p>
+                        <p class="TableBody">Required if Reference/IDQualifier is sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160;&#160;&#160;&#160;&#160; IDQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Defines the Reference number.</p>
+                        <p class="TableBody">Pharmacy value of D3 should be used with the NCPDP ID.</p>
+                        <p class="TableBody">Payer value of 2U should be used with the Surescripts Participant ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">&#160; SourceReference</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Prescription Number associated to medication history record.</p>
+                        <p class="TableBody">If the submitter chooses to send this field and SourceQualifier source qualifier is “P2”, then it should be populated with the pharmacy prescription number. Otherwise, the field is not sent. </p>
+                        <p class="TableBody">If the source is the prescriber, this field is not sent. </p>
+                        <p class="TableBody">If the submitter chooses to send this field and the source is the payer, this field contains the pharmacy’s prescription number from the payer system from claims processing. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">&#160; FillNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Defines the dispensing episode as an initial fill or an authorized refill. </p>
+                        <p class="TableBody">If this field is sent for fill data, it will contain the fill number from the pharmacy. </p>
+                        <p class="TableBody">If this field is sent for claim data, it will contain pharmacy’s fill number from the payer system from claims processing</p>
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">00 = Initial fill</p>
+                        <p class="TableBody">01 = First refill</p>
+                        <p class="TableBody">02 = Second refill, etc.</p>
+                        <p class="TableBody">Allowed values 00 thru 99</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379388"></a>Structured SIG XML Requirements</h3>
+        <p class="BodyText1" style="color: #000000;">Structured SIG is conditional. The intent is not to facilitate the reconstruction of the SIG to human readable form (English), but rather to communicate through electronic means the SIG components in a controlled, well-defined structure. It is to be used to relay information between the prescriber and the pharmacist. It is not patient instructions.&#160; </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">SIG data will only be sent in Directions for fill data.</p>
+    </body>
+</html>

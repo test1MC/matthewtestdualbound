@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="8787.333" MadCap:lastWidth="1331">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc433357858"></a>Messages Overview</h1>
+        <h2 class="Heading2"><a name="_Toc433357859"></a>Message Descriptions</h2>
+        <p class="BodyText1">Medication Management for Adherence uses a new clinically oriented standard FHIR® for structuring the message exchange. The PBM/payer will therefore use this standard when sending messages to, and receiving responses from, Surescripts.</p>
+        <p class="BodyText1" style="font-weight: bold;">Medication Adherence</p>
+        <p class="BodyText1">An adherence message, as indicated by claim activity, occurs when a patient is not taking the medication as frequently as prescribed. </p>
+        <p class="BodyText1">Example:</p>
+        <p class="BodyText1">"ABC Health Plan records indicate this patient may have discontinued taking Lipitor as instructed. Please discuss adherence with your patient."</p>
+        <p class="BodyText1" style="font-weight: bold;">High-Risk Medication</p>
+        <p class="BodyText1">A high-risk medication (HRM) message occurs when a patient has been prescribed a drug that is considered high-risk due to the potential for side-effects where alternative drug therapies exist. </p>
+        <p class="BodyText1">Examples:</p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient has been prescribed glyburide which is considered to be a high risk medication in the elderly causing prolonged hypoglycemia.  Please evaluate the risk and benefit of continuing use.” </p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient has been prescribed glyburide which is considered to be a high risk medication in the elderly causing prolonged hypoglycemia.  Please consider prescribing a safer alternative to this medication, if appropriate.  Alternatives:  glipizide, glimepiride.”</p>
+        <p class="BodyText1" style="font-weight: bold;">Missing Medication</p>
+        <p class="BodyText1">A missing medication is a medication that is expected based on a patient’s diagnosis codes or existence of another drug. </p>
+        <p class="BodyText1">Example:</p>
+        <p class="BodyText1">“ABC Health Plan records indicate this patient may benefit from a statin.  Please evaluate the use of a statin for a diabetic patient.” </p>
+        <p class="BodyText1" style="font-weight: bold;">Proportion of Days Covered (PDC)</p>
+        <p class="BodyText1">The PDC calculation is based on the fill dates and days supply for each fill of a prescription. PDC is defined as the total numbers of days with possession of medication in a period of time. </p>
+        <p class="BodyText1">A PDC ratio will be provided by the PBM/payer on a monthly basis for cholesterol, diabetes and hypertension regardless if the PDC is below or above 80%.</p>
+        <p class="BodyText1">PDC ratios are categorized as:</p>
+        <ul>
+            <li>Ratio value &lt;= 60%, color red</li>
+            <li>Ratio value &gt; 60% and &lt; 80% , color orange</li>
+            <li>Ratio value &gt;= 80%, color green</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">Disposition Request</p>
+        <p class="BodyText1">A Disposition Request message is sent by the PBM/payer to retrieve the disposition of messages sent to Surescripts.</p>
+        <p class="BodyText1" style="font-weight: bold;">Disposition Acknowledgment</p>
+        <p class="BodyText1">A Disposition Acknowledge message is sent by the PBM/payer as the final step to close processing on a message.</p>
+        <h3 class="Heading3"><a name="_Toc433357860"></a>Patient Identifier</h3>
+        <p class="BodyText1">The PBM Unique Member ID returned in the 271 eligibility response (Subscriber, NM109)  is used as the patient identifier.</p>
+        <h3 class="Heading3"><a name="_Toc433357861"></a>Message Priority</h3>
+        <p class="BodyText1">PBM/payers have the ability to designate the message priority. </p>
+        <p class="BodyText1">Provider vendors choosing the Web Application API implementation option for worklist will see messages sent with severity=H (high) sorted to the top of the worklist with an alert icon indicator.</p>
+        <p class="BodyText1">Provider vendors choosing the Web Service API implementation option for worklist will see the workflow task priority set to alert in the data brought back from the call to obtain worklist tasks.</p>
+        <p class="BodyText1">Message priority is designated in the Contraindication.severity element. Supported severity values are found here:&#160; <a href="http://www.hl7.org/FHIR/2015May/v3/vs/SeverityObservation/index.html" target="_blank">http://www.hl7.org/FHIR/2015May/v3/vs/SeverityObservation/index.html</a></p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading" style="page-break-before: always;">Severity Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Name</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Surescripts Worklist Priority</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">H</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">High</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Alert</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Moderate</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Medium</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">L</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Low</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Low</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">The following message types support the severity element:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">XML Snippet – Designate Message Priority</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;"><pre><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">&lt;</span><span style="color: #800000;font-size: 10pt;">Contraindication</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">id</span><span style="color: #FF0000;font-size: 10pt;"> value</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">639edb92-384f-42a7-979c-1db5c964747a</span><span style="color: #0000FF;font-size: 10pt;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">meta</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">meta</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">text</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">text</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">contained</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;</span><span style="color: #800000;font-size: 10pt;">MedicationPrescription</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;/</span><span style="color: #800000;font-size: 10pt;">MedicationPrescription</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">contained</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">contained</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;</span><span style="color: #800000;font-size: 10pt;">Medication</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;/</span><span style="color: #800000;font-size: 10pt;">Medication</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">contained</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">extension</span><span style="color: #FF0000;font-size: 10pt;"> url</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">http://surescripts.net/fhir/StructureDefinition/
+medication-prescription-reference</span><span style="color: #0000FF;font-size: 10pt;">"&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">extension</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">patient</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">patient</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">severity </span><span style="color: #FF0000;font-size: 10pt;">value</span><span style="color: #0000FF;font-size: 10pt;">=”</span><span style="font-size: 10pt;">high</span><span style="color: #0000FF;font-size: 10pt;">”/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">author</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">author</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p><span style="color: #0000FF;font-size: 10pt;">&lt;/</span><span style="color: #800000;font-size: 10pt;">Contraindication</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p></pre>
+        </div>
+        <h3 class="Heading3" style="border-bottom-style: none;border-bottom-width: 1pt;border-bottom-color: black;"><a name="_Toc433357862"></a>Urgent Messages - Message Recipient</h3>
+        <p class="BodyText1">PBM/payers have the ability to designate the intended target of the communication/message through the CommunicationRequest.recipient element. Inclusion of this element will send the message to a practitioner inbox. The recipient if included must reference a practitioner resource.</p>
+        <p class="BodyText1" style="font-weight: bold;">XML Snippet – Recipient – Provider Inbox </p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;"><pre><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">CommunicationRequest</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">id</span><span style="color: #FF0000;font-size: 10pt;background-color: #FFFFFF;"> value</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">="</span><span style="color: #000000;font-size: 10pt;background-color: #FFFFFF;">4722c3a0-f4a6-4914-b8f5-de09379871bb</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">meta</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">meta</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">extension</span><span style="color: #FF0000;font-size: 10pt;background-color: #FFFFFF;"> url</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">="</span><span style="color: #000000;font-size: 10pt;background-color: #FFFFFF;">http://surescripts.net/fhir/StructureDefinition/
+scheduled-period</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">"&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">extension</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">sender</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">sender</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">recipient</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;</span><span style="color: #800000;font-size: 10pt;">reference</span><span style="color: #FF0000;font-size: 10pt;"> value</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">Practitioner/3284c56b-c7ee-4a06-8109-efe5c385bfbb</span><span style="color: #0000FF;font-size: 10pt;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">recipient</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">payload</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">payload</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">subject</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">subject</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">CommunicationRequest</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p></pre>
+        </div>
+        <h3 class="Heading3"><a name="_Toc433357863"></a>Expiration</h3>
+        <p class="BodyText1">PBM/payers may send an optional expiration date in the messages to Surescripts that reflects the cadence of analytics and expected message refresh. </p>
+        <p class="BodyText1">Additionally, Surescripts will enforce an upper limit expiration date for messages that do not contain an expiration date, and to ensure medication repository is consistently refreshed. This limit will be 30 days from the time it is received by Surescripts. Expired messages are retained by Surescripts for purposes of reporting, analytics, longitudinal products, etc.</p>
+        <p class="BodyText1">PBM/payers designate an expiration date within the CommunicationRequest.extension.valuePeriod element.</p>
+        <p class="BodyText1">Message types that support expiration are:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1" style="font-weight: bold;">XML&#160;Snippet - Expiration</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;"><pre><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">CommunicationRequest</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">id</span><span style="color: #FF0000;font-size: 10pt;background-color: #FFFFFF;"> value</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">="</span><span style="color: #000000;font-size: 10pt;background-color: #FFFFFF;">4722c3a0-f4a6-4914-b8f5-de09379871bb</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">meta</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">meta</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;</span><span style="color: #800000;font-size: 10pt;">extension</span><span style="color: #FF0000;font-size: 10pt;"> url</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">http://surescripts.net/fhir/StructureDefinition/
+scheduled-period</span><span style="color: #0000FF;font-size: 10pt;">"&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;</span><span style="color: #800000;font-size: 10pt;">valuePeriod</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">      &lt;</span><span style="color: #800000;font-size: 10pt;">start</span><span style="color: #FF0000;font-size: 10pt;"> value</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">2015-06-01</span><span style="color: #0000FF;font-size: 10pt;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">      &lt;</span><span style="color: #800000;font-size: 10pt;">end</span><span style="color: #FF0000;font-size: 10pt;"> value</span><span style="color: #0000FF;font-size: 10pt;">="</span><span style="color: #000000;font-size: 10pt;">2015-06-30</span><span style="color: #0000FF;font-size: 10pt;">"/&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">    &lt;/</span><span style="color: #800000;font-size: 10pt;">valuePeriod</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;">  &lt;/</span><span style="color: #800000;font-size: 10pt;">extension</span><span style="color: #0000FF;font-size: 10pt;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">sender</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">sender</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">recipient</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">recipient</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">payload</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">payload</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">subject</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">  &lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">subject</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p><p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;"><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&lt;/</span><span style="color: #800000;font-size: 10pt;background-color: #FFFFFF;">CommunicationRequest</span><span style="color: #0000FF;font-size: 10pt;background-color: #FFFFFF;">&gt;</span></p></pre>
+        </div>
+        <h3 class="Heading3"><a name="_Toc433357864"></a>PDC Refresh Cadence</h3>
+        <p class="BodyText1">The PBM/payer should send an updated PDC ratio for each patient in the target population at least once every 30 days to assure the information presented to the provider is current. The Medication Management for Adherence will display the most current PDC for the patient that is less than 30 days old.</p>
+        <p class="BodyText1">The PBM/payer may designate the last updated date in the FHIR® message Observation.meta.lastUpdated@value.</p>
+        <p class="BodyText1">The PDC will display if the last updated date is &lt; 30 days old.</p>
+        <h3 class="Heading3"><a name="_Toc433357865"></a>Provider Opt-Out - Inbox</h3>
+        <p class="BodyText1">All providers will be opt-in for all message types by default. Providers may opt-out of receiving messages into their inbox by message type through the Surescripts Directory by disabling the Medication Management for Adherence message service levels. Opt-out is supported for the following message types:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1">Providers that opt-out of receiving messages in their inbox will continue to have access to messages through the patient worklist.</p>
+        <h3 class="Heading3"><a name="_Toc433357866"></a>Response from the Provider Vendor</h3>
+        <p class="BodyText1">Responding to a medication adherence message is strongly encouraged, but is optional.</p>
+        <p class="BodyText1">The practitioner will be given the ability to select a response from a predefined drop down list and optionally free form text.</p>
+        <p class="BodyText1">This feedback will be stored in a Surescripts repository and can be queried for by PBM/payers at any given time.</p>
+        <p class="BodyText1">The provider selects responses based on the message type. Below are the questions displayed to the provider and the list of options presented to the provider to select from for the response to the PBM/payer.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/Med Mgmt for Adherence for PBM-Payers/Messages Overview.png" style="width: 875px;height: 912px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="FigureName">Figure #2 - Message Response Question/Answer Tree</p>
+        <p class="FigureName">&#160;</p>
+        <p class="BodyText1" style="page-break-before: always;">The discrete data returned to the PBM/payer in the disposition message includes the following:</p>
+        <ul>
+            <li>MessageId</li>
+            <li>MessageReceiveDate</li>
+            <li>MessageDeliveredDate</li>
+            <li>MessageType</li>
+            <li>MessageText</li>
+            <li>MessageHRMMedicationName</li>
+            <li>MessageViewed</li>
+            <li>MessageViewer</li>
+            <li>MessageViewedTotalCount</li>
+            <li>PatientPayerId</li>
+            <li>PatientIdentifier</li>
+            <li>PatientGiven</li>
+            <li>PatientFamily</li>
+            <li>PatientBirthDate</li>
+            <li>ResponseSubmitDate</li>
+            <li>ResponseSubmitter</li>
+            <li>ResponseQuestionCode1</li>
+            <li>ResponseQuestionText1</li>
+            <li>ResponseAnswerCode1</li>
+            <li>ResponseAnswerText1</li>
+            <li>ResponseQuestionCode2</li>
+            <li>ResponseQuestionText2</li>
+            <li>ResponseAnswerCode2</li>
+            <li>ResponseAnswerText2</li>
+            <li>ResponseComment</li>
+        </ul>
+    </body>
+</html>

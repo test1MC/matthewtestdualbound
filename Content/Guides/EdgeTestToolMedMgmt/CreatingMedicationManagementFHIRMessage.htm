@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="3022.333" MadCap:lastWidth="1523">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc457290361"></a>Creating a Medication Management FHIR® Message</h1>
+        <h2 class="Heading2"><a name="top"></a>Accessing the FHIR® Message Composer</h2>
+        <p>To generate a Medication Management FHIR® message, use the <b>Compose</b> menu drop-down to select <b>Compose FHIR Message</b>.</p>
+        <p>
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/Choose and Load a FHIR Transaction.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2"><a name="Composin"></a>Composing a FHIR® Message</h2>
+        <p class="BodyText1">The Edge Test Tool will accept a FHIR® message in XML or JSON format for the purposes of Medication Management for Adherence messaging.  Users are free to compose their own message, utilizing the HL7® FHIR® standard v0.50, or may use a templates provided by Surescripts. All edits must be made either in the template prior to loading or directly in the message text box. If testing in the EHR system requires specific patients, medications or providers users should ensure that all of the appropriate fields are correct in the XML or JSON before submitting to the system.</p>
+        <h2 class="Heading2"><a name="Loading"></a>Loading a FHIR® Message</h2>
+        <p>To load an XML template, users must have the template stored on their local machine or a network location that is accessible to the user.</p>
+        <ol>
+            <li>From the FHIR® Message Composer screen, click the <b>Choose File</b> button located at the bottom of the page.</li>
+            <li>Select the appropriate template and click the <b>Load File</b> button.</li>
+            <p>
+                <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest_1.png" />
+            </p>
+            <p>The XML message content is displayed in the XML message text box in the center of the page. Users can modify the contents of the message from the text box directly as needed.</p>
+            <p>
+                <img src="../../Resources/Images/EdgeTestToolMedMgmt/Post File.png" />
+            </p>
+            <li>Refer to your STAGE test plan for the values to be used for the Sender UID, Username and Password.  These values are used for authentication when the FHIR® message is Posted to the Mailbox.</li>
+            <p>
+                <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+                    <col style="width: 151px;" class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <col class="TableStyle-GuideTables-Column-Column1" />
+                    <thead>
+                        <tr class="TableStyle-GuideTables-Head-Header1">
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p>&#160;</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                                <p>Input Name</p>
+                            </th>
+                            <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                                <p>Notes</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td rowspan="8" class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>
+                                    <img src="../../Resources/Images/EdgeTestToolMedMgmt/SenderParameters.png" />
+                                </p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>Sender UID</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p>Payer Id prefaced by PY-</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>UserName</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p><b>Example</b>:  user1</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>Password</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p><b>Example</b>:  password1</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>NPI</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p>The value for the NPI is your provider’s NPI.  The NPI is used to target a message to the
+ provider’s inbox.</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>Patient Member Id</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p>Patient Member Id will override the Patient.Identifier.value@value
+  included in the FHIR® message loaded.  Leave this text box blank, for STAGE testing we will not override the
+ Patient Member Id.
+</p>
+                                <p><![CDATA[  ]]><b>Example</b>:  1215926753</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>Content Type</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p>Content Type allows sending XML or JSON formatted FHIR®
+ transactions.  </p>
+                                <p>Defaults to application/xml</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                                <p>Accept Type</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                                <p>Content Type allows sending XML or JSON formatted FHIR®
+ transactions.  </p>
+                                <p>Defaults to application/xml</p>
+                            </td>
+                        </tr>
+                        <tr class="TableStyle-GuideTables-Body-Body1">
+                            <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                                <p>Generate Id</p>
+                            </td>
+                            <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                                <p>Enable the <b>Generate
+ Id</b> option. This is to ensure a unique MessageID as the message
+ goes across the Surescripts network. This option should remain enabled unless
+ the user is attempting to test the impact of different message ids. </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+            <li>Once the message is verified for accuracy, click the <b>Post To Mailbox</b> button to send the FHIR® message to the Surescripts system.</li>
+            <p>
+                <img src="../../Resources/Images/EdgeTestToolMedMgmt/PostToMailbox.png" />
+            </p>
+            <li>Once successfully sent, users can see response content on the lower portion of the screen. For help with specific errors, please contact Surescripts Customer Support.<ul><li>A response status = 200 OK is success.  If an error occurs an error response code and error message will indicate the root cause.</li></ul></li>
+        </ol>
+        <p>
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/Response.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p>
+            <img src="../../Resources/Images/EdgeTestToolMedMgmt/ResponseError.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+    </body>
+</html>

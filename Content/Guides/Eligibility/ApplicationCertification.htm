@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc497126579"></a>Application Certification Requirements</h1>
+        <h2 class="Heading2">Eligibility Retrieval</h2>
+        <p class="BodyText1"><b>E.100:</b> The participant shall ensure an eligibility request is associated with a patient interaction, is part of a medication reconciliation, or is associated with the electronic prior authorization process.</p>
+        <p class="BodyText1">Definition of Patient Interaction - “Patient interaction with the prescriber with the probability that a prescription will take place in the course of that interaction. The interaction can take the form of a physical visit, phone call, telemedicine, or email from the patient to the prescriber/prescriber to the patient. The eligibility request generally occurs within 24 hours prior to the patient interaction.”</p>
+        <p class="BodyText1">Examples of what is not considered a patient interaction for the purposes of a billable eligibility request:</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li class="BodyText">Activities associated with health care operations, including but not limited to:</li>
+        </ol>
+        <ol style="list-style-type: lower-alpha;margin-left: 72pt;" start="1">
+            <li class="BodyText">Calls to schedule or check in appointments</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Opening a chart for:</li>
+        </ol>
+        <ol style="list-style-type: lower-roman;margin-left: 108pt;" start="1">
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Billing questions</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Reference purposes</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Post visit transcription</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Updating patient information</li>
+        </ol>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="2">
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Clinical information activities not associated with a prescribing medication reconciliation or electronic prior authorization process, including but not limited to:</li>
+        </ol>
+        <ol style="list-style-type: lower-alpha;margin-left: 72pt;" start="1">
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Lab test results or follow up</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Post visit reviews</li>
+            <li class="BodyText" style="color: #000000;font-size: 11pt;">Coordination of care</li>
+        </ol>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.101</span>: Participants shall ensure that:</p>
+        <ol style="list-style-type: decimal;margin-left: 36pt;" start="1">
+            <li class="BodyText">Information returned in the eligibility response shall be used within 3 calendar days/72 hours of receipt.</li>
+            <li class="BodyText">Eligibility requests are sent only once during that period (unless an error is encountered in the eligibility retrieval process).</li>
+        </ol>
+        <p class="BodyText2">Definition: A calendar day runs from 12:00 a.m. to 11:59 p.m. Central Time, regardless of the location of the patient encounter.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.102</span>: Participant/PBM must be able to process any valid 270 request and 271 response (valid data elements and values, including optional elements, supported by X12 must not cause processing failure at the end-point).</p>
+        <h2 class="Heading2">Presentation of Eligibility Information</h2>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.103</span>: The participant application shall display the following information returned in the eligibility response for an active coverage:</p>
+        <ul style="list-style-type: disc;margin-left: 36pt;">
+            <li class="BodyText" style="list-style-type: disc;color: #000000;font-size: 11pt;">PBM/Payer name (NM103 loop 2100A)</li>
+            <li class="BodyText" style="list-style-type: disc;color: #000000;font-size: 11pt;">All pharmacy coverage types received (e.g. Retail) with associated eligibility status (e.g. Covered/Not Covered). If displaying pharmacy coverage types that are not received in the eligibility response, the associated eligibility statuses must be clearly differentiated from the eligibility statuses of the pharmacy coverage types that are received.</li>
+            <li class="BodyText" style="list-style-type: disc;color: #000000;font-size: 11pt;">Health plan name returned in the Plan Coverage Description data element in the 2110C1 loop.</li>
+        </ul>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.104</span>: The application shall allow the user to switch between all active, eligibility coverages.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.105</span>: When the change flag is present, at a minimum, the participant application shall display an alert indicating there is a difference between the patient demographics sent in the 270 and those returned in the 271 for all active coverages and shall make all of the demographics returned available for the prescriber to review.</p>
+        <p class="BodyText1"><span style="font-weight: bold;color: #000000;font-size: 11pt;">E.106</span>: If available, PBMs shall send the health plan name in the Plan Coverage Description data element in the 2110C1 loop in the 270 transactions.</p>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3003" MadCap:lastWidth="911">
+    <head>
+    </head>
+    <body>
+        <h2 class="Heading2">Formulary and Benefit Data Overview</h2>
+        <p class="BodyText1">Formulary and benefit data can consist of the following types: Formulary Status, Payer-specified Alternatives, Coverage Information, and Copay Information. If Payer-specified Alternatives, Coverage Information, and/or Copay Information are provided, there must be an associated Formulary Status List. </p>
+        <p class="BodyText1">A drug formulary is a list of prescription drugs published by a health plan, pharmacy benefit manager, payer, or provider. Each drug within a formulary is assigned a "formulary status", which is an indicator of a formulary publisher’s preference for the drugs on the formulary relative to other drugs in the same or a related therapeutic class. Formulary publishers periodically publish revisions to their drug formularies as new clinical and cost issues influence their preferences. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Payers determine a drug’s formulary status by considering its efficacy and value compared to other drugs in the same therapeutic class (a grouping of medications known to be effective for a particular diagnosis). Those drugs with a higher rating obtain a higher formulary status.</p>
+        <p class="BodyText1">If a therapeutic class contains multiple drugs, those drugs with a higher formulary status are commonly referred to as being "preferred" to those with lower ratings.</p>
+        <h3 class="Heading3"><a name="_Toc443909601"></a>Formulary Status</h3>
+        <p class="BodyText1">Formulary status is defined by using a simple, low-to-high scale. Drugs with a lower formulary status are considered less preferable by the payer; those with a higher status are more preferable.</p>
+        <p class="BodyText1">Formulary Status:</p>
+        <p class="BodyText1">U = Unknown Status</p>
+        <p class="BodyText1">1 = Non-Formulary </p>
+        <p class="BodyText1">2 = On Formulary/Non-Preferred </p>
+        <p class="BodyText1">3 - 99 = On Formulary/Preferred (higher number means “more preferred”)</p>
+        <p class="BodyText1">If formulary status 2 or less is sent, the provider vendor will need to check alternatives (whether from the alternatives file or from the therapeutic alternatives as defined by the drug database).</p>
+        <p class="BodyText1">Payers can flag drugs that the benefit simply does not cover at any level. These drugs are referred to as “non-reimbursable,” meaning that the patient bears full responsibility for their cost.</p>
+        <p class="BodyText1">0 = Non-Reimbursable</p>
+        <p class="BodyText1">If a drug is not listed in the file, a Formulary Status can be specified by using the Non-Listed Formulary Status fields in the header (e.g. Non-listed Prescription Brand Formulary Status, Non-Listed Prescription Generic Formulary Status, Non-Listed Brand Over The Counter Formulary Status etc.).</p>
+        <p class="BodyText1">It is possible for drugs within the same therapeutic class to have a different formulary status. For example, there may be several non-reimbursable drugs as well as five formulary drugs; three of which are a preferred level ‘3’ and two designated as a preferred level ‘4’. Note that the “most preferred” products in this example are the two level ‘4’ products.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Payer formulary data, including copay and specific coverage factors, is at the plan level – not a real-time check at the patient level. Specific nuances such as remaining deductibles or a Prior Authorization requirement may still apply for a patient at time of prescription filling.</p>
+        <h3 class="Heading3"><a name="_Toc443909602"></a>Payer-Specified Alternatives</h3>
+        <p class="BodyText1">As discussed above, drugs with a higher formulary status than others of the same therapeutic class are considered to be “preferred alternatives” to those with lower ratings. Therefore, provider vendor systems can identify preferred alternatives by comparing the status of drugs within a therapeutic class.</p>
+        <p class="BodyText1">Payers can explicitly state alternatives for specific drugs. These payer-specified alternatives are communicated in Alternatives lists, which contain the following information:</p>
+        <ul>
+            <li>Source drug: the off-formulary drug</li>
+            <li>Alternative drug: the preferred alternative</li>
+            <li>Alternative drug preference level: if there are multiple preferred alternatives, the payer’s order of preference (higher number equals greater preference)</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc443909603"></a>Coverage Information</h3>
+        <p class="BodyText1">Coverage information qualifies the conditions under which the patient’s pharmacy benefit covers a medication. For instance, a drug may be covered only for patients under a certain age, or of a certain gender. Other drugs may be covered up to a certain quantity. Payers can communicate the following coverage factors to provider vendor systems using the file load:</p>
+        <ul>
+            <li>Prior authorization requirements</li>
+            <li>Step therapy requirements</li>
+            <li>Step medications</li>
+            <li>Age limits</li>
+            <li>Gender limits</li>
+            <li>Quantity limits</li>
+            <li>Product coverage exclusions</li>
+            <li>Resource links</li>
+            <li>Text messages</li>
+        </ul>
+        <p class="BodyText1">A payer may send multiple quantity limits, step medications, text messages and resource links for the same drug.</p>
+        <h3 class="Heading3"><a name="_Toc443909604"></a>Copay Information</h3>
+        <p class="BodyText1">Copay information describes the “cost to the patient” - the extent to which the patient is responsible for the cost of a prescription. The specification supports multiple ways to state this cost, including flat dollar amounts, percentages, and tier levels. Payers may use one, or a combination of these options.</p>
+        <p class="BodyText1">For instance, a flat $10 patient copay may apply to one drug, and a 15% copay may apply to another. One payer may state copay exclusively in terms of copay tiers, where lower tiers mean a lower patient copay. The publisher determines what is appropriate to send, based on their benefit design. </p>
+        <p class="BodyText1">Payers can communicate the following copay terms to provider vendor systems using the file load:</p>
+        <ul>
+            <li>Flat copay (dollar amount)</li>
+            <li>Percentage copay</li>
+            <li>Combination flat / percentage</li>
+            <li>Copay tier (tier of given drug versus the number of tiers)</li>
+            <li>Minimum and maximum copay</li>
+            <li>Days supply per stated copay</li>
+            <li>Copay differences by type of pharmacy</li>
+            <li>Copay specific text message (via the text message Coverage list type)</li>
+        </ul>
+        <p class="BodyText1"><span style="font-weight: bold;font-style: italic;">Summary-level copay.</span> Often, a class of medications will receive the same copay (generics, for example). Payers can state a summary-level copay rule, based on a drug’s Formulary Status and its type (Branded, Generic, Over The Counter, Supply, or Compound). Any drug with the characteristics stated in the summary-level rule receives the copay defined in the rule.</p>
+        <p class="BodyText1"><span style="font-weight: bold;font-style: italic;">Drug-specific copay.</span> Exceptions to these summary-level rules will also frequently exist. To accommodate these exceptions, Payers can provide drug-level copays. These copays apply to specific drugs, as identified with one of the supported drug identifiers or a representative 11-digit NDC ID.</p>
+        <h3 class="Heading3"><a name="_Toc443909605"></a>Roll Up </h3>
+        <p class="BodyText1">Formulary information is provided to Surescripts by all PBM/payers customers. This data identifies formulary status, coverage, and copay data for the payer’s active members. Today, most PBM/payers are providing formulary files at the NDC-11 packaged drug level. All provider vendors prescribe at a dispensable drug level (drug name, form, and strength). In order to display formulary correctly the data must be rolled up to a dispensable drug level. This process involves Surescripts performing this roll-up feature before the data is supplied to the clinical vendor. Surescripts will select a representative NDC from the drug database vendor and roll all formulary information to this level.</p>
+        <p class="BodyText1">During the roll-up process, Surescripts will identify any discrepancies in the files provided. Reports will be generated and sent back to the PBM/Payer that will indicate conflicts in formulary status, coverage factors, and copay details. The reports will be made available to the PBM/payer for periodic download and review.</p>
+        <p class="BodyText1">This may not be done in all cases (PBM/payer has to opt in, and the drug database vendor needs to support Roll Up.) </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">See Formulary Roll-Up Supplement for more information.</p>
+    </body>
+</html>

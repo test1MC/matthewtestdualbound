@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2765" MadCap:lastWidth="1236">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <p class="p_BodyText1">&#160;</p>
+        <h2 class="Heading2">Worklist Summary</h2>
+        <p class="BodyText1">The worklist/summary provides summary information of task counts for a provider or a patient. The API takes an array of recipients or a patient and a products object, which can include all or just one product. If product is not sent, the customer will get back the task counts for all products implemented. </p>
+        <p class="StylebodytextBold">Workflow Considerations</p>
+        <p class="BodyText1">The worklist summary API is lightweight and useful when only the count of messages is displayed to the user such as on a dashboard.</p>
+        <p class="BodyText1">The diagram below is an example of where the worklist/summary API could be used in a typical patient visit workflow.</p>
+        <p class="p_BodyText1">
+            <img src="../../Resources/Images/MedMgmtNativeIG/Worklist Summary.png" style="width: 1054px;height: 357px;" />
+        </p>
+        <p class="p_BodyText1">&#160;</p>
+        <p class="StylebodytextBold">Patient Request Template Example</p>
+        <p class="BodyText1">[GET] /uiservice/api/v0/worklist/summary?alternateId={alternateId}&amp;alternateOrganization={alternateOrganization}&amp;alternateQualifier=PBMUID</p>
+        <p class="StylebodytextBold">Patient Request Parameters</p>
+        <p class="StylebodytextBold">M/C - Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Parameter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">Data</p>
+                        <p class="p_4">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_4">&#160;</p>
+                        <p class="p_4">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">alternateId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">AN 60</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_1">Matches the patient PBM Unique Id returned in an eligibility response</p>
+                        <p class="p_1">271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">alternateOrganization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">AN 35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_1">Matches the Payer Identifier returned in an eligibility response 271.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">alternateQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">AN 3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_1">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_1">Value: PBMUID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">AN 5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_1">O</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_1">Value: mmpoc</p>
+                        <p class="p_1">Optional qualifier the vendor may use to filter the active tasks to only Medication Management for Adherence when used in conjunction with the alternateId.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Patient Worklist Summary Example</p>
+        <p class="BodyText1">[GET] {{host}}uiservice/api/v0/worklist/summary?alternateId=80000045342&amp;alternateOrganization=D00000000393933&amp;alternateQualifier=PBMUID&amp;product=mmpoc</p>
+        <h3 class="Heading3">Provider Worklist Summary</h3>
+        <p class="BodyText1">[POST] {{host}}/uiservice/api/v0/worklist/summary</p>
+        <p class="StylebodytextBold">Provider Request JSON Fields</p>
+        <p class="StylebodytextBold">M/C - Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">JSON Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">recipients</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Collection of recipients for which accelerator based tasks will be retrieved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">qualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">AN 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_1">SPI's corresponding qualifier.</p>
+                        <p class="p_TableBody">Value: D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">AN 13</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">SPI of the provider</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">products</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_2">Collection of products for which accelerator based tasks will be retrieved.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">id</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">AN 5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Product Id. At least one product Id is required if ‘products’ is used.</p>
+                        <p class="p_TableBody">Value: mmpoc</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">processTypes</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">List</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">O</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_2">Process types filter.</p>
+                        <p class="p_2">Values: </p>
+                        <p class="p_2">medadherence</p>
+                        <p class="p_2"> highrisk </p>
+                        <p class="p_2">missingmed</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3">Provider Request Example</h3>
+        <p class="NoSpacing">[POST] {{host}}/api/v0/worklist/summary</p>
+        <p class="StylebodytextBold">Provider Request Template Example</p>
+        <p class="NoSpacing">
+            <div style="margin-left: 2.2pt;margin-top: 2.5pt;width: 269.25pt;height: 110.6pt;visibility: visible;mso-wrap-style: square;mso-width-percent: 0;mso-height-percent: 200;mso-wrap-distance-left: 9pt;mso-wrap-distance-top: 3.6pt;mso-wrap-distance-right: 9pt;mso-wrap-distance-bottom: 3.6pt;mso-position-horizontal: absolute;mso-position-horizontal-relative: text;mso-position-vertical: absolute;mso-position-vertical-relative: text;mso-width-percent: 0;mso-height-percent: 200;mso-width-relative: margin;mso-height-relative: margin;v-text-anchor: top;">
+                <p class="NoSpacing">{</p>
+                <p class="NoSpacing">&#160;&#160;&#160; "recipients": [</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D",</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6598607334001"</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+                <p class="NoSpacing">&#160;&#160;&#160; ],</p>
+                <p class="NoSpacing">&#160;&#160;&#160; "products": [</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "mmpoc",</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processTypes": [</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "highrisk"</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+                <p class="NoSpacing">&#160;&#160;&#160; ]</p>
+                <p class="NoSpacing">}</p>
+                <p>&#160;</p>
+            </div>
+        </p>
+        <h3 class="Heading3">Worklist Summary Response</h3>
+        <p class="StylebodytextBold">HTTP Status Codes</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Http Status Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">200</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Successful response</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">400</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">Invalid request</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Description Message Body JSON Fields</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_TableHeading">Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">product</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Name of the product.</p>
+                        <p class="p_TableBody">Value: mmpoc</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">low</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the count of active tasks with a low priority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">medium</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the count of active tasks with a medium priority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">high</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the count of active tasks with a high priority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">urgent</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the count of active tasks with an urgent priority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="p_TableBody">alert</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the count of active tasks with an alert priority.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="p_TableBody">total</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="p_TableBody">Integer representing the total count of active tasks.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">JSON Response Example</p>
+        <p class="p_StylebodytextBold">
+            <div style="margin-left: 0;margin-top: 6.9pt;width: 185.9pt;height: 110.6pt;visibility: visible;mso-wrap-style: square;mso-width-percent: 400;mso-height-percent: 200;mso-wrap-distance-left: 9pt;mso-wrap-distance-top: 3.6pt;mso-wrap-distance-right: 9pt;mso-wrap-distance-bottom: 3.6pt;mso-position-horizontal: left;mso-position-horizontal-relative: margin;mso-position-vertical: absolute;mso-position-vertical-relative: text;mso-width-percent: 400;mso-height-percent: 200;mso-width-relative: margin;mso-height-relative: margin;v-text-anchor: top;">
+                <p class="NoSpacing">[</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;{</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"product": "mmpoc",</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"low": 2,</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"medium": 1,</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"high": 0,</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"urgent": 0,</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"alert": 3,</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"total": 6</p>
+                <p class="NoSpacing">&#160;&#160;&#160;&#160;}</p>
+                <p class="NoSpacing">]</p>
+            </div>
+        </p>
+    </body>
+</html>

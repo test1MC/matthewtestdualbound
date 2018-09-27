@@ -1,0 +1,2300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="811" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/TableSegments.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_SIG_–_Structured"></a><a name="_Toc443643382"></a>SIG – Structured SIG Segment</h2>
+        <p class="BodyText1">The Structured SIG Segment is a conditional segment. The intent is not to facilitate the reconstruction of the SIG to human readable form (English), but rather to communicate through electronic means the SIG components in a controlled, well-defined structure. It is to be used to relay information between the prescriber and the pharmacist. It is not patient instructions. However, these will become the patient instructions, so they should be constructed in a patient-friendly manner.</p>
+        <p class="BodyText1">SIG Free Text String Indicator (030-01) contains important instructions affecting the creation of the Structured SIG Segment and its relationship to the DRU Dosage Segment (030-02 or 030-03) SIG instructions. Since this is a conditional field, the message should be able to be processed using the free text instruction field in the DRU segment for those customers not supporting the structured SIG segment.</p>
+        <table align="center" class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 20px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 82px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 254px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 302px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 246px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/<br />C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;"> Field Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;"> Field Definition</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;"> Remarks</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">REPEATING Sig COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">The Repeating Sig Composite is used to indicate if there is more than one Sig, such as for a tapered dose or sliding scale.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">CODE SYSTEM COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">The Code System Composite of the Sig identifies which code system and version are used.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Sig FREE TEXT STRING COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Used to reflect the text string express of the Sig. It should always be used, and in addition is the only composite to place a free text Sig from a generating system that CANNOT generate a structured Sig.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">DOSE COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">The dose composite can define a fixed dose or can repeat to define a variable dose, dose range, or dose options.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">DOSE CALCULATION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Used to calculate a dose where a body metric such as metric weight or surface area is used to calculate a dose for a patient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required when dose is to be calculated.</p>
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Primary use will be in non-retail settings, i.e. hospital, acute care, LTC, home care.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">VEHICLE COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Defines a vehicle specified for the delivery of the product.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Required when prescriber specifies the vehicle composite.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ROUTE OF ADMINISTRATION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Defines the route of administration.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies the route of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SITE OF ADMINISTRATION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Defines the site of administration.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies a site of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Sig TIMING COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">This composite is used to provide instruction about the timing of the Sig - when/how often/frequently/at what rate - the medication is being taken.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies the timing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DURATION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Defines a duration of use/therapy.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies a duration of use/therapy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MAXIMUM DOSE RESTRICTION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">The dose restriction composite of the Sig which defines a maximum or dose limit.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies maximum dose restriction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">INDICATION COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Defines the indication for use of the medication as meant to be conveyed to the patient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies the indication for use.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">STOP COMPOSITE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Used to express a hard stop, such as the last Sig sequence in a tapering dose, where the last sequence is 'then D/C' or where the therapy/drug is used to treat a condition and that treatment is for a fixed duration with a hard stop, such as antibiotic treatment, etc.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Required when prescriber specifies a hard stop.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">&#160;</p>
+        <table class="TableStyle-TableSegments" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/TableSegments.css');">
+            <col class="TableStyle-TableSegments-Column-MC" />
+            <col class="TableStyle-TableSegments-Column-ElementNo" />
+            <col class="TableStyle-TableSegments-Column-ElementName" />
+            <col class="TableStyle-TableSegments-Column-DataType" />
+            <col class="TableStyle-TableSegments-Column-Comments" />
+            <thead>
+                <tr class="TableStyle-TableSegments-Head-Header1">
+                    <th class="TableStyle-TableSegments-HeadE-MC-Header1">
+                        <p class="TableHeading">M/<br />C</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadE-ElementNo-Header1">
+                        <p class="TableHeading">Element Number</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadE-ElementName-Header1">
+                        <p class="TableHeading">Element Name</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadE-DataType-Header1">
+                        <p class="TableHeading">Data Type</p>
+                    </th>
+                    <th class="TableStyle-TableSegments-HeadD-Comments-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG -000</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">SEGMENT TAG</p>
+                    </td>
+                    <td colspan="2" class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-000-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Segment Code</p>
+                        <p class="TableBody"><span style="background-color: #FFFFFF;">&lt;StructuredSIG</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">a3</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Sig</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-010</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">REPEATING Sig</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RepeatingS</span>ig&gt;</p>
+                    </td>
+                    <td colspan="2" class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p class="TableBody">The Repeating Sig Composite is used to indicate if there is more than one Sig, such as for a tapered dose or sliding scale.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-010-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Sig Sequence Position Number</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;"> SigSequence<br />PositionNumber</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody">0 = The Sig has no repeating elements.</p>
+                        <p class="TableBody">All other messages = Values equal to or greater than one (1) are used when the Sig has repeating elements to indicate the position within the string.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-010-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Multiple Sig Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MultipleSigModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one Sig as to whether all the Sigs must apply (AND) or if any of the Sigs can apply (OR) or if the Sigs are sequential (THEN), in the sequence defined by Sig SEQUENCE POSITION.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7899).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-020</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">CODE SYSTEM COMPOSITE</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">CodeSystem</span>&gt;</p>
+                    </td>
+                    <td colspan="2" class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p class="TableBody">The Code System Composite of the Sig identifies which code system and version are used.</p>
+                        <p class="TableBody">At least one of the following elements is required, but both should be used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-020-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">SNOMED Version</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SNOMEDVersion</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..14</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The version of The Systematized Nomenclature of Human and Veterinary Medicine (SNOMED) being used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-020-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">FMT Version</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FMTVersion</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..14</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The version of Federal Medication Terminologies (FMT) being used. According to NCPDP guidance the only field within structured SIG that should use the FMT code system is the dose form code qualifier (SIG-040-10).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-030</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">FREE TEXT</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FreeText</span>&gt;</p>
+                    </td>
+                    <td colspan="2" class="TableStyle-TableSegments-BodyD-DataType-Body1">
+                        <p class="TableBody">Used to reflect the text string express of the Sig. It should always be used, and in addition is the only composite to place a free text Sig from a generating system that CANNOT generate a structured Sig.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-030-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Sig Free Text String Indicator</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SigFreeTextStringIndicator</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Indicates the system capability of representing the instructions.</p>
+                        <p class="TableBody">Values:</p>
+                        <p class="TableBody" style="margin-left: 0pt;">1 = Capture what the prescriber ordered. The Structured Sig Segment free text is used - free text is what the prescriber selected. DRU Dosage (030-02 or 030-03) SIG instructions must contain the same text. The Structured Sig Segment contains the codified Sig fields from the prescriber's order.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">2 = Reconstructed from structured Sig. The Structured Sig Segment free text used and it is a direct translation of codified Sig values and must not be structured English language or pharmacist/patient friendly. DRU Dosage (030-02 or 030-03) Sig instructions free text contains what the physician selected.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">3 = Pure free text. Value 3 is <span style="font-weight: bold;">not used</span> in the SCRIPT Standard. If the structured Sig cannot be generated, the segment is not used. The DRU Dosage DRU-030-02 or DRU-030-03) Sig instructions free text is used. DRU Dosage DRU-030-02 or DRU-030-03) Sig instructions free text contains what the physician selected.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-030-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Sig Free Text</p>
+                        <p class="TableBody">&lt;SigFreeText&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..140</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Free Text.</p>
+                        <p class="TableBody">See Sig Free Text String Indicator SIG-030-01.</p>
+                        <p class="TableBody">This field must match the DRU-030-02 &amp; 03. If the Sig segment is repeated, the SIG-030-02 when concatenated together cannot exceed 140 characters.</p>
+                        <p class="TableBody">The DRU-030-02 and 03 will be used if the receiving party does not support the Sig segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">DOSE</p>
+                        <p class="TableBody"><span style="background-color: #FFFFFF;">&lt;Dose</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The dose composite can define a fixed dose or can repeat (along with the whole SIG segment) to define a variable dose, dose range, or dose options.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Composite Indicator</p>
+                        <p class="TableBody"><span style="background-color: #FFFFFF;">&lt;DoseCompositeIndicator</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Indicates the action to be taken on the Dose Composite fields.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7903).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDeliveryMethodText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Dose Delivery Method. This is the method in which the dose is delivered (describes how the dose is administered / consumed).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDelivery<br />MethodCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7905).</p>
+                        <p class="TableBody">If either SIG-040-03 or SIG-040-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDeliveryMethodCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Dose Delivery Method Text.</p>
+                        <p class="TableBody">If either SIG-040-03 or SIG-040-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Modifier Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDelivery<br />MethodModifierText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Modifies the method in which the dose is delivered (clarifies Dose Delivery Method Text).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Modifier Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDeliveryMethodModifier<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7908).</p>
+                        <p class="TableBody">If either SIG-040-06 or SIG-040-07 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Delivery Method Modifier Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseDeliveryMethod<br />ModifierCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Dose Delivery Method Modifier Text.</p>
+                        <p class="TableBody">If either SIG-040-06 or SIG-040-07 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Quantity</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseQuantity</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric expression of the dose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-09</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Form Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseFormText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Dose Form.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Form Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseFormCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7912).</p>
+                        <p class="TableBody">If either SIG-040-10 or SIG-040-11 is sent, then both are required.</p>
+                        <p class="TableBody">According to NCPDP guidance this is only field within structured SIG that should use the FMT code system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Form Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseFormCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Dose Form.</p>
+                        <p class="TableBody">If either SIG-040-10 or SIG-040-11 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-040-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dose Range Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseRangeModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to signify that the Sig contains more than one dose in a range or option.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7914).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">DOSE CALCULATION</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DoseCalculation</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to calculate a dose where a body metric such as metric weight or surface area is used to calculate a dose for a patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dosing Basis Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DosingBasisNumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Expresses the numeric value of the dosing basis.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dosing Basis Unit of Measure Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DosingBasisUnitofMeasureText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the dosing basis unit of measure.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dosing Basis Unit of Measure Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DosingBasisUnitofMeasure<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7917).</p>
+                        <p class="TableBody">If either SIG-050-03 or SIG-050-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dosing Basis Unit of Measure Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DosingBasisUnitof<br />MeasureCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the dosing basis unit of measure.</p>
+                        <p class="TableBody">If either SIG-050-03 or SIG-050-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Body Metric Qualifier</p>
+                        <p class="TableBody">&lt;BodyMetricQualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the body metric being used (either weight or surface area).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7919).</p>
+                        <p class="TableBody">If either SIG-050-05 or SIG-050-06 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Body Metric Value</p>
+                        <p class="TableBody">&lt;BodyMetricValue&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Expresses the value of the body metric.</p>
+                        <p class="TableBody">If either SIG-050-05 or SIG-050-06 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Calculated Dose Numeric</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">CalculatedDoseNumeric</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Expresses the numeric value of the calculated dose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Calculated Dose Unit of Measure Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">CalculatedDoseUnitof<br />MeasureText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the unit of measure of the calculated dose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-09</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Calculated Dose Unit of Measure Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">CalculatedDoseUnitof<br />MeasureCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7923)<span style="font-style: italic;">.</span></p>
+                        <p class="TableBody">If either SIG-050-09 or SIG-050-10 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Calculated Dose Unit of Measure Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">CalculatedDoseUnitof<br />MeasureCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Code representing the calculated dose unit of measure.</p>
+                        <p class="TableBody">If either SIG-050-09 or SIG-050-10 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-050-11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Dosing Basis Range Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DosingBasisRangeModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to signify that the Sig contains more than one dose which represent a dose range (TO) or contains a dose option (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7925).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">VEHICLE</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">Vehicle</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines a vehicle specified for the delivery of the product.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Name</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleName</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The name of the vehicle.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Name Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleNameCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7927).</p>
+                        <p class="TableBody">If either SIG-060-02 or SIG-060-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Name Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleNameCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Vehicle Name.</p>
+                        <p class="TableBody">If either SIG-060-02 or SIG-060-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Quantity</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleQuantity</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">A volume, expressed in a value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Unit Of Measure Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleUnitOfMeasureText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Vehicle Unit of Measure.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Unit Of Measure Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleUnitOfMeasure<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7931).</p>
+                        <p class="TableBody">If either SIG-060-06 or SIG-060-07 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Vehicle Unit Of Measure Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VehicleUnitOfMeasureCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Vehicle Unit of Measure.</p>
+                        <p class="TableBody">If either SIG-060-06 or SIG-060-07 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-060-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Multiple Vehicle Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MultipleVehicleModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Denotes if for an instance of more than one vehicle if all vehicles are used together (AND), or if each of the listed vehicles is an option (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7933).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-070</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">ROUTE OF ADMINISTRATION</p>
+                        <p class="TableBody"><span style="background-color: #FFFFFF;">&lt;RouteofAdministration</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines the route of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-070-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Route of Administration Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RouteofAdministrationText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Route of Administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-070-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Route of Administration Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RouteofAdministration<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7935).</p>
+                        <p class="TableBody">If either SIG-070-02 or SIG-070-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-070-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Route of Administration Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RouteofAdministrationCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Route of Administration.</p>
+                        <p class="TableBody">If either SIG-070-02 or SIG-070-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-070-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Multiple Route of Administration Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MultipleRouteof<br />AdministrationModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one route as to whether the routes are all required to be used (AND) or if any of the routes can be used (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7937).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-080</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">SITE OF ADMINISTRATION</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SiteofAdministration</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines the site of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-080-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Site of Administration Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SiteofAdministrationText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Site Code. It is the site of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-080-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Site of Administration Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SiteofAdministration<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7939).</p>
+                        <p class="TableBody">If either SIG-080-02 or SIG-080-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-080-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Site of Administration Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">SiteofAdministrationCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Site of Administration.</p>
+                        <p class="TableBody">If either SIG-080-02 or SIG-080-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-080-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Multiple Site of Administration Timing Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MultipleAdministration<br />TimingModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one site as to whether the sites are all required (AND) for use or excluded from use (NOT) or if any of the sites can be used (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7941).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">TIMING</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">Timing</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">This composite is used to provide instruction about the timing of the Sig - when/how often/frequently/at what rate - the medication is being taken.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">ADMINISTRATION TIMING</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines a specific administration day, date or time.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Administration Timing Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">AdministrationTimingText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Administration Timing. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Administration Timing Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">AdministrationTiming<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7943).</p>
+                        <p class="TableBody">If either SIG-090-02 or SIG-090-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Administration Timing Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">AdministrationTimingCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Administration Timing Text.</p>
+                        <p class="TableBody">If either SIG-090-02 or SIG-090-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Multiple Administration Timing Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MultipleAdministration<br />TimingModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one ADMINISTRATION TIME as to whether the times are all required to be used (AND) or if any of the times can be used (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7945).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Rate of Administration</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RateofAdministration</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The amount of time for a {single} dose to be administered.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Rate Unit of Measure Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RateUnitofMeasureText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Rate Unit of Measure for the period of time (seconds, minutes, hours, days) in which the dose is to be administered.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Rate Unit of Measure Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RateUnitofMeasure<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7948).</p>
+                        <p class="TableBody">If either SIG-090-07 or SIG-090-08 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Rate Unit of Measure Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">RateUnitofMeasureCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Rate Unit Of Measure Text.</p>
+                        <p class="TableBody">If either SIG-090-07 or SIG-090-08 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-09</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Time Period Basis Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">TimePeriodBasisText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Expresses the time unit of measure for the calculated dose.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Time Period Basis Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">TimePeriodBasis<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7951).</p>
+                        <p class="TableBody">If either SIG-090-10 or SIG-090-11 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Time Period Basis Code </p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">TimePeriodBasisCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the time period basis.</p>
+                        <p class="TableBody">If either SIG-090-10 or SIG-090-11 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">FREQUENCY</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines a frequency of administration. Frequency is events per unit of time.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Frequency Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FrequencyNumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric interval for the event. Used to define a FREQUENCY of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-13</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Frequency Units Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FrequencyUnitsText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Frequency Units Code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-14</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Frequency Units Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FrequencyUnitsCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7955).</p>
+                        <p class="TableBody">If either SIG-090-14 or SIG-090-15 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Frequency Units Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">FrequencyUnitsCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code represented by Frequency Units Text.</p>
+                        <p class="TableBody">If either SIG-090-14 or SIG-090-15 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-16</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Variable Frequency Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VariableFrequencyModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one FREQUENCY as to whether the frequencies are all required to be used (AND) or if any of the frequencies can be used (OR/TO).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7957).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">INTERVAL</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines an interval of administration. Interval is the time between events.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-17</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Interval Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IntervalNumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric time between events. Used to define an INTERVAL of administration.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Interval Units Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IntervalUnitsText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Interval Units Code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-19</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Interval Units Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IntervalUnitsCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7960).</p>
+                        <p class="TableBody">If either SIG-090-19 or SIG-090-20 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-20</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Interval Units Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IntervalUnitsCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Interval Units Text.</p>
+                        <p class="TableBody">If either SIG-090-19 or SIG-090-20 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-090-21</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Variable Interval Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">VariableIntervalModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one INTERVAL as to whether the intervals are all required to be used (AND) or if any of the intervals can be used (OR/TO).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7962).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-100</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">DURATION</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">Duration</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines a duration of use/therapy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-100-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Duration Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DurationNumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric duration units.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-100-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Duration Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DurationText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of Duration Units Code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-100-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Duration Text Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DurationTextCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7965).</p>
+                        <p class="TableBody">If either SIG-100-03 or SIG-100-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-100-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Duration Text Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">DurationTextCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Duration Units Text.</p>
+                        <p class="TableBody">If either SIG-100-03 or SIG-100-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">MAXIMUM DOSE RESTRICTION</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The dose restriction composite of the SIG which defines a maximum or dose limit, as specified by the prescriber.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />NumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines a MAXIMUM DOSE, so that the Sig can represent the concept, 'Not to exceed _____.' Expression of a DOSE MAXIMUM involves placing the core dose value in this field and the units and variables in the fields that follow.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Units Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />UnitsText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Dose Maximum Units.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7969).</p>
+                        <p class="TableBody">If either SIG-110-03 or SIG-110-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Units Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />UnitsCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Dose Maximum Units Text.</p>
+                        <p class="TableBody">If either SIG-110-03 or SIG-110-04 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Variable Numeric Value</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />VariableNumericValue</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric representation of the maximum dose calculations.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Variable Units Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />VariableUnitsText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Dose Maximum Variable Units.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Variable Units Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />VariableUnitsCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7973).</p>
+                        <p class="TableBody">If either SIG-110-07 or SIG-110-08 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Variable Units Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />VariableUnitsCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code represented by the Dose Maximum Variable Units Text.</p>
+                        <p class="TableBody">If either SIG-110-07 or SIG-110-08 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-110-09</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Maximum Dose Restriction Variable Duration Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">MaximumDoseRestriction<br />VariableDurationModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one DURATION as to whether the durations are all required to be used (AND) or if any of the durations can be used (OR).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7975).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">INDICATION</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">Indication</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Defines the indication for use of the medication as meant to be conveyed to the patient.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Precursor Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationPrecursorText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the indication precursor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-02</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Precursor Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationPrecursor<br />CodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7977).</p>
+                        <p class="TableBody">If either SIG-120-02 or SIG-120-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-03</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Precursor Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationPrecursorCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the indication precursor.</p>
+                        <p class="TableBody">If either SIG-120-02 or SIG-120-03 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-04</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the Indication.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-05</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Text Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationTextCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7980).</p>
+                        <p class="TableBody">If either SIG-120-05 or SIG-120-06 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-06</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Text Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationTextCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the Indication Text.</p>
+                        <p class="TableBody">If either SIG-120-05 or SIG-120-06 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-07</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Value Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationValueText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of when the indication value is applicable.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-08</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Value Unit</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationValueUnit</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">n..18</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The numeric expression of a value when it applies to an Indication.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-09</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Value Unit of Measure Text</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationValue<br />UnitofMeasureText</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The textual representation of the unit of measure of the indication value.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-10</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Value Unit of Measure Code Qualifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationValue<br />UnitofMeasureCodeQualifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..2</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Qualifier to identify the code system being used.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7985).</p>
+                        <p class="TableBody">If either SIG-120-10 or SIG-120-11 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-11</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Value Unit of Measure Code</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationValue<br />UnitofMeasureCode</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..15</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">The code representing the unit of measure.</p>
+                        <p class="TableBody">If either SIG-120-10 or SIG-120-11 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-120-12</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">Indication Variable Modifier</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">IndicationVariableModifier</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">an..50</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express when there is more than one INDICATION as to whether all the indications must apply (AND) or if any of the indications can apply (OR/TO).</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7987).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyE-MC-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementNo-Body1">
+                        <p class="TableBody">SIG-130</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-ElementName-Body1">
+                        <p class="TableBody">STOP</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">Stop</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyE-DataType-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyD-Comments-Body1">
+                        <p class="TableBody">Used to express a hard stop, such as the last SIG sequence in a tapering dose, where the last sequence is 'then D/C' or where the therapy/drug is used to treat a condition and that treatment is for a fixed duration with a hard stop, such as antibiotic treatment, etc.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-TableSegments-Body-Body1">
+                    <td class="TableStyle-TableSegments-BodyB-MC-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyB-ElementNo-Body1">
+                        <p class="TableBody">SIG-130-01</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyB-ElementName-Body1">
+                        <p class="TableBody">Stop Indicator</p>
+                        <p class="TableBody">&lt;<span style="background-color: #FFFFFF;">StopIndicator</span>&gt;</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyB-DataType-Body1">
+                        <p class="TableBody">an1</p>
+                    </td>
+                    <td class="TableStyle-TableSegments-BodyA-Comments-Body1">
+                        <p class="TableBody">Defines if a stop is present.</p>
+                        <p class="TableBody">For values, see the NCPDP External Code List (7988)<span style="font-style: italic;">.</span></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

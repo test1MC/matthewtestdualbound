@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc446400301"></a>Panel Management RxHistory Response XML Details</h1>
+        <h2 class="Heading2"><a name="_Toc446400302"></a>Overall File Header</h2>
+        <p class="BodyText1">The PatientFileID echoes the Patient Population Identifier sent in the patient load file.</p>
+        <p class="BodyText1">SentTime is the date/time that the Medication History Panel Management File is posted.</p>
+        <p class="BodyText1">TransmissionControlNumber is used to link the Panel Management Patient File Load to the appropriate RxHistory Response file sent back by Surescripts.</p>
+        <h2 class="Heading2"><a name="_Toc446400303"></a>Response</h2>
+        <p class="BodyText1">When AQ is present in the ApprovalReasonCode, a second Panel Management RxHistoryResponse will be sent from Surescripts to the customer.</p>
+        <p class="BodyText1">A Denied response will be accompanied by Free Text (DenialReason). If there is an error in retrieving the data, DenialReason will be populated. See <MadCap:xref href="ErrorScenarios.htm">Error Scenarios on page&#160;1</MadCap:xref> for more information.</p>
+        <h2 class="Heading2"><a name="_Toc446400304"></a>Prescriber</h2>
+        <p class="BodyText1">The Prescriber element is used to populate the LastName (organization name or prescriber last name) and the NPI for organization or individual prescriber. </p>
+        <p class="BodyText1">Optionally, the Prescriber element is used in each MedicationDispensed loop to indicate the prescribing physician for the drug listed. </p>
+        <h2 class="Heading2"><a name="_Toc446400305"></a>Pharmacy</h2>
+        <p class="BodyText1">Optionally, the Identification element will include the reference number for the pharmacy.</p>
+        <h2 class="Heading2"><a name="_Toc446400306"></a>Patient</h2>
+        <p class="BodyText1">The Patient ID provided in the Patient Load file will be populated in the MutuallyDefined identification field.</p>
+        <h2 class="Heading2"><a name="_Toc446400307"></a>Medication Dispensed</h2>
+        <p class="BodyText1">Zero to 300 loops of the drugs in the patient’s history. If there are more than 300 drugs in the patient’s history, a second RxHistoryResponse will be included in the Panel Management RxHistory file. The most recent drug according to date filled is shown first.</p>
+    </body>
+</html>

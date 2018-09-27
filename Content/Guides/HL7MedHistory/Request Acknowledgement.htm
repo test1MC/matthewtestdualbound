@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="576.3333" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc445209633"></a>Request Acknowledgement</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_Toc445209634"></a>Introduction</h2>
+        <p class="BodyText1">The HL7 Acknowledgement is utilized to inform the sender that the message has been received and accepted. Surescripts will submit a synchronous general acknowledgment in response to the ADT message indicating that we have received the message, understand its contents, and can process it further. Similarly, participants will submit a synchronous general acknowledgement to Surescripts after they accept an ORU or RDS message.</p>
+        <p class="BodyText1">Surescripts performs the following checks before an acknowledgment is returned:</p>
+        <ul>
+            <li>Security – Surescripts will validate the participant ID located in MSH-3 and the password contained in MSH-8.</li>
+            <li>Format – Surescripts will attempt to parse the required information from the message. If the format is incorrect, this step may fail. These checks include the verification of the MSH-9 message type, MSH-12 version ID, and the MSH-11 processing ID fields.</li>
+            <li>Environment – Surescripts will insure that the transaction is in the proper environment: test or production.</li>
+            <li>Authority – Surescripts will insure that the sender is authorized to send this request and has a contract with Surescripts for a MEDS response.</li>
+        </ul>
+        <p class="BodyText1">Once these checks are performed, an acknowledgement, with an error if necessary, is returned to the sender.</p>
+        <p class="BodyText1">Surescripts participants need to determine the appropriate amount of checks they will perform before they send an acknowledgment in response to the ORU or RDS messages.</p>
+    </body>
+</html>

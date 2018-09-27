@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Lori.Ash" MadCap:initials="LO" MadCap:id="1" MadCap:timestamp="2018-07-30T12:46:08.6367547-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="top"></a>Product Overview</h1>
+        <div class="note">
+            <p class="BodyText1"><b>Notes</b>:&#160;</p>
+            <ul>
+                <li>Throughout this Guide, Surescripts Eligibility and Formulary: Real-Time Formulary will be referred to as RTF, and Surescripts Real-Time Prescription Benefit will be referred to as RTPB.</li>
+                <li>This product previously used the acronyms RFS for Real-Time Formulary (now RTF) and PMBC for Real-Time Prescription Benefit (now RTPB). The old acronyms are still in place within the schema file name, schema, and XML message examples in this Guide and will not be updated to avoid versioning issues.</li>
+            </ul>
+        </div>
+        <h2 class="Heading2"><a name="About"></a>About Surescripts Eligibility and Formulary: Real-Time Formulary</h2>
+        <p class="BodyText1">Surescripts Eligibility and Formulary: Real-Time Formulary delivers plan level, formulary information to the prescriber at the point of care via a real-time Request and Response message. This service eliminates the need for the provider vendor to download large formulary files from Surescripts on a weekly basis. The data provided through RTF informs the prescriber of a medication's formulary status, payer-provided alternatives, coverage factors, and copay details. RTF data is intended to assist the prescriber in aligning their selected therapy with the patient’s benefit plan.</p>
+        <div class="note">
+            <p class="BodyText1"><b>Notes</b>:</p>
+            <ul>
+                <li>RTF utilizes NCPDP Formulary and Benefit Standard 3.0. Provider vendors currently using Formulary 1.0 will need to make the required changes to handle Formulary 3.0-based RTF data.</li>
+                <li>PBM/payers are providing formulary files at the NDC-11 packaged medication level. All provider vendors prescribe at the dispensable medication level (medication name, form, and strength). To return formulary correctly on the Benefit Response, Surescripts rolls up and stores the existing formulary files at a dispensable medication level by selecting a representative NDC from an industry standard drug database.</li>
+            </ul>
+        </div>
+        <h2 class="Heading2"><a name="About3"></a>About Surescripts Real-Time Prescription Benefit</h2>
+        <p class="BodyText1">Surescripts Real-Time Prescription Benefit is a real-time Request and Response message between the provider vendor and PBM.  The RTPB message delivers patient-specific medication cost and benefit information to the point of care to help inform prescribers' prescription decisions.  This includes point-in-time estimated cost, alternative medication options, pharmacy type options, and formulary information. RTPB data is referenced prior to the NewRx to inform the prescriber and the patient of the specific estimated out-of-pocket cost for the selected therapy.  RTPB is provided in addition to, and not a replacement of, the group/plan level formulary information.</p>
+        <p class="BodyText1">RTF and RTPB provide value by driving medication adherence, lowering health care costs, and improving health outcomes and patient safety. By providing accurate, up-to-date, patient-specific information and cost-effective medication options, prescribers and patients can make informed decisions that reduce payment obstacles and improve medication adherence.</p>
+        <h2 class="Heading2"><a name="Distinct"></a>Distinction Between RTF Data and RTPB</h2>
+        <p>RTF and RTPB data both provide formulary, coverage, and estimated copay related information at two different levels. The table below outlines the differences:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 300px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 336px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 11pt;">RTF Data</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="font-size: 11pt;">RTPB Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">Obtained through: </p>
+                        <ul>
+                            <li style="font-size: 11pt;">Sending a Benefit Request (RTF workflow) for a selected medication or group of medications.</li>
+                            <li style="font-size: 11pt;">Receiving a Benefit Response (RTF workflow) from Surescripts that includes representative formulary data.</li>
+                        </ul>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">Obtained through:</p>
+                        <ul>
+                            <li style="font-size: 11pt;">Sending a Benefit Request (RTPB workflow) for a selected medi<MadCap:change MadCap:changes="1">c</MadCap:change>ation via Surescripts to the patient's PBM using the patient's PBM Unique Member ID.</li>
+                            <li style="font-size: 11pt;">Receiving a patient specific Benefit Response (RTPB workflow) created by the PBM.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">Plan/Group level</p>
+                        <ul>
+                            <li style="font-size: 11pt;"><span style="font-size: 11pt;">Plan level formulary data. Including: formulary status, payer provided alternatives, coverage factors, and copay data.</span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">Patient level:</p>
+                        <ul>
+                            <li style="font-size: 11pt;"><span style="font-size: 11pt;">Patient level, point-in-time estimated patient out of pocket costs for a selected medication and alternatives.</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 11pt;">
+                        <p><span style="font-size: 11pt;">Utilized to inform the initial medication selection, prior to the identification of the preferred pharmacy and Sig. Assists the prescriber in selecting the best option based upon plan/group-level formulary data. Commonly used to inform the following:</span>
+                        </p>
+                        <ul>
+                            <li style="font-size: 11pt;">Formulary status on active medications</li>
+                            <li style="font-size: 11pt;">Formulary status on physician favorites</li>
+                            <li style="font-size: 11pt;">Formulary status on medications found in a search</li>
+                        </ul>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="font-size: 11pt;">
+                        <p><span style="font-size: 11pt;">Utilized after the Sig and preferred pharmacy have been populated to inform the prescriber of the estimated out of pocket costs and alternative medication options. Commonly used to inform the following:
+</span>
+                        </p>
+                        <ul>
+                            <li style="font-size: 11pt;">Active medication list
+</li>
+                            <li style="font-size: 11pt;">Refill Request/Response
+</li>
+                            <li style="font-size: 11pt;">New prescription
+</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="RFS/PMBC"></a>RTF/RTPB Workflow</h2>
+        <p>The Benefit Request and Benefit Response messages used by the RTF/RTPB product allow for separate workflow options, RTF or RTPB. A provider vendor can choose to implement one or both workflows. Each option is assigned a unique URL endpoint that designates which workflow is used.</p>
+        <h2 class="Heading2"><a name="About2"></a>About This Guide </h2>
+        <p class="BodyText1">The Surescripts Eligibility and Formulary: Real-Time Formulary/Real-Time Prescription Benefit Implementation Guide was created to assist provider vendors in implementing Benefit Request/Response messages that will use one or both of the RTF and RTPB workflow(s).</p>
+        <p class="BodyText1">The audience includes any customer responsible for configuring or developing a system interface for the electronic messages.</p>
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Examples"></a>Examples Disclaimer</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/ExamplesDisclaimer.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Document"></a>Document References </h2>
+        <p class="BodyText1">This Guide only includes data elements where Surescripts has specific requirements or further explains the field usage. Refer to the RFS PMBC XML Schema for a complete list of fields and requirements.</p>
+        <p class="BodyText1">This Guide is meant to support and integrate with the NCPDP standard schemas, implementation guides and best practices where applicable. It does not reproduce the base standard in its entirety. Customers should read and comprehend the associated standards prior to reading this Guide.</p>
+        <p class="BodyText1">Please reference the following documents when reading this Implementation Guide:</p>
+        <table style="border-collapse: collapse;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 405pt;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th style="background-color: #DDDDDD;border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;" class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="font-size: 11pt;">Document Title</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body" style="background-color: #f5f5f5;">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><b style="font-size: 11pt;">Surescripts provided materials</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 11pt;">Connectivity</span> and Authentication Implementation Guide
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 11pt;">Directories 4.6 (or later) Implementation Guide</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 11pt;">RFS PMBC XML Schema 2017-05-31</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body" style="background-color: #f5f5f5;">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;"><b>Documents to be obtained by the customer</b>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">Formulary and Benefit Standard Implementation Guide Version 3.0 (RTF only)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 11pt;">NCPDP External Code List (December 2010) (RTF only)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p style="font-size: 11pt;">NCPDP 2013101 External Code List (RTPB only)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 11pt;">NCPDP XML Standard Guide Version 2013101</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="font-size: 11pt;">NCPDP v2013101 XML Schema</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">This Guide is based on the NCPDP (National Council for Prescription Drug Programs) messaging standard version 2013101. Members of NCPDP can access standards at <a href="http://ncpdp.org/Standards/Standards-Info" target="_blank">http://ncpdp.org/Standards/Standards-Info</a>. To become a member, please go to <a href="https://ncpdp.org/membership/Apply-Online.aspx" target="_blank">https://ncpdp.org/membership/Apply-Online.aspx</a>.</p>
+        <p class="BodyText1">NCPDP is an American National Standards Institute (ANSI) accredited Standard Development Organization. The NCPDP “SCRIPT” standard is a copyrighted document and may be obtained by contacting:</p>
+        <p class="BodyText1" style="margin-bottom: 3px;">NCPDP</p>
+        <p class="BodyText1" style="margin-bottom: 3px;margin-top: 3px;">9240 E. Raintree Drive</p>
+        <p class="BodyText1" style="margin-bottom: 3px;margin-top: 3px;">Scottsdale, AZ 85260-7518</p>
+        <p class="BodyText1" style="margin-bottom: 3px;margin-top: 3px;">Phone: (480) 477-1000</p>
+        <p class="BodyText1" style="margin-bottom: 3px;margin-top: 3px;">Fax: (480) 767-1042</p>
+        <p class="BodyText1" style="margin-top: 3px;"><a href="http://www.ncpdp.org/" target="_blank">http://www.ncpdp.org</a>
+        </p>
+    </body>
+</html>

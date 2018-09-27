@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title>Patient Notifications Enrollment File Load</title>
+    </head>
+    <body>
+        <h1 class="Heading1">Patient Enrollment File Load</h1>
+        <h2 class="Heading2"><a name="Characte"></a>Character Set</h2>
+        <p class="BodyText1">The character set contains ASCII values 32 – 126, which include:</p>
+        <p class="BodyText2">Letters, upper and lower case	 A to Z, a to z</p>
+        <p class="BodyText2">Numerals				Ø to 9</p>
+        <p class="BodyText2">Symbols		! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+        <p class="BodyText1">Unprintable characters, such as control characters, are not used within the field sets. Defined unprintable characters are used as delimiters.</p>
+        <p>For the quotation symbol (") there must be a closed quote or corresponding quote for every opening ".</p>
+        <p class="StylebodytextBold">Best Practice</p>
+        <p class="BodyText1">All non-essential characters should be suppressed from the message where permissible. Nonessential characters include leading spaces, trailing spaces, leading zeros, and trailing zeros.</p>
+        <h2 class="Heading2"><a name="Requirem"></a>Requirement Designation</h2>
+        <p class="StylebodytextBold">Field Attributes:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Required/Mandatory - the element must be used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Situational/Conditional - the element must be used if conditions are met. </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="page-break-before: always;"><a name="File"></a>File Naming and Formats</h2>
+        <p class="StylebodytextBold">Patient Enrollment File</p>
+        <p>The naming convention is CustomerName_PMA_YYYYMMDD-XX.CompressionFormat. It is strongly suggested to compress the file prior to transmitting it to Surescripts. The current zip protocols that are supported are gzip, bzip2, and zip. </p>
+        <p class="BodyText1Indent2">Example: ACOCompany_PMA_20161204-01.gz</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">In the naming convention, "XX" represents the sequence number. Increment this number when sending multiple files in one day.</p>
+        <p class="StylebodytextBold">Patient Enrollment Response File</p>
+        <p class="BodyText1">The naming convention is &lt;inputFileName sans extension&gt;.&lt;sstimestamp&gt;.&lt;sstimestamp&gt;.rsp.</p>
+        <p class="BodyText1Indent2">Example: ACOCompany_PMA_20161204-01.20161204012025.20161204012025.rsp</p>
+        <h2 class="Heading2"><a name="Patient"></a>Patient Enrollment File Load</h2>
+        <p class="BodyText1">The Patient Enrollment file format will be pipe-delimited (hex7c). Each field is delimited by the pipe character (|). If a pipe-character (hex7c) is used in field data, it must be escaped with \F\. For example, Main | Street would be listed as Main \F\ Street. Each line is to be separated by a new line (hex0A) character.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Mandatory fields are not included, the Patient Enrollment File and/or patient record will not pass validation. All Conditional fields must be accounted for, either with data or a placeholder delimiter.</p>
+        <h3 class="Heading3"><a name="Header"></a>Header Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Identifies record type
+</p>
+                        <p>Value = HDR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">		HDR</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Version</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3..5	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	Version Number of this specification</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1.0</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Sender ID</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3..30</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">			ID as assigned by Surescripts identifying customer sending the file.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">P00000000023456</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">3				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Sender Password</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..20</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Password for customer to access the Surescripts system.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">M94WJ7CW6H</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">4				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Receiver ID	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..30</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Represents Surescripts as the receiver of the file. Set to the Surescripts ID S00000000000006.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">S00000000000006</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">5				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Control Number	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..36</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Unique identifier defined by the sender. The value must be unique for each file transmission and is used to map the transmission to the Patient Enrollment Response File.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1234567891</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">6			
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Date</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date transaction was created
+(D8 - CCYYMMDD)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20060701</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">7		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Time</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	tm8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	Time transaction was created (HHMMSSDD)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">12200101</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">8	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission File Type	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..4	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>	Identifier telling the type of transaction
+</p>
+                        <p>PMA = <MadCap:annotation MadCap:createDate="2018-07-26T09:21:31.8285115-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Should we change this to Med Hist for Populations?" MadCap:editor="Lori.Ash" MadCap:editDate="2018-07-26T09:21:55.5615115-05:00">Patient Notifications</MadCap:annotation></p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">PMA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">9	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Action</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>				Value = U (U=Update File) 
+</p>
+                        <p>If blank, default to "U".
+</p>
+                        <p>Future version will support "F" for Full file.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">U</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">10	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Extract Date</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		Date File was created (D8 - CCYYMMDD)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20140104</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">11			 
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">File Type</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Values:
+</p>
+                        <p>T
+</p>
+                        <p>P
+</p>
+                        <p><b>Note</b>: T = Test and P = Production</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">P</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">12		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	Patient Population ID	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an1..64</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Customer defined value to label the list of patients being loaded in this file. The same patient population can be loaded/uploaded in multiple files.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">HighRisk</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">13	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	File Schedule</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an1..20</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <MadCap:annotation MadCap:createDate="2018-07-26T09:22:07.4715115-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="How do we handle this with the new naming conventions?" MadCap:editor="Lori.Ash" MadCap:editDate="2018-07-26T09:22:26.8875115-05:00">Panel Management field. Not used by Patient Notifications. </MadCap:annotation>Field is not currently used. Customers should leave this field blank so that the file is not rejected.  </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">14</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Look Back Period in Months	</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">	n1..3	</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">	Panel Management field. Not used by Patient Notifications. Field is not currently used. Customers should leave this field blank so that the file is not rejected. </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Detail"></a>Detail Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 51px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type
+
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an3</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>		Identifies record type
+</p>
+                        <p>Value = PMA</p>
+                        <ul>
+                            <li><span style="font-size: 10pt;">PMA indicates only <MadCap:annotation MadCap:createDate="2018-07-26T09:22:39.0775115-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="update" MadCap:editor="Lori.Ash" MadCap:editDate="2018-07-26T09:22:40.8245115-05:00">Patient <br />Notification</MadCap:annotation> enrollment
+</span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">PMA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Sequence Number			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n.. 10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Number for this detail row in the file <br />(Record Sequence Number starting with 1 <br />and continuing up to the number of detail records in the file.)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Assign Authority </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..64	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		ID for the organization/system that assigned the related patient ID	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1.3.44444.666.3.2.1</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">3				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient ID		 </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..64	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Customer's internal Patient ID</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">4				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Last Name	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..100</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Last name of the patient.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Jones</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">5				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">First Name				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..100</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">First name of the patient.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Robert</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">6			
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Middle Name		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..100	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Middle name of the patient	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Jonathan</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">7		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Prefix				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient prefix</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Mr.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">8	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Suffix	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..20</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient suffix</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">		II</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">9	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Address Line 1				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..55</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">First line of the patient address <br />(no C/O type information)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">123 street avenue</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">10	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Address Line 2	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..55	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Second line of the patient address <br />(no C/O type information)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">11			 
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">City Name			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an2..30</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient city name	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Jacksonville</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">12		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">State		
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an2	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Patient state code
+</p>
+                        <p>Only United States addresses are supported.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">CO</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">13	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Postal Code	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an5..9</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	Patient zip code 5 or 9 numeric – no punctuation.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">55123</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">14</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date of Birth			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient DOB (CCYYMMDD)</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20060701</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">15</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Gender			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient gender (M,F,U)	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">M</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">16</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Organizational NPI		 
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	n10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">The NPI will be validated against the National Provider Identification file to verify that it exists and is an organizational NPI.
+<a href="https://nppes.cms.hhs.gov/NPPES/Welcome.do" target="_blank">https://nppes.cms.hhs.gov/NPPES/<br />Welcome.do</a></td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1234567893
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">17</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">End Monitoring Date	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>	Date when this patient should no longer be monitored. </p>
+                        <p>
+Leave empty to monitor the patient indefinitely.  
+</p>
+                        <p>Dates in the past will be loaded as today.  We cannot stop patient monitoring retroactively.	</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20171231
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">18</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Notifications Requested for this Patient	</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">an..1000</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">	C</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>The list of<MadCap:annotation MadCap:createDate="2018-07-26T09:22:58.3235115-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Can we still use Notifications?" MadCap:editor="Lori.Ash" MadCap:editDate="2018-07-26T09:23:04.5975115-05:00"> Notifications</MadCap:annotation> for which the patient is being enrolled.
+</p>
+                        <p>If left empty, this patient will be monitored for all contracted notifications. </p>
+                        <p> 
+If this patient is to be monitored for a list of notifications that is shorter than the contracted list, include individual notifications requested in a comma separated list.  
+</p>
+                        <p>Field is case insensitive.
+
+</p>
+                        <p>
+                            <MadCap:annotation MadCap:createDate="2018-07-26T09:23:25.0345115-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Any changes to the below list?" MadCap:editor="Lori.Ash" MadCap:editDate="2018-07-26T09:23:33.2515115-05:00">Options </MadCap:annotation>are:
+</p>
+                        <p>PMANewRx
+</p>
+                        <p>PMARefill
+</p>
+                        <p>PMANewPrescriber</p>
+                        <p>
+PMAControlledSubstance</p>
+                        <p>
+
+Recommendation is to leave this field empty to make it easy to contract for new notification types in future without need for a Patient Enrollment File reload.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">PMANewRx</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Trailer"></a>Trailer Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 52px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 77px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 57px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 35px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 299px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 148px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Identifies record type
+</p>
+                        <p>Value = TRL (TRL = Patient File Load Trailer)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">		TRL</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Total Records</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">n..10	</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">	Total Patient Detailed Records submitted</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="Patient2"></a>Patient Enrollment Response File</h2>
+        <p class="BodyText1">Each Patient Enrollment Response File will contain an overall file load status code with description in the header record of the response file.  This code indicates if the file loaded with either partial or full success (i.e., patients were loaded from the file), and/or if errors were encountered.</p>
+        <p class="BodyText1">In addition, there will be a record containing an error code and description for every error found in the file.  These records will include the line number of the incoming file that had the related error.  Line number starts with 1 for the header record and is incremented by 1 for every record in the incoming file.</p>
+        <p class="BodyText1">Line number 1 will indicate an error on the incoming file header. Line numbers 2 - n will indicate errors on subsequent records in the incoming file. There may be multiple records listing an error code and description for the same line number from the incoming file.</p>
+        <p class="BodyText1">The Patient Enrollment Response File format is pipe-delimited (hex7c). Each field is delimited by the pipe character (|). If a pipe-character (hex7c) is used in field data, it will be escaped with \F\. For example, Main | Street will be listed as Main \F\ Street. Each line will be separated by a new line (Hex 0A) character.</p>
+        <h3 class="Heading3"><a name="Header2"></a>Header Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 52px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 118px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 57px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 35px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 314px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 148px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type		
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Identifies record type
+Value = SHD	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">SHD</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Version</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3..5</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Version Number of this specification.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1.0</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Recipient ID			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3..30</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">ID assigned by Surescripts for the recipient of the Patient Enrollment Response file (i.e., the original sender of the Patient Enrollment File).</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">P00000000012345</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">3				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Sender ID	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3..30</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">ID as assigned by Surescripts identifying Surescripts.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Surescripts ID = S00000000000006</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">4				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transaction Control Number	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..36</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Unique identifier defined by the sender. Will be a GUID in the response from Surescripts.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">ec622dd2-dab7-4945-bc2f-a9c0a78c64dd</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">5				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transaction Date		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date transaction was created. CCYYMMDD	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20170331</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">6			
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transaction Time			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">tm8	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Time transaction was created. HHMMSSDD</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">13214577</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">7		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transaction File Type</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an..3	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Identifier telling receiver the type of file.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">		PMA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">8	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Control Number - Originating</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an..36	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">The value will echo the Transmission Control Number sent in the patient file transmitted to Surescripts.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1234567891</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">9	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Date- Originating		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">dt8</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date Original Incoming File was created (D8) CCYYMMDD	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">20170331</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">10	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Transmission Time- Originating		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">tm8	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Time Original Incoming File was created HHMMSSDD	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">10443025</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">11			 
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">File Type	
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an1</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Values:
+</p>
+                        <p>T
+</p>
+                        <p>P
+</p>
+                        <p><b>Note</b>: T = Test and P = Production</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">	P
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">12		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Load Status		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..10	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Code explaining the status of the load.</p>
+                        <p style="font-size: 10pt;"><b>Header Response Codes</b>:</p>
+                        <p style="font-size: 10pt;">01 = File loaded correctly</p>
+                        <p style="font-size: 10pt;">02 = File loaded with errors</p>
+                        <p style="font-size: 10pt;">03 = Invalid HDR and/or TRL. File not loaded.</p>
+                        <p style="font-size: 10pt;">04 = No valid patient records. No records located.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><![CDATA[
+]]><b>Note</b>: If there is more than one error at the file level, there will be additional errors in detail records with a sequence of 1, null patient ID, and the header response code in the error code field.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">13	</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Load Status Description		
+</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">an..250</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">		M</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Description of the status of the load</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">See Header Response Codes in the Load Status element.
+</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Detail2"></a>Detail Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 52px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 118px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 55px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 35px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 314px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 148px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type		
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an..3</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Identifies record type
+</p>
+                        <p>Value = SDT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">SDT</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Sequence Number		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Surescripts assigned number for the record in the received file. Number starts with 1 for the first record and is incremented by 1 for each record in the file as Surescripts processes the file.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">2</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Source Record Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Record Sequence Number from the detail row on the incoming file. This is the value assigned by the sender of the file.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">3		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Assigning Authority		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..64</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">ID for the organization / system that assigned the related patient ID.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">1.3.44444.666.3.2.1</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">4			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Patient ID		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..64	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Customer's internal Patient ID from the incoming transaction.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">5				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Error Type	 </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an1	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>W signifies a Warning
+</p>
+                        <p> E signifies an Error	</p>
+                        <p><b>Note</b>: The record is not loaded when an "E" is returned. A "W" is a warning and does not stop the record from loading.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">E
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">6				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Error Code</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C	</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">		Code for the error found on this record.	</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>See <a href="#Error">Error Codes</a> table.
+</p>
+                        <p><b>Note</b>: If there is more than one error at the file level, there will be additional errors in detail records with a sequence of 1, null assign authority, null patient ID, and the header response code in the error code field.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">7			
+</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Error Description				
+</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">an..250</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Text describing the error.</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">See <a href="#Error">Error Codes</a> table.
+</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Trailer2"></a>Trailer Information</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 52px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 118px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 55px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 35px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 314px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 148px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field#</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Field Name</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Type</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">M/C</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Record Type</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an3
+
+</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Identifies record type.
+</p>
+                        <p>Value = STR
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">STR
+
+
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">1			</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Processed Record Count</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Count of detail patient records received in file.
+</p>
+                        <p>Error Record Count + Loaded Record Count = Processed Record Count</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">100
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2		</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Error Record Count</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Count of detail patient records that contained an error and did not load.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">3</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">3				</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Loaded Record Count</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">n..10</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Count of detail patient records that were loaded for enrollment.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">97</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">4				</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">Total Error Count</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">n..10</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>
+ 
+Number of errors listed in the Patient Enrollment Response file.  
+</p>
+                        <p>A single input record could have one or more errors listed in the response file. </p>
+                        <p>
+Total Error Count will be &gt; or = Error Record Count
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">7
+</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="Error"></a>Error Codes</h3>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 52px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 553px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 553px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Error Code</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Error Description</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">100</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Trailer record count invalid. Expected: &lt;number&gt;, Trailer: &lt;number&gt;.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">101</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Valid contract for product does not exist.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">102</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+
+Number of reported records is 0.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">103</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Trailer Not Present.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">104</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+Incorrect number of columns for row type &lt;HDR/PAT/TRL&gt;. Expected: &lt;number&gt;, Actual: &lt;number&gt;.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">105</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+Rows exist after trailer.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">106</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Multiple Header rows encountered.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">107</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Required column &lt;fieldName&gt; missing.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">108</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Maximum length for field &lt;fieldName&gt; exceeded. Maximum Length: &lt;number&gt;, Actual Length: &lt;number&gt;.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">109</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Invalid Organizational NPI value: &lt;npi&gt;.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">110</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+
+Invalid format for field &lt;filedName&gt;. Expected: 8 digits in the &lt;dateformat&gt; format. Actual: &lt;value from patient enrollment file&gt;.
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Used on date/time checks.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">111</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Field &lt;fieldName&gt; must be &lt;number&gt; digits. Actual value: &lt;value from patient enrollment file&gt;. </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Used by postalcode and npi checks.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">112</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+Record type does not match expected value. Expected: &lt;PAT&gt;, Actual: &lt;type on file record&gt;.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">113</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Expected value for field &lt;fieldName&gt; not found. Expected: &lt;expected value&gt;, Actual: &lt;actual value&gt;. </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>For example, receiverId must be S00000000000006</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">114</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+Incorrect length for field &lt;fieldName&gt;. Expected Length: &lt;number&gt;, Actual Length: &lt;number&gt;.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">115</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date for field &lt;fieldName&gt; must be in the past. Actual Date: &lt;date from file&gt;. </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>For example, birthdate, extractDate, transmissionDate.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">116</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+
+SFTP user id does not match file header sender id</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">117</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+
+Field &lt;fieldName&gt; must contain ascii values between 32 and 126 inclusive. Actual value: &lt;actual value&gt;
+</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">118</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"> Incorrect password</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>119</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>The list of valid alert types [&lt;comma separated list of contracted alert types&gt;] does not contain any of the requested alert types [&lt;comma separated list of alert types from the incoming file&gt;]</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p><span style="font-size: 10pt;">A list of alerts was included on the patient record, but none of them were contracted. The patient was not loaded.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">000</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+Unknown Validation Error
+</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="Patient3"></a>Patient Enrollment File Error Examples</h2>
+        <h3 class="Heading3"><a name="Header3"></a>Header Information - Invalid Participant ID</h3>
+        <p class="StylebodytextBold">Patient Enrollment File</p>
+        <p class="BodyText1">The Patient Enrollment File example below contains an error in the header. The error has been color-coded as follows:</p>
+        <ul style="list-style-type: disc;margin-left: 18pt;">
+            <li class="p_BodyText1"><span class="yellow">Invalid Participant ID (Customer ID)</span>
+            </li>
+            <li class="p_BodyText1"><span class="lightBlue">Invalid Participant Password (Customer Password)</span>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="StylebodytextBold">HDR<span style="font-weight: normal;">|1.0|<span class="yellow">D00000000093562</span>|<span class="lightBlue">PASSWORD52</span>|S00000000000006|1234567891|20170907<br />|12200101|PMA|U|20170906|P|HighRisk||</span></p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">PMA</span>|1|<span style="color: #000000;">1.3.44444.666.3.2.1</span>|61723089|Bauer|Audrey||||901 568th LN||Hunters Creek Village|PA|19034|19940323|F|1932400116|20171216|</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">PMA</span>|2|<span style="color: #000000;">1.3.44444.666.3.2.1</span>|7312354|Summers|Kevin||||9265 865th Avenue||Fisher|VA|20115|19520806|M|1932400116|20171216|</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">TRL</span>|2</p>
+        <p class="StylebodytextBold">Patient Enrollment Response File</p>
+        <p class="BodyText1">The Patient Enrollment Response File example below shows an example of an error that will be sent in response to a Patient Enrollment File that includes errors in the header (e.g., Invalid Participant ID, Invalid Participant Password).</p>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="p_StylebodytextBold"><b>SHD</b><span style="font-weight: normal;">|1.0|D00000000093562|S00000000000006|8f7698dd-12b5-4a80-a333-9b60df984b3f|2017</span><span style="font-weight: normal;">0907</span><span style="font-weight: normal;">|16100513|PMA|</span><span style="font-weight: normal;color: #333333;">1234567891</span><span style="font-weight: normal;">|20170907|</span><span style="font-weight: normal;color: #333333;">12200101</span><span style="font-weight: normal;">|</span><span style="font-weight: normal;">P</span><span style="font-weight: normal;">|03|Invalid HDR and / or </span><span style="font-weight: normal;">TRL</span><span style="font-weight: normal;">. File not loaded.</span>
+        </p>
+        <p class="p_StylebodytextBold"><span style="background-color: #FFFF00; font-weight: bold;">SDT</span><span style="font-weight: normal;background-color: #FFFF00;">|1||||E|118|Incorrect password.</span>
+        </p>
+        <p class="p_StylebodytextBold"><span style="background-color: #00FFFF; font-weight: bold;">SDT</span><span style="font-weight: normal;background-color: #00FFFF;">|1||||E|116|SFTP user id D00000000093552 does not match file header sender id D00000000093562.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">STR</span>|2|0|0|2</p>
+        <h3 class="Heading3"><a name="Detail3"></a>Detail Information Patient File – File Loaded with Error</h3>
+        <p class="StylebodytextBold">Patient Enrollment File</p>
+        <p class="BodyText1">The Patient Enrollment File example below did not include the birthdate column, which is a required field. The data in the error has been color-coded as follows:</p>
+        <ul style="list-style-type: disc;margin-left: 18pt;">
+            <li class="p_BodyText1" style="list-style-type: disc;"><span style="background-color: #FFFF00;">R</span><span style="background-color: #FFFF00;">ecord 2 is missing</span><span style="background-color: #FFFF00;"> the Date of Birth</span>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">HDR</span>|1.0|P00000000023456|M94WJ7CW6H|S00000000000006|1234567891|20170907</p>
+        <p class="p_BodyText1">|12200101|PMA|U|20170906|P|HighRisk||</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">PMA</span>|1|<span style="color: #000000;">1.3.44444.666.3.2.1</span>|51292407|Stephenson|Carter||Dr.|PHD|8479 Sunfish Street||Nashville|TN|37940|19591212|M|1932400116|20171216|</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">PMA</span>|2|<span style="color: #000000;">1.3.44444.666.3.2.1</span>|35771782|Hoover|Luther|||II|3105 461st Street||Johnson|IL|61820<span style="background-color: #FFFF00;">||</span>M|1932400116|20171216|</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">TRL</span>|2</p>
+        <p class="StylebodytextBold">Patient Enrollment Response File</p>
+        <p class="BodyText1">The Patient Enrollment Response File example below shows an example of an error that will be sent in response to a Patient Enrollment File that did not include a required field (e.g., Date of Birth).</p>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="CommentText"><span style="font-weight: bold;font-size: 11pt;">SHD</span><span style="font-size: 11pt;">|1.0|</span><span style="color: #333333;font-size: 11pt;">P00000000023456</span><span style="font-size: 11pt;">|S00000000000006|9c3d6fd0-b409-4b43-b7bf-362c1f4e4d8b|</span>
+        </p>
+        <p class="p_BodyText1">20170907|16095981|PMA|<span style="color: #333333;">1234567891</span>|20170907|00110102|P|02|File loaded with errors.</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #FFFF00;">SDT</span><span style="background-color: #FFFF00;">|3|2|</span><span style="color: #000000;background-color: #FFFF00;">1.3.44444.666.3.2.1</span><span style="background-color: #FFFF00;">|</span><span style="background-color: #FFFF00;">35771782|E|107|Required column birthDate missing.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">STR</span>|2|1|1|1</p>
+        <h3 class="Heading3"><a name="Detail4"></a>Detail Information Patient File – Multiple Errors</h3>
+        <p class="StylebodytextBold">Patient Enrollment File</p>
+        <p class="BodyText1">The Patient Enrollment File example below contains multiple errors in the Detail Information Patient File.</p>
+        <ul style="list-style-type: disc;margin-left: 18pt;">
+            <li class="p_BodyText1"><span class="yellow">Record 2 has an invalid organizational NPI</span>
+            </li>
+            <li class="p_BodyText1"><span class="lightBlue">Record 3 is missing the NPI</span>
+            </li>
+            <li class="p_BodyText1"><span class="lightGreen">Record 4 has a non-numeric NPI</span>
+            </li>
+            <li class="p_BodyText1"><span class="lightPurple">Record 5 has a NPI that is too long</span>
+            </li>
+            <li class="p_BodyText1"><span class="salmonPink">Record 6 is missing the Patient Id</span>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Example:</p>
+        <p class="p_StylebodytextBold"><b>HDR</b>|1.0|P00000000023456|M94WJ7CW6H|S00000000000006|1234567891|20170907<br />|12200101|PMA|U|20170906|P|HighRisk||</p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|1|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span style="font-weight: normal;">|34447680|Beck|Kathryn|Nancy|||7125 420th Lane WEST||Birmingham|MT|59101|20080820|F|</span><span style="font-weight: normal;background-color: #FFFF00;">9999999116</span><span style="font-weight: normal;">|20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|2|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span style="font-weight: normal;">|52452978|Deleon|Brittney||||2145 Hopper LN||Justin|AZ|85117|19850610|F</span><span style="font-weight: normal;background-color: #00FFFF;">||</span><span style="font-weight: normal;">20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|3|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span style="font-weight: normal;">|55130715|Wilcox|Gabriella||||3380 422nd Lane NORTH||Delta|AL|36310|19940222|F|</span><span class="lightGreen">NonNumeric</span><span style="font-weight: normal;">|20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|4|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span style="font-weight: normal;">|34271914|Irwin|Robert|Sophie|Mr||6780 942nd Road|Apt. 745|Westminster|AR|72944|19820627|M|</span><span class="lightPurple">1932400116789</span><span style="font-weight: normal;">|20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|5|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span class="salmonPink">||</span><span style="font-weight: normal;">West|Julie||||5101 910th DR||Gonzales|NV|89124|20131024|F|1932400116|20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>PMA</b><span style="font-weight: normal;">|6|</span><span style="font-weight: normal;color: #000000;">1.3.44444.666.3.2.1</span><span style="font-weight: normal;">|52849166|Ballard|Marie|Ariana||PHD|7460 259th RD||Kleberg|TX|79699|19610128|F|1932400116|20171216|</span>
+        </p>
+        <p class="p_StylebodytextBold"><b>TRL</b><span style="font-weight: normal;">|6</span>
+        </p>
+        <p class="StylebodytextBold">Patient Enrollment Response File</p>
+        <p class="BodyText1">The Patient Enrollment Response File example below shows an example of an error that will be sent in response to a Patient Enrollment File that contains multiple errors.</p>
+        <p class="StylebodytextBold"><span style="font-weight: bold;">Example</span>:</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">SHD</span>|1.0|<span style="color: #333333;">P00000000023456</span>|S00000000000006|cf68632f-4f6c-40a8-8098-2ec66d185aa2|20170907|16150790|PMA|<span style="color: #333333;">1234567891</span>|20170907|<span style="color: #333333;">12200101</span>|P|02|File loaded with errors.</p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #FFFF00;">SDT</span><span style="background-color: #FFFF00;">|2|</span><span style="background-color: #FFFF00;">1|</span><span style="color: #000000;background-color: #FFFF00;">1.3.44444.666.3.2.1</span><span style="background-color: #FFFF00;">|</span><span style="background-color: #FFFF00;">34447680|E|109|Invalid Organizational NPI value: 9999999116.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #00FFFF;">SDT</span><span style="background-color: #00FFFF;">|3|</span><span style="background-color: #00FFFF;">2|</span><span style="color: #000000;background-color: #00FFFF;">1.3.44444.666.3.2.1</span><span style="background-color: #00FFFF;">|</span><span style="background-color: #00FFFF;">52452978|E|107|Required column npi missing.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #99FF66;">SDT</span><span style="background-color: #99FF66;">|4|3|1.3.44444.666.3.2.1|55130715|E|111|Field npi must be 10 digits. Actual value: NonNumeric.</span><![CDATA[
+        ]]></p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #ccccff;">SDT</span><span style="background-color: #ccccff;">|5|4|1.3.44444.666.3.2.1|34271914|E|111|Field npi must be 10 digits. Actual value: 1932400116789.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;background-color: #ff99ff;">SDT</span><span style="background-color: #ff99ff;">|6|5|1.3.44444.666.3.2.1||E|107|Required column patientId missing.</span>
+        </p>
+        <p class="p_BodyText1"><span style="font-weight: bold;">STR</span>|6|5|1|5</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

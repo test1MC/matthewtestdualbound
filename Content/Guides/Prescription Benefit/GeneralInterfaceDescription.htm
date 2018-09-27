@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="4094" MadCap:lastWidth="885">
+    <head>
+        <link href="../../Resources/Stylesheets/NoBorderGuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909557"></a>General Interface Description</h2>
+        <p class="BodyText1">The message specifications have been defined to follow HIPAA standards where available and to allow the most effective processing. Delimiters separate components, data elements, and segments (see subsection <MadCap:xref href="#_Toc443909558">Dynamic Delimiters</MadCap:xref> for clarification). For the X12 specifications, the delimiters are defined in the ISA segment of the message. For NCPDP messages, the delimiters are defined in the UNA Segment of the message. If a data element in the middle of a segment is omitted, the separator acts as a “place holder”.</p>
+        <h3 class="Heading3"><a name="_Toc443909558"></a>Dynamic Delimiters</h3>
+        <p class="BodyText1">X12 utilizes delimiters to separate component, segments, elements, etc. or as indicators (i.e., for segment repetition.) These delimiters are defined within specified segments of the messages. Customer's systems need to be able to dynamically set and handle these delimiters. Surescripts recommends the use of unprintable characters as delimiters rather than the entire full character set (Refer to <MadCap:xref href="DynamicDelimiters.htm">Dynamic Delimiters</MadCap:xref>  for a full list of acceptable characters).</p>
+        <p class="BodyText1">For X12 messages, the delimiter set is defined within the ISA segment. The following is an example:</p>
+        <p class="BodyText1Indent">ISA*00*          *01*PWPHY12345*ZZ*POCID          *ZZ*S00000000000001*091217*0309*^*00501*000000001*1*P*&gt;~</p>
+        <p class="BodyText1">In the example above, the asterisk (*) is a delimiter based on its position immediately following ISA. The segment delimiter is determined by calculating the last character of the fixed width row. The row is 106 total bytes; therefore, the segment delimiter is the 106th character.</p>
+        <p class="StylebodytextBold">Choosing a Delimiter</p>
+        <p class="BodyText1">Surescripts has published a list of allowed delimiters for the X12 messages (Refer to <MadCap:xref href="DynamicDelimiters.htm">Dynamic Delimiters</MadCap:xref> for a full list of acceptable characters). The customers may choose any allowed delimiter desired for the messages they create. However, it is important that customers communicate which delimiters they are using to ensure they will not cause issues with their trading partners’ messages.</p>
+        <p class="BodyText1">Surescripts recommends the following delimiters for X12 data:</p>
+        <ul>
+            <li>Data Element Separator – hex 1D, decimal 29</li>
+            <li>Segment Terminator – hex 1E, decimal 30</li>
+            <li>Component Element Separator (ISA 16) – hex 1C, decimal 28</li>
+            <li>Repetition Character (ISA11) – hex 1F, decimal 31</li>
+        </ul>
+        <p class="StylebodytextBold">Using Dynamic Delimiters</p>
+        <p class="BodyText1">A Surescripts customer can expect to receive delimiters that are different than the set they define for their messages. The customer needs to determine the delimiters dynamically when the message is processed according to the rules listed in the above section. See <MadCap:xref href="DynamicDelimiters.htm">Dynamic Delimiters</MadCap:xref> for a complete list of acceptable characters.</p>
+        <h3 class="Heading3"><a name="_Toc443909559"></a>Delimiter Examples</h3>
+        <p class="BodyText1">The delimiters used in the examples below are the ~ for segment separation and the * for element separation. </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Example 1:</p>
+        <p class="BodyText1">NM1*IL*1*SMITH*JOHN*L***34*444115555~ </p>
+        <p class="BodyText1">Elements 6 and 7 are not included; therefore, the asterisks (**) act as placeholders for the omitted elements.</p>
+        <p class="BodyText1">When data elements are omitted from the end of a segment, the data element delimiters do not need to be used. The segment is ended with a segment terminator.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Example 2:</p>
+        <p class="BodyText1">Elements 8 and 9 can be omitted in the same segment as Example 1. The new segment would become:</p>
+        <p class="BodyText1">NM1*IL*1*SMITH*JOHN*L~ </p>
+        <p class="BodyText1">And not:</p>
+        <p class="BodyText1">NM1*IL*1*SMITH*JOHN*L****~ </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Example 3:</p>
+        <p class="BodyText1">Surescripts does not publish segments that are HIPAA compliant but not utilized by Surescripts. If a message contains these segments, it will still be valid and accepted; but the data within the segment may not be utilized. </p>
+        <p class="BodyText1">ABC*ABC01*ABC02*ABC03*ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1">If elements ABC02 and ABC03 are not used (not shown on the Surescripts EDI specifications) then no value should be sent. However, the elements must be represented with a place holder because there are used elements (ABC04, 05 and 06) after them.&#160; </p>
+        <p class="BodyText1">This is the correct representation:</p>
+        <p class="BodyText1">ABC*ABC01***ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1">ABC02 and ABC03 must be represented so that it is known that the next data value is ABC04.</p>
+        <p class="BodyText1">This is the INCORRECT representation:</p>
+        <p class="BodyText1">ABC*ABC01*ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1">If the placeholders for ABC02 and ABC03 are removed, ABC04 would be mistaken for ABC02.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Example 4:</p>
+        <p class="BodyText1">ABC*ABC01*ABC02*ABC03*ABC04*ABC05*ABC06~</p>
+        <p class="BodyText1">If elements ABC05 and ABC06 are not used (not shown on the Surescripts EDI specifications) then no value should be sent. When elements 05 and 06 are located at the end of the segment there is no need to represent them.&#160; </p>
+        <p class="BodyText1">This is the correct representation:</p>
+        <p class="BodyText1">ABC*ABC01*ABC02*ABC03*ABC04~</p>
+        <p class="BodyText1">This is the INCORRECT representation:</p>
+        <p class="BodyText1">ABC*ABC01*ABC02*ABC03*ABC04**~</p>
+        <h3 class="Heading3"><a name="_Toc443909560"></a>Representation</h3>
+        <p class="BodyText1">The following table lists the Field Type Notation used within the messages:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">NCPDP Notation</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">X12 Notation</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Alphanumeric</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">an</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">AN</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Date</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">DT</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Decimal</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">R</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">R</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ID Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Numeric</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">n</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Nn</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">String</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">AN</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">TM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">TM</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Each element, if sent, has a minimum and maximum length. For example:<br />AN 1/3 means an alphanumeric with range from one to three characters.<br />AN 3/3 means an alphanumeric with three characters.</p>
+        <h4 class="Heading4">Numeric Representation</h4>
+        <p class="BodyText1">The decimal point is represented by a period and should be used as follows:</p>
+        <ul>
+            <li>only when there are significant digits to the right of the decimal</li>
+            <li>when there is a digit before and after the decimal point </li>
+            <li>not with whole numbers</li>
+        </ul>
+        <p class="BodyText1">For example, consider the following possible values for a 5-digit field:</p>
+        <table class="TableStyle-OutsideBorderGuideTables" style="mc-table-style: url('../../Resources/Stylesheets/NoBorderGuideTables.css');" cellspacing="0">
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 86px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <col class="TableStyle-OutsideBorderGuideTables-Column-Column1" style="width: 60px;" />
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="font-weight: bold;">Correct:</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">2.515</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">251.5</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">25.15</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">2515</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">0.2515</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">2.5</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-OutsideBorderGuideTables-Body-Body1">
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="font-weight: bold;">Incorrect:</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">.2515</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">2515.</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">3.00</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyE-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">&#160;</p>
+                </td>
+                <td class="TableStyle-OutsideBorderGuideTables-BodyD-Column1-Body1">
+                    <p class="TableText" style="text-align: center;">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <h4 class="Heading4"><a name="_Character_Set"></a>Character Set</h4>
+        <p class="BodyText1">The following ASCII character sets are required by Surescripts:</p>
+        <ul>
+            <li>The ASCII character set between and including decimal 32 and decimal 126.</li>
+            <li>All ID data types are case sensitive, including routing IDs in the header.</li>
+        </ul>
+        <p class="BodyText1">For Eligibility messages only:</p>
+        <ul>
+            <li>Unprintable characters are not used within the field elements but as delimiters between segments, data elements, component elements and repeated elements or structures.</li>
+        </ul>
+        <p class="BodyText1">For ID File Load only:</p>
+        <ul>
+            <li>The decimal 94 ^ cannot be used in the ID Load process.</li>
+        </ul>
+        <h4 class="Heading4">Requirement Designation</h4>
+        <p class="BodyText1">There are separate tables for X12 eligibility and NCPDP Formulary and Benefit since the base standards use differing requirement designations. </p>
+        <p class="BodyText1" style="page-break-after: avoid;font-weight: bold;">X12</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;">X12</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">Required/Mandatory - the segment must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">O</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Situational/Conditional - the segment must be used if conditions are met.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="page-break-before: always;">Segments that are not used have been removed from the message specifications.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">X12</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Required/Mandatory - the element must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">S or O</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Situational/Conditional - the element must be used if conditions are met.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">X</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Usage of the element depends on the presence of another element.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="page-break-after: avoid;font-weight: bold;">NCPDP</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Segment Attributes</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;">Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading" style="page-break-after: avoid;">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">M </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">Required/Mandatory – the segment must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="page-break-after: avoid;">Situational/Conditional – the segment must be used if conditions are met.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Element Attributes</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Code </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Required/Mandatory – the element must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Situational/Conditional – the element must be used if conditions are met. Some fields do not have specific conditions. Data should be sent if available.</p>
+                    <p class="TableBody">Where comments are “Not used for Prescription Benefit”, information will be passed on, but not used, by Surescripts for processing.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">D</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Dependent –the element is required or conditional based on the message type.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">X</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Not used; will be rejected if sent.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Code Choice Attributes</p>
+        <p class="BodyText1">Some codes have strikethrough indicating they are not to be used for that element for this implementation.</p>
+        <p class="BodyText1">Example: In this case in this position the only allowed code would be “A”.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #ffffff;">
+                        <p class="TableBody" style="font-weight: normal;">Change Identifier</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #ffffff;">
+                        <p class="TableBody" style="font-weight: normal;">Only the Add option is supported.</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #ffffff;">
+                        <p class="TableBody" style="font-weight: normal;">AN 1/1</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="background-color: #ffffff;">
+                        <p class="TableBody" style="font-weight: normal;">M</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="background-color: #ffffff;">
+                        <p class="TableBody" style="font-weight: normal;">A – Addition</p>
+                        <p class="TableBody" style="font-weight: normal;"><span style="text-decoration: line-through;">C – Change<br />D – Delete</span>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>

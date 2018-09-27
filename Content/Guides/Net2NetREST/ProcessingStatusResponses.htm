@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="3118" MadCap:lastWidth="733">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc444699073"></a>Processing Status Responses, Verifies, and Errors</h2>
+        <p class="BodyText1">Status responses, Verifies, and Errors communicate current information regarding the delivery of a <span style="font-style: italic;">C</span><span style="font-style: italic;">linical</span> message.</p>
+        <p class="BodyText1">The Receiving System should respond to a message for a single recipient as follows:</p>
+        <ul>
+            <li>If the message was received and delivered to the recipient, the customer should respond with <span style="font-style: italic;">Status 010</span>, which indicates that all processing is complete. Customers may not send subsequent <span style="font-style: italic;">Error</span> or <span style="font-style: italic;">Verify</span> messages relating to the clinical message.</li>
+        </ul>
+        <ul>
+            <li>If the message was received and time is needed to process, the customer should respond with <i>Status 000</i>. This must be followed within 55 minutes with either:<ul><li>a <span style="font-style: italic;">Verify</span> message or</li><li>an <span style="font-style: italic;">Error</span> message with the appropriate Error Code.</li></ul></li>
+        </ul>
+        <p class="BodyText1">The Sending System should respond to a <span style="font-style: italic;">Verify </span>message or <span style="font-style: italic;">Error </span>message as follows:</p>
+        <ul>
+            <li>If the <span style="font-style: italic;">Verify/Error </span>message was received successfully, the Sending System should respond with a <span style="font-style: italic;">Status 010</span>.</li>
+            <li>If an error occurred when receiving the <span style="font-style: italic;">Verify</span><span style="font-style: italic;">/</span><span style="font-style: italic;">Error</span> message, the Sending System should respond with an <span style="font-style: italic;">Error</span> message and the appropriate Error Code.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Multiple_Recipient_Messages"></a><a name="_Toc444699074"></a>Multiple Recipient Messages</h3>
+        <p class="BodyText1">The Receiving System responds to multiple recipient messages where each recipient’s Route = true with one of the following HTTP responses:</p>
+        <ul>
+            <li>If the message was received and delivered to <span style="text-decoration: underline;">all</span> Route = true recipients, the Receiving System should return a single <span style="font-style: italic;">Status 010</span> response indicating the processing is complete for those recipients. The Receiving System should not send subsequent <span style="font-style: italic;">Verify</span> or <span style="font-style: italic;">Error</span> message(s).</li>
+            <li>If the message was received and time is needed to process at least one recipient by the Receiving System, the Receiving System should respond with a <span style="font-style: italic;">Status 000</span> response. This <span style="font-style: italic;">Status 000</span> response must be followed with a <span style="font-style: italic;">Verify</span> or <span style="font-style: italic;">Error</span> message for each recipient where the Route = true detailing the final status of the message.</li>
+            <li>If the same error occurred for <span style="text-decoration: underline;">all</span> Route = true recipients, the Receiving System should return an <span style="font-style: italic;">Error</span> response and the appropriate Error code for those recipients. The Receiving System should not send subsequent <span style="font-style: italic;">Verify</span> or <span style="font-style: italic;">Error</span> message(s).</li>
+        </ul>
+        <p class="BodyText1">When responding to a message addressed to multiple recipients, hosted by the Receiving System, the Receiving System should use the "From" field Qualifier of "ZZZ" with a field Value of the Receiving System’s Portal Name (i.e., &lt;From Qualifier="ZZZ"&gt;<span style="font-style: italic;">PortalName</span>&lt;/From&gt;).</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">On multiple recipient messages, Surescripts responds with a <span style="font-style: italic;">Status 000</span> response and &lt;From Qualifier="ZZZ"&gt;Surescripts&lt;/From&gt;</p>
+        <h3 class="Heading3"><a name="_Toc444699075"></a>Status</h3>
+        <p class="BodyText1">This response indicates the <span style="font-style: italic;">C</span><span style="font-style: italic;">linical</span> message was accepted for processing or the <span style="font-style: italic;">Clinical </span>message was successfully delivered.</p>
+        <p class="BodyText3">The HTTP <span style="font-style: italic;">Status 010</span> response indicates the process is complete. Subsequent acknowledgement messages should not be sent.</p>
+        <p class="BodyText3">The HTTP <span style="font-style: italic;">Status</span> <span style="font-style: italic;">000</span> response indicates further processing is required. Subsequent acknowledgement messages are required.</p>
+        <h4 class="Heading4">Status XML Diagram</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Processing Status Responses.png" style="visibility: visible;mso-wrap-style: square;width: 418px;height: 210px;" alt="Status.png" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <h4 class="Heading4">Status Elements</h4>
+        <p class="BodyText1" style="page-break-after: avoid;page-break-inside: avoid;margin-bottom: 0pt;"><span style="font-weight: bold;">M/C Mandatory</span><span style="font-weight: bold;">,</span><span style="font-weight: bold;"> Conditional</span><span style="font-weight: bold;">, or Not used</span>
+        </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 117px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 513px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Message type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Status</p>
+                        <p class="TableBody">Codes used to relay successful communications.</p>
+                        <p class="TableBody">000 = Transaction successful; pending</p>
+                        <p class="TableBody">010 = Successfully accepted by ultimate receiver</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160; DescriptionCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Repeats up to 10 times.</p>
+                        <p class="TableBody">C = Status (this field is conditional for Status)</p>
+                        <p class="TableBody">Reject Codes used by responder who takes responsibility for the message. A complete list can be found in the NCPDP External Code List (X12 DE 1131 Reject Code STS Segment). See <MadCap:xref href="Appendix_RejectCodeList.htm">Appendix A:Reject Code List on page 1</MadCap:xref>.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc444699076"></a>Verify</h3>
+        <p class="BodyText1">This message indicates the receiving system has successfully delivered the message to the recipient’s mail box. The <span style="font-style: italic;">Verify</span> message is not to be used to indicate that the <span style="font-style: italic;">Clinical </span>message has been opened/read.</p>
+        <p class="BodyText3">A Verify message indicates the process is complete.</p>
+        <h4 class="Heading4">Verify XML Diagram</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Processing Status Responses_1.png" style="visibility: visible;mso-wrap-style: square;width: 548px;height: 204px;" alt="verify.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h4 class="Heading4">Verify Elements</h4>
+        <p class="BodyText1" style="page-break-after: avoid;page-break-inside: avoid;margin-bottom: 0pt;"><span style="font-weight: bold;">M/C Mandatory</span><span style="font-weight: bold;">,</span><span style="font-weight: bold;"> Conditional</span><span style="font-weight: bold;"> or Not used</span>
+        </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 120px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 503px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Verify</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Message type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Verify</p>
+                        <p class="TableBody">Code used to relay successful communications.</p>
+                        <p class="TableBody">010 = Successfully accepted by ultimate receiver</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160; DescriptionCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Repeats up to 10 times.</p>
+                        <p class="TableBody">NU = Verify (this field is not used for Verify)</p>
+                        <p class="TableBody">Reject Codes used by responder who takes responsibility for the message. A complete list can be found in the NCPDP External Code List (X12 DE 1131 Reject Code STS Segment). See <MadCap:xref href="Appendix_RejectCodeList.htm">Appendix A:Reject Code List on page 1</MadCap:xref>.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc444699077"></a>Error</h3>
+        <p class="BodyText1">This message/response indicates that an error has occurred and the message has not reached its intended recipient. An error can be generated when there is a communication problem or when an error occurs during the processing of the message. An <span style="font-style: italic;">Error</span> can either be free-standing message or an HTTP response.</p>
+        <p class="BodyText3">An <span style="font-style: italic;">Error</span> response indicates the process is complete. Subsequent acknowledgement messages are not expected.</p>
+        <p class="BodyText3">An <span style="font-style: italic;">Error</span> message indicates the receiving system is unable to deliver the <span style="font-style: italic;">Clini</span><span style="font-style: italic;">c</span><span style="font-style: italic;">al </span>message to the intended recipient.</p>
+        <h4 class="Heading4">Error XML Diagram</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Processing Status Responses_2.png" style="visibility: visible;mso-wrap-style: square;width: 439px;height: 215px;" alt="Error.png" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <h4 class="Heading4">Error Elements</h4>
+        <p class="BodyText1" style="page-break-after: avoid;page-break-inside: avoid;margin-bottom: 0pt;"><span style="font-weight: bold;">M/C Mandatory</span><span style="font-weight: bold;">,</span><span style="font-weight: bold;"> Conditional</span><span style="font-weight: bold;"> or Not used</span>
+        </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Message type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Error</p>
+                        <p class="TableBody">Codes used to relay rejected communications.</p>
+                        <p class="TableBody">600 = Communication problem - try again later</p>
+                        <p class="TableBody">601 = Receiver unable to process – do not retry</p>
+                        <p class="TableBody">602 = Receiver System Error – try again later</p>
+                        <p class="TableBody">900 = Transaction rejected – do not retry</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160; DescriptionCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Repeats up to 10 times.</p>
+                        <p class="TableBody">C = Error (this field is conditional for Error)</p>
+                        <p class="TableBody">Reject Codes used by responder who takes responsibility for the transaction. A complete list can be found in the NCPDP External Code List (X12 DE 1131 Reject Code STS Segment). See <MadCap:xref href="Appendix_RejectCodeList.htm">Appendix A:Reject Code List on page 1</MadCap:xref>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">&#160; Description</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Description of Error(s)</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

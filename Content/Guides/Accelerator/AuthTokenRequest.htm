@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="676" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="Auth_Token_Request"></a>Auth Token Request</h2>
+        <p class="BodyText1" MadCap:conditions="Default.SPOAccelerator,Default.PatientNotificationsAccelerator">T<MadCap:annotation MadCap:createDate="2017-03-07T10:48:39.5206562-06:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="for med mgmt we have:\r\nThe auth token identifies the individual end user and their roles and must be used when the Accelerator is launched for that user. The token may be re-used for multiple launches of the Accelerator until it expires.\r\n\r\ndoes this not apply to ePA?" MadCap:editor="megan.hayden" MadCap:editDate="2017-03-07T10:48:49.4046562-06:00">he Web Service API provides an endpoint for requesting an auth token that is used when launching the Accelerator.</MadCap:annotation> <MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.PatientNotificationsAccelerator,Default.SPOAccelerator">The auth token identifies the individual end user and their roles and must be used when the Accelerator is launched for that user. The token may be re-used for multiple launches of the Accelerator until it expires.</MadCap:conditionalText></p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The request type is "POST", the Content-Type must be set to "application/json", and the request parameters are JSON encoded as part of the request body. The token follows the JWT pattern and requires that the roles for a particular session be included in the request.</p>
+        <p class="BodyText1">The JSON fields in the following example are defined per the table below:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">JSON Fields</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Notes</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">systemUserId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">The Data Provider ID (identification of the sender of the message). Use the Surescripts-provided network participant ID (e.g.,<MadCap:annotation MadCap:createDate="2017-03-07T10:52:31.2576562-06:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="change to all be ABC123" MadCap:editor="megan.hayden" MadCap:editDate="2017-03-07T10:52:36.7376562-06:00"><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.PatientNotificationsAccelerator,Default.SPOAccelerator"> ABC123</MadCap:conditionalText></MadCap:annotation><MadCap:annotation MadCap:createDate="2017-03-07T10:52:31.2576562-06:00" MadCap:creator="megan.hayden" MadCap:initials="MH" MadCap:comment="change to all be ABC123" MadCap:editor="megan.hayden" MadCap:editDate="2017-03-07T10:52:36.7376562-06:00"><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">EPA123</MadCap:conditionalText></MadCap:annotation>). </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">systemUserQualifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">The user qualifier assigned to the provider vendor system. <MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.SPOAccelerator">The systemUserQualifier = “DP”</MadCap:conditionalText></p>
+                        <p style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">systemUserQualifier = “DP” (used when the systemUserId is a Data Provider)</p>
+                        <p style="font-size: 10pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">The systemUserQualifier = "NP" (used when the systemUserId is a Notification Provider).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">endUserId</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">ID of the end user logged into the provider vendor system.</p>
+                        <p class="Table"><b>Note</b>: endUserID needs to be less than 250 characters and unique across provider vendor customers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">roles</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An array of roles assigned to this provider. </p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.PatientNotificationsAccelerator">The role will include the ID and qualifier elements.</p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.PatientNotificationsAccelerator">The "ID" and "ZZ" values represent the organization NPI (Care Manager worklist for the specific provider vendor).</p>
+                        <p class="Table"><b>Note</b>: When Common Roles are included in the request, Roles assigned for Providers will be ignored and should not be sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">products</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="Table" style="font-weight: normal;">An array of products for which the user would like to see Tasks.</p>
+                        <p class="Table"><b>Note</b>: If this field is not sent, then all products will be returned.</p>
+                        <p class="Table" style="font-weight: normal;">Each product has an “id” (the name of the product) and an array</p>
+                        <p class="Table" style="font-weight: normal;">of “processTypes” to be returned for that product.</p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.SPOAccelerator">The product name for Specialty Patient Onboard is spo. SPO does not currently use process types.</p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.PatientNotificationsAccelerator">The product name for Patient Notifications is carealert.</p>
+                        <p style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">The product name for Medication Management for Adherence is mmpoc.</p>
+                        <p style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">The process types for Medication Management for Adherence are:</p>
+                        <p class="BodyText3" style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">medadherence </p>
+                        <p class="BodyText3" style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">highrisk</p>
+                        <p class="BodyText3" style="font-size: 10pt;" MadCap:conditions="Default.MedMgmtAccel">missingmed</p>
+                        <p class="Table" style="font-weight: normal;" MadCap:conditions="Default.ePAAccel">The product name for CompletEPA<sup>®</sup> is epa.</p>
+                        <p class="BodyText3" style="font-size: 10pt;" MadCap:conditions="Default.ePAAccel">CompletEPA<sup>®</sup> does not currently use process types.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Auth Token Request Example</p>
+        <p style="page-break-after: avoid;page-break-inside: avoid;font-size: 9pt;">POST <span style="color: #0000ff; text-decoration: underline;">https://[host]/uiservice/api/v0/authtoken HTTP/1.1</span></p>
+        <p style="font-size: 9pt;">Host: localhost</p>
+        <p style="font-size: 9pt;">Connection: keep-alive</p>
+        <p style="font-size: 9pt;">Content-Length: 85</p>
+        <p style="font-size: 9pt;">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36</p>
+        <p style="font-size: 9pt;">Authorization: Basic ZGVtb0Jhc2ljQXV0aElkOmRlbW9CYXNpY0F1dGhQdw==</p>
+        <p style="font-size: 9pt;">Content-Type: application/json</p>
+        <p style="font-size: 9pt;">Accept: */*</p>
+        <p style="font-size: 9pt;">Accept-Encoding: gzip,deflate,sdch</p>
+        <p style="font-size: 9pt;">Accept-Language: en-US,en;q=0.8</p>
+        <p style="font-size: 9pt;">Body: </p>
+        <p style="font-size: 9pt;">{</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; "systemUserId": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.SPOAccelerator">ABC123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">EPA123</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">D00000000093000</MadCap:conditionalText>",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; "systemUserQualifier": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">DP</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">NP</MadCap:conditionalText>",</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; "endUserId": "<MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">fred</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">AnEndUserName</MadCap:conditionalText>",</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160; "products": [</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "mmpoc", </p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "processTypes": [</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "medadherence", </p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "highrisk", </p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "missingmed"</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; } </p>
+        <p MadCap:conditions="Default.MedMgmtAccel" style="font-size: 9pt;">&#160;&#160;&#160; ],</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; "roles": {</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "commonRoles": [</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "<MadCap:conditionalText MadCap:conditions="Default.SPOAccelerator">sposubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.MedMgmtAccel">mmpocsubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.ePAAccel">pasubmitter</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">pn.viewer</MadCap:conditionalText>"</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ],</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; "providers": [</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "6487851746001",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "D"</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "1154613149",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "ZZ"</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; },</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; {</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "id": "1649515776",</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; "qualifier": "ZZ"</p>
+        <p style="font-size: 9pt;" MadCap:conditions="Default.PatientNotificationsAccelerator">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; }</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; ]</p>
+        <p style="font-size: 9pt;">&#160;&#160;&#160; }</p>
+        <p style="font-size: 9pt;">}</p>
+        <p class="note" MadCap:conditions="Default.MedMgmtAccel,Default.ePAAccel,Default.SPOAccelerator,Default.PatientNotificationsAccelerator" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The basic authorization header is the same as that used for e-prescribing or clinical messaging, the Host is given in the partner activation form, and the Body of the request is in application/json format.</p>
+    </body>
+</html>

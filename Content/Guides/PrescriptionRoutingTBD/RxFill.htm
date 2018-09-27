@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="707" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443643329"></a>RxFill</h2>
+        <p class="BodyText1">The <span style="font-style: italic;">RxFill</span> message is originated by the pharmacy. This message notifies the prescriber about the status of a prescription - either new, renewal or resupply. <span style="font-style: italic;">RxFill</span> messages should be viewed by the prescriber as individual snapshots in time regarding a prescription; not a final or complete status. The <span style="font-style: italic;">RxFill</span> message can be used in three instances:</p>
+        <ul>
+            <li>
+                <p>to notify of a dispensed prescription (the patient picked up the medication or the medication will be delivered to the specified LTC organization),</p>
+            </li>
+            <li>
+                <p>to notify of a partially dispensed prescription (patient picked up part of the medication or part of the medication will be delivered to the specified LTC organization), and </p>
+            </li>
+            <li>
+                <p>to notify of a prescription never dispensed, (patient did not pick up the medication or the medication will not be dispensed at the present time).</p>
+            </li>
+        </ul>
+        <p class="BodyText1">The differentiation of the three cases is with the use of the RES-020 &lt;FillStatus&gt; Code List Qualifier.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc443643330"></a>RxFill Assumptions</h3>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">The implementation of <span style="font-style: italic;">RxFill</span> messaging will be a transition over a significant period of time due to the requirements for coding and rollout of pharmacy and prescriber systems to utilize RxFill.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Since <span style="font-style: italic;">RxFill</span> is not a mandatory transaction, utilization will likely not achieve 100% participation.</li>
+            <li style="margin-bottom: 6pt;">Participation in <span style="font-style: italic;">RxFill</span> usage is voluntary for both pharmacies and prescribers.</li>
+            <li style="margin-bottom: 6pt;"><span style="font-style: italic;">RxFill</span> messages may be sent for prescriptions received by the pharmacy in any form (paper, fax, phone, or electronic) when the prescriber associated with the prescription is accessible via the electronic network.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Since all pharmacies and prescriber practices may not have all the technology required to send all types of <span style="font-style: italic;">RxFill</span> messages, some percentage of providers will not participate in <span style="font-style: italic;">RxFill</span> message tracking.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Because of the variation in participation, capability, and timing by pharmacies in the utilization of <span style="font-style: italic;">RxFill</span> messages, the prescriber should be careful in the analysis and assumptions based on their usage.</li>
+        </ul>
+        <p class="StylebodytextBold" style="page-break-before: always;">RxFill for LTC Assumptions</p>
+        <ul>
+            <li style="page-break-after: avoid;page-break-inside: avoid;margin-top: 6pt;margin-bottom: 6pt;">Implementation of <span style="font-style: italic;">RxFill</span> is standard in LTC pharmacy/organization communication and is used to inform the LTC organization of medication review and pharmacy approval for dispensing. In addition, this message indicates that a medication order has/has not been dispensed by the pharmacy.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Where <span style="font-style: italic;">RxFill</span> is not a mandatory transaction, utilization in LTC is likely to still be 100% participation as most trading partner agreements consider this transaction mandatory.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Because of the variation in the use cases of <span style="font-style: italic;">RxFill</span> in LTC, careful consideration should be taken to consume the information provided as sent by the pharmacy.</li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="RxFill"></a>RxFill Message Flow</h3>
+        <p class="BodyText1">The following steps depict the <span style="font-style: italic;">RxFill</span> message flow:</p>
+        <ol>
+            <li>A prescription at the pharmacy is dispensed to a patient or, for LTC, is delivered.</li>
+            <li>The pharmacy submits an <span style="font-style: italic;">RxFill</span> message via Surescripts to the original prescriber.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an Error message back to the pharmacy.</li>
+            <li>Surescripts successfully transmits the <span style="font-style: italic;">RxFill</span> message to the prescriber.</li>
+            <li>The prescriber's system validates the request and returns a <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> (if errors are found) or <span style="font-style: italic;">Verify</span> message.<ol style="list-style-type: lower-alpha;"><li>If a <span style="font-style: italic;">Status 000</span> is sent in step 5, the prescriber's system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> or <span style="font-style: italic;">Verify</span> message back to the pharmacy system.</li>
+        </ol>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="RxFill2"></a>RxFill (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/RxFill.png" style="visibility: visible;mso-wrap-style: square;width: 421px;height: 1085px;" MadCap:mediastyle="@media print { max-width: 50%; }" />
+        </p>
+        <h3 class="Heading3" MadCap:autonum="0.1.4 "><a name="_Toc443643331"></a>RXFILL (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;"><a href="../PrescriptionRouting10.6/UNA Service String Advice.htm#_UNA_–_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIH Interactive Message Header.htm#_UIH_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message.</p>
+                        <p class="TableBody">For RxFill, Message function = RXFILL.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/REQ Request Segment.htm#_REQ_–_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Can contain additional reference numbers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/RES Response Segment.htm#_RES_–_Response" class="Hyperlink" style="font-size: 9pt;">RES</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Response Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates type and description of response: Dispensed, Not Dispensed, Partially Dispensed.</p>
+                        <p class="TableBody">See tables in Sections <MadCap:xref href="../PrescriptionRouting10.6/RES Response Segment.htm#_Reason_Codes_for">RxFill Reason Codes for Dispensed or Partially Dispensed on page&#160;1</MadCap:xref> and <MadCap:xref href="../PrescriptionRouting10.6/RES Response Segment.htm#_Reason_Codes_for_1">RxFill Reason Codes for Not Dispensed on page&#160;1</MadCap:xref> for response codes to be used in the free text element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Prescriber Segment.htm#_PVD_–_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Facility Segment.htm#_PVD_–_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Only used in long-term care settings.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Pharmacy Segment.htm#_PVD_–_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the pharmacy for clarification.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug Prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If RES-020 Code List Qualifier = “AH” (Dispensed) or “AJ” (Partially Dispensed), the prescribed DRU Segment may be sent as clarification.</p>
+                        <p class="TableBody">If RES-020 Code List Qualifier = “AK” (Not Dispensed), the prescribed or dispensed DRU Segment is required, depending upon what the pharmacy has knowledge of.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A DRU loop for the Prescribed and the Dispensed drug is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, either a Prescribed or a Dispensed segment is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug Dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">If RES-020 Code List Qualifier = “AH” (Dispensed) or “AJ” (Partially Dispensed), the dispensed DRU Segment is required.</p>
+                        <p class="TableBody">If RES-020 Code List Qualifier = “AK” (Not Dispensed), the Prescribed or Dispensed DRU Segment is required, depending upon what the pharmacy has knowledge of.</p>
+                        <p class="Variance">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A DRU loop for the prescribed and the dispensed drug is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, either a Prescribed or a Dispensed segment is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIT Interactive Message Trailer.htm#_UIT_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIZ Interactive Interchange.htm#_UIZ_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">For an RxFill from the pharmacy to prescriber:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: RXFILL</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.5 "><a name="_Toc443643332"></a>RxFill Best Practices</h3>
+        <p class="StylebodytextBold">RxFill General</p>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">For prescriptions received by the pharmacy in non-electronic form, the subsequent RxFill messages will not be able to reference an original electronic Message ID or other unique electronic identifier for the prescription. The pharmacy should populate the RxFill message with adequate patient and drug information and the prescriber should be able to match these messages to the appropriate patient and prescription.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Prescriber should anticipate and successfully process RxFill messages where the status (dispensed, partially dispensed, not dispensed, or transferred) changes over time. For example, the physician may receive an RxFill (not dispensed) message for a specific prescription today and then receive an RxFill (dispensed) message for the same prescription the next day in the case where a patient forgot to pick up their medication in time but came to the pharmacy again the next day. <span style="font-weight: bold;">The RxFill messages should be viewed as a snapshot in time, not a permanent status indicator.</span></li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Prescriber should anticipate that RxFill messages will only be received for a portion of the prescriptions the physician writes. <span style="font-weight: bold;">If no RxFill message is received for a prescription, the system cannot assume that the prescription has not been dispensed or that the patient is not compliant.</span></li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Prescriber should anticipate receiving an RxFill notification only for prescriptions from pharmacies that support the RxFill transaction.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Prescriber should anticipate there may be significant time delays between writing the prescription and the receipt of an RxFill indicating the current status.</li>
+        </ul>
+        <p class="StylebodytextBold">RxFill Dispensed</p>
+        <p class="BodyText1">The RxFill message is originated by the pharmacy. This message is used to notify the prescriber when a prescription has been dispensed. This message can be used to notify dispensed status of new prescriptions, refills or medication resupply requests.</p>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (dispensed) message would be sent for all dispensed prescriptions including each refill/resupply, but excluding partial fills, which are represented by a separate message.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (dispensed) message should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and not simply filled and waiting. Therefore, the RxFill (dispensed) message should not be triggered simply by label printing or adjudication in the pharmacy, but through an action such as a Point of Sale message, Electronic Signature Capture at pickup, a Will Call Bin Management action, or similar positive indication of actual dispensing. For LTC, RxFill (dispensed) should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and/or filled and approved for administration to the patient by the LTC organization.</li>
+        </ul>
+        <p class="StylebodytextBold">RxFill Not Dispensed</p>
+        <p class="BodyText1">The RxFill message (not dispensed) is originated by the pharmacy. This message is used when the pharmacy has not dispensed a previously filled prescription and the pharmacy will return the medication to stock. This might occur if the patient never picked up the prescription. This message is used in LTC when the pharmacy will not dispense a prescription to notify the LTC organization of the status and reason the prescription will not be dispensed. This message can be used to notify dispensing status of new prescriptions, refills or resupply requests.</p>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message would be sent when a pharmacy does not successfully dispense or does not intend to dispense a prescription that has been received and processed by the pharmacy, and/or has been waiting for patient pickup.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message should be triggered by the Return to Stock process of the pharmacy, which indicates the patient has not picked up the prescription within the time period set by the pharmacy for their Return To Stock procedures.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message should be sent for any prescription (first fill, refill/resupply, partial fill, etc.) that is processed by the pharmacy during Return to Stock procedures.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message should not be sent by the pharmacy in the case where a prescription is being reversed, but with the intent of subsequent reprocessing and dispensing. An example would be a change in payment coverage requested by the patient at the time of pickup.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message should not be sent by the pharmacy to indicate that the patient has not requested his/her next refill based on elapsed time since the patient’s previous refill. For example, if the pharmacy dispensed a 30-day supply to the patient but more than 30 days have elapsed and the patient has not requested another refill, the pharmacy system should not automatically generate an RxFill (not dispensed) message. The pharmacy system should use the specific actions of the patient when sending RxFill messages and not inferences in every case possible.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (not dispensed) message in LTC should be triggered by events as determined by the pharmacy at the time of processing. Examples include Drug Use Evaluation conflicts that could not be resolved, the medication order has expired, the pharmacy has no intent to stock the prescribed medication, or a prior authorization was required for the prescribed medication and the payer has denied.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Since Return to Stock procedures and timing differ between pharmacies, the timing of the RxFill (not dispensed) message will also vary.</li>
+        </ul>
+        <p class="StylebodytextBold">RxFill Partially Dispensed</p>
+        <p class="BodyText1">The RxFill (Partially Dispensed) message is originated by the pharmacy. This message is used to notify the prescriber or LTC organization when a prescription has only been partially dispensed. This message can be used to notify dispensing status of new prescriptions, refills, or medication resupply requests. An RxFill message (partially dispensed) can be repeatedly initiated until the prescription has been completely dispensed or the remaining quantity is returned to stock, thereby requiring an RxFill (not dispensed) message for the remaining quantity. The message requires that, at a minimum, the dispensed drug with the quantity received be included in the message. It is suggested that the prescribed drug be included for clarification.</p>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (partially dispensed) message would be sent for all dispensed prescriptions where only a portion of the specified quantity is provided. Subsequent dispensing of the remainder of the partial fill, or additional partial fills, would also require an appropriate RxFill (partially dispensed) message to be sent.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">RxFill (partially dispensed) message should be triggered by a specific action in the pharmacy that indicates that the prescription was dispensed and not simply filled and waiting. Therefore, the RxFill (partially dispensed) message should not be triggered simply by label printing or adjudication in the pharmacy, but through an action such as a Point of Sale message, Electronic Signature Capture at pickup, a Will Call Bin Management action, or similar positive indication of actual dispensing.</li>
+        </ul>
+    </body>
+</html>

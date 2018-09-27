@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="859.8334" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc452734032"></a>Message Requirements</h1>
+        <h2 class="Heading2" style="font-family: Arial;" MadCap:autonum="1.1 "><a name="_Toc452734033"></a>New Rx – Prescriber</h2>
+        <ol>
+            <li>For all data entry fields, (including required and optional), what the user enters/selects throughout the prescription writing process is what shall<sup>*106R-027</sup> be sent in the message. (Exception to this rule includes fields that require mapping e.g. Potency unit code).</li>
+        </ol>
+        <ul>
+            <li>The application shall<sup>*106R-028</sup> not default to a value equal to zero if the user left the field blank - the field shall<sup>*106R-029</sup> not be sent. The only exception to this rule is the number of refills on a New Rx.</li>
+        </ul>
+        <ul>
+            <li>If no data is to be sent, the application shall<sup>*106R-030</sup> not display a value equal to zero.</li>
+        </ul>
+        <ol start="2">
+            <li>The application shall<sup>*106R-031</sup> allow prescriptions to be routed to the pharmacy of the patient’s choice.</li>
+            <li>For pharmacy search features:</li>
+        </ol>
+        <ul>
+            <li>The application shall<sup>*106R-032</sup> allow a pharmacy search based on pharmacy type (mail/retail).</li>
+        </ul>
+        <ul>
+            <li>When the user does not specify a pharmacy type, the application shall<sup>*106R-033</sup> not filter out mail order pharmacy types when a pharmacy search by geography is performed.</li>
+        </ul>
+        <ul>
+            <li>At a minimum, the application shall<sup>*106R-034</sup> display the following pharmacy information in the pharmacy search results: Pharmacy Name, Street Address, City, State, Zip code, phone number, and pharmacy type (long term care, mail order, retail, specialty).</li>
+        </ul>
+        <ol start="4">
+            <li>Prescriber vendors shall<sup>*106R-035</sup> display a summary screen in order to allow the prescriber to review the prescription and ensure that it contains the correct information before it is sent to the pharmacy. The prescriber shall<sup>*106R-036</sup> be able to edit and/or cancel the prescription after reviewing it on the summary screen.<br /><br />All of the following clinically significant fields going into the message shall<sup>*106R-037</sup> be displayed on the summary screen as it will be sent in the message. Note: The code value for codified fields does not have to be displayed, only the description.</li>
+        </ol>
+        <ul>
+            <li>Patient first and last name, gender and DOB. Additional information such as address and phone number is encouraged. Drug description (Full drug name, strength, and dosage form), quantity/Potency Unit Code Description, directions, notes, refills value or PRN, substitution or Dispensed as Written (DAW), and date written. </li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If creating the directions from various dropdowns, the information shall<sup>*106R-038</sup> be concatenated into one string of text and displayed, including any translation, exactly as it will be sent in the message.</p>
+        <ul>
+            <li>When the application supports these data points, the summary screen shall<sup>*106R-039</sup> also display: days supply, diagnosis, prior authorization number and prior authorization status, if populated. </li>
+        </ul>
+        <ul>
+            <li>Pharmacy name, address, and phone</li>
+        </ul>
+        <ul>
+            <li>Prescriber name and phone</li>
+        </ul>
+        <ul>
+            <li>Some applications include internal or application specific items (i.e. start/stop date). It shall<sup>*106R-040</sup> be clear to the prescriber what data elements will be sent to the pharmacy in a New Rx and what elements are for internal/local use. Any element that is not sent with the transaction shall<sup>*106R-041</sup> be labelled “For internal use only” on the summary screen, so the prescriber knows that information will not be sent with the message.</li>
+        </ul>
+        <ol start="5">
+            <li>If the above content (106R-037 through 106R-041) does not fit into one summary display, an alternative technique can be offered such that the prescriber shall<sup>*106R-043</sup> review all the content before sending the prescription.</li>
+            <li>Prescriber vendors who are utilizing or are in the process of certifying on the Surescripts Prescription Benefits 270/271 transactions shall<sup>*106R-068</sup> populate the following in the New Rx transaction with information returned in a Surescripts 271 transaction: </li>
+        </ol>
+        <ul>
+            <li class="ListBullet5" style="list-style-type: disc;">In the Coordination of Benefits Segment (COO), the prescriber shall<sup>*106R-188</sup> populate the value contained in the related 271 transaction’s ISA13 field in to the New Rx (see COO-010-01) and specify that the value is mutually defined (see COO-010-02). For patients with more than one active coverage, the prescriber vendor shall<sup>*106R-148</sup> only populate one COO loop where the segment shall<sup>*106R-149</sup> contain the benefit information the prescriber utilized to write the prescription. </li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The XML tag relating to COO-010-02 is &lt;MutuallyDefined&gt;.</p>
+        <ul>
+            <li class="ListBullet5" style="list-style-type: disc;">In the Patient Segment, populate the patient’s PBM Unique Member ID (see PTT-050-02). For patients with more than one active coverage, the prescriber vendor shall<sup>*106R-150</sup>, when available, only use the PBM Unique Member ID associated with the coverage that is utilized to write the prescription. </li>
+        </ul>
+        <p class="BodyText1Indent2">Additionally, when the patient is eligible for pharmacy benefit: </p>
+        <ul>
+            <li class="ListBullet5" style="list-style-type: disc;">Prescriber vendors shall<sup>*106R-147</sup> populate, when available, the fields in the COO segment, along with any data elements returned in the 271 that map to corresponding data fields in the COO segment.</li>
+        </ul>
+        <ol start="7">
+            <li>When a prescriber attempts to enter a prescription for a controlled substance and is NOT authorized to send EPCS messages, the application shall<sup>*106R-169</sup> direct the prescriber to a non-EDI workflow.</li>
+        </ol>
+        <p class="Style5Head2BOLD">Non-EDI Workflow for Controlled Substance Prescribing</p>
+        <p class="BodyText3">Please reference local state rules and the DEA’s Practitioner’s Manual section on Valid Prescription Requirements, which can be found at: <a href="http://www.deadiversion.usdoj.gov/pubs/manuals/pract/section5.htm" target="_blank"><span class="Hyperlink">http://www.deadiversion.usdoj.gov/pubs/manuals/pract/section5.htm</span></a><span class="Hyperlink">.</span></p>
+    </body>
+</html>

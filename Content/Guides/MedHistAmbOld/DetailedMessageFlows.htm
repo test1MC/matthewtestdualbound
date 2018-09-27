@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="2" MadCap:lastHeight="2994" MadCap:lastWidth="1224">
+    <head><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h2 class="Heading2">Detailed Electronic Prior Authorization Message Scenarios</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Verify, Error, and Status messages are sent in response to a Prior Authorization message.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 1 - Surescripts Cannot Recognize Message:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistAmb/CannotRecognize.PNG" />
+        </p>
+        <p class="BodyText1">1a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">1b) Surescripts cannot recognize the message and sends error text back to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 2 - Surescripts Recognized Message Format but Errors Found:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistAmb/ErrorsFound.PNG" />
+        </p>
+        <p class="BodyText1">2a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">2b) Surescripts recognizes the format as NCPDP, but finds errors in the message. Surescripts returns an error message.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 3 - PBM/Payer Cannot&#160;Recognize Message:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistAmb/MessageNotRecognized.PNG" />
+        </p>
+        <p class="BodyText1">3a)  RxHistoryRequest  is sent to Surescripts.</p>
+        <p class="BodyText1">3b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">3c) The PBM/payer cannot recognize the message and sends error text to Surescripts.</p>
+        <p class="BodyText1">3d) Surescripts creates an Error and returns it to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 4 - PBM/Payer Validates Message and Returns Status Code 010:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/MedHistAmb/Status010.PNG" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">4a)  RxHistoryRequest is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer validates the message and returns a Status (code 010) message to Surescripts. The code 010 means the message was accepted by ultimate receiver. Status is a synchronous message.</p>
+        <p class="BodyText1">4d) Surescripts forwards the Status (code 010) message back to the provider vendor. </p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 5 - PBM/Payer Validates Message and Returns Error Message:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/MedHistAmb/ValidatesMessage.PNG" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">5a)  RxHistoryRequest is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">5b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">5c) The PBM/payer validates the message, finds errors in the message, and returns an error message to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">5d) Surescripts forwards the error message back to the provider vendor.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 6 - PBM/Payer Returns Status Code 000 and Message Results in Error:</p>
+        <p class="Workflow" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/MedHistAmb/Status000.PNG" />
+        </p>
+        <p class="Workflow" style="margin-left: 0pt;">6a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">6b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">6c) The PBM/payer validates the message and returns a pending Status (code 000) message to Surescripts.</p>
+        <p class="BodyText1">6d) Surescripts forwards the pending Status (code 000) message back to the provider vendor.</p>
+        <p class="BodyText1">6e) The PBM/payer fails trying to process message and initiates a new error message (sometimes referred to as a Free Standing Error) to Surescripts.</p>
+        <p class="BodyText1">6f) Surescripts forwards the error to the provider vendor.</p>
+        <p class="BodyText1">6g) The provider vendor acknowledges the error by returning a verified Status (code 010) message to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;">6h) Surescripts forwards the verified Status (code 010) to the PBM/payer.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Scenario 7 - <MadCap:annotation MadCap:createDate="2017-10-03T14:31:06.1252283-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="Delete?" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-10-03T14:31:08.0025649-05:00">PBM/Payer Returns Status Code 000 and Message is Accepted:</MadCap:annotation></p>
+        <p class="Workflow" style="margin-left: 0pt;background-color: #ffff00;">TBD </p>
+        <p class="Workflow" style="margin-left: 0pt;background-color: #ffff00;">7a) A PA message is sent to Surescripts.</p>
+        <p class="Workflow" style="margin-left: 0pt;background-color: #ffff00;">7b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1" style="background-color: #ffff00;">7c) The PBM/payer validates the message and returns a Status (code 000) message to Surescripts. In this case the message has not reached its ultimate destination.</p>
+        <p class="BodyText1" style="background-color: #ffff00;">7d) Surescripts forwards the Status (code 000) message back to the provider vendor.</p>
+        <p class="BodyText1" style="background-color: #ffff00;">7e) The PBM/payer delivers the PA message to the end point and returns a Verify.</p>
+        <p class="Workflow" style="margin-left: 0pt;background-color: #ffff00;">7f) Surescripts forwards the Verify to the provider vendor. </p>
+        <p class="BodyText1" style="background-color: #ffff00;">7g) The provider vendor acknowledges the Verify by returning a Status (code 010) message to Surescripts. The 010 Code means it was accepted by the ultimate receiver. </p>
+        <p class="Workflow" style="margin-left: 0pt;background-color: #ffff00;">7h) Surescripts forwards the Status (code 010) to the PBM/payer.</p>
+        <p class="note" style="background-color: #ffff00;" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made as to whether the message has been received successfully or not. The 010 indicates that no further messages will follow.</p>
+    </body>
+</html>

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="10391.33" MadCap:lastWidth="639">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="3" MadCap:timestamp="2017-10-02T09:26:30.5616260-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="4" MadCap:timestamp="2017-10-02T09:26:39.5784838-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="top"></a>Messages Overview</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="Message"></a>Message Format</h2>
+        <p>Customers must create and send syntactically valid messages and shall be able to receive syntactically valid maximum and minimum populated messages. Optional data elements (and values therein) will not cause message failure.</p>
+        <p>For full message descriptions, see the NCPDP Implementation Guide.</p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="Prescrip"></a>Prescription Routing Message Flow</h2>
+        <p>Surescripts Prescription Routing service enables new prescription transmissions from a prescriber to the patient's pharmacy of choice. It also includes the ability to facilitate renewal requests/responses and prescription change requests/responses, etc. between pharmacies and prescribers. The graphic below depicts the message flow between customers in this process.</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/RxRtgMsgFlow-no LTC.bmp" style="width: 679px;height: 461px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing Message Flow <MadCap:annotation MadCap:createDate="2017-09-22T12:56:42.7586370-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Add space behind so this clearly ypertains to the diagram above it." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T12:57:13.1706779-05:00">Diagram</MadCap:annotation></p>
+        <p>
+            <img src="../../Resources/Images/Prescription Routing 10.6/PresRtg Trans Flow LTC.bmp" style="width: 671px;height: 345px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing LTC Message Flow Diagram</p>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="_Detailed_Prescription_Routing"></a><a name="_Toc443643292"></a>Detailed Prescription Routing Message Workflow</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Verify, Error, and Status messages are sent in response to a NewRx request. Note that for all of these scenarios, NewRx could be any of the following messages: Refill Renewal Request, Refill Renewal Response, RxFill, Rx Change Request, Rx Change Response, Cancel Rx Request, Cancel Rx Response, Census, or Resupply.</p>
+        <p>Customers must support all messages as described in the following table. Every transaction workflow ends with Status 010, Verify, or Error.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.1 "><a name="Acknowle"></a>Acknowledgment Message <MadCap:annotation MadCap:createDate="2017-10-10T14:42:06.2102957-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="applied table style, but it doesn't shade the top row or bold the text in heading row." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-10-10T14:42:33.4010145-05:00">Table</MadCap:annotation></h3>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Message</p>
+                        <p>Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Code</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Meaning(s)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">As Sender:</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">As Receiver</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"><b>Status</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">000</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>The transmission has been accepted but has not yet reached its final status. There should be a final Verify (010) or Error forthcoming.
+</p>
+                        <p>Transmission has been successful in reaching the intended receiving system. 
+</p>
+                        <p>No further acknowledgment message should follow.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Follow with an asynchronous Verify or Error to complete the message flow.
+</p>
+                        <p>Synchronous response that confirms the message was successfully processed.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>If a Verify or Error is not received following a Status (000), then no assumption should be made as to whether the message has been received successfully or not.
+</p>
+                        <p>The recommendation is to wait 24 hours before following a manual process or sending a duplicate message to confirm receipt in the case of a Status 000.
+</p>
+                        <p>Subsequent acknowledgment message should not be expected.
+</p>
+                        <p>Do not initiate an asynchronous acknowledgment message.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"><b>Verify</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">010</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Confirms successful delivery and acceptance of a message to its final destination.
+</p>
+                        <p>The final acknowledgment message to close the transaction workflow.
+</p>
+                        <p>No further acknowledgment message should follow.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Asynchronous call-back to indicate the process is complete.
+</p>
+                        <p>Send only if the original message was responded to with a Status 000.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Subsequent acknowledgment message should not be expected.
+</p>
+                        <p>Do not initiate an asynchronous acknowledgment message.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"><b>Status</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">010</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>Confirms successful delivery and acceptance of a message to its final destination.
+</p>
+                        <p>The final acknowledgment message to close the transaction workflow.
+</p>
+                        <p>No further acknowledgment message should follow.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Synchronous response indicates the process is complete.</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Subsequent acknowledgment message should not be expected.
+</p>
+                        <p>Do not initiate an asynchronous acknowledgment message.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body"><b>Error</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">See Sec.10 (add link): Msg Processing Summary, for complete list of error codes</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Can be generated when there is a communication problem or when an error occurs during the processing of the message.
+</p>
+                        <p>Closes the transaction workflow. Subsequent acknowledgment messages should not be expected.
+</p>
+                        <p>Could be synchronous or asynchronous.
+</p>
+                        <p>A synchronous error is sent in response to a message.
+</p>
+                        <p>An asynchronous error (also called Free Standing Error) is initiated as a new message after the Status 000 is sent.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>Send to acknowledge that the transaction was not successful.</p>
+                        <p>
+Do not send if a transaction workflow has already been closed (Status/Verify 010).</p>
+                        <p>Send as soon as possible after a Status 000 has been sent.</p>
+                        <p>Customers may create and return unique error descriptions which may further indicate why failure has occurred.
+</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>After receiving an error, do not expect subsequent acknowledgment messages. 
+</p>
+                        <p>Do not respond with an error message. </p>
+                        <p>Error description messages not found in<MadCap:annotation MadCap:createDate="2017-09-20T10:13:00.5386942-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Confirm this is correct section and add links - see 2nd column same row for same." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-20T10:13:22.0232366-05:00"> Section 10</MadCap:annotation>  indicates the message failed the receiving partner's validation process. In this scenario follow a manual process.
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/PrescriptionRtg/DetailedRxRtgMsgWkflw.bmp" style="width: 624px;height: 746px;" />
+        </p>
+        <p>
+            <img src="../../Resources/Images/detailedRxRtgMsgWkflw steps1-5.PNG" style="width: 639px;height: 406px;" />
+        </p>
+        <p>
+            <img src="../../Resources/Images/detailedRxRtgMsgWkflw steps 6-7.PNG" style="width: 584px;height: 372px;" />
+        </p>
+        <p class="FigureName">Detailed Prescription Routing Message <MadCap:annotation MadCap:createDate="2017-09-22T12:59:22.6116207-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Why did we want to dived the overall diagram into 2; one for steps 1-5 and another for steps 6 &amp; 7?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T13:00:04.7908382-05:00">Workflow</MadCap:annotation></p>
+        <p class="StylebodytextBold">Scenario 1</p>
+        <p class="BodyText1">1a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">1b). Surescripts cannot determine what format the message is in and sends an error text back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <p class="BodyText1">2a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">2b). Surescripts recognizes the format as NCPDP but finds errors in the message. Surescripts sends back an Error message.</p>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <p class="BodyText1">3a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">3b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">3c). Receiving customer cannot recognize the message and sends an Error text to Surescripts.</p>
+        <p class="BodyText1">3d). Surescripts creates an Error and sends it back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <p class="BodyText1">4a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">4b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">4c). Receiving customer validates the message and sends back a Status (code 010) message to Surescripts. Code 010 means the message was accepted by ultimate receiver.</p>
+        <p class="BodyText1">4d). Surescripts forwards the Status (Code 010) message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 5:</p>
+        <p class="BodyText1">5a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">5b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">5c). Receiving customer validates the message, finds errors in the message, and sends back an Error message to Surescripts.</p>
+        <p class="BodyText1">5d). Surescripts forwards the Error message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 6</p>
+        <p class="BodyText1">6a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">6b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">6c). Receiving customer validates the message and sends back a pending Status (Code 000) message to Surescripts.</p>
+        <p class="BodyText1">6d). Surescripts forwards the pending Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">6e). Receiving customer fails trying to process message and initiates a new Error message (sometimes referred to as a "Free Standing Error") to Surescripts.</p>
+        <p class="BodyText1">6f). Surescripts forwards the Error to the sending customer.</p>
+        <p class="BodyText1">6g). Sending customer acknowledges the Error by sending back a verified Status (Code 010) message to Surescripts.</p>
+        <p class="BodyText1">6h). Surescripts forwards the verified Status (code 010) to the receiving customer.</p>
+        <p class="StylebodytextBold">Scenario 7</p>
+        <p class="BodyText1">7a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">7b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">7c). Receiving customer validates the message, and sends back a Status (Code 000) message to Surescripts. In this case the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">7d). Surescripts forwards the Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">7e). Receiving customer delivers the NewRx to the end point and sends back a Verify.</p>
+        <p class="BodyText1">7f). Surescripts forwards the Verify to the sending customer.</p>
+        <p class="BodyText1">7g). Sending customer acknowledges the Verify by sending back a Status (Code 010) message to Surescripts. Code 010 means it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">7h). Surescripts forwards the Status (Code 010) to the receiving customer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made on whether the message has been received successfully or not. The 010 indicates that no further messages will follow</p>
+        <h2 class="Heading2" MadCap:autonum="1.4 "><a name="EPCS"></a>EPCS Message Workflow</h2>
+        <p class="BodyText1">All e-prescribing applications sending Electronic Prescriptions for Controlled Substances are required to provide proof of successfully completing a third party audit according to the DEA requirements. This proof of successful audit is required before the application is able to send messages across the Surescripts network.</p>
+        <p class="BodyText1">The EPCS flow for <a name="Fillable_messages"></a>fillable messages (NewRx, Approved/Approved with changes Refill Response, and Approved/Approved with changes Change Response) follows the flow above with these additions:</p>
+        <ul>
+            <li>
+                <MadCap:annotation MadCap:createDate="2017-09-20T13:54:29.4345345-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="7.19.16: Consider adding something like: Note: This does not apply to Approved Change Response with a reason of Prior Auth because there is no change to the medication and prior auth was already provided. Complete. See ERX 30533 JIRA GUIDE-125." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-20T13:55:44.1279247-05:00">The service level for both the prescriber and pharmacy must be enabled for controlled substances. Otherwise the message will be rejected.</MadCap:annotation>
+            </li>
+            <li>The message must be digitally signed and contain either the signature or the flag indicating it has been signed. Surescripts will not validate the signature.</li>
+            <li>The message must contain at least one of the following: NDC, Compound Flag, or Supplies Flag.</li>
+        </ul>
+        <p class="StylebodytextBold">How Surescripts determines when to apply EPCS processing to a message</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/EPrescribing/EPCS Message Workflow.png" style="width: 627px;height: 192px;" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.5 "><a name="General"></a>General Interface <MadCap:annotation MadCap:createDate="2017-09-22T14:14:58.2741557-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Do we need this heading?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T14:15:03.5066789-05:00">Description</MadCap:annotation></h2>
+        <p>The <MadCap:annotation MadCap:createDate="2017-09-22T13:05:52.2825839-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="&quot;message&quot;? We don't have this in the Directory IG." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-22T13:06:12.9086463-05:00">transaction </MadCap:annotation> specifications have been defined to allow the most effective processing.</p>
+        <h3 class="Heading3" MadCap:autonum="1.5.1 "><a name="Rules"></a>Rules of Engagement</h3>
+        <p>R6.003: The application shall not truncate clinically relevant information without alerting the user.</p>
+        <p>For all data entry fields (including required and optional, what the user enters/selects throughout the prescription writing process is what shall R6.027 be sent in the message. (Exception to this rule includes fields that require mapping e.g. Potency unit code)</p>
+        <p>• The application shall R6.028 not default to a value equal to zero if the user left the field blank; the field shall R6.029 not be sent.</p>
+        <p>• If no data is to be sent, the application shal R6.030 not display a value equal to zero.</p>
+        <p>R6.027 and R6.163 same</p>
+        <p>The customer shall R6.008 implement and maintain a comprehensive, industry-accepted drug information source that is map-able to NDC drug codes and updated at least monthly. Acceptable data sources include the following:</p>
+        <ul>
+            <li>Gold Standard</li>
+            <li>	 Drug Information Technologies (DIT)</li>
+            <li>First Data</li>
+            <li>Lexi-Comp</li>
+            <li>Multum</li>
+            <li>Medispan</li>
+            <li>Thomson Reuters Micromedex/RED BOOK</li>
+            <li>CliniData (for Routing Only - see Notes below)</li>
+            <li>RxNorm (for Routing Only - see Notes below)</li>
+            <li>Or others as approved by Surescripts</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Use of Routing –only approved databases for Prescription Routing. - Routing-only databases are Surescripts approved sources for medication description information as defined in the item description data element of the NCPDP standard and for NDCs for the purposes of Surescripts prescription routing implementation and certification. Routing-only databases do not currently contain all of the required data attributes that are necessary for a customer to successfully meet and pass the Surescripts formulary benefit data integration and application display certification requirements. Surescripts will not grant any exceptions to customers on the prescription benefits requirements to support one of the comprehensive, industry-accepted drug information sources. For drug databases not on the Surescripts approved Drug Knowledgebase Vendor list, there is a formal process in place to review and approve new Drug Knowledgebase Vendors. The Surescripts Compliance department manages this process.</p>
+        <h3 class="Heading3" MadCap:autonum="1.5.2 "><a name="UTC"></a>UTC Time <MadCap:annotation MadCap:createDate="2017-09-21T11:27:09.7925242-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="In the Routing guide, we have an addditional paragraph - following the first paragraph for UTC Time format. Here is its: &quot;Synchronize UTC time with NIST (National Institute of Standards and Technology). Drift of no more than one minute will be acceptable.\r\n\r\nOur comment is that this was addded by Grp B on 4/27/17. Covers ACRs 015, 016, 025, and 126. Should this be added to the boilerplate/common content language?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-21T11:27:17.1886722-05:00">Format</MadCap:annotation></h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h3 class="Heading3" MadCap:autonum="1.5.3 "><a name="Numeric"></a>Numeric Representation</h3>
+        <p>The decimal point is represented by a period and shall*<MadCap:change MadCap:changes="3">106</MadCap:change>R<MadCap:change MadCap:changes="4">6.</MadCap:change><MadCap:change MadCap:changes="3">-</MadCap:change>017 be used as follows:</p>
+        <p>•	Only when there are significant digits to the right of the decimal</p>
+        <p>•	When there is a digit before and after the decimal point</p>
+        <p>•	Not with whole numbers</p>
+        <p>•	Counts toward the length total of a data element</p>
+        <p>•	User shall be able to enter up to three digits to the right of the decimal place without the system rounding or truncating</p>
+        <p>For example, consider the following possible values:</p>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body"><b>Correct:</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2.515</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">251.5</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">25.15</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">2515</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">0.2515</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">2.5</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body"><b>Incorrrect:</b>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">.2515</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">2515</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">3.00</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="1.5.4 "><a name="Characte"></a>Character <MadCap:annotation MadCap:createDate="2017-09-20T15:16:49.7498753-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="In the Routinjg Guide, the last paragraph was: &quot;White space, such as leading and trailing spaces, should not be sent in alpha-numeric fields.&quot;" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-20T15:17:24.6886679-05:00">Set</MadCap:annotation></h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CharacterSet.flsnp" />
+        <h2 class="Heading2" MadCap:autonum="1.6 "><a name="Message2"></a>Message Validation</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+        <h3 class="Heading3" MadCap:autonum="1.6.1 "><a name="State"></a>State Specific Validation for Controlled Substances</h3>
+        <p class="BodyText1">Surescripts will stop controlled substance messages from being sent or received that are prohibited by state law as outlined below. Technology vendor systems and their users are still ultimately responsible for continued compliance with all regulations.</p>
+        <p class="BodyText1">Each message without a DEA Schedule will have the NDC checked to determine if the medication is a controlled substance at a federal or state level. Once a medication has been identified as a controlled substance, either federally or by the state it is written in or being sent to, the following validation checks occur:</p>
+        <ul>
+            <li>Is the sender/receiver authorized to send/receive EPCS messages?</li>
+            <li>Is the Signature Indicator (SI) flag or Digital Signature on the message?</li>
+            <li>Is the DEA Schedule field populated?</li>
+            <li>If NDC is not present, is there a compound or supply flag?</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Does the state the prescription is written in/sent to allow e-Prescribing of Controlled Substances?<ul style="list-style-type: circle;"><li>If the medication is classified as a schedule II controlled substance, does the state allow e-Prescribing of schedule II controlled substances?</li><li>For mail order pharmacies Surescripts will not check the NDC against the location of the mail order pharmacy. Mail order pharmacies are still required to perform the appropriate state validations.</li></ul></li>
+        </ul>
+        <h3 class="Heading3" MadCap:autonum="1.6.2 "><a name="Acknowle2"></a>Acknowledgment <MadCap:annotation MadCap:createDate="2017-09-21T13:16:41.1019509-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Keep? If so, not here. Move." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-21T13:16:47.8816288-05:00">Messages</MadCap:annotation> <![CDATA[ ]]></h3>
+        <p class="BodyText1">Surescripts will stop controlled substance messages from being sent or received that are prohibited by state law as outlined below. Technology vendor systems and their users are still ultimately responsible for continued compliance with all regulations.</p>
+        <p class="BodyText1">Each message without a DEA Schedule will have the NDC checked to determine if the medication is a controlled substance at a federal or state level. Once a medication has been identified as a controlled substance, either federally or by the state it is written in or being sent to, the following validation checks occur:</p>
+        <ul>
+            <li>Is the sender/receiver authorized to send/receive EPCS messages?</li>
+            <li>Is the Signature Indicator (SI) flag or Digital Signature on the message?</li>
+            <li>Is the DEA Schedule field populated?</li>
+            <li>If NDC is not present, is there a compound or supply flag?</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">Does the state the prescription is written in/sent to allow e-Prescribing of Controlled Substances?<ul style="list-style-type: circle;"><li>If the medication is classified as a schedule II controlled substance, does the state allow e-Prescribing of schedule II controlled substances?</li><li>For mail order pharmacies Surescripts will not check the NDC against the location of the mail order pharmacy. Mail order pharmacies are still required to perform the appropriate state validations.</li></ul></li>
+        </ul>
+        <h2 class="Heading2" MadCap:autonum="1.7 "><a name="Failure"></a>Failure Mode/Response Approach</h2>
+        <p class="BodyText1">Surescripts has identified different levels of failure for NCPDP-based messages:</p>
+        <ul>
+            <li>In instances where Surescripts or a customer receives a message that is unrecognizable, the recipient should send back an error text.</li>
+            <li>If an error occurs after the sender has been identified and validated, and the message has been determined to be an NCPDP message, an NCPDP Error message is returned.</li>
+            <li>If the recipient identifies an error, an Error message is created and passed through Surescripts.</li>
+        </ul>
+        <h2 class="Heading2" MadCap:autonum="1.8 "><a name="Faxing"></a>
+            <MadCap:annotation MadCap:createDate="2017-09-20T15:38:50.6584879-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Consider adding the Customer Outage Service details to this section for next version. Message Queuing Service." MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-09-20T15:39:11.9059603-05:00">Faxing</MadCap:annotation>
+        </h2>
+        <p class="BodyText1">Faxable Error Messages (FEM) service delivers non-controlled substances via facsimile (FAX) when they cannot be delivered electronically due to temporary/transient transmission failures, unless prohibited by state law. Surescripts creates an acknowledgment (Status-000) and delivers it back to the sending customer when putting the message in a fax queue. The sending customer will receive verification (Verify-010) when the fax is successfully delivered or an Error if fax delivery fails.</p>
+        <p class="BodyText1">In previous versions Surescripts faxed controlled substance prescriptions back to the prescriber for a wet signature. For EPCS, this feature will no longer be supported. If a prescription for a controlled substance cannot be delivered electronically, the sending customer will receive an Error.</p>
+        <p class="BodyText1">Currently Surescripts only supports faxing for NewRx, Refill Renewal Request and Refill Renewal Response within Prescription Routing.</p>
+    </body>
+</html>

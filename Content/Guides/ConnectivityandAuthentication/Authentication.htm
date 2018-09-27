@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="807.3333" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc444596901"></a>Authentication</h1>
+        <p>Surescripts is requiring Mutual Transport Layer Security (mTLS) authentication for new implementations of transaction based products.</p>
+        <p>Mutual authentication, also called two-way authentication, is a process or technology in which both entities in a communications link authenticate each other. In a network environment, the client authenticates the server and vice-versa. In this way, network users can be assured that they are doing business exclusively with legitimate entities and servers.</p>
+        <p>Customer-initiated mTLS connections will utilize Surescripts-issued client certificates and connect to Surescripts-issued server certificates. For some products, mTLS provides an additional layer on top of Basic Authentication.</p>
+        <p>&#160;</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">User account passwords must be secured and not stored in clear-text within any system, configuration file, application, or browser. In addition, individual credentials used for interactive UI logins (like Admin Console UI) must not be used in an automated logon process.</p>
+        <p>Surescripts-initiated mTLS connections will utilize Surescripts-issued client certificates and connect to Surescripts-issued server certificates or Surescripts-accepted commercial server certificates.</p>
+        <h2 class="Heading2"><a name="Customer"></a>Customer Client Side Certificates</h2>
+        <ol>
+            <li>The customer creates a certificate signing request (CSR) based upon the requirements below. Surescripts uses the CSR to sign a public certificate on behalf of the customer.  The customer is required to keep the associated private key secure.<p>Certificate Signing Request (CSR)</p><ol style="list-style-type: lower-alpha;"><li>A CSR (.csr file) is created from your production server. (A separate CSR is needed for staging)</li><li>The CSR must be generated with the Common Name (CN) element matching the fully qualified domain name (FQDN) of your endpoint URL.</li><li>The key must be a 2048-bit key length.</li><li>The Subject Alternative Name field is a mandatory field. The SAN will usually match your Common Name (CN).</li><li>The Organizational Unit (OU) must be populated and cannot match Organization.</li><li>City and State fields must be spelled out completely and cannot include abbreviations.</li><li>The resulting certificate is to be used only for Mutual TLS authentication between the customer systems and Surescripts</li><br /><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Your private key will be generated on the same server where the CSR was created.  If not creating the CSR from your production server, take note of where the private key resides as it will be used later to pair with the client certificate.  The private key should never be shared with Surescripts.</p></ol></li>
+            <li>Surescripts uses the CSR to generate a Surescripts issued client certificate.  The client certificate, including an issuing and root certificate are then returned to the customer in a p7b file.</li>
+            <p>&#160;</p>
+            <img src="../../Resources/Images/Connectivity and Authentication/c1.png" />
+            <li>Customer pairs their private key with the Surescripts issued client certificate.</li>
+            <li>Customer validates private key is correctly paired with the Surescripts client certificate.  If the private key is paired correctly, in Microsoft Windows the certificate will display:</li>
+            <p>&#160;</p>
+            <img src="../../Resources/Images/Connectivity and Authentication/c2.png" />
+            <li>Customer installs the client certificate, issuing and root certificates into their server trust store.</li>
+            <li>Customer ensures that their application has the appropriate security settings to access the client certificate.</li>
+            <li>Customer configures their application to utilize the Surescripts issued client certificate when sending a message to Surescripts.</li>
+            <li>If connectivity issues exist, customer will work with Surescripts Iintegration team or Surescripts Customer Support to resolve.</li>
+        </ol>
+        <p>&#160;</p>
+        <p><b>Reference Documents</b>
+        </p>
+        <p><a href="https://www.digicert.com/code-signing/best-practice-guide.htm" target="_blank">Best practices for generating and storing private keys in a secure manner</a>
+        </p>
+        <p>&#160;</p>
+        <p><b>Help on Step 3</b>
+        </p>
+        <p><a href="https://www.digicert.com/csr-ssl-installation/iis-7.htm#ssl_certificate_install" target="_blank">https://www.digicert.com/csr-ssl-installation/iis-7.htm#ssl_certificate_install</a>
+        </p>
+        <p><a href="https://www.sslsupportdesk.com/troubleshooting-missing-ssl-private-key-in-windows-server/" target="_blank">https://www.sslsupportdesk.com/troubleshooting-missing-ssl-private-key-in-windows-server/</a>
+        </p>
+        <p>&#160;</p>
+        <p><b>Help on Step 7</b>
+        </p>
+        <p><a href="https://dotnetcodr.com/2016/01/21/using-client-certificates-in-net-part-4-working-with-client-certificates-in-code" target="_blank">https://dotnetcodr.com/2016/01/21/using-client-certificates-in-net-part-4-working-with-client-certificates-in-code</a>/</p>
+        <h2 class="Heading2"><a name="_Toc444596905"></a>Customer Server Side Certificates</h2>
+        <p class="BodyText1">Surescripts-initiated connections will require a Surescripts' accepted commercial server certificate, which may include Surescripts-issued certificates.</p>
+        <p>&#160;</p>
+        <h3 class="Heading3">Requirements to Accept Connections from Surescripts</h3>
+        <ol>
+            <li>
+                <p>The FQDN address must resolve to US based static public IP address(es).</p>
+            </li>
+            <li>
+                <p>If customers wish to filter communication from Surescripts, refer to tables below for pertinent IP addresses from which Surescripts will communicate.</p>
+            </li>
+        </ol>
+        <h3 class="Heading3">Digital Certificate Requirements</h3>
+        <ol>
+            <li>Certificate Common Name must match the FQDN provided in the URL.</li>
+            <li>Certificate Common Name must be an FQDN, not an IP address.</li>
+            <li>Certificate must be signed by a public Trusted Root Certificate Authority (CA) with a minimum 2048-bit Public Key.</li>
+            <li>The CA must have completed a <span style="font-style: italic;">WebTrust for Certificate Authorities</span> (www.webtrust.org) audit or an equivalent third-party attestation approved by Surescripts.</li>
+            <ol style="list-style-type: lower-alpha;">
+                <li style="margin-top: 6px;">Surescripts must recognize the Root CA as a valid and trusted entity.</li>
+                <li style="margin-top: 6px;">Surescripts will not accept self-signed certificates or certificates issued by a private CA.</li>
+                <li style="margin-top: 6px;">Surescripts will not import any customer Public Key issued by a Private CA. Surescripts cannot make any exceptions to this requirement.</li>
+            </ol>
+            <li>The certificate is not required to be set up specifically or solely for Surescripts (e.g., Surescripts.mydomain.com). The same certificate applied on a server can be used for multiple sites.</li>
+            <li>FQDNs are acceptable in a certificate (i.e. www.mydomain.com), but must contain the customer’s domain name (mydomain.com). </li>
+            <li>Certificate must be current, active and valid. Surescripts may reject TLS connections with invalid certificates.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="823" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" style="font-family: Arial;" MadCap:autonum="0.1 "><a name="_Toc452734041"></a>RES – Response Segment</h2>
+        <p class="StylebodytextBold">RES-010 RESPONSE TYPE &lt;Approved&gt;&lt;Denied&gt;, &lt;DeniedNewPrescriptionToFollow&gt;, &lt;ApprovedWithChanges&gt;</p>
+        <p class="BodyText1">The pharmacy shall<sup>*106R-096</sup> accept the code sent in a Refill Renewal Response and display its translation along with any denial reason when presenting the Refill Renewal Response to the pharmacist. See Section 5.2.9 Refill Renewal Pharmacy Certification Requirements for more information.</p>
+        <p class="BodyText1">When sending a Refill Renewal Response, the prescriber shall<sup>*106R-095</sup> follow the rules below to determine the type of response as Approved, Approved with Changes, Denied, or Denied New to Follow. These rules apply to both the prescribed and dispensed medication segments. Items not listed here are expected to be echoed back in REFRES; e.g. phone numbers, Prior Auth Status. This rule does exclude items that are mentioned in the common message header, UIH and UIB per the guide.</p>
+        <p class="BodyText1">On an EPCS Refill Renewal Response transaction, either the Digital Signature block in the Common Message Header area or ‘SI’ drug coverage status code indicator (DRU-110) shall<sup>*106R-181</sup> be included.</p>
+        <p class="StylebodytextBold"><u>A = Approved</u>
+        </p>
+        <ul>
+            <li>The only fields that can be updated on an approved status type Refill Renewal Response are:</li>
+        </ul>
+        <ul>
+            <li>Refills Qualifier (DRU-060-01) – Update from P to A.</li>
+        </ul>
+        <ul>
+            <li>Number of refills (DRU-60-02) - When a refill value is not specified in the Refill Renewal Request the number must be updated to a value of 1 or more. Otherwise, return the exact value that was in Refill Renewal Request.</li>
+        </ul>
+        <ul>
+            <li>Date Written (DRU-040) – Update the “Written Date” per requirement 106R-125.</li>
+        </ul>
+        <p class="BodyText1">Since the structured SIG segment is optionally supported, if sent on a Refill Renewal Request it does not need to be sent back on a Refill Renewal Response. The pharmacy will instead use the Directions (DRU-030) from the medication segment.</p>
+        <p class="BodyText1">Since the facility segment is optionally supported, if sent on a Refill Renewal Request, it does not need to be sent back on a Refill Renewal Response.</p>
+        <p class="BodyText1">If any other items need to be added or changed, the Approved with Changes or the Denied New to Follow status type Refill Renewal Response should be used instead. See Approved with Changes or the Denied New to Follow status types for more information.</p>
+        <p class="StylebodytextBold"><u>C = Approved With Changes</u>
+        </p>
+        <p class="BodyText1">The <span style="font-weight: bold;font-style: italic;">only</span> fields that can be added or updated on an Approved with Changes status type Refill Renewal Response are:</p>
+        <ul>
+            <li>Prescriber NPI (PVD-020-01) – Add or update value when appropriate. </li>
+        </ul>
+        <ul>
+            <li>DEA# or SSN (only one or the other may be used on a EPCS per the DEA IFR):</li>
+        </ul>
+        <ul>
+            <li>DEA# (PVD-020-01) – Add or update value when appropriate.</li>
+        </ul>
+        <ul>
+            <li>SSN (PVD-020-01) with the military specialty ID (PVD-040-03) - Add or update values when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Prescribing Agent (PVD-100) – Add or update composite when appropriate. (The composite is defined as the sub elements under the parent element (PVD-100)).</li>
+        </ul>
+        <ul>
+            <li>Prescriber Address (PVD-080) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Supervisor Segment (PVD SU) – Add or update segment when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Refills Qualifier (DRU-060-01) – Update from P to A.</li>
+        </ul>
+        <ul>
+            <li>Number of refills (DRU-060-02) – Change to a non-zero value that differs from the value that was sent in Refill Renewal Request. Otherwise, return the exact value that was in Refill Renewal Request.</li>
+        </ul>
+        <ul>
+            <li>Date Written (DRU-040) - Update the “Written Date” per requirement 106R-125.</li>
+        </ul>
+        <ul>
+            <li>NDC# (DRU-010-03) - When value specified in Refill Renewal Request is not a NDC-11 formatted value or value is not present, add or update value to a NDC-11. Otherwise, return the exact value that was in Refill Renewal Request. (This is required for translations from older versions.)</li>
+        </ul>
+        <ul>
+            <li>Diagnosis (DRU-070) – Add or update composite to prescriber inferred information when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Prior Authorization (DRU-080) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Drug Use Evaluation (DRU-100) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Observation Segment (OBS) – add or update segment when appropriate.</li>
+        </ul>
+        <p class="BodyText1">Since the structured SIG segment is optionally supported, if sent on a Refill Renewal Request it does not need to be sent back on a Refill Renewal Response. The pharmacy will instead use the Directions (DRU-030) from the medication segment.</p>
+        <p class="BodyText1">Since the facility segment is optionally supported, if sent on a Refill Renewal Request, it does not need to be sent back on a Refill Renewal Response.</p>
+        <p class="BodyText1">If any other items need to be added or updated, the Denied New To Follow status type Refill Renewal Response shall<sup>*106R-097</sup> be used, where edits will be conveyed to the pharmacy via the separate New Rx prescription.</p>
+        <p class="StylebodytextBold" style="text-decoration: underline;">D = Denied and N = New Prescription To Follow</p>
+        <p class="BodyText1">The only fields that can be added or updated on a Denied or Denied New Prescription To Follow status type Refill Renewal Response are:</p>
+        <p class="StylebodytextBold">Required to be updated:</p>
+        <ul>
+            <li>Refills Qualifier (DRU-060-01) – Update from P to A.</li>
+        </ul>
+        <ul>
+            <li>Number of refills (DRU-60-02) – Add or update to zero per requirement <sup>106R-</sup><sup>132</sup>. </li>
+        </ul>
+        <p class="StylebodytextBold">Optional to update:</p>
+        <ul>
+            <li>Prescriber NPI (PVD-020-01) – Add or update value when appropriate. </li>
+        </ul>
+        <ul>
+            <li>DEA# or SSN (only one or the other may be used on a EPCS per the DEA IFR):</li>
+        </ul>
+        <ul>
+            <li>DEA# (PVD-020-01) – Add or update value when appropriate.</li>
+            <li>SSN (PVD-020-01) with the military specialty ID (PVD-040-03) - Add or update values when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Prescribing Agent (PVD-100) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Prescriber Address (PVD-080) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Supervisor Segment (PVD-010 value: SU) – Add or update segment when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Date Written (DRU-040) - Update the “Written Date” is permitted.</li>
+        </ul>
+        <ul>
+            <li>NDC# (DRU-010-03) - When value specified in Refill Renewal Request is not an NDC-11 formatted value or value is not present, add or update value to a NDC-11. Otherwise, return the exact value that was in Refill Renewal Request. (This is required for translations from older versions.)</li>
+        </ul>
+        <ul>
+            <li>Diagnosis (DRU-070) – Add or update composite to prescriber inferred information when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Prior Authorization (DRU-080) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Drug Use Evaluation (DRU-100) – Add or update composite when appropriate.</li>
+        </ul>
+        <ul>
+            <li>Observation Segment (OBS) – add or update segment when appropriate.</li>
+        </ul>
+        <p class="BodyText1">Since the structured SIG segment is optionally supported if sent on a Refill Renewal Request it does not need to be sent back on a Refill Renewal Response.</p>
+        <p class="BodyText1">Since the facility segment is optionally supported, if sent on a Refill Renewal Request, it does not need to be sent back on a Refill Renewal Response.</p>
+        <p class="BodyText1">If the prescriber is sending a “Denied New Prescription To Follow” Refill Request Response, the following New Rx shall<sup>*106R-168</sup> be sent to the same pharmacy that initiated the request. If the pharmacy needs to be changed, the prescriber shall<sup>*106R-182</sup> send a “Denied” Refill Request Response and send a new NewRx to the desired pharmacy.</p>
+        <p class="BodyText1Indent">C = Approved with changes. This code shall<sup>*106R-099</sup> not be utilized for a prior authorization or generic substitution of an Rx Change Request. The fields listed above for approved with changes on a Refill Renewal Response may also need to be added for the Rx Change Response for a controlled substance.</p>
+    </body>
+</html>

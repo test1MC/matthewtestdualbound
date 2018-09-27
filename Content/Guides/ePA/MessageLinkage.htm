@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1430.333" MadCap:lastWidth="1237">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+        <link href="../Resources/Stylesheets/CompletEPA.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Message_Linkage"></a>Message Linkage</h1>
+        <p class="BodyText1">In order to link messages together, four key fields are defined below. This linkage allows a software system to tie one message to another. For example, on a PAInitiationResponse the PBM/payer system needs to find the PAInitiationRequest to which the provider vendor is referring. This linkage should be done in an automated manner.</p>
+        <p class="BodyText1" style="margin-left: 0pt;"><span style="font-weight: bold;">MessageID</span> – The unique number assigned to each message. </p>
+        <p class="BodyText1" style="margin-left: 0pt;"><span style="font-weight: bold;">RelatesToMessageID</span> – Is used in the conversation (message string) to link the current message to the most recent message received from a trading partner. In RelatesToMessageID use the latest MessageID in the conversation (message string) received from a trading partner that was not a utility message (for example, not a GetMessage, Status, Verify or Error).</p>
+        <p class="BodyText1" style="margin-left: 0pt;"><span style="font-weight: bold;">PAReferenceID</span> – Assigned by the prescribing system on the initial message and is used by the prescribing system as a tracking identifier on all request and response prior authorization messages. The identifier must be unique per prescribing system.</p>
+        <p class="BodyText1" style="margin-left: 0pt;"><span style="font-weight: bold;">PACaseID</span> – PBM/Payer-assigned identifier for this request and used by the PBM/payer as a tracking identifier on all request and response prior authorization messages. </p>
+        <p class="BodyText1">The tables below show how these fields are linked together for each message type.</p>
+        <p class="BodyText1"><b>PA Initiation Request and Response Fields</b>
+        </p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>PA Initiation Request</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>PA Initiation Response</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>PA Request</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>PA Response</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = 123 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = ABC </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = 456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>MessageID = DEF</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RelatesToMessageID =
+ contains the Interchange Control Number (ISA13 of the 271 Eligibility
+ Response).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RelatesToMessageID = 123 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RelatesToMessageID = ABC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>RelatesToMessageID = 456</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PAReferenceID = XYZ</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PAReferenceID = XYZ</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PAReferenceID = XYZ</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PAReferenceID = XYZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PACaseID = N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PACaseID = 999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PACaseID = 999</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>PACaseID = 999</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p>Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p>Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p>Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p>Status</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = 111 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = 222 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MessageID = 333</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>MessageID =444</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>RelatesToMessageID = 123 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>RelatesToMessageID = ABC </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>RelatesToMessageID = 456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>RelatesToMessageID = DEF</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">PA Appeal and Cancel Request and Response</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 624px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 9pt;font-weight: bold;">PA Appeal Request</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 9pt;font-weight: bold;">PA Appeal Response</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 6pt;font-weight: bold;">PA Cancel Request</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 6pt;font-weight: bold;">PA Cancel Response</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">MessageID = 789</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">MessageID = GHI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">MessageID = 012 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">MessageID = JKL </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">RelatesToMessageID = DEF</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">RelatesToMessageID = 789</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">RelatesToMessageID relates to the most recent message received from your trading partner. See definition above.</p>
+                    <p class="TableBody" style="margin-left: 6pt;">Since PA Cancel Requests can be sent at any time after receiving case ID this would relate to the most recent message. </p>
+                    <p class="TableBody" style="margin-left: 6pt;">For example if this was sent after provider sent the PARequest (and had not yet received a PAResponse from the PBM/payer) the RelatesTo ID would be ABC.</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">RelatesToMessageID = 012 </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">PAReferenceID = XYZ</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">PACaseID = 999</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">PACaseID = 999</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">PACaseID = 999</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">PACaseID = 999</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 9pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 9pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 6pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-left: 6pt;font-weight: bold;">Status</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">MessageID = 555</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">MessageID =666</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">MessageID = 777 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">MessageID = 888 </p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">RelatesToMessageID = 789</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 9pt;">RelatesToMessageID = GHI</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">RelatesToMessageID = 012 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-left: 6pt;">RelatesToMessageID = JKL </p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">
+            <p style="font-weight: bold;">Third Party Processor Message Linking</p>
+            <p>When PBM/payers return a CO or CP reason code, the message becomes internally marked as closed for 3rd party processing. If Surescripts’ 3rd party processor search finds a match, a secondary PAInitiationRequest is created based upon the initial PAInitiationRequest. The recipient is updated and the MessageId from the original PAInitiationRequest is cloned and modified with a prefix of <b>EPAINI</b>. When the 3rd party processor responds, the message will have a RelatesToMessageId that has a prefix of <b>EPAINI</b> and references the secondary PAInitiationRequest.</p>
+        </p>
+        <p class="BodyText1" style="font-weight: bold;">PA Initiation Request and Response from Third Party Processor</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 314px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">PA Initiation Request (To EPAINI)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">PA Initiation Response (From PBM/Payer - Closed for 3rd Party)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">Second PA Initiation Request (To 3rd Party) </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">Second PA Initiation Response (From 3rd Party)**</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">PA Request (To 3rd Party)</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="font-weight: bold;background-color: #a9a9a9;">
+                    <p class="TableBody">PA Response (From 3rd Party</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = ABC </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID =  EPAINI123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = DEF</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 789</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 010</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 3pt;">RelatesToMessageID contains the Interchange Control Number (ISA13 of the 271 Eligibility Response).</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = 123 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID =ABC</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID =  EPAINI123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = DEF</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = 789</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PAReferenceID = XYZ</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = N/A</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = N/A</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = N/A</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = 123456</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = 123456</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">PACaseID = 123456</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;font-weight: bold;">Status</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 111 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 222 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 333</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 444</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 555</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">MessageID = 666</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = 123 </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = ABC </p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = EPAINI123</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = DEF</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = 789</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="margin-top: 4pt;margin-left: 7pt;">RelatesToMessageID = 010</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Surescripts cannot find a third party processor, Surescripts will return a Closed PAInitiationResponse with EPAINI in the From field and possibly a link to PDR.</p>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643391"></a>Signature Structure Method</h2>
+        <p class="BodyText1">The Digital Signature is used in the EPCS Message Envelope structure to guarantee the data integrity and authenticity of the original data. It will be applied only to message contents that are required to be signed per the Interim Final Rule (IFR), as outlined below.</p>
+        <p class="BodyText1">For example, a prescriber applies a Digital Signature to the contents of the electronic prescription message to create a "tamper evident seal" for the data that is required to be signed by the DEA in the IFR before delivery to the destination pharmacy. The pharmacy will verify that the data was unmodified from the original sender through Digital Signature validation in accordance with the IFR.</p>
+        <p class="BodyText1">The Digital Signature provides two features that are important for the security of the data authentication and tamper evidence. Surescripts will not be validating the Digital Signature, only checking for its existence.</p>
+        <h3 class="Heading3"><a name="_Toc443643392"></a>Authentication</h3>
+        <p class="BodyText1">The signature block includes a digital certificate from the sender of the message. The signature and the certificate will be validated by the receiver to verify that the message was created only by the owner of the signing key and not some other source. EPCS requires the use of digital certificates that have been issued by a Certification Authority cross certified with the Federal Bridge PKI for exchange of digitally signed messages. A properly issued and managed digital certificate provides a requisite assurance regarding the identity of the prescriber who generated the Digital Signature.</p>
+        <h3 class="Heading3"><a name="_Toc443643393"></a>Tamper Evidence</h3>
+        <p class="BodyText1">When the Signature is applied to the e-prescription fields by the sender, the receiver will be able to verify whether or not the data in the prescription has been changed since the Signature was first created. The Signature does not prevent tampering of the data; it only provides a way of detecting if the data has been changed.</p>
+        <p class="BodyText1">Even though portions of the Signature data are encrypted, it is important to note that the Digital Signature by itself does not encrypt the message data. This is a common misconception about the Digital Signature.</p>
+    </body>
+</html>

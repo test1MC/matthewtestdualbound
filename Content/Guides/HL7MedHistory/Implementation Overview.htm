@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="2353.333" MadCap:lastWidth="739">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc445209614"></a>Implementation Overview</h1>
+        <h2 class="Heading2"><a name="top"></a>Implementation, Certification and Production</h2>
+        <h3 class="Heading3"><a name="Implemen"></a>Implementation Process</h3>
+        <p class="BodyText1">The typical timeframe of the Implementation Phase is 5 - 6 months, depending on your resource allocation for the project. During this time you will be invited to the Surescripts Education Series, receive Surescripts Network guides / requirement documentation and your account will be setup to access the Surescripts staging/certification environment.</p>
+        <h3 class="Heading3"><a name="Certific"></a>Certification Process</h3>
+        <p class="BodyText1">This phase includes more detailed testing of the transactions and the user interface to ensure that all Surescripts requirements are met. You will be assigned a Certification Project Manager who will work with you through the completion of certification testing. Surescripts will provide more detail surrounding the milestones that are necessary to certify and move into production. Once a participant passes certification, services are turned on in production.</p>
+        <h3 class="Heading3"><a name="Transiti"></a>Transition to Production</h3>
+        <p class="BodyText1">Once Certification is complete, the participant is ready to move into production. Surescripts will schedule a hand-off meeting for the business and technical staff of both Surescripts and the participant to discuss the following:</p>
+        <ul>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;font-family: Arial;font-size: 11pt;">Production Support Contacts (for both Surescripts and participant)</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;font-family: Arial;font-size: 11pt;">Support Process</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;font-family: Arial;font-size: 11pt;">Support Hours</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;font-family: Arial;font-size: 11pt;">The Surescripts Network Operations Guide (NOG) will be reviewed as part of the transition to production.</li>
+        </ul>
+        <h2 class="Heading2"><a name="Connecti"></a>Connectivity HTTPS</h2>
+        <p class="BodyText1">The Surescripts network uses the HTTPS protocol for the transport of messages between network participants. HTTPS is a secure, reliable, and widely used protocol for the exchange of information over TCP/IP. </p>
+        <p class="BodyText1">Directory messages travel across the Surescripts network from an initial sender to Surescripts via HTTPS POST.</p>
+        <h2 class="Heading2"><a name="Communic"></a>Communication Rules</h2>
+        <p class="BodyText1">In order for the network to be reliable, there are several communication rules that all partners must adhere to:</p>
+        <ol>
+            <li style="text-align: left;">A receiving partner must be able to process, validate and persist messages before returning a STATUS or ERROR message back to the sender.</li>
+            <li style="text-align: left;">All partners must be able to accept freestanding ERROR messages from network participants and transport down to the end users (if error requires end user notification or action).</li>
+            <li style="text-align: left;">Each message sent from a partner should have a unique “Message ID” (i.e. Transaction control reference). The unique Message ID is used by the receiving partner to determine if a message is a duplicate. The receiver is responsible for checking the Message ID of each incoming message to ensure that the sending partner has not already sent a message with that same ID in the past. If a receiving partner detects a duplicate Message ID then they must return an ERROR message.</li>
+            <li style="text-align: left;">Security Rules - Surescripts requires that senders use Basic Authentication. The "Authorization" header of the HTTP message should contain the user-ID and password, separated by a single colon (":") character, within a base64 encoded string. For example: Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</li>
+        </ol>
+        <p class="StylebodytextBold">How Basic Authentication Is Used</p>
+        <p class="BodyText1">Surescripts will set up a username and password for participant to use in messages participant sends to Surescripts. Participants will always use Basic Authentication in the message header for message posted to the Surescripts assigned URL in test and production. The assigned URL ends with “/AuthenticatingXMLServer.aspx”. For example:&#160; https://messaging.surescripts.net/ParticipantName/AuthenticatingXmlServer.aspx</p>
+        <p class="BodyText1">How to attach the username and password to the header (Base64 password encoding)</p>
+        <ol>
+            <li style="margin-top: 6pt;">Concatenate the username and password, separating them with a colon: “username:password”</li>
+            <li class="ListNumber2" style="margin-top: 6pt;">Convert that concatenation into a UTF8 encoded byte array</li>
+            <p class="BodyText2">[0]: 102<br />[1]: 123<br />[2]: 105, etc, et</p>
+            <li style="margin-top: 6pt;">Convert that array into a BASE64 encoded string:<br />dXNlcm5hbWU6cGFzc3dvcmQ=</li>
+            <li class="ListNumber2" style="margin-top: 6pt;">Specify the authentication type of 'Basic' by adding the word 'Basic' to it:<br />"Basic dXNlcm5hbWU6cGFzc3dvcmQ="</li>
+            <li class="ListNumber2" style="margin-top: 6pt;">Add that string to the Authorization header.&#160; It will look like:<br />Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</li>
+            <li class="ListNumber2" style="margin-top: 6pt;">Send the web request - HttpWebRequest.Post</li>
+        </ol>
+        <p class="StylebodytextBold">Basic Authentication Example:</p>
+        <p class="BodyText1">This Basic Authentication example can be found at: http://en.wikipedia.org/wiki/Basic_authentication_scheme</p>
+        <p class="BodyText1">The user name "Aladdin" and password "open sesame" would be combined as "Aladdin:open sesame" – which is equivalent to QWxhZGRpbjpvcGVuIHNlc2FtZQ== when encoded in base-64. In other words, </p>
+        <p class="BodyText1">Sample Post:</p>
+        <p class="BodyText1Indent2">POST /URL Provided to you by SureScripts HTTP/1.1</p>
+        <p class="BodyText1Indent2">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <p class="BodyText1Indent2">Content-Type: text/xml</p>
+        <p class="BodyText1Indent2">Host: xxx.xx.x.xxx</p>
+        <p class="BodyText1Indent2">Content-Length: 1142</p>
+        <p class="BodyText1Indent2">Expect: 100-continue</p>
+        <p class="BodyText1Indent2">HTTP/1.1 100 Continue</p>
+        <h2 class="Heading2"><a name="Timeouts"></a>Timeouts</h2>
+        <p class="BodyText1">For round-trip transactions, the initiator of a transaction can expect Surescripts to time out after 27 seconds of attempting to respond to the request. Therefore, the initiator should set their time-out to a value at least three seconds greater, or 30 seconds.</p>
+        <h2 class="Heading2"><a name="Complian"></a>Compliance</h2>
+        <p class="BodyText1">Prior to using Surescripts for transmissions of electronic prescriptions, each participant must verify that such transmissions are legal in the states it services.</p>
+        <p class="BodyText1">Each participant must also use the Surescripts System in compliance with applicable restrictions on steering in order that patients retain control over the choice of pharmacy. A prescriber participant must not steer a patient to have prescriptions filled at one pharmacy over another. </p>
+        <p class="BodyText1">Participant pharmacy and prescriber systems must also be protected from fraud and unauthorized access to the generation of prescriptions and refills. Appropriate system security should be present to allow only specific authorized persons access to these activities.</p>
+        <p class="BodyText1">While implementing Prescription Routing according to the NCPDP SCRIPT version 10.6 standard, the participant must comply with the Participant Responsibilities itemized in the then current ‘Surescripts Network Operations Guide’ (NOG). These responsibilities are in the areas of certification requirements, production operations requirements, directory management, training, and support. Every participant must have a signed NOG Acknowledgement form on file. The NOG is available to all network participants and can be obtained as a supplemental file to this document by sending a request to:&#160; <a href="mailto:support@surescripts.com" target="_blank">support@surescripts.com</a>.</p>
+    </body>
+</html>

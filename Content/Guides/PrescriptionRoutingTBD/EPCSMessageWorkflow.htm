@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="590" MadCap:lastWidth="1033">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643293"></a>EPCS Message Workflow</h2>
+        <p class="BodyText1">All e-prescribing applications sending Electronic Prescriptions for Controlled Substances are required to provide proof of successfully completing a third party audit according to the DEA requirements. This proof of successful audit is required before the application is able to send messages across the Surescripts network.</p>
+        <p class="BodyText1">The EPCS flow for <a name="Fillable_messages"></a>fillable messages (NewRx, Approved/Approved with changes Refill Response, and Approved/Approved with changes Change Response) follows the flow above with these additions:</p>
+        <ul>
+            <li>The service level for both the prescriber and pharmacy must be enabled for controlled substances. Otherwise the message will be rejected.</li>
+            <li>The message must be digitally signed and contain either the signature or the flag indicating it has been signed. Surescripts will not validate the signature.</li>
+            <li>The message must contain at least one of the following: NDC, Compound Flag, or Supplies Flag.</li>
+        </ul>
+        <p class="StylebodytextBold">How Surescripts determines when to apply EPCS processing to a message</p>
+        <p class="Graphic" style="margin-left: 5pt;">
+            <img src="../../Resources/Images/Prescription Routing/EPCS Message Workflow.png" style="width: 865px;height: 263px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+    </body>
+</html>

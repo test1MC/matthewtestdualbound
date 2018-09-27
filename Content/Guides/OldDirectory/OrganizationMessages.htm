@@ -1,0 +1,939 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="8119.333" MadCap:lastWidth="731">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="_Toc441585677"></a>Organization Messages</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="_Toc441585678"></a>AddOrganization</h2>
+        <p class="BodyText1">A customer can use the AddOrganization message to add a new organization to the directory if the organization is managed by the customer account (Account ID). The organization type must be specified in the message as either: General, Pharmacy, or Payer. All organizations added to the directory by a customer will be permanently associated with that customer. When adding a Pharmacy organization type, the NCPDPID specified in the AddOrganization message must not already exist in the Surescripts pharmacy directory or an error message will be returned.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="AddOrgan"></a>AddOrganization – Diagram</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Directories 4.6/Organization Messages.png" style="visibility: visible;mso-wrap-style: square;width: 648px;height: 578px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3" MadCap:autonum="1.1.2 "><a name="_Toc441585680"></a>AddOrganization – Diagram (DirectoryInformation Expanded)</h3>
+        <p class="Graphic" style="margin-left: 0pt;">
+            <img src="../../Resources/Images/Directories 4.6/Organization Messages_1.png" style="visibility: visible;mso-wrap-style: square;width: 760px;height: 939px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.2 "><a name="_Toc441585681"></a>Organization Elements</h2>
+        <p class="BodyText1">Each message updating or retrieving organization information will contain a Pharmacy element in the message body.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">Data Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;font-weight: bold;">COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">&lt;OrganizationType&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">The type of Organization that is being registered.</p>
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">Valid values:</p>
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">- General</p>
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">- Pharmacy</p>
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;">- Payer</p>
+                        <p class="TableText" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;ParentOrganizationID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">A Surescripts-provided identifier which allows customers to create a hierarchy of organizations. This ID was created and returned when the parent organization was created in the Surescripts directory. Any organization type may be included in the hierarchy, as long as the customer adding the child organization manages the parent organization being assigned.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;OrganizationName&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..100</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">The name of the pharmacy, payer, or general organization.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Organization name cannot be the same as the name of the city in the address and it cannot be only numeric.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- General organization is an..100.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- Pharmacy and Payer is an..35.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">When a pharmacy store, general organization, or payer is part of a larger healthcare enterprise, Surescripts recommends including identification of the larger enterprise in the name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;DirectoryInformation&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;PortalID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">ID of the portal associated with the organization provided by Surescripts. If an account needs to support more than one application version, Surescripts can set up multiple portal IDs.</p>
+                        <p class="CommentText" style="margin-top: 3pt;margin-bottom: 1pt;"><b>Note:</b> Enforced by business rule, not schema.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;AccountID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">ID of the account associated with the organization provided by Surescripts.</p>
+                        <p class="CommentText" style="margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Enforced by business rule, not schema.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;BackupPortalID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Used for fax portal. If primary delivery failed and backup is specified, it will attempt to process the message using the backup portal that is specified.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Values:</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">-1 = Turned Off</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;"> 1 = Turned On</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Pharmacies in certain states, e.g. NY, may only use the value "-1" BackupPortalId. These states do not permit use of fax backup for pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;FaxPortalName&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Not used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;ServiceLevels&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Do not send if there are no services.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;&#160;&#160; &lt;ServiceLevel&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Required if ServiceLevels element is present. Currently a maximum of 50 service levels are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;&#160;&#160;&#160;&#160; &lt;ServiceLevelName&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..50</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Required if ServiceLevel is present.</p>
+                        <p class="TableBody" style="margin-top: 3pt;">Service Level(s) associated with the organization. Designated by the organization’s capabilities. Values are case sensitive. For more detail, please refer to <a href="AppendixB_ServiceLevelTypes.htm">Service Level Types</a>.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;DefaultLocationServiceLevel&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">n..5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Not used on Organization messages. Any organization is assumed to be the default location for the CIMessage service for this organization's Direct Address, when provided.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;ActiveStartTime&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Date time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Date when the organization is added to the Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) should be used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Must be set to current date when a new organization location is added.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">For a pharmacy account when updating organization can set the ActiveStartTime to a future date in order to activate the organization on the Surescripts network. However, this is not a recommended practice as training should be completed prior to store activation on the network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;ActiveEndTime&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Date time</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Date when the organization is deactivated and will no longer be active in Surescripts directory.</p>
+                        <p class="TableBody">YYYY-MM-DDTHH:MM:SS.FZ Coordinated Universal Time (UTC) should be used.</p>
+                        <p class="TableBody">Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note: </span>To deactivate an organization, ActiveEndTime must be set to a date in the past and ServiceLevel must not be present in the message. The organization record is removed from the directory download files 30 days after the ActiveEndTime.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;Test&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Not used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;Specialties&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;">Specialties is always required for the Pharmacy organization type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160;&#160;&#160; &lt;Specialty&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 5pt;margin-bottom: 1pt;">Required if Specialties is present.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;&#160;&#160;&#160;&#160; &lt;SpecialtyName&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">Surescripts directory identifier that can be used to designate additional information about a pharmacy organization.</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">This field is required for Pharmacy Organization type and not used for General or Payer Organization types. Values are case sensitive.</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">Values:</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">Only 1 of Mail Order or Retail Pharmacy is required. (Both cannot be set.)</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- MailOrder </p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- FaxPharmacySurescripts </p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- Retail</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- Specialty</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- LongTermCare</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- TwentyFourHourStore</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- FaxPharmacyExternal</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">- SupportsDigitalSignature</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;margin-left: 0pt;"><span style="font-weight: bold;">Note:</span> In Admin Console, this field is called “Directory Specialty”.</p>
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Surescripts supports four specialties per pharmacy. Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;InStoreNCPDPID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="margin-top: 3pt;margin-bottom: 1pt;">Not used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;UseCases&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Used to further define a message. A use case has a defined set of expectations for message content for those participating.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;&#160;&#160; &lt;UseCase&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Required if UseCases is used. Use cases are used to identify customers whose applications are capable of sending and receiving specifically defined content.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Up to 10 occurrences of UseCase are permitted. More could be added in the future. Refer to schema for more details.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Valid values will be distributed in documentation specific to each use case.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;&#160;&#160;&#160;&#160; &lt;UseCaseCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">For example:</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- PNLIMMUN</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- RTBC</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- ADVSAVE</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- PBMMedAdhr</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">- GapsInCare</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;Identification&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">The identification of the organization. Sub-elements may be repeated.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;OrganizationID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">n..10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Surescripts assigns this ID in response to the “AddOrganization” message and recommends the vendor system store this ID for use in future UpdateOrganization messages.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;NCPDPID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an7</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Required for Pharmacy Organization Type. Must be a valid NCPDPID according to the NCPDPID check digit routine and should be assigned to the pharmacy according to the official NCPDPID Registry.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;FileID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;StateLicenseNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;MedicareNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;MedicaidNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">  &lt;PPONumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;PayerID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;BINLocationNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;DEANumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">The 9 character DEA number must be presented with optional suffix separated by the “-“, e.g. AA0000001-123XX. All pharmacies with a DEA must be associated with a valid and active DEA number issued by the DEA.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;HIN&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;SecondaryCoverage&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;NAICCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;PromotionNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;SocialSecurity&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;NPI&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">NPI should contain the organizational NPI of the pharmacy. Must be a valid NPI according to the NPI check digit routine and assigned to the pharmacy according to the official NPI Registry.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;PriorAuthorization&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;MutuallyDefined&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">  &lt;DirectAddress&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..255</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Used in clinical messaging to identify an endpoint (a sender or receiver) when information is exchanged. The DirectAddress has two parts, a Health End Point Name and a Health Domain Name.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">For example, <a href="mailto:drbob@samplehispname.org" target="_blank"><span class="Hyperlink" style="font-size: 9pt;">drbob@sample</span><span class="Hyperlink" style="font-size: 9pt;">-direct.com</span></a>.</p>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">The Direct Address is also sometimes referred to as a “Health Internet address.”</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160; &lt;StoreNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Pharmacy ID. Pharmacy organization assigns Store number.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;Address&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Surescripts standardizes all addresses based on the US Postal Service CASS standards for download. Both vendor-submitted and standardized addresses are available in the download.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;AddressLine1&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">AddressLine1 (must be physical street address; P.O. Box is not allowed). Must contain at least one whitespace character.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;AddressLine2&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 0pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;City&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 0pt;">&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;State&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">an..2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">For values, see the NCPDP External Code List Appendix C - United States and Canadian Province Postal Service Abbreviations.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Even though the Canadian codes are listed, the rest of the Canadian address is not supported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;ZipCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="CommentReference" style="margin-top: 5pt;margin-bottom: 1pt;font-size: 9pt;">n5/9</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Use the format 99999 or 999999999. Do not include hyphen (-) or other punctuation.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 0pt;">Canadian postal codes are not supported.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;font-size: 10pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;TwentyFourHourFlag&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Not used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;CrossStreet&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">The cross street at which the organization is located.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;Email&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..80</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Organization's email address.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">&lt;PhoneNumbers&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">ComplexType</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Required unless Organization has clinical messaging service levels ONLY.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Phone number should be where organization would like to be contacted.</p>
+                        <ul>
+                            <li style="font-size: 10pt;">The first Phone number (TE) is required for pharmacy organization and always the primary phone number in 5553334466x1234 format, where x1234 is extension and optional. Please note this extension is just an example. Less/more than four digits is allowed.</li>
+                            <li style="font-size: 10pt;">The second Phone number (FX) is required for pharmacy organization and is always the primary fax number in format 5553334466. <span style="font-weight: bold;">The fax number will be used to communicate patient confidential information and therefore must be secure from the public.</span></li>
+                            <li style="font-size: 10pt;">Any phones in excess of the PrimaryPhone and Fax are referred to as PhoneAlt1-5 and the qualifier is referred to as PhoneAlt1-5Qualifier.</li>
+                            <li style="font-size: 10pt;">For general organization types, a phone (communication) number of any type is required.</li>
+                        </ul>
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> An additional PhoneAlt6 and PhoneAlt6Qualifier can be added via the Admin Console and the Update and Add messages; however, this phone number/qualifier will not be populated in the organization download.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160; &lt;Phone&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Complex Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Eight phone numbers are allowed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160;&#160;&#160; &lt;Number&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">an..25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Required if Phone element is present. Phone numbers must be 10 digits, with an optional extension, may not contain punctuation and cannot have &gt; 7 repeated numbers. Area code cannot be 555 or start with a 0 or a 1.</p>
+                        <p class="TableBody">The character limit noted in the Data Type applies to each individual value in a repeatable field element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">&#160;&#160;&#160; &lt;Qualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">an2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableText" style="margin-top: 3pt;margin-bottom: 1pt;">Required if Phone element is present.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">Valid values:</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">BN = beeper</p>
+                        <p class="TableBody" style="margin-top: 3pt;">CP = cellular</p>
+                        <p class="TableBody" style="margin-top: 3pt;">FX = fax</p>
+                        <p class="TableBody">HP = home</p>
+                        <p class="TableBody">NP = night</p>
+                        <p class="TableBody">TE = telephone</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;">WP = work</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 0pt;"><span style="font-weight: bold;">Note:</span> See &lt;PhoneNumbers&gt; above for more details on qualifiers.</p>
+                        <p class="TableText" style="margin-top: 5pt;margin-bottom: 1pt;"><span style="font-weight: bold;">Note:</span> Additional values may be added. Systems should not fail if an unexpected value is received.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" MadCap:autonum="1.3 "><a name="_Toc441585682"></a>AddOrganizationResponse</h2>
+        <p class="BodyText1">When an organization is successfully added, the AddOrganizationResponse message is returned to the customer noting that the organization was added successfully. The message contains a new OrganizationID for the organization which may be up to 10 digits, and echoes back the information that was in the AddOrganization message.</p>
+        <h3 class="Heading3" MadCap:autonum="1.3.1 "><a name="_Toc441585683"></a>AddOrganizationResponse – Diagram</h3>
+        <p class="BodyText1">For Organization details please see <a href="#AddOrgan">Add Organization-Diagram</a> .</p>
+        <p>
+            <img src="../../Resources/Images/Directories 4.6/AddOrganizationResponse-Diagram.png" style="width: 857px;height: 256px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2" style="page-break-before: always;" MadCap:autonum="1.4 "><a name="_Toc441585684"></a>UpdateOrganization</h2>
+        <p class="BodyText1">A customer can update directory information for any organization record that is managed by the customer account (Account ID). Maintenance may include: updates of demographic information, activation or deactivation of organizations and maintenance of service levels.</p>
+        <p class="BodyText1">UpdateOrganization will override (set to null or default) any optional element that is not included in the update message. To avoid unintentional deletion of data, it is recommended to first utilize a GetOrganization message to retrieve current information prior to making the desired updates; then submit the UpdateOrganization message.</p>
+        <h3 class="Heading3" MadCap:autonum="1.4.1 "><a name="_Toc441585685"></a>UpdateOrganization – Diagram</h3>
+        <p class="BodyText1">For DirectoryInformation details please see AddOrganization – Diagram Directory Information Expanded<a href="#AddOrgan"> AddOrganization – Diagram Directory Information Expanded</a>.</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Directories 4.6/UpdateOrganization-Diagram.png" MadCap:mediastyle="@media print { max-width: 70%; }" style="width: 413px;height: 48px;" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.5 "><a name="_Toc441585686"></a>GetOrganization</h2>
+        <p class="BodyText1">The GetOrganization function is used to retrieve organization information based on an existing organization’s OrganizationID for any organization type or the pharmacy NCPDPID for a Pharmacy Organization type. A recommended use for this message is to obtain real-time information prior to updating an organization. The organization information will be returned only if the account (software vendor) owns the organization record.</p>
+        <p class="StylebodytextBold">Error Scenarios:</p>
+        <ul>
+            <li>If the data supplied or the structure of message is invalid, an error message will be returned.</li>
+            <li class="ListBullet5" style="list-style-type: disc;">If there are no organization records found that match the given Organization or NCPDP ID, or the record is not managed by this account, an error message indicating that the organization is not found will be returned.</li>
+        </ul>
+        <p class="BodyText1">The following options are available to obtain the latest information on the organization you wish to update.</p>
+        <p class="BodyText1">Using Directory Messaging, send a GetOrganization message. Receive a response of GetOrganizationResponse or an Error Message.</p>
+        <p class="StylebodytextBold">GetOrganization Workflow</p>
+        <ol>
+            <li>Retrieve the existing organization information using <span style="font-weight: bold;">Get</span><span style="font-weight: bold;">Organization</span> message.</li>
+            <li>Change <b>&lt;GetOrganizationResponse&gt;</b> to <b>&lt;UpdateOrganization&gt;</b> to generate the base UpdateOrganization message.</li>
+            <li>Update the desired values in the base<span style="font-weight: bold;"> Update</span><span style="font-weight: bold;">Organization</span> message.</li>
+            <li>Submit the UpdateOrganization message for processing.</li>
+            <li>Receive either a response of Status or Error.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">To ensure that an organization is completely disabled, the organization should set the ActiveEndTime to a date in the past and service level should not be present.</p>
+        <h3 class="Heading3" MadCap:autonum="1.5.1 "><a name="_Toc441585687"></a>GetOrganization – Diagram</h3>
+        <p>
+            <img src="../../Resources/Images/Directories 4.6/GetOrganization-Diagram.png" style="width: 433px;height: 85px;" MadCap:mediastyle="@media print { max-width: 80%; }" />
+        </p>
+        <h2 class="Heading2" MadCap:autonum="1.6 "><a name="_Toc441585688"></a>GetOrganizationResponse</h2>
+        <p class="BodyText1">The information contained in the message will include all directory related information for the given organization that is stored in the Surescripts database.</p>
+        <h3 class="Heading3" MadCap:autonum="1.6.1 "><a name="_Toc441585689"></a>GetOrganizationResponse – Diagram</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Directories 4.6/GetOrganizationResponse-Diagram.png" MadCap:mediastyle="@media print { max-width: 70%; }" style="width: 471px;height: 50px;" />
+        </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For Status and Error response message details, please refer to <a href="DirectoryErrorMessages1.htm">Directory Error Messages</a>.</p>
+    </body>
+</html>

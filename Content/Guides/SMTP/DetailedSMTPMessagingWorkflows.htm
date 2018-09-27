@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="7092" MadCap:lastWidth="602">
+    <head>
+        <MadCap:changeData>
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="1" MadCap:timestamp="2016-12-28T14:39:30.1793071-06:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="2" MadCap:timestamp="2016-12-28T14:39:31.6363608-06:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="3" MadCap:timestamp="2016-12-28T14:46:35.2915380-06:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="4" MadCap:timestamp="2016-12-28T14:46:38.2896226-06:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="5" MadCap:timestamp="2016-12-28T14:47:41.5209288-06:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="6" MadCap:timestamp="2016-12-28T14:47:41.5209288-06:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="7" MadCap:timestamp="2016-12-28T14:49:24.2652614-06:00" />
+        </MadCap:changeData>
+    </head>
+    <body>
+        <h2 class="Heading2">Detailed <MadCap:change MadCap:changes="2">SMTP</MadCap:change><MadCap:change MadCap:changes="1">XDR</MadCap:change> Messaging Workflows</h2>
+        <p class="BodyText1">The following Clinical Direct Messaging workflows demonstrate <MadCap:change MadCap:changes="3">SMTP</MadCap:change><MadCap:change MadCap:changes="4">the requests and responses for XDR</MadCap:change> messages and Delivery Status Notifications that are expected from the sending and receiving systems. <MadCap:change MadCap:changes="4">These messaging workflows detail customers who support delivery notifications and those that don't support delivery notifications for both the sending and receiving systems as listed in the header of the workflow. </MadCap:change>The workflows do not represent a comprehensive listing of all possible scenarios.</p>
+        <p class="BodyText1">Even though the clinical messaging workflows only demonstrate single recipient messaging, multiple recipient messaging is managed similarly.</p>
+        <p class="StylebodytextBold">Glossary of workflow terms:</p>
+        <ul>
+            <li><i>Sending System:</i> system connected to Surescripts network originating <MadCap:change MadCap:changes="3">SMTP</MadCap:change><MadCap:change MadCap:changes="4">XDR</MadCap:change> message.</li>
+        </ul>
+        <ul>
+            <li><i>Sender:</i> originator of <MadCap:change MadCap:changes="3">SMTP</MadCap:change><MadCap:change MadCap:changes="4">XDR</MadCap:change> message routed through sending system.</li>
+        </ul>
+        <ul>
+            <li><i>Receiving System:</i> system connected to Surescripts network receiving original <MadCap:change MadCap:changes="3">SMTP</MadCap:change><MadCap:change MadCap:changes="4">XDR</MadCap:change> message.</li>
+        </ul>
+        <ul>
+            <li><i>Recipient:</i> receiver of the original <MadCap:change MadCap:changes="6">SMTP</MadCap:change><MadCap:change MadCap:changes="5">XDR</MadCap:change> message within the receiving system.</li>
+        </ul>
+        <h3 class="Heading3">
+            <MadCap:change MadCap:changes="6">SMTP</MadCap:change>
+            <MadCap:change MadCap:changes="5">XDR</MadCap:change> <MadCap:annotation MadCap:createDate="2016-12-28T14:48:50.7305104-06:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="See word doc from David." MadCap:editor="Sally.Fresquez" MadCap:editDate="2016-12-28T14:49:07.1699087-06:00">Messaging</MadCap:annotation></h3>
+        <p class="StylebodytextBold">Scenario 1: SOAP Fault/Authentication Error</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/XDR/Sec3Scen1.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">1a). Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">1b). Sending system receives a SOAP Fault/400 Level Error.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;" MadCap:changes="7">SOAP faults and Authentication errors provide an error message indicating a SOAP fault/"Invalid XDR message".</p>
+        <p class="StylebodytextBold">Scenario 2: Surescripts Sends Failure Response</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/XDR/Sec3Scenario2.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">2a). Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">2b). Sending system receives failure response from Surescripts.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> Surescripts responds with a failure response when the message is improperly formatted. Additionally, Surescripts sends a failure response when unable to validate the direct address (for XDR Gateways not configured to accept delivery notifications).</p>
+        <h3 class="Heading3">Send/Receive Delivery Notifications Workflows</h3>
+        <p class="StylebodytextBold">Scenario 3: Receiving System Sends Success Response</p>
+        <ul>
+            <li>Sending system: configured to send/receive delivery notifications</li>
+            <li>	Receiving system: not configured to send/receive delivery notifications</li>
+        </ul>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/XDR/Sec3Scenar3.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.
+</p>
+        <p class="BodyText1">3a).	Sending system sends XDR message to Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">3b).	Sending system receives success response from Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">3c).	Receiving system receives XDR message from Surescripts.
+</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">3d).	Receiving system sends success response to Surescripts and should not send any additional status messages.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">3e).	Sending system receives DSN: Success generated by Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">3f).	Sending system sends success response to Surescripts.
+</p>
+        <p class="StylebodytextBold">Scenario 4: Receiving System Sends DSN: Success</p>
+        <ul>
+            <li>Sending system: configured to send/receive delivery notifications</li>
+            <li>Receiving system: configured to send/receive delivery notifications</li>
+        </ul>
+        <p class="StylebodytextBold"><a href="../../Resources/Images/XDR/Sec3Scenario4.png"><img src="../../Resources/Images/XDR/Sec3Scenario4.png" /></a>
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">4a).	Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">4b).	Sending system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">4c).	Receiving system receives XDR message from Surescripts.</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">4d).	Receiving system sends success response to Surescripts (not forwarded to sending system).</p>
+        <p class="BodyText1" style="margin-top: 6px;">4e).	Receiving system sends DSN: Success to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">4f).	Receiving system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">4g).	Sending system receives DSN: Success from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">4h).	Sending system sends success response to Surescripts.</p>
+        <p class="StylebodytextBold">Scenario 5: Receiving System Sends Failure Response</p>
+        <ul>
+            <li>Sending system: configured to send/receive delivery notifications</li>
+            <li>Receiving system: not configured to send/receive delivery notifications</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario5.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">
+5a).	Sending system sends XDR message to Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">5b).	Sending system receives success response from Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">5c).	Receiving system receives XDR message from Surescripts.
+</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">5d).	Receiving system sends failure response to Surescripts (not forwarded to sending system).
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">5e).	Sending system receives DSN: Failure from Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">5f).	Sending system sends success response to Surescripts.
+</p>
+        <p class="StylebodytextBold">Scenario 6: Receiving System Sends DSN: Failure</p>
+        <ul>
+            <li>Sending system: configured to send/receive delivery notifications</li>
+            <li>Receiving system: configured to send/receive delivery notifications</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario6.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">6a).	Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">6b).	Sending system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">6c).	Receiving system receives XDR message from Surescripts.</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">6d).	Receiving system sends success response to Surescripts (not forwarded to sending system).</p>
+        <p class="BodyText1" style="margin-top: 6px;">6e).	Receiving system sends DSN: Failure to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">6f).	Receiving system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">6g).	Sending system receives DSN: Failure from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">6h).	Sending system sends success response to Surescripts.</p>
+        <h3 class="Heading3">NO DELIVERY STATUS NOTIFICATION WORKFLOWS</h3>
+        <p class="StylebodytextBold">Scenario 7: Receiving System Sends Success Response</p>
+        <ul>
+            <li>Sending system: not configured to send/receive delivery notifications</li>
+            <li>Receiving system: not configured to send/receive delivery notifications</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario7.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">7a).	Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">7b).	Sending system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">7c).	Receiving system receives XDR message from Surescripts.</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">7d).	Receiving system sends success response to Surescripts (not forwarded to sending system).</p>
+        <p class="StylebodytextBold">Scenario 8: Receiving System Sends DSN: Success</p>
+        <ul>
+            <li>Sending system: not configured to send/receive delivery notifications</li>
+            <li>Receiving system: configured to send/receive delivery notifications</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario8.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">8a).	Sending system sends XDR message to Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">8b).	Sending system receives success response from Surescripts.</p>
+        <p class="BodyText1" style="margin-top: 6px;">8c).	Receiving system receives XDR message from Surescripts.</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">8d).	Receiving system sends success response to Surescripts (not forwarded to sending system).</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">8e).	Receiving system sends DSN: Success to Surescripts (not forwarded to sending system).</p>
+        <p class="BodyText1" style="margin-top: 6px;">8f).	Receiving system receives success response from Surescripts.</p>
+        <p class="StylebodytextBold">Scenario 9: Receiving System Sends Failure Response</p>
+        <ul>
+            <li>Sending system: not configured to send/receive delivery notifications
+</li>
+            <li>Receiving system: not configured to send/receive delivery notifications
+</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario9.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">
+9a).	Sending system sends XDR message to Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">9b).	Sending system receives success response from Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">9c).	Receiving system receives XDR message from Surescripts.
+</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">9d).	Receiving system sends failure response to Surescripts (not forwarded to sending system).
+</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Customers using XDR gateways not configured to receive delivery notifications may determine if the message was delivered to the ultimate recipient by contacting the recipient directly.
+</p>
+        <p class="StylebodytextBold">Scenario 10: Receiving System Sends DSN: Failure
+</p>
+        <ul>
+            <li>Sending system: not configured to send/receive delivery notifications
+</li>
+            <li>Receiving system: configured to send/receive delivery notifications
+</li>
+        </ul>
+        <p>
+            <img src="../../Resources/Images/XDR/Sec3Scenario10.png" />
+        </p>
+        <p class="BodyText1">Sender generates an XDR message.</p>
+        <p class="BodyText1">
+10a).	Sending system sends XDR message to Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">10b).	Sending system receives success response from Surescripts.
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">10c).	Receiving system receives XDR message from Surescripts.
+</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">10d).	Receiving systems sends success response to Surescripts (not forwarded to sending system).
+</p>
+        <p class="BodyText1Indent" style="margin-top: 6px;">10e).	Receiving system sends DSN: Failure to Surescripts (not forwarded to sending system).
+</p>
+        <p class="BodyText1" style="margin-top: 6px;">10f).	Receiving system receives success response from Surescripts.
+</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> Customers using XDR gateways not configured to receive delivery notifications may determine if the message was delivered to the ultimate recipient by contacting the recipient directly.</p>
+    </body>
+</html>

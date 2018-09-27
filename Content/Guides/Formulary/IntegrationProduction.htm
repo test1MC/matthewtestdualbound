@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Integration &amp; Production</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805457"></a>Integration Process</h2>
+        <p class="BodyText1">Once Surescripts assigns an Integration resource, customers will be contacted to begin the project(s) and will be guided through the Surescripts Integration process. The Integration resource will provide Surescripts documentation, product education, access to the Surescripts   staging environment, assistance during design and development phases and testing to prepare for <MadCap:variable name="Variables.lowercase_certification/messageValidation" />. The Integration resource will perform <MadCap:variable name="Variables.lowercase_certification/messageValidation" /> testing, and once successful, will provide access to the Surescripts production environment.</p>
+        <p class="note">The time frame of the project can vary depending on your resource allocation for the project.</p>
+        <p class="BodyText1"><b>Meeting Requirements</b>
+        </p>
+        <p class="BodyText1">During Integration, customers undergo <MadCap:variable name="Variables.lowercase_certification/messageValidation" /> testing to demonstrate all requirements are met. <MadCap:variable name="Variables.capital_Certification/MessageValidation" /> focuses on message format, and when appropriate, application workflow and display in accordance with Surescripts documentation<MadCap:conditionalText MadCap:conditions="Default.AppCert"> and the associated Application Certification Requirements (ACRs)</MadCap:conditionalText>. Upon successful completion of <MadCap:variable name="Variables.lowercase_certification/messageValidation" /> and, when applicable, other pre-production network requirements (e.g., Identity Proofing, DEA audit), customers may transition to production. </p>
+        <p class="BodyText1">For requirements, consider the following:</p>
+        <ul>
+            <li MadCap:conditions="Default.AppCert">Surescripts ACRs are required to be met to achieve production status on the Surescripts network and will be enforced as part of certification.</li>
+            <li>Surescripts business rules are data validations applied by Surescripts beyond NCPDP requirements that will cause a message to be successful or rejected.</li>
+            <li>Surescripts test cases do not cover all possible scenarios in production. Customers are responsible for testing all scenarios specific to their production environment.</li>
+            <li>Customers must be prepared to make allowances for things that are not governed by our <MadCap:conditionalText MadCap:conditions="Default.AppCert">ACRs or </MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.NCPDP">NCPDP</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.X12">X12</MadCap:conditionalText> requirements or recommendations.</li>
+        </ul>
+        <h2 class="Heading2" style="color: #000000;"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1">The following table outlines terminology usage for this guide:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Term</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Term usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">must</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Requirements that are enforced as part of the production code or Surescripts business rules.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Requirements customers are required to meet in order to be certified on the Surescripts network. These requirements will be enforced as part of certification.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">should</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Used for guidance and best practices. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">F.###</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Designates a Formulary ACR.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805459"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="_Toc499805460"></a>Communication Rules</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CommunicationRules.flsnp" />
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805461"></a>Data Load Connectivity</h2>
+        <p class="p" style="color: #000000;">Surescripts currently supports two data loads that require a customer to send large files to Surescripts. The Master Patient Index (MPI) Data Load and the Formulary and Benefit Data Load are created by the PBM/payer and sent to Surescripts for storage. The Formulary and Benefit File is then ready for subsequent distribution. For these data loads, Surescripts supports Secure FTP for file transfer between the PBM/payer and Surescripts.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc499805462"></a>Secure FTP</h3>
+        <p class="p"><span style="color: #000000;">Secure FTP is supported for the transfer of Master Patient Index (MPI) data loads and Formulary and Benefit data uploads using FTP over SSL, SSH with FTP and HTTP/S. Surescripts supports both Client-to-Server and Server-to-Server communications with </span><span style="color: #000000;">compatible client software. A list of compatible software should be requested from Surescripts. Surescripts processes do not have file naming requirements. Security is enforced through data encryption during transfer and User ID/Password. Customer files are isolated from other customer’s files.</span>
+        </p>
+        <p class="p" style="color: #000000;">Connectivity to Secure FTP can be established through an Internet route or through a Private Virtual Circuit with Surescripts’ contracted MPLS service provider. If using the Private Virtual Circuit, the customer must allow Surescripts to install and manage two routers in their data center that connect to the customer’s extranet. The customer must have dual network connectivity for redundancy.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805463"></a>Security</h2>
+        <p class="p" style="color: #000000;">Each customer must ensure that appropriate security measures are in place within its scope of operations to the extent of its interface with Surescripts and Surescripts’ systems and data. These security measures must be designed to protect against fraud and abuse and to maintain patient confidentiality.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc499805464"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2679.333" MadCap:lastWidth="996">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc444596896"></a>Connectivity</h1>
+        <h2 class="Heading2"><a name="_Toc444596897"></a>Connectivity Methods</h2>
+        <h3 class="Heading3"><a name="_Toc444596898"></a>HTTPS</h3>
+        <p>Surescripts supports the HTTPS method for connectivity to transmit transactions between customers. Using HTTPS, customers act as the client when initiating and submitting POST web requests to the servers on the Surescripts system. With certain transactions, Surescripts act as the client when initiating and submitting POST requests to servers on customer systems</p>
+        <p class="BodyText1">Surescripts supports HTTPS with the following specifications:</p>
+        <ul>
+            <li>TCP/IP is the communication protocol utilized between the customer and Surescripts.</li>
+            <li>Customer is required to use a static, registered IP address.</li>
+            <li>When Surescripts initiates an HTTPS session with a customer, the customer’s server must use a digital certificate with, at minimum, a 2048-bit public key. This public key is used to encrypt, at a minimum, a 128-bit session key; however, 256-bit is preferred.</li>
+            <li>For server certificates, Surescripts requires a public Certificate Authority (CA) and does not accept self-signed certificates.</li>
+            <li>Surescripts requires Transport Layer Security (TLS) 1.2 with the HTTPS protocol. Surescripts restricts the use of certain cryptographic algorithms and protocols. Weaker cipher suites export grade are not supported. </li>
+        </ul>
+        <p class="StylebodytextBold">Supported TLS 1.2 Cipher Suites Inbound to Surescripts <span style="font-weight: normal; font-style: italic; font-size: 10pt;">(This list is subject to change.)</span><br /></p>
+        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 197px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 38px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 65px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 64px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 96px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 85px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 14%;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher Suite (hex value)</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Bits</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Protocols</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Key Exchange</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Authentication</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="font-size: 9pt;">MAC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES256-GCM-SHA384 (0xc030)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">ECDHE-RSA-AES256-SHA384 (0xc028)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES256-CBC-SHA (0xc014)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES256-GCM-SHA384 (0x9d)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES256-SHA256 (0x3d)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">AES256-SHA (0x35)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES128-GCM-SHA256 (0xc02f)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-RSA-AES128-SHA256 (0xc027)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">
+                        <p>ECDHE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES128-CBC-SHA (0xc013)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES128-GCM-SHA256 (0x9c)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES128-SHA256 (0x3c)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES128-SHA (0x2f)</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Although the TLS 1.2 standard supports more cipher suites than listed above, Surescripts will only support more secure TLS cipher suites and disabling support for other cipher suites that are not necessary for interoperability. For example, Surescripts will not support weaker "Export-Grade" cryptography. (See below.)</p>
+        <p class="StylebodytextBold">Unsupported TLS 1.2 Cipher Suites Inbound to or Outbound from Surescripts <span style="font-weight: normal; font-style: italic; font-size: 10pt;">(This list is subject to change.)</span></p>
+        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 200px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 52px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 67px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 69px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 83px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 75px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 14%;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher Suite (hex value)</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Bits</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Protocols</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Key Exchange</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Authentication</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="font-size: 9pt;">MAC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-AES256-GCM-SHA384 (0x9f)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-AES256-SHA256 (0x6b)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-AES256-SHA (0x39)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-DES-CBC3-SHA (0x16)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">168</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-AES128-GCM-SHA256 (0x9e)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-AES128-SHA256 (0x67)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-AES128-SHA (0x33)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">ADH-AES128-GCM-SHA256 (0xa6)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">ADH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">None</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ADH-AES128-SHA (0x34)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ADH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">None</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-DES-CBC-SHA (0x15)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">64</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-CAMELLIA256-SHA (0x88)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">CAMELLIA</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-CAMELLIA128-SHA (0x45)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">CAMELLIA</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-DES-CBC3-SHA (0xc012)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">168</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DHE-RSA-DES-CBC3-SHA (0x16)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">168</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDH-RSA-DES-CBC3-SHA (0xc00d)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">168</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DES-CBC3-SHA (0xa)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">168</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DHE-RSA-DES-CBC-SHA (0x15)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">64</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">EDH</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">DES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RC4-SHA (0x5)</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">128</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">RC4</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="font-size: 9pt;background-color: #afeeee;">SHA</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Supported TLS 1.2 Cipher Suites Outbound to Customers <span style="font-weight: normal; font-style: italic; font-size: 10pt;">(This list is subject to change.)</span></p>
+        <table style="width: 100%; mc-table-style: url('../../Resources/Stylesheets/GuideTables.css'); margin-left: 0; margin-right: auto;" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 204px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 46px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 62px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 64px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 90px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 72px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col style="width: 14%;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher Suite (hex value)</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Bits</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Protocols</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Key Exchange</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Authentication</th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 9pt;">Cipher</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="font-size: 9pt;">MAC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES256-SHA384 (0xc028)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-RSA-AES256-CBC-SHA (0xc014)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES256-GCM-SHA384 (0x9d)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES256-SHA256 (0x3d)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES256-SHA (0x35)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-RSA-AES128-SHA256 (0xc027)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-RSA-AES128-CBC-SHA (0xc013)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES128-GCM-SHA256 (0x9c)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES128-SHA256 (0x3c)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES128-SHA (0x2f)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">RSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-ECDSA- AES256-GCM-SHA384</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-ECDSA- AES128-GCM-SHA256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES-GCM</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-ECDSA- AES256-SHA384</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-384</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-ECDSA- AES256-SHA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE-ECDSA- AES128-SHA256</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 9pt;">SHA-256</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE-ECDSA- AES128-SHA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">128</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">TLS 1.2</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDHE</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">ECDSA</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">AES</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="background-color: #afeeee;font-size: 9pt;">SHA</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc444596899"></a>HTTP-Level Authentication</h3>
+        <p class="BodyText1">Please refer to your specific product implementation guide for detailed information around any additional authentication required.</p>
+        <h3 class="Heading3"><a name="_Toc444596900"></a>Requirements to Connect to Surescripts</h3>
+        <p class="BodyText1">Customers connect using HTTPS over the Internet.</p>
+        <ul>
+            <li>Surescripts filters access to web services by IP address. Customer must provide a static IP address (or a list of IP addresses) for all TCP/IP traffic to Surescripts.</li>
+            <li>Customer request to production and staging cannot originate from the same source IP address. The customer must provide two static lists of IP addresses; one for staging and one for production. These static lists of IP addresses provided by the customer for staging must be different than the address provided for production.</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="font-weight: bold;font-size: 11pt;">This is critical </span><span style="font-size: 11pt;">since the staging environment must never contain actual Protected Health Information (PHI), and the production environment should not contain test information. Customer employees/contractors may have varying levels of access to PHI; therefore, access to Staging/QA/Development systems should not directly allow access to production.</span>
+        </p>
+        <ul>
+            <li>Surescripts permits up to six (6) separate customer-owned IP addresses per Surescripts environment.</li>
+            <li>Customers must use the Surescripts-specified FQDN when configuring their system.<span style="font-weight: bold;"> Do not use IP addresses in host files or within application software.</span> Failure to comply will result in an inability to transmit messages to Surescripts data centers. Surescripts employs load balancing which relies on the specified Surescripts FQDNs to route traffic.</li>
+            <li>The IP address provided must either be registered with the American Registry for Internet Numbers (ARIN) using the customer's name and contact information (i.e. Amazon, AT&amp;T, Yahoo, or Comcast should not be used), or the customer must send an email to Surescripts to affirm that the customer-provided IP address is operated by the customer. The email must come from the customer’s domain (i.e. "@yahoo.com" or "@gmail.com" may not be used).</li>
+            <li>TLS connections inbound to Surescripts must use TCP/IP port 443.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="610" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Translation for 10.6 to 8.1 and 8.1 to 10.6</h2>
+        <p class="BodyText1">Please note that translation rules for fields indicated in the sections above as optional according to the NCPDP standard but “Not used by Surescripts” or “Not used for Medication History” are not listed below. Surescripts will pass through compliant values sent in many of these “not used” fields where allowed by applicable versions of the standard, but exceptions apply. Participants should not assume that all values sent in fields indicated as “not used” will be passed through to recipients.</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">10.6 Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">8.1 Field</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Gap</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">10.6 <span style="font-family: Wingdings;">à</span> 8.1 Translation</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">8.1 <span style="font-family: Wingdings;">à</span> 10.6Translation</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: </p>
+                        <p class="TableBody">&lt;SenderSoftware&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: Sender Software fields are new fields in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop composite including &lt;SenderSoftwareDeveloper&gt;, &lt;SenderSoftwareProduct&gt;, &lt;SenderSoftwareVersionRelease&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">XML only: </p>
+                        <p class="TableBody">Build: "NA translated from other version" for each &lt;SenderSoftware&gt; sub-field</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">RES-020: </p>
+                        <p class="TableBody">Code List Qualifier </p>
+                        <p class="TableBody">&lt;ApprovalReasonCode&gt; &lt;DenialReasonCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">10 loops allowed to be sent, but only value supported by Surescripts is ‘AQ’.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Map the first instance; </p>
+                        <p class="TableBody">Drop any additional loops.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map the first instance; </p>
+                        <p class="TableBody">Drop any additional loops.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">STS-020: </p>
+                        <p class="TableBody">Code List Qualifier </p>
+                        <p class="TableBody">&lt;DescriptionCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Error Description Codes added with 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop any Description Code not supported in 8.1.</p>
+                        <p class="TableBody">(Codes 220 – 475)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-020: </p>
+                        <p class="TableBody">Reference Number and Qualifier&#160; </p>
+                        <p class="TableBody">&lt;Identification&gt; Qualifier and Number</p>
+                        <p class="TableBody">All Prescriber &amp; Pharmacy loops</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Identification Qualifier added with 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop any Identification Number and Qualifier where the Qualifier is not supported in 8.1.</p>
+                        <p class="TableBody">Qualifier Codes:</p>
+                        <p class="TableBody" style="margin-left: 0pt;">1J - &lt;FacilityID&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">ADI - &lt;ProcessorIdentification Number&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">C1 - &lt;Commercial&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">EA - &lt;MedicalRecord IdentificationNumberEHR&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">EJ - &lt;PatientAccountNumber&gt; </p>
+                        <p class="TableBody" style="margin-left: 0pt;">IP - &lt;IndividualPolicyNumber&gt; </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EDIFACT only:</p>
+                        <p class="TableBody">Drop any Identification Number sent without a Qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-040-03: </p>
+                        <p class="TableBody">Provider Specialty Code</p>
+                        <p class="TableBody">&lt;Specialty&gt;</p>
+                        <p class="TableBody">All Prescriber loops</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-040-02: Provider Specialty, Coded </p>
+                        <p class="TableBody">&lt;AMASpecialty.SpecialtyCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">AMA Provider Specialty codes replaced by NUCC Taxonomy codes in 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Map NUCC Taxonomy Specialty Code to corresponding AMA code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If NUCC Taxonomy Specialty Code sent does not have a corresponding AMA code, then drop Provider Specialty Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Map AMA code to corresponding NUCC Taxonomy Specialty Code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If AMA code sent does not have a corresponding NUCC Taxonomy Specialty Code, then drop Provider Specialty Code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any non-AMA Provider Specialty code, if sent</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-040-03: </p>
+                        <p class="TableBody">Provider Specialty Code </p>
+                        <p class="TableBody">&lt;Specialty&gt;</p>
+                        <p class="TableBody">Dispensing Pharmacy loop</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Field newly utilized in 10.6 for Pharmacy loop</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Provider Specialty Code (Pharmacy).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-080-03:</p>
+                        <p class="TableBody">Country Sub-entity Identification</p>
+                        <p class="TableBody">&lt;State&gt;</p>
+                        <p class="TableBody">All Prescriber &amp; Pharmacy loops</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New restrictions on valid USPS State codes enforced in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Convert State code to uppercase if needed. </p>
+                        <p class="TableBody">Drop if not valid State code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090: Communication Number</p>
+                        <p class="TableBody">&lt;CommunicationNumbers&gt; </p>
+                        <p class="TableBody">All Prescriber &amp; Pharmacy loops </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PVD-090:</p>
+                        <p class="TableBody">Communication Number</p>
+                        <p class="TableBody">&lt;Email&gt;,</p>
+                        <p class="TableBody">&lt;PhoneNumbers.Phone&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: Communication Numbers replaces separate 8.1 XML Phone/Email fields with 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">8.1 and XML only: - Map the last instance of an Email. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any additional instances of an Email</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map the first eight (8) instances of a Communication Number other than Email.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any additional instances of a Communication number other than Email.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EDIFACT only:</p>
+                        <p class="TableBody">Drop Communication Number if PVD-090-02 Qualifier not sent</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-020: </p>
+                        <p class="TableBody">Century Date (DOB) </p>
+                        <p class="TableBody">&lt;DateOfBirth&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">10.6 XML allows Time components for Date fields.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: Truncate time components (HH:MM:SS), if sent.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-050: </p>
+                        <p class="TableBody">Reference Number and Qualifier </p>
+                        <p class="TableBody">&lt;Identification&gt; Qualifier and Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Identification Qualifier added with 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop any Identification Number and Qualifier where the Qualifier is not supported in 8.1.</p>
+                        <p class="TableBody">Qualifier Codes:</p>
+                        <p class="TableBody">1J - &lt;FacilityID&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">ADI - &lt;ProcessorIdentification Number&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">C1 - &lt;Commercial&gt;</p>
+                        <p class="TableBody" style="margin-left: 0pt;">EA - &lt;MedicalRecord IdentificationNumberEHR&gt;</p>
+                        <p class="TableBody">EJ - &lt;PatientAccountNumber&gt;</p>
+                        <p class="TableBody">IP - &lt;IndividualPolicyNumber&gt; </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EDIFACT only:</p>
+                        <p class="TableBody">Drop any Identification Number sent without a Qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-060-03:</p>
+                        <p class="TableBody">Country Sub-entity Identification</p>
+                        <p class="TableBody">&lt;State&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New restrictions on valid USPS State codes enforced in 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Convert to uppercase if needed. </p>
+                        <p class="TableBody">Drop if not valid State code.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-070: </p>
+                        <p class="TableBody">Communication Number </p>
+                        <p class="TableBody">&lt;CommunicationNumbers&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-070:</p>
+                        <p class="TableBody">Communication Number</p>
+                        <p class="TableBody">&lt;Email&gt;,</p>
+                        <p class="TableBody">&lt;PhoneNumbers.Phone&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: Communication Numbers replaces separate 8.1 XML Phone/ Email fields with 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">8.1 XML only:</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map the last instance of an Email. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any additional instances of an Email.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map the first eight (8) instances of a Communication Number other than Email.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any additional instances of a Communication number other than Email.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EDIFACT only:</p>
+                        <p class="TableBody">Drop Communication Number if PTT-070-02 Qualifier not sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PTT-080: </p>
+                        <p class="TableBody">Location </p>
+                        <p class="TableBody">&lt;PatientLocation&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New Patient Location fields (including Facility Unit, Room, Bed) added in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop all Patient Location fields (Facility Unit, Room, Bed).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO segment &lt;BenefitsCoordination&gt; loops</p>
+                        <p class="TableBody">3 loops supported</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO segment</p>
+                        <p class="TableBody">1 loop supported</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Surescripts will allow up to 3 loops of the Benefits Coordination segment in 10.6; Surescripts only supports 1 loop with 8.1.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Map the first loop of the COO Benefits Coordination segment.</p>
+                        <p class="TableBody">Drop any additional loops.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map 1 loop. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO-010: </p>
+                        <p class="TableBody">Reference Number and Qualifier </p>
+                        <p class="TableBody">&lt;PayerIdentification&gt; Qualifier and Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">More than 1 instance of Payer Identification Number allowed with 10.6.</p>
+                        <p class="TableBody">New values for Identification Qualifier added in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Map the first instance of a Payer Identification Qualifier and Number.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any additional instances.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop any Payer Identification Number and Qualifier where the Qualifier is not supported in 8.1.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">Qualifier Codes:</p>
+                        <p class="TableBody" style="margin-left: 0pt;">1J - &lt;FacilityID&gt;, </p>
+                        <p class="TableBody" style="margin-left: 0pt;">ADI - &lt;ProcessorIdentificationNumber&gt;,</p>
+                        <p class="TableBody" style="margin-left: 0pt;">C1 - &lt;Commercial&gt;,</p>
+                        <p class="TableBody" style="margin-left: 0pt;">EA - &lt;MedicalRecordIdentifica<br />tionNumberEHR&gt;,</p>
+                        <p class="TableBody" style="margin-left: 0pt;">EJ - &lt;PatientAccountNumber&gt; </p>
+                        <p class="TableBody" style="margin-left: 0pt;">IP - &lt;IndividualPolicyNumber&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EDIFACT only:</p>
+                        <p class="TableBody">Drop any Identification Number sent without a Qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO-050: </p>
+                        <p class="TableBody">Name </p>
+                        <p class="TableBody">&lt;ResponsibleParty&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO-050: </p>
+                        <p class="TableBody">Name </p>
+                        <p class="TableBody">&lt;CardholderName&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Single Cardholder Name field replaced by separate Name component fields in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop all Name/Responsible Party component fields.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Drop Cardholder Name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">COO-090: </p>
+                        <p class="TableBody">Date </p>
+                        <p class="TableBody">&lt;EffectiveDate&gt;, &lt;ExpirationDate&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">10.6 allows Time components for Date fields.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Truncate Time components (HH:MM:SS), if sent; map Date components.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-08/9: </p>
+                        <p class="TableBody">Reference Number and Qualifier </p>
+                        <p class="TableBody"> &lt;DrugDBCode&gt;, &lt;DrugDBCodeQualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Reference Qualifier in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Drug DB Code and Qualifier if Qualifier not supported in 8.1.</p>
+                        <p class="TableBody">(Qualifiers: FD, FI, FL, FM, FN, SCD, SBD, BPC, GPC)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-13/14: </p>
+                        <p class="TableBody">Source Code List, Item Form Code</p>
+                        <p class="TableBody">&lt;FormSourceCode&gt;, &lt;FormCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-05: </p>
+                        <p class="TableBody">Code List Qualifier </p>
+                        <p class="TableBody">&lt;DosageForm&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NCPDP Dosage Form replaced by FMT Form Code in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop Source Code. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map FMT Form Code to corresponding NCPDP Dosage Form. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If FMT Form Code sent does not have a corresponding NCPDP Dosage Form Code, then map ‘99’.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Miscellaneous Unspecified</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Build Source Code = AA</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map NCPDP Dosage Form to corresponding FMT Form Code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If NCPDP Dosage Form sent does not have a corresponding FMT Form Code, then map ‘C38046’ – Unspecified.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-15/16: </p>
+                        <p class="TableBody">Source Code List, Item Strength Code </p>
+                        <p class="TableBody">&lt;StrengthSourceCode&gt;, &lt;StrengthCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-07: </p>
+                        <p class="TableBody">Code List Qualifier </p>
+                        <p class="TableBody">&lt;StrengthUnits&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NCPDP Strength Units replaced by FMT Strength Code in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop Source Code </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map FMT Strength Code to corresponding NCPDP Strength Unit. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If FMT Strength Code sent does not have a corresponding NCPDP Strength Unit, then map ‘00’ - Not Specified.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Build Source Code = AB</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map NCPDP Strength Unit to a corresponding FMT Strength Code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If NCPDP Strength Unit sent does not have a corresponding FMT Strength Code, then map ‘C38046’ – Unspecified.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-010-17: </p>
+                        <p class="TableBody">DEA Schedule </p>
+                        <p class="TableBody">&lt;DEASchedule&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New field added in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop DEA Schedule</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020-03:</p>
+                        <p class="TableBody">Code List Qualifier </p>
+                        <p class="TableBody">&lt;Quantity.CodeListQualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New value ‘QS’ added in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">If ‘QS’, drop entire Quantity composite loop (including Value, Code List Qualifier, Unit Source Code, and Potency Unit Code).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020-04/05: </p>
+                        <p class="TableBody">Source Code List, Potency Unit Code </p>
+                        <p class="TableBody">&lt;UnitSourceCode&gt;, &lt;PotencyUnitCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-020-01 </p>
+                        <p class="TableBody">Quantity Qualifier </p>
+                        <p class="TableBody">&lt;Quantity.Qualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NCPDP Quantity Qualifier replaced by FMT Potency Code in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Drop Source Code </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map FMT Potency Unit Code to corresponding NCPDP Quantity Qualifier.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If Potency Unit Code sent does not have a corresponding NCPDP Quantity Qualifier, then map ‘00’ - Not Specified.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Build Source Code = AC</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Map NCPDP Quantity Qualifier to a corresponding FMT Potency Code.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If NCPDP Quantity Qualifier sent does not have a corresponding FMT Potency Code, then map ‘C38046’ – Unspecified.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-040: </p>
+                        <p class="TableBody">Date/Time Period</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Date Qualifier in 10.6</p>
+                        <p class="TableBody">New value for Date Format Qualifier allowing Time components in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Truncate Time components, if sent; map Date components</p>
+                        <p class="TableBody">Drop Date composite for any of the following Date Qualifiers:</p>
+                        <p class="TableBody">&#160;&#160;&#160;&#160;35 = &lt;DeliveredOnDate&gt; </p>
+                        <p class="TableBody">&#160;&#160;&#160;&#160;BE = &lt;DateValidated&gt;</p>
+                        <p class="TableBody">&#160;&#160;&#160; 06 = &lt;SoldDate&gt;</p>
+                        <p class="TableBody">Map the first 5 instances of 8.1 allowed Dates and Days Supply; Drop additional instances after 5 loops.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-060: </p>
+                        <p class="TableBody">Refills Quantity </p>
+                        <p class="TableBody">&lt;Refills&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Refill Quantity Qualifier values removed and added in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Refills composite loop (including Qualifier and Value) if DRU-060-01 Refill Quantity Qualifier not supported in 8.1.</p>
+                        <p class="TableBody">(Value = REM)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Drop Refills composite loop (including Qualifier and Value) if DRU-060-01 Refill Quantity Qualifier not supported in 10.6.</p>
+                        <p class="TableBody">(Value = D, W, M, Y)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-070-01: </p>
+                        <p class="TableBody">Diagnosis - Clinical Information Qualifier</p>
+                        <p class="TableBody">&lt;ClinicalInformationQualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">XML only: Values for Clinical Information Qualifier removed in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">XML only: </p>
+                        <p class="TableBody">Convert ‘PrescriberSupplied’ to ‘1’.</p>
+                        <p class="TableBody">Convert ‘PharmacyInferred’ to ‘2’.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-070-03 (Primary) <br />DRU-070-05 (Secondary): </p>
+                        <p class="TableBody">Diagnosis Qualifier</p>
+                        <p class="TableBody">&lt;Qualifier&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Qualifier optional in 8.1 but required in 10.6. </p>
+                        <p class="TableBody">XML only: Some Qualifier values not consistent with EDIFACT.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- Convert Qualifier ‘ICD9’ to ‘DX’ </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Convert Qualifier ‘ICD10’ to ‘ABF’</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="margin-left: 0pt;">- If DRU-070-03 (Primary) Qualifier not sent, drop entire Diagnosis composite loop.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- If DRU-070-05 (Secondary) Qualifier not sent, drop Secondary Qualifier and Value.</p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Convert Qualifier ‘ICD9’ to ‘DX’. </p>
+                        <p class="TableBody" style="margin-left: 0pt;">- Convert Qualifier ‘ICD10’ to ‘ABF’.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-080: </p>
+                        <p class="TableBody">Reference Number </p>
+                        <p class="TableBody">&lt;PriorAuthorization&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for DRU-080-02 Reference Qualifier in 10.6.</p>
+                        <p class="TableBody">Usage of Qualifier ’94’ has changed from Pharmacy Rx Reference Number in 8.1 to Prescriber Order Number in 10.6.</p>
+                        <p class="TableBody">Qualifier optional in 8.1 but required in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Reference Number composite including Qualifier and Value if Qualifier = 94.</p>
+                        <p class="TableBody">Drop Reference Number composite including Qualifier and Value if Qualifier = 1J, ADI, C1, EA, EJ, IP.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SRC: Source segment </p>
+                        <p class="TableBody">Map Reference Number Value to SRC-020 &lt;SourceReference&gt; if Qualifier = 94.</p>
+                        <p class="TableBody">Drop Reference Number composite including Qualifier and Value if Qualifier not sent.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-100-01/02/03: </p>
+                        <p class="TableBody">Drug Use Evaluation - Reason For Service,</p>
+                        <p class="TableBody">Professional Service Code,</p>
+                        <p class="TableBody">Result of Service Code</p>
+                        <p class="TableBody"> &lt;ServiceReasonCode&gt;, &lt;ProfessionalServiceCode&gt;, &lt;ServiceResultCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New values for Reason for Service Code, Professional Service Code, and Result of Service Code in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop entire DRU-100 Drug Use Evaluation composite loop if DRU-100-01 Reason for Service Code is not supported in 8.1 (Values= DR, UD).</p>
+                        <p class="TableBody">Drop DRU-100-02 Professional Service Code if code is not supported in 8.1 (Values= DP, MB, MP, PA, ZZ).</p>
+                        <p class="TableBody">Drop DRU-100-03 Result of Service Code if code is not supported in 8.1 (Value= 4A).</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Map all values.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-100-04/05: </p>
+                        <p class="TableBody">DUE Co-Agent ID and Qualifier</p>
+                        <p class="TableBody">&lt;CoAgent&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Same as 10.6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Values removed and added for Co-Agent ID Qualifier in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop DRU-100-04/05 Co-Agent composite including Co-Agent ID and Qualifier if the qualifier is not valid in 8.1.</p>
+                        <p class="TableBody"> (Values= 27 – 41)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Drop DRU-100-04/05 Co-Agent composite including Co-Agent ID and Qualifier if the qualifier is not valid in 10.6.</p>
+                        <p class="TableBody">(Values= 05, 13)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-100-06: </p>
+                        <p class="TableBody">DUE Clinical Significance Code</p>
+                        <p class="TableBody">&lt;ClinicalSignificanceCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New field in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Clinical Significance Code.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-100-07: </p>
+                        <p class="TableBody">DUE Acknowledgement Reason</p>
+                        <p class="TableBody">&lt;AcknowledgementReason&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New field in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Acknowledgement Reason.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">DRU-120: </p>
+                        <p class="TableBody">Prior Authorization Status &lt;PriorAuthorizationStatus&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New field in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop Prior Authorization Status.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG: Structured SIG segment </p>
+                        <p class="TableBody">&lt;StructuredSIG&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">New Segment in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drop entire SIG segment.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">SRC: Source segment </p>
+                        <p class="TableBody">&lt;HistorySource&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">New Segment in 10.6.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Map SRC-020 Reference Number &lt;SourceReference&gt; to DRU-080 with Qualifier = 94.</p>
+                        <p class="TableBody">Drop all other SRC segment fields.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">N/A</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="margin-top: 0pt;">&#160;</p>
+        <p class="BlankPage">&#160;</p>
+    </body>
+</html>

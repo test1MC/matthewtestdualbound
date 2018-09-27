@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="3636" MadCap:lastWidth="1447">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-04-02T16:13:28.9338724-05:00" />
+        </MadCap:changeData>
+    </head>
+    <body>
+        <h2 class="Heading2">
+            <MadCap:change MadCap:changes="1">PAIntiation Requests After Real-Time Prescription Benefit (Real-Time&#160;Benefits&#160;Inquiry)</MadCap:change>
+        </h2>
+        <p class="BodyText1">Real Time Prescription Benefit provides patient-specific drug coverage information directly from the patient’s PBM/payer. The type of information returned from this transaction (or other integrated real-time benefit check solutions) and the level of detail may vary from one PBM/payer to another and can affect whether or not a PAInitiationRequest should be sent. The key difference in workflow is that provider vendors should no longer trigger a PAInitiationRequest solely based on the presence of the batch formulary prior authorization flag. Rather, the application must wait for the RTPB response before determining whether or not to send the PAInitiationRequest.</p>
+        <p class="BodyText1">If the real time benefit response indicates prior authorization is required for the target medication, provider vendors should send a PAInitiationRequest if the PBM/payer:</p>
+        <ul>
+            <li>Does not provide alternatives in their real-time response (and the prescriber wishes to continue prescribing the target medication)</li>
+            <li>Provides alternatives, but the provider does not choose one</li>
+            <li>Provides alternatives, but the provider chooses one that is flagged as needing a PA</li>
+        </ul>
+        <p class="BodyText1">Provider vendors should not send a PAInitiationRequest for a requested drug if the PBM/payer:</p>
+        <ul>
+            <li>Provides alternatives AND the provider chooses one not flagged as needing a PA</li>
+        </ul>
+        <p class="StylebodytextBold">Surescripts Electronic Prior Authorization Message Flow</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/CompletEPA/RealTimeFlow.png" />
+        </p>
+        <p class="StylebodytextBold">Step 1:</p>
+        <p class="BodyText1">1a) PBM/payer uploads Formulary &amp; Benefit file to Surescripts.</p>
+        <p class="BodyText1">1b) Provider vendor downloads formulary file from PBM/payer (this is an ongoing process).</p>
+        <p class="StylebodytextBold">Step 2:</p>
+        <p class="BodyText1">2a) Provider vendor sends an eligibility request to Surescripts to determine patient benefit coverage and what formularies to reference. The provider initiates a prior authorization based on the formulary coverage files. (Eligibility is part of the eRx workflow. If ePA is retrospective, use the eligibility that was run at the time of the eRx.)</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The customer should perform eligibility in accordance with prescription benefit eligibility requirements.</p>
+        <p class="BodyText1">2b) Surescripts forwards the eligibility request message on to the PBM/payer.</p>
+        <p class="BodyText1">2c) PBM/payer returns eligibility response. (If the response indicates patient is not eligible, the provider vendor can still send the PAInititationRequest when they are confident that the patient has pharmacy benefit coverage. This may require checking the Surescripts Directory to select the PBM and ensure the PayerID is included in the PAInitiationRequest.)</p>
+        <p class="BodyText1">2d) Surescripts forwards the eligibility response message on to the provider vendor.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The PBM/payer who processes the eligibility for the patient will process the ePA itself or the ePA will be forwarded to the correct party (e.g. health plan or other ePA processor).</p>
+        <p class="StylebodytextBold">Step 3:</p>
+        <p class="BodyText1">3a) The provider vendor sends a RTPB Request to Surescripts to determine real-time patient benefit information for the requested drug.</p>
+        <p class="BodyText1">3b) Surescripts forwards the RTPB Request message on to the PBM/payer.</p>
+        <p class="BodyText1">3c) The PBM/payer sends a RTPB Response which may include the formulary, pricing, and coverage information that is known for Mail Order Pharmacy, Retail Pharmacy, and Specialty Pharmacy. The RTPB Response may contain alternative drug information.</p>
+        <p class="BodyText1">3d) Surescripts forwards the RTPB Response message on to the provider vendor.</p>
+        <p class="StylebodytextBold">Step 4:</p>
+        <p class="BodyText1">4a) Based on the information supplied in the RTPB Response message, the provider vendor determines if it is appropriate to continue with the ePA process. If the requested drug is returned as needing a PA in the RTPB response and:</p>
+        <ul>
+            <li>If the PBM/payer returned alternatives but the provider does not choose one, the ePA process continues</li>
+            <li>If the PBM/payer returned alternatives flagged as needing a PA and the provider chooses one, the ePA process continues for the newly selected drug</li>
+            <li>If the PBM/payer did not return alternatives and the provider wishes to continue prescribing the current drug, the ePA process continues</li>
+        </ul>
+        <p class="BodyText1">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer returns the PAResponse indicating</p>
+        <ul>
+            <li>Approval (Approved status), or</li>
+            <li>Denial (Denied status), or</li>
+            <li>a request for more information (Open status), or</li>
+            <li>that it can’t proceed (Closed status) (e.g., a request was received after the deadline for reply), or</li>
+            <li>Deferred (Open status).</li>
+        </ul>
+        <p class="BodyText1">4d) Surescripts forwards the message on to the provider vendor.</p>
+        <p class="StylebodytextBold">Step 5:</p>
+        <p class="BodyText1">5a) The provider vendor can send a PAAppealRequest to Surescripts to:</p>
+        <ul>
+            <li>appeal a prior authorization determination, or</li>
+            <li>obtain the information required to submit an appeal reconsideration.</li>
+        </ul>
+        <p class="BodyText1">5b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">5c) The PBM/payer returns the PAAppealResponse indicating</p>
+        <ul>
+            <li>what information is required to submit an appeal reconsideration, or</li>
+            <li>returns PAAppeal approval, denial, or a request for more information.</li>
+        </ul>
+        <p class="BodyText1">5d) Surescripts forwards the message on to the provider vendor.</p>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">General Requirements</h1>
+        <h2 class="Heading2"><a name="_Toc513714457"></a>Message Format</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/SharedCommonAppCert/S_101.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714458"></a>General Message Requirements</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_200.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_201.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_202.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_203.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_204_1.flsnp" />
+        <p class="BodyText1">E-Prescribing-only data sources are Surescripts approved sources for medication description information as defined in the item description data element of the NCPDP standard and for drug identifiers (e.g., NDCs, RxCUIs) for the purposes of Surescripts E-Prescribing. These data sources do not currently contain all of the required data attributes that are required for the Surescripts Eligibility and Formulary services. </p>
+        <p class="BodyText1">For data sources not on the Surescripts approved list, there is a formal process in place to review and approve new data sources. </p>
+        <p class="BodyText1">Prescribers and pharmacies must have the appropriate service levels enabled to send or receive messages. See the Surescripts Directories Implementation Guide for more information.</p>
+        <h2 class="Heading2"><a name="_Toc513714459"></a>E-Prescribing Best Practices</h2>
+        <p class="BodyText1">The following general best practices apply to all E-Prescribing message types:</p>
+        <ul>
+            <li>The application should make clear to the user which data elements will be sent to the receiver and which elements are for internal/local use.</li>
+            <li>Customers should default to electronically send messages within their application workflow when the receiver is electronically enabled.</li>
+            <li>The application should not duplicate messages; e.g., electronically delivered as well as faxed.</li>
+            <li>The application should be able to send all data elements/segments which can help the receiver better interpret the e-prescription message and make a more informed decision based on their scope of practice.</li>
+            <li>Notes and other free text fields should not contain information for which there is a designated field.</li>
+            <li>When using a codified field, ensure the code captures the intent and semantically matches the associated/related text field. </li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">As a reminder, Surescripts conducts certification with prescriber and pharmacy systems to ensure the application adheres to network requirements. While we are able to enforce application adherence, we are unable to mandate specific behaviors or workflows be carried out by its users.</p>
+        <h2 class="Heading2"><a name="_Toc513714460"></a>Message Validation</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+        <h3 class="Heading3"><a name="_Toc513714461"></a>EPCS Message Validation Requirements</h3>
+        <p class="BodyText1">The EPCS flow for fillable messages follows the flow shown below with these additions:</p>
+        <ul>
+            <li>The "ControlledSubstance" service level for both the prescriber and pharmacy must be enabled for controlled substances or the message will be rejected. </li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Pharmacies may send controlled substance requests without the "ControlledSubstance" service level enabled; however, to receive an affirmative response it must be enabled. Prescribers without a "ControlledSubstance" service level will be able to receive the request, but will only be able to send a Denied response.</p>
+        <ul>
+            <li class="li">The message must be digitally signed and contain either the signature or the indicator that it has been signed. The sender of the message is required to sign all fields in the digital signature. Surescripts will not validate the signature.</li>
+            <li class="li">The message must contain the NDC of any controlled substance.</li>
+            <li class="li">The DEASchedule of any controlled substance must be sent.</li>
+            <li class="li">The Patient address must be sent.</li>
+            <li class="li">The Prescriber address must be sent.</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">See <a href="ElementDetailTables.htm">Element Detail Tables</a> and <a href="ElementUsage.htm">Element Usage</a> for more details.</p>
+        <p class="StylebodytextBold">How Surescripts determines when to apply EPCS processing to a message</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/EPrescribing/EPCS Message Workflow.png" MadCap:mediastyle="@media print { max-width: 100%; }" style="width: 929px;height: 285px;" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc513714462"></a>State Specific Validation for Controlled Substances</h3>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The reference of “state” throughout this section includes U.S. Territories and foreign U.S. military bases.</p>
+        <p class="BodyText1">Surescripts will stop controlled substance messages from being sent or received that are prohibited by state law as outlined below. Prescriber systems and their users are still ultimately responsible for continued compliance with all applicable laws and requirements, including but not limited to, local and state laws and regulations in which the customer’s application is deployed and used.</p>
+        <p class="BodyText1">Each message without a DEA Schedule will have the NDC checked to determine if the medication is a controlled substance at a federal or state level. Once a medication has been identified as a controlled substance, either federally or by the state it is written in or being sent to, the following validation checks occur:</p>
+        <ul>
+            <li>Apply the most restrictive DEA Schedule, federal or state, for EPCS processing.</li>
+            <li>Validate that the state the prescription is written in/sent to allows e-Prescribing of controlled substances for the specific schedule of the medication in the message.</li>
+            <li style="page-break-after: avoid;page-break-inside: avoid;">For mail order pharmacies, Surescripts will not check the NDC against the location of the mail order pharmacy; however, the prescriber state is still validated. Mail order pharmacies are still required to perform the appropriate state validations.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714463"></a>Display Requirements</h2>
+        <p class="BodyText1">Surescripts understands our customers are in the best position to make workflow design decisions and we are committed to encouraging innovative designs. Surescripts is also committed to ensuring the highest level of patient safety possible. If a workflow could potentially result in a patient safety issue, or if a patient safety issue is identified, Surescripts may require application code changes to ensure positive patient outcomes.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_205_1.flsnp" />
+        <p class="BodyText1">To allow for patient choice, the application shall allow a pharmacy search based on pharmacy type of Mail/Retail/InHouseDispensing at a minimum; other pharmacy search options may include specialty and long term care.</p>
+        <p class="BodyText1">The application shall not filter out pharmacies of a specific type when a search by geography (city, state, and zip code) is performed, unless a specific pharmacy type is requested. The application shall display the following pharmacy information in the pharmacy search results: Pharmacy Name, Street Address, City, State, Zip Code, Phone Number, and Pharmacy Type.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_207.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714464"></a>Display Best Practices</h2>
+        <p class="BodyText1">Pharmacy system vendors should ensure that, when needed, Certificate to Prescribe (CTP) numbers always appear on primary electronic prescription screens for pharmacists to view during the dispensing process. The letters "CTP" should precede the number so pharmacists can easily identify it. Pharmacy system vendors should also ensure that CTP numbers appear on hard copies of electronic prescriptions when they are printed out.</p>
+    </body>
+</html>

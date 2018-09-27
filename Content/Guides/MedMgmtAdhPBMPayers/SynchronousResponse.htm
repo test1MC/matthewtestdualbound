@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="8165.667" MadCap:lastWidth="1305">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc433357873"></a>Synchronous Response</h2>
+        <p class="BodyText1">The following describes the synchronous responses provided by the Surescripts FHIR® message service.</p>
+        <p class="NOTE" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The examples in this section do not cover all possible responses that could be sent. </p>
+        <h3 class="Heading3"><a name="_Toc433357874"></a>Status Codes</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">HTTP Status Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Reason</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Response</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">200 OK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">The request has been accepted for processing.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="color: #000000;">A basic response message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">400 Bad Request</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">Invalid credentials have been provided in the x-sender-uid custom header.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="color: #000000;">A response message indicating the reason message is being rejected. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">401 Unauthorized</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">The x-sender-uid header element is missing or its value does not conform to the specification.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="color: #000000;">A response message specifying that the transaction is Unauthorized.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">422 Unprocessable Entity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p style="color: #000000;">The message violated applicable FHIR® profiles or server business rules.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="color: #000000;">A fatal error response message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="color: #000000;">500 InternalServer Error </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p style="color: #000000;">The server encountered an unexpected condition which prevented it from fulfilling the request.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="color: #000000;">A response message stating that the sender should contact Surescripts support.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc433357875"></a>Example FHIR® Responses</h3>
+        <p class="BodyText1" style="font-weight: bold;">XML Snippet – Response</p>
+        <p class="BodyText1">The following is an example of a basic response that is returned with a 200 status.</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;">
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&lt;Bundle </p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; xmlns="http://hl7.org/fhir"&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;id value="9f1f0b32-e3ac-4ae5-aa39-3aee95ea384b" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;meta&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;lastUpdated value="2015-09-18T01:24:47.063+00:00" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;/meta&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;type value="message" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;entry&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;resource&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;MessageHeader&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;id value="124ab4a3-d41e-498b-9f0a-618b29522c6b" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;meta&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;lastUpdated value="2015-09-18T01:24:47.063+00:00" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/meta&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;extension url="http://surescripts.net/fhir/StructureDefinition/message-types"&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;valueCode value="BasicResponse" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/extension&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;identifier value="335bf8d7-8c52-4635-905d-5295c983dda1" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;timestamp value="2015-09-18T01:24:47.063+00:00" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;event&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;system value="http://surescripts.net/fhir/mmpoc/message-events" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code value="message-processing-complete" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/event&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;response&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;identifier value="pbm-sender-message-id" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code value="ok" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/response&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;source&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;name value="Surescripts" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;software value="Surescripts MMPOC" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;version value="1.0.0-MMPOC-CI$" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;endpoint value="http://surescripts.net" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/source&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;destination&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;name value="PBM Name" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;endpoint value="http://somepbm.com" /&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/destination&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/MessageHeader&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/resource&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;/entry&gt;</p>
+            <p style="margin-left: 5pt;margin-right: 5pt;margin-top: 0pt;font-family: 'Courier New';font-size: 9pt;">&lt;/Bundle&gt;</p>
+        </div>
+        <p class="BodyText1" style="font-weight: bold;">JSON Snippet - Response</p>
+        <p class="BodyText1">The following is an example of a basic response that is returned with a 200 status.</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;"><pre xml:space="preserve" style="font-family: 'Courier New'; font-size: 9pt;">{</pre><pre xml:space="preserve" style="font-family: 'Courier New'; font-size: 9pt;">  "resourceType": "Bundle",
+  "id": "0b958c1a-bfdb-4cfb-8b65-47eb86b54a96",
+  "meta": {
+    "lastUpdated": "2015-12-30T06:43:33.486+00:00"
+  },
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MessageHeader",
+        "id": "0f3dceef-0eed-48c1-bcbd-4a1a9ea4c97f",
+	 "meta": {
+	   "lastUpdated": "2015-12-30T06:43:33.486+00:00"
+	 },
+	 "extension": [
+	   {
+	     "url": "http://surescripts.net/fhir/StructureDefinition/message-types",
+	     "valueCode": "BasicResponse"
+	   }
+	 ],
+	 "identifier": "1abcb4c2-deb8-4c23-9dfa-4da5b57fd802",
+	 "event": {
+	 "system": "http://surescripts.net/fhir/mmpoc/message-events",
+	 "code": "message-processing-complete"
+      },
+        "response": {
+	   "identifier": "pbm-sender-message-id",
+	   "code": "ok"
+	 },
+	 "source": {
+	   "name": "Surescripts",
+	   "software": "Surescripts MMPOC",
+	   "version": "1.0.0-MMPOC-CI$",
+	   "endpoint": "http://surescripts.net"
+        },
+	 "destination": [
+	   {
+	     "name": "PBM/payer Name",
+	     "endpoint": "http://somepbm.com"
+	   }
+        ]
+      }
+    }
+  ]
+}
+</pre>
+        </div>
+        <p class="BodyText1" style="font-weight: bold;">XML Snippet Error Message</p>
+        <p class="BodyText1">The following is an example of a fatal error response that is returned with a 422 status.</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;">
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&lt;Bundle </p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; xmlns="http://hl7.org/fhir"&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;id value="ec15b1b7-2f97-4a1b-a2f3-0bc7eb3f1414" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;lastUpdated value="2015-09-18T01:28:43.09+00:00" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;/meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;type value="message" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;entry&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;resource&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;MessageHeader&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;id value="f29e8ab7-2c88-42a0-84a7-286e0b936729" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;lastUpdated value="2015-09-18T01:28:43.09+00:00" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;extension url="http://surescripts.net/fhir/StructureDefinition/message-types"&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;valueCode value="BasicResponse" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/extension&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;identifier value="80405b7c-3bad-41dc-b018-2f93e1326924" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;timestamp value="2015-09-18T01:28:43.09+00:00" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;event&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;system value="http://surescripts.net/fhir/mmpoc/message-events" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code value="message-processing-complete" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/event&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;response&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;identifier value="pbm-sender-message-id" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code value="fatal-error" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;details&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;reference value="OperationOutcome/8b8d57e9-c0ad-48f4-bb47-bdbce7a815ce" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/details&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/response&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;source&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;name value="Surescripts" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;software value="Surescripts MMPOC" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;version value="1.0.0-MMPOC-CI$" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;endpoint value="http://surescripts.net" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/source&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;destination&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;name value="PBM/Payer Name" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;endpoint value="http://somepbm.com" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/destination&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/MessageHeader&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/resource&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;/entry&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;entry&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;resource&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;OperationOutcome&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;id value="8b8d57e9-c0ad-48f4-bb47-bdbce7a815ce" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;lastUpdated value="2015-09-18T01:28:43.09+00:00" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/meta&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;issue&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;severity value="error" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;coding&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;system value="http://hl7.org/fhir/issue-type" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;code value="processing" /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/coding&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/code&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;details value="Message fails Surescripts validations. (CommunicationRequest.</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">extension[scheduled-period].valuePeriod) The end date must follow the start date if populated." /&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/issue&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/OperationOutcome&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/resource&gt;</p>
+            <p class="NoSpacing" style="font-family: 'Courier New';font-size: 9pt;">&#160;&#160;&#160; &lt;/entry&gt;</p>
+            <p class="NoSpacing" style="font-size: 9pt;"><span style="font-family: 'Courier New';">&lt;/Bundle&gt;</span><span style="font-family: 'Courier New';font-size: 8pt;">&#160; </span>
+            </p>
+        </div>
+        <p class="BodyText1" style="font-weight: bold;">JSON Snippet Error Message</p>
+        <p class="BodyText1">The following is an example of a fatal error response that is returned with a 422 status.</p>
+        <div style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;"><pre style="font-family: 'Courier New';font-size: 9pt;" xml:space="preserve">{
+  "resourceType": "Bundle",
+  "id": "b5635b7d-85ad-456e-bcfd-486bd2daf92c",
+  "meta": {
+    "lastUpdated": "2015-12-30T06:51:05.496+00:00"
+  },
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MessageHeader",
+        "id": "908ddbd6-ce2d-4a16-bb96-e3436adfb21e",
+        "meta": {
+          "lastUpdated": "2015-12-30T06:51:05.496+00:00"
+        },
+	 "extension": [
+	   {
+	     "url": "http://surescripts.net/fhir/StructureDefinition/message-types",
+	     "valueCode": "BasicResponse"
+	   }
+	 ],
+	 "identifier": "18eb780f-1f06-4a67-a0d2-173c43a23dbd",
+        "event": {
+	   "system": "http://surescripts.net/fhir/mmpoc/message-events",
+	   "code": "message-processing-complete"
+	 },
+	 "response": {
+	   "identifier": "pbm-sender-message-id",
+	   "code": "fatal-error",
+	   "details": {
+	     "reference": "OperationOutcome/d21f6b67-79cc-40ee-ade1-280bce42a725"
+	   }
+	 },
+	 "source": {
+	   "name": "Surescripts",
+	   "software": "Surescripts MMPOC",
+	   "version": "1.0.0-MMPOC-CI$",
+	   "endpoint": "http://surescripts.net"
+	 },
+	 "destination": [
+	   {
+	     "name": "PBM/payer Name",
+	     "endpoint": "http://somepbm.com"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "OperationOutcome",
+	 "id": "d21f6b67-79cc-40ee-ade1-280bce42a725",
+	 "meta": {
+	   "lastUpdated": "2015-12-30T06:51:05.498+00:00"
+	 },
+	 "issue": [
+	   {
+	     "severity": "error",
+	     "code": {
+	       "coding": [
+              {
+		 "system": "http://hl7.org/fhir/issue-type",
+		 "code": "processing"
+	       }
+	     ]
+	   },
+	   "details": "Message fails Surescripts validations. </pre><pre style="font-family: 'Courier New'; font-size: 9pt;" xml:space="preserve">          (CommunicationRequest.extension[scheduled-period].valuePeriod) </pre><pre style="font-family: 'Courier New'; font-size: 9pt;" xml:space="preserve">           The end date must follow the start date if populated."
+	   }
+	 ]
+      }
+    }
+  ]
+}
+</pre>
+        </div>
+    </body>
+</html>

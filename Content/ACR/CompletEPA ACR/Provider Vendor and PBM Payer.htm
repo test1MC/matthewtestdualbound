@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="781.3334" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc451429931"></a>Provider Vendor and PBM/Payer Requirements</h1>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For customers (participants) using CompletEPA<sup>®</sup> Accelerator, the items marked with<span style="font-size: 14pt;"> *</span> are certified by Surescripts on your behalf.</p>
+        <p class="BodyText1Indent">3.1 The application shall be able to receive attachments of all file types supported in the NCPDP ePA standard.*</p>
+        <p class="BodyText1Indent">3.2 Participant applications shall not allow users/systems to respond multiple times to the same message.*</p>
+        <p class="BodyText1Indent">3.3 Participant applications shall be certified on Surescripts' Prescription Benefit Service prior to implementing ePA.</p>
+        <p class="BodyText1Indent">3.4 The participant shall be able to process incoming, syntactically valid maximum and minimum population messages. Optional data elements (and values therein) shall not cause message failure.*</p>
+        <p class="BodyText1Indent"> 3.5 The participant shall implement and maintain a comprehensive, industry-accepted drug information source that is mappable to NDC drug codes and update the data at least monthly. Acceptable data sources include the following: Drug Information Technologies (DIT), First Databank, Gold Standard Drug Database, Lexi-Comp, Multum, Medispan, Thomson Reuters Micromedex/Redbook</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts will not grant any exceptions to participants on the prescription benefits requirements to support one of the comprehensive, industry-accepted drug information sources. For drug databases not on the Surescripts approved Drug Knowledgebase Vendor list, there is a formal process in place to review and approve new Drug Knowledgebase Vendors, through the Surescripts Compliance department.</p>
+        <p class="BodyText1Indent">3.6 Participants shall support the scenarios in the Detailed Electronic Prior Authorizatio Transaction Workflow section of the Surescripts ePA guide. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status transaction is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made on whether the message has been received successfully or not. The 010 indicates that no further transactions will follow. An Error, Status (Code 010) or Verify shall always be sent to close the transaction workflow. If a transaction workflow has already been closed and an error occurs, a message should not be sent, rather a manual process should be followed. An Error message shall never be responded to with an Error message; this could create an endless loop. A Status message with a code of ‘010’ may not be responded to; it shall be considered the final message (similar to the Verify).</p>
+        <p class="BodyText1Indent">3.7 All date times shall be using Coordinated Universal Time (UTC) time. The UTC time shall be synched with NIST (National Institute of Standards and Technology). Drift of no more than one minute will be acceptable.</p>
+        <p class="BodyText1Indent">3.8 The decimal point is represented by a period and shall be used as follows: </p>
+        <ul>
+            <li>only when there are significant digits to the right of the decimal </li>
+            <li>when there is a digit before and after the decimal point </li>
+            <li>not with whole numbers</li>
+        </ul>
+        <p class="BodyText1Indent">3.9 All non-essential characters shall be suppressed from the message where permissible. Non-essential characters include leading spaces, trailing spaces, leading zeroes, and trailing zeroes.</p>
+        <p class="BodyText1Indent">3.10 COMMON MESSAGE HEADER &lt;MessageID&gt; Each message sent from a participant, including Error and Status, shall have a unique Message ID.</p>
+        <p class="BodyText1Indent">3.11 The Message Linkage of the ePA Guide shall be followed. Please refer to the Message Linkage section in the Surescripts ePA Implementation Guide for examples.</p>
+    </body>
+</html>

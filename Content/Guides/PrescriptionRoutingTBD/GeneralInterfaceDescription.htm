@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="817" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443643294"></a>General Interface Description</h2>
+        <p class="BodyText1">The transaction specifications have been defined to allow the most effective processing.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="UTC"></a>UTC Time Format</h3>
+        <p class="BodyText1">By using UTC, the receiver of a message will know the time regardless of the time zone they are in. For example: If a message was sent from Boston at 5:30PM EDT (Eastern Daylight Time), the time would be sent as 21:30 UTC time. If this message was received in Chicago CDT (Central Daylight Time), the 21:30 UTC could be converted to the local CDT time of 4:30PM. Refer to <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank"><span class="Hyperlink">http://en.wikipedia.org/wiki/Coordinated_Universal_Time</span></a>, <a href="http://www.w3.org/XML/" target="_blank"><span class="Hyperlink">http://www.w3.org/XML/</span></a>, or <a href="http://www.w3schools.com/schema/schema_dtypes_date.asp" target="_blank"><span class="Hyperlink">http://www.w3schools.com/schema/schema_dtypes_date.asp</span></a> for more information.</p>
+        <p class="BodyText1">When sending only a Date (not Date and Time), it should be sent in your local time zone, and the receiver should interpret it in their local time. Neither party should attempt to convert the Date to UTC.</p>
+        <p class="BodyText1">All standard programming languages should have a function for generating a date in the UTC time zone or displaying a date in the local time zone. The format of the date/time fields in the XML schema must use the xsd:dateTime format. Examples of that format are: CCYY-MM-DDTHH:MM:SS.FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example 2013-01-01T16:09:04.5Z, or 2013-01-01T16:09:04.5-00:00, or 2013-01-01T16:09:04.5+00:00, where 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the “Z” in the first example or the “-00:00” in the second example, or the “+00:00” in the third example. The fractional seconds is not required. Refer to xsd:dateTime for more information.</p>
+        <p class="BodyText1">For simple date fields that do not include the time portion, the format is: CCYY-MM-DD. See <MadCap:xref href="../PrescriptionRouting10.6/APPENDIX A XML.htm">XML on page&#160;1</MadCap:xref> for specific fields.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_EDIFACT_Dynamic_Delimiters"></a><a name="_Toc443643296"></a>EDIFACT Dynamic Delimiters</h3>
+        <p class="BodyText1">NCPDP SCRIPT EDIFACT format utilizes delimiters to separate component, segments, elements, etc., or as indicators (i.e. for segment repetition). These delimiters are defined within specified segments of the messages. Customers’ systems need to be able to dynamically set and handle these delimiters. Surescripts recommends the use of unprintable characters as delimiters rather than the full character set. See <span class="Hyperlink" style="font-size: 11pt;"><MadCap:xref href="../PrescriptionRouting10.6/Appendix B Dynamic Delimiters.htm">Dynamic Delimiters on page&#160;1</MadCap:xref></span> for a complete list of acceptable characters.For NCPDP messages, the delimiter set is defined within the UNA segment. The UNA segment is a fixed width segment where the creator can define single character segment delimiters based off the location in the segment. The following is an example:</p>
+        <blockquote>
+            <p class="BodyText1"> UNA:+./*’</p>
+        </blockquote>
+        <p class="BodyText1">Based on the position in this segment, the receiver knows the defined delimiters for the current message. The delimiters in this example are defined as:</p>
+        <table style="width: 100%;">
+            <col style="width: 28px;" />
+            <col style="width: 43px;" />
+            <col style="width: 726px;" />
+            <tbody>
+                <tr>
+                    <td>&#160;</td>
+                    <td>:</td>
+                    <td>Component Data Element Separator</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>+</td>
+                    <td>Data Element Separator</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>.</td>
+                    <td>Decimal Notation</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>/</td>
+                    <td>Release Indicator</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>*</td>
+                    <td>Repetition Separator</td>
+                </tr>
+                <tr>
+                    <td>&#160;</td>
+                    <td>'</td>
+                    <td>Segment Separator</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Choosing a Delimiter</p>
+        <p class="BodyText1">Surescripts has published a list of allowed delimiters for the NCPDP SCRIPT messages (refer to <MadCap:xref href="../PrescriptionRouting10.6/Appendix B Dynamic Delimiters.htm">Dynamic Delimiters on page&#160;1</MadCap:xref> for a complete list of acceptable characters). Customers may choose any allowed delimiter desired for the messages that they create. However, it is important that customers communicate which delimiters they are using to ensure they will not cause issues with their trading partners’ messages. Surescripts recommends using unprintable delimiters, as printable delimiters have caused issues in the past.</p>
+        <p class="StylebodytextBold">Using Dynamic Delimiters</p>
+        <p class="BodyText1">A Surescripts customer can expect to receive delimiters that are different than the set they define for their messages. The customer needs to determine the delimiters dynamically when the message is processed according to the rules listed in the above section. See <MadCap:xref href="../PrescriptionRouting10.6/Appendix B Dynamic Delimiters.htm">Dynamic Delimiters on page&#160;1</MadCap:xref> for a complete list of acceptable characters.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.3 "><a name="_Toc443643297"></a>EDIFACT Delimiter Examples</h3>
+        <p class="BodyText1">The delimiters used in the examples below are the ~ for segment separation and the + for element separation.</p>
+        <p class="StylebodytextBold">Example 1:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">PTT++19440605+JAMES:TINA+F~&#160; </p>
+        <p class="BodyText1">Element 1 is not included; therefore, the plus signs (+) act as placeholders for the omitted elements.</p>
+        <p class="BodyText1">When data elements are omitted from the end of a segment, it is not necessary to use the data element delimiters. The segment is ended with a segment terminator.</p>
+        <p class="StylebodytextBold">Example 2:</p>
+        <p class="BodyText1">Elements 5 and 6 can be omitted in the same segment as Example 1. The new segment would become:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">PTT++19440605+JAMES:TINA+F~</p>
+        <p class="BodyText1">And not:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">PTT++19440605+JAMES:TINA+F+++~</p>
+        <p class="StylebodytextBold">Example 3:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+ABC02+ABC03+ABC04+ABC05+ABC06~</p>
+        <p class="BodyText1">If elements ABC02 and ABC03 are not used, then no value should be sent. However, the elements must be represented with a placeholder because there are used elements (ABC04, 05 and 06) after them.</p>
+        <p class="BodyText1">This is the correct representation:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+++ABC04+ABC05+ABC06~</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC02 and ABC03 must be represented so that it is known that the next data value is ABC04.</p>
+        <p class="BodyText1">This is the incorrect representation:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+ABC04+ABC05+ABC06~</p>
+        <p class="BodyText1">If the placeholders for ABC02 and ABC03 are removed, ABC04 would be mistaken for ABC02.</p>
+        <p class="StylebodytextBold">Example 4:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+ABC02+ABC03+ABC04+ABC05+ABC06~</p>
+        <p class="BodyText1">If elements ABC05 and ABC06 are not used, then no value should be sent. When elements 05 and 06 are located at the end of the segment there is no need to represent them.</p>
+        <p class="BodyText1">This is the correct representation:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+ABC02+ABC03+ABC04~</p>
+        <p class="BodyText1">This is the incorrect representation:</p>
+        <p class="StyleExampleText1Left065" style="margin-top: 5pt;margin-bottom: 1pt;margin-left: 72pt;">ABC+ABC01+ABC02+ABC03+ABC04++~</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.4 "><a name="_Toc443643298"></a>EDIFACT Representation</h3>
+        <p class="BodyText1">The following table lists the Field Type Notation used within the messages:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #c0c0c0;">
+                    <p class="TableHeading">NCPDP Notation</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Alphanumeric</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">an</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Numeric</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">n</p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Two periods “..” after the Field Type Notation are used to indicate a range. If no periods are present, the number following the Field Type Notation signifies a mandatory length. For example:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="StyleNOTE2" style="border-top-style: none;border-top-width: 0pt;border-bottom-style: none;border-bottom-width: 0pt;margin-top: 4pt;margin-bottom: 1pt;margin-left: 0pt;font-size: 9pt;">an..3</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="StyleNOTE2" style="border-top-style: none;border-top-width: 0pt;border-bottom-style: none;border-bottom-width: 0pt;margin-top: 4pt;margin-bottom: 1pt;margin-left: 0pt;font-size: 9pt;">means an alphanumeric with range from zero to three characters</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="StyleNOTE2" style="border-top-style: none;border-top-width: 0pt;border-bottom-style: none;border-bottom-width: 0pt;margin-top: 4pt;margin-bottom: 1pt;margin-left: 0pt;font-size: 9pt;">an3</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="StyleNOTE2" style="border-top-style: none;border-top-width: 0pt;border-bottom-style: none;border-bottom-width: 0pt;margin-top: 4pt;margin-bottom: 1pt;margin-left: 0pt;font-size: 9pt;">means an alphanumeric with three characters required</p>
+                </td>
+            </tr>
+        </table>
+        <h3 class="Heading3" MadCap:autonum="0.1.5 "><a name="_Toc443643299"></a>Character Set</h3>
+        <p class="BodyText1">The character set contains ASCII values 32 – 126, which include:</p>
+        <p class="ListParagraph">Letters, upper and lower caseA to Z, a to z</p>
+        <p class="ListParagraph">NumeralsØ to 9</p>
+        <p class="ListParagraph">Symbols! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+        <p class="BodyText1">Unprintable characters, such as control characters, are not used within the field sets. Defined unprintable characters are used as delimiters.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.6 "><a name="_Requirement_Designation"></a><a name="_Toc443643300"></a>Requirement Designation</h3>
+        <p class="StylebodytextBold">Segment Attributes:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Required/Mandatory - the segment must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody">Situational/Conditional - the segment must be used if conditions are met.</p>
+                </td>
+            </tr>
+        </table>
+        <p class="StylebodytextBold">Element Attributes:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Required/Mandatory - the element must be used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Situational/Conditional - the element must be used if conditions are met. Some fields do not have specific conditions. Data should be sent if available.</p>
+                        <p class="TableBody">Where comments are “Not used by Surescripts”, information will be passed on, but not used for processing by Surescripts.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Dependent - the element is required or conditional based on the message type.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableBody">Not used; will be rejected if sent.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">Elements that are not used by NCPDP have been grayed out or removed from the message specifications.</p>
+        <p class="BodyText1">In the following tables the &lt;&gt; symbols are used in the element name column to indicate XML name tags.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> Elements that are grouped together in a composite may be marked as mandatory; however, if the group itself is marked as conditional, then these are only required if you use the group.</p>
+        <p class="BodyText1">In the example below, the Patient ID and qualifier are mandatory only if the Reference Number is sent.</p>
+        <p class="StyleHeading2H2h2Level2TopicHeadingLeft006">&#160;</p>
+    </body>
+</html>

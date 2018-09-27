@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="490" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc443909589"></a>ID Load Process Flow</h2>
+        <p class="BodyText1">The following steps depict the flow of the ID load:</p>
+        <ol>
+            <li>The PBM/payer creates a directory of patients, assigning each occurrence a unique member ID.</li>
+            <li>The PBM/payer submits the initial load to Surescripts.</li>
+            <li>Surescripts populates the MPI internal directory with the initial file load.</li>
+            <li>Surescripts sends a response to the PBM/payer indicating the process success and failure details.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">All date/times within response files are in UTC.</p>
+            <li>The PBM/payer creates an update file to keep the Surescripts MPI internal directory up-to-date.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Updates should only be sent if there is a change in the members’ demographic data that Surescripts has defined in the file layout. If other member information not contained in the file layout changes, no update should be sent.</p>
+            <li>Surescripts processes the updates.</li>
+            <li>Surescripts sends a response to the PBM/payer indicating the process success and failure details.</li>
+        </ol>
+    </body>
+</html>

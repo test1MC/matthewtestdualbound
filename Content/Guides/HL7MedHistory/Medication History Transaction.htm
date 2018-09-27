@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="605" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 "><a name="_Toc445209647"></a>Medication History Transaction Flow</h2>
+        <p class="BodyText1">The following flow takes place between Surescripts and a source participant. It is triggered by the existence of the ADT event from the hospital.</p>
+        <p class="StylebodytextBold">Request/Response</p>
+        <ol>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">From the ADT message transaction flow, Surescripts has identified the patient and associated PBM. </li>
+            <li>Surescripts sends a Medication History request for a patient, supplying the PBM Unique Member ID for the patient.</li>
+            <li>Surescripts also checks its retail fill history for matching records.</li>
+            <li>The PBM processes the request. If it fails, the PBM returns an Error message instead of a Medication History response. The processing steps are listed below:<ol style="list-style-type: lower-alpha;"><li>PBM validates the format of the request.</li><li>PBM finds the patient via the PBM Unique member ID.</li><li>PBM determines that the patient is still eligible (optional).</li><li>PBM checks for the dates of the requested medication history. The PBM searches the claims repository for medications that have a fill date between the begin and end date provided.</li><li>If more drugs are available within the date provided and the PBM is unable to transmit additional drugs, a ‘More Drugs Available’ response is returned in the RES segment. Surescripts will revise the date range and make another request.</li></ol></li>
+            <li>The PBM creates the Medication History response file and submits it back to Surescripts.</li>
+            <li style="margin-top: 6pt;margin-bottom: 6pt;">Surescripts processes the result set and any matching fill records and formats it into the desired response.&#160; <br />Note:&#160; This process is explained in the Medication History – Acute Response sections.</li>
+        </ol>
+    </body>
+</html>

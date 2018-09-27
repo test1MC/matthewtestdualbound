@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="821" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" style="font-family: Arial;" MadCap:autonum="0.1 "><a name="_Toc452734046"></a>DRU-Drug Segment</h2>
+        <p class="StylebodytextBold">DRU-010-02 Item Description &lt;DrugDescription&gt;</p>
+        <p class="BodyText1">The item or drug description field shall<sup>*106R-116</sup> include the full drug name, strength and form (in that exact sequence).</p>
+        <p class="BodyText1">Shall<sup>*106R-117</sup> communicate 1 and only 1 medication unless this is a compound. </p>
+        <p class="BodyText1">If the data for single medications as well as compounds does not fit within the drug description field, the prescription shall<sup>*106R-161</sup> not be sent electronically. </p>
+        <p class="BodyText1">When entering a prescription that is free text, such as a compound, the prescriber shall<sup>*106R-185</sup> be prompted to confirm that the prescription is not for a controlled substance.</p>
+        <p class="StylebodytextBold">DRU-010-03 Item Number &lt;DrugCoded.ProductCode&gt;</p>
+        <p class="BodyText1">When sending, the NDC must be an 11 digit NDC in the 5-4-2 format. Dashes shall<sup>*106R-118</sup> not be used and leading zeros shall<sup>*106R-119</sup> NOT be suppressed. Example: 12345123412. If this is not a compound or supply as indicated in (DRU-110), then the NDC is required when sending 10.6; however, receivers of 10.6 messages cannot expect this information to always be present due to translation from lower SCRIPT versions on the network. </p>
+        <p class="BodyText1">For New Rx, a representative NDC shall<sup>*106R-120</sup> be sent if the product has an NDC. </p>
+        <p class="BodyText1">For Refill Renewal Requests and other outbound pharmacy messages to prescribers, the NDC shall<sup>*106R-156</sup> be sent if the product has an NDC. NDC (and qualifier; see 010-04) shall<sup>*106R-157</sup> be echoed back in Refill Renewal Response. The exception to this rule is if the NDC in the request is not an NDC11. See section on approved with changes – RES-010.</p>
+        <p class="StylebodytextBold"><span style="font-weight: bold;">DRU-010-0</span><span style="font-weight: bold;">6 Free Text &lt;DrugCoded.Strength&gt;</span>
+        </p>
+        <p class="BodyText1">If either or both the Drug Coded Strength (DRU-010-06) and the Strength Code (DRU-010-16) are sent they shall<sup>*106R-152</sup> match the Drug Strength in the Drug Name Description field (DRU-010-02). Example of improper use: The drug name description is “Amoxicillin 500 mg oral capsule” and the drug coded strength field contains the value of “250” instead of “500”.</p>
+        <p class="StylebodytextBold">DRU-010-14 Item Form Code &lt;FormCode&gt;</p>
+        <p class="BodyText1">If sent, the Form Code shall<sup>*106R-153</sup> match the drug form in the Drug Description field. Example of improper use: The drug description is “Amoxicillin 500 mg oral capsule” and the strength code field contains the value of “C42998” for tablet instead of “C25158” for capsule.</p>
+        <p class="StylebodytextBold">DRU-010-16 Item Strength Code &lt;StrengthCode&gt;</p>
+        <p class="BodyText1">If either or both the Drug Coded Strength (DRU-010-06) and the Strength Code (DRU-010-16) are sent, they shall<sup>*106R-152</sup> match the Drug Strength in the Drug Name Description field (DRU-010-02). Example of improper use: The drug name description is “Amoxicillin 500 mg oral capsule” and the Strength Code contains C28254 – Milliliter instead of C28253 Milligram.</p>
+        <p class="StylebodytextBold">DRU-010-17 DEA Schedule &lt;DEASchedule&gt;</p>
+        <p class="BodyText1">If a compound drug is sent and one of the ingredients is a known controlled substance, this field shall<sup>*106R-183</sup> be sent.</p>
+        <p class="BodyText1">For non-fillable messages (Renewal Request, Change Request, Cancel, RxFill), if the medication is categorized as a controlled substance by the DEA, this field shall<sup>*106R-167</sup> be sent.</p>
+        <p class="StylebodytextBold">DRU-020-02 Quantity &lt;Value&gt;</p>
+        <p class="BodyText1">Medication quantity shall<sup>*106R-121</sup> not be zero unless the message is for Long Term Care.</p>
+        <p class="BodyText1">On the New Rx and Refill Renewal Request medication quantity field, the application shall<sup>*106R-122</sup> support a decimal point and up to at least 3 digits to the right of decimal. </p>
+        <p class="StylebodytextBold">DRU-020-05 Potency Unit Code &lt;PotencyUnitCode&gt;</p>
+        <p class="BodyText1">Potency Unit/Quantity Qualifiers shall<sup>*106R-158</sup> be correctly associated with drug descriptions.</p>
+        <p class="StylebodytextBold">DRU-030-02 Dosage &lt;Directions&gt;</p>
+        <p class="BodyText1">If the SIG is over 140 characters the end users shall<sup>*106R-151</sup> send the prescription to the pharmacy by another means such as fax or printing the prescription out and handing to the patient; rather than populating the additional SIG information in the Free Text/Notes field. </p>
+        <p class="StylebodytextBold">DRU-040-01 Date/Time period qualifier &lt;DaysSupply&gt;, &lt;WrittenDate&gt;, &lt;LastFillDate&gt;, &lt;ExpirationDate&gt;, &lt;EffictiveDate&gt;, &lt;PeriodEnd&gt;, &lt;DeliveredOnDate&gt;, &lt;DateValidated&gt;, &lt;SoldDate&gt;</p>
+        <p class="BodyText1">The “Written Date” shall*<sup>106R-</sup><sup>125</sup> be populated in the approved Refill Renewal Response with the date of approval, i.e. date of response, on the drug prescribed and dispensed.</p>
+        <p class="StylebodytextBold">DRU-050 PRODUCT/SERVICE SUBSTITUTION, CODED &lt;Substitutions&gt;</p>
+        <p class="BodyText1">The application shall<sup>*106R-127</sup> not default the substitution code to DAW (code of 1). Rather, the prescriber shall<sup>*106R-128</sup> take action to set the substitution code to DAW (code of 1).</p>
+        <p class="StylebodytextBold">DRU-060-02 Quantity &lt;Value&gt;</p>
+        <p class="BodyText1">No quantity is required for PRN. Quantity shall<sup>*106R-129</sup> not be sent if PRN is used. If <span style="font-weight: bold;">P</span> qualifier is used, refill quantity shall<sup>*106R-130</sup> not be 0.</p>
+        <p class="BodyText1">On a Refill Renewal Response with a Denied or Denied New prescription To Follow, this value shall<sup>*106R-132</sup> be set to 0.</p>
+        <p class="BodyText1">For CS-II only one dispense event is permitted per the DEA IFR. This means on a New Rx for a CS-II the refill value shall<sup>*106R-180</sup> be equal to zero (0) and on an Approved or Approved with Changes status type Refill Renewal Response for a CS-II, the refill value shall<sup>*106R-164</sup> be one (1). </p>
+        <p class="BodyText1">Since there are no restrictions upon what a pharmacy may set this value to in a Refill Renewal Request, prescriber vendors shall<sup>*106R-165</sup> direct users to take the following action on an Approved or Approved With Changes status type Refill Renewal Response for a CS-II: </p>
+        <ul style="list-style-type: disc">
+            <li>On the Refill Renewal Response, set the refill value to one (1).</li>
+            <li>If needed, direct the prescriber to send additional subsequent New Rx prescription(s) where the refill value will be set to zero (0) and an effective date will be set 30 days, 60, days, 90 days, etc. in the future.</li>
+        </ul>
+        <p class="StylebodytextBold">DRU-090 FREE TEXT &lt;Note&gt;</p>
+        <p class="BodyText1">For Refill Renewal Requests, if the GHB reason or NADEAN number need to be sent to the pharmacy because they were not on the Refill Renewal Request, the Refill Renewal Request shall<sup>*106R-133</sup> be denied using the ‘Denied New To Follow’ response code. Then the following New Rx should contain the GHB reason or NADEAN number in this field.</p>
+        <p class="BodyText1">On a New Rx, the notes going into the message shall<sup>*106R-134</sup> be labelled as “Notes to Pharmacist” or something similar on the user screen. It shall<sup>*106R-187</sup> be clear that data passed in the 210 character Notes field will not be shared with the patient. Prescription information that has a designated, standardized data field within the NCPDP script standard shall<sup>*106R-175</sup> not be entered into the “Notes to Pharmacist” field. Some Examples: SIG, Effective Date, Drug Name, Strength, or Quantity.</p>
+        <p class="StylebodytextBold">Refill Qualifiers</p>
+        <p class="StylebodytextBold">A = Additional Refills Authorized</p>
+        <p class="BodyText1">“A” implies no Original Dispensing in addition to the quantity specified in DRU-060-02. </p>
+        <p class="BodyText1">Example: If DRU-060-01 = “A” and DRU-060-02 = 3, the prescriber is authorizing three dispensings. This value will appear in medication dispensed and prescribed segment of the Refill Renewal Response messages. See Note, below.</p>
+        <p class="StylebodytextBold">P = Pharmacy Requested Refills </p>
+        <p class="BodyText1">Because DRU-060 is not mandatory, a pharmacy may submit a Refill Renewal Request without requesting a particular number of refills by omitting DRU-060. If a pharmacy wishes to request a specific number of refills, it shall<sup>*106R-135</sup> submit "P" and the desired number of refills in field DRU-060-02 Quantity. If the pharmacy wishes to request additional refills without specifying how many, composite data element DRU-060 shall<sup>*106R-136</sup> be omitted completely. If "P" is used, the number of refills requested shall<sup>*106R-137</sup> not be zero. </p>
+        <p class="BodyText1">Example: If DRU-060-01 = “P” and DRU-060-02 = 3, the pharmacy is requesting three dispensings.</p>
+        <div class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">A pharmacy receiving a Refill Renewal Response may implement the dispensings authorized pursuant to the Refill Renewal Response in accordance with applicable laws and regulations, and its own practices. Thus, if a Refill Renewal Response authorizes four dispensings, the pharmacy may:<br /><br />- Generate a new prescription with an original dispensing and three refills<br />Or<br />- Add four refills to an existing prescription</div>
+        <p class="StylebodytextBold">Using Long Drug Names</p>
+        <p class="BodyText1">If the 35 characters are not sufficient for the drug name, strength, and dosage form, elements 10-12 are to be used sequentially. The three fields shall<sup>*106R-138</sup> result in the concatenation of the full drug name, strength, and dosage form, using as many of the bytes necessary of the 35 times 3 fields. DRU-010-02 should contain the first 35 characters of the long drug name. The information shall<sup>*106R-139</sup> begin in elements 010-10 Item Description and continue to 010-11 Item Description for as many bytes are needed and if necessary continue to 010-12 Item Description for as many bytes are needed up to the 35 length.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.1 "><a name="_Toc452734047"></a>Message Linkage</h3>
+        <p class="BodyText1">The Message Linkage of the Routing Guide shall<sup>*106R-144</sup> be followed by all participants. Please refer to the Message Linkage section in the Surescripts Prescription Routing Implementation Guide for examples.</p>
+        <h3 class="Heading3" MadCap:autonum="0.1.2 "><a name="_Toc452734048"></a>Refill Renewal Processing</h3>
+        <p class="BodyText1">On the Refill Renewal Response the prescriber shall<sup>*106R-145</sup> use both the prescribed and dispensed medication loops to indicate the number of refills approved.</p>
+    </body>
+</html>

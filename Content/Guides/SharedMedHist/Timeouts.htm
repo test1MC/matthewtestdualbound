@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="2" MadCap:lastHeight="345" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Timeouts</h2>
+        <p class="BodyText1">Each transaction that Surescripts submits to a participant has a time-out parameter. If Surescripts does not get a response from the participant within the specified time period, the transaction times out. Surescripts will then respond to the original sender in the appropriate manner. The Surescripts default time-out period is 10 seconds. </p>
+        <p class="BodyText1">For round-trip transactions, the initiator of a transaction can expect Surescripts to time out after 30 seconds of attempting to respond to the request. Therefore, the initiator should set their time-out to a value at least two seconds greater, or 32 seconds. </p>
+        <p class="BodyText1">For a transaction being sent from Surescripts to a participant, Surescripts utilizes the participant specific time-out to determine when the transactions will time out. For instance, if a participant has set their Surescripts specific time-out to 10 seconds, Surescripts will time out after waiting for an acknowledgment for 10 seconds. Therefore, the recipient should set their time-out to two seconds less than the set 10 seconds.</p>
+    </body>
+</html>

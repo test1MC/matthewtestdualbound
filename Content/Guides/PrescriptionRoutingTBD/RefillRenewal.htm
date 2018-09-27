@@ -1,0 +1,725 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="6271" MadCap:lastWidth="812">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643316"></a>Refill Renewal</h2>
+        <p class="BodyText1">A <span style="font-style: italic;">Refill Renewal Request</span> message is originated by the pharmacy. This message is for the purpose of requesting approval for additional refills of a prescription once the original number of refills has been dispensed.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If a patient has approved refills remaining on a current prescription, no electronic message is required for a dispensing to occur.</p>
+        <p class="BodyText1">A <span style="font-style: italic;">Refill Renewal Response</span> is sent by the prescriber to the pharmacy in response to a request to refill a prescription. The response indicates whether the <span style="font-style: italic;">Refill Renewal Request </span>has been accepted or denied.</p>
+        <h3 class="Heading3"><a name="_Toc443643317"></a>Refill Renewal Message Flow</h3>
+        <p class="BodyText1">The following steps depict the <span style="font-style: italic;">Refill Renewal</span> message flow:</p>
+        <ol>
+            <li>The <span style="font-style: italic;">Refill Renewal</span> message is successfully transmitted from the pharmacy system to Surescripts.</li>
+            <li>Surescripts validates the message and utilizes the Recipient ID to route the message to the appropriate prescriber via their prescriber system. If there is an issue with the message, Surescripts sends an Error message back to the requester.</li>
+            <li>Prescriber system validates the <span style="font-style: italic;">Refill Renewal Request</span> and returns a <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> (if errors are found), or <span style="font-style: italic;">Verify</span> message.<ol style="list-style-type: lower-alpha;"><li>If a <span style="font-style: italic;">Status</span> 000 is sent in step 3, the prescriber system would send a Verify.</li></ol></li>
+            <li>Surescripts transmits the <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span>, or <span style="font-style: italic;">Verify</span> message back to the pharmacy system.</li>
+            <li>Prescriber system processes the <span style="font-style: italic;">Refill Renewal Request</span> and returns the prescriber's <span style="font-style: italic;">Refill Renewal Response</span> message.</li>
+            <li>Surescripts validates the message. If there is an issue with the message, Surescripts sends an <span style="font-style: italic;">Error</span> message back to the prescriber system.</li>
+            <li>Surescripts transmits the Refill Renewal Response message back to the pharmacy system.</li>
+            <li>Pharmacy system validates the <span style="font-style: italic;">Refill Renewal Response</span> and returns a <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span> (if errors are found), or <span style="font-style: italic;">Verify</span> message.<ol style="list-style-type: lower-alpha;"><li>If a <span style="font-style: italic;">Status</span> 000 is sent in step 8, the pharmacy system would send a <span style="font-style: italic;">Verify</span>.</li></ol></li>
+            <li>Surescripts transmits the <span style="font-style: italic;">Status</span>, <span style="font-style: italic;">Error</span>, or <span style="font-style: italic;">Verify</span> back to the prescriber system.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643318"></a>RefillRequest (XML)</h3>
+        <p class="Graphic" style="margin-left: 45pt;">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Refill Renewal.png" style="visibility: visible;mso-wrap-style: square;width: 409px;height: 699px;" alt="RefillRequest.png" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443643319"></a>REFREQ (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UNA Service String Advice.htm#_UNA_–_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIH Interactive Message Header.htm#_UIH_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><span class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">I</span><span class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">nteractive Message Header</span>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message.</p>
+                        <p class="TableBody">For renewal request, Message function = REFREQ.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/REQ Request Segment.htm#_REQ_–_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Can contain additional reference numbers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Prescriber Segment.htm#_PVD_–_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Facility Segment.htm#_PVD_–_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Pharmacy Segment.htm#_PVD_–_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="Hyperlink" style="color: black;font-size: 9pt;text-decoration: none;">One loop required for the pharmacy.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug dispensed.</p>
+                        <p class="Hyperlink" style="font-weight: bold;color: black;font-size: 9pt;text-decoration: none;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody">In NCPDP SCRIPT 10.6, a second DRU loop for drug dispensed is conditional in a Refill Renewal Request message. In this implementation and in NCPDP SCRIPT 10.8, drug dispensed is Mandatory.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/OBS Observation Segment.htm#_OBS_–_Observation" class="Hyperlink" style="font-size: 9pt;">OBS</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Observation Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to send patient's height and weight.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/COO Coordination of Benefits.htm#_COO_–_Coordination" class="Hyperlink" style="font-size: 9pt;">COO</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Coordination of Benefits Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to convey to the prescriber the patient's prescription plan.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIT Interactive Message Trailer.htm#_UIT_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIZ Interactive Interchange.htm#_UIZ_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">Refill Renewal Request from the pharmacy to prescriber:</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: REFREQ</p>
+        <h3 class="Heading3"><a name="_Toc443643320"></a>RefillResponse (XML)</h3>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Refill Renewal_1.png" style="visibility: visible;mso-wrap-style: square;width: 385px;height: 716px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc443643321"></a>REFRES (EDIFACT)</h3>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Segment Description</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Max Repetitions</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UNA Service String Advice.htm#_UNA_–_SERVICE" class="Hyperlink" style="font-size: 9pt;">UNA</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Service String Advice</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Must be present on all messages in this implementation usage. Is a fixed-length segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIB – Interactive Interchange Control Header Segment.htm#top" class="Hyperlink" style="font-size: 9pt;">UIB</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Control Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates sender and receiver IDs, trace numbers, date, time stamps at the interchange level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIH Interactive Message Header.htm#_UIH_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIH</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Header</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the type of message.</p>
+                        <p class="TableBody">For Renewal Response, Message function = REFRES.</p>
+                        <p class="TableBody">Also indicates trace numbers at the message level.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/REQ Request Segment.htm#_REQ_–_Request" class="Hyperlink" style="font-size: 9pt;">REQ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Request Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Can contain additional reference numbers.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/RES Response Segment.htm#_RES_–_Response" class="Hyperlink" style="font-size: 9pt;">RES</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Response Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the approval or denial of the Refill Renewal Request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Prescriber Segment.htm#_PVD_–_Prescriber" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Prescriber)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop required for the prescriber. One loop may be needed to relay the supervisor.</p>
+                        <p class="TableBody">If Supervisor information was sent in the NewRx, pharmacy may not echo back this information in a Refill Renewal Request. The prescriber may add Supervisor information in the Refill Renewal Response message, if warranted.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Facility Segment.htm#_PVD_–_Facility" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Facility)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Used to identify the facility or clinic.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PVD Pharmacy Segment.htm#_PVD_–_Pharmacy" class="Hyperlink" style="font-size: 9pt;">PVD</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Provider Segment (Pharmacy)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop for the pharmacy is required.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The PVD segment for pharmacy is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, pharmacy is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/PTT Patient Segment.htm#_PTT_-_Patient" class="Hyperlink" style="font-size: 9pt;">PTT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Patient Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates patient information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug prescribed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug prescribed.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">The DRU loop for drug prescribed is not required for NCPDP SCRIPT 10.6. In this implementation, the DRU loop for Drug prescribed is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/DRU Drug Segment.htm#_DRU_–_Drug" class="Hyperlink" style="font-size: 9pt;">DRU</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Drug Segment (Drug dispensed)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">One loop is required for the drug dispensed.</p>
+                        <p class="TableBody" style="font-weight: bold;">Variance from NCPDP SCRIPT 10.6:</p>
+                        <p class="TableBody" style="margin-top: 0pt;">A second DRU loop for drug dispensed is not required for NCPDP SCRIPT 10.6. In this implementation and in NCPDP SCRIPT 10.8, drug dispensed is required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/SIG Structured SIG Segment.htm#_SIG_–_Structured" class="Hyperlink" style="font-size: 9pt;">SIG</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SIG Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&gt;1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Codified SIG information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/OBS Observation Segment.htm#_OBS_–_Observation" class="Hyperlink" style="font-size: 9pt;">OBS</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Observation Segment</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">May be used to send patient's height and weight.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIT Interactive Message Trailer.htm#_UIT_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIT</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">Interactive Message Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Designates the message trace number and number of segments in the message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody"><a href="../PrescriptionRouting10.6/UIZ Interactive Interchange.htm#_UIZ_–_Interactive" class="Hyperlink" style="font-size: 9pt;">UIZ</a>
+                        </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">Interactive Interchange Trailer</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">Designates the interchange trace number and the number of messages in the interchange.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Segment Notes:</p>
+        <p class="BodyText1">Refill Renewal Response from prescriber to pharmacy:</p>
+        <p class="BodyText1Indent2">UIB Segment</p>
+        <p class="BodyText2">030-02 Initiator Reference Identifier ties this RESPONSE to the original message. Maps to the original message field UIB-030-01.</p>
+        <p class="BodyText1Indent2">UIH Segment:</p>
+        <p class="BodyText2">010-04 Message Function has the value: REFRES</p>
+        <h3 class="Heading3"><a name="_Toc443643322"></a>Refill Renewal Best Practices</h3>
+        <p class="BodyText1">In SCRIPT 10.8 the mandatory drug loop was changed from “prescribed” to “dispensed”. Since we are moving toward a mandatory segment, we need to require both in the transition period. The reason for sending the prescribed is to assist the prescriber in matching the medication to what was sent on the original NewRx.</p>
+        <p class="BodyText1">On the Refill Renewal Request the pharmacy should use both the prescribed and dispensed medication loops to indicate the number of refills requested.</p>
+        <p class="BodyText1">Surescripts requires that the medication prescribed and medication dispensed loops be included on the Refill Renewal Request. The medication prescribed loop from the pharmacy should not contain the literal prescribed medication information that was provided by the prescriber on a NewRx, but instead should include the pharmacist’s interpretation of the medication ordered by the prescriber. The medication dispensed is the medication that the pharmacy dispensed to the patient. The pharmacy is requesting that the medication listed in the dispensed loop be renewed. The prescriber system should indicate that the dispensed medication is the item being requested for renewal. The medication prescribed information is displayed to the prescriber for cross-reference only.</p>
+        <p class="BodyText1">As stated in the RES segment definition, only certain fields can be changed on a Refill Renewal Response for an Approve. Refer to RES-010, for details.</p>
+        <p class="BodyText1">If the Refill Renewal Response is for a controlled substance, the prescriber is required to sign the medication prescribed information. Even though the medication prescribed is sent for cross-reference on the Refill Renewal Request, it becomes what the prescriber is approving on the Refill Renewal Response. Therefore, the prescriber is actually approving both what was prescribed and dispensed. The pharmacy can still substitute and dispense what was dispensed before.</p>
+        <p class="BodyText1"><b>Example</b>:</p>
+        <p class="BodyText1">NewRx sent by prescriber with substitutions allowed.</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET<br />Refill Qualifier: R<br />Refill Value: 1</p>
+        <p class="BodyText1">Pharmacy dispenses SIMIVASTATIN 10MG TABLET</p>
+        <p class="BodyText1">Pharmacy sends Refill Renewal Request</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET (Name can be changed to match what is in pharmacy’s database for this medication.)<br />Refill Qualifier: P<br />Refill Value: 2</p>
+        <p class="BodyText1">Medication Dispensed: SIMIVASTATIN 10MG TABLET</p>
+        <p class="BodyText1Indent2">Refill Qualifier: P<br />Refill Value: 2</p>
+        <p class="BodyText1">Prescriber approves and sends Refill Renewal Response</p>
+        <p class="BodyText1Indent2">Medication Prescribed: LIPITOR 10MG TABLET<br />Refill Qualifier: A<br />Refill Value: 2</p>
+        <p class="BodyText1">Medication Dispensed: SIMIVASTATIN 10MG TABLET</p>
+        <p class="BodyText1Indent2">Refill Qualifier: A<br />Refill Value: 2</p>
+        <h3 class="Heading3"><a name="_Toc443643323"></a>Refill Renewal Prescriber Best Practices</h3>
+        <ol>
+            <li>Prescriber should respond to all requests received within 48 hours. Prescribers should not delete a request message from a processing queue without a response being generated to the requestor.</li>
+            <li>If another prescriber is responding to a Refill Renewal Request for non-controlled substances on the original prescriber's behalf (i.e. original prescriber who is out of the office), then one of the following options should be used.<p>Option A – Using Prescribing Agent – If the prescriber is out for a short time, then the prescriber field in the Refill Renewal Response should contain the prescriber's name, but the Prescribing Agent field should contain the name of the prescriber that is authorized to approve/deny refills for the prescriber.</p><p>Option B – If the prescriber is out for a long time, the original Refill Renewal Request should be denied using the DeniedNewRxToFollow (DNTF) status type and followed by a NewRx. The DNTF Refill Renewal Response should contain the original prescriber's name, and the NewRx should be from the new prescriber.</p></li>
+            <li>If the prescriber order number cannot be used to match a NewRx to a Refill Renewal Request; the following data in the prescribed drug, prescriber, and pharmacy segments in the Refill Renewal Request should be used to link the Refill Renewal Request to the original NewRx:<ul><li><p>&lt;RelatesToMessageID&gt;</p></li><li><p>Patient matching: name, date of birth, gender</p></li><li><p>Prescribed Drug – one or more of these data elements in the prescribed drug segment: Drug name, dose form, strength, NDC, FMT coded quantity</p></li><li><p>Prescriber – One or more of these elements: SPI, NPI, name, communication number</p></li><li><p>Pharmacy – One or more of these elements: NCPDP ID, NPI, Pharmacy Name, Communication Number</p></li></ul></li>
+            <li>Many of our vendors have found it helpful to couple the Refill Renewal Request/Refill Renewal Response/Denied New Prescription To Follow processes together, so they do not send the Refill Renewal Response until the NewRx has been completed. This helps keep the messages tied together and prevents issues with the pharmacy receiving the Refill Renewal Response, but not the NewRx.</li>
+            <li>When a prescriber leaves a practice the prescriber should be disabled in the directory from that practice as soon as they leave to prevent renewals from being sent and approved for a prescriber no longer practicing at that location.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443643324"></a>Refill Renewal Pharmacy Best Practices</h3>
+        <ol>
+            <li>If the prescriber has not responded within 48 hours, another message should not be sent. Instead, the pharmacist should call the prescriber.</li>
+            <li>A pharmacy may send a Refill Renewal Request for controlled substances regardless of whether the prescriber is set up for the EPCS service.</li>
+            <li>The pharmacy application should only allow a Refill Renewal Request to be sent when there are no more refills on the original prescription to fill or if the prescription is expired.</li>
+            <li>When the application receives the following data points, the screen should also display:<ul><li><p>Prior Authorization Number and Prior Authorization Status</p></li><li><p>Observation Segment: This information (Weight, Height) is especially important for infused, injected, oncology, and pediatric medications</p></li></ul></li>
+            <li>Renewal routing:<ol style="list-style-type: lower-alpha;"><li>Retain the original sending SPI for electronically received NewRx. Evaluate this SPI (e.g., has Refill Renewal Service Level), and send REFREQ to this record.</li><li>Instead of selecting the first SPI in the file where the SPI has renewals enabled, evaluate all of the provider's SPIs where renewals are enabled to establish confidence to send the electronic request. Take into account the individual provider and location context necessary to find a prescriber within the appropriate organizational context (e.g., find the Individual [NPI or DEA or Name] at a Location [Address Line 1or Address Line 2 or zip code or phone or fax or clinic name], and Refill Renewal Service level).</li><li>If more than one SPI is found with Refill Renewal Service level, it is recommended that additional refinement be performed based on information from the new prescription, or provide options for manual review.</li><li>Pharmacies should send Refill Renewal Request via a non-EDI method (i.e. fax, call) when prescriber location is not found.</li></ol></li>
+        </ol>
+    </body>
+</html>

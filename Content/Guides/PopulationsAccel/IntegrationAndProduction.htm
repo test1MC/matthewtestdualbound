@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc435024001"></a>Integration &amp; Production</h1>
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="top"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="Transiti"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1"> For terminology usage throughout this guide, consider the following:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Term</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Term usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">must</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">	Requirements that are enforced as part of the production code.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">should</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">		Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="Secure"></a>Secure FTP</h2>
+        <p>Contact your Surescripts Integration Project Manager for Secure FTP requirements.</p>
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Communic"></a>Communication Rules</h2>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This Communication Rules section pertains to the Accelerator portion of Patient Notifications.</p>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <p class="BodyText1">Security Rules - Surescripts requires that all messages sent and received use Basic Authentication. The "Authorization" header of the HTTP message must contain the user ID and password, separated by a single colon (":") character, within a base64-encoded string.</p>
+        <p class="note" MadCap:conditions="Default.Non200ResponseCode" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Message data for customer processing is included in the HTTP response body when the HTTP status code is 200. Response body content for all status codes other than 200 will not contain data for parsing (e.g., message data). Instead, reference the HTTP status code provided in the response.</p>
+        <p class="BodyText1" style="font-weight: bold;">How Basic Authentication is Used</p>
+        <p class="BodyText1">Surescripts sets up a username and password for customers to use in messages customers send to Surescripts. Customers use Basic Authentication in the message header for messages posted to the Surescripts assigned URL in test and production.</p>
+        <p class="BodyText1" style="font-weight: bold;">Attaching the username and password to the header (Base64 password encoding)</p>
+        <p class="BodyText1" style="margin-top: 0pt;margin-bottom: 6pt;">Concatenate the username and password, separating them with a colon: <br />“username:password”</p>
+        <p class="BodyText1" style="margin-top: 0pt;">Convert that concatenation into a UTF8-encoded byte array</p>
+        <p class="BodyText1" style="margin-top: 0pt;margin-bottom: 0pt;">Convert that array into a BASE64 encoded string:</p>
+        <p class="BodyText1" style="margin-top: 0pt;">dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1" style="margin-top: 0pt;margin-bottom: 0pt;">Specify the authentication type of 'Basic' by adding the word 'Basic' to it:</p>
+        <p class="BodyText1" style="margin-top: 0pt;">"Basic dXNlcm5hbWU6cGFzc3dvcmQ="</p>
+        <p class="BodyText1" style="margin-top: 0pt;margin-bottom: 0pt;">Add that string to the Authorization header. It will look like:</p>
+        <p class="BodyText1" style="margin-top: 0pt;">Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1" style="margin-top: 0pt;">Send the web request - HttpWebRequest.Post</p>
+        <p class="BodyText1" style="font-weight: bold;">Basic Authentication Example:</p>
+        <p class="BodyText1">This Basic Authentication example can be found at: <a href="http://en.wikipedia.org/wiki/Basic_authentication_scheme" target="_blank">http://en.wikipedia.org/wiki/Basic_authentication_scheme</a></p>
+        <p class="BodyText1">The user name "Aladdin" and password "open sesame" would be combined as "Aladdin:open sesame" – which is equivalent to QWxhZGRpbjpvcGVuIHNlc2FtZQ== when encoded in base-64. In other words,</p>
+        <p class="BodyText1">Sample Post:</p>
+        <p class="BodyText2" style="margin-bottom: 0pt;">POST /URL Provided to you by Surescripts HTTP/1.1</p>
+        <p class="BodyText2" style="margin-bottom: 0pt;margin-top: 4pt;">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <p class="BodyText2" style="margin-top: 4pt;margin-bottom: 0pt;">Content-Type: text/xml</p>
+        <p class="BodyText2" style="margin-bottom: 0pt;margin-top: 4pt;">Host: xxx.xx.x.xxx</p>
+        <p class="BodyText2" style="margin-bottom: 0pt;margin-top: 4pt;">Content-Length: 1142</p>
+        <p class="BodyText2" style="margin-top: 4pt;margin-bottom: 0pt;">Expect: 100-continue</p>
+        <p class="BodyText2" style="margin-top: 4pt;">HTTP/1.1 100 Continue</p>
+        <h2 class="Heading2"><a name="UTC"></a>UTC Time Format</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+    </body>
+</html>

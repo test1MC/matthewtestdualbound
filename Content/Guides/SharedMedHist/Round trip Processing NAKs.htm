@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="763" MadCap:lastWidth="624">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2" MadCap:autonum="0.1 ">Round-trip Processing (NAKs)</h2>
+        <p class="BodyText1">The transaction processing summary explains the exchange of messages between participants and the potential errors that could occur. In some situations, the receiving participant does not have enough information to create a standard error transaction. This will occur if the receiving party encounters one of the following problems: </p>
+        <ul>
+            <li>cannot validate the sender’s Participant ID and/or password</li>
+            <li>cannot identify the transaction</li>
+            <li>a system error occurs before the transaction is being processed</li>
+        </ul>
+        <p class="BodyText1">Surescripts is utilizing a small XML file to transmit the error in this situation. The error is transmitted via the same connection level protocol that the request came in on, using information at the connection level to know how to get it to the original sender. </p>
+        <p class="BodyText1">The following process flow diagrams display the conditions where a participant can expect an error (NAK).</p>
+        <p class="BodyText1">Round-trip transactions are made up of a request and a response. The following scenarios can exist for these types of transactions.</p>
+        <p class="BodyText1"><span style="font-weight: bold;">Scenario A:</span> Failure at Surescripts on incoming request.</p>
+        <p class="Graphic" style="margin-bottom: 0pt;">
+            <img src="../../Resources/Images/MedHistAmb/Round trip Processing NAKs.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;width: 961px;height: 379px;" alt="Round-tripScenario_A.emf" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1"><span style="font-weight: bold;">Scenario B:</span> Failure of request at receiver after Surescripts transmitted the request. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Surescripts transmits an error transaction back to the original requester.</p>
+        <p class="Graphic" style="margin-bottom: 0pt;">
+            <img src="../../Resources/Images/MedHistAmb/Round trip Processing NAKs_1.png" style="visibility: visible;mso-wrap-style: square;border-top-style: solid;border-top-width: 1pt;border-bottom-style: solid;border-bottom-width: 1pt;border-left-style: solid;border-left-width: 1pt;border-right-style: solid;border-right-width: 1pt;width: 972px;height: 327px;" alt="Round-tripScenario_B.emf" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1">The physical format of a NAK is a small XML string in place of a transaction. </p>
+        <p class="BodyText1">Error (NAK)</p>
+        <p class="BodyText1">&lt;nak status=”n”&gt;Text Message&lt;/nak&gt;</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Message Type</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Status</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Error</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                    <p class="TableHeading">Message</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">NAK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">1</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Invalid Syntax</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="text-transform: uppercase;">Transaction cannot be identified nor processed</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">NAK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">2</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Security Violation</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="text-transform: uppercase;">Sending Participant ID unrecognized or the password is incorrect</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">NAK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">3</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">Transaction Timeout</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="text-transform: uppercase;">Transaction Timeout</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body1">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">NAK</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">4</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                    <p class="TableBody">System Error</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                    <p class="TableBody" style="text-transform: uppercase;">System Error</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1">An example of a nak:</p>
+        <p class="BodyText1">&lt;nak status=”2”&gt; Sending Participant ID unrecognized or the password is incorrect &lt;/nak&gt;</p>
+    </body>
+</html>

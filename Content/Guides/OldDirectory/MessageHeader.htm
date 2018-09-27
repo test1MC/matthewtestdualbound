@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1280.333" MadCap:lastWidth="762">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: ">Message Header  </h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="Message"></a>Message Header Elements - Descriptions</h2>
+        <p style="margin-left: 0pt; border-bottom-style: solid; border-bottom-width: 0pt; border-bottom-color: #000000;">All directory functions will use the following message header.</p>
+        <h3 class="Heading3" MadCap:autonum="1.1.1 "><a name="_Toc441585632"></a>Requirements Designation</h3>
+        <p class="BodyText1">Each segment and data element has a requirement designation. If a  data element is listed as Mandatory, it must be present in the transmission. If a Conditional complex type data element is used; all mandatory data elements contained within it are required.</p>
+        <p style="margin-left: 0pt; border-bottom-style: solid; border-bottom-width: 0pt; border-bottom-color: #000000;">Surescripts uses a message header for all messages. </p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 432px;" />
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="background-color: #c0c0c0;font-weight: bold;">
+                    <p class="TableHeading">Code</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;font-weight: bold;">
+                    <p class="TableHeading">Description</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="text-align: center;">
+                    <p>M</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Mandatory — the element must be used.</p>
+                </td>
+            </tr>
+            <tr class="TableStyle-GuideTables-Body-Body">
+                <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="text-align: center;">
+                    <p class="TableBody">C</p>
+                </td>
+                <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                    <p class="TableBody">Conditional — the element must be used if conditions are met. Some fields do not have specific conditions. Data should be sent if <MadCap:annotation MadCap:createDate="2017-11-30T13:36:28.4125304-06:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="Keep unless there are no fields to follow that do not have conditions. Do we need to check all elements prior to publication?" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-11-30T13:37:05.9866220-06:00">available.</MadCap:annotation></p>
+                </td>
+            </tr>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> This guide only includes data elements where Surescripts has specific requirements or further explains the field usage. Refer to the Directory Schema listed in Document References for a complete list of fields.</p>
+        <p class="StylebodytextBold">M/C – Mandatory or Conditional</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 187px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 63px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 412px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">M/C</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">ELEMENT</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">DATA TYPE</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">COMMENT</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">To</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex <br />Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The identification of the intended receiver of the message.</p>
+                        <p class="TableBody">For Directory 6.0 messages, all customers must send to the following Surescripts ID: SSDR60.dp@surescripts.com  </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">To@qualifier</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Value:</p>
+                        <p>ZZZ = DMDR60</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">From</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complex <br />Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">The Data Provider ID (Identification of the sender of the message).</p>
+                        <p class="TableBody">Use the Surescripts-provided Data Provider ID (e.g. SSDR60.dp@surescripts.com)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">From/@qualifier</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Value:</p>
+                        <p>ZZZ = DMAD60</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">MessageID</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">	an..35M</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p> The message sender must ensure the combination of the SenderID (value of the FROM element) and the MessageID cannot be reused for at least 18 months. Surescripts recommends unformatted Globally Unique Identifiers (GUID) for generating message IDs.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">D</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">RelatesToMessageID</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Used in response messages to echo back the original request message's MessageID. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SentTime</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Date time</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>	Date and time of initiation. Coordinated Universal Time (UTC) should be used. </p>
+                        <p>YYYY-MM-DDTHH:MM:SS.FZ</p>
+                        <p>
+	Example: 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds, and Z to denote UTC time.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">Security</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">	Not used.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SenderSoftware</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">The text field that identifies the entity responsible for the software that generated the transaction.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SenderSoftwareDeveloper</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">The developer may be a software vendor or, if the software was developed "in-house", the developer is the entity actually sending the transaction (e.g., a chain).</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SenderSoftwareProduct</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">The name of the software product as determined by the software developer.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">SenderSoftwareVersionRelease</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Version and release of the software product.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" colspan="4">&#160; The remaining fields in the header are not used for Directory messaging.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

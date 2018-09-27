@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="5827.667" MadCap:lastWidth="1074">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Messages Overview</h1>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379365"></a>Message Descriptions</h2>
+        <p class="StylebodytextBold" style="color: #000000;">RxHistoryRequest</p>
+        <p class="BodyText1" style="color: #000000;">The prescriber sends a Medication History request for a patient to Surescripts. The request is routed to the appropriate PBM/payer for processing. For fill data, the request is handled by Surescripts internally using the pharmacy database. </p>
+        <p class="BodyText1">Customers need to send two messages to get both fill and claim based medication history. One indicates it is a fill request for pharmacy data and the other contains the PBM/payer identifier indicating it is requesting claim history from the PBM/payer. In addition, if the patient has multiple coverages, a separate RxHistoryRequest to the PBM/payer(s) is needed for each active coverage.</p>
+        <p class="StylebodytextBold" style="color: #000000;">RxHistoryResponse</p>
+        <p class="BodyText1" style="color: #000000;">PBM/payer checks for the date range of the history request. </p>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">If empty, up to the last 50 medications filled are returned, starting with the most recent.</li>
+            <li style="margin-top: 8pt;color: #000000;">If populated with an effective and expiration date, up to 50 medications are returned to the requester, starting with the expiration date.</li>
+        </ul>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">When more medications are available, a More Drugs Available (AQ) response is returned in the ApprovalReasonCode and then another RxHistoryRequest is needed to obtain additional available medication history.</p>
+        <p class="StylebodytextBold">Status</p>
+        <p class="BodyText1">In the Medication History flow, a Status message is used in the case of an error in the response from the PBM/payer. When a PBM/payer responds with an invalid message, a new Error message is initiated to the PBM/payer. The PBM/payer will then need to respond to the Error message with a Status message. The RelatesToMessageID in the Status message ties to the MessageID in the Error message.</p>
+        <p class="BodyText1" style="color: #000000;">Status is never received by provider vendor since they receive synchronous responses.</p>
+        <p class="StylebodytextBold">Error</p>
+        <p class="BodyText1">The Error message is sent to indicate an error has occurred. A synchronous error is sent in response to a message before breaking the communication connection. The RelatesToMessageID in the Error message ties to the original message and maps to the original MessageID.</p>
+        <p class="BodyText1">For PBM/Payers, an asynchronous error message (also called Free Standing Error message) is sent in response to an invalid RxHistoryResponse message. The asynchronous error message is a separate message type and shall*106M-022 be responded to with a status of 010. An Error message shall*106M-023 never be responded to with an Error message; this could create an endless loop. </p>
+        <p class="BodyText1" style="color: #000000;">An Error message may not be used to respond to a Status or Error message. </p>
+        <p class="BodyText1">For more information on Error processing, see <a href="ErrorProcessing.htm#ErrorProcessing">Error Processing</a>.</p>
+        <p class="StylebodytextBold">NAK</p>
+        <p class="BodyText1">A NAK is a small XML file used to transmit errors when the receiving customer does not have enough information to create a standard error message. This may occur if the receiving party encounters one of the following problems: </p>
+        <ul>
+            <li style="font-weight: normal;letter-spacing: 0pt;">cannot validate the sender’s Participant ID and/or password, </li>
+            <li style="font-weight: normal;letter-spacing: 0pt;">cannot identify the transaction</li>
+            <li style="font-weight: normal;letter-spacing: 0pt;">a system error occurs before the transaction is being processed</li>
+        </ul>
+        <p class="BodyText1">The error is transmitted via the same connection level protocol that the request came in on, using information at the connection level to know how to get it to the original sender. </p>
+        <p class="BodyText1">The physical format of a NAK is a small XML string in place of a transaction. </p>
+        <p class="BodyText1">Error (NAK)</p>
+        <p class="BodyText1">&lt;nak status=”n”&gt;Text Message&lt;/nak&gt;</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');border-left-style: solid;border-left-width: 1px;border-left-color: #000000;border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 1px;border-top-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Message Type</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Status</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Error</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Message</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Invalid Syntax</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Transaction cannot be identified nor processed</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Security Violation</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Sending Participant ID unrecognized or the password is incorrect</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Transaction Timeout</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Transaction Timeout</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">NAK</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">4</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">System Error</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">System Error</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="color: #000000;">An example of a nak:</p>
+        <p class="BodyText1" style="color: #000000;">&lt;nak status=”2”&gt; Sending Participant ID unrecognized or the password is incorrect &lt;/nak&gt;</p>
+        <p class="BodyText1">For more information on NAK processing, see <a href="ErrorProcessing.htm#ErrorProcessing">Error Processing</a>.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="Medicati"></a>Medication History Message Flow</h2>
+        <h3 class="Heading3"><a name="_Toc506379368"></a>Request/Response Claim Data (PBM/Payer)</h3>
+        <p>
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview.png" style="visibility: visible;mso-wrap-style: square;width: 855px;height: 457px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li style="color: #000000;">An eligibility request is sent by the provider vendor system to Surescripts to obtain the PBM Unique Member ID used for the Rx History Request.</li>
+            <li>Provider vendor sends an RxHistoryRequest for an eligible patient, supplying the PBM Unique Member ID for the patient.</li>
+            <li>Surescripts validates the message and passes it to the appropriate PBM/payer.</li>
+            <li>The PBM/payer processes the request. If it fails, the PBM/payer returns an Error message instead of RxHistoryResponse. The processing steps are as follows:<ol style="list-style-type: lower-alpha;"><li>PBM/payer validates the format of the request.</li><li>PBM/payer finds the patient via the PBM Unique Member ID.</li><li>PBM/payer checks level of consent.<ul><li>If Y (Yes) or X (Parental/Guardian), request is processed.</li><li>If N (No), no medications are returned.</li></ul></li><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Patient Consent = N, it is expected that the RxHistoryRequest would not be sent.</p><li>If P (Physician Only) or Z (Parental/Guardian), the PBM/payer checks for the existence of a Physician identifier in the Prescriber/Identification. If physician only consent is given, the PBM/payer will only look for medications prescribed by the identified physician, if supported.</li><li>PBM/payer checks for the date range of the history request.<ul><li>If empty, up to the last 50 medications filled are returned, starting with the most recent.</li><li>If populated with an effective and expiration date, up to 50 medications are returned to the requester, starting with the expiration date.</li></ul></li><li>When more medications are available, a More Drugs Available&#160;(AQ)&#160;response is returned in the ApprovalReasonCode and then another RxHistoryRequest is needed to obtain additional available medication history.</li></ol></li>
+            <li>The PBM/payer creates the RxHistoryResponse and submits it back to Surescripts.</li>
+            <li>Surescripts validates the RxHistoryResponse and sends it back to the provider vendor.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc506379369"></a>Request/Response Fill Data (Pharmacy)</h3>
+        <p>
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_1.png" style="visibility: visible;mso-wrap-style: square;width: 828px;height: 333px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol>
+            <li>Provider vendor sends an RxHistoryRequest for a patient, indicating it is for fill data. See the <a href="MessageDefinition.htm#TertiaryId">TertiaryIdentifier</a> field for more details on fill data. </li>
+            <li>Surescripts processes the request. If it fails, Surescripts returns an Error message instead of a History response. Processing steps are as follows:<ol style="list-style-type: lower-alpha;"><li>Surescripts validates the format of the request.</li><li>Surescripts looks for pharmacy fill data in the pharmacy database.</li><li>Surescripts checks level of consent.<ul><li>If Y (Yes) or X (Parental/Guardian), request is processed.</li><li>If N (No), no medications are returned.</li></ul></li><p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If Patient Consent = N, it is expected that the RxHistoryRequest not be sent.</p><li>Surescripts checks for the date range of the history request.<ul><li>If empty, up to the last 50 medications filled are returned, starting with the most recent. Up to one year of medication history can be returned.</li><li>If populated with an effective and expiration date, up to 50 medications are returned to the requester, starting with the expiration date. For fill requests, the request can only go back one year from the date of the request.</li></ul></li><li>When more medications are available, a More Drugs Available&#160;(AQ)&#160;response is returned in the ApprovalReasonCode and then another RxHistoryRequest is needed to obtain additional available medication history.</li></ol></li>
+            <li style="color: #000000;">Surescripts sends the response back to the provider vendor.</li>
+        </ol>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379370"></a>Error Message Scenarios</h3>
+        <p class="BodyText1">The following diagrams depict various scenarios where Error messages are sent in response to an RxHistoryRequest message. An error can be generated when there is a communication problem or when the message actually had an error (e.g., a formatting problem).</p>
+        <p class="BodyText1" style="font-weight: bold;">Scenario 1 - Failure at Surescripts on Incoming Request:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_2.png" style="visibility: visible;mso-wrap-style: square;width: 452px;height: 171px;" />
+        </p>
+        <p class="BodyText1" style="color: #000000;">1a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">1b) Surescripts does not have enough information to create a standard Error message and sends a NAK to the provider vendor.</p>
+        <p class="BodyText1" style="font-weight: bold;color: #000000;">Scenario 2 - Surescripts Recognized Message Format but Errors Found:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_3.png" style="visibility: visible;mso-wrap-style: square;width: 445px;height: 168px;" />
+        </p>
+        <p class="BodyText1" style="color: #000000;">2a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">2b) Surescripts recognizes the format as NCPDP, but finds errors in the message. Surescripts returns an Error message.</p>
+        <p class="StylebodytextBold">Scenario 3 - Failure at PBM/Payer on Incoming Request:</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_4.png" style="visibility: visible;mso-wrap-style: square;width: 690px;height: 167px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1" style="color: #000000;">3a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">3b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">3c) The PBM/payer cannot recognize the message and sends NAK to Surescripts.</p>
+        <p class="BodyText1">3d) Surescripts creates an Error message and returns it to the provider vendor.</p>
+        <p class="StylebodytextBold" style="color: #000000;">Scenario 4 - PBM/Payer Validates Message and Returns Error Message:</p>
+        <p class="p">
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_5.png" style="visibility: visible;mso-wrap-style: square;width: 693px;height: 162px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="BodyText1" style="color: #000000;">4a) RxHistoryRequest is sent to Surescripts.</p>
+        <p class="BodyText1">4b) Surescripts forwards the message on to the PBM/payer.</p>
+        <p class="BodyText1">4c) The PBM/payer validates the message, finds errors in the message, and returns an error message to Surescripts.</p>
+        <p class="BodyText1">4d) Surescripts forwards the Error message back to the provider vendor.</p>
+        <p class="StylebodytextBold">Scenario 5 - Surescripts Validates Message and Returns Error Message:</p>
+        <p class="NormalWeb" style="margin-top: 6pt;margin-bottom: 0pt;">
+            <img src="../../Resources/Images/MedHistoryAmb/Messages Overview_6.png" style="visibility: visible;mso-wrap-style: square;width: 703px;height: 224px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="NormalWeb" style="margin-top: 6pt;margin-bottom: 0pt;">5a) Provider vendor sends an RxHistoryRequest message to Surescripts.</p>
+        <p class="NormalWeb">5b) Message is forwarded on to the PBM/payer from Surescripts.</p>
+        <p class="NormalWeb">5c) PBM/payer sends a syntactically invalid RxHistoryResponse.</p>
+        <p class="NormalWeb">5d) Message can be recognized, but a Syntax Validation Error (code 900) message is sent back to the PBM/payer from Surescripts.</p>
+        <p class="NormalWeb">5e) Error message is sent to the provider vendor indicating that there was a communication issue (602-007).</p>
+        <p class="NormalWeb" style="margin-top: 6pt;margin-bottom: 0pt;">5f) PBM/payer responds with a Status (code 010) message.</p>
+        <h2 class="Heading2" style="color: #000000;"><a name="_Toc506379371"></a>General Interface Description</h2>
+        <p class="BodyText1" style="color: #000000;">The message specifications have been defined to allow the most effective processing.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379372"></a>UTC Time Format</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379373"></a>Character Set</h3>
+        <p class="BodyText1" style="color: #000000;">The character set contains ASCII values 32 – 126, which include:</p>
+        <table style="border-collapse: collapse;">
+            <col style="width: 179pt;" />
+            <col style="width: 289pt;" />
+            <tr>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;">
+                    <p class="TableBody">Letters, upper and lower case</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-top-style: solid;border-top-width: 1pt;border-top-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;">
+                    <p class="TableBody">A to Z, a to z</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 1pt;padding-left: 1pt;padding-bottom: 5pt;padding-right: 1pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;">
+                    <p class="TableBody">Numerals</p>
+                </td>
+                <td style="border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;padding-top: 1pt;padding-left: 1pt;padding-bottom: 1pt;padding-right: 1pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;">
+                    <p class="TableBody"> Ø to 9</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;padding-top: 1pt;padding-left: 1pt;padding-bottom: 1pt;padding-right: 1pt;border-left-style: solid;border-left-width: 1pt;border-left-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;">
+                    <p class="TableBody">Symbols</p>
+                </td>
+                <td style="padding-top: 1pt;padding-left: 1pt;padding-bottom: 1pt;padding-right: 1pt;border-right-style: solid;border-right-width: 1pt;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: #000000;">
+                    <p class="TableBody"> ! " # $ % &amp; ' ( ) * + , - . / : ; &lt; = &gt; ? @ [ \ ] ^ _ ` { | } ~</p>
+                </td>
+            </tr>
+        </table>
+        <p class="BodyText1" style="color: #000000;">Unprintable characters, such as control characters, are not used within the field sets. Defined unprintable characters are used as delimiters.</p>
+        <p class="BodyText1" style="color: #000000;">UTF-8 is the required character encoding for XML. Other encoding formats are not supported by Surescripts. It is recommended that customers declare their UTF-8 formatting in the message header.</p>
+        <h3 class="Heading3" style="color: #000000;"><a name="_Toc506379374"></a>Message Validation</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+    </body>
+</html>

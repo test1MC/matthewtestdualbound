@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="5" MadCap:lastHeight="3637" MadCap:lastWidth="763">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="1" MadCap:timestamp="2017-03-30T12:22:10.5977897-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="3" MadCap:timestamp="2017-03-30T12:29:47.1726181-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="4" MadCap:timestamp="2017-03-30T12:30:48.8290800-05:00" />
+            <MadCap:AddChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="5" MadCap:timestamp="2017-03-30T12:45:21.2968298-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Sally.Fresquez" MadCap:initials="SA" MadCap:id="6" MadCap:timestamp="2017-04-14T13:14:12.0962083-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643291"></a>Prescription Routing Message Flow</h2>
+        <p class="BodyText1">
+            <MadCap:change MadCap:changes="6">The </MadCap:change>Surescripts Prescription Routing service enables new prescription transmissions from a prescriber to the patient's pharmacy of choice. It also includes the ability to facilitate renewal requests/responses and prescription change requests/responses, etc. between pharmacies and prescribers. The graphic below depicts the message flow between customers in this process.</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/RxRtgMsgFlow-no LTC.bmp" style="width: 679px;height: 461px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing Message Flow Diagram</p>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/PresRtg Trans Flow LTC.bmp" style="width: 671px;height: 345px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="FigureName">Surescripts Prescription Routing LTC Message Flow Diagram</p>
+        <h2 class="Heading2"><a name="_Detailed_Prescription_Routing"></a><a name="_Toc443643292"></a>Detailed Prescription Routing Message Workflow</h2>
+        <p class="BodyText1">The following diagrams depict various scenarios where Verify, Error, and Status messages are sent in response to a NewRx request. Note that for all of these scenarios, NewRx could be any of the following messages: Refill Renewal Request, Refill Renewal Response, RxFill, Rx Change Request, Rx Change Response, Cancel Rx Request, Cancel Rx Response, Census, or <MadCap:annotation MadCap:createDate="2017-03-30T12:21:21.7321183-05:00" MadCap:creator="Sally.Fresquez" MadCap:initials="SA" MadCap:comment="The following ACRs will e added here in the Acknowledgement Status Message Table from the ACR doc. \r\nParticipants shall*106R-012 support the scenarios in section 3.4 of the Prescription Routing guide.\r\nNote: Where the Status transaction is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made on whether the message has been received successfully or not. The 010 indicates that no further transactions will follow. An Error, Status (Code 010) or Verify shall*106R 013 always be sent to close the transaction workflow. If a transaction workflow has already been closed and an error occurs, a message should not be sent, rather a manual process should be followed. \r\n\r\nAn Error message shall*106R-014 never be responded to with an Error message; this could create an endless loop.\r\n\r\nA Status message with a code of ‘010’ may not be responded to; it shall*106R 072 be considered the final message (similar to the Verify).\r\n" MadCap:editor="Sally.Fresquez" MadCap:editDate="2017-04-14T13:14:42.5950619-05:00">Resupply.</MadCap:annotation></p>
+        <p class="BodyText1" MadCap:changes="1">Customers must support all messages as described in the following table. Every transaction workflow ends with Status 010, Verify or Error. (</p>
+        <p class="BodyText1" MadCap:changes="1">&#160;</p>
+        <table style="width: 100%;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" MadCap:changes="3" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <MadCap:change MadCap:changes="3">Message Type</MadCap:change>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <MadCap:change MadCap:changes="4">Code</MadCap:change>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <MadCap:change MadCap:changes="4">Meaning</MadCap:change>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <MadCap:change MadCap:changes="4">As Sender</MadCap:change>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <MadCap:change MadCap:changes="4">As Receiver</MadCap:change>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <MadCap:change MadCap:changes="4">Req</MadCap:change>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <MadCap:change MadCap:changes="5">where</MadCap:change>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Prescription Routing 10.6/Prescription Routing Message_2.png" MadCap:mediastyle="@media print { max-width: 90%; }" style="width: 642px;height: 670px;" />
+        </p>
+        <p class="FigureName">Detailed Prescription Routing Message Workflow</p>
+        <p class="StylebodytextBold">Scenario 1:</p>
+        <p class="BodyText1">1a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">1b). Surescripts cannot determine what format the message is in and sends an error text back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 2:</p>
+        <p class="BodyText1">2a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">2b). Surescripts recognizes the format as NCPDP but finds errors in the message. Surescripts sends back an Error message.</p>
+        <p class="StylebodytextBold">Scenario 3:</p>
+        <p class="BodyText1">3a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">3b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">3c). Receiving customer cannot recognize the message and sends an Error text to Surescripts.</p>
+        <p class="BodyText1">3d). Surescripts creates an Error and sends it back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <p class="BodyText1">4a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">4b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">4c). Receiving customer validates the message and sends back a Status (code 010) message to Surescripts. Code 010 means the message was accepted by ultimate receiver.</p>
+        <p class="BodyText1">4d). Surescripts forwards the Status (Code 010) message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 5:</p>
+        <p class="BodyText1">5a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">5b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">5c). Receiving customer validates the message, finds errors in the message, and sends back an Error message to Surescripts.</p>
+        <p class="BodyText1">5d). Surescripts forwards the Error message back to the sending customer.</p>
+        <p class="StylebodytextBold">Scenario 6</p>
+        <p class="BodyText1">6a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">6b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">6c). Receiving customer validates the message and sends back a pending Status (Code 000) message to Surescripts.</p>
+        <p class="BodyText1">6d). Surescripts forwards the pending Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">6e). Receiving customer fails trying to process message and initiates a new Error message (sometimes referred to as a "Free Standing Error") to Surescripts.</p>
+        <p class="BodyText1">6f). Surescripts forwards the Error to the sending customer.</p>
+        <p class="BodyText1">6g). Sending customer acknowledges the Error by sending back a verified Status (Code 010) message to Surescripts.</p>
+        <p class="BodyText1">6h). Surescripts forwards the verified Status (code 010) to the receiving customer.</p>
+        <p class="StylebodytextBold">Scenario 7</p>
+        <p class="BodyText1">7a). A NewRx message is sent to Surescripts.</p>
+        <p class="BodyText1">7b). Surescripts forwards the message on to the receiving customer.</p>
+        <p class="BodyText1">7c). Receiving customer validates the message, and sends back a Status (Code 000) message to Surescripts. In this case the message has not reached its ultimate destination.</p>
+        <p class="BodyText1">7d). Surescripts forwards the Status (Code 000) message back to the sending customer.</p>
+        <p class="BodyText1">7e). Receiving customer delivers the NewRx to the end point and sends back a Verify.</p>
+        <p class="BodyText1">7f). Surescripts forwards the Verify to the sending customer.</p>
+        <p class="BodyText1">7g). Sending customer acknowledges the Verify by sending back a Status (Code 010) message to Surescripts. Code 010 means it was accepted by the ultimate receiver.</p>
+        <p class="BodyText1">7h). Surescripts forwards the Status (Code 010) to the receiving customer.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Where the Status message is used, the status type code can be either 000 – Transmission successful or 010 – Successfully accepted by ultimate receiver. The 000 indicates that there could be an Error or Verify forthcoming. If an Error or Verify is not received following a Status 000, then no assumptions should be made on whether the message has been received successfully or not. The 010 indicates that no further messages will follow</p>
+    </body>
+</html>

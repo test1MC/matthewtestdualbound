@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title>Production Information</title>
+    </head>
+    <body>
+        <h1 class="Heading1">Production Information</h1>
+        <p class="BodyText1">The following section defines related technical and support elements needed to achieve message validation for moving into production.</p>
+        <h2 class="Heading2"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1">For terminology usage throughout this guide, consider the following:</p>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css'); margin-left: 0; margin-right: auto;" cellspacing="0">
+            <colgroup>
+                <col class="TableStyle-GuideTables-Column-Column1" style="width: 80px;" />
+                <col class="TableStyle-GuideTables-Column-Column1" style="width: 555px;" />
+            </colgroup>
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Term</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Term usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>must</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Requirements that are enforced as part of the production code or Surescripts business rules.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p>should</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="Transiti"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="Communic"></a>Communication Rules</h2>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <h2 class="Heading2"><a name="Timeouts"></a>Timeouts</h2>
+        <p class="BodyText1">Each transaction that Surescripts submits to a customer has a time-out parameter. If Surescripts does not get a response from the customer within the specified time period, the transaction times out. Surescripts will then respond to the original sender with an error message.</p>
+        <ul>
+            <li>
+                <p>When sending a message to Surescripts, the initiator should set the Hypertext Transfer Protocol (HTTP) timeout to no less than 30 seconds.</p>
+            </li>
+        </ul>
+        <h2 class="Heading2"><a name="UTC"></a>UTC Time Format</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/UTCTimeFormat.flsnp" />
+        <h2 class="Heading2" style="page-break-before: always;"><a name="Characte"></a>Character Set</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CharacterSet.flsnp" />
+    </body>
+</html>

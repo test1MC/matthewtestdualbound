@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="1299" MadCap:lastWidth="676">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc450902829"></a><a name="_Toc450902830"></a>Key Elements of the RxChangeRequest</h2>
+        <p class="BodyText1">Pharmacies sending the RxChangeRequest to the generic Surescripts SPI “0000000000000" must follow the schema SS_SCRIPT_XML_10_6MU.xsd. The requirements in this section define what must be included in the transaction. This may include data that is now optional in the schema, or explains what data is required for the actual field. Refer to the schema for additional requirements.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Fields listed in the table below are required. If applicable fields are not sent, it may prevent the RxChange from being processed properly.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comments</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="2" style="background-color: #d3d3d3;"><b>Header</b>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">To</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">The identification of the intended receiver of the message.</p>
+                        <p class="TableBody" style="font-size: 10pt;">To must be populated with SPI “0000000000000” (a generic SPI).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="2" style="background-color: #d3d3d3;"><b>Patient</b>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Identification</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">Patient ID</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>PayerID</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>	Contains the PBM Unique ID from the NewRx, if known.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Address</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>   AddressLine1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the patient’s demographic information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>      City</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the patient’s demographic information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>     State</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the patient’s demographic information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>     ZipCode</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the patient’s demographic information.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="2" style="background-color: #d3d3d3;"><b>Prescriber</b>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Identification</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber’s NPI.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Name</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    FirstName</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber’s first name.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    LastName</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber’s last name.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Address</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><![CDATA[    ]]><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>AddressLine1</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber's demographic information.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><![CDATA[    ]]><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>City</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber's demographic information.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    State</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber's demographic information.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    ZipCode</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the prescriber's demographic information.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Communication </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>Number</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the prescriber’s fax number in at least one element.</p>
+                        <p>Contains the prescriber’s telephone number in at least one element.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    Qualifier</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>For the fax number, contains contain the FX qualifier.</p>
+                        <p>For the telephone number, contains the TE qualifier.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="2" style="background-color: #d3d3d3;">
+                        <p colspan="3"><b>Benefits Coordination</b>
+                        </p>
+                        <p colspan="3"><b>Note:</b> The pharmacy should include the information for the PBM/payer that who rejected the claim. </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">PayerIdentification</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Contains the PBM/payer’s Surescripts Participant ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><![CDATA[    ]]><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>BINLocationNumber</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the health plan’s BIN.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><![CDATA[    ]]><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>ProcessorIdentificationNumber</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the health plan’s PCN, if known.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">GroupID</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the health plan’s group number, if available.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="2" style="background-color: #d3d3d3;"><b>Pharmacy</b>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">Identification</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Required to be sent twice and contains the NCPDP ID and NPI.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    NCPDP ID</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Contains the NCPDP&#160;ID.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1"><span style="color: #000000;font-size: 8pt;background-color: #FFFFFF;">&#160; </span>    NPI</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">Contains the NPI.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

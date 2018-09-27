@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="2537.333" MadCap:lastWidth="1086">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Lori.Ash" MadCap:initials="LO" MadCap:id="1" MadCap:timestamp="2018-06-04T14:18:12.7959392-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1 class="Heading1">Record&#160;Locator &amp;&#160;Exchange 1.0 Overview</h1>
+        <h2 class="Heading2"><a name="About"></a>About Record Locator &amp; Exchange 1.0</h2>
+        <p class="BodyText1">Surescripts Record Locator &amp;&#160;Exchange (RLE) allows requesting locations to electronically discover potential locations of patient records within their source hospital or vendor systems and provides support to retrieve those records using Integrating the Healthcare Enterprise (IHE) standard transactions. </p>
+        <p class="BodyText1">The Surescripts implementation of <MadCap:variable name="Variables.ProductName" /> provides access to the following sources of information:</p>
+        <ol>
+            <li>Surescripts produces an on-demand document known as the Surescripts Location Summary. It is formatted following the Health Level 7 (HL7) standard of a Clinical Document Architecture (CDA). This document may be retrieved using standard IHE transactions sent to <MadCap:variable name="Variables.ProductName" />.</li>
+        </ol>
+        <p class="BodyText1" style="margin-left: 30pt;">Using network transactions to identify healthcare locations where patients have previously received care, <MadCap:variable name="Variables.ProductName" /> will provide the requesting healthcare provider with a CDA containing the names and contact information of the providers/locations where the patient has been seen. This information may then be used to contact those locations to obtain the patient’s records.</p>
+        <ol MadCap:continue="true">
+            <li>When queried, <MadCap:variable name="Variables.ProductName" /> returns information required to retrieve patient documents from other IHE enabled vendor systems.</li>
+        </ol>
+        <p class="BodyText1" style="margin-left: 30pt;">Option 1 – Records may be requested through <MadCap:variable name="Variables.ProductName" />. Exchange will be facilitated by <MadCap:variable name="Variables.ProductName" /> using IHE transactions to query and retrieve clinical documents from discovered responding locations on behalf of the requesting location.</p>
+        <p class="BodyText1" style="margin-left: 30pt;">Option 2 – <MadCap:variable name="Variables.ProductName" /> provides endpoint information (Home Community ID) for other IHE responding locations. The requesting location will use existing, peer-to-peer connections to query and retrieve directly from the IHE enabled responding location.</p>
+        <p class="BodyText1">Responding locations will provide either (1) a flat file load of the Surescripts MPI or an <MadCap:annotation MadCap:createDate="2018-06-04T14:16:30.0826689-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Note: add link to ADT Messages section." MadCap:editor="Lori.Ash" MadCap:editDate="2018-06-04T14:16:44.3570962-05:00">Admit, Discharge, and Transfer (ADT<MadCap:change MadCap:changes="1">)</MadCap:change></MadCap:annotation> data feed or (2) means to accept Cross-Community Patient Discovery (XCPD) queries from Surescripts.</p>
+        <p class="BodyText1">Responding locations will receive requests for records from Surescripts on behalf of an IHE enabled requester. IHE standard transactions will be sent by Surescripts to query and retrieve patient clinical documents from the responding location.</p>
+        <p class="BodyText1">Responding locations may also receive IHE standard transactions directly from requesting locations to query and retrieve patient clinical documents, if preexisting peer-to-peer connections <MadCap:annotation MadCap:createDate="2018-06-04T15:04:27.5362386-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Import new image after it is approved." MadCap:editor="Lori.Ash" MadCap:editDate="2018-06-11T13:46:48.5189088-05:00">are</MadCap:annotation> established.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/NRLS/NRLS Product Overview.svg" MadCap:mediastyle="@media print { max-width: 100%; }" style="mc-thumbnail-max-height: 450pt;mc-thumbnail: none;" />
+        </p>
+        <h2 class="Heading2"><a name="About2"></a>About This Guide </h2>
+        <p class="BodyText1">This Guide was created to assist vendors in developing and transferring messages needed to electronically query locations of patient records from the Surescripts <MadCap:variable name="Variables.ProductName" /> and identify patient records within their source healthcare facilities or vendor systems and facilitate the exchange of records found. </p>
+        <p class="bodytext1">The audience for this document includes any customer responsible for developing a system interface for these <MadCap:variable name="Variables.ProductName" /> messages.</p>
+        <p>This Guide is meant to support, integrate and further clarify the IHE and HL7 standard schemas , implementation guides, and best practices as used when transacting through the Surescripts network. It does not reproduce the base standards in their entirety. When developing, this guide should be used along with additional documentation referenced and applicable customary XML coding standards.</p>
+        <h2 class="Heading2"><a name="Guide"></a>Guide Disclaimer</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/GuideDisclaimer.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Examples"></a>Examples <MadCap:annotation MadCap:createDate="2018-05-22T14:08:58.0970338-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="I think we could move this to the Examples section" MadCap:editor="Lori.Ash" MadCap:editDate="2018-05-22T14:09:06.9690338-05:00">Disclaimer</MadCap:annotation></h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/ExamplesDisclaimer.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Document"></a>Document References </h2>
+        <p class="BodyText1">Please reference the following documents when reading this Guide:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 553px;" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Surescripts provided materials</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Carequality Query-Based Document Exchange Implementation Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Connectivity and Authentication Implementation Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Master Patient Index (MPI) File Load Supplement Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="background-color: #c0c0c0;">
+                        <p><b>External materials to be obtained by the customer</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">HL7 Implementation Guide for CDA<sup>®</sup> Release 2 (for RLE)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>HL7 Messaging Standard Version 2.3 (for ADT)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody"><a href="http://www.ihe.net/technical_frameworks/#IT" class="Hyperlink" style="font-size: 9pt;" target="_blank">Integrating the Healthcare Enterprise IT Infrastructure Technical Framework</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

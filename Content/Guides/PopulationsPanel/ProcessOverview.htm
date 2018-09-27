@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc446400274"></a>Process Overview</h1>
+        <h2 class="Heading2"><a name="_Panel_Management_Transaction"></a><a name="_Toc446400275"></a>Panel Management Process Flow</h2>
+        <p class="BodyText1">The Surescripts Medication History Panel Management service provides ACOs and other healthcare entities with the electronic delivery of historical PBM/payer claim data and/or pharmacy fill data. The customer sends an input file with a list of patients and will receive back a validation response file. A file containing a Medication History (RxHistory) Response for each of the patients in the input file is then created by Surescripts for the customer to retrieve. The graphic below depicts the process flow between customers in this process.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/MedHist PanelMgmt/Process Overview.png" style="visibility: visible;mso-wrap-style: square;width: 835px;height: 521px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="FigureName">Surescripts Medication History Panel Management Process Flow Diagram</p>
+        <p class="BodyText1">The following steps depict the process flow:</p>
+        <ol>
+            <li>The customer sends the Patient File to Surescripts.</li>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If a patient opts out of information sharing, the customer is responsible for excluding the patient from the Patient File.</p>
+            <li>Surescripts generates and posts a Validation Response File for retrieval which notifies the customer that the Patient File was received and provides details into any errors that were encountered during the input panel validation.</li>
+            <li>Surescripts retrieves and aggregates available Fill Data and claims Medication History data for all successfully loaded patients listed on the Patient File.</li>
+            <li>Surescripts generates and posts the Panel Management RxHistory Response File for the customer to access.</li>
+            <li>The customer retrieves Panel Management RxHistory Response File.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc446400276"></a>Message Format</h2>
+        <h3 class="Heading3"><a name="_Toc446400277"></a>XML </h3>
+        <p class="BodyText1">Extensible Markup Language (XML) is a simple, very flexible text format derived from SGML (ISO 8879). Originally designed to meet the challenges of large-scale electronic publishing, XML now plays an increasingly important role in the exchange of a wide variety of data on the Web and elsewhere. NCPDP has approved the XML representation of the SCRIPT standard. More information on XML can be obtained at: <a href="http://www.w3.org/XML/" target="_blank"><span class="Hyperlink">http://www.w3.org/XML/</span></a><span class="Hyperlink">.</span></p>
+        <p class="BodyText1">The Surescripts XML schema is available to all network customers and can be obtained as a supplemental file to this document by sending a request to your Implementation Project Manager or your Account Manager/Executive.</p>
+        <h3 class="Heading3"><a name="UTC"></a>UTC Time Format</h3>
+        <p class="BodyText1">By using UTC, the receiver of a message will know the time regardless of the time zone they are in. For example: If a message was sent from Boston at 5:30PM EDT (Eastern Daylight Time), the time would be sent as 21:30 UTC time. If this message was received in Chicago CDT (Central Daylight Time), the 21:30 UTC could be converted to the local CDT time of 4:30PM. Refer to <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank">http://en.wikipedia.org/wiki/Coordinated_Universal_Time</a> or <a href="http://www.w3.org/XML/" target="_blank">http://www.w3.org/XML/</a> for more information.</p>
+        <p class="BodyText1">When sending only a Date (not Date and Time), it should be sent in your local time zone, and the receiver should interpret it in their local time. Neither party should attempt to convert the Date to UTC.</p>
+        <p class="BodyText1">All standard programming languages should have a function for generating a date in the UTC time zone or displaying a date in the local time zone. The format of the date/time fields in the XML schema must use the xsd:dateTime format. Examples of that format are: CCYY-MM-DDTHH:MM:SS.FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example 2013-01-01T16:09:04.5Z, or 2013-01-01T16:09:04.5-00:00, or 2013-01-01T16:09:04.5+00:00, where 16:09:04.5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the “Z” in the first example or the “-00:00” in the second example, or the “+00:00” in the third example. The fractional seconds is not required. Refer to xsd:dateTime for more information.</p>
+        <p class="BodyText1">For simple date fields that do not include the time portion, the format is: CCYY-MM-DD. </p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For the Medication History Panel Management input file, the format is as follows:<br /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;For Date fields the format is: CCYYMMDD<br /><br />&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;For Time fields the format is: HHMMSSDD</p>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="542.3334" MadCap:lastWidth="624">
+    <head>
+    </head>
+    <body>
+        <h1 class="Heading1" MadCap:autonum="Section 1: "><a name="Launch_Accel_Web_App"></a>Launching Accelerator with Web Application API</h1>
+        <h2 class="Heading2" MadCap:autonum="1.1 "><a name="top"></a>Accelerator Launch Process</h2>
+        <p class="BodyText1">Provider vendors systems launch the Accelerator using the following steps:</p>
+        <ol>
+            <li>Provider vendor system sends an Auth Token Request through a single vendor aggregation server. The request includes the System User ID, System User Qualifier, End User ID, and roles. <ul><li>The user’s role<MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">s</MadCap:conditionalText> <MadCap:conditionalText MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel,Default.SPOAccelerator">are</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.PatientNotificationsAccelerator">is</MadCap:conditionalText> <MadCap:variable name="Variables.UserRoles" />. See <a href="Roles.htm">Roles</a>  for more information.</li><li MadCap:conditions="Default.SPOAccelerator">The user could be the provider or someone working on behalf of the provider. All users will be working on behalf of one or more providers.</li><li MadCap:conditions="Default.ePAAccel,Default.MedMgmtAccel">The user could be the prescriber or someone working on behalf of the prescriber. All users will be working on behalf of one or more prescribers.</li><li MadCap:conditions="Default.PatientNotificationsAccelerator">The user will be the Care Manager. There could be multiple Care Managers working off the same worklist.</li></ul></li>
+            <li>Surescripts returns a Token in the response. The response includes information on Token expiration.</li>
+            <li>The provider vendor system launches the Accelerator using the Token. The launch includes styling parameters as well as launch options. See <a href="AcceleratorLaunchOptions.htm">Accelerator Launch Options</a>   for more information on worklists and process lists.</li>
+            <li>The provider vendor system closes the session.</li>
+        </ol>
+    </body>
+</html>

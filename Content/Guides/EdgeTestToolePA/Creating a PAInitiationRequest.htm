@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="2225.333" MadCap:lastWidth="844">
+    <head><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1" style="font-weight: bold;">Creating a PAInitiationRequest</h1>
+        <h2 class="Heading2">Accessing the ePA Message Composer</h2>
+        <p>
+            <br />The PAInitiationRequest message is the first message type in the back and forth communication that happens between prescribers and PBM/payers. For the purposes of testing question sets and schema validation, PBM/payers using the Edge Test Tool must start the process by sending a PAInitiationRequest to their payer ID.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Allowed recipients are defined by administrators and must be set up in advance of testing. Users are only be able to send and receive messages from allowed recipients, typically denoted by a PayerId.</p>
+        <p class="BodyText1">To generate a PAInitiationRequest, use the <b>Compose</b> menu drop-down to select <b>Compose ePA Message</b>.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest.png" />
+        </p>
+        <h2 class="Heading2">Composing a PAInitiationRequest Message</h2>
+        <p>The Edge Test Tool relies solely on XML for the purposes of ePA messaging. Users are free to compose their own XML PAInitiationRequest message, utilizing the NCPDP SCRIPT standard v2013101, or may use a PAInitiationRequest template provided by Surescripts. All edits must be made either in the template prior to loading or directly in the XML message text box. If testing in the PBM/payer system requires specific patients, medications or pharmacy information, users should ensure that all of the appropriate fields are correct in the XML before submitting to the PBM/payer system. </p>
+        <h2 class="Heading2">Loading a PAInitiationRequest Template</h2>
+        <p>To load an XML PAInitiationRequest template, users must have the template stored on their local machine or a network location that is accessible to the user. </p>
+        <ol>
+            <li>From the ePA Message Composer screen, click the <b>Choose File</b> button located at the bottom of the page. </li>
+            <li>Select the appropriate template and click the <b>Load File</b> button. </li>
+            <p>
+                <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest_1.png" style="visibility: visible;mso-wrap-style: square;width: 357px;height: 120px;" />
+                <ul>
+                    <li>
+                        <p>The XML message content is displayed in the XML message text box in the center of the page. Users can modify the contents of the message from the text box directly as needed. </p>
+                    </li>
+                    <li>
+                        <p>By default, the <b>Generate Id</b> option is enabled. This is to ensure a unique MessageID and PAReferenceID as the message goes across the Surescripts network. This option should remain enabled unless the user is attempting to test the impact of different message ids as they enter or leave the PBM/payer’s system. </p>
+                    </li>
+                </ul>
+            </p>
+            <li>Once the message is verified for accuracy, click the <b>Post To Mailbox</b> button to send the PAInitiationRequest to the PBM/payer system. </li>
+            <p>
+                <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest_2.png" style="visibility: visible;mso-wrap-style: square;width: 136px;height: 110px;" />
+            </p>
+            <li>Once successfully sent, users can see response content on the lower portion of the screen. For help with specific errors, please contact Surescripts Customer Support.</li>
+            <p>
+                <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest_3.png" style="visibility: visible;mso-wrap-style: square;width: 624px;height: 263px;">
+                </img>
+            </p>
+            <p>
+                <p style="page-break-after: avoid;">
+                    <img src="../../Resources/Images/Edge Test Tool ePA/Creating a PAInitiationRequest_4.png" style="visibility: visible;mso-wrap-style: square;width: 624px;height: 122px;" />
+                </p>
+            </p>
+        </ol>
+    </body>
+</html>

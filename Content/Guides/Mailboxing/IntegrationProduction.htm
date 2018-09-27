@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc512495519"></a>Mailboxing Integration &amp; Production</h1>
+        <p class="BodyText1">The following section defines related technical and support elements needed to achieve certification for moving into production, along with our Integration, Compliance, and Certification <MadCap:annotation MadCap:createDate="2018-06-07T15:52:41.0225764-05:00" MadCap:creator="Lori.Ash" MadCap:initials="LO" MadCap:comment="Note: Do not include this line if these sections do not include the product." MadCap:editor="Lori.Ash" MadCap:editDate="2018-06-07T15:52:53.6548395-05:00">processes.</MadCap:annotation></p>
+        <h2 class="Heading2"><a name="_Toc512495520"></a>Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="_Toc512495522"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1"> For terminology usage throughout this Guide, consider the following:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">Term</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">Term usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">must</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">Requirements that are enforced as part of the production code or Surescripts business rules.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p>shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>The requirements customers are required to meet in order to be certified on the Surescripts network. These requirements will be enforced as part of certification.
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">should</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">		Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Communic"></a>Communication Rules</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/CommunicationRules.flsnp" />
+        <h2 class="Heading2">Timeouts</h2>
+        <p>Timeout refers to the maximum length of time that a message can be held in a mailbox without being picked up.  If the message has not been picked up using a <span class="code">GetMessage</span> within 24 hours, the message "times out" and Surescripts sends an <span class="code">Error</span> to the original sender.</p>
+        <p>When a <span class="code">Status</span> 000 is sent as a reply, a receiving system must follow-up with a <span class="code">Verify</span> or <span class="code">Error</span> within 24 hours, as Surescripts could return a timeout error.</p>
+    </body>
+</html>

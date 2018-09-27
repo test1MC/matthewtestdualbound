@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="730.3333" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Appendix1" MadCap:autonum="Appendix A: "><a name="top"></a>XML</h1>
+        <p class="BodyText1">Refer to SS_SCRIPT_XML_10_6MU html or SS_SCRIPT_XML_10_6MU xsd for complete documentation of the XML version of SCRIPT. The HTML version of the documentation provides an indexed version where you can drill down into the detail of each message and each type.</p>
+        <h2 class="Appendix2" MadCap:autonum=" 1.1: "><a name="XML"></a>XML Nuances</h2>
+        <ol>
+            <li>UIB Date/Time is used when mapping to XML &lt;SentTime&gt;. If the UIB Date/Time is empty, then the UIH Date/Time is used. When mapping from XML &lt;SentTime&gt; is mapped to both UIB Date/Time and UIH Date/Time.</li>
+            <li>Long XML Dates are in the format CCYY-MM-DDTHH:MM:SS FZ, where the UTC time zone may be specified as Z, + 00:00, or - 00:00. For example 2013-01-01T16:09:04 5Z, or 2013-01-01T16:09:04 5-00:00, or 2013-01-01T16:09:04 5+00:00. Where 16:09:04 5Z would be 16 hours, 09 minutes, 04 seconds, 5 fractional seconds. UTC time is denoted by either the "Z" in the first example or the "-00:00" in the second, or the "+00:00" in the third example. The fractional seconds is not required, (UIB-080, UIH-050, DRU-040, OBS-010-04). Where F represents the conditional fractional seconds, F could be one or more digits.</li>
+            <li>Short XML Dates are in the format CCYY-MM-DD – example: 2006-12-07 (PTT-020).</li>
+            <li>When mapping to XML, if the drug name is longer than 35 characters then DRU-010-10-12 are used for the description instead of DRU-010-2.</li>
+            <li>Do not use field definitions such as lengths and data types from this guide; instead refer to the schema. Also refer to the schema for the order of the fields within each element. The field order in EDIFACT is not the same as it is in XML.</li>
+            <li>Fields that are concatenated into one field when mapping from EDIFACT to XML<ul><li>UIB-060-01 &amp; UIB-060-02</li><li>UIB-070-01 &amp; UIB-070-02</li><li>UIB-080-01 &amp; UIB-080-02 &lt;SentTime&gt;</li><li>DRU-010-02, DRU-010-10, DUR-010-11 and DRU-010-12 &lt;DrugDescription&gt;</li><li>DRU-030-02 and 030-03 &lt;Directions&gt;</li><li>DRU-090 Repeats 3 times &lt;Note&gt;</li></ul><ul><li>OBS-020 Repeats 2 times &lt;ObservationNotes&gt;</li></ul></li>
+            <li>Fields that have a different implied length in XML. These fields have a specific size defined in EDIFACT but in XML have a list of values with an implied length.<ul><li>PTT-040 Patient Gender</li><li>DRU-010-03 Product Code Qualifier</li><li>DRU-010-08 DB Drug Qualifier </li><li>DRU-050 Substitution</li><li>DRU-070-01 Diagnosis / Clinical Information Qualifier </li><li>DRU-070-03 &amp; 05 Diagnosis Qualifier </li></ul></li>
+            <li>Diagnosis DRU-070-01 – EDIFACT supports values of 1 and 2. Two additional values are supported in XML; Prescriber Supplied–which is equivalent to1, and Pharmacy Inferred– which is equivalent to 2.</li>
+            <li>Diagnosis Qualifier DRU-070-03 &amp; 05– EDIFACT supports values of E, F, M, ABF, and DX. XML also supports ICD9 which is equivalent to DX and ICD10 which is equivalent to ABF.</li>
+            <li>Empty Tags. Do not send empty elements within XML messaging. Exceptions are select elements without data such as the Response Codes for a refill where no data is required within the tag.</li>
+            <li>DRU-020-02 Drug Quantity in EDIFACT. The length is defined as n..10, which doesn't include the decimal point. In XML it is defined as n..11 because the length includes the decimal point.</li>
+            <li>UIB-060 and UIB-070 To and From tags are defined with a length of 80 in XML, whereas in EDIFACT they are 35.</li>
+            <li>The order of the Clinic Name and Name elements is different between the Prescriber and Supervisor types. In the Prescriber type, the Clinic Name comes before the Name and in the Supervisor type, the Clinic Name comes after the Supervisor Name.</li>
+        </ol>
+        <h2 class="Appendix2" MadCap:autonum=" 1.2: "><a name="XML2"></a>XML Codes</h2>
+        <p class="BodyText1">Reference Number Tags for PVD-020, PTT-050, and COO-010 from NCPDP code list X12 DE 128.</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">XML Tag</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading" style="page-break-after: avoid;page-break-inside: avoid;">SCRIPT Qualifier</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">BINLocationNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">BO</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">Commercial</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">C1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">DEANumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">DH</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">DentistLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">1E</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">FacilityID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="page-break-after: avoid;page-break-inside: avoid;">1J</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">FileID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">94</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">HIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">HI</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">IndividualPolicyNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">IP</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicaidNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1D</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicalRecordIdentificationNumberEHR</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EA</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MedicareNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1C</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">MutuallyDefined</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">ZZ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NAICCode</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">NF</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NCPDPID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">D3</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NPI</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">HPI</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PatientAccountNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">EJ</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PayerID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">2U</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PPONumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">1M</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PriorAuthorization</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">G1</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">ProcessorIdentificationNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">ADI</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">PromotionNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">PD</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SecondaryCoverage</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">NC</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">SocialSecurity</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">SY</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">StateLicenseNumber</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">0B</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p class="TableBody">UPIN</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p class="TableBody">1G</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="8" MadCap:lastHeight="2906" MadCap:lastWidth="1150">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443909621"></a>Formulary Retrieval (For Provider Vendors)</h2>
+        <p class="BodyText1">Formulary Retrievers download Formulary Publisher information from Surescripts via WebDAV (Web-based Distributed Authoring and Versioning). WebDAV is a series of extensions to HTTPS that allow users to manage files on remote servers. Within the WebDAV context, a Formulary Publisher is the customer providing the data files. The Formulary Retriever is the customer that is accessing for review and retrieval purposes.</p>
+        <p class="BodyText1">The Formulary Retriever downloads formulary and benefit data from WebDAV by an automated or manual process on a periodic basis. Retrieval of the formulary and benefit lists can be done by utilizing the WebDAV clients creating a script that periodically checks for updates to formulary and benefit data, or by using both a WebDAV client and a script. (For more information please refer to <a href="http://www.webdav.org/" target="_blank"><span class="Hyperlink">http://www.webdav.org/</span></a>).</p>
+        <p class="BodyText1">The frequency of updates to the formulary and benefit data depends on the Formulary Publisher, but generally changes are made on a monthly or quarterly basis. After the Formulary Retriever downloads the updated formulary and benefit data, it is stored in the Retriever’s database and then displayed to physicians based on the Retriever’s system presentation rules.</p>
+        <h3 class="Heading3"><a name="_Toc443909622"></a>WebDAV</h3>
+        <p class="BodyText1">WebDAV can be used with the following specifications:</p>
+        <ul>
+            <li>Username and password are communicated during implementation.</li>
+            <li>Each customer is configured with a unique secure directory. The customer will have access to all contracted formulary and benefit related files.</li>
+            <li>It is recommended to not have more than 100 concurrent connections per provider vendor.</li>
+        </ul>
+        <p class="StylebodytextBold">Supported Network Connections for WebDaV</p>
+        <p class="BodyText1">Customers may use one of the following network connectivity methods with WebDAV:</p>
+        <ul>
+            <li>
+                <p>Internet:</p>
+                <ul>
+                    <li>
+                        <p>Address filtering will be done in the Surescripts firewall.</p>
+                    </li>
+                    <li>
+                        <p>Surescripts will work with customers to review their current connection speed and bandwidth to ensure they are adequate for anticipated message volumes.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>Frame Relay:</p>
+                <ul>
+                    <li>
+                        <p>128 kbps minimum bandwidth over a frame relay circuit between Surescripts and the customer.</p>
+                    </li>
+                    <li>
+                        <p>The line must be encrypted with 3DES.</p>
+                    </li>
+                    <li>
+                        <p>The customer must allow Surescripts to install and manage two routers in their data center that connect to their extranet environment.</p>
+                    </li>
+                    <li>
+                        <p>The customer must have dual network connections through two different telecommunication providers.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p class="StylebodytextBold">Selecting WebDaV Clients and Configuration</p>
+        <p class="BodyText1">Implementation and support for WebDAV clients is the responsibility of the provider vendor. Some WebDAV clients and configurations are known to provide a faster, more consistent formulary retrieval experience. Surescripts expects that full formulary retrieval will take less than a day with the appropriate client and configuration.</p>
+        <p class="BodyText1">The following principles should be followed when choosing or building a WebDAV Client:</p>
+        <ol>
+            <li>Concurrency is expected when downloading from WebDav. Choose a client that can request multiple files concurrently. Surescripts recommends that the level of concurrency be between 10 and 50 threads. <ul><li>If more than 50 simultaneous connections are used, Surescripts reserves the right to block the vendor from downloading until they limit concurrency to an acceptable level.</li></ul></li>
+            <li>Only new or modified files should be downloaded. The last modified date field should be utilized to determine if a file has been modified.</li>
+            <li>Surescripts WebDAV servers can use GZip compression to speed up downloads if HTTP compression is accepted by the client software. <ul><li>Client software that allows compression will advertise that in the HTTP header information sent:&#160; Accept-Encoding: gzip </li><li>The WebDAV server’s response will indicate that it has compressed the payload in the response header: Content-Encoding: gzip</li></ul></li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Although supported, compression may not always occur as it is only beneficial for larger files.</p>
+        <p class="BodyText1" style="font-weight: bold;">CyberDuck</p>
+        <p class="BodyText1">Cyberduck is a cross platform downloader that supports WebDAV as well as other protocols. It is available for Mac, Linux, and Windows. CyberDuck offers both a command line interface version as well as a graphical version. </p>
+        <p class="BodyText1" style="font-weight: bold;">Sample Configuration: </p>
+        <p class="BodyText1">Once installed, a command similar to the following could be used. Items in red should be replaced with your credentials. Items in green should be the absolute path of the local folder files will be saved to.</p>
+        <p class="BodyText1">$ duck --parallel 20 --preserve -d davs://files.rxhub.net/webdav/Formulary/ <span style="color: #76923C;">/data02/Formulary/</span> -u <span style="color: #FF0000;">P000000000XXXXX </span>-p <span style="color: #FF0000;">PASSWORD </span>-e compare</p>
+        <p class="BodyText1" style="font-weight: bold;">DAVIX</p>
+        <p class="BodyText1">Davix is a set of command line tools to work with DAV file systems over the web. Davix is available on most Linux distributions and may also work on other platforms. </p>
+        <p class="BodyText1" style="font-weight: bold;">Sample Configuration:</p>
+        <p class="BodyText1">Once installed, a command similar to the following could be used. Items in red should be replaced with your credentials. Items in green should be the absolute path of the local folder files will be saved to.</p>
+        <p class="BodyText1">$ davix-get -r 20 davs://files.rxhub.net/webdav/Formulary/ <span style="color: #4F6228;">/data02/Formulary/ </span>--userlogin <span style="color: #FF0000;">P000000000XXXXX </span>--userpass <span style="color: #FF0000;">PASSWORD</span></p>
+        <p class="BodyText1" style="font-weight: bold;">WebDAV Client and Configuration to Avoid:</p>
+        <p class="BodyText1" style="font-weight: bold;">Rsync</p>
+        <p class="BodyText1">Rsync over a remotely mounted davfs file system should not be used. This configuration has been known to take over 1 week to do a single sync. Rsync is not multi-threaded.</p>
+        <h3 class="Heading3"><a name="_Toc443909623"></a>Formulary and Benefit File Distribution</h3>
+        <p class="BodyText1">WebDAV is the Surescripts-supported technology for the distribution of formulary information. Retrievers utilize their same Surescripts Participant ID and password on the WebDAV server as they use for all of the other Surescripts supported messages. The secure WebDAV connection allows the Retriever access to their Surescripts established directory. Within the root directory, the Retriever sees individual directories of the Formulary Publishers with which they have a formulary contract relationship. Once connected, the Retriever has READ ONLY access to the files within their directory. </p>
+        <p class="BodyText1">Surescripts presents each formulary and benefit list as a separate physical file, enabling the Formulary Retriever to download lists individually. Formulary Retrievers distinguish each formulary and benefit list by its unique list identifier and by the file’s header and trailer information, which is wrapped around each individual list. </p>
+        <p class="BodyText1">The distribution of formulary information to customers is based on the following: </p>
+        <ol>
+            <li>The Formulary Publisher having a contract to share formulary and benefit data with the Formulary Retriever or otherwise having provided permission to the Formulary Retriever to download the formulary and benefit data.</li>
+            <li>The Formulary Publisher identifying which lists the Formulary Retriever has access to within the formulary distribution list.</li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443909624"></a>Formulary and Benefit File Processing</h3>
+        <p class="BodyText1">Formulary Retrievers follow the steps below to process formulary and benefit lists:</p>
+        <ol>
+            <li>Log into WebDAV.</li>
+            <li>View Formulary Publishers’ folders for which they have access (as defined in the Formulary Distribution List created by the Formulary Publisher).</li>
+            <li>Compare the WebDAV directories to look for changes in the formulary and benefit lists.<ol style="list-style-type: lower-alpha;"><li>Download the updated formulary and benefit lists to their database. At the list header level there is an action code of “F” or “D” (delete).</li><li>For list with an “F” in the list header, the Retriever should do a full replace of all the records in that list. Full Replaces occur at the list level, not at the individual record level. All previous records will be replaced in this list. </li><li>A delete action specifies the Retriever should remove that list from their formulary and benefit database.</li></ol></li>
+        </ol>
+        <h3 class="Heading3"><a name="_Toc443909625"></a>Retrieval Related Errors</h3>
+        <p class="BodyText1">If Formulary Retrievers encounter any of the following types of errors during the data utilization and presentation process, they should contact the following groups:</p>
+        <ul>
+            <li>For problems related to the WebDAV client/user interface, contact that product’s manufacturer.</li>
+            <li>For problems related to WebDAV security, access, and/or no formulary and benefit lists being present on the WebDAV server, contact Surescripts’ Production Support team.</li>
+            <li>If a Formulary Retriever receives a Formulary ID within an Eligibility 271 message that they cannot access on WebDAV, they should contact the corresponding Formulary Publisher. This error type can occur if a formulary and benefit list has not been loaded at Surescripts, or if the Formulary Retriever has not been given distribution permission for that formulary and benefit list ID by the Formulary Publisher.</li>
+        </ul>
+    </body>
+</html>

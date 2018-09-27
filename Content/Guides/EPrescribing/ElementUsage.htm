@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Element Usage</h1>
+        <h2 class="Heading2"><a name="_Toc513714511"></a>RxRenewal </h2>
+        <p class="BodyText1">Customers must support each RxRenewalResponse type indicated in the table below. When sending an RxRenewalResponse, follow the rules below to determine the workflow and the type of response to send to the requesting pharmacy. </p>
+        <p class="BodyText1">This table specifies the fields that are updated depending on the intended response type. The medication dispensed elements shall be returned in the medication response elements. All fields not listed in the following table shall be returned in the response message as sent by the pharmacy. This rule excludes items that are mentioned in the common message header and those defined immediately after this table. </p>
+        <p class="StylebodytextBold" style="page-break-after: avoid;">RxRenewal Response Table</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Approved</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">ApprovedWith<br />Changes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Denied</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Replace</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">DenyNewPrescription<br />ToFollow</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody"><b>REQUIRED</b>:</p>
+                        <p class="TableBody">•WrittenDate – update to date of approval, i.e., date of response</p>
+                        <p class="TableBody">•NumberOfRefills – must be present and not a zero value. If sent by pharmacy, value must match original request.  </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody"><b>REQUIRED</b>:</p>
+                        <p class="TableBody">•WrittenDate – update to date of approval, i.e. date of response</p>
+                        <p class="TableBody">•NumberOfRefills – must be present and not a zero value. If sent by pharmacy value may be changed from the original request. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody"><b>REQUIRED</b>:</p>
+                        <p class="TableBody">•NumberOfRefills – must add or update to zero value</p>
+                        <p class="TableBody">•Denial Reason/Code – Include a Free Text Note or Denial Reason code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody"><b>REQUIRED</b>:</p>
+                        <p class="TableBody">NumberOfRefills must be present and not a zero value.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody"><b>Note</b>: Information on this response type is Included for backwards compatibility only.</p>
+                        <p class="TableBody"><b>REQUIRED</b>:</p>
+                        <p class="TableBody">•NumberOfRefills – must add or update to zero value </p>
+                        <p class="TableBody">•Denial Reason/Code - Include a Free Text Note or Denial Reason code</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody"><b>OPTIONAL</b>:</p>
+                        <p class="TableBody">•NumberOfRefills – value requested may be changed</p>
+                        <p class="TableBody">•Prescriber IDs</p>
+                        <p class="TableBody">•RxNorm Codes</p>
+                        <p class="TableBody">•PrescribingAgent Elements</p>
+                        <p class="TableBody">•Prescriber Address</p>
+                        <p class="TableBody">•Prescriber Communication Elements</p>
+                        <p class="TableBody">•Supervisor Elements</p>
+                        <p class="TableBody">•Diagnosis</p>
+                        <p class="TableBody">•Prior Authorization</p>
+                        <p class="TableBody">•Drug Use Evaluation</p>
+                        <p class="TableBody">•Observation Elements</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody"><b>OPTIONAL</b>:</p>
+                        <p class="TableBody">All fields may be changed/updated excluding patient’s DateOfBirth</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody"><b>OPTIONAL</b>:</p>
+                        <p class="TableBody">•Prescriber IDs</p>
+                        <p class="TableBody">•RxNorm Codes</p>
+                        <p class="TableBody">•PrescribingAgent Elements</p>
+                        <p class="TableBody">•Prescriber Address</p>
+                        <p class="TableBody">•Supervisor Elements</p>
+                        <p class="TableBody">•Diagnosis</p>
+                        <p class="TableBody">•Prior Authorization</p>
+                        <p class="TableBody">•Drug Use Evaluation</p>
+                        <p class="TableBody">•Observation Elements</p>
+                        <p class="TableBody">•WrittenDate - update to date of denial</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="Heading3"><a name="_Toc513714512"></a>RxRenewal Requirements</h3>
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_218.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_219.flsnp" />
+        <h3 class="Heading3"><a name="_Toc513714513"></a>Exceptions to Fields that Must be Returned</h3>
+        <p>If the field is not listed as optional to update, it must be returned in the response; however, Structured Sig, CompoundInformation, and Facility are three exceptions:</p>
+        <ul>
+            <li>The structured portion of Sig element is optionally supported. If received on an RxRenewalRequest, it is not required to be sent back on an RxRenewalResponse. The application should instead use the SigText from the Sig element.
+</li>
+            <li>The ComnpoundInformation element is optionally supported. If received on an RxRenewalRequest, it is not required to be sent back on an RxRenewalResponse.<![CDATA[            ]]></li>
+            <li>The Facility segment is optionally supported. If sent on an RxRenewalRequest, it is not required to be sent back on an RxRenewalResponse.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc513714514"></a>Usage of DeniedNewPrescriptionToFollow</h3>
+        <p class="BodyText1">This response type may be received in an RxRenewalResponse from a previous version of NCPDP SCRIPT and is included for backwards compatibility.</p>
+        <h2 class="Heading2"><a name="_Follow_Up_Request"></a><a name="_Toc513714515"></a>Follow Up Request Requirements</h2>
+        <p class="BodyText1">The FollowUpRequest is used to resubmit an electronic request that has not yet received a response. This element should be utilized when a system permits a user to resubmit a request.&#160;To help avoid unnecessary subsequent requests due to questions on messages status (e.g. has the receiving system confirmed receipt), applications should provide users with the ability to view the status of any outbound message. </p>
+        <p class="BodyText1">Receivers of messages that support the FollowUpRequest element should ensure that end users are able to differentiate the most recent follow up request when multiple requests have been received. The most recent follow up request is the message that shall receive the response (Approved, Denied, etc). Customer systems should consider workflows that allow requests that will not receive a response to be noted as complete or archived to help eliminate confusion.</p>
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_220.flsnp" />
+        <MadCap:snippetBlock src="../../Resources/Snippets/EPrescribingAppCert/R_221.flsnp" />
+        <h2 class="Heading2"><a name="_Toc513714516"></a>Veterinarian Prescriber and NonHuman Patient</h2>
+        <p class="BodyText1">Surescripts does not support the NCPDP SCRIPT elements for veterinarian prescribers or non-human patients. Messages that are sent with the new elements will be rejected.</p>
+        <h2 class="Heading2"><a name="_Drug_Name_Best"></a><a name="_Toc513714517"></a>Drug Name Best Practices</h2>
+        <p class="BodyText1">Customers should work with their drug database vendors to obtain drug database vendor’s e-prescribing preferred name; the e-prescribing preferred name should align with industry best practice standards as well as Surescripts requirements.</p>
+        <ul>
+            <li>
+                <p>It should be noted that medications that are sent with the same drug name and form may appear slightly different among customers depending on the system’s drug compendia.</p>
+            </li>
+        </ul>
+        <p class="BodyText3">Example:</p>
+        <p class="BodyText3">Prevacid 30 MG Oral Delayed-Release Capsule</p>
+        <p class="BodyText3">Prevacid 30 MG DR Capsule</p>
+        <h2 class="Heading2"><a name="_Sig_Text_Field"></a><a name="_Toc513714518"></a>Sig Text Field Best Practices</h2>
+        <ul>
+            <li>The medication’s indication should be included within the SigText field. Sending the medication’s indication can help patients organize and better understand their medication regimen. Including the medication’s indication within the SigText field can help prevent dispensing errors and provide pharmacists and pharmacy staff additional context needed for medication therapy management and patient counseling. <br />Example: "Apply a pea-sized amount sparingly four times a day for poison-ivy rash."</li>
+            <li>Sig information should be clinically correct. <br />Example: Use "Amoxicillin 500 mg Oral Capsules"—SigText "One capsule three times a day" instead of "500 caps 3 times a day."</li>
+            <li>
+                <p>SigText should be transmitted in patient-friendly English. If the patient’s primary language is not English, the LanguageNameCode  field in the patient structure should be sent with the applicable language code. Latin abbreviations should not be used. Example: Use "Take 1 tablet by mouth twice a day" instead of "1 T PO BID."</p>
+            </li>
+            <li>Sigs should be complete, properly formatted, and not repeated. See table below for example usage:</li>
+        </ul>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">&#160;</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Should Use</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Should Not Use</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Complete</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Apply topically to forearm three times a day</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Topical each day</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Properly Formatted</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">Take one capsule three times a day</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">1 3 times a day</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Repeated</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">Take one capsule daily</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">1 PO QD – Take one tablet every day</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li style="margin-top: 8pt;color: #000000;">The instruction "take as directed" is rarely appropriate and should be avoided by prescribers. Using the phrase "take as directed" provides little information upon which the pharmacist can base their counseling of the patient.</li>
+            <li style="color: #000000;">In instances in which a Sig builder is utilized to provide standardized Sig options, prescriber systems should allow the end user to append free text to the standardized Sig.</li>
+            <li style="color: #000000;">The prescriber system should allow the prescriber to opt out of the standardized Sig and create a completely custom Sig.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714519"></a>Communication Numbers Requirements</h2>
+        <p class="BodyText1">When CommunicationNumbers is sent, one occurrence must be PrimaryTelephone for prescriber, supervisor, pharmacy, or facility. </p>
+        <p class="BodyText1">For PrimaryTelephone, Surescripts validates that the number is:</p>
+        <ul>
+            <li>Exactly 10 digits</li>
+            <li>Not all zeros or repeating numbers</li>
+            <li>No sequential number (1234567890, 0123456789, 9876543210)</li>
+            <li>Not 555 as the area code </li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714520"></a>NDC Best Practices</h2>
+        <p class="BodyText1">An NDC, by definition, is specific to a manufacturer/labeler, product, and associated packaging information. A representative NDC is an 11-digit NDC code that is intended to depict a category of medication regardless of package size and manufacturer/labeler. A representative NDC is not intended to infer specificity or preference to the imbedded manufacturer/labeler. In order to maximize the opportunity that the selected NDC exists among the various drug database vendor’s files, a representative NDC should be a nationally available product and (not be a repackaged NDC, obsolete NDC, private label NDC, unit dose NDC, or inner package/clinic package) unless it is the only NDC available identifying that category of medication. The drug description of the product should match the description of the representative NDC code value.</p>
+        <p class="BodyText1">Surescripts will use the DEA Schedule to determine how to process the message. If the DEA Schedule is not present, Surescripts will validate NDC to determine controlled substance status. If the NDC indicates that it is a controlled substance, the message will be rejected because the DEA Schedule is required for a controlled substance. If the NDC is not found, Surescripts will pass the prescription along to the pharmacy. </p>
+        <h2 class="Heading2"><a name="Codified"></a>Codified Field Usage for Federal Medication Terminologies (FMT) Codes</h2>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">For a list of FMT codes, go to: <a href="http://evs.nci.nih.gov/ftp1/NCPDP/About.html" target="_blank"><span class="Hyperlink" style="font-size: 11pt;">http://evs.nci.nih.gov/ftp1/NCPDP/About.html</span></a>. Use the valid value from the appropriate row of the downloaded data. This list should be updated on a monthly basis.</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="TableHeading">Codified Field/Field Code</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="TableHeading">Comment</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">StrengthForm/Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the NCPDP StrengthForm Terminology rows from the downloaded data. This list should be updated on a monthly basis.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">StrengthUnitOfMeasure/Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the NCPDP StrengthUnitOfMeasure Terminology rows from the downloaded data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="TableBody">QuanityUnitOfMeasure/Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="TableBody">Use the NCPDP QuantityUnitOfMeasure Terminology rows from the downloaded data.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="TableBody">DoseUnitOfMeasure/Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="TableBody">Use the NCPDP DoseUnitOfMeasure Terminology rows from the downloaded data</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="Heading2"><a name="_Toc513714522"></a>Note Requirements</h2>
+        <p class="BodyText1" style="font-weight: bold;">Fields that cannot be codified are sent in this free text field:</p>
+        <ul>
+            <li>
+                <MadCap:snippetText src="../../Resources/Snippets/EPrescribingAppCert/R_222.flsnp" />
+            </li>
+        </ul>
+        <ul>
+            <li>Military [prescriber] personnel using their Social Security Number for EPCS are also required to report their branch of service here.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc513714523"></a>Note Best Practices</h2>
+        <p class="BodyText1">EPCS (21 CFR Section 1306.11) allows the prescriber to send an electronic prescription to "cover" for his verbal order. When sending the electronic prescription this field should be populated with "Emergency Cover Prescription - Do Not Fill".</p>
+        <p class="BodyText1" style="font-weight: bold;">Proper use of the Note field (referred to as "free text" in the NCPDP SCRIPT Standard).</p>
+        <p class="BodyText1">Reserve the use of the Note field for information related to, but not part of, the prescription. For example:</p>
+        <ul>
+            <li>The patient's flavoring choice.</li>
+            <li>Multiple packaging (e.g. split up the quantity into one for school/one for home, etc.).</li>
+            <li>Reminder to suspend use of contraindicated medication until other drug therapy complete.</li>
+        </ul>
+        <p class="BodyText1">Directions for use or administration should not be split between the SigText and Note fields nor should the information in the Sig field conflict with information in the Notes field. </p>
+        <h2 class="Heading2"><a name="_Toc513714524"></a>ProhibitRenewalRequest </h2>
+        <p class="BodyText1">The ProhibitRenewalRequest element is used to denote that an RxRenewalRequest should not be sent to the sending prescriber for this particular prescription. This is usually used when the visit is for a one time prescription (i.e., Urgency Center or Emergency Department). In addition to service level validation, the RxRenewalRequest process needs to use this flag for proper routing of the request.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">If an RxChangeRequest is sent and an Approved response is given, there is no field to denote that renewals should not be sent to the sending prescriber. The pharmacy system would need to carry forward the flag from the original NewRx.</p>
+        <h2 class="Heading2"><a name="_Toc513714525"></a>State Specific Identifiers for EPCS </h2>
+        <p class="BodyText1">Customers are responsible to meet the all applicable laws and requirements, including, but not limited to, local and state laws and regulations in which the customer’s application is deployed and used. This section gives guidance where the states have redefined how the state license number fields are used specifically for EPCS.</p>
+        <h3 class="Heading3"><a name="_Toc513714526"></a>Identifier for Midlevel Practitioners</h3>
+        <p class="BodyText1">Some states require midlevel practitioners (i.e., advance practice nurses (APRNs), physicians assistants (PAs), etc.) with prescriptive authority to include their prescriptive authority identification number in all prescriptions they create. In addition to their prescription authorization number, midlevel practitioners are required to also include their DEA number and may be required to include the DEA number of the supervising prescriber on all prescriptions for controlled substances. When sent, the midlevel practitioner’s information should be placed in the message in the prescriber loop and the supervising physician's DEA number should be placed in the supervisor loop.</p>
+        <p class="BodyText1">E-prescribing vendors should populate the Prescriber State License Number field with the prescription authorization number on all prescriptions (for both non-controlled and controlled substances).</p>
+        <p class="StylebodytextBold">Prescriber loop:</p>
+        <p class="BodyText3">StateLicenseNumber tag in the Identification element in the prescriber section.</p>
+        <p class="BodyText3">For APRNs, the letters "APRN" should always appear first in the field followed by the actual number.</p>
+        <p class="BodyText2">Example: APRN123456789</p>
+        <p class="BodyText3">DEANumber tag in the Identification element in the prescriber section.</p>
+        <p class="StylebodytextBold">Supervisor loop:</p>
+        <p class="BodyText3">DEANumber tag in the Identification element in the supervisor section.</p>
+    </body>
+</html>

@@ -1,0 +1,2390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="12113" MadCap:lastWidth="1600">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc445209660"></a>ORU Message Examples</h2>
+        <p class="BodyText1">The following scenarios all begin with the same ADT A01 message as a trigger. The responses are displayed for an ORU message format.</p>
+        <p class="BodyText1">Scenario:</p>
+        <ol>
+            <li>Patient was identified as a member of PBM A, B, and C. The patient history is comprised of multiple drugs.</li>
+            <li>Patient was not found at Surescripts.</li>
+            <li>Patient was identified as a member of PBM A. No medication history was found at PBM A.</li>
+            <li>Patient was identified as a member of PBM A. An error occurred while attempting to connect to PBM A.</li>
+            <li>Patient was identified as a member of PBM A. An error occurred while attempting to connect to PBM A.</li>
+            <li>Patient was identified as a member of PBM A and also had fill history from Pharmacy A</li>
+        </ol>
+        <p class="StylebodytextBold">Scenario 1:&#160; Patient was identified as a member of PBM A, B, and C. The patient history is comprised of multiple drugs.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|ORU^R01|999990|P|2.3|</p>
+        <p class="EDIExample">PID|||PATID1234^5^M11||JONES^WILLIAM^A^III||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401-1020|GL|(919)379-1212|(919)271-3434||S||PATID12345001^2^M10|123456789|987654^NC</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0</p>
+        <p class="EDIExample">OBR|1||013212003|RXHUBHISTORY|||20021023|20031022|||||||||||||||||F</p>
+        <p class="EDIExample">OBX|1|TX|MEDS^HEADER||RxHub Patient Medication History&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003||||||F</p>
+        <p class="EDIExample">OBX|2|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|3|TX|MEDS^PATIENT||Patient Id:&#160; PATID1234||||||F</p>
+        <p class="EDIExample">OBX|4|TX|MEDS^PATIENT||Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES, WILLIAM A.||||||F</p>
+        <p class="EDIExample">OBX|5|TX|MEDS^PATIENT||Address:&#160;&#160;&#160;&#160; 1200 N ELM STREET||||||F</p>
+        <p class="EDIExample">OBX|6|TX|MEDS^PATIENT||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; GREENSBORO, NC 27401-1020||||||F</p>
+        <p class="EDIExample">OBX|7|TX|MEDS^PATIENT||DOB:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:Male||||||F</p>
+        <p class="EDIExample">OBX|8|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|9|TX|MEDS^MESSAGE||Medication History Date Range Requested:&#160; 08/01/2002 - 08/01/2003||||||F</p>
+        <p class="EDIExample">OBX|10|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|11|TX|MEDS^MESSAGE||DISCLAIMER: Certain information may not be available or accurate in this report,||||||F</p>
+        <p class="EDIExample">OBX|12|TX|MEDS^MESSAGE||including over-the-counter medications, low cost prescriptions, prescriptions paid for by||||||F</p>
+        <p class="EDIExample">OBX|13|TX|MEDS^MESSAGE||the patient or non-participating sources, or errors in insurance claims information. The||||||F</p>
+        <p class="EDIExample">OBX|14|TX|MEDS^MESSAGE||provider should independently verify medication history with the patient.||||||F</p>
+        <p class="EDIExample">OBX|15|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|16|TX|MEDS^SUMMARY||Summary:||||||F</p>
+        <p class="EDIExample">OBX|17|TX|MEDS^SUMMARY||Drug Name&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Oldest&#160;&#160;&#160;&#160;&#160; Most Recent&#160; #of||||||F</p>
+        <p class="EDIExample">OBX|18|TX|MEDS^SUMMARY||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Fill Date&#160;&#160; Fill Date&#160;&#160;&#160; Fills||||||F</p>
+        <p class="EDIExample">OBX|19|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|20|TX|MEDS^SUMMARY||ZESTRIL 10 MG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2002&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 2||||||F</p>
+        <p class="EDIExample">OBX|21|TX|MEDS^SUMMARY||DIGITEK 250MCG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2003&#160; 08/01/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|22|TX|MEDS^SUMMARY||DIGITEK 125MCG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/01/2003&#160; 07/01/2003&#160;&#160; 2||||||F</p>
+        <p class="EDIExample">OBX|23|TX|MEDS^SUMMARY||LANOXIN 50MCG/ML ELIXIR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2002&#160; 08/01/2002&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|24|TX|MEDS^SUMMARY||RANITIDINE 150 MG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2003&#160; 08/01/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|25|TX|MEDS^SUMMARY||RANITIDINE 150 MG CAPSULE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 07/15/2003&#160; 07/15/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|26|TX|MEDS^SUMMARY||MOXONIDINE&#160; 30&#160; MG&#160; TAB&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/30/2003&#160; 06/30/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|27|TX|MEDS^SUMMARY||PREVACID 30MG CAPSULE DR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 10/23/2002&#160; 06/30/2003&#160;&#160; 7||||||F</p>
+        <p class="EDIExample">OBX|28|TX|MEDS^SUMMARY||PREVACID 15MG CAPSULE DR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 09/23/2002&#160; 09/23/2002&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|29|TX|MEDS^FORMATTING||--------------------------------------------------------------------------------||||||F</p>
+        <p class="EDIExample">OBX|30|TX|MEDS^PHARMACY||Key&#160; Reported Pharmacies&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Pharmacy Phone ||||||F</p>
+        <p class="EDIExample">OBX|31|TX|MEDS^PHARMACY||1&#160;&#160;&#160; DEMO PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 651-459-9857||||||F</p>
+        <p class="EDIExample">OBX|32|TX|MEDS^PHARMACY||2&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 651-456-4569||||||F</p>
+        <p class="EDIExample">OBX|33|TX|MEDS^PHARMACY||3&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 612-658-4567||||||F</p>
+        <p class="EDIExample">OBX|34|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|35|TX|MEDS^PRESCRIBER||Key&#160; Reported Prescribers ||||||F</p>
+        <p class="EDIExample">OBX|36|TX|MEDS^PRESCRIBER||A&#160;&#160;&#160; BROWN, SAMUEL||||||F</p>
+        <p class="EDIExample">OBX|37|TX|MEDS^PRESCRIBER||B&#160;&#160;&#160; BROWN, SAMUEL||||||F</p>
+        <p class="EDIExample">OBX|38|TX|MEDS^PRESCRIBER||C&#160;&#160;&#160; JONES, DOUG||||||F</p>
+        <p class="EDIExample">OBX|39|TX|MEDS^FORMATTING||--------------------------------------------------------------------------------||||||F</p>
+        <p class="EDIExample">OBX|40|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|41|TX|MEDS^DRUG||Detail Information:||||||F</p>
+        <p class="EDIExample">OBX|42|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|43|TX|MEDS^DRUG||ZESTRIL 10 MG TABLET (LISINOPRIL)||||||F</p>
+        <p class="EDIExample">OBX|44|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|45|TX|MEDS^DRUG||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 28&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|46|TX|MEDS^DRUG||08/01/2002&#160;&#160; 28&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|47|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|48|TX|MEDS^DRUG||DIGITEK 250MCG TABLET (DIGOXIN)||||||F</p>
+        <p class="EDIExample">OBX|49|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|50|TX|MEDS^DRUG||08/01/2003&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; B&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 2&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMB||||||F</p>
+        <p class="EDIExample">OBX|51|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|52|TX|MEDS^DRUG||DIGITEK 125MCG TABLET (DIGOXIN)||||||F</p>
+        <p class="EDIExample">OBX|53|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|54|TX|MEDS^DRUG||07/01/2003&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|55|TX|MEDS^DRUG||06/01/2003&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|56|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|57|TX|MEDS^DRUG||LANOXIN 50MCG/ML ELIXIR (DIGOXIN)||||||F</p>
+        <p class="EDIExample">OBX|58|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|59|TX|MEDS^DRUG||08/01/2002&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|60|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|61|TX|MEDS^DRUG||RANITIDINE 150 MG TABLET (RANITIDINE HCL)||||||F</p>
+        <p class="EDIExample">OBX|62|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|63|TX|MEDS^DRUG||08/01/2003&#160;&#160; 60&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|64|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|65|TX|MEDS^DRUG||RANITIDINE 150 MG CAPSULE (RANITIDINE HCL)||||||F</p>
+        <p class="EDIExample">OBX|66|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|67|TX|MEDS^DRUG||06/30/2003&#160;&#160; 60&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|68|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|69|TX|MEDS^DRUG||MOXONIDINE&#160; 30&#160; MG&#160; TAB (DRUG NOT FOUND)||||||F</p>
+        <p class="EDIExample">OBX|70|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|71|TX|MEDS^DRUG||06/30/2003&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 15&#160;&#160;&#160;&#160; C&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|72|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|73|TX|MEDS^DRUG||PREVACID 30MG CAPSULE DR (LANSOPRAZOLE)||||||F</p>
+        <p class="EDIExample">OBX|74|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|75|TX|MEDS^DRUG||06/30/2003&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMA||||||F</p>
+        <p class="EDIExample">OBX|76|TX|MEDS^DRUG||05/15/2003&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMA||||||F</p>
+        <p class="EDIExample">OBX|77|TX|MEDS^DRUG||04/01/2003&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMA||||||F</p>
+        <p class="EDIExample">OBX|78|TX|MEDS^DRUG||02/25/2003&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMA||||||F</p>
+        <p class="EDIExample">OBX|79|TX|MEDS^DRUG||01/10/2003&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMB||||||F</p>
+        <p class="EDIExample">OBX|80|TX|MEDS^DRUG||12/01/2002&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMB||||||F</p>
+        <p class="EDIExample">OBX|81|TX|MEDS^DRUG||10/23/2002&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMB||||||F</p>
+        <p class="EDIExample">OBX|82|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|83|TX|MEDS^DRUG||PREVACID 15MG CAPSULE DR (LANSOPRAZOLE)||||||F</p>
+        <p class="EDIExample">OBX|84|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|85|TX|MEDS^DRUG||09/23/2002&#160;&#160; 90&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 30&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 3&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMB||||||F</p>
+        <p style="margin-left: 36pt;">&#160;</p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Surescripts supplied fields:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 90px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 172px;" />
+            <col style="width: 229px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts password to get into the participant system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PID segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PV1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PV1 segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-03</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique identifier for this instance of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-04</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Universal Service Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUBHISTORY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Name of report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Result Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>F</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Final Results.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Sequence number of the OBX of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Value Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The OBX is a text field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^HEADER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Tag for the header of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for the report with the report date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PATIENT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Patient Name section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Patient ID: PATID1234</p>
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Patient ID that was in the first PID-3 repetition. Is the hospital proprietary patient ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name:&#160; JONES, WILLIAM A.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the last name, first name, and middle name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1200 N ELM STREET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Address values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GREENSBORO, NC 27401-1020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the city, state, and zip values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DOB:&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DOB and Gender values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the start and end dates that were used for this report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DISCLAIMER:  Certain information may not be available or accurate in this report,</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the first line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>including over-the-counter medications, low cost prescriptions, prescriptions paid for by</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the second line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>the patient or non-participating sources, or errors in insurance claims information. The</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the third line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>provider should independently verify medication history with the patient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the fourth line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>16</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Sequence of the OBX of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Value Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The OBX is a text field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^SUMMARY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Summary section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Summary</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Summary Header</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^SUMMARY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Summary section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Drug Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Oldest:&#160;&#160;&#160;&#160;&#160;&#160; Most Recent:&#160;&#160;&#160;&#160;&#160;&#160; # of</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The title for the Medication Summary.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fill Date:&#160;&#160;&#160; Fill Date:&#160;&#160;&#160; Fills</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The second line in the Medication Summary.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ZESTRIL 10 MG TABLET&#160;&#160;&#160;&#160; 08/01/2002&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First line of the medication summary ordered by fill date descending.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DIGITEK 250MCG TABLET&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2003&#160;&#160; 08/01/2003&#160;&#160; 1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Second line of the medication summary ordered by fill date descending.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Summary Continued; not all lines shown.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PHARMACY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Pharmacy Section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Key&#160;&#160;&#160;&#160;&#160;&#160;&#160; Reported Pharmacies&#160;&#160;&#160;&#160;&#160;&#160; Pharmacy Phone</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for pharmacy key</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1&#160;&#160;&#160;&#160;&#160; DEMO PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160; 651-459-9857</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First Pharmacy key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>2&#160;&#160;&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160; 651-456-4569</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Second Pharmacy key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>3&#160;&#160;&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160; <br />612-658-4567</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Third Pharmacy key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PRESCRIBER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Prescriber Section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Key&#160;&#160;&#160;&#160;&#160;&#160;&#160; Reported Prescribers&#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for Prescriber key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; BROWN,SAMUEL&#160;&#160;&#160;&#160;&#160;&#160;&#160; </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First Prescriber key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>B&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; BROWN,SAMUEL</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Second Prescriber key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>C&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES,DOUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Third Prescriber key.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Detail Information:</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for the detail section of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ZESTRIL 10 MG TABLET (LISTINOPRIL)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug name and generic name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fill Date&#160;&#160; Qty&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160;&#160; Pharmacy&#160;&#160; Source</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for Detail.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 28&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Detail for drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>08/01/2002&#160; 28&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Detail for drug.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Scenario 2: Patient was not found at Surescripts.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|ORU^R01|999990|P|2.3|PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC| PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|OBR|1||123456|RXHUBHISTORY|||20020414|20030414|||||||||||||||||Z|OBX|1|TX|MEDS^HEADER||RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003||||||F|OBX|2|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|3|TX|MEDS^PATIENT||Patient ID:&#160; PATID1234||||||F|OBX|4|TX|MEDS^PATIENT||Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES, WILLIAM A.||||||F|OBX|5|TX|MEDS^PATIENT||Address:&#160;&#160;&#160;&#160; 1200 N ELM STREET||||||F|OBX|6|TX|MEDS^PATIENT||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; GREENSBORO, NC 27401-1020||||||F|OBX|7|TX|MEDS^PATIENT||DOB:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male ||||||F|OBX|8|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|9|TX|MEDS^MESSAGE||Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003||||||F|OBX|10|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|11|TX|MEDS^MESSAGE||Note: Patient not found.||||||F|</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 90px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 172px;" />
+            <col style="width: 229px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts password to get into the participant system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PID segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PV1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PV1 segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-03</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique identifier for this instance of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-04</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Universal Service Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUBHISTORY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Name of report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Result Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Z</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Patient not found status.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Sequence number of the OBX of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Value Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The OBX is a text field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^HEADER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Tag for the header of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for the report with the report date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PATIENT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Patient Name section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Patient ID: PATID1234</p>
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Patient ID that was in the first PID-3 repetition. Is the hospital proprietary patient ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name:&#160; JONES, WILLIAM A.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the last name, first name, and middle name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1200 N ELM STREET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Address values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GREENSBORO, NC 27401-1020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the city, state, and zip values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DOB:&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DOB and Gender values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the start and end dates that were used for this report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Note:  Patient not found.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>First line of error message.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StyleBodyText1BoldItalic">&#160;</p>
+        <p class="StylebodytextBold">Scenario 3:&#160; Patient was identified as a member of PBM A. No Medication History was found at PBM A.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|ORU^R01|999990|P|2.3|PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|OBR|1||123456|RXHUBHISTORY|||20020414|20030414|||||||||||||||||FOBX|1|TX|MEDS^HEADER||RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003||||||FOBX|2|TX|MEDS^FORMATTING||||||||F</p>
+        <p class="EDIExample">OBX|3|TX|MEDS^PATIENT||Patient ID:&#160; PATID1234||||||FOBX|4|TX|MEDS^PATIENT||Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES, WILLIAM A.||||||FOBX|5|TX|MEDS^PATIENT||Address:&#160;&#160;&#160;  1200 N ELM STREET||||||FOBX|6|TX|MEDS^PATIENT||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; GREENSBORO, NC 27401-1020||||||FOBX|7|TX|MEDS^PATIENT||DOB:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/15/1961&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male ||||||FOBX|8|TX|MEDS^FORMATTING||||||||F</p>
+        <p class="EDIExample">OBX|9|TX|MEDS^MESSAGE||Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003||||||FOBX|10|TX|MEDS^FORMATTING||||||||FOBX|11|TX|MEDS^MESSAGE||DISCLAIMER: Certain information may not be available or accurate in this report||||||FOBX|12|TX|MEDS^MESSAGE||including over-the-counter medications, low cost prescriptions, prescriptions paid for by||||||FOBX|13|TX|MEDS^MESSAGE||the patient or non-participating sources, or errors in insurance claims information. The||||||FOBX|14|TX|MEDS^MESSAGE||provider should independently verify medication history with the patient.||||||FOBX|15|TX|MEDS^FORMATIING||||||||F</p>
+        <p class="EDIExample">OBX|16|TX|MEDS^MESSAGE||Note:&#160; Although a patient record was found, no medications||||||F|</p>
+        <p class="EDIExample">OBX|17|TX|MEDS^MESSAGE||were available in their medication claims history.||||||F|</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 90px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 172px;" />
+            <col style="width: 229px;" class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Password to get into the Surescripts system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Original PID segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PV1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Original PV1 segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-03</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Unique identifier for this instance of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-04</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Universal Service Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUBHISTORY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name of report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Result Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>F</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Final Results.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence number of the OBX of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Value Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>The OBX is a text field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^HEADER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Tag for the header of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Header for the report with the report date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PATIENT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>This is the Patient Name section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Patient ID: PATID1234</p>
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Patient ID that was in the first PID-3 repetition. Is the hospital proprietary patient ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name:&#160; JONES, WILLIAM A.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Concatenation of the last name, first name, and middle name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1200 N ELM STREET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Address values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GREENSBORO, NC 27401-1020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Concatenation of the city, state, and zip values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DOB:&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DOB and Gender values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Contains the start and end dates that were used for this report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DISCLAIMER: Certain information may not be available or accurate in this report,</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Contains the first line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>including over-the-counter medications, low cost prescriptions, prescriptions paid for by</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Contains the second line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>the patient or non-participating sources, or errors in insurance claims information. The</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Contains the third line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>provider should independently verify medication history with the patient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Contains the fourth line of the report disclaimer.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Note:  Although a patient record was found, no medications </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>First line of error message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>were available in their medication claims history</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Second line of error message.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Scenario 5:&#160; Patient was identified as a member of PBM A. An error occurred while attempting to connect to PBM A.</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|ORU^R01|999990|P|2.3|</p>
+        <p class="EDIExample">PID|1||PATID1234^5^M11^~123456789^^^USSSA^SS||JONES^WILLIAM^A||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401 1020|GL|(919)379 1212|(919)271 3434||S||PATID12345001^2^M10|123456789|987654^NC|PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0||||56567|</p>
+        <p class="EDIExample">OBR|1||123456|RXHUBHISTORY|||20020414|20030414|||||||||||||||||X|</p>
+        <p class="EDIExample">OBX|1|TX|MEDS^HEADER||RxHub Patient Medication Report&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003||||||F|</p>
+        <p class="EDIExample">OBX|2|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|3|TX|MEDS^PATIENT||Patient ID:&#160; PATID1234||||||F| </p>
+        <p class="EDIExample">OBX|4|TX|MEDS^PATIENT||Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES, WILLIAM A.||||||F|</p>
+        <p class="EDIExample">OBX|5|TX|MEDS^PATIENT||Address:&#160;&#160;&#160;&#160; 1200 N ELM STREET||||||F|</p>
+        <p class="EDIExample">OBX|6|TX|MEDS^PATIENT||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; GREENSBORO, NC 27401-1020||||||F|</p>
+        <p class="EDIExample">OBX|7|TX|MEDS^PATIENT||DOB:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male ||||||F|</p>
+        <p class="EDIExample">OBX|8|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|9|TX|MEDS^MESSAGE||Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003|||||||F|</p>
+        <p class="EDIExample">OBX|10|TX|MEDS^FORMATTING||||||||F|</p>
+        <p class="EDIExample">OBX|11|TX|MEDS^MESSAGE||Note: An error occurred while processing the report.&#160; No medication|||||||F| </p>
+        <p class="EDIExample">OBX|12|TX|MEDS^MESSAGE||history was returned.|||||||F| </p>
+        <p>&#160;</p>
+        <p class="StylebodytextBold">Surescripts supplied fields:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 90px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 172px;" />
+            <col style="width: 229px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts Application ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-4 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sending Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUB</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts participant ID (Surescripts).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Application</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>P00000000002002</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Identifier of the participant who sent the original request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-6</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Receiving Facility</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>REQUESTINGSYSTEM</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Additional identifier for original sender.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-8</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Security</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PASSWORD</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Surescripts password to get into the participant system.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MSH-10</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Message Control ID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>999990</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique control number for this transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PID</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PID segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>PV1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Original PV1 segment sent in by the requester is returned on the response.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-03</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Filler Order Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>123456</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Unique identifier for this instance of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-04</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Universal Service Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RXHUBHISTORY</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Name of report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBR-25</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Result Status</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Indicates that no results were returned due to an error.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Sequence Number</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Sequence number of the OBX of the transaction.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-2</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Value Type</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>TX</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>The OBX is a text field.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^HEADER</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Tag for the header of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>RxHub Patient Medication Report&#160;&#160;&#160;&#160; Date: 08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for the report with the report date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^PATIENT</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Patient Name section of the Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Patient ID: PATID1234</p>
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Patient ID that was in the first PID-3 repetition. Is the hospital proprietary patient ID.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Name:&#160; JONES, WILLIAM A.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the last name, first name, and middle name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>1200 N ELM STREET</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Address values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>GREENSBORO, NC 27401-1020</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Concatenation of the city, state, and zip values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DOB:&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:&#160; Male</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>DOB and Gender values that were in the ADT PID segment.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Medication History Date Range Requested:&#160;&#160; 08/01/2002 -08/01/2003</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Contains the start and end dates that were used for this report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^MESSAGE</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the message section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Note:&#160; An error occurred while processing the report.&#160; No medication</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>First line of error message.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>history was returned.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Second line of error message.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="StylebodytextBold">Scenario 6:&#160; Patient was identified as a member of PBM A and also had fill history from Pharmacy A. New values available from Pharmacy are bolded.</p>
+        <p class="examplehead2">&#160;</p>
+        <p class="EDIExample">MSH|^~\&amp;|MEDS|RXHUB|P00000000002002|REQUESTINGSYSTEM|200304140824|PASSWORD|ORU^R01|999990|P|2.3|PID|||PATID1234^5^M11||JONES^WILLIAM^A^III||19610615|M||C|1200 N ELM STREET^^GREENSBORO^NC^27401-1020|GL|(919)379-1212|(919)271-3434||S||PATID12345001^2^M10|123456789|987654^NC</p>
+        <p class="EDIExample">PV1|1|I|2000^2012^01||||004777^LEBAUER^SIDNEY^J.|||SUR||||ADM|A0</p>
+        <p class="EDIExample">OBR|1||013212003|RXHUBHISTORY|||20021023|20031022|||||||||||||||||F</p>
+        <p class="EDIExample">OBX|1|TX|MEDS^HEADER||RxHub Patient Medication History&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Date: 08/01/2003||||||F</p>
+        <p class="EDIExample">OBX|2|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|3|TX|MEDS^PATIENT||Patient Id:&#160; PATID1234||||||F</p>
+        <p class="EDIExample">OBX|4|TX|MEDS^PATIENT||Name:&#160;&#160;&#160;&#160;&#160;&#160;&#160; JONES, WILLIAM A.||||||F</p>
+        <p class="EDIExample">OBX|5|TX|MEDS^PATIENT||Address:&#160;&#160;&#160;&#160; 1200 N ELM STREET||||||F</p>
+        <p class="EDIExample">OBX|6|TX|MEDS^PATIENT||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; GREENSBORO, NC 27401-1020||||||F</p>
+        <p class="EDIExample">OBX|7|TX|MEDS^PATIENT||DOB:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/15/1961&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Gender:Male||||||F</p>
+        <p class="EDIExample">OBX|8|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|9|TX|MEDS^MESSAGE||Medication History Date Range Requested:&#160; 08/01/2002 - 08/01/2003||||||F</p>
+        <p class="EDIExample">OBX|10|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|11|TX|MEDS^MESSAGE||DISCLAIMER: Certain information may not be available or accurate in this report,||||||F</p>
+        <p class="EDIExample">OBX|12|TX|MEDS^MESSAGE||including over-the-counter medications, low cost prescriptions, prescriptions paid for by||||||F</p>
+        <p class="EDIExample">OBX|13|TX|MEDS^MESSAGE||the patient or non-participating sources, or errors in insurance claims information. The||||||F</p>
+        <p class="EDIExample">OBX|14|TX|MEDS^MESSAGE||provider should independently verify medication history with the patient.||||||F</p>
+        <p class="EDIExample">OBX|15|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|16|TX|MEDS^SUMMARY||Summary:||||||F</p>
+        <p class="EDIExample">OBX|17|TX|MEDS^SUMMARY||Drug Name&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Oldest&#160;&#160;&#160;&#160;&#160; Most Recent&#160; #of||||||F</p>
+        <p class="EDIExample">OBX|18|TX|MEDS^SUMMARY||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Fill Date&#160;&#160; Fill Date&#160;&#160;&#160; Fills||||||F</p>
+        <p class="EDIExample">OBX|19|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|20|TX|MEDS^SUMMARY||ZESTRIL 10 MG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2002&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 2||||||F</p>
+        <p class="EDIExample">OBX|21|TX|MEDS^SUMMARY||DIGITEK 250MCG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2003&#160; 08/01/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|22|TX|MEDS^SUMMARY||DIGITEK 125MCG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/01/2003&#160; 07/01/2003&#160;&#160; 2||||||F</p>
+        <p class="EDIExample">OBX|23|TX|MEDS^SUMMARY||LANOXIN 50MCG/ML ELIXIR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2002&#160; 08/01/2002&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|24|TX|MEDS^SUMMARY||RANITIDINE 150 MG TABLET&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 08/01/2003&#160; 08/01/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|25|TX|MEDS^SUMMARY||RANITIDINE 150 MG CAPSULE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 07/15/2003&#160; 07/15/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|26|TX|MEDS^SUMMARY||MOXONIDINE&#160; 30&#160; MG&#160; TAB&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 06/30/2003&#160; 06/30/2003&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|27|TX|MEDS^SUMMARY||PREVACID 30MG CAPSULE DR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 10/23/2002&#160; 06/30/2003&#160;&#160; 7||||||F</p>
+        <p class="EDIExample">OBX|28|TX|MEDS^SUMMARY||PREVACID 15MG CAPSULE DR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 09/23/2002&#160; 09/23/2002&#160;&#160; 1||||||F</p>
+        <p class="EDIExample">OBX|29|TX|MEDS^FORMATTING||--------------------------------------------------------------------------------||||||F</p>
+        <p class="EDIExample">OBX|30|TX|MEDS^PHARMACY||Key&#160; Reported Pharmacies&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Pharmacy Phone ||||||F</p>
+        <p class="EDIExample">OBX|31|TX|MEDS^PHARMACY||1&#160;&#160;&#160; DEMO PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 651-459-9857||||||F</p>
+        <p class="EDIExample">OBX|32|TX|MEDS^PHARMACY||2&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 651-456-4569||||||F</p>
+        <p class="EDIExample">OBX|33|TX|MEDS^PHARMACY||3&#160;&#160;&#160; JOES PHARMACY&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 612-658-4567||||||F</p>
+        <p class="EDIExample">OBX|34|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|35|TX|MEDS^PRESCRIBER||Key&#160; Reported Prescribers ||||||F</p>
+        <p class="EDIExample">OBX|36|TX|MEDS^PRESCRIBER||A&#160;&#160;&#160; BROWN, SAMUEL||||||F</p>
+        <p class="EDIExample">OBX|37|TX|MEDS^PRESCRIBER||B&#160;&#160;&#160; BROWN, SAMUEL||||||F</p>
+        <p class="EDIExample">OBX|38|TX|MEDS^PRESCRIBER||C&#160;&#160;&#160; JONES, DOUG||||||F</p>
+        <p class="EDIExample">OBX|39|TX|MEDS^FORMATTING||--------------------------------------------------------------------------------||||||F</p>
+        <p class="EDIExample">OBX|40|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|41|TX|MEDS^DRUG||Detail Information:||||||F</p>
+        <p class="EDIExample">OBX|42|TX|MEDS^FORMATTING|| ||||||F</p>
+        <p class="EDIExample">OBX|43|TX|MEDS^DRUG||ZESTRIL 10 MG TABLET (LISINOPRIL)||||||F</p>
+        <p class="EDIExample">OBX|44|TX|MEDS^DRUG||Fill Date&#160;&#160;&#160; Qty&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160; Pharmacy&#160;&#160; Type&#160;&#160;&#160; Source||||||F</p>
+        <p class="EDIExample">OBX|45|TX|MEDS^DRUG||&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 28&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Fill&#160;&#160;&#160;&#160; PHARMACY A||||||F</p>
+        <p class="EDIExample">OBX|46:TX:MEDS^DRUG|&#160;&#160; SIG: Take 2 tablets in the morning| | | | | |F</p>
+        <p class="EDIExample">OBX|47:TX:MEDS^DRUG|&#160;&#160; Fill Number:1| | | | |F</p>
+        <p class="EDIExample">OBX|48:TX:MEDS^DRUG|Prescription Number:334455| | | | | |F</p>
+        <p class="EDIExample">OBX|49|TX|MEDS^DRUG||08/01/2002&#160;&#160; 28&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Claim&#160;&#160;&#160; PBMC||||||F</p>
+        <p class="EDIExample">OBX|50:TX:MEDS^DRUG|&#160;&#160; SIG: Take 2 tablets in the morning| | | | | |F</p>
+        <p class="EDIExample">OBX|51:TX:MEDS^DRUG|&#160;&#160; Fill Number:2| | | | | |F</p>
+        <p class="EDIExample">OBX|52:TX:MEDS^DRUG|&#160;&#160; Prescription Number:334455| | | | | |F</p>
+        <p class="EDIExample">&#160;</p>
+        <p class="StylebodytextBold">Rest of message same as scenario 1…</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 85px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 90px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 172px;" />
+            <col style="width: 229px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Element Name</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p>Value </p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Detail Information:</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for the detail section of the report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>ZESTRIL 10 MG TABLET (LISTINOPRIL)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug name and generic name.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fill Date&#160;&#160; Qty&#160;&#160;&#160; Days&#160;&#160; Prescriber&#160;&#160; Pharmacy&#160;&#160; Source</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Header for Detail.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 28&#160;&#160;&#160;&#160; 7&#160;&#160;&#160;&#160;&#160;&#160; A&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Fill&#160;&#160;&#160;&#160; PHARMACY A</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Detail for drug.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>SIG: Take 2 tablets in the morning</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>SIG instructions.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Fill Number:1 </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Fill number</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>OBX-3</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Observation Identifier</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>MEDS^DRUG</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>This is the Drug Detail section of the Medication Report.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>OBX-5</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Observation Value</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                        <p>Prescription Number:334455|</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Prescription Number.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

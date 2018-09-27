@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us">
+    <head>
+        <MadCap:changeData>
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="1" MadCap:timestamp="2018-08-14T12:47:54.5254473-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="2" MadCap:timestamp="2018-08-14T12:48:29.8149572-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="3" MadCap:timestamp="2018-08-14T12:49:13.2151547-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="4" MadCap:timestamp="2018-08-14T12:50:24.0443436-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="5" MadCap:timestamp="2018-08-15T13:15:02.6355268-05:00" />
+            <MadCap:AddChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="6" MadCap:timestamp="2018-08-15T13:15:02.6467332-05:00" />
+            <MadCap:RemoveChange MadCap:userName="Megan.Hayden" MadCap:initials="ME" MadCap:id="7" MadCap:timestamp="2018-08-15T13:16:15.0157577-05:00" />
+        </MadCap:changeData>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1">Product Overview</h1>
+        <h2 class="Heading2"><a name="About" MadCap:changes="3"></a>About Electronic Prior Authorization Accelerator</h2>
+        <p class="BodyText1">
+            <MadCap:annotation MadCap:createDate="2018-08-14T12:56:17.5046275-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="added from below" MadCap:editor="Megan.Hayden" MadCap:editDate="2018-08-14T12:56:20.9173832-05:00">The </MadCap:annotation>Accelerator delivers a method for provider vendors to quickly offer customers core ePA features by embedding an iframe (or using a web browser control) in the provider vendor system that will manage the process of completing an ePA.</p>
+        <p class="BodyText1">The Accelerator is comprised of two APIs: the Web Application API, which provides a customizable user interface, and a Web Service API, which gives programmatic read-only access to the current state of workflow processes and tasks.</p>
+        <p class="BodyText1">The Web Application API provides a customizable interface that is displayed in an iframe (or a web browser control) in the provider vendor system. The interface interacts with the Accelerator and its managed workflow. In order to use the Web Application API, the provider vendor system must first call the Web Service API to request and receive an authorization token.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Authorization tokens are issued for 60 minutes and contain the expiration date and time. A new authorization token is not required to relaunch the Accelerator if still active or before the expiration period has elapsed.</p>
+        <p class="BodyText1">When an end user sends a PAInitiationRequest via the native <MadCap:change MadCap:changes="6">Electronic Prior Authorization </MadCap:change><MadCap:change MadCap:changes="5">CompletEPA</MadCap:change><sup MadCap:changes="5">®</sup><MadCap:change MadCap:changes="5"> </MadCap:change><MadCap:annotation MadCap:createDate="2018-08-15T13:15:18.5066508-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="should we change this to method?" MadCap:editor="Megan.Hayden" MadCap:editDate="2018-08-15T13:15:22.7896370-05:00">route</MadCap:annotation><MadCap:change MadCap:changes="5"></MadCap:change>, the Accelerator workflow engine creates a workflow process. The workflow process is given an InitiatorsProcessID, which is the PAReferenceID from the PAInitiationRequest. The workflow engine tracks all subsequent messages related to the PAInitiationRequest and distributes workflow tasks related to the process.</p>
+        <p class="BodyText1">End users are able to interact with a worklist, which is the collection of active tasks that require action from the current user. The Web Service API gives programmatic read-only access to the current state of workflow processes and tasks.</p>
+        <p class="BodyText1">When an Accelerator process reaches a point where the end user needs to take action on a task, e.g.; complete a question set, the end user can complete the task via the user interface provided by the Web Application API. Additionally, the Accelerator provides a historic view of in-process and completed ePA activities.</p>
+        <h2 class="Heading2"><a name="_Toc434830166"></a>About this Guide</h2>
+        <p class="BodyText1">Surescripts created this document to assist provider vendors in implementing the <MadCap:change MadCap:changes="1">Electronic Prior Authorization Accelerator</MadCap:change><MadCap:change MadCap:changes="2">CompletEPA® Accelerator</MadCap:change>, which is based on the NCPDP SCRIPT standard for electronic prior authorization (ePA).</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"> The "<MadCap:change MadCap:changes="1">Electronic Prior Authorization Accelerator</MadCap:change><MadCap:change MadCap:changes="2">CompletEPA® Accelerator</MadCap:change>" may also be referred to as "the Accelerator" throughout the rest of this guide.</p>
+        <p class="BodyText1">The audience for this document includes any customer responsible for integrating the Accelerator within an existing provider vendor system.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The terms PBM/payer or processor, who acts on behalf of the PBM/payer, are referred to as PBM/payer throughout this guide.</p>
+        <h2 class="Heading2"><a name="Guide" MadCap:changes="4"></a>Guide Disclaimer</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/GuideDisclaimer.flsnp" />
+        <h2 class="Heading2"><a name="Examples" MadCap:changes="3"></a>Examples Disclaimer</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/ExamplesDisclaimer.flsnp" />
+        <h2 class="Heading2"><a name="_Document_References"></a><a name="_Toc434830168"></a>Document <MadCap:annotation MadCap:createDate="2017-04-06T14:20:50.9008678-05:00" MadCap:creator="Megan.Hayden" MadCap:initials="ME" MadCap:comment="do we want to add XML message format section" MadCap:editor="Megan.Hayden" MadCap:editDate="2017-04-06T14:21:01.7409373-05:00">References</MadCap:annotation></h2>
+        <p class="BodyText1">Please reference the following resources when reading this Guide:</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col style="width: 621px;" class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p>Document Title</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>NCPDP SCRIPT Standard Format Implementation Guide (v2013101)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>NCPDP SCRIPT Standard Schemas (v2013101)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>NCPDP SCRIPT Implementation Recommendations</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Surescripts <MadCap:change MadCap:changes="6">Electronic Prior Authorization Companion</MadCap:change><MadCap:change MadCap:changes="5">CompletEPA® Implementation</MadCap:change> Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Surescripts <MadCap:change MadCap:changes="6">Electronic Prior Authorization Companion</MadCap:change><MadCap:change MadCap:changes="5">CompletEPA® Implementation</MadCap:change> Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>
+                            <MadCap:change MadCap:changes="7">Surescripts CompletEPA® ACR</MadCap:change>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p>Surescripts Directories 4.6 (or higher) Implementation Guide</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p>External Code List (ECL) 201310</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1">This Guide utilizes the NCPDP messaging standard version 2013101as a baseline. Members of NCPDP can access standards at <a href="http://ncpdp.org/Standards/Standards-Info" target="_blank"><span style="color: #0000FF;text-decoration: underline;">http://ncpdp.org/Standards/Standards-Info</span></a>. To become a member, please go to <a href="https://ncpdp.org/membership/Apply-Online.aspx" target="_blank"><span style="color: #0000FF;text-decoration: underline;">https://ncpdp.org/membership/Apply-Online.aspx</span></a>. </p>
+        <p class="BodyText1">The NCPDP SCRIPT Standard contains a complete list of fields and additional requirements. Customers should read and comprehend the associated standards prior to reading this Guide.</p>
+        <p class="BodyText1">NCPDP is an American National Standards Institute (ANSI) accredited Standard Development Organization. The NCPDP SCRIPT standard is a copyrighted document and may be obtained by contacting:</p>
+        <p class="BodyText1"><span style="font-weight: bold;">NCPDP</span><span style="font-weight: bold;"><br /></span>9240 E. Raintree Drive<br />Scottsdale, AZ 85260-7518<br />Phone: (480) 477-1000<br />Fax: (480) 767-1042<br /><a href="http://www.ncpdp.org/" target="_blank"><span class="Hyperlink">http://www.ncpdp.org</span></a></p>
+        <p class="BlankPage">&#160;</p>
+    </body>
+</html>

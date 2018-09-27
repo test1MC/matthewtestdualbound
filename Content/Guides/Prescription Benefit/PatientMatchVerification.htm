@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="1409" MadCap:lastWidth="1231">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Patient_Match_Verification"></a><a name="_Toc443909572"></a>Patient Match Verification</h2>
+        <p>The specific fields that are used to match the patient are listed below. Only valid patient data should be entered. Invalid data or filler data may result in “patient not found” or an incorrect match.</p>
+        <p>•	Last Name NM103</p>
+        <p>•	First Name NM104 – Use formal name. Do not use nicknames.</p>
+        <p>•	Middle Name NM105</p>
+        <p>•	Suffix NM107 – If relevant, the name suffix should be included in this field.</p>
+        <p>•	Street Address N301</p>
+        <p>•	Street Address2 N303</p>
+        <p>•	City N401</p>
+        <p>•	State N402</p>
+        <p>•	Zip N403</p>
+        <p>•	DOB DMG02</p>
+        <p>•	Gender DMG03</p>
+        <p class="BodyText1">These fields could be in the subscriber loop, the dependent loop, or both; however, Surescripts strongly suggests refraining from using the dependent loop because PBM/payers assign unique IDs, thus according to the standard they are subscribers. </p>
+        <p class="BodyText1">Different types of information sources identify patients in different manners depending upon how their eligibility system is structured. There are two common approaches for the identification of patients by an information source. One approach is to assign each member of the family (and plan) a unique ID number. This number can be used to identify and access that individual's information independent of whether he or she is a child, spouse, or the actual subscriber to the plan. In this approach, the patient will be identified at the subscriber hierarchical level because a unique ID number exists to access eligibility information for this individual. This is the approach that PBM/payers use.</p>
+        <p class="BodyText1">The second approach is where the primary subscriber and all dependents share one ID. Any related spouse, children, or dependents are identified through the primary subscriber's identification number and do not have a unique identification number of their own.</p>
+        <p class="BodyText1">If any of the demographic fields listed above are different from what the provider vendor sent in, the change flag must be set. If a field comes in blank and the PBM/payer sends back a value, this is considered a change. However, if the provider vendor sends a value in a field and the PBM/payer is unable to compare this field because they do not store this field in their patient data, the change flag must not be set and the data from the request must not be returned. If both subscriber and dependent information is sent, these rules apply to both.</p>
+        <p class="BodyText1">The change flag is in the INS segment. INS03 = 001, INS04 = 25.</p>
+        <p class="BodyText1">In the case of error conditions including patient not found - AAA error 75, contract /authorization error - AAA error 41, and general system errors – AAA error 42, the same general rule should be followed. Do not send back patient information from the 270 request. Therefore, in these error conditions, no patient data should be sent back. The provider vendor should disregard any patient information under these error scenarios.</p>
+        <p class="StyleHead2TextBold1" style="margin-left: 0pt;">Examples:</p>
+        <ol>
+            <li>Here is an example where the PBM/payer should indicate that a change has been made and set the change flag in the INS segment. </li>
+            <p class="BodyText1"><span style="font-weight: bold;">Provider vendor sends in</span>: Joe M Doe, DOB 19550412, Gender Male, and Address 55 HIGH STREET, SEATTLE, WA 55111 </p>
+            <p class="BodyText1"><span style="font-weight: bold;">PBM/payer returns</span>: Joseph M Doe, DOB 19550412, Gender Male, and Address 55 HIGH STREET, St. Paul, MN 55111 </p>
+            <li>In this example, the PBM/payer does not need to set the change flag because they have not changed any of the information returned, but the middle initial is blank due to the field not being supported in the PBM/payer’s system: </li>
+            <p class="BodyText1"><span style="font-weight: bold;">Provider vendor sends in</span>: Joe M Doe, DOB 19550412, Gender Male, and Address 55 HIGH STREET, St. Paul MN, 55111 </p>
+            <p class="BodyText1"><span style="font-weight: bold;">PBM/payer returns</span>: Joe Doe, DOB 19550412, Gender Male, and Address 55 HIGH STREET, St. Paul MN, 55111</p>
+            <li>In this example, the PBM/payer looks up the information and finds a blank for the middle name (which is a supported field in the PBM/payer’s system). This is considered a change so the change flag needs to be set: </li>
+            <p class="BodyText1"><span style="font-weight: bold;">Provider vendor sends in</span>: Joe M Doe, DOB 19550412, Gender Male, </p>
+            <p class="BodyText1"><span style="font-weight: bold;">PBM/payer returns</span>: Joe Doe, DOB 19550412, Gender Male, </p>
+            <li>This is an example where the patient is not found, so none of the patient information is returned. </li>
+            <p class="BodyText1"><span style="font-weight: bold;">Provider vendor sends in</span>: Joe M Doe, DOB 19550412, Gender Male, and Address 55 HIGH STREET, St. Paul MN 55111 </p>
+            <p class="BodyText1"><span style="font-weight: bold;">PBM/payer returns</span>: No Patient Data and an AAA segment with error 75 – Subscriber/Insured Not Found.</p>
+        </ol>
+    </body>
+</html>

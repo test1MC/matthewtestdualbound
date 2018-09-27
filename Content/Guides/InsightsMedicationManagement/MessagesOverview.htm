@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xml:lang="en-us" MadCap:lastBlockDepth="6" MadCap:lastHeight="6789.333" MadCap:lastWidth="1269" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc507500866"></a>Messages Overview</h1>
+        <p class="BodyText1">The APIs allow provider vendors to quickly offer customers core Insights for Medication Adherence features. By incorporating the data returned from the APIs into the provider vendor system, the provider vendor will manage the process of viewing and responding to medication management messages.</p>
+        <p class="BodyText1">The provider vendor determines how best to integrate the medication management features into their application. </p>
+        <p class="BodyText1">Medication management may be initiated at the time of a patient visit or when the provider views their inbox.</p>
+        <h2 class="Heading2"><a name="_Toc507500867"></a>Insights for Medication Adherence Message Flow</h2>
+        <p class="BodyText1">Insights for Medication Adherence provides provider vendors with the electronic delivery of PBM/payer medication adherence messages and patient medication adherence profile. Through the provider vendor interface, the provider can view and respond to PBM/payer medication adherence messages and access the patient's adherence profile. The graphic below depicts the transaction flow between customers in this process.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/InsightsMedicationManagement/Workflow.png" style="width: 1205px;height: 596px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <ol start="1">
+            <li>PBM/payer sends messages (High Risk Medication, Medication Adherence, and/or Missing Medication) and PDC ratios to Surescripts destined for a provider and a specific patient. Messages and PDCs are XML or JSON based, discrete and structured data elements.</li>
+        </ol>
+        <ol start="2">
+            <li>Surescripts processes messages and PDC ratios upon receiving, forwards urgent messages directly to the provider’s inbox.</li>
+            <li>Non-urgent messages and PDC ratios are available during the patient visit.</li>
+            <li>Surescripts closes out those messages which have been acted upon, ensuring provider’s inbox and patient’s messages list only display messages needing viewing and attention.</li>
+            <li>There are two ways Surescripts delivers messages into a provider’s environment: </li>
+            <li>When the PBM/payer designates a provider, messages will be delivered to the provider’s inbox.</li>
+            <li>All messages and PDC ratios will be available for viewing within patient’s chart.</li>
+        </ol>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">The PBM/payer is responsible for sending the NPI to Surescripts, which is then used to route the message to the appropriate provider SPI(s).</p>
+        <ol start="8">
+            <li>Physicians can provide feedback for messages read and feedback is sent to Surescripts for processing.</li>
+            <li>PBM/payer pulls feedback to complete the communication loop.</li>
+        </ol>
+        <h2 class="Heading2"><a name="_Toc507500875"></a>API Process Flow</h2>
+        <p class="BodyText1">This integration approach requires that the provider vendor system also supports the ability to proxy HTTP requests for all API requests through a single aggregation server.</p>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/InsightsMedicationManagement/APIWorkflow.PNG" style="width: 902px;height: 825px;" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <h2 class="Heading2">Message Validation </h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/MessageValidation.flsnp" />
+        <h2 class="Heading2"><a name="_Toc507500870"></a>Provider Vendor Responsibilities</h2>
+        <p class="BodyText1">An integration with Insights for Medication Adherence requires implementing a few components in the provider vendor’s system.</p>
+        <p class="StylebodytextBold">User Interface</p>
+        <p class="BodyText1">Customer will be supporting five user-interface components in their system.&#160; Examples below are from the Surescripts Accelerator UI</p>
+        <ol start="1">
+            <li>Viewing summary information for each patient in the patient visit workflow showing the patients adherence summary and the list of actionable messages along with the priority of the messages</li>
+            <li>Viewing message details for High risk medication, medication adherence and missing medication messages</li>
+            <li>Viewing the patient’s adherence profile of PDC ratios</li>
+            <li>Responding to high risk medication, medication adherence and missing medication messages</li>
+            <li>Viewing the patient or provider worklist of actionable messages</li>
+        </ol>
+        <p class="StylebodytextBold">User Access</p>
+        <p class="BodyText1">Provide role-based access controls to manage delegation of responsibilities among providers (prescribers and their staff).</p>
+        <p class="StylebodytextBold">Webserver</p>
+        <p class="BodyText1">Run a webserver to support GET and POST operations to the Surescripts endpoints</p>
+        <p class="StylebodytextBold">Provider</p>
+        <p class="BodyText1">Managing the provider service levels in the Surescripts Directory, which controls the messages that will appear on the provider worklist.</p>
+        <h2 class="Heading2"><a name="_Toc507500871"></a>Patient Visit Workflow</h2>
+        <p class="BodyText1">Insights for Medication Adherence has three main views within a typical patient visit workflow.&#160; </p>
+        <ol start="1">
+            <li>Convenient access to actionable intelligence during pre-visit assessment or consultation </li>
+            <li>Patient–specific messages and PDC ratios </li>
+            <li>Response to patient-specific messages</li>
+        </ol>
+        <p class="p">
+            <img src="../../Resources/Images/InsightsMedicationManagement/Workflow.jpg" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="StylebodytextBold">Sequence Diagram</p>
+        <p class="p">
+            <img src="../../Resources/Images/InsightsMedicationManagement/Workflow_1.png" />
+        </p>
+        <h2 class="Heading2"><a name="_Toc507500872"></a>Provider Inbox Workflow</h2>
+        <h3 class="Heading3"><a name="_Toc507500873"></a>Provider Inbox</h3>
+        <p class="BodyText1">When the PBM/payer designates a practitioner recipient in a high-risk medication, medication adherence, or missing medication message, the message will be delivered to the provider inbox.</p>
+        <p class="BodyText1">Insights for Medication Adherence has three main views within a typical provider inbox workflow:</p>
+        <ol start="1">
+            <li>Convenient access to actionable intelligence in the provider inbox</li>
+            <li>Viewing Patient–specific messages</li>
+            <li>Response to patient-specific messages</li>
+        </ol>
+        <p class="BodyText1">
+            <img src="../../Resources/Images/InsightsMedicationManagement/Workflow_1.jpg" MadCap:mediastyle="@media print { max-width: 100%; }" />
+        </p>
+        <p class="StylebodytextBold">Sequence Diagram</p>
+        <p class="StylebodytextBold">
+            <img src="../../Resources/Images/InsightsMedicationManagement/Workflow_2.png" />
+        </p>
+        <h3 class="Heading3"><a name="_Toc507500874"></a>Provider Inbox Opt-Out</h3>
+        <p class="BodyText1">All providers will be opt-in to the provider inbox for all high-risk medications, medication adherence, and missing medication messages once they are set up in the Surescripts Directory. See the Surescripts Directory Implementation Guide for information on adding and removing service levels for providers. Providers may opt-out of receiving messages into their inbox by message type through the Surescripts Directory by disabling Insights for Medication Adherence message service levels. Opt-out is currently supported for the following message types:</p>
+        <ul>
+            <li>High Risk Medication</li>
+            <li>Medication Adherence</li>
+            <li>Missing Medication</li>
+        </ul>
+        <p class="BodyText1">Providers that opt-out of receiving messages in their inbox will continue to have access to messages through the patient worklist.</p>
+        <h2 class="Heading2"><a name="_Toc507500876"></a>Authorization and Authentication</h2>
+        <p class="BodyText1">The provider vendor is responsible for authenticating the user and determining what data and activities users will have access to. </p>
+        <p class="BodyText1">The provider vendor: </p>
+        <ul>
+            <li>Maintains its users, their roles, their relationships (e.g., delegation of authority from providers to staff), and their authentication credentials, etc.</li>
+            <li>Includes pertinent user information when initiating the CommunicationRequest and QuestionnareResponse: </li>
+        </ul>
+        <ul>
+            <li class="li_1">the specific roles the user possesses</li>
+            <li class="li_1"> the provider SPI on whose behalf the user can act</li>
+        </ul>
+        <p class="BodyText1">The medication management system:</p>
+        <ul>
+            <li>Logs the user’s role(s) assigned by the provider vendor</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc507500877"></a>User Roles</h3>
+        <p class="BodyText1">Users are authenticated by the provider vendor. The provider vendor authorizes a user to perform a task by assigning them to a role. The types of roles are:</p>
+        <ul>
+            <li>Viewer: The Viewer has read-only permissions.</li>
+            <li>Submitter: The Submitter has create, read, edit, and submit permissions.</li>
+            <li>Prescriber: This is an optional submitter role that may be used when the EHR vendor is able to discern if the end user is a prescriber.</li>
+        </ul>
+        <p class="BodyText1">The user may have different roles depending on their relationship to the prescriber (e.g., a user may have the Submitter role when working on behalf of Dr. Smith and the Viewer role when working on behalf of Dr. Jones).</p>
+        <p class="BodyText1">The users and their roles are not stored by Surescripts. The provider vendor must securely communicate the roles to Surescripts.</p>
+        <p class="BodyText1">The table below shows the role(s) authorized to perform each task.</p>
+        <p class="StylebodytextBold">Role/Permission Map</p>
+        <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_p_TableHeading">Activity</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_p_TableHeading"> Description/Notes</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_p_TableHeading">mmpocviewer</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                        <p class="p_p_TableHeading">mmpocsubmitter</p>
+                    </th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                        <p class="p_p_TableHeading">mmpocprescriber</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_1">View Worklist</p>
+                        <p class="p_p_TableBody">(Worklist API)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">View and select tasks that require action.</p>
+                        <p class="p_p_TableBody">Note: Tasks may also be filtered by the provider or patient included in the auth token.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_Table">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_td_TableStyleGuideTablesBodyEColumn1Body1">View Task Detail</p>
+                        <p class="p_p_TableBody">(CommunicationRequest API)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">Select a task and view the medication management message from the PBM/payer. View the patient’s PDC ratio.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_td_TableStyleGuideTablesBodyDColumn1Body1_1">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">Submit a response to the medication management message</p>
+                        <p class="p_p_TableBody">(QuestionnaireResponse API)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">Submit a response and optional comment to a medication management message. </p>
+                        <p class="p_p_TableBody">Note: The response and optional comments are retrieved by the PBM/payer. </p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_td_TableStyleGuideTablesBodyBColumn1Body1">View the PDC ratios</p>
+                        <p class="p_p_TableBody">(Observation API)</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_p_TableBody">When the user has selected a patient, the user will have access to view the Medication Adherence Profile information for the selected patient.</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body">
+                        <p class="p_td_TableStyleGuideTablesBodyAColumn1Body1_1">X</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body">
+                        <p class="p_p_TableBody">X</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

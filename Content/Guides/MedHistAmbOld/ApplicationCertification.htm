@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="8" MadCap:lastHeight="4201.333" MadCap:lastWidth="992.8">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Appendix1" MadCap:autonum="Appendix A: ">Application Certification Requirements Summary</h1>
+        <table class="TableStyle-GuideTables" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 36px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 100px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 216px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 102px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 440px;" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;background-color: #a9a9a9;">Sec. 2.1.5 Medication History Prescriber Vendor Requirements</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>1). The application shall*106M-011 allow the end user to change a
+ patient's consent to obtain medication history between, at a minimum, the yes
+ and no consent values.</p>
+                        <p>2). The application shall*106M-012 display a disclaimer regarding use
+ of medication history retrieved via Surescripts.</p>
+                        <p class="BodyText2"><span style="font-size: 10pt;">a). Sample Disclaimer: Certain information may not be available or
+ accurate in this report, including items that the patient asked not be
+ disclosed due to patient privacy concerns, over-the-counter medications, low
+ cost prescriptions, prescriptions paid for by the patient or
+ non-participating sources, or errors in insurance claims information. The
+ provider should independently verify medication history with the patient.</span>
+                        </p>
+                        <p>3). When a data element from the medication history response is
+ displayed, the application shall*106M-014 have the ability to display all
+ data received for that data element.</p>
+                        <p>4). If the application displays medication history from sources other
+ than Surescripts, the application shall*106M-020 identify which medication
+ history was retrieved via Surescripts.</p>
+                        <p>5). The application shall*106M-018 have the ability to display all
+ medication history Drug/MedicationDispensed loops retrieved, unless
+ prohibited by federal, state or local laws.</p>
+                        <p>6). The application shall*106M-019 provide access to all history data
+ available for a specific request. When a medication history response
+ indicates more medication history is available, the application
+ shall*106M-026 either systematically retrieve all medication history
+ available or notify the end user more medication history is available.</p>
+                        <p>7). For PBM/Payer claim data, the participant shall*106M-016 retrieve
+ medication history for eligible coverages only.</p>
+                        <p>Note: For pharmacy fill data, the participant may retrieve medication
+ history regardless of patient eligibility.</p>
+                        <p>8). For PBM/Payer claim data, the participant shall*106M-017 retrieve
+ medication history for all eligible coverages.</p>
+                        <p>9). The claim medication history request for a patient shall*106M-013
+ be tied to the most recent eligibility response for that patient. This is
+ accomplished by using the ISA control number (ISA-13) from the 271
+ Eligibility response in the UIB-030-02 &lt;RelatesToMessageID&gt; of the
+ RXHREQ Medication History Request.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;">2.1.6 Medication History PBM/Payer Requirements</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>Drug segments shall*106M-021 be sent in order of most recent history
+ first according to fill date.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;">Sec. 3.4.3.1 Numeric Representation</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>The decimal point is represented by a period and shall*106M-001 be
+ used as follows:</p>
+                        <ul>
+                            <li style="font-size: 10pt;"> only when there
+ are significant digits to the right of the decimal</li>
+                            <li style="font-size: 10pt;"> when there is a
+ digit before and after the decimal point </li>
+                            <li style="font-size: 10pt;">not with whole
+ numbers</li>
+                            <li style="font-size: 10pt;">not to be counted
+ towards the length total of a data element (only for EDIFACT)</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;">Sec. 3.4.3.3 EDIFACT Trimming</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>All non-essential characters shall*106M-002 be suppressed from the
+ message where permissible (see section "EDIFACT Representation" above).
+ Non-essential characters include leading spaces, trailing spaces, leading
+ zeroes, and trailing zeroes where permissible (see section"Numeric
+ Representation" above).</p>
+                        <p>The length of SCRIPT message can be optimized in several ways.</p>
+                        <ul>
+                            <li style="font-size: 10pt;">Empty segments
+ should not be transmitted. </li>
+                            <li style="font-size: 10pt;"> Depending on the
+ trading partner and the message, not all data elements will be utilized. All
+ data elements within a segment after the last data element used may be
+ dropped.</li>
+                        </ul>
+                        <p>Although SCRIPT messages can be trimmed in several ways, software
+ systems shall*106M-003 not assume that a trading partner would always trim
+ their messages. The systems shall*106M-004 be capable of properly
+ interpreting a full-length message. If a data element is unused, it may be
+ omitted. However, the data element separator character must be used to "hold
+ the place" of the data element. SCRIPT messages do not contain field
+ identifiers; therefore, all data elements (up to the segment trim point) must
+ be accounted for with separator characters.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;">Sec. 3.5 XML Empty Tags</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>Participant shall*106M-005 not send empty elements within XML
+ messaging with exception of the RxHistoryResponse-&lt;Approved&gt; element.</p>
+                        <p style="font-size: 10pt;">All non-essential characters shall*106M-002 be suppressed from the message where permissible (see Section 3.4.3 EDIFACT Representation above). Non-essential characters include leading spaces, trailing spaces, leading zeroes, and trailing zeroes where permissible (see <MadCap:xref href="GeneralInterfaceDescription.htm#Numeric_Representation">Numeric Representation</MadCap:xref>).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="background-color: #a9a9a9;">
+                        <p style="font-weight: bold;">Sec. 3.8 Handling Optional Fields</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">
+                        <p>The participant shall*106M-007 be able to process any valid incoming
+ transaction request or response, including syntactically valid maximum and
+ minimum population messages. Optional data elements (and values therein)
+ shall*106M-008 not cause message failure.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 4.1.1 Common Message Header Elements - Description</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&lt;MessageID&gt;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>	Each message sent from a participant shall*106M-009 have a unique Message ID.
+	</p>
+                        <p>Message IDs should not be reused for 18 months.</p>
+                        <p> 
+	A minimum set of standards/algorithms should be used when generating message IDs to ensure uniqueness. If possible, participants should utilize Global Unique Identifiers (GUIDs).
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">&lt;RelatesToMessageID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">&#160;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">Relates to Message ID.</p>
+                        <p class="TableBody" style="font-size: 10pt;">The Message ID shall*<sup>106M-</sup><sup>010</sup> be echoed back in the response to the message that was received. </p>
+                        <p class="CommentText">M – RxHistoryResponse</p>
+                        <p class="TableBody" style="font-size: 10pt;">Not Used – Medication History Fill requests </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 5.3 Error Message
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5">For PBM/Payers, an asynchronous error message (also called Free Standing Error message) is sent in response to an invalid RXHRES message. The asynchronous error message is a separate message type and shall*106M-022 be responded to with a status of 010. An Error message shall*106M-023 never be responded to with an Error message; this could create an endless loop. 
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 6.2 UIB – Interactive Interchange Control Header Segment</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">UIB-030-01</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>	Transaction Control Reference</p>
+                        <p>&lt;MessageID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Each message sent from a participant shall*106M-009 have a unique MessageID. MessageIDs should not be reused for 18 months.</p>
+                        <p>A minimum set of standards/ algorithms should be used when generating MessageIDs to ensure uniqueness. If possible, participants should utilize Global Unique Identifiers (GUIDs).</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">D</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">UIB-030-02</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">Initiator Reference Identifier</p>
+                        <p class="TableBody" style="font-size: 10pt;">&lt;RelatesToMessageID&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">an..35</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody" style="font-size: 10pt;">On a responding transaction, this field is mandatory and is used to link the original message (value in UIB-030-01) to the response. </p>
+                        <p class="CommentText">The MessageID shall*<sup>106M-</sup><sup>010</sup> be echoed back in the response to the message that was received.”</p>
+                        <p class="CommentText">M –RXHRES</p>
+                        <p class="TableBody" style="font-size: 10pt;">Not Used – Medication History Fill requests</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 6.6 PVD – Prescriber Segment</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">PVD-090-01</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Communication Number</p>
+                        <p>&lt;Number&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..80</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Phone Number shall*106M-025 be in the format 5552223333X4444 - where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 6.6 PVD – Pharmacy Segment</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">PVD-090-01</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Communication Number</p>
+                        <p>&lt;Number&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..80</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Phone Number shall*106M-025 be in the format 5552223333X4444 - where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 6.8 PTT – Patient Segment</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">PTT-070-01</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Communication Number</p>
+                        <p>&lt;Number&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..80</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Phone Number shall*106M-025 be in the format 5552223333X4444 - where 555 is the area code, 2223333 is the main number and X4444 is the extension. Phone number shall*106M-028 not be populated with all zeros or other default values. This field is 80 characters long to handle email addresses. (Please note the extension X4444 is just an example. Less/more than four digits are allowed).</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. 6.10 DRU – Drug Segment</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">DRU-010-02</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Item Description </p>
+                        <p>&lt;DrugDescription&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p>Drug Name.
+	</p>
+                        <p>The self-contained full drug name, strength, and form. </p>
+                        <p>
+	The item or drug description field shall*106M-031 include the full drug name, strength and form (in that exact sequence). 
+	</p>
+                        <p>If the drug name is longer than 35 characters, use long drug name. Refer to <MadCap:xref href="UsingLongDrugNames.htm">Using Long Drug Names</MadCap:xref> for instructions. 
+		</p>
+                        <p>See <MadCap:xref href="XML.htm">XML</MadCap:xref> for XML Nuances.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">DRU-010-03</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Item Number</p>
+                        <p>&lt;DrugCoded.ProductCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..35</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">Drug number</p>
+                        <p style="font-size: 10pt;">If either DRU-010-03 or DRU-010-04 is sent, then both are required.</p>
+                        <p style="font-size: 10pt;">When sending, the NDC must be an 11 digit NDC in the 5-4-2 format. Dashes shall*106M-032 not be used and leading zeros shall*106M-033 not be suppressed. Note: This is for the NDC.</p>
+                        <p style="font-size: 10pt;">Example: 12345123412.</p>
+                        <p style="font-size: 10pt;">Note: When this is all 9s for the NDC and this is for fill data, this means that the prescription is a compound.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">DRU-010-16</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>Item Strength Code</p>
+                        <p>&lt;StrengthCode&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..15</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">Drug Strength – measurement value of drug strength information should be consistent across all fields in which it appears.</p>
+                        <p style="font-size: 10pt;">If either or both the Drug Coded Strength (DRU-010-06) and the Strength Code (DRU-010-16) are sent they shall* 106M-034 match the Drug Strength in the Drug Name Description field (DRU-010-02). Drug strength units should not be sent in free text Drug Strength field (DRU-010-06).</p>
+                        <p style="font-size: 10pt;">For a list of FMT codes, go to: <a href="http://evs.nci.nih.gov/ftp1/NCPDP/About.html" target="_blank">http://evs.nci.nih.gov/ftp1/NCPDP/About.html</a>. Use the NCPDP StrengthUnitOfMeasure Terminology rows from the downloaded data.</p>
+                        <p style="font-size: 10pt;">This list should be updated on a monthly basis.</p>
+                        <p style="font-size: 10pt;">If either DRU-010-15 or DRU-010-16 is sent, then both are required.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">DRU-010-17</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p>DEA&#160;Schedule</p>
+                        <p>&lt;DEASchedule&gt;</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">an..15</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p style="font-size: 10pt;">If the medication is categorized as a controlled substance by the Drug Enforcement Agency (DEA), this field shall*106M-027 be sent.</p>
+                        <p style="font-size: 10pt;">The DEA Schedule would be populated by the system generating the message, and would utilize the Federal DEA Schedule classification code list, based on federal classification of the medication or the state reclassification of the medication.</p>
+                        <p style="font-size: 10pt;">For a complete list of values, see the NCPDP External Code List (7996).</p>
+                        <p style="font-size: 10pt;">C38046 – Unspecified (Unable to determine the schedule for this medication)</p>
+                        <p style="font-size: 10pt;">C48672 – Schedule I</p>
+                        <p style="font-size: 10pt;">C48675 – Schedule II</p>
+                        <p style="font-size: 10pt;">C48676 – Schedule III</p>
+                        <p style="font-size: 10pt;">C48677 – Schedule IV</p>
+                        <p style="font-size: 10pt;">C48679 – Schedule V</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="font-weight: bold;background-color: #a9a9a9;">Sec. Appendix B: XML</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" colspan="5" style="border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">8:&#160;Most symbols should be 'safe' within most alphanumeric fields; however, XML&#160;validation has issue with the following characters and they shall*106M-035 be escaped. The most common escape encodings are:</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" colspan="2" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="6" style="border-right-style: solid;border-right-width: 1px;border-right-color: #000000;border-top-style: solid;border-top-width: 0px;border-bottom-style: solid;border-bottom-width: 0px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;font-weight: bold;">ASCII Characters</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;font-weight: bold;">XML&#160;Escape</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" rowspan="7" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" rowspan="7">&#160;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">quote (")</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&amp;quot;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">apostrophe (')</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&amp;apos;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">ampersand (&amp;)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&amp;amp;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">less than (&lt;)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&amp;alt;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">greater than (&gt;)</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">&amp;gt;</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1" colspan="2" style="border-right-style: solid;border-right-width: 0px;border-right-color: #000000;padding-left: 4px;padding-right: 4px;padding-top: 4px;padding-bottom: 4px;">&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

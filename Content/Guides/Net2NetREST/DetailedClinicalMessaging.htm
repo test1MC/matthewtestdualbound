@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="4" MadCap:lastHeight="5543" MadCap:lastWidth="1190">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Detailed_Clinical_Messaging"></a><a name="_Toc444699052"></a>Detailed Clinical Messaging Workflows</h2>
+        <p class="BodyText1">Glossary of workflow terms:</p>
+        <ul>
+            <li><span style="font-weight: bold;">Sending System</span><span style="font-weight: bold;">:</span> System connected to Surescripts network originating <span style="font-style: italic;">Clinical</span> message.</li>
+            <li><span style="font-weight: bold;">Sender</span>: Originator of <span style="font-style: italic;">Clinical</span> message routed through sending system.</li>
+            <li><span style="font-weight: bold;">Receiving System</span><span style="font-style: italic;">: </span>System connected to Surescripts network receiving original <span style="font-style: italic;">Clinical</span> message.</li>
+            <li><span style="font-weight: bold;">Recipient</span><span style="font-style: italic;">: </span>Receiver of the original <span style="font-style: italic;">Clinical</span> message within the receiving system.</li>
+        </ul>
+        <h3 class="Heading3"><a name="_Toc444699053"></a>Single Recipient</h3>
+        <h4 class="Heading4">Receiving System's Response Status 010</h4>
+        <p class="Graphic" style="page-break-after: avoid;page-break-inside: avoid;">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging.png" style="width: 727px;height: 135px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold" style="page-break-before: always;">Scenario 1:</p>
+        <p class="StyleHead2TextBold" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 0pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span> message<span style="font-weight: normal;">.</span></p>
+        <p class="BodyText1Indent">1a). Sending System sends <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">1b). Receiving System receives the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">1c). Receiving System sends a <span style="font-style: italic;">Status 010</span> response to Surescripts to indicate that the <span style="font-style: italic;">Clinical</span> message has been delivered.</p>
+        <p class="BodyText1Indent">1d). Sending System receives the <span style="font-style: italic;">Status 010</span> response forwarded by Surescripts.</p>
+        <h4 class="Heading4">Receiving System's Verify Message</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_1.png" style="width: 730px;height: 201px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold" style="page-break-before: avoid;">Scenario 2:</p>
+        <p class="StyleHead2TextBold" style="margin-top: 0pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span> <span style="font-weight: normal;">m</span><span style="font-weight: normal;">essage</span><span style="font-weight: normal;">.</span></p>
+        <p class="BodyText1Indent">2a). Sending System sends a <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">2b). Receiving System receives the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">2c). Receiving System responds with a <span style="font-style: italic;">Status 000 </span>response to Surescripts indicating the <span style="font-style: italic;">Clinical</span> message was accepted for processing.</p>
+        <p class="BodyText1Indent">2d). Sending System receives the <span style="font-style: italic;">Status 000</span> response forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">2e). Receiving System sends a <span style="font-style: italic;">Verify </span>message to Surescripts indicating the <span style="font-style: italic;">Clinical</span> message was successfully delivered electronically to Recipient.</p>
+        <p class="BodyText1Indent">2f). Sending System receives the <span style="font-style: italic;">Verify </span>message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">2g). Sending System responds to the <span style="font-style: italic;">Verify</span> message with a <span style="font-style: italic;">Status 010 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">2h). Receiving System receives the <span style="font-style: italic;">Status 010 </span>response forwarded by Surescripts.</p>
+        <h4 class="Heading4">Receiving System's Error Response</h4>
+        <p class="Graphic" style="page-break-after: avoid;page-break-inside: avoid;">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_2.png" style="width: 732px;height: 133px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold" style="page-break-before: avoid;">Scenario 3:</p>
+        <p class="StyleHead2TextBold" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 0pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span><span style="font-weight: normal;"> message.</span>
+        </p>
+        <p class="BodyText1Indent">3a). Sending System sends <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">3b). Receiving System receives the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">3c). Receiving System responds with an <span style="font-style: italic;">Error</span> response to Surescripts.</p>
+        <p class="BodyText1Indent">3d). Sending System receives the <span style="font-style: italic;">Error</span> response forwarded by Surescripts.</p>
+        <h4 class="Heading4">Error Message</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_3.png" style="width: 731px;height: 185px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold">Scenario 4:</p>
+        <p class="StyleHead2TextBold" style="margin-top: 0pt;font-weight: normal;">Sender generates a Clinical message.</p>
+        <p class="BodyText1Indent">4a). Sending System sends a <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">4b). Receiving System receives the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">4c). Receiving System sends a <span style="font-style: italic;">Status 000 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">4d). Sending System receives the <span style="font-style: italic;">Status 000</span> response forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">4e). Receiving System sends an <span style="font-style: italic;">Error</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">4f). Sending System receives the <span style="font-style: italic;">Error</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">4g). Sending System responds to the <span style="font-style: italic;">Error</span> message with a <span style="font-style: italic;">Status 010</span> response to Surescripts.</p>
+        <p class="BodyText1Indent">4h). Receiving System receives the <span style="font-style: italic;">Status 010</span> response forwarded by Surescripts.</p>
+        <h3 class="Heading3"><a name="_Toc444699054"></a>Multiple Recipients</h3>
+        <h4 class="Heading4">Receiving Systems' Status 010 Response</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_4.png" style="width: 735px;height: 374px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold">Scenario 5:</p>
+        <p class="BodyText1"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span> <span style="font-weight: normal;">m</span><span style="font-weight: normal;">essage</span><span style="font-weight: normal;">.</span></p>
+        <p class="BodyText1Indent">5a). Sending System sends a <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">5b). Sending System receives a <span style="font-style: italic;">Status 000</span> response generated by Surescripts for all multiple recipient messages.</p>
+        <p class="BodyText1Indent">5c). Receiving Systems A and B receive the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">5d). Receiving System A responds with a <span style="font-style: italic;">Status 010 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">5e). Sending System receives a <span style="font-style: italic;">Verify</span> message generated by Surescripts.</p>
+        <p class="BodyText1Indent">5f). Sending System responds with a <span style="font-style: italic;">Status 010 </span>response to Surescripts. (Surescripts does not forward response to Receiving System.)</p>
+        <p class="BodyText1Indent">5g). Receiving System B responds with a <span style="font-style: italic;">Status 010 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">5h). Sending System receives a <span style="font-style: italic;">Verify</span> message generated by Surescripts.</p>
+        <p class="BodyText1Indent">5i). Sending System responds to the <span style="font-style: italic;">Verify </span>message with a <span style="font-style: italic;">Status 010 </span>response to Surescripts. (Surescripts does not forward response to Receiving System.)</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Receiving systems' responses can occur in any order.</p>
+        <h4 class="Heading4">Multiple Recipient Message with Errors and Verifies</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_5.png" style="width: 730px;height: 633px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold">Scenario 6:</p>
+        <p class="StyleHead2TextBold" style="margin-bottom: 9pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span><span style="font-weight: normal;"> m</span><span style="font-weight: normal;">essage</span><span style="font-weight: normal;">.</span>
+        </p>
+        <p class="BodyText1Indent">6a). Sending System sends a <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">6b). Sending System receives a <span style="font-style: italic;">Status 000</span> response generated by Surescripts for all multiple recipient messages.</p>
+        <p class="BodyText1Indent">6c). Receiving Systems A, B, C, and D receive the <span style="font-style: italic;">Clinical</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">6d). Receiving System A responds with a <span style="font-style: italic;">Status 0</span><span style="font-style: italic;">1</span><span style="font-style: italic;">0 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">6e). Sending System receives a <span style="font-style: italic;">Verify</span> message generated by Surescripts.</p>
+        <p class="BodyText1Indent">6f). Sending System responds with a <span style="font-style: italic;">Status 010</span> response to Surescripts. (Surescripts does not forward response to Receiving System.)</p>
+        <p class="BodyText1Indent">6g). Receiving System B responds with a <span style="font-style: italic;">Status 000</span> response to Surescripts indicating the <span style="font-style: italic;">Clinical</span> message was accepted for processing (not forwarded to Sending System).</p>
+        <p class="BodyText1">6h). Receiving System B sends a <span style="font-style: italic;">Verify</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">6i). Sending System receives the <span style="font-style: italic;">Verify</span> message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">6j). Sending System responds to the <span style="font-style: italic;">Verify</span> message with a <span style="font-style: italic;">Status 010</span> response to Surescripts.</p>
+        <p class="BodyText1Indent">6k). Receiving System B receives <span style="font-style: italic;">Status 010</span> response forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">6l). Receiving System C sends an <span style="font-style: italic;">Error </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">6m). Sending System receives an <span style="font-style: italic;">Error </span>message generated by Surescripts.</p>
+        <p class="BodyText1Indent">6n). Sending System responds to the <span style="font-style: italic;">Error </span>message with a <span style="font-style: italic;">Status 010</span> response to Surescripts (not forwarded to Receiving System C).</p>
+        <p class="BodyText1Indent">6o). Receiving System D responds with a <span style="font-style: italic;">Status 000 </span>to Surescripts.</p>
+        <p class="BodyText1Indent">6p). Receiving System D sends an <span style="font-style: italic;">Error</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">6q). Sending System receives the <span style="font-style: italic;">Error </span>message forwarded by Surescripts.</p>
+        <p class="BodyText1Indent">6r). Sending System responds to the <span style="font-style: italic;">Error </span>message with a <span style="font-style: italic;">Status 010 </span>response to Surescripts.</p>
+        <p class="BodyText1Indent">6s). Receiving System D receives the <span style="font-style: italic;">Status 010</span> response forwarded by Surescripts.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Receiving Systems’ responses can occur in any order.</p>
+        <h3 class="Heading3"><a name="_Toc444699055"></a>Undeliverable Messages</h3>
+        <h4 class="Heading4">Surescripts’ Error Response</h4>
+        <p class="Graphic">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_6.png" style="width: 466px;height: 139px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold">Scenario 7</p>
+        <p class="StyleHead2TextBold" style="margin-top: 0pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span><span style="font-weight: normal;"> message.</span>
+        </p>
+        <p class="BodyText1Indent">7a). Sending System sends <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">7b). Sending System receives an <span style="font-style: italic;">E</span><span style="font-style: italic;">rror</span> response from Surescripts.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">This scenario applies to both single and multiple recipient messages.</p>
+        <h4 class="Heading4">Surescripts: Transaction Not Recognized</h4>
+        <p class="Graphic" style="page-break-after: avoid;page-break-inside: avoid;">
+            <img src="../../Resources/Images/Net2Net REST v1.5/Detailed Clinical Messaging_7.png" style="width: 547px;height: 130px;" MadCap:mediastyle="@media print { max-width: 90%; }" />
+        </p>
+        <p class="StylebodytextBold">Scenario 8:</p>
+        <p class="StyleHead2TextBold" style="page-break-after: avoid;page-break-inside: avoid;margin-top: 0pt;"><span style="font-weight: normal;">Sender generates a </span><span style="font-weight: normal;font-style: italic;">Clinical</span><span style="font-weight: normal;"> message.</span>
+        </p>
+        <p class="BodyText1Indent">8a). Sending System sends a <span style="font-style: italic;">Clinical</span> message to Surescripts.</p>
+        <p class="BodyText1Indent">8b). Sending System receives <span style="font-style: italic;">Transaction Not Recognized</span> response from Surescripts.</p>
+        <p class="BlankPage" style="text-align: left;">&#160;</p>
+    </body>
+</html>

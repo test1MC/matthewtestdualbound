@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="6" MadCap:lastHeight="825.3333" MadCap:lastWidth="624">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc435024001"></a>RTF/RTPB Integration &amp; Production</h1>
+        <p class="BodyText1"><a name="top"></a>The following section defines related technical and support elements needed to achieve certification for moving into production, along with our Integration, Compliance, and Certification processes.</p>
+        <h2 class="Heading2">Integration Process</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/IntegrationProcess.flsnp" />
+        <h2 class="Heading2"><a name="Terminol"></a>Terminology Usage</h2>
+        <p class="BodyText1"> For terminology usage throughout this Guide, consider the following:</p>
+        <table class="TableStyle-GuideTables" cellspacing="0" style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');">
+            <col class="TableStyle-GuideTables-Column-Column1" style="width: 76px;" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <thead>
+                <tr class="TableStyle-GuideTables-Head-Header1">
+                    <th class="TableStyle-GuideTables-HeadE-Column1-Header1" style="font-size: 11pt;">Term</th>
+                    <th class="TableStyle-GuideTables-HeadD-Column1-Header1" style="font-size: 11pt;">Term usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">must</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">	Requirements that are enforced as part of the production code or Surescripts business rules.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">
+                        <p style="font-size: 11pt;">shall</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">
+                        <p><span style="font-size: 11pt;">The requirements customers are required to meet in order to be certified on the Surescripts network. These requirements will be enforced as part of certification.</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">should</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">		Used for guidance and best practices. Best practices can also be found in Best Practice sections. Customers are encouraged, but not required, to meet best practices in order to be certified on the Surescripts network.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body" style="font-size: 11pt;">PM.###</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body" style="font-size: 11pt;">This designates a RTPB workflow application certification requirement.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body" style="font-size: 11pt;">F.###</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body" style="font-size: 11pt;">This designates a Formulary application certification requirement that is used as part of the RTF workflow.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Application Certification Requirements are summarized in the <a href="ApplicationCertificationRequirements.htm">Application Certification Requirements</a> section.</p>
+        <h2 class="Heading2"><a name="Transiti"></a>Transition to Production</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/TransitionToProduction.flsnp" />
+        <h2 class="Heading2" style="page-break-before: avoid;"><a name="Communic"></a>Communication Rules</h2>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. For the network to be reliable, there are communication rules to which all customers must adhere.</p>
+        <h2 class="Heading2"><a name="Timeouts"></a>Timeouts</h2>
+        <p>Each transaction that Surescripts submits to a customer has a time-out parameter. If Surescripts does not get a response from the customer within the specified time period, the transaction times out. Surescripts will then respond to the original sender with an error message.</p>
+        <ul>
+            <li>
+                <p>When sending a message to Surescripts, the initiator should set the http timeout to no less than 30 seconds.</p>
+            </li>
+            <li>
+                <p>A Receiving System must reply with a valid response within 10 seconds.</p>
+            </li>
+        </ul>
+        <h2 class="Heading2"><a name="Complian"></a>Compliance</h2>
+        <MadCap:snippetBlock src="../../Resources/Snippets/CommonContent/Compliance.flsnp" />
+    </body>
+</html>

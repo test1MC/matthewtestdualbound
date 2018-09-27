@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1238" MadCap:lastWidth="764">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h2 class="Heading2">Demographic MPI Search</h2>
+        <p class="BodyText1">This will accept a set of demographics including name, date of birth, gender, zip code.</p>
+        <p class="BodyText1" style="font-weight: bold;">Demographic MPI Search Template Example</p>
+        <p class="BodyText1">[GET] {{host}}/mmpoc/api/v0/patient-ids?firstName={firstName}&amp;lastName={lastName}&amp;zipCode={zipCode}&amp;birthDate={birthDate}</p>
+        <p class="BodyText1" style="font-weight: bold;">Request Parameters</p>
+        <p class="BodyText1" style="font-weight: bold;">M/C - Mandatory or Conditional</p>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;font-weight: bold;">Request Parameter</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;font-weight: bold;">M/C</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;font-weight: bold;">Description
+</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">firstName</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Patient first name.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">lastName</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Patient last name.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">middleName</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Patient middle name.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">zipCode</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Patient address zip code must be 3-5 characters.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">birthDate</td>
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">M</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Valid data format.</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">gender</td>
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">C</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p>Values:</p>
+                        <p>M, F, U</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Demographic MPI Search Request Example</p>
+        <p class="BodyText1">[GET] {{host}}/mmpoc/api/v0/patient-ids?firstName=Bob&amp;lastName=Price&amp;zipCode=55044&amp;birthDate=19550524</p>
+        <p class="BodyText1" style="font-weight: bold;">Response Field	Description</p>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">Response Field</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">Description </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">pbmMemberId		</td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">Patient PBM Unique ID</td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyB-Column1-Body1">payerId	</td>
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">Payer Identifier</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Response Examples</p>
+        <p class="BodyText1" style="font-weight: bold;">One match</p>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">[</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;{</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;"pbmMemberId": "XXLS1030GALS1030801     74603010       F11111111503",</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;""payerId": "D00000000090948"</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;}&#160;&#160;&#160;&#160;&#160;</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">]&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="BodyText1" style="font-weight: bold;">Multiple matches</p>
+        <table style="width: 100%;mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+            <col class="TableStyle-GuideTables-Column-Column1" />
+            <tbody>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">[</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;{</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;"pbmMemberId": "e74daa46-d35f-4fdd-83d2-bed012ee8e2b",</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;"payerId": "D00000000090948"</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;}&#160;&#160;&#160;&#160;&#160;</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;{</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;"pbmMemberId": "6c69ef89-7858-4acc-abfd-d6fcca6eb2c3",</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;&#160;"payerId": "D00000000090948"</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">&#160;{&#160;&#160;</p>
+                        <p style="font-family: 'Courier New';color: #333333;font-size: 8pt;">]&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

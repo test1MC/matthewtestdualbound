@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="287" MadCap:lastWidth="933">
+    <head>
+    </head>
+    <body>
+        <h2 class="Heading2">Receiving XDR Messages</h2>
+        <p>Receiving an XDR message is when the customer XDR interface receives a message from Surescripts. This is when the Surescripts network has a message addressed to a domain that is owned by the XDR interface.
+</p>
+        <p>In terms of ITI TF-1 section 15.1, Surescripts is the Document Source and the customer XDR interface is the Document Recipient.
+</p>
+        <p>Surescripts will conform to the <i>Minimal Metadata</i> specification, as defined by <i>XDR for Direct </i>section 6.1 of the reference document <i>XDR and XDM for Direct Messaging Specification, </i>Version 1, 9 March 2011.
+</p>
+        <p>The incoming message will contain a <span style="font-family: 'Courier New';">direct:addressBlock</span> SOAP header with one <span style="font-family: 'Courier New';">direct:from</span> element and one or more <span style="font-family: 'Courier New';">direct:to</span> elements. The XDS metadata element <span style="font-family: 'Courier New';">authorPerson</span> will contain the sender information and one or more <span style="font-family: 'Courier New';">intendedRecipient</span> elements will contain the recipient address(es). If a message has multiple recipients, one or more of which are at the customer system and one or more of which are at a different customer, all addresses will be present on the message to each customer to ensure continuity of the care team.
+</p>
+    </body>
+</html>

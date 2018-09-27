@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-gb" MadCap:lastBlockDepth="4" MadCap:lastHeight="917" MadCap:lastWidth="1262">
+    <head><title></title>
+    </head>
+    <body>
+        <h2 class="Heading2"><a name="_Toc443643284"></a>Basic Authentication</h2>
+        <p class="BodyText1">Please refer to the Connectivity and Authentication Guide for additional connectivity and authentication information. In order for the network to be reliable, there are communication rules to which all customers are required to adhere.</p>
+        <p class="BodyText1">Security Rules - Surescripts requires that all messages sent and received use Basic Authentication. The "Authorization" header of the HTTP message must contain the user-ID and password, separated by a single colon (":") character, within a base64 encoded string.</p>
+        <p class="StylebodytextBold">How Basic Authentication is used</p>
+        <p class="BodyText1">Surescripts sets up a username and password for customers to use in messages customers send to Surescripts. Customers use Basic Authentication in the message header for message posted to the Surescripts assigned URL in test and production.</p>
+        <p class="Note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Customers must use the complete URL provided to them by Surescripts. URLs should always include the portal name and should always include the category query string.</p>
+        <p class="StylebodytextBold">Attaching the username and password to the header (Base64 password encoding)</p>
+        <p class="BodyText1">Concatenate the username and password, separating them with a colon: “username:password”</p>
+        <p class="BodyText1">Convert that concatenation into a UTF8 encoded byte array</p>
+        <p class="BodyText1">Convert that array into a BASE64 encoded string:<br />dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Specify the authentication type of 'Basic' by adding the word 'Basic' to it:<br />"Basic dXNlcm5hbWU6cGFzc3dvcmQ="</p>
+        <p class="BodyText1">Add that string to the Authorization header. It will look like:<br />Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Send the web request - HttpWebRequest.Post</p>
+        <p class="StylebodytextBold">Basic Authentication Example:</p>
+        <p class="BodyText1">This Basic Authentication example can be found at: <a href="http://en.wikipedia.org/wiki/Basic_authentication_scheme" target="_blank"><span class="Hyperlink" style="font-size: 11pt;">http://en.wikipedia.org/wiki/Basic_authentication_scheme</span></a></p>
+        <p class="BodyText1">The user name "Aladdin" and password "open sesame" would be combined as "Aladdin:open sesame" – which is equivalent to QWxhZGRpbjpvcGVuIHNlc2FtZQ== when encoded in base-64. In other words,</p>
+        <p class="BodyText1">Sample Post:</p>
+        <p style="margin-left: 72pt;">POST /URL Provided to you by Surescripts HTTP/1.1</p>
+        <p style="margin-left: 72pt;">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <p style="margin-left: 72pt;">Content-Type: text/xml</p>
+        <p style="margin-left: 72pt;">Host: xxx.xx.x.xxx</p>
+        <p style="margin-left: 72pt;">Content-Length: 1142</p>
+        <p style="margin-left: 72pt;">Expect: 100-continue</p>
+        <p style="margin-left: 72pt;">HTTP/1.1 100 Continue</p>
+    </body>
+</html>

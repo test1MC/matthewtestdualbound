@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" MadCap:lastBlockDepth="7" MadCap:lastHeight="2567.333" MadCap:lastWidth="700">
+    <head>
+        <link href="../../Resources/Stylesheets/GuideTables.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1 class="Heading1"><a name="_Toc444699056"></a>Interface Description</h1>
+        <h2 class="Heading2"><a name="_Toc444699057"></a>Communication Rules</h2>
+        <p class="BodyText1">Basic Authentication and Mutual TLS are required for all customers using Clinical messaging.</p>
+        <p class="BodyText1">Surescripts requires that all messages sent and received use Basic Authentication. The "Authorization" header of the HTTP message must contain the user-ID and password, separated by a single colon (":") character, within a base64 encoded string.</p>
+        <p class="StylebodytextBold">How Basic Authentication Is Used</p>
+        <p class="BodyText1">Surescripts will set up a username and password for the customer to use in messages the customer sends to Surescripts. Customers will always use Basic Authentication in the message header for messages posted to the Surescripts-assigned URL in test and production.</p>
+        <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Customers must use the complete URL provided to them by Surescripts. URLs should always include the portal name and should always include the category query string.</p>
+        <p class="StylebodytextBold">Attaching the username and password to the header (Base64 password encoding)</p>
+        <p class="BodyText1">Concatenate the username and password, separating them with a colon: "username:password"</p>
+        <p class="BodyText1">Convert that concatenation into a UTF8 encoded byte array</p>
+        <p class="BodyText1">Convert that array into a BASE64 encoded string:<br />dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Specify the authentication type of 'Basic' by adding the word 'Basic' to it:<br />"Basic dXNlcm5hbWU6cGFzc3dvcmQ="</p>
+        <p class="BodyText1">Add that string to the Authorization header. It will look like:<br />Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=</p>
+        <p class="BodyText1">Send the web request - HttpWebRequest.Post</p>
+        <p class="StylebodytextBold">Basic Authentication Example:</p>
+        <p class="BodyText1">This Basic Authentication example can be found at: <a href="http://en.wikipedia.org/wiki/Basic_authentication_scheme" class="Hyperlink" style="font-size: 11pt;" target="_blank">http://en.wikipedia.org/wiki/Basic_authentication_scheme</a></p>
+        <p class="BodyText1">The user name "Aladdin" and password "open sesame" would be combined as "Aladdin:open sesame" – which is equivalent to QWxhZGRpbjpvcGVuIHNlc2FtZQ== when encoded in base-64. In other words,</p>
+        <p class="BodyText1">Sample Post:</p>
+        <p style="margin-left: 72pt;">POST /URL provided to you by Surescripts HTTP/1.1</p>
+        <p style="margin-left: 72pt;">Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</p>
+        <p style="margin-left: 72pt;">Content-Type: text/xml</p>
+        <p style="margin-left: 72pt;">Host: xxx.xx.x.xxx</p>
+        <p style="margin-left: 72pt;">Content-Length: 1142</p>
+        <p style="margin-left: 72pt;">Expect: 100-continue</p>
+        <p style="margin-left: 72pt;">HTTP/1.1 100 Continue</p>
+        <h2 class="Heading2"><a name="_Toc444699058"></a>Timeouts</h2>
+        <p class="BodyText1">For timeouts, consider the following:</p>
+        <ul>
+            <li>When sending a message to Surescripts, the initiator should set the http timeout to 30 seconds.</li>
+        </ul>
+        <ul>
+            <li>The Receiving System must reply with a valid <i>Status/Error</i> response within 24 seconds.</li>
+        </ul>
+        <ul>
+            <li>When a <i>Status 000</i> is sent as a reply to a <i>ClinicalMessage</i>, the Receiving System must follow-up with a Verify or Error message within 55 minutes, because Surescripts may return a timeout error if no Verify or Error message has been received.</li>
+        </ul>
+        <h2 class="Heading2"><a name="_Toc444699059"></a>Numeric Representation</h2>
+        <p class="BodyText1">The decimal point is represented by a period and shall be used as follows:</p>
+        <ul>
+            <li>only when there are significant digits to the right of the decimal</li>
+        </ul>
+        <ul>
+            <li>when there is a digit before and after the decimal point</li>
+        </ul>
+        <ul>
+            <li>not with whole numbers</li>
+        </ul>
+        <p class="BodyText1">For example, consider the following possible values:</p>
+        <table style="margin-left: 0pt;border-collapse: collapse;">
+            <col style="width: 68pt;" />
+            <col style="width: 50pt;" />
+            <col style="width: 50pt;" />
+            <col style="width: 50pt;" />
+            <col style="width: 50pt;" />
+            <col style="width: 50pt;" />
+            <col style="width: 50pt;" />
+            <tr>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;padding: 4px;">
+                    <p class="TableText" style="font-weight: bold;">Correct:</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;padding: 4px;">
+                    <p class="TableText">2.515</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;padding: 4px;">
+                    <p class="TableText">251.5</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;padding: 4px;">
+                    <p class="TableText">25.15</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;padding: 4px;">
+                    <p class="TableText">2515</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;padding: 4px;">
+                    <p class="TableText">0.2515</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding: 4px;">
+                    <p class="TableText">2.5</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-left-style: solid;border-left-width: 1pt;border-left-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText" style="font-weight: bold;">Incorrect:</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText">.2515</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText">2515.</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText">3.00</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;padding: 4px;">
+                    <p class="TableText">&#160;</p>
+                </td>
+                <td style="border-top-style: solid;border-top-width: 1pt;border-top-color: black;border-bottom-style: solid;border-bottom-width: 1pt;border-bottom-color: black;border-right-style: solid;border-right-width: 1pt;border-right-color: black;padding: 4px;">
+                    <p class="TableText">&#160;</p>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <h2 class="Heading2"><a name="_XML_Empty_Tags"></a><a name="_Toc444699060"></a>XML Empty Tags</h2>
+            <p class="BodyText1">Customer shall not send empty elements within XML messaging.</p>
+            <p class="BodyText1">All non-essential characters shall be suppressed from the message where permissible. Non-essential characters include leading spaces, trailing spaces, leading zeroes, and trailing zeroes where permissible (see ).</p>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;">Empty XML tags are allowed for use in the DocumentData element. See <MadCap:xref href="Net2NetClinicalMessage.htm#_Net2Net_Clinical_Message">Net2Net Clinical Message Body Elements on page 1</MadCap:xref>.</p>
+        </p>
+        <p>
+            <h2 class="Heading2"><a name="_Toc444699061"></a>Requirement Designation</h2>
+            <p class="StylebodytextBold">Segment Attributes:</p>
+            <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+                <col class="TableStyle-GuideTables-Column-Column1" />
+                <col class="TableStyle-GuideTables-Column-Column1" />
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableHeading">Code</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1" style="background-color: #a9a9a9;">
+                        <p class="TableHeading">Description</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">M</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Required/Mandatory - the segment must be used.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">C</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Situational/Conditional - the segment must be used if conditions are met. Some fields may not have specific conditions. Data should be sent if available. Where comments are "Not used by Surescripts", information will be passed on, but not used, by Surescripts for processing.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-GuideTables-Body-Body1">
+                    <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                        <p class="TableBody">NU</p>
+                    </td>
+                    <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                        <p class="TableBody">Not used or for future use.</p>
+                    </td>
+                </tr>
+            </table>
+            <p class="note" MadCap:autonum="&lt;b&gt;Note: &lt;/b&gt;"><span style="font-size: 9pt;"><span style="font-size: 11pt;">Elements that are grouped together in a composite may be marked as mandatory; however, if the group itself is marked as conditional, then these are only required if you use the group.</span></span>
+            </p>
+            <p class="BodyText1">In the example below, the DocumentType and DocumentData are mandatory only if the File is sent.</p>
+            <table style="mc-table-style: url('../../Resources/Stylesheets/GuideTables.css');" class="TableStyle-GuideTables" cellspacing="0">
+                <col class="TableStyle-GuideTables-Column-Column1" />
+                <col class="TableStyle-GuideTables-Column-Column1" style="width: 147px;" />
+                <col class="TableStyle-GuideTables-Column-Column1" style="width: 419px;" />
+                <thead>
+                    <tr class="TableStyle-GuideTables-Head-Header1">
+                        <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                            <p class="TableHeading">M/C</p>
+                        </th>
+                        <th class="TableStyle-GuideTables-HeadE-Column1-Header1">
+                            <p class="TableHeading">Element Name</p>
+                        </th>
+                        <th class="TableStyle-GuideTables-HeadD-Column1-Header1">
+                            <p class="TableHeading">Comments</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="TableStyle-GuideTables-Body-Body1">
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBody">C</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBody">File</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                            <p class="TableBody">This type of attachment can be used by the sender to include a file attachment</p>
+                        </td>
+                    </tr>
+                    <tr class="TableStyle-GuideTables-Body-Body1">
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBody">M</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBody">&#160; DocumentType</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                            <p class="TableBodyIndent">If a file attachment is included, then a DocumentType must be specified and should be a valid MIME type.</p>
+                            <p class="TableBody">For example: application/pdf</p>
+                        </td>
+                    </tr>
+                    <tr class="TableStyle-GuideTables-Body-Body1">
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBody">C</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyE-Column1-Body1">
+                            <p class="TableBodyIndent"> DocumentVersion</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyD-Column1-Body1">
+                            <p class="TableBody">Optional version number for the document type</p>
+                        </td>
+                    </tr>
+                    <tr class="TableStyle-GuideTables-Body-Body1">
+                        <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                            <p class="TableBody">M</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyB-Column1-Body1">
+                            <p class="TableBody">&#160; DocumentData</p>
+                        </td>
+                        <td class="TableStyle-GuideTables-BodyA-Column1-Body1">
+                            <p class="TableBody">The Base64 Encoded string of the file attachment</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <p>
+            <h2 class="Heading2"><a name="_Toc444699062"></a>Message Validation</h2>
+            <p class="BodyText1">Surescripts will certify that customers are in compliance with the message specifications outlined in this Guide during implementation and will continue to validate once in production.</p>
+            <p class="BodyText1">To validate a message, Surescripts:</p>
+            <ul>
+                <li>Validates the sender identification and password.</li>
+                <li>Validates the recipient identification.</li>
+                <li>Validates the syntax of the message including field lengths, data types, number of repeats and code values.</li>
+            </ul>
+        </p>
+        <p>
+            <h2 class="Heading2"><a name="_Toc444699063"></a>Handling Optional Fields</h2>
+            <p class="BodyText1">Customer shall be able to process any valid message request or response that they are certified on (conditional/optional, valid data elements and values shall not cause processing failure of the message).</p>
+        </p>
+    </body>
+</html>
